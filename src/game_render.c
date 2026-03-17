@@ -16,7 +16,6 @@
 /* NOTE: overlapping globals */
 
 void FUN_00422e70(void)
-
 {
   _DAT_004861d2 = 0;
   _DAT_004861d0 = 0;
@@ -27,7 +26,6 @@ void FUN_00422e70(void)
 /* FUN_00422e80 @ 0x00422e80 */
 
 void FUN_00422e80(void)
-
 {
   _atexit(FUN_00422e90);
   return;
@@ -42,7 +40,6 @@ void FUN_00422e90(void) { return; }
 /* FUN_00422eb0 @ 0x00422eb0 */
 
 int FUN_00422eb0(void)
-
 {
   return 4;
 }
@@ -51,7 +48,6 @@ int FUN_00422eb0(void)
 /* FUN_00422ec0 @ 0x00422ec0 */
 
 int __thiscall FUN_00422ec0(GameBoard *this,int param_1)
-
 {
   return CONCAT31((unsigned int)((uint)(param_1 * 0x12) >> 8),
                   (&DAT_00480848)[(uint)this->players[param_1].color * 4]);
@@ -61,7 +57,6 @@ int __thiscall FUN_00422ec0(GameBoard *this,int param_1)
 /* FUN_00422ee0 @ 0x00422ee0 */
 
 int __thiscall FUN_00422ee0(GameBoard *this,int param_1)
-
 {
   return (int)&this->players[param_1];
 }
@@ -70,7 +65,6 @@ int __thiscall FUN_00422ee0(GameBoard *this,int param_1)
 /* FUN_00422f00 @ 0x00422f00 */
 
 bool __thiscall FUN_00422f00(GameBoard *this,int param_1,int param_2)
-
 {
   bool b1;
   int n2;
@@ -137,7 +131,6 @@ sw_0042_default:
 /* FUN_00423000 @ 0x00423000 */
 
 bool __thiscall FUN_00423000(void *this,int param_1)
-
 {
     /* STUB: 175 lines not yet reconstructed */
     return 0;
@@ -147,7 +140,6 @@ bool __thiscall FUN_00423000(void *this,int param_1)
 /* FUN_00423520 @ 0x00423520 */
 
 byte __thiscall FUN_00423520(void *this,int param_1)
-
 {
     /* STUB: 122 lines not yet reconstructed */
     return 0;
@@ -157,7 +149,6 @@ byte __thiscall FUN_00423520(void *this,int param_1)
 /* FUN_00423890 @ 0x00423890 */
 
 void __fastcall FUN_00423890(int param_1)
-
 {
   int n1;
   int n2;
@@ -180,7 +171,6 @@ void __fastcall FUN_00423890(int param_1)
 /* FUN_004238d0 @ 0x004238d0 */
 
 void __fastcall FUN_004238d0(int param_1)
-
 {
   int n1;
   int n2;
@@ -203,7 +193,6 @@ void __fastcall FUN_004238d0(int param_1)
 /* FUN_00423910 @ 0x00423910 */
 
 void __fastcall FUN_00423910(int param_1)
-
 {
   int n1;
   int n2;
@@ -226,7 +215,6 @@ void __fastcall FUN_00423910(int param_1)
 /* FUN_00423950 @ 0x00423950 */
 
 void __fastcall FUN_00423950(int param_1)
-
 {
   int n1;
   int *pn2;
@@ -249,7 +237,6 @@ void __fastcall FUN_00423950(int param_1)
 /* FUN_00423990 @ 0x00423990 */
 
 int __thiscall FUN_00423990(GameBoard *this,int param_1)
-
 {
   int n1;
   int n2;
@@ -271,7 +258,6 @@ int __thiscall FUN_00423990(GameBoard *this,int param_1)
 /* FUN_004239d0 @ 0x004239d0 */
 
 int __thiscall FUN_004239d0(GameBoard *this,int param_1)
-
 {
   int n1;
   int n2;
@@ -293,7 +279,6 @@ int __thiscall FUN_004239d0(GameBoard *this,int param_1)
 /* FUN_00423a10 @ 0x00423a10 */
 
 void __thiscall FUN_00423a10(GameBoard *this,int param_1,uint param_2)
-
 {
   uint u1;
   bool b2;
@@ -325,7 +310,6 @@ void __thiscall FUN_00423a10(GameBoard *this,int param_1,uint param_2)
 /* FUN_00423a80 @ 0x00423a80 */
 
 void __thiscall FUN_00423a80(GameBoard *this,int param_1,int param_2)
-
 {
   uint u1;
   bool b2;
@@ -357,7 +341,6 @@ void __thiscall FUN_00423a80(GameBoard *this,int param_1,int param_2)
 /* FUN_00423ae0 @ 0x00423ae0 */
 
 void FUN_00423ae0(int param_1,int param_2)
-
 {
   uint u1;
   bool b2;
@@ -387,7 +370,6 @@ void FUN_00423ae0(int param_1,int param_2)
 /* FUN_00423b30 @ 0x00423b30 */
 
 uint __thiscall FUN_00423b30(GameBoard *this,int param_1,int param_2)
-
 {
   uint _eax;
   uint u1;
@@ -408,7 +390,6 @@ uint __thiscall FUN_00423b30(GameBoard *this,int param_1,int param_2)
 /* FUN_00423b80 @ 0x00423b80 */
 
 int __thiscall FUN_00423b80(GameBoard *this,int param_1,int param_2,int param_3)
-
 {
   char c1;
   uint u2;
@@ -453,7 +434,6 @@ L_00423bf5:
 /* FUN_00423c30 @ 0x00423c30 */
 
 void FUN_00423c30(void)
-
 {
   int u1;
   int _p_fffffff4;
@@ -476,7 +456,6 @@ void FUN_00423c80(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_00423ca0(void)
-
 {
   _DAT_004861e6 = 0;
   _DAT_004861e4 = 0;
@@ -487,7 +466,6 @@ void FUN_00423ca0(void)
 /* FUN_00423cb0 @ 0x00423cb0 */
 
 void FUN_00423cb0(void)
-
 {
   _atexit(FUN_00423cc0);
   return;
@@ -504,7 +482,6 @@ void FUN_00423cc0(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_00423ce0(void)
-
 {
   _DAT_004861e2 = 0;
   _DAT_004861e0 = 0;
@@ -515,7 +492,6 @@ void FUN_00423ce0(void)
 /* FUN_00423cf0 @ 0x00423cf0 */
 
 void FUN_00423cf0(void)
-
 {
   _atexit(FUN_00423d00);
   return;
@@ -530,26 +506,25 @@ void FUN_00423d00(void) { return; }
 /* FUN_00423d80 @ 0x00423d80 */
 
 int * __fastcall FUN_00423d80(int *param_1)
-
 {
   int *_fs;
-  int loc_10;
+  int _seh_prev;
   void *_handler;
-  int loc_8;
+  int _seh_state;
   
   /* SEH prolog */
-  loc_10 = *_fs;
-  loc_8 = 0xffffffff;
+  _seh_prev = *_fs;
+  _seh_state = 0xffffffff;
   _handler = &L_00423e07;
-  *_fs = &loc_10;
+  *_fs = &_seh_prev;
   FUN_0042cbd0(param_1);
-  loc_8 = 0;
+  _seh_state = 0;
   FUN_0040ab70((int *)((int)param_1 + 0x1a6));
   *(short *)(param_1 + 0x68) = 1;
   *param_1 = &PTR_FUN_00473288;
   param_1[0x67] = 0;
   *(int *)((int)param_1 + 0x1a2) = 0; /* TODO: unknown offset 0x1a2 */
-  *_fs = loc_10;
+  *_fs = _seh_prev;
   return param_1;
 }
 
@@ -557,7 +532,6 @@ int * __fastcall FUN_00423d80(int *param_1)
 /* FUN_00423e20 @ 0x00423e20 */
 
 int * __thiscall FUN_00423e20(void *this,byte param_1)
-
 {
   FUN_00423e40(this);
   if ((param_1 & 1) != 0) {
@@ -570,23 +544,22 @@ int * __thiscall FUN_00423e20(void *this,byte param_1)
 /* FUN_00423e40 @ 0x00423e40 */
 
 void __fastcall FUN_00423e40(int *param_1)
-
 {
   int *_fs;
-  int loc_10;
+  int _seh_prev;
   void *_handler;
-  int loc_8;
+  int _seh_state;
   
-  loc_10 = *_fs;
+  _seh_prev = *_fs;
   _handler = &L_00423e98;
   *param_1 = &PTR_FUN_00473288;
-  *_fs = &loc_10;
-  loc_8 = 0;
+  *_fs = &_seh_prev;
+  _seh_state = 0;
   FUN_00423e8a();
-  loc_8 = 0xffffffff;
+  _seh_state = 0xffffffff;
   FUN_00423ea2();
   /* SEH epilog */
-  *_fs = loc_10;
+  *_fs = _seh_prev;
   return;
 }
 
@@ -594,7 +567,6 @@ void __fastcall FUN_00423e40(int *param_1)
 /* FUN_00423e8a @ 0x00423e8a */
 
 void FUN_00423e8a(void)
-
 {
   int _ebp;
   
@@ -606,7 +578,6 @@ void FUN_00423e8a(void)
 /* FUN_00423ea2 @ 0x00423ea2 */
 
 void FUN_00423ea2(void)
-
 {
   int _ebp;
   
@@ -618,7 +589,6 @@ void FUN_00423ea2(void)
 /* FUN_00423eb0 @ 0x00423eb0 */
 
 void __fastcall FUN_00423eb0(int *param_1)
-
 {
   int u1;
   int n2;
@@ -648,31 +618,30 @@ void __fastcall FUN_00423eb0(int *param_1)
 /* FUN_00423f80 @ 0x00423f80 */
 
 void __fastcall FUN_00423f80(void *param_1)
-
 {
-  int loc_8;
-  int loc_4;
+  int v8;
+  int v4;
   
   FUN_004048d0(param_1);
   switch(*(short *)(((UIElement *)param_1)->sub_widgets_a[9] + 0xc)) { /* TODO: sub-object at sub_widgets_a[9], offset 0xc */
   case 1:
-    loc_8 = 0x762000d;
-    loc_4 = 0x4d0011;
+    v8 = 0x762000d;
+    v4 = 0x4d0011;
     *(char *)(DAT_0048345c + 0xf2) = 1;
     break;
   case 2:
-    loc_8 = 0x79e000d;
-    loc_4 = 0x220011;
+    v8 = 0x79e000d;
+    v4 = 0x220011;
     *(char *)(DAT_0048345c + 0xf3) = 1;
     break;
   case 3:
-    loc_8 = 0x763000d;
-    loc_4 = 0x230011;
+    v8 = 0x763000d;
+    v4 = 0x230011;
     *(char *)(DAT_0048345c + 0xf4) = 1;
     break;
   case 4:
-    loc_8 = 0x764000d;
-    loc_4 = 0x250011;
+    v8 = 0x764000d;
+    v4 = 0x250011;
     *(char *)(DAT_0048345c + 0xf5) = 1;
   }
   switch(*(short *)(DAT_0048345c + 0x9c)) {
@@ -684,8 +653,8 @@ void __fastcall FUN_00423f80(void *param_1)
   case 6:
     *(short *)(DAT_0048345c + 0x92) = *(short *)(DAT_0048345c + 0x92) + 0xfa;
   }
-  FUN_0045f100(loc_8,'\x01');
-  FUN_0040b1e0((void *)((int)param_1 + 0x1a6),loc_4);
+  FUN_0045f100(v8,'\x01');
+  FUN_0040b1e0((void *)((int)param_1 + 0x1a6),v4);
   *(short *)((int)param_1 + 0x1a0) = 2; /* TODO: unknown offset 0x1a0 */
   return;
 }
@@ -694,7 +663,6 @@ void __fastcall FUN_00423f80(void *param_1)
 /* FUN_004240b0 @ 0x004240b0 */
 
 void __fastcall FUN_004240b0(int *param_1)
-
 {
     /* STUB: 59 lines not yet reconstructed */
     return;
@@ -704,7 +672,6 @@ void __fastcall FUN_004240b0(int *param_1)
 /* FUN_004243e9 @ 0x004243e9 */
 
 void FUN_004243e9(void)
-
 {
   FUN_004012a0();
   return;
@@ -714,18 +681,17 @@ void FUN_004243e9(void)
 /* FUN_00424400 @ 0x00424400 */
 
 int * __fastcall FUN_00424400(int *param_1)
-
 {
   int *_fs;
-  int loc_10;
+  int _seh_prev;
   void *_handler;
-  int loc_8;
+  int _seh_state;
   
   /* SEH prolog */
-  loc_10 = *_fs;
-  loc_8 = 0xffffffff;
+  _seh_prev = *_fs;
+  _seh_state = 0xffffffff;
   _handler = &L_00424476;
-  *_fs = &loc_10;
+  *_fs = &_seh_prev;
   FUN_00417c70(param_1);
   *param_1 = &PTR_LAB_00473418;
   param_1[0x112] = 0;
@@ -736,7 +702,7 @@ int * __fastcall FUN_00424400(int *param_1)
   *(short *)((int)param_1 + 0x452) = 0; /* TODO: unknown offset 0x452 */
   param_1[0x111] = 0;
   param_1[6] = 1;
-  *_fs = loc_10;
+  *_fs = _seh_prev;
   return param_1;
 }
 
@@ -744,7 +710,6 @@ int * __fastcall FUN_00424400(int *param_1)
 /* FUN_00424490 @ 0x00424490 */
 
 int * __thiscall FUN_00424490(void *this,byte param_1)
-
 {
   FUN_004244b0(this);
   if ((param_1 & 1) != 0) {
@@ -757,23 +722,22 @@ int * __thiscall FUN_00424490(void *this,byte param_1)
 /* FUN_004244b0 @ 0x004244b0 */
 
 void __fastcall FUN_004244b0(int *param_1)
-
 {
   int *_fs;
-  int loc_10;
+  int _seh_prev;
   void *_handler;
-  int loc_8;
+  int _seh_state;
   
-  loc_10 = *_fs;
+  _seh_prev = *_fs;
   _handler = &L_004244f9;
   *param_1 = &PTR_LAB_00473418;
-  *_fs = &loc_10;
-  loc_8 = 0;
+  *_fs = &_seh_prev;
+  _seh_state = 0;
   FUN_004246b0((int)param_1);
-  loc_8 = 0xffffffff;
+  _seh_state = 0xffffffff;
   FUN_00424503();
   /* SEH epilog */
-  *_fs = loc_10;
+  *_fs = _seh_prev;
   return;
 }
 
@@ -781,7 +745,6 @@ void __fastcall FUN_004244b0(int *param_1)
 /* FUN_00424503 @ 0x00424503 */
 
 void FUN_00424503(void)
-
 {
   int _ebp;
   
@@ -793,7 +756,6 @@ void FUN_00424503(void)
 /* FUN_004246b0 @ 0x004246b0 */
 
 void __fastcall FUN_004246b0(int param_1)
-
 {
   HGDIOBJ ho;
   
@@ -815,7 +777,6 @@ void __fastcall FUN_004246b0(int param_1)
 /* FUN_004247a0 @ 0x004247a0 */
 
 int __fastcall FUN_004247a0(int param_1)
-
 {
   return *(int *)(param_1 + 0x14);
 }
@@ -824,7 +785,6 @@ int __fastcall FUN_004247a0(int param_1)
 /* FUN_004247b0 @ 0x004247b0 */
 
 void __thiscall FUN_004247b0(GameBoard *this,HDC param_1,short *param_2)
-
 {
   short s1;
   short s2;
@@ -844,7 +804,6 @@ void __thiscall FUN_004247b0(GameBoard *this,HDC param_1,short *param_2)
 /* FUN_00424820 @ 0x00424820 */
 
 void __fastcall FUN_00424820(int param_1)
-
 {
     /* STUB: 22 lines not yet reconstructed */
     return;
@@ -854,7 +813,6 @@ void __fastcall FUN_00424820(int param_1)
 /* FUN_004248b0 @ 0x004248b0 */
 
 void FUN_004248b0(void)
-
 {
   int u1;
   int _p_fffffff4;
@@ -877,7 +835,6 @@ void FUN_00424900(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_00424920(void)
-
 {
   _DAT_004861f6 = 0;
   _DAT_004861f4 = 0;
@@ -888,7 +845,6 @@ void FUN_00424920(void)
 /* FUN_00424930 @ 0x00424930 */
 
 void FUN_00424930(void)
-
 {
   _atexit(FUN_00424940);
   return;
@@ -905,7 +861,6 @@ void FUN_00424940(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_00424960(void)
-
 {
   _DAT_004861f2 = 0;
   _DAT_004861f0 = 0;
@@ -916,7 +871,6 @@ void FUN_00424960(void)
 /* FUN_00424970 @ 0x00424970 */
 
 void FUN_00424970(void)
-
 {
   _atexit(FUN_00424980);
   return;
@@ -931,7 +885,6 @@ void FUN_00424980(void) { return; }
 /* FUN_004249a0 @ 0x004249a0 */
 
 void FUN_004249a0(void)
-
 {
   int u1;
   int _p_fffffff4;
@@ -947,7 +900,6 @@ void FUN_004249a0(void)
 /* FUN_004249e0 @ 0x004249e0 */
 
 void FUN_004249e0(void)
-
 {
   _atexit(FUN_004249f0);
   return;
@@ -964,7 +916,6 @@ void FUN_004249f0(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_00424a10(void)
-
 {
   _DAT_00486206 = 0;
   _DAT_00486204 = 0;
@@ -975,7 +926,6 @@ void FUN_00424a10(void)
 /* FUN_00424a20 @ 0x00424a20 */
 
 void FUN_00424a20(void)
-
 {
   _atexit(FUN_00424a30);
   return;
@@ -992,7 +942,6 @@ void FUN_00424a30(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_00424a50(void)
-
 {
   _DAT_00486202 = 0;
   _DAT_00486200 = 0;
@@ -1003,7 +952,6 @@ void FUN_00424a50(void)
 /* FUN_00424a60 @ 0x00424a60 */
 
 void FUN_00424a60(void)
-
 {
   _atexit(FUN_00424a70);
   return;
@@ -1018,7 +966,6 @@ void FUN_00424a70(void) { return; }
 /* FUN_00424a90 @ 0x00424a90 */
 
 void FUN_00424a90(void)
-
 {
   int u1;
   int _p_fffffff4;
@@ -1034,7 +981,6 @@ void FUN_00424a90(void)
 /* FUN_00424ad0 @ 0x00424ad0 */
 
 void FUN_00424ad0(void)
-
 {
   _atexit(FUN_00424ae0);
   return;
@@ -1051,7 +997,6 @@ void FUN_00424ae0(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_00424ba0(void)
-
 {
   _DAT_00486216 = 0;
   _DAT_00486214 = 0;
@@ -1062,7 +1007,6 @@ void FUN_00424ba0(void)
 /* FUN_00424bb0 @ 0x00424bb0 */
 
 void FUN_00424bb0(void)
-
 {
   _atexit(FUN_00424bc0);
   return;
@@ -1079,7 +1023,6 @@ void FUN_00424bc0(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_00424d80(void)
-
 {
   _DAT_00486212 = 0;
   _DAT_00486210 = 0;
@@ -1090,7 +1033,6 @@ void FUN_00424d80(void)
 /* FUN_00424d90 @ 0x00424d90 */
 
 void FUN_00424d90(void)
-
 {
   _atexit(FUN_00424da0);
   return;
@@ -1105,23 +1047,22 @@ void FUN_00424da0(void) { return; }
 /* FUN_00424e40 @ 0x00424e40 */
 
 int * __fastcall FUN_00424e40(int *param_1)
-
 {
   int *_fs;
-  int loc_10;
+  int _seh_prev;
   void *_handler;
-  int loc_8;
+  int _seh_state;
   
   /* SEH prolog */
-  loc_10 = *_fs;
-  loc_8 = 0xffffffff;
+  _seh_prev = *_fs;
+  _seh_state = 0xffffffff;
   _handler = &L_00424e96;
-  *_fs = &loc_10;
+  *_fs = &_seh_prev;
   FUN_0044bc50(param_1);
   *(short *)(param_1 + 0x95) = 0;
   *param_1 = &PTR_LAB_004735e0;
   param_1[0x92] = 0;
-  *_fs = loc_10;
+  *_fs = _seh_prev;
   return param_1;
 }
 
@@ -1129,20 +1070,19 @@ int * __fastcall FUN_00424e40(int *param_1)
 /* FUN_00424eb0 @ 0x00424eb0 */
 
 void __fastcall FUN_00424eb0(int *param_1)
-
 {
   uint u1;
   uint u2;
   int *_fs;
-  int loc_10;
+  int _seh_prev;
   void *_handler;
-  int loc_8;
+  int _seh_state;
   
-  loc_10 = *_fs;
+  _seh_prev = *_fs;
   _handler = &L_00424f22;
   *param_1 = &PTR_LAB_004735e0;
-  *_fs = &loc_10;
-  loc_8 = 0;
+  *_fs = &_seh_prev;
+  _seh_state = 0;
   u1 = param_1[0x92];
   if (u1 != 0) {
     for (u2 = *(uint *)(u1 + 4); u2 != 0; u2 = *(uint *)(u2 + 4)) {
@@ -1151,10 +1091,10 @@ void __fastcall FUN_00424eb0(int *param_1)
     }
     FUN_0046c410(u1);
   }
-  loc_8 = 0xffffffff;
+  _seh_state = 0xffffffff;
   FUN_00424f2c();
   /* SEH epilog */
-  *_fs = loc_10;
+  *_fs = _seh_prev;
   return;
 }
 
@@ -1162,7 +1102,6 @@ void __fastcall FUN_00424eb0(int *param_1)
 /* FUN_00424f2c @ 0x00424f2c */
 
 void FUN_00424f2c(void)
-
 {
   FUN_00411360();
   return;
@@ -1172,7 +1111,6 @@ void FUN_00424f2c(void)
 /* FUN_00424f40 @ 0x00424f40 */
 
 int __thiscall FUN_00424f40(void *this,short param_1,short param_2)
-
 {
     /* STUB: 36 lines not yet reconstructed */
     return 0;
@@ -1182,7 +1120,6 @@ int __thiscall FUN_00424f40(void *this,short param_1,short param_2)
 /* FUN_00425200 @ 0x00425200 */
 
 int __fastcall FUN_00425200(void *param_1)
-
 {
   byte b1;
   int n2;
@@ -1193,12 +1130,12 @@ int __fastcall FUN_00425200(void *param_1)
   short s7;
   int *pn8;
   char c9;
-  uint loc_18;
-  int loc_14;
-  int loc_10;
-  uint loc_c;
-  int loc_8;
-  int loc_4;
+  uint v18;
+  int v14;
+  int v10;
+  uint vc;
+  int v8;
+  int v4;
   
   s7 = *(short *)((int)param_1 + 0x254) /* TODO: unknown offset 0x254 on GameBoard */;
   *(int *)((int)param_1 + 0x1c8) = 0 /* TODO: unknown offset 0x1c8 on GameBoard */;
@@ -1216,18 +1153,18 @@ int __fastcall FUN_00425200(void *param_1)
   case 0x42:
   case 0x52:
   case 0x62:
-    loc_18 = (uint)(*(short *)((int)param_1 + 0x254) /* TODO: unknown offset 0x254 on GameBoard */ == -1);
-    FUN_00424f40(param_1,(short)*(int *)((int)param_1 + loc_18 * 0xe + 0x1de) /* TODO: stride-0xe sub-array */,
-                 (short)*(int *)((int)param_1 + loc_18 * 0xe + 0x1e2) /* TODO: stride-0xe sub-array */);
+    v18 = (uint)(*(short *)((int)param_1 + 0x254) /* TODO: unknown offset 0x254 on GameBoard */ == -1);
+    FUN_00424f40(param_1,(short)*(int *)((int)param_1 + v18 * 0xe + 0x1de) /* TODO: stride-0xe sub-array */,
+                 (short)*(int *)((int)param_1 + v18 * 0xe + 0x1e2) /* TODO: stride-0xe sub-array */);
     FUN_0044c7e0(param_1,*(int *)
                           (&DAT_00480888 +
-                          (uint)*(byte *)((int)param_1 + loc_18 * 0xe + 0x1d8) /* TODO: stride-0xe sub-array field +0x00 */ * 4),0,'\x01');
+                          (uint)*(byte *)((int)param_1 + v18 * 0xe + 0x1d8) /* TODO: stride-0xe sub-array field +0x00 */ * 4),0,'\x01');
     FUN_0044c7e0(param_1,*(int *)
-                          (&DAT_0047f830 + *(int *)((int)param_1 + loc_18 * 0xe + 0x1da) /* TODO: stride-0xe sub-array field +0x02 */ * 4),0,
+                          (&DAT_0047f830 + *(int *)((int)param_1 + v18 * 0xe + 0x1da) /* TODO: stride-0xe sub-array field +0x02 */ * 4),0,
                  '\x01');
     FUN_0044bf50((int *)&DAT_004734c4,'\x01');
-    ((GameBoard *)param_1)->target_x = *(int *)((int)param_1 + loc_18 * 0xe + 0x1de) /* TODO: stride-0xe sub-array field +0x06 */;
-    ((GameBoard *)param_1)->target_y = *(int *)((int)param_1 + loc_18 * 0xe + 0x1e2) /* TODO: stride-0xe sub-array field +0x0a */;
+    ((GameBoard *)param_1)->target_x = *(int *)((int)param_1 + v18 * 0xe + 0x1de) /* TODO: stride-0xe sub-array field +0x06 */;
+    ((GameBoard *)param_1)->target_y = *(int *)((int)param_1 + v18 * 0xe + 0x1e2) /* TODO: stride-0xe sub-array field +0x0a */;
     break;
   case 0x12:
   case 0x13:
@@ -1235,14 +1172,14 @@ int __fastcall FUN_00425200(void *param_1)
   case 0x4d:
     s7 = 1000;
     do {
-      FUN_00426350(param_1,((GameBoard *)param_1)->target_x,((GameBoard *)param_1)->target_y,&loc_14,
-                   &loc_10,(int *)&loc_c,&loc_8);
-      u3 = FUN_00424f40(param_1,(short)loc_14,(short)loc_10);
+      FUN_00426350(param_1,((GameBoard *)param_1)->target_x,((GameBoard *)param_1)->target_y,&v14,
+                   &v10,(int *)&vc,&v8);
+      u3 = FUN_00424f40(param_1,(short)v14,(short)v10);
       if ((short)u3 != 0) break;
       s7 = s7 + -1;
     } while (s7 != 0);
-    FUN_0044c990(param_1,loc_c,0,'\x01');
-    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f7f0 + loc_8 * 4),0,'\x01');
+    FUN_0044c990(param_1,vc,0,'\x01');
+    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f7f0 + v8 * 4),0,'\x01');
     if (((GameBoard *)param_1)->event_type == 0x4d) {
       b1 = 1;
       pn8 = (int *)&DAT_00473508;
@@ -1252,8 +1189,8 @@ int __fastcall FUN_00425200(void *param_1)
       pn8 = (int *)&DAT_004734cc;
     }
     FUN_0044bf50(pn8,b1);
-    ((GameBoard *)param_1)->target_x = loc_14;
-    ((GameBoard *)param_1)->target_y = loc_10;
+    ((GameBoard *)param_1)->target_x = v14;
+    ((GameBoard *)param_1)->target_y = v10;
     break;
   case 0x14:
   case 0x15:
@@ -1276,14 +1213,14 @@ int __fastcall FUN_00425200(void *param_1)
   case 0x4c:
     s7 = 1000;
     do {
-      FUN_00426350(param_1,((GameBoard *)param_1)->target_x,((GameBoard *)param_1)->target_y,&loc_14,
-                   &loc_10,(int *)&loc_c,&loc_8);
-      u3 = FUN_00424f40(param_1,(short)loc_14,(short)loc_10);
+      FUN_00426350(param_1,((GameBoard *)param_1)->target_x,((GameBoard *)param_1)->target_y,&v14,
+                   &v10,(int *)&vc,&v8);
+      u3 = FUN_00424f40(param_1,(short)v14,(short)v10);
       if ((short)u3 != 0) break;
       s7 = s7 + -1;
     } while (s7 != 0);
-    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f800 + loc_8 * 4),0,'\x01');
-    FUN_0044c990(param_1,loc_c,0,'\x01');
+    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f800 + v8 * 4),0,'\x01');
+    FUN_0044c990(param_1,vc,0,'\x01');
     n2 = ((GameBoard *)param_1)->event_type;
     if (n2 == 0x43) {
       b1 = 1;
@@ -1314,8 +1251,8 @@ int __fastcall FUN_00425200(void *param_1)
       pn8 = (int *)&DAT_004734d0;
     }
     FUN_0044bf50(pn8,b1);
-    ((GameBoard *)param_1)->target_x = loc_14;
-    ((GameBoard *)param_1)->target_y = loc_10;
+    ((GameBoard *)param_1)->target_x = v14;
+    ((GameBoard *)param_1)->target_y = v10;
     break;
   case 0x22:
   case 0x23:
@@ -1323,24 +1260,24 @@ int __fastcall FUN_00425200(void *param_1)
   case 0x4e:
     s7 = 1000;
     n2 = rand();
-    loc_18 = n2 % *(int *)((int)param_1 + 0x1d4) /* TODO: offset 0x1d4, count for stride-0xe array */;
+    v18 = n2 % *(int *)((int)param_1 + 0x1d4) /* TODO: offset 0x1d4, count for stride-0xe array */;
     do {
-      FUN_00426350(param_1,*(int *)((int)param_1 + loc_18 * 0xe + 0x1de) /* TODO: stride-0xe sub-array field +0x06 */,
-                   *(int *)((int)param_1 + loc_18 * 0xe + 0x1e2) /* TODO: stride-0xe sub-array field +0x0a */,&loc_14,&loc_10,
-                   (int *)&loc_c,&loc_8);
-      u3 = FUN_00424f40(param_1,(short)loc_14,(short)loc_10);
+      FUN_00426350(param_1,*(int *)((int)param_1 + v18 * 0xe + 0x1de) /* TODO: stride-0xe sub-array field +0x06 */,
+                   *(int *)((int)param_1 + v18 * 0xe + 0x1e2) /* TODO: stride-0xe sub-array field +0x0a */,&v14,&v10,
+                   (int *)&vc,&v8);
+      u3 = FUN_00424f40(param_1,(short)v14,(short)v10);
       if ((short)u3 != 0) break;
       s7 = s7 + -1;
     } while (s7 != 0);
-    FUN_0044c990(param_1,loc_c,0,'\x01');
-    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f7f0 + loc_8 * 4),0,'\x01');
+    FUN_0044c990(param_1,vc,0,'\x01');
+    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f7f0 + v8 * 4),0,'\x01');
     if (((GameBoard *)param_1)->event_type != 0x4e) {
       FUN_0044c7e0(param_1,*(int *)
                             (&DAT_00480888 +
-                            (uint)*(byte *)((int)param_1 + loc_18 * 0xe + 0x1d8) /* TODO: stride-0xe sub-array field +0x00 */ * 4),0,'\x01');
+                            (uint)*(byte *)((int)param_1 + v18 * 0xe + 0x1d8) /* TODO: stride-0xe sub-array field +0x00 */ * 4),0,'\x01');
     }
     FUN_0044c7e0(param_1,*(int *)
-                          (&DAT_0047f830 + *(int *)((int)param_1 + loc_18 * 0xe + 0x1da) /* TODO: stride-0xe sub-array field +0x02 */ * 4),0,
+                          (&DAT_0047f830 + *(int *)((int)param_1 + v18 * 0xe + 0x1da) /* TODO: stride-0xe sub-array field +0x02 */ * 4),0,
                  '\x01');
     if (((GameBoard *)param_1)->event_type == 0x4e) {
       b1 = 0;
@@ -1351,8 +1288,8 @@ int __fastcall FUN_00425200(void *param_1)
       pn8 = (int *)&DAT_004734d4;
     }
     FUN_0044bf50(pn8,b1);
-    ((GameBoard *)param_1)->target_x = loc_14;
-    ((GameBoard *)param_1)->target_y = loc_10;
+    ((GameBoard *)param_1)->target_x = v14;
+    ((GameBoard *)param_1)->target_y = v10;
     break;
   case 0x24:
   case 0x25:
@@ -1360,22 +1297,22 @@ int __fastcall FUN_00425200(void *param_1)
   case 0x27:
     s7 = 1000;
     n2 = rand();
-    loc_18 = n2 % *(int *)((int)param_1 + 0x1d4) /* TODO: offset 0x1d4, count for stride-0xe array */;
+    v18 = n2 % *(int *)((int)param_1 + 0x1d4) /* TODO: offset 0x1d4, count for stride-0xe array */;
     do {
-      FUN_00426350(param_1,*(int *)((int)param_1 + loc_18 * 0xe + 0x1de) /* TODO: stride-0xe sub-array field +0x06 */,
-                   *(int *)((int)param_1 + loc_18 * 0xe + 0x1e2) /* TODO: stride-0xe sub-array field +0x0a */,&loc_14,&loc_10,
-                   (int *)&loc_c,&loc_8);
-      u3 = FUN_00424f40(param_1,(short)loc_14,(short)loc_10);
+      FUN_00426350(param_1,*(int *)((int)param_1 + v18 * 0xe + 0x1de) /* TODO: stride-0xe sub-array field +0x06 */,
+                   *(int *)((int)param_1 + v18 * 0xe + 0x1e2) /* TODO: stride-0xe sub-array field +0x0a */,&v14,&v10,
+                   (int *)&vc,&v8);
+      u3 = FUN_00424f40(param_1,(short)v14,(short)v10);
       if ((short)u3 != 0) break;
       s7 = s7 + -1;
     } while (s7 != 0);
-    FUN_0044c990(param_1,loc_c,0,'\x01');
-    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f800 + loc_8 * 4),0,'\x01');
+    FUN_0044c990(param_1,vc,0,'\x01');
+    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f800 + v8 * 4),0,'\x01');
     FUN_0044c7e0(param_1,*(int *)
                           (&DAT_00480888 +
-                          (uint)*(byte *)((int)param_1 + loc_18 * 0xe + 0x1d8) /* TODO: stride-0xe sub-array field +0x00 */ * 4),0,'\x01');
+                          (uint)*(byte *)((int)param_1 + v18 * 0xe + 0x1d8) /* TODO: stride-0xe sub-array field +0x00 */ * 4),0,'\x01');
     FUN_0044c7e0(param_1,*(int *)
-                          (&DAT_0047f830 + *(int *)((int)param_1 + loc_18 * 0xe + 0x1da) /* TODO: stride-0xe sub-array field +0x02 */ * 4),0,
+                          (&DAT_0047f830 + *(int *)((int)param_1 + v18 * 0xe + 0x1da) /* TODO: stride-0xe sub-array field +0x02 */ * 4),0,
                  '\x01');
     b1 = (byte)((GameBoard *)param_1)->event_type & 1;
     pn8 = (int *)&DAT_004734d8;
@@ -1388,48 +1325,48 @@ int __fastcall FUN_00425200(void *param_1)
   case 0x46:
     s7 = 1000;
     n2 = rand();
-    loc_18 = n2 % *(int *)((int)param_1 + 0x1d4) /* TODO: offset 0x1d4, count for stride-0xe array */;
+    v18 = n2 % *(int *)((int)param_1 + 0x1d4) /* TODO: offset 0x1d4, count for stride-0xe array */;
     do {
-      FUN_00426350(param_1,*(int *)((int)param_1 + loc_18 * 0xe + 0x1de) /* TODO: stride-0xe sub-array field +0x06 */,
-                   *(int *)((int)param_1 + loc_18 * 0xe + 0x1e2) /* TODO: stride-0xe sub-array field +0x0a */,&loc_14,&loc_10,
-                   (int *)&loc_c,&loc_8);
-      u3 = FUN_00424f40(param_1,(short)loc_14,(short)loc_10);
+      FUN_00426350(param_1,*(int *)((int)param_1 + v18 * 0xe + 0x1de) /* TODO: stride-0xe sub-array field +0x06 */,
+                   *(int *)((int)param_1 + v18 * 0xe + 0x1e2) /* TODO: stride-0xe sub-array field +0x0a */,&v14,&v10,
+                   (int *)&vc,&v8);
+      u3 = FUN_00424f40(param_1,(short)v14,(short)v10);
       if ((short)u3 != 0) break;
       s7 = s7 + -1;
     } while (s7 != 0);
     if (((GameBoard *)param_1)->event_type == 0x45) {
-      FUN_0044c7e0(param_1,*(int *)(&DAT_0047f800 + loc_8 * 4),0,'\x01');
-      FUN_0044c990(param_1,loc_c,0,'\x01');
+      FUN_0044c7e0(param_1,*(int *)(&DAT_0047f800 + v8 * 4),0,'\x01');
+      FUN_0044c990(param_1,vc,0,'\x01');
       FUN_0044c7e0(param_1,*(int *)
-                            (&DAT_0047f830 + *(int *)((int)param_1 + loc_18 * 0xe + 0x1da) /* TODO: stride-0xe sub-array field +0x02 */ * 4),0,
+                            (&DAT_0047f830 + *(int *)((int)param_1 + v18 * 0xe + 0x1da) /* TODO: stride-0xe sub-array field +0x02 */ * 4),0,
                    '\x01');
       b1 = (byte)((GameBoard *)param_1)->event_type & 1;
       pn8 = (int *)&DAT_004734e8;
     }
     else if (((GameBoard *)param_1)->event_type == 0x46) {
-      FUN_0044c7e0(param_1,*(int *)(&DAT_0047f800 + loc_8 * 4),0,'\x01');
-      FUN_0044c990(param_1,loc_c,0,'\x01');
+      FUN_0044c7e0(param_1,*(int *)(&DAT_0047f800 + v8 * 4),0,'\x01');
+      FUN_0044c990(param_1,vc,0,'\x01');
       FUN_0044c7e0(param_1,*(int *)
-                            (&DAT_0047f830 + *(int *)((int)param_1 + loc_18 * 0xe + 0x1da) /* TODO: stride-0xe sub-array field +0x02 */ * 4),0,
+                            (&DAT_0047f830 + *(int *)((int)param_1 + v18 * 0xe + 0x1da) /* TODO: stride-0xe sub-array field +0x02 */ * 4),0,
                    '\x01');
       b1 = (byte)((GameBoard *)param_1)->event_type & 1;
       pn8 = (int *)&DAT_004734ec;
     }
     else {
-      FUN_0044c990(param_1,loc_c,0,'\x01');
-      FUN_0044c7e0(param_1,*(int *)(&DAT_0047f800 + loc_8 * 4),0,'\x01');
+      FUN_0044c990(param_1,vc,0,'\x01');
+      FUN_0044c7e0(param_1,*(int *)(&DAT_0047f800 + v8 * 4),0,'\x01');
       FUN_0044c7e0(param_1,*(int *)
                             (&DAT_00480888 +
-                            (uint)*(byte *)((int)param_1 + loc_18 * 0xe + 0x1d8) /* TODO: stride-0xe sub-array field +0x00 */ * 4),0,'\x01');
+                            (uint)*(byte *)((int)param_1 + v18 * 0xe + 0x1d8) /* TODO: stride-0xe sub-array field +0x00 */ * 4),0,'\x01');
       FUN_0044c7e0(param_1,*(int *)
-                            (&DAT_0047f830 + *(int *)((int)param_1 + loc_18 * 0xe + 0x1da) /* TODO: stride-0xe sub-array field +0x02 */ * 4),0,
+                            (&DAT_0047f830 + *(int *)((int)param_1 + v18 * 0xe + 0x1da) /* TODO: stride-0xe sub-array field +0x02 */ * 4),0,
                    '\x01');
       b1 = (byte)((GameBoard *)param_1)->event_type & 1;
       pn8 = (int *)&DAT_004734d8;
     }
     FUN_0044bf50(pn8,b1);
-    ((GameBoard *)param_1)->target_x = loc_14;
-    ((GameBoard *)param_1)->target_y = loc_10;
+    ((GameBoard *)param_1)->target_x = v14;
+    ((GameBoard *)param_1)->target_y = v10;
     break;
   case 0x36:
   case 0x37:
@@ -1437,23 +1374,23 @@ int __fastcall FUN_00425200(void *param_1)
   case 0x48:
     s7 = 1000;
     FUN_00426350(param_1,((GameBoard *)param_1)->target_x,((GameBoard *)param_1)->target_y,
-                 (int *)&loc_18,&loc_4,(int *)&loc_c,&loc_8);
+                 (int *)&v18,&v4,(int *)&vc,&v8);
     do {
-      FUN_00426350(param_1,loc_18,loc_4,&loc_14,&loc_10,(int *)&loc_c,&loc_8);
-      u3 = FUN_00424f40(param_1,(short)loc_14,(short)loc_10);
+      FUN_00426350(param_1,v18,v4,&v14,&v10,(int *)&vc,&v8);
+      u3 = FUN_00424f40(param_1,(short)v14,(short)v10);
       if ((short)u3 != 0) break;
       s7 = s7 + -1;
     } while (s7 != 0);
-    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f800 + loc_8 * 4),0,'\x01');
-    FUN_0044c990(param_1,loc_c,0,'\x01');
+    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f800 + v8 * 4),0,'\x01');
+    FUN_0044c990(param_1,vc,0,'\x01');
     if (((GameBoard *)param_1)->event_type < 0x40) {
-      u3 = *(int *)(&DAT_0047f85c + loc_18 * 4);
+      u3 = *(int *)(&DAT_0047f85c + v18 * 4);
     }
     else {
-      u3 = *(int *)(&DAT_0047f884 + loc_18 * 4);
+      u3 = *(int *)(&DAT_0047f884 + v18 * 4);
     }
     FUN_0044c7e0(param_1,u3,0,'\x01');
-    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f8c8 + loc_4 * -4),0,'\x01');
+    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f8c8 + v4 * -4),0,'\x01');
     if (((GameBoard *)param_1)->event_type == 0x47) {
       c9 = '\x01';
       pn8 = (int *)&DAT_004734f0;
@@ -1467,39 +1404,39 @@ int __fastcall FUN_00425200(void *param_1)
       pn8 = (int *)&DAT_004734dc;
     }
     FUN_0044bf50(pn8,c9);
-    ((GameBoard *)param_1)->target_x = loc_14;
-    ((GameBoard *)param_1)->target_y = loc_10;
+    ((GameBoard *)param_1)->target_x = v14;
+    ((GameBoard *)param_1)->target_y = v10;
     break;
   case 0x41:
   case 0x51:
   case 0x61:
     s7 = 1000;
-    FUN_00426350(param_1,5,5,(int *)&loc_18,&loc_4,(int *)&loc_c,&loc_8);
+    FUN_00426350(param_1,5,5,(int *)&v18,&v4,(int *)&vc,&v8);
     do {
-      FUN_00426350(param_1,loc_18,loc_4,&loc_14,&loc_10,(int *)&loc_c,&loc_8);
-      u3 = FUN_00424f40(param_1,(short)loc_14,(short)loc_10);
+      FUN_00426350(param_1,v18,v4,&v14,&v10,(int *)&vc,&v8);
+      u3 = FUN_00424f40(param_1,(short)v14,(short)v10);
       if ((short)u3 != 0) break;
       s7 = s7 + -1;
     } while (s7 != 0);
-    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f884 + loc_14 * 4),0,'\x01');
-    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f8c8 + loc_10 * -4),0,'\x01');
+    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f884 + v14 * 4),0,'\x01');
+    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f8c8 + v10 * -4),0,'\x01');
     b1 = 0;
     pn8 = (int *)&DAT_004734c8;
     goto L_004260b1;
   case 0x4f:
     s7 = 1000;
     FUN_00426350(param_1,((GameBoard *)param_1)->target_x,((GameBoard *)param_1)->target_y,
-                 (int *)&loc_18,&loc_4,(int *)&loc_c,&loc_8);
+                 (int *)&v18,&v4,(int *)&vc,&v8);
     do {
-      FUN_00426350(param_1,loc_18,loc_4,&loc_14,&loc_10,(int *)&loc_c,&loc_8);
-      u3 = FUN_00424f40(param_1,(short)loc_14,(short)loc_10);
+      FUN_00426350(param_1,v18,v4,&v14,&v10,(int *)&vc,&v8);
+      u3 = FUN_00424f40(param_1,(short)v14,(short)v10);
       if ((short)u3 != 0) break;
       s7 = s7 + -1;
     } while (s7 != 0);
-    FUN_0044c990(param_1,loc_c,0,'\x01');
-    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f7f0 + loc_8 * 4),0,'\x01');
-    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f884 + loc_18 * 4),0,'\x01');
-    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f8c8 + loc_4 * -4),0,'\x01');
+    FUN_0044c990(param_1,vc,0,'\x01');
+    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f7f0 + v8 * 4),0,'\x01');
+    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f884 + v18 * 4),0,'\x01');
+    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f8c8 + v4 * -4),0,'\x01');
     b1 = 0;
     pn8 = (int *)&DAT_00473510;
     goto L_004260b1;
@@ -1509,24 +1446,24 @@ int __fastcall FUN_00425200(void *param_1)
   case 100:
     s7 = 1000;
     n2 = rand();
-    loc_18 = n2 % *(int *)((int)param_1 + 0x1d4) /* TODO: offset 0x1d4, count for stride-0xe array */;
+    v18 = n2 % *(int *)((int)param_1 + 0x1d4) /* TODO: offset 0x1d4, count for stride-0xe array */;
     do {
-      FUN_00426350(param_1,*(int *)((int)param_1 + loc_18 * 0xe + 0x1de) /* TODO: stride-0xe sub-array field +0x06 */,
-                   *(int *)((int)param_1 + loc_18 * 0xe + 0x1e2) /* TODO: stride-0xe sub-array field +0x0a */,&loc_14,&loc_10,
-                   (int *)&loc_c,&loc_8);
-      u3 = FUN_00424f40(param_1,(short)loc_14,(short)loc_10);
+      FUN_00426350(param_1,*(int *)((int)param_1 + v18 * 0xe + 0x1de) /* TODO: stride-0xe sub-array field +0x06 */,
+                   *(int *)((int)param_1 + v18 * 0xe + 0x1e2) /* TODO: stride-0xe sub-array field +0x0a */,&v14,&v10,
+                   (int *)&vc,&v8);
+      u3 = FUN_00424f40(param_1,(short)v14,(short)v10);
       if ((short)u3 != 0) break;
       s7 = s7 + -1;
     } while (s7 != 0);
-    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f800 + loc_8 * 4),0,'\x01');
-    FUN_0044c990(param_1,loc_c * 10,0,'\x01');
+    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f800 + v8 * 4),0,'\x01');
+    FUN_0044c990(param_1,vc * 10,0,'\x01');
     if ((((GameBoard *)param_1)->event_type == 99) || (((GameBoard *)param_1)->event_type == 100)) {
       FUN_0044c7e0(param_1,*(int *)
                             (&DAT_00480888 +
-                            (uint)*(byte *)((int)param_1 + loc_18 * 0xe + 0x1d8) /* TODO: stride-0xe sub-array field +0x00 */ * 4),0,'\x01');
+                            (uint)*(byte *)((int)param_1 + v18 * 0xe + 0x1d8) /* TODO: stride-0xe sub-array field +0x00 */ * 4),0,'\x01');
     }
     FUN_0044c7e0(param_1,*(int *)
-                          (&DAT_0047f830 + *(int *)((int)param_1 + loc_18 * 0xe + 0x1da) /* TODO: stride-0xe sub-array field +0x02 */ * 4),0,
+                          (&DAT_0047f830 + *(int *)((int)param_1 + v18 * 0xe + 0x1da) /* TODO: stride-0xe sub-array field +0x02 */ * 4),0,
                  '\x01');
     if ((((GameBoard *)param_1)->event_type == 0x53) || (((GameBoard *)param_1)->event_type == 0x54)) {
       pn8 = (int *)&DAT_00473514;
@@ -1535,8 +1472,8 @@ int __fastcall FUN_00425200(void *param_1)
       pn8 = (int *)&DAT_00473528;
     }
     FUN_0044bf50(pn8,'\0');
-    ((GameBoard *)param_1)->target_x = loc_14;
-    ((GameBoard *)param_1)->target_y = loc_10;
+    ((GameBoard *)param_1)->target_x = v14;
+    ((GameBoard *)param_1)->target_y = v10;
     break;
   case 0x55:
   case 0x56:
@@ -1544,17 +1481,17 @@ int __fastcall FUN_00425200(void *param_1)
   case 0x66:
     s7 = 1000;
     FUN_00426350(param_1,((GameBoard *)param_1)->target_x,((GameBoard *)param_1)->target_y,
-                 (int *)&loc_18,&loc_4,(int *)&loc_c,&loc_8);
+                 (int *)&v18,&v4,(int *)&vc,&v8);
     do {
-      FUN_00426350(param_1,loc_18,loc_4,&loc_14,&loc_10,(int *)&loc_c,&loc_8);
-      u3 = FUN_00424f40(param_1,(short)loc_14,(short)loc_10);
+      FUN_00426350(param_1,v18,v4,&v14,&v10,(int *)&vc,&v8);
+      u3 = FUN_00424f40(param_1,(short)v14,(short)v10);
       if ((short)u3 != 0) break;
       s7 = s7 + -1;
     } while (s7 != 0);
-    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f800 + loc_8 * 4),0,'\x01');
-    FUN_0044c990(param_1,loc_c * 10,0,'\x01');
-    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f884 + loc_18 * 4),0,'\x01');
-    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f8c8 + loc_4 * -4),0,'\x01');
+    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f800 + v8 * 4),0,'\x01');
+    FUN_0044c990(param_1,vc * 10,0,'\x01');
+    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f884 + v18 * 4),0,'\x01');
+    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f8c8 + v4 * -4),0,'\x01');
     b1 = 0;
     pn8 = (int *)&DAT_0047352c;
     goto L_004260b1;
@@ -1562,35 +1499,35 @@ int __fastcall FUN_00425200(void *param_1)
   case 0x67:
     s7 = 0;
     FUN_00426350(param_1,((GameBoard *)param_1)->target_x,((GameBoard *)param_1)->target_y,
-                 (int *)&loc_18,&loc_4,(int *)&loc_c,&loc_8);
+                 (int *)&v18,&v4,(int *)&vc,&v8);
     do {
       do {
         s7 = s7 + 1;
-        FUN_00426350(param_1,loc_18,loc_4,&loc_14,&loc_10,(int *)&loc_c,&loc_8);
-      } while ((loc_c & 1) != 0);
-      u3 = FUN_00424f40(param_1,(short)((int)(loc_14 + loc_18) / 2),
-                           (short)((loc_10 + loc_4) / 2));
+        FUN_00426350(param_1,v18,v4,&v14,&v10,(int *)&vc,&v8);
+      } while ((vc & 1) != 0);
+      u3 = FUN_00424f40(param_1,(short)((int)(v14 + v18) / 2),
+                           (short)((v10 + v4) / 2));
     } while (((short)u3 == 0) && (s7 < 1000));
-    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f884 + loc_18 * 4),0,'\x01');
-    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f8c8 + loc_4 * -4),0,'\x01');
-    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f884 + loc_14 * 4),0,'\x01');
-    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f8c8 + loc_10 * -4),0,'\x01');
+    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f884 + v18 * 4),0,'\x01');
+    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f8c8 + v4 * -4),0,'\x01');
+    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f884 + v14 * 4),0,'\x01');
+    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f8c8 + v10 * -4),0,'\x01');
     FUN_0044bf50((int *)&DAT_00473518,'\0');
-    ((GameBoard *)param_1)->target_x = (int)(loc_14 + loc_18) / 2;
-    ((GameBoard *)param_1)->target_y = (loc_10 + loc_4) / 2;
+    ((GameBoard *)param_1)->target_x = (int)(v14 + v18) / 2;
+    ((GameBoard *)param_1)->target_y = (v10 + v4) / 2;
     break;
   case 0x58:
   case 0x68:
     s7 = 1000;
     do {
-      FUN_00426350(param_1,((GameBoard *)param_1)->target_x,((GameBoard *)param_1)->target_y,&loc_14,
-                   &loc_10,(int *)&loc_c,&loc_8);
-      u3 = FUN_00424f40(param_1,(short)loc_14,(short)loc_10);
+      FUN_00426350(param_1,((GameBoard *)param_1)->target_x,((GameBoard *)param_1)->target_y,&v14,
+                   &v10,(int *)&vc,&v8);
+      u3 = FUN_00424f40(param_1,(short)v14,(short)v10);
       if ((short)u3 != 0) break;
       s7 = s7 + -1;
     } while (s7 != 0);
-    FUN_0044c990(param_1,loc_c * 10,0,'\x01');
-    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f7f0 + loc_8 * 4),0,'\x01');
+    FUN_0044c990(param_1,vc * 10,0,'\x01');
+    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f7f0 + v8 * 4),0,'\x01');
     b1 = 0;
     pn8 = (int *)&DAT_0047351c;
     goto L_004260b1;
@@ -1598,24 +1535,24 @@ int __fastcall FUN_00425200(void *param_1)
   case 0x69:
     s7 = 1000;
     n2 = rand();
-    loc_18 = n2 % *(int *)((int)param_1 + 0x1d4) /* TODO: offset 0x1d4, count for stride-0xe array */;
+    v18 = n2 % *(int *)((int)param_1 + 0x1d4) /* TODO: offset 0x1d4, count for stride-0xe array */;
     do {
-      FUN_00426350(param_1,*(int *)((int)param_1 + loc_18 * 0xe + 0x1de) /* TODO: stride-0xe sub-array field +0x06 */,
-                   *(int *)((int)param_1 + loc_18 * 0xe + 0x1e2) /* TODO: stride-0xe sub-array field +0x0a */,&loc_14,&loc_10,
-                   (int *)&loc_c,&loc_8);
-      u3 = FUN_00424f40(param_1,(short)loc_14,(short)loc_10);
+      FUN_00426350(param_1,*(int *)((int)param_1 + v18 * 0xe + 0x1de) /* TODO: stride-0xe sub-array field +0x06 */,
+                   *(int *)((int)param_1 + v18 * 0xe + 0x1e2) /* TODO: stride-0xe sub-array field +0x0a */,&v14,&v10,
+                   (int *)&vc,&v8);
+      u3 = FUN_00424f40(param_1,(short)v14,(short)v10);
       if ((short)u3 != 0) break;
       s7 = s7 + -1;
     } while (s7 != 0);
-    FUN_0044c990(param_1,loc_c * 10,0,'\x01');
-    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f7f0 + loc_8 * 4),0,'\x01');
+    FUN_0044c990(param_1,vc * 10,0,'\x01');
+    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f7f0 + v8 * 4),0,'\x01');
     if (((GameBoard *)param_1)->event_type == 0x69) {
       FUN_0044c7e0(param_1,*(int *)
                             (&DAT_00480888 +
-                            (uint)*(byte *)((int)param_1 + loc_18 * 0xe + 0x1d8) /* TODO: stride-0xe sub-array field +0x00 */ * 4),0,'\x01');
+                            (uint)*(byte *)((int)param_1 + v18 * 0xe + 0x1d8) /* TODO: stride-0xe sub-array field +0x00 */ * 4),0,'\x01');
     }
     FUN_0044c7e0(param_1,*(int *)
-                          (&DAT_0047f830 + *(int *)((int)param_1 + loc_18 * 0xe + 0x1da) /* TODO: stride-0xe sub-array field +0x02 */ * 4),0,
+                          (&DAT_0047f830 + *(int *)((int)param_1 + v18 * 0xe + 0x1da) /* TODO: stride-0xe sub-array field +0x02 */ * 4),0,
                  '\x01');
     if (((GameBoard *)param_1)->event_type == 0x69) {
       pn8 = (int *)&DAT_00473530;
@@ -1624,30 +1561,30 @@ int __fastcall FUN_00425200(void *param_1)
       pn8 = (int *)&DAT_00473520;
     }
     FUN_0044bf50(pn8,'\0');
-    ((GameBoard *)param_1)->target_x = loc_14;
-    ((GameBoard *)param_1)->target_y = loc_10;
+    ((GameBoard *)param_1)->target_x = v14;
+    ((GameBoard *)param_1)->target_y = v10;
     break;
   case 0x5a:
   case 0x6a:
     s7 = 1000;
     FUN_00426350(param_1,((GameBoard *)param_1)->target_x,((GameBoard *)param_1)->target_y,
-                 (int *)&loc_18,&loc_4,(int *)&loc_c,&loc_8);
+                 (int *)&v18,&v4,(int *)&vc,&v8);
     do {
-      FUN_00426350(param_1,loc_18,loc_4,&loc_14,&loc_10,(int *)&loc_c,&loc_8);
-      u3 = FUN_00424f40(param_1,(short)loc_14,(short)loc_10);
+      FUN_00426350(param_1,v18,v4,&v14,&v10,(int *)&vc,&v8);
+      u3 = FUN_00424f40(param_1,(short)v14,(short)v10);
       if ((short)u3 != 0) break;
       s7 = s7 + -1;
     } while (s7 != 0);
-    FUN_0044c990(param_1,loc_c * 10,0,'\x01');
-    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f7f0 + loc_8 * 4),0,'\x01');
-    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f884 + loc_18 * 4),0,'\x01');
-    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f8c8 + loc_4 * -4),0,'\x01');
+    FUN_0044c990(param_1,vc * 10,0,'\x01');
+    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f7f0 + v8 * 4),0,'\x01');
+    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f884 + v18 * 4),0,'\x01');
+    FUN_0044c7e0(param_1,*(int *)(&DAT_0047f8c8 + v4 * -4),0,'\x01');
     b1 = 0;
     pn8 = (int *)&DAT_00473524;
 L_004260b1:
     FUN_0044bf50(pn8,b1);
-    ((GameBoard *)param_1)->target_x = loc_14;
-    ((GameBoard *)param_1)->target_y = loc_10;
+    ((GameBoard *)param_1)->target_x = v14;
+    ((GameBoard *)param_1)->target_y = v10;
   }
   s7 = 1000;
   do {
@@ -1669,7 +1606,6 @@ L_004260b1:
 /* FUN_00426230 @ 0x00426230 */
 
 int __fastcall FUN_00426230(int param_1)
-
 {
   return *(int *)(param_1 + 0x1d4);
 }
@@ -1678,7 +1614,6 @@ int __fastcall FUN_00426230(int param_1)
 /* FUN_00426240 @ 0x00426240 */
 
 int __thiscall FUN_00426240(GameBoard *this,int param_1)
-
 {
   if ((-1 < param_1) && (param_1 < *(int *)((intptr_t)this + 0x1d4))) { /* TODO: offset 0x1d4, stride-0xe array count */
     return *(int *)(&DAT_0047f810 + this->players[param_1].total * 4);
@@ -1690,7 +1625,6 @@ int __thiscall FUN_00426240(GameBoard *this,int param_1)
 /* FUN_00426280 @ 0x00426280 */
 
 char __thiscall FUN_00426280(GameBoard *this,int param_1)
-
 {
   if ((-1 < param_1) && (param_1 < *(int *)((intptr_t)this + 0x1d4))) { /* TODO: offset 0x1d4, stride-0xe array count */
     return (&DAT_00480848)[(uint)*(byte *)((intptr_t)&this->players[param_1].stat + 2) * 4]; /* TODO: offset 0x1d8 within PlayerSlot stride - may be custom sub-field */
@@ -1702,7 +1636,6 @@ char __thiscall FUN_00426280(GameBoard *this,int param_1)
 /* FUN_004262c0 @ 0x004262c0 */
 
 int __thiscall FUN_004262c0(GameBoard *this,int param_1)
-
 {
   if ((-1 < param_1) && (param_1 < *(int *)((intptr_t)this + 0x1d4))) { /* TODO: offset 0x1d4, stride-0xe array count */
     return *(int *)((intptr_t)&this->players[param_1] + 0x0e); /* TODO: offset 0x1de = players[N]+0x0e, within PlayerSlot::stat area */
@@ -1714,7 +1647,6 @@ int __thiscall FUN_004262c0(GameBoard *this,int param_1)
 /* FUN_004262f0 @ 0x004262f0 */
 
 int __thiscall FUN_004262f0(GameBoard *this,int param_1)
-
 {
   if ((-1 < param_1) && (param_1 < *(int *)((intptr_t)this + 0x1d4))) { /* TODO: offset 0x1d4, stride-0xe array count */
     return *(int *)((intptr_t)&this->players[param_1] + 0x12); /* TODO: offset 0x1e2 = players[N]+0x12 */
@@ -1726,7 +1658,6 @@ int __thiscall FUN_004262f0(GameBoard *this,int param_1)
 /* FUN_00426320 @ 0x00426320 */
 
 void __thiscall FUN_00426320(GameBoard *this,int param_1,int param_2)
-
 {
   if ((this->target_x == param_1) && (this->target_y == param_2)) {
     this->is_match = 1;
@@ -1741,7 +1672,6 @@ void __thiscall FUN_00426320(GameBoard *this,int param_1,int param_2)
 
 int __thiscall
 FUN_00426350(GameBoard *this,int param_1,int param_2,int *param_3,int *param_4,int *param_5,int *param_6)
-
 {
   int n1;
   bool b2;
@@ -1749,10 +1679,10 @@ FUN_00426350(GameBoard *this,int param_1,int param_2,int *param_3,int *param_4,i
   uint u4;
   short s5;
   uint u6;
-  short loc_a;
+  short va;
   
   b2 = false;
-  loc_a = 0;
+  va = 0;
   if (param_1 < 1) {
     param_1 = 1;
   }
@@ -1766,7 +1696,7 @@ FUN_00426350(GameBoard *this,int param_1,int param_2,int *param_3,int *param_4,i
     param_2 = 6;
   }
   do {
-    loc_a = loc_a + 1;
+    va = va + 1;
     n3 = rand();
     *param_5 = n3 % 7 + 2;
     u4 = rand();
@@ -1787,7 +1717,7 @@ FUN_00426350(GameBoard *this,int param_1,int param_2,int *param_3,int *param_4,i
     case 3:
       *param_3 = *param_3 - *param_5;
     }
-    if (loc_a < 1000) {
+    if (va < 1000) {
       if ((((this->board_mode == 3) && (0 < *param_3)) && (*param_3 < 10)) &&
          ((n3 = *param_4, 0 < n3 && (n3 < 7)))) {
         s5 = 0;
@@ -1827,7 +1757,6 @@ FUN_00426350(GameBoard *this,int param_1,int param_2,int *param_3,int *param_4,i
 /* FUN_00426550 @ 0x00426550 */
 
 int __thiscall FUN_00426550(GameBoard *this,int param_1,char param_2,char param_3)
-
 {
   short s1;
   bool b2;
@@ -1839,9 +1768,9 @@ int __thiscall FUN_00426550(GameBoard *this,int param_1,char param_2,char param_
   uint u8;
   int *pn9;
   int *pn10;
-  int loc_14;
-  char loc_8;
-  short loc_4;
+  int v14;
+  char v8;
+  short v4;
   
   n3 = rand();
   u4 = rand();
@@ -1854,25 +1783,25 @@ int __thiscall FUN_00426550(GameBoard *this,int param_1,char param_2,char param_
     n5 = ((u4 ^ u8) - u8 & 7 ^ u8) - u8;
     s1 = *(short *)(&DAT_0047f850 + n5 * 2);
   }
-  loc_14 = 0;
+  v14 = 0;
   if (0 < param_1) {
     pn10 = (int *)&this->players[0].total;
     do {
       n6 = n5;
       if (param_2 != '\0') {
-        u4 = n5 + loc_14 >> 0x1f;
-        n6 = ((n5 + loc_14 ^ u4) - u4 & 7 ^ u4) - u4;
+        u4 = n5 + v14 >> 0x1f;
+        n6 = ((n5 + v14 ^ u4) - u4 & 7 ^ u4) - u4;
       }
       *pn10 = n6;
       if (param_3 == '\0') {
-        loc_8 = (char)(n3 % 7);
-        *(char *)((int)pn10 + -2) = loc_8; /* PlayerSlot field at -2 from total = color */
+        v8 = (char)(n3 % 7);
+        *(char *)((int)pn10 + -2) = v8; /* PlayerSlot field at -2 from total = color */
       }
       else {
-        *(char *)((int)pn10 + -2) = (char)((n3 % 7 + loc_14) % 7); /* PlayerSlot::color */
+        *(char *)((int)pn10 + -2) = (char)((n3 % 7 + v14) % 7); /* PlayerSlot::color */
       }
-      loc_4 = 1000;
-      n6 = loc_14 + -1;
+      v4 = 1000;
+      n6 = v14 + -1;
       do {
         b2 = false;
         n7 = rand();
@@ -1905,16 +1834,16 @@ int __thiscall FUN_00426550(GameBoard *this,int param_1,char param_2,char param_
             b2 = true;
           }
         }
-        if ((loc_14 == 0) &&
+        if ((v14 == 0) &&
            (*(short *)(&DAT_0047f8f4 +
                       ((this->board_layer * 6 + pn10[2]) * 9 + pn10[1]) * 2) !=
             this->field_270)) {
           b2 = true;
         }
-      } while ((b2) && (loc_4 = loc_4 + -1, loc_4 != 0));
+      } while ((b2) && (v4 = v4 + -1, v4 != 0));
       pn10 = (int *)((int)pn10 + 0xe);
-      loc_14 = loc_14 + 1;
-    } while (loc_14 < param_1);
+      v14 = v14 + 1;
+    } while (v14 < param_1);
   }
   return 0;
 }
@@ -1923,7 +1852,6 @@ int __thiscall FUN_00426550(GameBoard *this,int param_1,char param_2,char param_
 /* FUN_00426740 @ 0x00426740 */
 
 int __cdecl FUN_00426740(int param_1)
-
 {
     /* STUB: 25 lines not yet reconstructed */
     return 0;
@@ -1933,22 +1861,21 @@ int __cdecl FUN_00426740(int param_1)
 /* FUN_004267a0 @ 0x004267a0 */
 
 void __cdecl FUN_004267a0(int param_1)
-
 {
   BYTE *pBVar1;
   ushort u2;
   int n3;
   uint u4;
   PALETTEENTRY *pPVar5;
-  LOGPALETTE loc_404 [128];
-  char loc_4;
-  char loc_3;
-  char loc_2;
-  char loc_1;
+  LOGPALETTE v404 [128];
+  char v4;
+  char v3;
+  char v2;
+  char v1;
   
-  loc_404[0].palVersion = 0x300;
-  loc_404[0].palNumEntries = 0x100;
-  pPVar5 = loc_404[0].palPalEntry;
+  v404[0].palVersion = 0x300;
+  v404[0].palNumEntries = 0x100;
+  pPVar5 = v404[0].palPalEntry;
   for (n3 = 0x100; n3 != 0; n3 = n3 + -1) {
     pPVar5->peRed = '\0';
     pPVar5->peGreen = '\0';
@@ -1960,21 +1887,21 @@ void __cdecl FUN_004267a0(int param_1)
   do {
     u2 = (short)u4 + 1;
     pBVar1 = (BYTE *)(u4 * 4 + param_1);
-    loc_404[0].palPalEntry[u4].peRed = *(BYTE *)(u4 * 4 + 2 + param_1);
-    loc_404[0].palPalEntry[u4].peGreen = pBVar1[1];
-    loc_404[0].palPalEntry[u4].peBlue = *pBVar1;
-    loc_404[0].palPalEntry[u4].peFlags = '\x01';
+    v404[0].palPalEntry[u4].peRed = *(BYTE *)(u4 * 4 + 2 + param_1);
+    v404[0].palPalEntry[u4].peGreen = pBVar1[1];
+    v404[0].palPalEntry[u4].peBlue = *pBVar1;
+    v404[0].palPalEntry[u4].peFlags = '\x01';
     u4 = (uint)u2;
   } while (u2 < 0x100);
-  loc_404[0].palPalEntry[0].peRed = '\0';
-  loc_404[0].palPalEntry[0].peGreen = '\0';
-  loc_404[0].palPalEntry[0].peBlue = '\0';
-  loc_404[0].palPalEntry[0].peFlags = '\0';
-  loc_4 = 0xff;
-  loc_3 = 0xff;
-  loc_2 = 0xff;
-  loc_1 = 0;
-  CreatePalette(loc_404);
+  v404[0].palPalEntry[0].peRed = '\0';
+  v404[0].palPalEntry[0].peGreen = '\0';
+  v404[0].palPalEntry[0].peBlue = '\0';
+  v404[0].palPalEntry[0].peFlags = '\0';
+  v4 = 0xff;
+  v3 = 0xff;
+  v2 = 0xff;
+  v1 = 0;
+  CreatePalette(v404);
   return;
 }
 
@@ -1987,7 +1914,6 @@ void FUN_00426850(void) { return; }
 /* FUN_00426860 @ 0x00426860 */
 
 void __cdecl FUN_00426860(int param_1)
-
 {
   HWND hWnd;
   HDC hdc;
@@ -2008,7 +1934,6 @@ void __cdecl FUN_00426860(int param_1)
 /* FUN_004268c0 @ 0x004268c0 */
 
 void __cdecl FUN_004268c0(HGDIOBJ param_1)
-
 {
   DeleteObject(param_1);
   return;
@@ -2018,7 +1943,6 @@ void __cdecl FUN_004268c0(HGDIOBJ param_1)
 /* FUN_004268d0 @ 0x004268d0 */
 
 void __cdecl FUN_004268d0(int *param_1,short param_2)
-
 {
     /* STUB: 52 lines not yet reconstructed */
     return;
@@ -2028,7 +1952,6 @@ void __cdecl FUN_004268d0(int *param_1,short param_2)
 /* FUN_00426a0b @ 0x00426a0b */
 
 void FUN_00426a0b(void)
-
 {
   int _ebp;
   
@@ -2040,7 +1963,6 @@ void FUN_00426a0b(void)
 /* FUN_00426a20 @ 0x00426a20 */
 
 void __cdecl FUN_00426a20(int *param_1,short param_2)
-
 {
     /* STUB: 47 lines not yet reconstructed */
     return;
@@ -2050,7 +1972,6 @@ void __cdecl FUN_00426a20(int *param_1,short param_2)
 /* FUN_00426b61 @ 0x00426b61 */
 
 void FUN_00426b61(void)
-
 {
   int _ebp;
   
@@ -2062,7 +1983,6 @@ void FUN_00426b61(void)
 /* FUN_00426b70 @ 0x00426b70 */
 
 void __cdecl FUN_00426b70(int param_1,short param_2)
-
 {
     /* STUB: 50 lines not yet reconstructed */
     return;
@@ -2072,7 +1992,6 @@ void __cdecl FUN_00426b70(int param_1,short param_2)
 /* FUN_00426cda @ 0x00426cda */
 
 void FUN_00426cda(void)
-
 {
   int _ebp;
   
@@ -2084,7 +2003,6 @@ void FUN_00426cda(void)
 /* FUN_00426cf0 @ 0x00426cf0 */
 
 void __cdecl FUN_00426cf0(int param_1,short param_2)
-
 {
     /* STUB: 53 lines not yet reconstructed */
     return;
@@ -2094,7 +2012,6 @@ void __cdecl FUN_00426cf0(int param_1,short param_2)
 /* FUN_00426e57 @ 0x00426e57 */
 
 void FUN_00426e57(void)
-
 {
   int _ebp;
   
@@ -2106,7 +2023,6 @@ void FUN_00426e57(void)
 /* FUN_00426e80 @ 0x00426e80 */
 
 void FUN_00426e80(void)
-
 {
   int u1;
   int _p_fffffff4;
@@ -2129,7 +2045,6 @@ void FUN_00426ed0(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_00426ef0(void)
-
 {
   _DAT_00486226 = 0;
   _DAT_00486224 = 0;
@@ -2140,7 +2055,6 @@ void FUN_00426ef0(void)
 /* FUN_00426f00 @ 0x00426f00 */
 
 void FUN_00426f00(void)
-
 {
   _atexit(FUN_00426f10);
   return;
@@ -2157,7 +2071,6 @@ void FUN_00426f10(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_00426f30(void)
-
 {
   _DAT_00486222 = 0;
   _DAT_00486220 = 0;
@@ -2168,7 +2081,6 @@ void FUN_00426f30(void)
 /* FUN_00426f40 @ 0x00426f40 */
 
 void FUN_00426f40(void)
-
 {
   _atexit(FUN_00426f50);
   return;
@@ -2183,7 +2095,6 @@ void FUN_00426f50(void) { return; }
 /* FUN_00426f70 @ 0x00426f70 */
 
 void FUN_00426f70(void)
-
 {
   int u1;
   int _p_fffffff4;
@@ -2199,7 +2110,6 @@ void FUN_00426f70(void)
 /* FUN_00426fb0 @ 0x00426fb0 */
 
 void FUN_00426fb0(void)
-
 {
   _atexit(FUN_00426fc0);
   return;
@@ -2216,7 +2126,6 @@ void FUN_00426fc0(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_00426fe0(void)
-
 {
   _DAT_00486236 = 0;
   _DAT_00486234 = 0;
@@ -2227,7 +2136,6 @@ void FUN_00426fe0(void)
 /* FUN_00426ff0 @ 0x00426ff0 */
 
 void FUN_00426ff0(void)
-
 {
   _atexit(FUN_00427000);
   return;
@@ -2244,7 +2152,6 @@ void FUN_00427000(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_00427020(void)
-
 {
   _DAT_00486232 = 0;
   _DAT_00486230 = 0;
@@ -2255,7 +2162,6 @@ void FUN_00427020(void)
 /* FUN_00427030 @ 0x00427030 */
 
 void FUN_00427030(void)
-
 {
   _atexit(FUN_00427040);
   return;
@@ -2272,7 +2178,6 @@ void FUN_00427040(void) { return; }
 /* NOTE: overlapping globals */
 
 int __cdecl FUN_00427050(uint param_1,LPCVOID param_2)
-
 {
   int n1;
   ushort *pu2;
@@ -2353,7 +2258,6 @@ int __cdecl FUN_00427050(uint param_1,LPCVOID param_2)
 /* NOTE: overlapping globals */
 
 void FUN_004271c0(void)
-
 {
   int n1;
   short s2;
@@ -2382,7 +2286,6 @@ void FUN_004271c0(void)
 /* NOTE: overlapping globals */
 
 uint __cdecl FUN_00427220(int *param_1)
-
 {
   int n1;
   int n2;
@@ -2415,7 +2318,6 @@ uint __cdecl FUN_00427220(int *param_1)
 /* NOTE: overlapping globals */
 
 void FUN_00427290(void)
-
 {
   int n1;
   uint u2;
@@ -2453,7 +2355,6 @@ void FUN_00427290(void)
 /* FUN_00427340 @ 0x00427340 */
 
 void __cdecl FUN_00427340(short param_1,uint param_2)
-
 {
     /* STUB: 28 lines not yet reconstructed */
     return;
@@ -2463,7 +2364,6 @@ void __cdecl FUN_00427340(short param_1,uint param_2)
 /* FUN_004273d0 @ 0x004273d0 */
 
 void FUN_004273d0(void)
-
 {
   int u1;
   int _p_fffffff4;
@@ -2486,7 +2386,6 @@ void FUN_00427420(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_00427440(void)
-
 {
   _DAT_00487046 = 0;
   _DAT_00487044 = 0;
@@ -2497,7 +2396,6 @@ void FUN_00427440(void)
 /* FUN_00427450 @ 0x00427450 */
 
 void FUN_00427450(void)
-
 {
   _atexit(FUN_00427460);
   return;
@@ -2514,7 +2412,6 @@ void FUN_00427460(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_00427480(void)
-
 {
   _DAT_00487042 = 0;
   _DAT_00487040 = 0;
@@ -2525,7 +2422,6 @@ void FUN_00427480(void)
 /* FUN_00427490 @ 0x00427490 */
 
 void FUN_00427490(void)
-
 {
   _atexit(FUN_004274a0);
   return;
@@ -2540,7 +2436,6 @@ void FUN_004274a0(void) { return; }
 /* FUN_004274c0 @ 0x004274c0 */
 
 void FUN_004274c0(void)
-
 {
   int u1;
   int _p_fffffff4;
@@ -2556,7 +2451,6 @@ void FUN_004274c0(void)
 /* FUN_00427500 @ 0x00427500 */
 
 void FUN_00427500(void)
-
 {
   _atexit(FUN_00427510);
   return;
@@ -2573,7 +2467,6 @@ void FUN_00427510(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_00427530(void)
-
 {
   _DAT_00487056 = 0;
   _DAT_00487054 = 0;
@@ -2584,7 +2477,6 @@ void FUN_00427530(void)
 /* FUN_00427540 @ 0x00427540 */
 
 void FUN_00427540(void)
-
 {
   _atexit(FUN_00427550);
   return;
@@ -2601,7 +2493,6 @@ void FUN_00427550(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_00427570(void)
-
 {
   _DAT_00487052 = 0;
   _DAT_00487050 = 0;
@@ -2612,7 +2503,6 @@ void FUN_00427570(void)
 /* FUN_00427580 @ 0x00427580 */
 
 void FUN_00427580(void)
-
 {
   _atexit(FUN_00427590);
   return;
@@ -2628,7 +2518,6 @@ void FUN_00427590(void) { return; }
 
 unsigned char * __thiscall
 FUN_00427820(void *this,unsigned char param_1,unsigned char param_2,unsigned char param_3)
-
 {
   ((unsigned char *)this)[0] = param_1;
   ((unsigned char *)this)[1] = param_2;
@@ -2640,7 +2529,6 @@ FUN_00427820(void *this,unsigned char param_1,unsigned char param_2,unsigned cha
 /* FUN_00427850 @ 0x00427850 */
 
 void FUN_00427850(void)
-
 {
   int u1;
   int _p_fffffff4;
@@ -2656,7 +2544,6 @@ void FUN_00427850(void)
 /* FUN_00427890 @ 0x00427890 */
 
 void FUN_00427890(void)
-
 {
   _atexit(FUN_004278a0);
   return;
@@ -2673,7 +2560,6 @@ void FUN_004278a0(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_004278c0(void)
-
 {
   _DAT_004870d6 = 0;
   _DAT_004870d4 = 0;
@@ -2684,7 +2570,6 @@ void FUN_004278c0(void)
 /* FUN_004278d0 @ 0x004278d0 */
 
 void FUN_004278d0(void)
-
 {
   _atexit(FUN_004278e0);
   return;
@@ -2701,7 +2586,6 @@ void FUN_004278e0(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_00427900(void)
-
 {
   _DAT_004870d2 = 0;
   _DAT_004870d0 = 0;
@@ -2712,7 +2596,6 @@ void FUN_00427900(void)
 /* FUN_00427910 @ 0x00427910 */
 
 void FUN_00427910(void)
-
 {
   _atexit(FUN_00427920);
   return;
@@ -2727,7 +2610,6 @@ void FUN_00427920(void) { return; }
 /* FUN_00427940 @ 0x00427940 */
 
 void FUN_00427940(void)
-
 {
   int u1;
   int _p_fffffff4;
@@ -2743,7 +2625,6 @@ void FUN_00427940(void)
 /* FUN_00427980 @ 0x00427980 */
 
 void FUN_00427980(void)
-
 {
   _atexit(FUN_00427990);
   return;
@@ -2760,7 +2641,6 @@ void FUN_00427990(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_004279b0(void)
-
 {
   _DAT_004870f6 = 0;
   _DAT_004870f4 = 0;
@@ -2771,7 +2651,6 @@ void FUN_004279b0(void)
 /* FUN_004279c0 @ 0x004279c0 */
 
 void FUN_004279c0(void)
-
 {
   _atexit(FUN_004279d0);
   return;
@@ -2788,7 +2667,6 @@ void FUN_004279d0(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_004279f0(void)
-
 {
   _DAT_004870f2 = 0;
   _DAT_004870f0 = 0;
@@ -2799,7 +2677,6 @@ void FUN_004279f0(void)
 /* FUN_00427a00 @ 0x00427a00 */
 
 void FUN_00427a00(void)
-
 {
   _atexit(FUN_00427a10);
   return;
@@ -2814,7 +2691,6 @@ void FUN_00427a10(void) { return; }
 /* FUN_00427a50 @ 0x00427a50 */
 
 void FUN_00427a50(void)
-
 {
   DAT_004870da = 0xf0;
   DAT_004870d8 = 0x15e;
@@ -2825,7 +2701,6 @@ void FUN_00427a50(void)
 /* FUN_00427a70 @ 0x00427a70 */
 
 void FUN_00427a70(void)
-
 {
   _atexit(FUN_00427a80);
   return;
@@ -2840,21 +2715,20 @@ void FUN_00427a80(void) { return; }
 /* FUN_00427b10 @ 0x00427b10 */
 
 int * __fastcall FUN_00427b10(int *param_1)
-
 {
   ushort *pu1;
   int *_fs;
-  int loc_10;
+  int _seh_prev;
   void *_handler;
-  int loc_8;
+  int _seh_state;
   
   /* SEH prolog */
-  loc_10 = *_fs;
-  loc_8 = 0xffffffff;
+  _seh_prev = *_fs;
+  _seh_state = 0xffffffff;
   _handler = &L_00427bc4;
-  *_fs = &loc_10;
+  *_fs = &_seh_prev;
   FUN_004534e0(param_1);
-  loc_8 = 0;
+  _seh_state = 0;
   ((UIWidget *)param_1)->is_interactive = 1;
   *param_1 = &PTR_FUN_00473698;
   FUN_0041da90(param_1,0);
@@ -2864,7 +2738,7 @@ int * __fastcall FUN_00427b10(int *param_1)
   param_1[0x46] = pu1;
   pu1 = FUN_0040f380(DAT_004838c0,0x92000c,(ushort *)0x0);
   param_1[0x47] = pu1;
-  *_fs = loc_10;
+  *_fs = _seh_prev;
   return param_1;
 }
 
@@ -2872,7 +2746,6 @@ int * __fastcall FUN_00427b10(int *param_1)
 /* FUN_00427be0 @ 0x00427be0 */
 
 int * __thiscall FUN_00427be0(void *this,byte param_1)
-
 {
   FUN_00427c50(this);
   if ((param_1 & 1) != 0) {
@@ -2885,21 +2758,20 @@ int * __thiscall FUN_00427be0(void *this,byte param_1)
 /* FUN_00427c00 @ 0x00427c00 */
 
 void FUN_00427c00(void)
-
 {
   int *_fs;
-  int loc_10;
+  int _seh_prev;
   void *_handler;
-  int loc_8;
+  int _seh_state;
   
   /* SEH prolog */
-  loc_10 = *_fs;
+  _seh_prev = *_fs;
   _handler = &L_00427c37;
-  *_fs = &loc_10;
-  loc_8 = 0xffffffff;
+  *_fs = &_seh_prev;
+  _seh_state = 0xffffffff;
   FUN_00427c41();
   /* SEH epilog */
-  *_fs = loc_10;
+  *_fs = _seh_prev;
   return;
 }
 
@@ -2907,7 +2779,6 @@ void FUN_00427c00(void)
 /* FUN_00427c41 @ 0x00427c41 */
 
 void FUN_00427c41(void)
-
 {
   FUN_004012a0();
   return;
@@ -2917,27 +2788,26 @@ void FUN_00427c41(void)
 /* FUN_00427c50 @ 0x00427c50 */
 
 void __fastcall FUN_00427c50(int *param_1)
-
 {
   int *_fs;
-  int loc_10;
+  int _seh_prev;
   void *_handler;
-  int loc_8;
+  int _seh_state;
   
-  loc_10 = *_fs;
+  _seh_prev = *_fs;
   _handler = &L_00427ccf;
   *param_1 = &PTR_FUN_00473698;
-  *_fs = &loc_10;
-  loc_8 = 0;
+  *_fs = &_seh_prev;
+  _seh_state = 0;
   ((UIWidget *)param_1)->is_interactive = 1;
   FUN_0041da90(param_1,0);
   FUN_0046f5f0(param_1[0x46]);
   FUN_0046f5f0(param_1[0x47]);
   FUN_0046f5f0(param_1[0x48]);
-  loc_8 = 0xffffffff;
+  _seh_state = 0xffffffff;
   FUN_00427cd9();
   /* SEH epilog */
-  *_fs = loc_10;
+  *_fs = _seh_prev;
   return;
 }
 
@@ -2945,7 +2815,6 @@ void __fastcall FUN_00427c50(int *param_1)
 /* FUN_00427cd9 @ 0x00427cd9 */
 
 void FUN_00427cd9(void)
-
 {
   FUN_00427c00();
   return;
@@ -2960,26 +2829,25 @@ void FUN_00427f19(void) { return; }
 /* FUN_00427f30 @ 0x00427f30 */
 
 int * __fastcall FUN_00427f30(int *param_1)
-
 {
   int *_fs;
-  int loc_10;
+  int _seh_prev;
   void *_handler;
-  int loc_8;
+  int _seh_state;
   
   /* SEH prolog */
-  loc_10 = *_fs;
-  loc_8 = 0xffffffff;
+  _seh_prev = *_fs;
+  _seh_state = 0xffffffff;
   _handler = &L_00427fcc;
-  *_fs = &loc_10;
+  *_fs = &_seh_prev;
   FUN_0044e3f0(param_1);
   *param_1 = &PTR_FUN_00473740;
-  loc_8 = 1;
+  _seh_state = 1;
   FUN_00454300(param_1 + 0x48);
   *param_1 = &PTR_FUN_00473898;
   *(int *)((int)param_1 + 0x23a) = 0; /* TODO: unknown offset 0x23a */
   *param_1 = &PTR_LAB_004737e8;
-  *_fs = loc_10;
+  *_fs = _seh_prev;
   return param_1;
 }
 
@@ -2987,7 +2855,6 @@ int * __fastcall FUN_00427f30(int *param_1)
 /* FUN_00427fe0 @ 0x00427fe0 */
 
 int * __thiscall FUN_00427fe0(void *this,byte param_1)
-
 {
   FUN_004281b0(this);
   if ((param_1 & 1) != 0) {
@@ -3000,7 +2867,6 @@ int * __thiscall FUN_00427fe0(void *this,byte param_1)
 /* FUN_00428000 @ 0x00428000 */
 
 int * __thiscall FUN_00428000(void *this,byte param_1)
-
 {
   FUN_00454660(this);
   if ((param_1 & 1) != 0) {
@@ -3013,21 +2879,20 @@ int * __thiscall FUN_00428000(void *this,byte param_1)
 /* FUN_00428020 @ 0x00428020 */
 
 void FUN_00428020(void)
-
 {
   int *_fs;
-  int loc_10;
+  int _seh_prev;
   void *_handler;
-  int loc_8;
+  int _seh_state;
   
   /* SEH prolog */
-  loc_10 = *_fs;
+  _seh_prev = *_fs;
   _handler = &L_00428057;
-  *_fs = &loc_10;
-  loc_8 = 0xffffffff;
+  *_fs = &_seh_prev;
+  _seh_state = 0xffffffff;
   FUN_00428061();
   /* SEH epilog */
-  *_fs = loc_10;
+  *_fs = _seh_prev;
   return;
 }
 
@@ -3035,7 +2900,6 @@ void FUN_00428020(void)
 /* FUN_00428061 @ 0x00428061 */
 
 void FUN_00428061(void)
-
 {
   FUN_004012a0();
   return;
@@ -3045,21 +2909,20 @@ void FUN_00428061(void)
 /* FUN_00428070 @ 0x00428070 */
 
 void FUN_00428070(void)
-
 {
   int *_fs;
-  int loc_10;
+  int _seh_prev;
   void *_handler;
-  int loc_8;
+  int _seh_state;
   
   /* SEH prolog */
-  loc_10 = *_fs;
+  _seh_prev = *_fs;
   _handler = &L_004280a7;
-  *_fs = &loc_10;
-  loc_8 = 0xffffffff;
+  *_fs = &_seh_prev;
+  _seh_state = 0xffffffff;
   FUN_004280b1();
   /* SEH epilog */
-  *_fs = loc_10;
+  *_fs = _seh_prev;
   return;
 }
 
@@ -3067,7 +2930,6 @@ void FUN_00428070(void)
 /* FUN_004280b1 @ 0x004280b1 */
 
 void FUN_004280b1(void)
-
 {
   int _ebp;
   
@@ -3079,7 +2941,6 @@ void FUN_004280b1(void)
 /* FUN_00428119 @ 0x00428119 */
 
 void FUN_00428119(void)
-
 {
   FUN_004012a0();
   return;
@@ -3089,26 +2950,25 @@ void FUN_00428119(void)
 /* FUN_004281b0 @ 0x004281b0 */
 
 void __fastcall FUN_004281b0(int *param_1)
-
 {
   int *_fs;
-  int loc_10;
+  int _seh_prev;
   void *_handler;
-  int loc_8;
+  int _seh_state;
   
-  loc_10 = *_fs;
+  _seh_prev = *_fs;
   _handler = &L_0042820f;
   *param_1 = &PTR_LAB_004737e8;
-  *_fs = &loc_10;
-  loc_8 = 0;
+  *_fs = &_seh_prev;
+  _seh_state = 0;
   if (*(void ***)((int)param_1 + 0x23a) != (void **)0x0) { /* TODO: unknown offset 0x23a */
     ((void (*)(void))**(void ***)((int)param_1 + 0x23a))(); /* TODO: unknown offset 0x23a, obj->vtable[0] */
     *(int *)((int)param_1 + 0x23a) = 0; /* TODO: unknown offset 0x23a */
   }
-  loc_8 = 0xffffffff;
+  _seh_state = 0xffffffff;
   FUN_00428219();
   /* SEH epilog */
-  *_fs = loc_10;
+  *_fs = _seh_prev;
   return;
 }
 
@@ -3116,7 +2976,6 @@ void __fastcall FUN_004281b0(int *param_1)
 /* FUN_00428219 @ 0x00428219 */
 
 void FUN_00428219(void)
-
 {
   int _ebp;
   
@@ -3148,12 +3007,11 @@ void FUN_0042853e(void) { return; }
 /* FUN_00428550 @ 0x00428550 */
 
 void __thiscall FUN_00428550(void *this,short param_1)
-
 {
-  char loc_28 [40];
+  char v28 [40];
   
-  _itoa((int)param_1,loc_28,10);
-  FUN_00458860(*(void **)((intptr_t)this + 0x23a),loc_28); /* TODO: unknown offset 0x23a */
+  _itoa((int)param_1,v28,10);
+  FUN_00458860(*(void **)((intptr_t)this + 0x23a),v28); /* TODO: unknown offset 0x23a */
   return;
 }
 
@@ -3161,22 +3019,21 @@ void __thiscall FUN_00428550(void *this,short param_1)
 /* FUN_00428590 @ 0x00428590 */
 
 int * __fastcall FUN_00428590(int *param_1)
-
 {
   int *_fs;
-  int loc_10;
+  int _seh_prev;
   void *_handler;
-  int loc_8;
+  int _seh_state;
   
   /* SEH prolog */
-  loc_10 = *_fs;
-  loc_8 = 0xffffffff;
+  _seh_prev = *_fs;
+  _seh_state = 0xffffffff;
   _handler = &L_004285df;
-  *_fs = &loc_10;
+  *_fs = &_seh_prev;
   FUN_0044e3f0(param_1);
   *param_1 = &PTR_FUN_00473948;
   param_1[0x46] = 0;
-  *_fs = loc_10;
+  *_fs = _seh_prev;
   return param_1;
 }
 
@@ -3184,7 +3041,6 @@ int * __fastcall FUN_00428590(int *param_1)
 /* FUN_00428600 @ 0x00428600 */
 
 int * __thiscall FUN_00428600(void *this,byte param_1)
-
 {
   FUN_00428620(this);
   if ((param_1 & 1) != 0) {
@@ -3197,7 +3053,6 @@ int * __thiscall FUN_00428600(void *this,byte param_1)
 /* FUN_00428620 @ 0x00428620 */
 
 void __fastcall FUN_00428620(int *param_1)
-
 {
     /* STUB: 19 lines not yet reconstructed */
     return;
@@ -3207,7 +3062,6 @@ void __fastcall FUN_00428620(int *param_1)
 /* FUN_00428689 @ 0x00428689 */
 
 void FUN_00428689(void)
-
 {
   FUN_004012a0();
   return;
@@ -3217,7 +3071,6 @@ void FUN_00428689(void)
 /* FUN_004286a0 @ 0x004286a0 */
 
 void __fastcall FUN_004286a0(void *param_1)
-
 {
     /* STUB: 44 lines not yet reconstructed */
     return;
@@ -3232,7 +3085,6 @@ void FUN_004287dc(void) { return; }
 /* FUN_004287f0 @ 0x004287f0 */
 
 void __fastcall FUN_004287f0(int *param_1)
-
 {
     /* STUB: 7 lines not yet reconstructed */
     return;
@@ -3242,22 +3094,21 @@ void __fastcall FUN_004287f0(int *param_1)
 /* FUN_00428820 @ 0x00428820 */
 
 int * __fastcall FUN_00428820(int *param_1)
-
 {
   short s1;
   int n2;
   int *_fs;
-  int loc_10;
+  int _seh_prev;
   void *_handler;
-  int loc_8;
+  int _seh_state;
   
   /* SEH prolog */
-  loc_10 = *_fs;
-  loc_8 = 0xffffffff;
+  _seh_prev = *_fs;
+  _seh_state = 0xffffffff;
   _handler = &L_00428902;
-  *_fs = &loc_10;
+  *_fs = &_seh_prev;
   FUN_0042cbd0(param_1);
-  loc_8 = 0;
+  _seh_state = 0;
   FUN_004112e0((int *)((int)param_1 + 0x1c2));
   *param_1 = &PTR_FUN_004739f0;
   *(char *)(param_1 + 0x66) = 1;
@@ -3281,7 +3132,7 @@ int * __fastcall FUN_00428820(int *param_1)
   *(int *)((int)param_1 + 0x1be) = 0; /* TODO: GameBoard::_pad1be */
   param_1[0x5c] = &DAT_0047fc38;
   DAT_0047ef40 = 0;
-  *_fs = loc_10;
+  *_fs = _seh_prev;
   return param_1;
 }
 
@@ -3289,7 +3140,6 @@ int * __fastcall FUN_00428820(int *param_1)
 /* FUN_00428920 @ 0x00428920 */
 
 int * __thiscall FUN_00428920(void *this,byte param_1)
-
 {
   FUN_00428990(this);
   if ((param_1 & 1) != 0) {
@@ -3302,21 +3152,20 @@ int * __thiscall FUN_00428920(void *this,byte param_1)
 /* FUN_00428940 @ 0x00428940 */
 
 void FUN_00428940(void)
-
 {
   int *_fs;
-  int loc_10;
+  int _seh_prev;
   void *_handler;
-  int loc_8;
+  int _seh_state;
   
   /* SEH prolog */
-  loc_10 = *_fs;
+  _seh_prev = *_fs;
   _handler = &L_00428977;
-  *_fs = &loc_10;
-  loc_8 = 0xffffffff;
+  *_fs = &_seh_prev;
+  _seh_state = 0xffffffff;
   FUN_00428981();
   /* SEH epilog */
-  *_fs = loc_10;
+  *_fs = _seh_prev;
   return;
 }
 
@@ -3324,7 +3173,6 @@ void FUN_00428940(void)
 /* FUN_00428981 @ 0x00428981 */
 
 void FUN_00428981(void)
-
 {
   FUN_00411360();
   return;
@@ -3334,23 +3182,22 @@ void FUN_00428981(void)
 /* FUN_00428990 @ 0x00428990 */
 
 void __fastcall FUN_00428990(int *param_1)
-
 {
   int *_fs;
-  int loc_10;
+  int _seh_prev;
   void *_handler;
-  int loc_8;
+  int _seh_state;
   
-  loc_10 = *_fs;
+  _seh_prev = *_fs;
   _handler = &L_004289e8;
   *param_1 = &PTR_FUN_004739f0;
-  *_fs = &loc_10;
-  loc_8 = 0;
+  *_fs = &_seh_prev;
+  _seh_state = 0;
   FUN_004289da();
-  loc_8 = 0xffffffff;
+  _seh_state = 0xffffffff;
   FUN_004289f2();
   /* SEH epilog */
-  *_fs = loc_10;
+  *_fs = _seh_prev;
   return;
 }
 
@@ -3358,7 +3205,6 @@ void __fastcall FUN_00428990(int *param_1)
 /* FUN_004289da @ 0x004289da */
 
 void FUN_004289da(void)
-
 {
   FUN_00428940();
   return;
@@ -3368,7 +3214,6 @@ void FUN_004289da(void)
 /* FUN_004289f2 @ 0x004289f2 */
 
 void FUN_004289f2(void)
-
 {
   int _ebp;
   
@@ -3380,7 +3225,6 @@ void FUN_004289f2(void)
 /* FUN_00428a00 @ 0x00428a00 */
 
 void __fastcall FUN_00428a00(int param_1)
-
 {
     /* STUB: 42 lines not yet reconstructed */
     return;
@@ -3390,7 +3234,6 @@ void __fastcall FUN_00428a00(int param_1)
 /* FUN_00428ad0 @ 0x00428ad0 */
 
 int FUN_00428ad0(void)
-
 {
     /* STUB: 46 lines not yet reconstructed */
     return 0;
@@ -3400,7 +3243,6 @@ int FUN_00428ad0(void)
 /* FUN_00428c00 @ 0x00428c00 */
 
 short FUN_00428c00(void)
-
 {
     /* STUB: 52 lines not yet reconstructed */
     return 0;
@@ -3410,7 +3252,6 @@ short FUN_00428c00(void)
 /* FUN_00428d80 @ 0x00428d80 */
 
 int __fastcall FUN_00428d80(int param_1)
-
 {
   int n1;
   short u2;
@@ -3444,7 +3285,6 @@ void FUN_00428e00(void) { return; }
 /* FUN_00428e10 @ 0x00428e10 */
 
 void __fastcall FUN_00428e10(void *param_1)
-
 {
   uint u1;
   
@@ -3460,7 +3300,6 @@ void __fastcall FUN_00428e10(void *param_1)
 /* FUN_00428e60 @ 0x00428e60 */
 
 void __fastcall FUN_00428e60(int param_1)
-
 {
   short s1;
   int *pu2;
@@ -3496,7 +3335,6 @@ void __fastcall FUN_00428e60(int param_1)
 /* FUN_00428f30 @ 0x00428f30 */
 
 void __cdecl FUN_00428f30(void *param_1,short param_2)
-
 {
   uint u1;
   int n2;
@@ -3521,7 +3359,6 @@ void __cdecl FUN_00428f30(void *param_1,short param_2)
 /* FUN_00428f90 @ 0x00428f90 */
 
 void __cdecl FUN_00428f90(void *param_1)
-
 {
   int n1;
   uint u2;
@@ -3545,7 +3382,6 @@ void __cdecl FUN_00428f90(void *param_1)
 /* FUN_004292b0 @ 0x004292b0 */
 
 void __fastcall FUN_004292b0(void *param_1)
-
 {
   DWORD DVar1;
   
@@ -3563,7 +3399,6 @@ void __fastcall FUN_004292b0(void *param_1)
 /* NOTE: Removing unreachable block (ram,0x00429306) */
 
 void __fastcall FUN_004292e0(int *param_1)
-
 {
     /* STUB: 39 lines not yet reconstructed */
     return;
@@ -3573,7 +3408,6 @@ void __fastcall FUN_004292e0(int *param_1)
 /* FUN_004299b0 @ 0x004299b0 */
 
 void __fastcall FUN_004299b0(int param_1)
-
 {
   DWORD DVar1;
   
@@ -3587,7 +3421,6 @@ void __fastcall FUN_004299b0(int param_1)
 /* FUN_004299d0 @ 0x004299d0 */
 
 void __fastcall FUN_004299d0(void *param_1)
-
 {
     /* STUB: 35 lines not yet reconstructed */
     return;
@@ -3597,7 +3430,6 @@ void __fastcall FUN_004299d0(void *param_1)
 /* FUN_00429b20 @ 0x00429b20 */
 
 void __fastcall FUN_00429b20(int *param_1)
-
 {
   if (*(void ***)((int)param_1 + 0x1b2) != (void **)0x0) { /* TODO: unknown offset 0x1b2 */
     ((void (*)(void))**(void ***)((int)param_1 + 0x1b2))(); /* TODO: unknown offset 0x1b2, obj->vtable[0] */
@@ -3629,7 +3461,6 @@ void __fastcall FUN_00429b20(int *param_1)
 /* FUN_00429f29 @ 0x00429f29 */
 
 void FUN_00429f29(void)
-
 {
   FUN_00429f40();
   return;
@@ -3639,21 +3470,20 @@ void FUN_00429f29(void)
 /* FUN_00429f40 @ 0x00429f40 */
 
 void FUN_00429f40(void)
-
 {
   int *_fs;
-  int loc_10;
+  int _seh_prev;
   void *_handler;
-  int loc_8;
+  int _seh_state;
   
   /* SEH prolog */
-  loc_10 = *_fs;
+  _seh_prev = *_fs;
   _handler = &L_00429f77;
-  *_fs = &loc_10;
-  loc_8 = 0xffffffff;
+  *_fs = &_seh_prev;
+  _seh_state = 0xffffffff;
   FUN_00429f81();
   /* SEH epilog */
-  *_fs = loc_10;
+  *_fs = _seh_prev;
   return;
 }
 
@@ -3661,7 +3491,6 @@ void FUN_00429f40(void)
 /* FUN_00429f81 @ 0x00429f81 */
 
 void FUN_00429f81(void)
-
 {
   FUN_00428020();
   return;
@@ -3706,7 +3535,6 @@ void FUN_0042a525(void) { return; }
 /* FUN_0042a6bc @ 0x0042a6bc */
 
 void FUN_0042a6bc(void)
-
 {
   int _ebp;
   
@@ -3718,7 +3546,6 @@ void FUN_0042a6bc(void)
 /* FUN_0042a6d0 @ 0x0042a6d0 */
 
 char * __fastcall FUN_0042a6d0(char *param_1)
-
 {
   FUN_0042a6e0(param_1);
   return param_1;
@@ -3728,7 +3555,6 @@ char * __fastcall FUN_0042a6d0(char *param_1)
 /* FUN_0042a6e0 @ 0x0042a6e0 */
 
 void __fastcall FUN_0042a6e0(char *param_1)
-
 {
   *(short *)(param_1 + 6) = 0;
   *param_1 = 0;
@@ -3746,7 +3572,6 @@ void __fastcall FUN_0042a6e0(char *param_1)
 /* FUN_0042a710 @ 0x0042a710 */
 
 char __cdecl FUN_0042a710(short param_1,char param_2,char param_3,char *param_4)
-
 {
   char c1;
   
@@ -3778,41 +3603,40 @@ char __cdecl FUN_0042a710(short param_1,char param_2,char param_3,char *param_4)
 /* FUN_0042a770 @ 0x0042a770 */
 
 void __cdecl FUN_0042a770(int param_1,char *param_2)
-
 {
   int n1;
   char c2;
-  char loc_1;
+  char v1;
   
   c2 = '\0';
-  loc_1 = '\0';
+  v1 = '\0';
   if (((param_1 != 0) && (param_2 != (char *)0x0)) && (n1 = *(int *)(param_1 + 0xf6), n1 != 0)
      ) {
     if (*param_2 == '\0') {
       if (*(int *)(param_2 + 2) != 0) {
         c2 = FUN_0042a710(*(short *)(param_2 + 0xc),'\0',param_1 == *(int *)(param_2 + 2),
-                             &loc_1);
+                             &v1);
       }
       if (*(ushort *)(param_2 + 6) != 0) {
         c2 = FUN_0042a710(*(short *)(param_2 + 0xc),c2,
                              (int)*(short *)(param_1 + 0x10c) == (uint)*(ushort *)(param_2 + 6),
-                             &loc_1);
+                             &v1);
       }
       if (param_2[8] != '\0') {
         c2 = FUN_0042a710(*(short *)(param_2 + 0xc),c2,*(char *)(n1 + 4) == param_2[8],
-                             &loc_1);
+                             &v1);
       }
       if (param_2[9] != '\0') {
         c2 = FUN_0042a710(*(short *)(param_2 + 0xc),c2,*(char *)(n1 + 7) == param_2[9],
-                             &loc_1);
+                             &v1);
       }
       if (param_2[10] != '\0') {
         c2 = FUN_0042a710(*(short *)(param_2 + 0xc),c2,*(char *)(n1 + 5) == param_2[10],
-                             &loc_1);
+                             &v1);
       }
       if (param_2[0xb] != '\0') {
         c2 = FUN_0042a710(*(short *)(param_2 + 0xc),c2,*(char *)(n1 + 6) == param_2[0xb],
-                             &loc_1);
+                             &v1);
       }
     }
     else {
@@ -3829,7 +3653,6 @@ void __cdecl FUN_0042a770(int param_1,char *param_2)
 /* FUN_0042a8b0 @ 0x0042a8b0 */
 
 void __cdecl FUN_0042a8b0(int param_1,char *param_2)
-
 {
   uint u1;
   int n2;
@@ -3853,24 +3676,22 @@ void __cdecl FUN_0042a8b0(int param_1,char *param_2)
 /* FUN_0042a910 @ 0x0042a910 */
 
 int __cdecl FUN_0042a910(int param_1)
-
 {
-  char loc_14 [14];
-  int loc_6;
+  char v14 [14];
+  int v6;
   
-  FUN_0042a6d0(loc_14);
+  FUN_0042a6d0(v14);
   if (param_1 != 0) {
-    loc_14[0] = '\x01';
-    FUN_0042a8b0(param_1,loc_14);
+    v14[0] = '\x01';
+    FUN_0042a8b0(param_1,v14);
   }
-  return loc_6;
+  return v6;
 }
 
 
 /* FUN_0042a950 @ 0x0042a950 */
 
 void FUN_0042a950(void)
-
 {
   int u1;
   int _p_fffffff4;
@@ -3893,7 +3714,6 @@ void FUN_0042a9a0(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_0042a9c0(void)
-
 {
   _DAT_00487106 = 0;
   _DAT_00487104 = 0;
@@ -3904,7 +3724,6 @@ void FUN_0042a9c0(void)
 /* FUN_0042a9d0 @ 0x0042a9d0 */
 
 void FUN_0042a9d0(void)
-
 {
   _atexit(FUN_0042a9e0);
   return;
@@ -3921,7 +3740,6 @@ void FUN_0042a9e0(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_0042aa00(void)
-
 {
   _DAT_00487102 = 0;
   _DAT_00487100 = 0;
@@ -3932,7 +3750,6 @@ void FUN_0042aa00(void)
 /* FUN_0042aa10 @ 0x0042aa10 */
 
 void FUN_0042aa10(void)
-
 {
   _atexit(FUN_0042aa20);
   return;
@@ -3947,20 +3764,19 @@ void FUN_0042aa20(void) { return; }
 /* FUN_0042aa30 @ 0x0042aa30 */
 
 int * __fastcall FUN_0042aa30(int *param_1)
-
 {
   int *_fs;
-  int loc_10;
+  int _seh_prev;
   void *_handler;
-  int loc_8;
+  int _seh_state;
   
   /* SEH prolog */
-  loc_10 = *_fs;
-  loc_8 = 0xffffffff;
+  _seh_prev = *_fs;
+  _seh_state = 0xffffffff;
   _handler = &L_0042aaa7;
-  *_fs = &loc_10;
+  *_fs = &_seh_prev;
   FUN_00458040(param_1);
-  loc_8 = 0;
+  _seh_state = 0;
   *param_1 = &PTR_FUN_00473b80;
   param_1[0x2a] = 0;
   param_1[0x2b] = 0;
@@ -3969,7 +3785,7 @@ int * __fastcall FUN_0042aa30(int *param_1)
   *(char *)(param_1 + 0x27) = 0;
   ((UIElement *)param_1)->type_or_mode = 1;
   FUN_0042ac60(param_1,0x14);
-  *_fs = loc_10;
+  *_fs = _seh_prev;
   return param_1;
 }
 
@@ -3977,7 +3793,6 @@ int * __fastcall FUN_0042aa30(int *param_1)
 /* FUN_0042aac0 @ 0x0042aac0 */
 
 int * __thiscall FUN_0042aac0(void *this,byte param_1)
-
 {
   FUN_0042aae0(this);
   if ((param_1 & 1) != 0) {
@@ -3990,7 +3805,6 @@ int * __thiscall FUN_0042aac0(void *this,byte param_1)
 /* FUN_0042aae0 @ 0x0042aae0 */
 
 void __fastcall FUN_0042aae0(int *param_1)
-
 {
     /* STUB: 19 lines not yet reconstructed */
     return;
@@ -4000,7 +3814,6 @@ void __fastcall FUN_0042aae0(int *param_1)
 /* FUN_0042ab49 @ 0x0042ab49 */
 
 void FUN_0042ab49(void)
-
 {
   int _ebp;
   
@@ -4012,7 +3825,6 @@ void FUN_0042ab49(void)
 /* FUN_0042ab60 @ 0x0042ab60 */
 
 int __fastcall FUN_0042ab60(int param_1)
-
 {
   return param_1 + 0x42;
 }
@@ -4021,7 +3833,6 @@ int __fastcall FUN_0042ab60(int param_1)
 /* FUN_0042ab70 @ 0x0042ab70 */
 
 void __thiscall FUN_0042ab70(TextDisplay *this,int param_1)
-
 {
   char c1;
   int n2;
@@ -4105,7 +3916,6 @@ void __thiscall FUN_0042ab70(TextDisplay *this,int param_1)
 /* FUN_0042ac60 @ 0x0042ac60 */
 
 void __thiscall FUN_0042ac60(void *this,int param_1)
-
 {
   ((TextDisplay *)this)->param_store = param_1;
   FUN_00458b40(this,(short)param_1 + 1,1);
@@ -4116,7 +3926,6 @@ void __thiscall FUN_0042ac60(void *this,int param_1)
 /* FUN_0042ac80 @ 0x0042ac80 */
 
 void __fastcall FUN_0042ac80(int *param_1)
-
 {
     /* STUB: 33 lines not yet reconstructed */
     return;
@@ -4126,7 +3935,6 @@ void __fastcall FUN_0042ac80(int *param_1)
 /* FUN_0042ad70 @ 0x0042ad70 */
 
 int __fastcall FUN_0042ad70(void *param_1)
-
 {
     /* STUB: 53 lines not yet reconstructed */
     return 0;
@@ -4141,7 +3949,6 @@ void FUN_0042aef4(void) { return; }
 /* FUN_0042af00 @ 0x0042af00 */
 
 void __thiscall FUN_0042af00(void *this,char param_1)
-
 {
     /* STUB: 125 lines not yet reconstructed */
     return;
@@ -4151,7 +3958,6 @@ void __thiscall FUN_0042af00(void *this,char param_1)
 /* FUN_0042b170 @ 0x0042b170 */
 
 void __fastcall FUN_0042b170(int param_1)
-
 {
   DWORD DVar1;
   
@@ -4170,7 +3976,6 @@ void __fastcall FUN_0042b170(int param_1)
 /* FUN_0042b1c0 @ 0x0042b1c0 */
 
 void __fastcall FUN_0042b1c0(int *param_1)
-
 {
     /* STUB: 7 lines not yet reconstructed */
     return;
@@ -4180,7 +3985,6 @@ void __fastcall FUN_0042b1c0(int *param_1)
 /* FUN_0042b200 @ 0x0042b200 */
 
 void FUN_0042b200(void)
-
 {
   int u1;
   int _p_fffffff4;
@@ -4203,7 +4007,6 @@ void FUN_0042b250(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_0042b270(void)
-
 {
   _DAT_00487116 = 0;
   _DAT_00487114 = 0;
@@ -4214,7 +4017,6 @@ void FUN_0042b270(void)
 /* FUN_0042b280 @ 0x0042b280 */
 
 void FUN_0042b280(void)
-
 {
   _atexit(FUN_0042b290);
   return;
@@ -4231,7 +4033,6 @@ void FUN_0042b290(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_0042b2b0(void)
-
 {
   _DAT_00487112 = 0;
   _DAT_00487110 = 0;
@@ -4242,7 +4043,6 @@ void FUN_0042b2b0(void)
 /* FUN_0042b2c0 @ 0x0042b2c0 */
 
 void FUN_0042b2c0(void)
-
 {
   _atexit(FUN_0042b2d0);
   return;
@@ -4257,7 +4057,6 @@ void FUN_0042b2d0(void) { return; }
 /* FUN_0042b2e0 @ 0x0042b2e0 */
 
 void __thiscall FUN_0042b2e0(CString *this,int param_1,uint param_2)
-
 {
   int n1;
   char c2;
@@ -4334,7 +4133,6 @@ void __thiscall FUN_0042b2e0(CString *this,int param_1,uint param_2)
 /* NOTE: overlapping globals */
 
 uint FUN_0042b3e0(void)
-
 {
     /* STUB: 69 lines not yet reconstructed */
     return 0;
@@ -4344,7 +4142,6 @@ uint FUN_0042b3e0(void)
 /* FUN_0042b5f0 @ 0x0042b5f0 */
 
 uint FUN_0042b5f0(void)
-
 {
     /* STUB: 43 lines not yet reconstructed */
     return 0;
@@ -4354,7 +4151,6 @@ uint FUN_0042b5f0(void)
 /* FUN_0042b700 @ 0x0042b700 */
 
 short FUN_0042b700(void)
-
 {
   return DAT_00487122;
 }
@@ -4363,7 +4159,6 @@ short FUN_0042b700(void)
 /* FUN_0042b710 @ 0x0042b710 */
 
 short __cdecl FUN_0042b710(short param_1)
-
 {
   if (DAT_00487122 != param_1) {
     if (param_1 < 0) {
@@ -4383,7 +4178,6 @@ short __cdecl FUN_0042b710(short param_1)
 /* FUN_0042b760 @ 0x0042b760 */
 
 void __cdecl FUN_0042b760(LPWAVEHDR param_1)
-
 {
   byte *pb1;
   char *pc2;
@@ -4399,19 +4193,19 @@ void __cdecl FUN_0042b760(LPWAVEHDR param_1)
   short s12;
   int *pu13;
   int *pu14;
-  short loc_10;
-  char *loc_c;
-  int loc_8;
-  int loc_4;
+  short v10;
+  char *vc;
+  int v8;
+  int v4;
   
   waveOutUnprepareHeader(DAT_00487372,param_1,0x20);
-  loc_10 = 0x1000;
+  v10 = 0x1000;
   param_1->dwFlags = 0;
   s6 = DAT_00487126;
-  loc_c = param_1->lpData;
+  vc = param_1->lpData;
   do {
-    loc_4 = 0;
-    loc_8 = 0;
+    v4 = 0;
+    v8 = 0;
     s12 = 0;
     if (0 < s6) {
       do {
@@ -4419,10 +4213,10 @@ void __cdecl FUN_0042b760(LPWAVEHDR param_1)
         n11 = n8 * 0x78;
         if ((&DAT_00487132)[n8 * 0x3c] == 0) {
           s9 = (short)*(char *)(&DAT_0048713a)[n8 * 0x1e];
-          loc_4 = loc_4 + (short)((&DAT_00487130)[n8 * 0x3c] * s9);
+          v4 = v4 + (short)((&DAT_00487130)[n8 * 0x3c] * s9);
           s7 = (&DAT_0048712e)[n8 * 0x3c];
           (&DAT_0048713a)[n8 * 0x1e] = (char *)(&DAT_0048713a)[n8 * 0x1e] + 1;
-          loc_8 = loc_8 + (short)(s7 * s9);
+          v8 = v8 + (short)(s7 * s9);
           n4 = (&DAT_00487142)[n8 * 0x1e];
           (&DAT_00487142)[n8 * 0x1e] = n4 + -1;
           if (n4 + -1 == 0) {
@@ -4497,12 +4291,12 @@ L_0042b912:
     }
     n11 = (int)DAT_00487122;
     b5 = DAT_00487124 & 0x1f;
-    pc2 = loc_c + 1;
-    *loc_c = (char)(n11 * loc_4 >> (DAT_00487124 & 0x1f)) + -0x80;
-    loc_c = loc_c + 2;
-    *pc2 = (char)(n11 * loc_8 >> b5) + -0x80;
-    loc_10 = loc_10 + -1;
-    if (loc_10 == 0) {
+    pc2 = vc + 1;
+    *vc = (char)(n11 * v4 >> (DAT_00487124 & 0x1f)) + -0x80;
+    vc = vc + 2;
+    *pc2 = (char)(n11 * v8 >> b5) + -0x80;
+    v10 = v10 + -1;
+    if (v10 == 0) {
       param_1->dwBufferLength = 0x2000;
       waveOutPrepareHeader(DAT_00487372,param_1,0x20);
       waveOutWrite(DAT_00487372,param_1,0x20);
@@ -4515,7 +4309,6 @@ L_0042b912:
 /* FUN_0042b9b0 @ 0x0042b9b0 */
 
 void FUN_0042b9b0(void)
-
 {
   int u1;
   int _p_fffffff4;
@@ -4538,7 +4331,6 @@ void FUN_0042ba00(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_0042ba20(void)
-
 {
   _DAT_0048739a = 0;
   _DAT_00487398 = 0;
@@ -4549,7 +4341,6 @@ void FUN_0042ba20(void)
 /* FUN_0042ba30 @ 0x0042ba30 */
 
 void FUN_0042ba30(void)
-
 {
   _atexit(FUN_0042ba40);
   return;
@@ -4566,7 +4357,6 @@ void FUN_0042ba40(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_0042ba60(void)
-
 {
   _DAT_00487396 = 0;
   _DAT_00487394 = 0;
@@ -4577,7 +4367,6 @@ void FUN_0042ba60(void)
 /* FUN_0042ba70 @ 0x0042ba70 */
 
 void FUN_0042ba70(void)
-
 {
   _atexit(FUN_0042ba80);
   return;
@@ -4592,7 +4381,6 @@ void FUN_0042ba80(void) { return; }
 /* FUN_0042baa0 @ 0x0042baa0 */
 
 void FUN_0042baa0(void)
-
 {
   int u1;
   int _p_fffffff4;
@@ -4608,7 +4396,6 @@ void FUN_0042baa0(void)
 /* FUN_0042bae0 @ 0x0042bae0 */
 
 void FUN_0042bae0(void)
-
 {
   _atexit(FUN_0042baf0);
   return;
@@ -4625,7 +4412,6 @@ void FUN_0042baf0(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_0042bb10(void)
-
 {
   _DAT_004873ae = 0;
   _DAT_004873ac = 0;
@@ -4636,7 +4422,6 @@ void FUN_0042bb10(void)
 /* FUN_0042bb20 @ 0x0042bb20 */
 
 void FUN_0042bb20(void)
-
 {
   _atexit(FUN_0042bb30);
   return;
@@ -4653,7 +4438,6 @@ void FUN_0042bb30(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_0042bb50(void)
-
 {
   _DAT_004873aa = 0;
   _DAT_004873a8 = 0;
@@ -4664,7 +4448,6 @@ void FUN_0042bb50(void)
 /* FUN_0042bb60 @ 0x0042bb60 */
 
 void FUN_0042bb60(void)
-
 {
   _atexit(FUN_0042bb70);
   return;
@@ -4679,7 +4462,6 @@ void FUN_0042bb70(void) { return; }
 /* FUN_0042bb90 @ 0x0042bb90 */
 
 void FUN_0042bb90(void)
-
 {
   int u1;
   int _p_fffffff4;
@@ -4695,7 +4477,6 @@ void FUN_0042bb90(void)
 /* FUN_0042bbd0 @ 0x0042bbd0 */
 
 void FUN_0042bbd0(void)
-
 {
   _atexit(FUN_0042bbe0);
   return;
@@ -4712,7 +4493,6 @@ void FUN_0042bbe0(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_0042bc00(void)
-
 {
   _DAT_004873be = 0;
   _DAT_004873bc = 0;
@@ -4723,7 +4503,6 @@ void FUN_0042bc00(void)
 /* FUN_0042bc10 @ 0x0042bc10 */
 
 void FUN_0042bc10(void)
-
 {
   _atexit(FUN_0042bc20);
   return;
@@ -4740,7 +4519,6 @@ void FUN_0042bc20(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_0042bc40(void)
-
 {
   _DAT_004873ba = 0;
   _DAT_004873b8 = 0;
@@ -4751,7 +4529,6 @@ void FUN_0042bc40(void)
 /* FUN_0042bc50 @ 0x0042bc50 */
 
 void FUN_0042bc50(void)
-
 {
   _atexit(FUN_0042bc60);
   return;
@@ -4767,7 +4544,6 @@ void FUN_0042bc60(void) { return; }
 
 int * __thiscall
 FUN_0042bc70(DialogWidget *this,short param_1,short param_2,short param_3,int param_4,void *param_5)
-
 {
   short s1;
   void *pv2;
@@ -4777,18 +4553,18 @@ FUN_0042bc70(DialogWidget *this,short param_1,short param_2,short param_3,int pa
   int *_fs;
   int n5;
   char c6;
-  int loc_10;
+  int _seh_prev;
   void *_handler;
-  int loc_8;
+  int _seh_state;
   
   /* SEH prolog */
-  loc_10 = *_fs;
-  loc_8 = 0xffffffff;
+  _seh_prev = *_fs;
+  _seh_state = 0xffffffff;
   _handler = &L_0042bdd9;
-  *_fs = &loc_10;
+  *_fs = &_seh_prev;
   FUN_004052b0(this);
   *(char ***)this = &PTR_FUN_00473c28;
-  loc_8 = 0;
+  _seh_state = 0;
   pv2 = *(void **)((int)DAT_004897c0 + 0x52); /* TODO: unknown struct at DAT_004897c0, offset 0x52 */
   this->dialog_result = 0;
   this->child_list = 0;
@@ -4829,7 +4605,7 @@ FUN_0042bc70(DialogWidget *this,short param_1,short param_2,short param_3,int pa
   }
   this->is_registered = 1;
   this->is_closing = 0;
-  *_fs = loc_10;
+  *_fs = _seh_prev;
   return this;
 }
 
@@ -4837,7 +4613,6 @@ FUN_0042bc70(DialogWidget *this,short param_1,short param_2,short param_3,int pa
 /* FUN_0042bdf0 @ 0x0042bdf0 */
 
 int * __thiscall FUN_0042bdf0(void *this,byte param_1)
-
 {
   FUN_0042be10(this);
   if ((param_1 & 1) != 0) {
@@ -4850,19 +4625,18 @@ int * __thiscall FUN_0042bdf0(void *this,byte param_1)
 /* FUN_0042be10 @ 0x0042be10 */
 
 void __fastcall FUN_0042be10(int *param_1)
-
 {
   void *this;
   int *_fs;
-  int loc_10;
+  int _seh_prev;
   void *_handler;
-  int loc_8;
+  int _seh_state;
   
-  loc_10 = *_fs;
+  _seh_prev = *_fs;
   _handler = &L_0042bea8;
   *param_1 = (int)&PTR_FUN_00473c28;
-  *_fs = &loc_10;
-  loc_8 = 0;
+  *_fs = &_seh_prev;
+  _seh_state = 0;
   this = *(void **)(DAT_004897c0 + 0x52);
   if (this != (void *)0x0) {
     if (((char)param_1[0x48] != '\0') && ((((UIElement *)this)->flags & 0x2000) != 0)) {
@@ -4875,10 +4649,10 @@ void __fastcall FUN_0042be10(int *param_1)
     }
   }
   FUN_0042c3f0(param_1);
-  loc_8 = 0xffffffff;
+  _seh_state = 0xffffffff;
   FUN_0042beb2();
   /* SEH epilog */
-  *_fs = loc_10;
+  *_fs = _seh_prev;
   return;
 }
 
@@ -4886,7 +4660,6 @@ void __fastcall FUN_0042be10(int *param_1)
 /* FUN_0042beb2 @ 0x0042beb2 */
 
 void FUN_0042beb2(void)
-
 {
   int _ebp;
   
@@ -4898,7 +4671,6 @@ void FUN_0042beb2(void)
 /* FUN_0042bec0 @ 0x0042bec0 */
 
 void __fastcall FUN_0042bec0(int *param_1)
-
 {
   void *this;
   
@@ -4921,7 +4693,6 @@ void __fastcall FUN_0042bec0(int *param_1)
 /* FUN_0042bf10 @ 0x0042bf10 */
 
 void __fastcall FUN_0042bf10(int param_1)
-
 {
   void *this;
   
@@ -4941,7 +4712,6 @@ void FUN_0042bf40(void) { return; }
 /* FUN_0042bf70 @ 0x0042bf70 */
 
 void __fastcall FUN_0042bf70(int *param_1)
-
 {
     /* STUB: 17 lines not yet reconstructed */
     return;
@@ -4951,7 +4721,6 @@ void __fastcall FUN_0042bf70(int *param_1)
 /* FUN_0042bfe0 @ 0x0042bfe0 */
 
 int * __thiscall FUN_0042bfe0(void *this,short param_1)
-
 {
     /* STUB: 38 lines not yet reconstructed */
     return 0;
@@ -4961,7 +4730,6 @@ int * __thiscall FUN_0042bfe0(void *this,short param_1)
 /* FUN_0042c0e0 @ 0x0042c0e0 */
 
 void __fastcall FUN_0042c0e0(int *param_1)
-
 {
     /* STUB: 128 lines not yet reconstructed */
     return;
@@ -4971,7 +4739,6 @@ void __fastcall FUN_0042c0e0(int *param_1)
 /* FUN_0042c390 @ 0x0042c390 */
 
 void __fastcall FUN_0042c390(int param_1)
-
 {
     /* STUB: 20 lines not yet reconstructed */
     return;
@@ -4981,7 +4748,6 @@ void __fastcall FUN_0042c390(int param_1)
 /* FUN_0042c3f0 @ 0x0042c3f0 */
 
 void __fastcall FUN_0042c3f0(int *param_1)
-
 {
     /* STUB: 14 lines not yet reconstructed */
     return;
@@ -4991,7 +4757,6 @@ void __fastcall FUN_0042c3f0(int *param_1)
 /* FUN_0042c4b0 @ 0x0042c4b0 */
 
 void FUN_0042c4b0(void)
-
 {
   int u1;
   int _p_fffffff4;
@@ -5014,7 +4779,6 @@ void FUN_0042c500(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_0042c520(void)
-
 {
   _DAT_004873d6 = 0;
   _DAT_004873d4 = 0;
@@ -5025,7 +4789,6 @@ void FUN_0042c520(void)
 /* FUN_0042c530 @ 0x0042c530 */
 
 void FUN_0042c530(void)
-
 {
   _atexit(FUN_0042c540);
   return;
@@ -5042,7 +4805,6 @@ void FUN_0042c540(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_0042c560(void)
-
 {
   _DAT_004873d2 = 0;
   _DAT_004873d0 = 0;
@@ -5053,7 +4815,6 @@ void FUN_0042c560(void)
 /* FUN_0042c570 @ 0x0042c570 */
 
 void FUN_0042c570(void)
-
 {
   _atexit(FUN_0042c580);
   return;
@@ -5068,7 +4829,6 @@ void FUN_0042c580(void) { return; }
 /* FUN_0042c590 @ 0x0042c590 */
 
 int __fastcall FUN_0042c590(int param_1)
-
 {
   return *(int *)(param_1 + 0xf2) + -0xc + *(short *)(param_1 + 0x110) * 0xe;
 }
@@ -5077,7 +4837,6 @@ int __fastcall FUN_0042c590(int param_1)
 /* FUN_0042c5b0 @ 0x0042c5b0 */
 
 ushort * __cdecl FUN_0042c5b0(short *param_1,int *param_2,ushort *param_3)
-
 {
     /* STUB: 65 lines not yet reconstructed */
     return 0;
@@ -5112,7 +4871,6 @@ void FUN_0042c72a(void) { return; }
 /* FUN_0042c740 @ 0x0042c740 */
 
 void __cdecl FUN_0042c740(short *param_1,char param_2)
-
 {
   int n1;
   short s2;
@@ -5166,7 +4924,6 @@ void __cdecl FUN_0042c740(short *param_1,char param_2)
 /* FUN_0042c860 @ 0x0042c860 */
 
 ushort * __cdecl FUN_0042c860(void *param_1,int param_2)
-
 {
   ushort *pu1;
   
@@ -5200,7 +4957,6 @@ ushort * __cdecl FUN_0042c860(void *param_1,int param_2)
 /* FUN_0042c8d0 @ 0x0042c8d0 */
 
 void __cdecl FUN_0042c8d0(int param_1,int param_2,uint param_3)
-
 {
   if (param_3 != 0) {
     if (*(char *)(param_3 + 3) != '\0') {
@@ -5218,7 +4974,6 @@ void __cdecl FUN_0042c8d0(int param_1,int param_2,uint param_3)
 /* FUN_0042c910 @ 0x0042c910 */
 
 void FUN_0042c910(void)
-
 {
   int u1;
   int _p_fffffff4;
@@ -5241,7 +4996,6 @@ void FUN_0042c960(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_0042c980(void)
-
 {
   _DAT_004873e6 = 0;
   _DAT_004873e4 = 0;
@@ -5252,7 +5006,6 @@ void FUN_0042c980(void)
 /* FUN_0042c990 @ 0x0042c990 */
 
 void FUN_0042c990(void)
-
 {
   _atexit(FUN_0042c9a0);
   return;
@@ -5269,7 +5022,6 @@ void FUN_0042c9a0(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_0042c9c0(void)
-
 {
   _DAT_004873e2 = 0;
   _DAT_004873e0 = 0;
@@ -5280,7 +5032,6 @@ void FUN_0042c9c0(void)
 /* FUN_0042c9d0 @ 0x0042c9d0 */
 
 void FUN_0042c9d0(void)
-
 {
   _atexit(FUN_0042c9e0);
   return;
@@ -5295,7 +5046,6 @@ void FUN_0042c9e0(void) { return; }
 /* FUN_0042ca00 @ 0x0042ca00 */
 
 void FUN_0042ca00(void)
-
 {
   int u1;
   int _p_fffffff4;
@@ -5311,7 +5061,6 @@ void FUN_0042ca00(void)
 /* FUN_0042ca40 @ 0x0042ca40 */
 
 void FUN_0042ca40(void)
-
 {
   _atexit(FUN_0042ca50);
   return;
@@ -5328,7 +5077,6 @@ void FUN_0042ca50(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_0042ca70(void)
-
 {
   _DAT_004873f6 = 0;
   _DAT_004873f4 = 0;
@@ -5339,7 +5087,6 @@ void FUN_0042ca70(void)
 /* FUN_0042ca80 @ 0x0042ca80 */
 
 void FUN_0042ca80(void)
-
 {
   _atexit(FUN_0042ca90);
   return;
@@ -5356,7 +5103,6 @@ void FUN_0042ca90(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_0042cab0(void)
-
 {
   _DAT_004873f2 = 0;
   _DAT_004873f0 = 0;
@@ -5367,7 +5113,6 @@ void FUN_0042cab0(void)
 /* FUN_0042cac0 @ 0x0042cac0 */
 
 void FUN_0042cac0(void)
-
 {
   _atexit(FUN_0042cad0);
   return;
@@ -5382,7 +5127,6 @@ void FUN_0042cad0(void) { return; }
 /* FUN_0042caf0 @ 0x0042caf0 */
 
 void FUN_0042caf0(void)
-
 {
   int u1;
   int _p_fffffff4;
@@ -5398,7 +5142,6 @@ void FUN_0042caf0(void)
 /* FUN_0042cb30 @ 0x0042cb30 */
 
 void FUN_0042cb30(void)
-
 {
   _atexit(FUN_0042cb40);
   return;
@@ -5415,7 +5158,6 @@ void FUN_0042cb40(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_0042cb60(void)
-
 {
   _DAT_00487406 = 0;
   _DAT_00487404 = 0;
@@ -5426,7 +5168,6 @@ void FUN_0042cb60(void)
 /* FUN_0042cb70 @ 0x0042cb70 */
 
 void FUN_0042cb70(void)
-
 {
   _atexit(FUN_0042cb80);
   return;
@@ -5443,7 +5184,6 @@ void FUN_0042cb80(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_0042cba0(void)
-
 {
   _DAT_00487402 = 0;
   _DAT_00487400 = 0;
@@ -5454,7 +5194,6 @@ void FUN_0042cba0(void)
 /* FUN_0042cbb0 @ 0x0042cbb0 */
 
 void FUN_0042cbb0(void)
-
 {
   _atexit(FUN_0042cbc0);
   return;
@@ -5469,23 +5208,22 @@ void FUN_0042cbc0(void) { return; }
 /* FUN_0042cbd0 @ 0x0042cbd0 */
 
 int * __fastcall FUN_0042cbd0(int *param_1)
-
 {
   DWORD DVar1;
   int n2;
   int *pu3;
   int *_fs;
-  int loc_10;
+  int _seh_prev;
   void *_handler;
-  int loc_8;
+  int _seh_state;
   
   /* SEH prolog */
-  loc_10 = *_fs;
-  loc_8 = 0xffffffff;
+  _seh_prev = *_fs;
+  _seh_state = 0xffffffff;
   _handler = &L_0042cccf;
-  *_fs = &loc_10;
+  *_fs = &_seh_prev;
   FUN_00403370(param_1);
-  loc_8 = 0;
+  _seh_state = 0;
   *param_1 = &PTR_FUN_00473d00;
   param_1[0x34] = 0;
   param_1[0x35] = 0;
@@ -5518,7 +5256,7 @@ int * __fastcall FUN_0042cbd0(int *param_1)
   ((GameBoard *)param_1)->reward_data_c = 0;
   ((GameBoard *)param_1)->sound_handle = 0;
   *(int *)((int)param_1 + 0x192) = 0; /* TODO: GameBoard::_pad192 */
-  *_fs = loc_10;
+  *_fs = _seh_prev;
   return param_1;
 }
 
@@ -5526,7 +5264,6 @@ int * __fastcall FUN_0042cbd0(int *param_1)
 /* FUN_0042ccf0 @ 0x0042ccf0 */
 
 int * __thiscall FUN_0042ccf0(void *this,byte param_1)
-
 {
   FUN_0042cd10(this);
   if ((param_1 & 1) != 0) {
@@ -5539,7 +5276,6 @@ int * __thiscall FUN_0042ccf0(void *this,byte param_1)
 /* FUN_0042cd10 @ 0x0042cd10 */
 
 void __fastcall FUN_0042cd10(int *param_1)
-
 {
     /* STUB: 32 lines not yet reconstructed */
     return;
@@ -5549,7 +5285,6 @@ void __fastcall FUN_0042cd10(int *param_1)
 /* FUN_0042ce11 @ 0x0042ce11 */
 
 void FUN_0042ce11(void)
-
 {
   int _ebp;
   
@@ -5561,7 +5296,6 @@ void FUN_0042ce11(void)
 /* FUN_0042ce20 @ 0x0042ce20 */
 
 int * __thiscall FUN_0042ce20(void *this,int param_1)
-
 {
     /* STUB: 69 lines not yet reconstructed */
     return 0;
@@ -5571,7 +5305,6 @@ int * __thiscall FUN_0042ce20(void *this,int param_1)
 /* FUN_0042d069 @ 0x0042d069 */
 
 void FUN_0042d069(void)
-
 {
   FUN_0042d080();
   return;
@@ -5581,21 +5314,20 @@ void FUN_0042d069(void)
 /* FUN_0042d080 @ 0x0042d080 */
 
 void FUN_0042d080(void)
-
 {
   int *_fs;
-  int loc_10;
+  int _seh_prev;
   void *_handler;
-  int loc_8;
+  int _seh_state;
   
   /* SEH prolog */
-  loc_10 = *_fs;
+  _seh_prev = *_fs;
   _handler = &L_0042d0b7;
-  *_fs = &loc_10;
-  loc_8 = 0xffffffff;
+  *_fs = &_seh_prev;
+  _seh_state = 0xffffffff;
   FUN_0042d0c1();
   /* SEH epilog */
-  *_fs = loc_10;
+  *_fs = _seh_prev;
   return;
 }
 
@@ -5603,7 +5335,6 @@ void FUN_0042d080(void)
 /* FUN_0042d0c1 @ 0x0042d0c1 */
 
 void FUN_0042d0c1(void)
-
 {
   int _ebp;
   
@@ -5615,7 +5346,6 @@ void FUN_0042d0c1(void)
 /* FUN_0042d129 @ 0x0042d129 */
 
 void FUN_0042d129(void)
-
 {
   FUN_0042d080();
   return;
@@ -5625,7 +5355,6 @@ void FUN_0042d129(void)
 /* FUN_0042d199 @ 0x0042d199 */
 
 void FUN_0042d199(void)
-
 {
   FUN_0042d080();
   return;
@@ -5635,7 +5364,6 @@ void FUN_0042d199(void)
 /* FUN_0042d1c0 @ 0x0042d1c0 */
 
 void __thiscall FUN_0042d1c0(void *this,int param_1)
-
 {
     /* STUB: 66 lines not yet reconstructed */
     return;
@@ -5645,7 +5373,6 @@ void __thiscall FUN_0042d1c0(void *this,int param_1)
 /* FUN_0042d3c0 @ 0x0042d3c0 */
 
 void __fastcall FUN_0042d3c0(void *param_1)
-
 {
   DWORD DVar1;
   
@@ -5662,7 +5389,6 @@ void __fastcall FUN_0042d3c0(void *param_1)
 /* FUN_0042d3f0 @ 0x0042d3f0 */
 
 void __thiscall FUN_0042d3f0(void *this,int param_1)
-
 {
     /* STUB: 30 lines not yet reconstructed */
     return;
@@ -5672,7 +5398,6 @@ void __thiscall FUN_0042d3f0(void *this,int param_1)
 /* FUN_0042d590 @ 0x0042d590 */
 
 void __fastcall FUN_0042d590(int param_1)
-
 {
   if (*(int **)(param_1 + 0x158) != (int *)0x0) {
     ((void (*)(void))**(void ***)(param_1 + 0x158))();
@@ -5691,7 +5416,6 @@ void __fastcall FUN_0042d590(int param_1)
 /* FUN_0042d5d0 @ 0x0042d5d0 */
 
 void __fastcall FUN_0042d5d0(int param_1)
-
 {
   if (*(int **)(param_1 + 0x158) != (int *)0x0) {
     ((void (*)(void))**(void ***)(param_1 + 0x158))();
@@ -5709,7 +5433,6 @@ void FUN_0042d73a(void) { return; }
 /* FUN_0042d7b9 @ 0x0042d7b9 */
 
 void FUN_0042d7b9(void)
-
 {
   FUN_0042d080();
   return;
@@ -5719,7 +5442,6 @@ void FUN_0042d7b9(void)
 /* FUN_0042d7d0 @ 0x0042d7d0 */
 
 void __fastcall FUN_0042d7d0(int param_1)
-
 {
   void *this;
   
@@ -5744,7 +5466,6 @@ void __fastcall FUN_0042d7d0(int param_1)
 /* FUN_0042d860 @ 0x0042d860 */
 
 void __fastcall FUN_0042d860(int param_1)
-
 {
   void *this;
   
@@ -5769,7 +5490,6 @@ void __fastcall FUN_0042d860(int param_1)
 /* FUN_0042d8f0 @ 0x0042d8f0 */
 
 void FUN_0042d8f0(int *param_1,int param_2,ushort *param_3,short param_4,short param_5)
-
 {
   ushort u1;
   int n2;
@@ -5794,7 +5514,6 @@ void FUN_0042d8f0(int *param_1,int param_2,ushort *param_3,short param_4,short p
 /* FUN_0042d970 @ 0x0042d970 */
 
 void __fastcall FUN_0042d970(int param_1)
-
 {
   bool b1;
   int _extra;
@@ -5817,7 +5536,6 @@ void __fastcall FUN_0042d970(int param_1)
 /* FUN_0042d9c0 @ 0x0042d9c0 */
 
 void __fastcall FUN_0042d9c0(int param_1)
-
 {
   FUN_0042d970(param_1);
   FUN_00404a80(param_1);
@@ -5829,7 +5547,6 @@ void __fastcall FUN_0042d9c0(int param_1)
 /* FUN_0042d9e0 @ 0x0042d9e0 */
 
 void FUN_0042d9e0(void)
-
 {
   FUN_0042b3e0();
   return;
@@ -5839,7 +5556,6 @@ void FUN_0042d9e0(void)
 /* FUN_0042d9f0 @ 0x0042d9f0 */
 
 void __thiscall FUN_0042d9f0(void *this,int param_1,ushort *param_2,short param_3,short param_4)
-
 {
     /* STUB: 14 lines not yet reconstructed */
     return;
@@ -5850,7 +5566,6 @@ void __thiscall FUN_0042d9f0(void *this,int param_1,ushort *param_2,short param_
 
 char __thiscall
 FUN_0042da60(void *this,int param_1,ushort *param_2,short param_3,short param_4)
-
 {
     /* STUB: 17 lines not yet reconstructed */
     return 0;
@@ -5861,7 +5576,6 @@ FUN_0042da60(void *this,int param_1,ushort *param_2,short param_3,short param_4)
 
 char __thiscall
 FUN_0042dae0(void *this,int param_1,ushort *param_2,short param_3,short param_4)
-
 {
     /* STUB: 12 lines not yet reconstructed */
     return 0;
@@ -5871,7 +5585,6 @@ FUN_0042dae0(void *this,int param_1,ushort *param_2,short param_3,short param_4)
 /* FUN_0042db40 @ 0x0042db40 */
 
 void __fastcall FUN_0042db40(int param_1)
-
 {
   if (*(int *)(param_1 + 0x18e) != 0) {
     FUN_00434490(*(int *)(param_1 + 0x18e));
@@ -5883,7 +5596,6 @@ void __fastcall FUN_0042db40(int param_1)
 /* FUN_0042db60 @ 0x0042db60 */
 
 void FUN_0042db60(int param_1,ushort *param_2,short param_3,short param_4)
-
 {
     /* STUB: 7 lines not yet reconstructed */
     return;
@@ -5893,7 +5605,6 @@ void FUN_0042db60(int param_1,ushort *param_2,short param_3,short param_4)
 /* FUN_0042dba0 @ 0x0042dba0 */
 
 void __thiscall FUN_0042dba0(void *this,int param_1)
-
 {
     /* STUB: 138 lines not yet reconstructed */
     return;
@@ -5904,7 +5615,6 @@ void __thiscall FUN_0042dba0(void *this,int param_1)
 
 void __thiscall
 FUN_0042df10(void *this,int param_1,int param_2,int param_3,int param_4)
-
 {
     /* STUB: 34 lines not yet reconstructed */
     return;
@@ -5924,63 +5634,62 @@ void FUN_0042e014(void) { return; }
 /* FUN_0042e020 @ 0x0042e020 */
 
 int __fastcall FUN_0042e020(void *param_1)
-
 {
   int *_fs;
   int *pu1;
   int u2;
   int n3;
   int _p_ffffffc0;
-  int loc_3c [2];
-  int loc_34 [2];
-  char *loc_2c;
-  char *loc_28;
-  char *loc_24;
-  char *loc_20;
-  char *loc_1c;
-  char *loc_18;
-  void *loc_14;
-  int loc_10;
+  int v3c [2];
+  int v34 [2];
+  char *v2c;
+  char *v28;
+  char *v24;
+  char *v20;
+  char *v1c;
+  char *v18;
+  void *v14;
+  int _seh_prev;
   void *_handler;
-  int loc_8;
+  int _seh_state;
   
   /* SEH prolog */
-  loc_10 = *_fs;
-  loc_8 = 0xffffffff;
+  _seh_prev = *_fs;
+  _seh_state = 0xffffffff;
   _handler = &L_0042e125;
-  *_fs = &loc_10;
-  loc_14 = param_1;
+  *_fs = &_seh_prev;
+  v14 = param_1;
   if (*(int *)((int)param_1 + 0x16c) == 0) { /* TODO: unknown offset 0x16c on GameBoard */
-    loc_2c = &_tmp_31;
+    v2c = &_tmp_31;
     u2 = 0x32;
     FUN_00401050(&_tmp_31,0x32);
-    loc_28 = &_tmp_30;
+    v28 = &_tmp_30;
     FUN_00401050(&_tmp_30,0x140);
-    FUN_00401060(loc_34,u2,_p_ffffffc0);
-    loc_8 = 0;
-    loc_24 = &_tmp_31;
+    FUN_00401060(v34,u2,_p_ffffffc0);
+    _seh_state = 0;
+    v24 = &_tmp_31;
     n3 = 0x28;
     FUN_00401050(&_tmp_31,0x28);
-    loc_20 = &_tmp_30;
+    v20 = &_tmp_30;
     FUN_00401050(&_tmp_30,0x28);
-    FUN_00401060(loc_3c,n3,_p_ffffffc0);
-    loc_18 = &_tmp_30;
-    pu1 = loc_3c;
-    loc_8 = (loc_8 & ~0xFF) | 1;
+    FUN_00401060(v3c,n3,_p_ffffffc0);
+    v18 = &_tmp_30;
+    pu1 = v3c;
+    _seh_state = (_seh_state & ~0xFF) | 1;
     u2 = 0x42e0bb;
     FUN_004090c0(&_tmp_30,pu1);
-    loc_1c = &_tmp_28;
-    loc_8 = (loc_8 & ~0xFF) | 2;
-    FUN_004090c0(&_tmp_28,loc_34);
-    loc_8 = (loc_8 & ~0xFF) | 1;
-    FUN_0042df10(loc_14,u2,pu1,n3,_p_ffffffc0);
-    loc_8 &= ~0xFF;
+    v1c = &_tmp_28;
+    _seh_state = (_seh_state & ~0xFF) | 2;
+    FUN_004090c0(&_tmp_28,v34);
+    _seh_state = (_seh_state & ~0xFF) | 1;
+    FUN_0042df10(v14,u2,pu1,n3,_p_ffffffc0);
+    _seh_state &= ~0xFF;
     FUN_0042e11d();
-    loc_8 = 0xffffffff;
+    _seh_state = 0xffffffff;
     FUN_0042e12f();
   }
-  *_fs = loc_10;
-  return *(int *)((int)loc_14 + 0x16c); /* TODO: unknown offset 0x16c on GameBoard */
+  *_fs = _seh_prev;
+  return *(int *)((int)v14 + 0x16c); /* TODO: unknown offset 0x16c on GameBoard */
 }
 
 
@@ -5997,7 +5706,6 @@ void FUN_0042e12f(void) { return; }
 /* FUN_0042e140 @ 0x0042e140 */
 
 void __fastcall FUN_0042e140(int param_1)
-
 {
   if (*(int **)(param_1 + 0x16c) != (int *)0x0) {
     ((void (*)(void))**(void ***)(param_1 + 0x16c))(); /* obj at *(param_1+0x16c)->vtable[0] */
@@ -6011,7 +5719,6 @@ void __fastcall FUN_0042e140(int param_1)
 /* FUN_0042e170 @ 0x0042e170 */
 
 bool __thiscall FUN_0042e170(void *this,int param_1)
-
 {
   int n1;
   DWORD DVar2;
@@ -6025,7 +5732,6 @@ bool __thiscall FUN_0042e170(void *this,int param_1)
 /* FUN_0042e190 @ 0x0042e190 */
 
 uint __fastcall FUN_0042e190(void *param_1)
-
 {
   short s1;
   short s2;
@@ -6107,7 +5813,6 @@ uint __fastcall FUN_0042e190(void *param_1)
 /* FUN_0042e3a0 @ 0x0042e3a0 */
 
 void __fastcall FUN_0042e3a0(int param_1)
-
 {
   FUN_0042db40(param_1);
   if (*(int **)(param_1 + 0x158) != (int *)0x0) {
@@ -6139,7 +5844,6 @@ void __fastcall FUN_0042e3a0(int param_1)
 /* FUN_0042e440 @ 0x0042e440 */
 
 void FUN_0042e440(void)
-
 {
   int u1;
   int _p_fffffff4;
@@ -6162,7 +5866,6 @@ void FUN_0042e490(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_0042e4b0(void)
-
 {
   _DAT_00487422 = 0;
   _DAT_00487420 = 0;
@@ -6173,7 +5876,6 @@ void FUN_0042e4b0(void)
 /* FUN_0042e4c0 @ 0x0042e4c0 */
 
 void FUN_0042e4c0(void)
-
 {
   _atexit(FUN_0042e4d0);
   return;
@@ -6190,7 +5892,6 @@ void FUN_0042e4d0(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_0042e4f0(void)
-
 {
   _DAT_0048741e = 0;
   _DAT_0048741c = 0;
@@ -6201,7 +5902,6 @@ void FUN_0042e4f0(void)
 /* FUN_0042e500 @ 0x0042e500 */
 
 void FUN_0042e500(void)
-
 {
   _atexit(FUN_0042e510);
   return;
@@ -6216,25 +5916,24 @@ void FUN_0042e510(void) { return; }
 /* FUN_0042e560 @ 0x0042e560 */
 
 int * __fastcall FUN_0042e560(int *param_1)
-
 {
   int *_fs;
-  int loc_10;
+  int _seh_prev;
   void *_handler;
-  int loc_8;
+  int _seh_state;
   
   /* SEH prolog */
-  loc_10 = *_fs;
-  loc_8 = 0xffffffff;
+  _seh_prev = *_fs;
+  _seh_state = 0xffffffff;
   _handler = &L_0042e5c2;
-  *_fs = &loc_10;
+  *_fs = &_seh_prev;
   FUN_004534e0(param_1);
-  loc_8 = 0;
+  _seh_state = 0;
   *param_1 = &PTR_FUN_004740c8;
   FUN_0041da90(param_1,1);
   ((UIWidget *)param_1)->is_interactive = 1;
   ((UIWidget *)param_1)->type_or_mode = 1;
-  *_fs = loc_10;
+  *_fs = _seh_prev;
   return param_1;
 }
 
@@ -6242,7 +5941,6 @@ int * __fastcall FUN_0042e560(int *param_1)
 /* FUN_0042e639 @ 0x0042e639 */
 
 void FUN_0042e639(void)
-
 {
   FUN_00427c00();
   return;
@@ -6252,7 +5950,6 @@ void FUN_0042e639(void)
 /* FUN_0042e660 @ 0x0042e660 */
 
 void __fastcall FUN_0042e660(void *param_1)
-
 {
     /* STUB: 68 lines not yet reconstructed */
     return;
@@ -6262,7 +5959,6 @@ void __fastcall FUN_0042e660(void *param_1)
 /* FUN_0042e850 @ 0x0042e850 */
 
 int * __fastcall FUN_0042e850(int *param_1)
-
 {
     /* STUB: 30 lines not yet reconstructed */
     return 0;
@@ -6272,7 +5968,6 @@ int * __fastcall FUN_0042e850(int *param_1)
 /* FUN_0042e920 @ 0x0042e920 */
 
 int * __thiscall FUN_0042e920(void *this,byte param_1)
-
 {
   FUN_0042e940(this);
   if ((param_1 & 1) != 0) {
@@ -6285,24 +5980,23 @@ int * __thiscall FUN_0042e920(void *this,byte param_1)
 /* FUN_0042e940 @ 0x0042e940 */
 
 void __fastcall FUN_0042e940(int *param_1)
-
 {
   int *_fs;
-  int loc_10;
+  int _seh_prev;
   void *_handler;
-  int loc_8;
+  int _seh_state;
   
-  loc_10 = *_fs;
+  _seh_prev = *_fs;
   _handler = &L_0042e9a7;
   *param_1 = &PTR_FUN_00474178;
-  *_fs = &loc_10;
+  *_fs = &_seh_prev;
   DAT_00487408 = 1;
-  loc_8 = 0;
+  _seh_state = 0;
   FUN_0042e999();
-  loc_8 = 0xffffffff;
+  _seh_state = 0xffffffff;
   FUN_0042e9b1();
   /* SEH epilog */
-  *_fs = loc_10;
+  *_fs = _seh_prev;
   return;
 }
 
@@ -6310,7 +6004,6 @@ void __fastcall FUN_0042e940(int *param_1)
 /* FUN_0042e999 @ 0x0042e999 */
 
 void FUN_0042e999(void)
-
 {
   int _ebp;
   
@@ -6322,7 +6015,6 @@ void FUN_0042e999(void)
 /* FUN_0042e9b1 @ 0x0042e9b1 */
 
 void FUN_0042e9b1(void)
-
 {
   int _ebp;
   
@@ -6334,7 +6026,6 @@ void FUN_0042e9b1(void)
 /* FUN_0042ea90 @ 0x0042ea90 */
 
 void __fastcall FUN_0042ea90(void *param_1)
-
 {
   DWORD DVar1;
   
@@ -6349,7 +6040,6 @@ void __fastcall FUN_0042ea90(void *param_1)
 /* FUN_0042eab0 @ 0x0042eab0 */
 
 void __fastcall FUN_0042eab0(int param_1)
-
 {
   short s1;
   DWORD DVar2;
@@ -6389,7 +6079,6 @@ void __fastcall FUN_0042eab0(int param_1)
 /* FUN_0042eca0 @ 0x0042eca0 */
 
 void FUN_0042eca0(void)
-
 {
     /* STUB: 153 lines not yet reconstructed */
     return;
@@ -6429,7 +6118,6 @@ void FUN_0042f093(void) { return; }
 /* FUN_0042f0a0 @ 0x0042f0a0 */
 
 void __fastcall FUN_0042f0a0(int *param_1)
-
 {
   *param_1 = &PTR_LAB_00474170;
   if ((uint *)param_1[1] != (uint *)0x0) {
@@ -6444,7 +6132,6 @@ void __fastcall FUN_0042f0a0(int *param_1)
 /* FUN_0042f120 @ 0x0042f120 */
 
 void * __thiscall FUN_0042f120(void *this,short param_1)
-
 {
   FUN_0042f180(this,param_1);
   return this;
@@ -6455,7 +6142,6 @@ void * __thiscall FUN_0042f120(void *this,short param_1)
 
 void * __thiscall
 FUN_0042f140(void *this,int *param_1,int param_2,int param_3,short param_4)
-
 {
   FUN_0042f180(this,param_4);
   FUN_0042f1e0(this,param_1,param_2);
@@ -6466,7 +6152,6 @@ FUN_0042f140(void *this,int *param_1,int param_2,int param_3,short param_4)
 /* Function: thunk_FUN_0042f1c0 @ 0x0042f170 */
 
 void __fastcall thunk_FUN_0042f1c0(char *param_1)
-
 {
   if ((*param_1 != '\0') && (*(uint *)(param_1 + 4) != 0)) {
     FUN_0046f5f0(*(uint *)(param_1 + 4));
@@ -6479,7 +6164,6 @@ void __fastcall thunk_FUN_0042f1c0(char *param_1)
 /* FUN_0042f180 @ 0x0042f180 */
 
 void __thiscall FUN_0042f180(void *this,short param_1)
-
 {
   ushort *pu1;
   LPCVOID pv2;
@@ -6500,7 +6184,6 @@ void __thiscall FUN_0042f180(void *this,short param_1)
 /* FUN_0042f1c0 @ 0x0042f1c0 */
 
 void __fastcall FUN_0042f1c0(char *param_1)
-
 {
   if ((*param_1 != '\0') && (*(uint *)(param_1 + 4) != 0)) {
     FUN_0046f5f0(*(uint *)(param_1 + 4));
@@ -6513,7 +6196,6 @@ void __fastcall FUN_0042f1c0(char *param_1)
 /* FUN_0042f1e0 @ 0x0042f1e0 */
 
 void __thiscall FUN_0042f1e0(void *this,int *param_1,int param_2)
-
 {
     /* STUB: 55 lines not yet reconstructed */
     return;
@@ -6523,7 +6205,6 @@ void __thiscall FUN_0042f1e0(void *this,int *param_1,int param_2)
 /* FUN_0042f336 @ 0x0042f336 */
 
 void FUN_0042f336(void)
-
 {
   int _ebp;
   
@@ -6537,7 +6218,6 @@ void FUN_0042f336(void)
 /* NOTE: Restarted to delay deadcode elimination for space: stack */
 
 void __thiscall FUN_0042f350(void *this,char param_1)
-
 {
   short u1;
   int n2;
@@ -6567,7 +6247,6 @@ void __thiscall FUN_0042f350(void *this,char param_1)
 /* FUN_0042f3f0 @ 0x0042f3f0 */
 
 void __thiscall FUN_0042f3f0(void *this,int param_1,short param_2)
-
 {
   *(short *)((intptr_t)this + 2) = param_2;
   *(char *)this = 0;
@@ -6579,7 +6258,6 @@ void __thiscall FUN_0042f3f0(void *this,int param_1,short param_2)
 /* FUN_0042f420 @ 0x0042f420 */
 
 void FUN_0042f420(void)
-
 {
   int u1;
   int _p_fffffff4;
@@ -6602,7 +6280,6 @@ void FUN_0042f470(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_0042f490(void)
-
 {
   _DAT_00487436 = 0;
   _DAT_00487434 = 0;
@@ -6613,7 +6290,6 @@ void FUN_0042f490(void)
 /* FUN_0042f4a0 @ 0x0042f4a0 */
 
 void FUN_0042f4a0(void)
-
 {
   _atexit(FUN_0042f4b0);
   return;
@@ -6630,7 +6306,6 @@ void FUN_0042f4b0(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_0042f4d0(void)
-
 {
   _DAT_00487432 = 0;
   _DAT_00487430 = 0;
@@ -6641,7 +6316,6 @@ void FUN_0042f4d0(void)
 /* FUN_0042f4e0 @ 0x0042f4e0 */
 
 void FUN_0042f4e0(void)
-
 {
   _atexit(FUN_0042f4f0);
   return;
@@ -6656,7 +6330,6 @@ void FUN_0042f4f0(void) { return; }
 /* FUN_0042f510 @ 0x0042f510 */
 
 void FUN_0042f510(void)
-
 {
   int u1;
   int _p_fffffff4;
@@ -6672,7 +6345,6 @@ void FUN_0042f510(void)
 /* FUN_0042f550 @ 0x0042f550 */
 
 void FUN_0042f550(void)
-
 {
   _atexit(FUN_0042f560);
   return;
@@ -6689,7 +6361,6 @@ void FUN_0042f560(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_0042f580(void)
-
 {
   _DAT_00487446 = 0;
   _DAT_00487444 = 0;
@@ -6700,7 +6371,6 @@ void FUN_0042f580(void)
 /* FUN_0042f590 @ 0x0042f590 */
 
 void FUN_0042f590(void)
-
 {
   _atexit(FUN_0042f5a0);
   return;
@@ -6717,7 +6387,6 @@ void FUN_0042f5a0(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_0042f5c0(void)
-
 {
   _DAT_00487442 = 0;
   _DAT_00487440 = 0;
@@ -6728,7 +6397,6 @@ void FUN_0042f5c0(void)
 /* FUN_0042f5d0 @ 0x0042f5d0 */
 
 void FUN_0042f5d0(void)
-
 {
   _atexit(FUN_0042f5e0);
   return;
@@ -6743,7 +6411,6 @@ void FUN_0042f5e0(void) { return; }
 /* FUN_0042f600 @ 0x0042f600 */
 
 void FUN_0042f600(void)
-
 {
   int u1;
   int _p_fffffff4;
@@ -6759,7 +6426,6 @@ void FUN_0042f600(void)
 /* FUN_0042f640 @ 0x0042f640 */
 
 void FUN_0042f640(void)
-
 {
   _atexit(FUN_0042f650);
   return;
@@ -6776,7 +6442,6 @@ void FUN_0042f650(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_0042f670(void)
-
 {
   _DAT_00487456 = 0;
   _DAT_00487454 = 0;
@@ -6787,7 +6452,6 @@ void FUN_0042f670(void)
 /* FUN_0042f680 @ 0x0042f680 */
 
 void FUN_0042f680(void)
-
 {
   _atexit(FUN_0042f690);
   return;
@@ -6804,7 +6468,6 @@ void FUN_0042f690(void) { return; }
 /* NOTE: overlapping globals */
 
 void FUN_0042f6b0(void)
-
 {
   _DAT_00487452 = 0;
   _DAT_00487450 = 0;
@@ -6815,7 +6478,6 @@ void FUN_0042f6b0(void)
 /* FUN_0042f6c0 @ 0x0042f6c0 */
 
 void FUN_0042f6c0(void)
-
 {
   _atexit(FUN_0042f6d0);
   return;
@@ -6830,7 +6492,6 @@ void FUN_0042f6d0(void) { return; }
 /* FUN_0042f6f0 @ 0x0042f6f0 */
 
 void FUN_0042f6f0(void)
-
 {
     /* STUB: 4 lines not yet reconstructed */
     return;
@@ -6840,7 +6501,6 @@ void FUN_0042f6f0(void)
 /* FUN_0042f710 @ 0x0042f710 */
 
 void FUN_0042f710(void)
-
 {
   _atexit(FUN_0042f720);
   return;
@@ -6850,7 +6510,6 @@ void FUN_0042f710(void)
 /* FUN_0042f720 @ 0x0042f720 */
 
 void FUN_0042f720(void)
-
 {
     /* STUB: 3 lines not yet reconstructed */
     return;
@@ -6860,7 +6519,6 @@ void FUN_0042f720(void)
 /* FUN_0042f740 @ 0x0042f740 */
 
 void __fastcall FUN_0042f740(void *param_1)
-
 {
     /* STUB: 26 lines not yet reconstructed */
     return;
@@ -6875,7 +6533,6 @@ void FUN_0042f7c1(void) { return; }
 /* FUN_0042f7d0 @ 0x0042f7d0 */
 
 void __fastcall FUN_0042f7d0(void *param_1)
-
 {
   FUN_0042f7f0((int)param_1);
   FUN_0042f740(param_1);
@@ -6886,7 +6543,6 @@ void __fastcall FUN_0042f7d0(void *param_1)
 /* FUN_0042f7f0 @ 0x0042f7f0 */
 
 void __fastcall FUN_0042f7f0(int param_1)
-
 {
                     /* NOTE: Could not recover jumptable at 0x0042f7f6. Too many branches */
                     /* NOTE: Treating indirect jump as call */
@@ -6901,7 +6557,6 @@ void __fastcall FUN_0042f7f0(int param_1)
  */
 
 void __thiscall FUN_0042f800(GameScreen *this,short *param_1)
-
 {
   FUN_004247b0(&this->draw_context,this->hdc_screen,param_1);
   return;
@@ -6914,7 +6569,6 @@ void __thiscall FUN_0042f800(GameScreen *this,short *param_1)
  */
 
 void __fastcall FUN_0042f820(GameScreen *this)
-
 {
   this->hdc_active = this->hdc_buffer;
   return;
@@ -6927,7 +6581,6 @@ void __fastcall FUN_0042f820(GameScreen *this)
  */
 
 void __fastcall FUN_0042f830(GameScreen *this)
-
 {
   this->hdc_active = this->hdc_screen;
   return;
@@ -6937,7 +6590,6 @@ void __fastcall FUN_0042f830(GameScreen *this)
 /* FUN_0042f840 @ 0x0042f840 */
 
 int * __fastcall FUN_0042f840(int *param_1)
-
 {
     /* STUB: 62 lines not yet reconstructed */
     return 0;
@@ -6947,7 +6599,6 @@ int * __fastcall FUN_0042f840(int *param_1)
 /* FUN_0042f990 @ 0x0042f990 */
 
 int * __thiscall FUN_0042f990(void *this,byte param_1)
-
 {
   FUN_0042f9b0(this);
   if ((param_1 & 1) != 0) {
@@ -6960,7 +6611,6 @@ int * __thiscall FUN_0042f990(void *this,byte param_1)
 /* FUN_0042f9b0 @ 0x0042f9b0 */
 
 void __fastcall FUN_0042f9b0(int *param_1)
-
 {
     /* STUB: 24 lines not yet reconstructed */
     return;
@@ -6975,7 +6625,6 @@ void FUN_0042fa22(void) { return; }
 /* FUN_0042fa30 @ 0x0042fa30 */
 
 void FUN_0042fa30(void)
-
 {
   int _ebp;
   
@@ -6992,7 +6641,6 @@ void FUN_0042fa45(void) { return; }
 /* FUN_0042fa50 @ 0x0042fa50 */
 
 void __thiscall FUN_0042fa50(void *this,short *param_1,int param_2)
-
 {
     /* STUB: 71 lines not yet reconstructed */
     return;
@@ -7005,7 +6653,6 @@ void __thiscall FUN_0042fa50(void *this,short *param_1,int param_2)
  */
 
 void __fastcall FUN_0042fc70(GameScreen *this)
-
 {
   FUN_0042f7f0(this);
   if (this->hdc_screen != NULL) {
@@ -7026,7 +6673,6 @@ void __fastcall FUN_0042fc70(GameScreen *this)
  */
 
 void __thiscall FUN_0042fcb0(GameScreen *this,char param_1)
-
 {
   FUN_0041b150(&this->draw_context,param_1);
   FUN_00430690(this);
@@ -7042,7 +6688,6 @@ void FUN_0042fcd0(void) { return; }
 /* FUN_0042fce0 @ 0x0042fce0 */
 
 void __cdecl FUN_0042fce0(short *param_1,short param_2)
-
 {
   short s1;
   int n2;
@@ -7080,7 +6725,6 @@ void __cdecl FUN_0042fce0(short *param_1,short param_2)
 /* FUN_0042fdb0 @ 0x0042fdb0 */
 
 void __cdecl FUN_0042fdb0(short *param_1)
-
 {
   int n1;
   short s2;
@@ -7169,7 +6813,6 @@ void __cdecl FUN_0042fdb0(short *param_1)
 /* FUN_0042ffd0 @ 0x0042ffd0 */
 
 void __cdecl FUN_0042ffd0(int param_1,short *param_2)
-
 {
   if ((((param_2[1] == 0) && (param_2[3] == 0x280)) && (*param_2 == 0)) && (param_2[2] == 0x1e0)) {
     param_2[1] = 0;

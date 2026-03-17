@@ -13,7 +13,6 @@
 /* FUN_00470000 @ 0x00470000 */
 
 void FUN_00470000(void)
-
 {
   DWORD DVar1;
   int n2;
@@ -36,7 +35,6 @@ void FUN_00470000(void)
 /* NOTE: Removing unreachable block (ram,0x00470061) */
 
 int FUN_00470050(int *param_1)
-
 {
   char *pc1;
   int u2;
@@ -63,7 +61,6 @@ int FUN_00470050(int *param_1)
 /* FUN_004700b0 @ 0x004700b0 */
 
 char * __fastcall FUN_004700b0(int param_1)
-
 {
   if (param_1 == 2) {
     return "Out of memory.  Please free some memory, then choose retry.";
@@ -75,7 +72,6 @@ char * __fastcall FUN_004700b0(int param_1)
 /* FUN_004700d0 @ 0x004700d0 */
 
 FARPROC FUN_004700d0(FARPROC param_1)
-
 {
   bool b1;
   int n2;
@@ -102,7 +98,6 @@ FARPROC FUN_004700d0(FARPROC param_1)
 /* FUN_00470140 @ 0x00470140 */
 
 unsigned int FUN_00470140(int param_1)
-
 {
   unsigned int u1;
 
@@ -130,7 +125,6 @@ unsigned int FUN_00470140(int param_1)
  */
 
 int FUN_00470240(int *param_1,int *param_2)
-
 {
   int n1;
   
@@ -154,12 +148,11 @@ int FUN_00470240(int *param_1,int *param_2)
 /* FUN_004702b0 @ 0x004702b0 */
 
 int __fastcall FUN_004702b0(int *param_1,int *param_2,int param_3,int param_4)
-
 {
   int *pu1;
   ushort u2;
   int n3;
-  int loc_8;
+  int v8;
   
   if ((*param_2 == 0) && (param_4 == 0)) {
     u2 = 0;
@@ -182,31 +175,31 @@ int __fastcall FUN_004702b0(int *param_1,int *param_2,int param_3,int param_4)
     switch((uint)u2) {
     case 0:
     case 2:
-      loc_8 = FUN_004705d0(pu1,param_2);
+      v8 = FUN_004705d0(pu1,param_2);
       param_3 = 1;
       break;
     case 1:
-      loc_8 = FUN_00470750(pu1,param_2,param_3);
+      v8 = FUN_00470750(pu1,param_2,param_3);
       break;
     case 3:
-      loc_8 = FUN_004703f0(pu1,param_2);
+      v8 = FUN_004703f0(pu1,param_2);
       param_3 = 1;
       break;
     case 4:
-      loc_8 = FUN_00470490(pu1,param_2,param_3);
+      v8 = FUN_00470490(pu1,param_2,param_3);
     }
-    if (loc_8 != 0) break;
+    if (v8 != 0) break;
     *param_2 = 0;
     n3 = *(int *)(n3 + 8);
     if (param_1[u2] == n3) {
       n3 = 0;
     }
   }
-  if (loc_8 == -2) {
+  if (v8 == -2) {
     FUN_0046fd70(*pu1,0xb);
   }
   param_2[8] = n3;
-  return loc_8;
+  return v8;
 }
 
 
@@ -216,7 +209,6 @@ int __fastcall FUN_004702b0(int *param_1,int *param_2,int param_3,int param_4)
  */
 
 int __fastcall FUN_004703f0(LPCVOID param_1,int *param_2)
-
 {
   int *pn1;
   uint u2;
@@ -257,7 +249,6 @@ int __fastcall FUN_004703f0(LPCVOID param_1,int *param_2)
  */
 
 int __fastcall FUN_00470490(LPCVOID param_1,int *param_2,int param_3)
-
 {
   char c1;
   int _extra;
@@ -319,7 +310,6 @@ L_0047050b:
 /* FUN_00470580 @ 0x00470580 */
 
 int __fastcall FUN_00470580(int param_1,int *param_2)
-
 {
   int *pn1;
   int *pn2;
@@ -350,7 +340,6 @@ int __fastcall FUN_00470580(int param_1,int *param_2)
  */
 
 int __fastcall FUN_004705d0(LPCVOID param_1,int *param_2)
-
 {
   ushort u1;
   int n2;
@@ -426,7 +415,6 @@ L_0047065b:
  */
 
 int __fastcall FUN_00470750(LPCVOID param_1,int *param_2,int param_3)
-
 {
   ushort u1;
   bool b2;
@@ -483,7 +471,6 @@ L_004707d9:
 /* FUN_00470840 @ 0x00470840 */
 
 int __fastcall FUN_00470840(int param_1,int param_2,int *param_3)
-
 {
   ushort u1;
   int *pu2;
@@ -516,25 +503,24 @@ int __fastcall FUN_00470840(int param_1,int param_2,int *param_3)
  */
 
 bool FUN_00470ce0(int *param_1)
-
 {
   bool b1;
   int n2;
   int n3;
-  int loc_24 [9];
+  int v24 [9];
   
   b1 = false;
   if ((short)param_1[8] != -0x4153) {
     FUN_0046fd70(0,10);
     return false;
   }
-  loc_24[0] = 0;
+  v24[0] = 0;
   if ((*(byte *)((int)param_1 + 0x22) & 2) != 0) { /* TODO: SmartHeap pool threadsafe flag at 0x22 */
     EnterCriticalSection((LPCRITICAL_SECTION)(param_1 + 0x12));
     param_1[0x18] = param_1[0x18] + 1;
   }
   do {
-    n2 = FUN_004702b0(param_1,loc_24,0,0);
+    n2 = FUN_004702b0(param_1,v24,0,0);
     if (n2 == -1) {
       b1 = true;
     }
@@ -560,7 +546,6 @@ L_00470d68:
 /* FUN_00470e50 @ 0x00470e50 */
 
 int __fastcall FUN_00470e50(int param_1)
-
 {
   int *pn1;
   int n2;
@@ -597,7 +582,6 @@ L_00470e91:
 /* FUN_00470ec0 @ 0x00470ec0 */
 
 int __fastcall FUN_00470ec0(int *param_1,unsigned short param_2)
-
 {
   int u1;
   
@@ -622,7 +606,6 @@ int __fastcall FUN_00470ec0(int *param_1,unsigned short param_2)
 /* FUN_00470f00 @ 0x00470f00 */
 
 int __fastcall FUN_00470f00(int param_1)
-
 {
   int n1;
   int *pn2;
@@ -654,7 +637,6 @@ int __fastcall FUN_00470f00(int param_1)
 /* FUN_00470f40 @ 0x00470f40 */
 
 int __fastcall FUN_00470f40(int *param_1)
-
 {
   ushort u1;
   ushort *pu2;
@@ -703,7 +685,6 @@ L_00470f72:
 /* FUN_00470fd0 @ 0x00470fd0 */
 
 int __fastcall FUN_00470fd0(int *param_1)
-
 {
   int *pu1;
   int n2;
@@ -727,7 +708,6 @@ int __fastcall FUN_00470fd0(int *param_1)
  */
 
 int FUN_00471010(int param_1,int *param_2)
-
 {
   int n1;
   bool b2;
@@ -789,7 +769,6 @@ sw_3:
 /* FUN_00471150 @ 0x00471150 */
 
 LPCVOID __fastcall FUN_00471150(uint param_1)
-
 {
     /* STUB: 14 lines not yet reconstructed */
     return 0;
@@ -799,7 +778,6 @@ LPCVOID __fastcall FUN_00471150(uint param_1)
 /* FUN_00471190 @ 0x00471190 */
 
 void * __fastcall FUN_00471190(uint param_1,uint param_2)
-
 {
   LPCVOID lpAddress;
   void *lpAddress_00;
@@ -846,7 +824,6 @@ void * __fastcall FUN_00471190(uint param_1,uint param_2)
 /* FUN_00471220 @ 0x00471220 */
 
 int __fastcall FUN_00471220(LPCVOID param_1)
-
 {
   uint dwSize;
   BOOL flag1;
@@ -869,7 +846,6 @@ int __fastcall FUN_00471220(LPCVOID param_1)
 /* FUN_00471280 @ 0x00471280 */
 
 void * __fastcall FUN_00471280(void *param_1,uint param_2,uint param_3)
-
 {
   int n1;
   void *pu2;
@@ -922,7 +898,6 @@ void * __fastcall FUN_00471280(void *param_1,uint param_2,uint param_3)
 /* FUN_00471330 @ 0x00471330 */
 
 int __fastcall FUN_00471330(LPCVOID param_1,uint param_2,uint param_3)
-
 {
   uint u1;
   BOOL flag2;
@@ -983,7 +958,6 @@ int __fastcall FUN_00471330(LPCVOID param_1,uint param_2,uint param_3)
 /* FUN_00471410 @ 0x00471410 */
 
 uint __fastcall FUN_00471410(LPCVOID param_1)
-
 {
     /* STUB: 9 lines not yet reconstructed */
     return 0;
@@ -993,7 +967,6 @@ uint __fastcall FUN_00471410(LPCVOID param_1)
 /* FUN_00471450 @ 0x00471450 */
 
 bool __fastcall FUN_00471450(LPCVOID param_1,uint param_2,uint param_3)
-
 {
     /* STUB: 48 lines not yet reconstructed */
     return 0;
@@ -1003,7 +976,6 @@ bool __fastcall FUN_00471450(LPCVOID param_1,uint param_2,uint param_3)
 /* FUN_00471550 @ 0x00471550 */
 
 bool __fastcall FUN_00471550(FARPROC param_1)
-
 {
   BOOL flag1;
   
@@ -1018,7 +990,6 @@ bool __fastcall FUN_00471550(FARPROC param_1)
 /* FUN_00471570 @ 0x00471570 */
 
 int FUN_00471570(void)
-
 {
   InitializeCriticalSection((LPCRITICAL_SECTION)&DAT_00489c28);
   EnterCriticalSection((LPCRITICAL_SECTION)&DAT_00489c28);
@@ -1029,7 +1000,6 @@ int FUN_00471570(void)
 /* FUN_00471590 @ 0x00471590 */
 
 void FUN_00471590(void)
-
 {
   LeaveCriticalSection((LPCRITICAL_SECTION)&DAT_00489c28);
   DeleteCriticalSection((LPCRITICAL_SECTION)&DAT_00489c28);
@@ -1040,7 +1010,6 @@ void FUN_00471590(void)
 /* FUN_00471650 @ 0x00471650 */
 
 int __cdecl FUN_00471650(LPCRITICAL_SECTION param_1,int *param_2)
-
 {
   if (*param_2 == 0) {
     InitializeCriticalSection(param_1);
@@ -1059,7 +1028,6 @@ int __cdecl FUN_00471650(LPCRITICAL_SECTION param_1,int *param_2)
 /* FUN_004718d0 @ 0x004718d0 */
 
 int __fastcall FUN_004718d0(LPCVOID param_1)
-
 {
   bool b1;
   int _extra;
@@ -1075,7 +1043,6 @@ int __fastcall FUN_004718d0(LPCVOID param_1)
 /* FUN_00471900 @ 0x00471900 */
 
 void __fastcall FUN_00471900(int param_1)
-
 {
   int n1;
   int n2;
@@ -1104,7 +1071,6 @@ void __fastcall FUN_00471900(int param_1)
 /* FUN_00471930 @ 0x00471930 */
 
 DWORD * __fastcall FUN_00471930(int param_1,int param_2)
-
 {
   DWORD DVar1;
   DWORD *pDVar2;
@@ -1133,7 +1099,6 @@ DWORD * __fastcall FUN_00471930(int param_1,int param_2)
 /* FUN_00471990 @ 0x00471990 */
 
 void __fastcall FUN_00471990(int param_1,DWORD *param_2)
-
 {
   DWORD u1;
   int n2;
@@ -1151,7 +1116,6 @@ void __fastcall FUN_00471990(int param_1,DWORD *param_2)
 /* FUN_004719b0 @ 0x004719b0 */
 
 int __fastcall FUN_004719b0(LPCSTR param_1,int param_2)
-
 {
   int n1;
   uint uType;
@@ -1181,7 +1145,6 @@ int __fastcall FUN_004719b0(LPCSTR param_1,int param_2)
 /* Function: WinGCreateBitmap @ 0x00471a30 */
 
 void WinGCreateBitmap(void)
-
 {
                     /* NOTE: Could not recover jumptable at 0x00471a30. Too many branches */
                     /* NOTE: Treating indirect jump as call */
@@ -1193,7 +1156,6 @@ void WinGCreateBitmap(void)
 /* Function: WinGCreateDC @ 0x00471a36 */
 
 void WinGCreateDC(void)
-
 {
                     /* NOTE: Could not recover jumptable at 0x00471a36. Too many branches */
                     /* NOTE: Treating indirect jump as call */
@@ -1205,7 +1167,6 @@ void WinGCreateDC(void)
 /* Function: WinGRecommendDIBFormat @ 0x00471a3c */
 
 void WinGRecommendDIBFormat(void)
-
 {
                     /* NOTE: Could not recover jumptable at 0x00471a3c. Too many branches */
                     /* NOTE: Treating indirect jump as call */
@@ -1252,7 +1213,6 @@ void WinGRecommendDIBFormat(void)
    Library: Visual Studio 1998 Release */
 
 void __cdecl __onexit(_onexit_t param_1)
-
 {
     /* STUB: 28 lines not yet reconstructed */
     return;
@@ -1267,7 +1227,6 @@ void __cdecl __onexit(_onexit_t param_1)
    Library: Visual Studio 1998 Release */
 
 int __cdecl _atexit(void_callback *param_1)
-
 {
   int n1;
   
@@ -1279,7 +1238,6 @@ int __cdecl _atexit(void_callback *param_1)
 /* Function: __CxxFrameHandler @ 0x00471b24 */
 
 void __CxxFrameHandler(void)
-
 {
                     /* NOTE: Could not recover jumptable at 0x00471b24. Too many branches */
                     /* NOTE: Treating indirect jump as call */
@@ -1298,26 +1256,25 @@ void __CxxFrameHandler(void)
 
 void _eh_vector_destructor_iterator_
                (void *param_1,uint param_2,int param_3,callback_ptr *param_4)
-
 {
   void *_edi;
   int *_fs;
-  int loc_14;
+  int v14;
   void *puStack_10;
   void *_handler;
-  int loc_8;
+  int v8;
 
-  loc_14 = *_fs;
+  v14 = *_fs;
   _handler = &DAT_00477d18;
   puStack_10 = &DAT_00471ee2;
-  *_fs = (int)&loc_14;
-  loc_8 = 0;
+  *_fs = (int)&v14;
+  v8 = 0;
   while (param_3 = param_3 + -1, -1 < param_3) {
     (*param_4)(_edi);
   }
-  loc_8 = 0xffffffff;
+  v8 = 0xffffffff;
   FUN_00471ba0();
-  *_fs = loc_14;
+  *_fs = v14;
   return;
 }
 
@@ -1325,7 +1282,6 @@ void _eh_vector_destructor_iterator_
 /* FUN_00471ba0 @ 0x00471ba0 */
 
 void FUN_00471ba0(void)
-
 {
     /* STUB: 8 lines not yet reconstructed */
     return;
@@ -1340,24 +1296,23 @@ void FUN_00471ba0(void)
    Library: Visual Studio 1998 Release */
 
 void __ArrayUnwind(void *param_1,uint param_2,int param_3,callback_ptr *param_4)
-
 {
   void *_edi;
   int *_fs;
-  int loc_14;
+  int v14;
   void *puStack_10;
   void *_handler;
-  int loc_8;
+  int v8;
 
-  loc_14 = *_fs;
+  v14 = *_fs;
   _handler = &DAT_00477d28;
   puStack_10 = &DAT_00471ee2;
-  *_fs = (int)&loc_14;
-  loc_8 = 0;
+  *_fs = (int)&v14;
+  v8 = 0;
   while (param_3 = param_3 + -1, -1 < param_3) {
     (*param_4)(_edi);
   }
-  *_fs = loc_14;
+  *_fs = v14;
   return;
 }
 
@@ -1373,31 +1328,30 @@ void __ArrayUnwind(void *param_1,uint param_2,int param_3,callback_ptr *param_4)
 void _eh_vector_constructor_iterator_
                (void *param_1,uint param_2,int param_3,callback_ptr *param_4,
                callback_ptr *param_5)
-
 {
   void *_edi;
   int *_fs;
-  int loc_20;
-  int loc_14;
+  int v20;
+  int v14;
   void *puStack_10;
   void *_handler;
-  int loc_8;
+  int v8;
 
-  loc_14 = *_fs;
+  v14 = *_fs;
   _handler = &DAT_00477d38;
   puStack_10 = &DAT_00471ee2;
-  *_fs = (int)&loc_14;
-  loc_8 = 0;
-  loc_20 = 0;
+  *_fs = (int)&v14;
+  v8 = 0;
+  v20 = 0;
   if (0 < param_3) {
     do {
       (*param_4)(_edi);
-      loc_20 = loc_20 + 1;
-    } while (loc_20 < param_3);
+      v20 = v20 + 1;
+    } while (v20 < param_3);
   }
-  loc_8 = 0xffffffff;
+  v8 = 0xffffffff;
   FUN_00471cd0();
-  *_fs = loc_14;
+  *_fs = v14;
   return;
 }
 
@@ -1405,7 +1359,6 @@ void _eh_vector_constructor_iterator_
 /* FUN_00471cd0 @ 0x00471cd0 */
 
 void FUN_00471cd0(void)
-
 {
     /* STUB: 8 lines not yet reconstructed */
     return;
@@ -1420,7 +1373,6 @@ void FUN_00471cd0(void)
 /* Function: ftol @ 0x00471cf2 */
 
 void __cdecl ftol(void)
-
 {
                     /* NOTE: Could not recover jumptable at 0x00471cf2. Too many branches */
                     /* NOTE: Treating indirect jump as call */
@@ -1432,7 +1384,6 @@ void __cdecl ftol(void)
 /* Function: _CIacos @ 0x00471cfe */
 
 void _CIacos(void)
-
 {
                     /* NOTE: Could not recover jumptable at 0x00471cfe. Too many branches */
                     /* NOTE: Treating indirect jump as call */
@@ -1446,7 +1397,6 @@ void _CIacos(void)
 /* NOTE: Unable to track spacebase fully for stack */
 
 void FUN_00471d10(void)
-
 {
   uint _eax;
   char *pu1;
@@ -1466,7 +1416,6 @@ void FUN_00471d10(void)
 /* NOTE: overlapping globals */
 
 void entry(void)
-
 {
     /* STUB: 74 lines not yet reconstructed */
     return;
@@ -1476,7 +1425,6 @@ void entry(void)
 /* Function: abort @ 0x00471ee8 */
 
 void __cdecl abort(void)
-
 {
                     /* NOTE: Could not recover jumptable at 0x00471ee8. Too many branches */
                     /* NOTE: Subroutine does not return */
@@ -1489,7 +1437,6 @@ void __cdecl abort(void)
 /* Function: __dllonexit @ 0x00471eee */
 
 void __dllonexit(void)
-
 {
                     /* NOTE: Could not recover jumptable at 0x00471eee. Too many branches */
                     /* NOTE: Treating indirect jump as call */
@@ -1501,7 +1448,6 @@ void __dllonexit(void)
 /* Function: _initterm @ 0x00471f00 */
 
 void __cdecl _initterm(void)
-
 {
                     /* NOTE: Could not recover jumptable at 0x00471f00. Too many branches */
                     /* NOTE: Treating indirect jump as call */
@@ -1518,7 +1464,6 @@ void __cdecl _initterm(void)
    Library: Visual Studio 1998 Release */
 
 void __setdefaultprecision(void)
-
 {
   _controlfp(0x10000,0x30000);
   return;
@@ -1533,7 +1478,6 @@ void FUN_00471f40(void) { return; }
 /* Function: _controlfp @ 0x00471f42 */
 
 uint __cdecl _controlfp(uint _NewValue,uint _Mask)
-
 {
   uint u1;
   
