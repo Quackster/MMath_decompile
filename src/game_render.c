@@ -151,15 +151,15 @@ void __fastcall FUN_00423890(int param_1)
   int n1;
   int n2;
   int *pn3;
-  
+
   n1 = 0;
   n2 = 1;
-  pn3 = (int *)(param_1 + 0x1ec);
+  pn3 = (int *)&((GameBoard *)param_1)->players[1].total; /* param_1 + 0x1ec = players[1].total */
   do {
-    if (*(int *)(n1 * 0x12 + 0x1da + param_1) < *pn3) {
+    if (((GameBoard *)param_1)->players[n1].total < *pn3) {
       n1 = n2;
     }
-    pn3 = (int *)((int)pn3 + 0x12);
+    pn3 = (int *)((int)pn3 + 0x12); /* advance by PlayerSlot stride */
     n2 = n2 + 1;
   } while (n2 < 4);
 }
@@ -172,15 +172,15 @@ void __fastcall FUN_004238d0(int param_1)
   int n1;
   int n2;
   int *pn3;
-  
+
   n1 = 0;
   n2 = 1;
-  pn3 = (int *)(param_1 + 0x1ec);
+  pn3 = (int *)&((GameBoard *)param_1)->players[1].total; /* param_1 + 0x1ec = players[1].total */
   do {
-    if (*pn3 < *(int *)(n1 * 0x12 + 0x1da + param_1)) {
+    if (*pn3 < ((GameBoard *)param_1)->players[n1].total) {
       n1 = n2;
     }
-    pn3 = (int *)((int)pn3 + 0x12);
+    pn3 = (int *)((int)pn3 + 0x12); /* advance by PlayerSlot stride */
     n2 = n2 + 1;
   } while (n2 < 4);
 }
@@ -193,15 +193,15 @@ void __fastcall FUN_00423910(int param_1)
   int n1;
   int n2;
   int *pn3;
-  
+
   n1 = 0;
   n2 = 1;
-  pn3 = (int *)(param_1 + 0x1e8);
+  pn3 = (int *)&((GameBoard *)param_1)->players[1].rank; /* param_1 + 0x1e8 = players[1].rank */
   do {
-    if (*(int *)(n1 * 0x12 + 0x1d6 + param_1) < *pn3) {
+    if (((GameBoard *)param_1)->players[n1].rank < *pn3) {
       n1 = n2;
     }
-    pn3 = (int *)((int)pn3 + 0x12);
+    pn3 = (int *)((int)pn3 + 0x12); /* advance by PlayerSlot stride */
     n2 = n2 + 1;
   } while (n2 < 4);
 }
@@ -214,15 +214,15 @@ void __fastcall FUN_00423950(int param_1)
   int n1;
   int *pn2;
   int n3;
-  
+
   n1 = 0;
-  pn2 = (int *)(param_1 + 0x1e8);
+  pn2 = (int *)&((GameBoard *)param_1)->players[1].rank; /* param_1 + 0x1e8 = players[1].rank */
   n3 = 1;
   do {
-    if (*pn2 < *(int *)(n1 * 0x12 + 0x1d6 + param_1)) {
+    if (*pn2 < ((GameBoard *)param_1)->players[n1].rank) {
       n1 = n3;
     }
-    pn2 = (int *)((int)pn2 + 0x12);
+    pn2 = (int *)((int)pn2 + 0x12); /* advance by PlayerSlot stride */
     n3 = n3 + 1;
   } while (n3 < 4);
 }
@@ -238,12 +238,12 @@ int __thiscall FUN_00423990(GameBoard *this,int param_1)
   
   n2 = 0;
   u3 = 1;
-  if (*(uint *)(param_1 + 0xe) != 0) {
+  if (((CVector *)param_1)->count != 0) {
     do {
       n1 = u3 * 4;
       u3 = u3 + 1;
-      n2 = n2 + this->players[*(int *)(**(int **)(param_1 + 4) + -4 + n1)].rank;
-    } while (u3 <= *(uint *)(param_1 + 0xe));
+      n2 = n2 + this->players[*(int *)(**(int **)((CVector *)param_1)->data + -4 + n1)].rank;
+    } while (u3 <= ((CVector *)param_1)->count);
   }
   return n2;
 }
@@ -256,15 +256,15 @@ int __thiscall FUN_004239d0(GameBoard *this,int param_1)
   int n1;
   int n2;
   uint u3;
-  
+
   n2 = 0;
   u3 = 1;
-  if (*(uint *)(param_1 + 0xe) != 0) {
+  if (((CVector *)param_1)->count != 0) {
     do {
       n1 = u3 * 4;
       u3 = u3 + 1;
-      n2 = n2 + this->players[*(int *)(**(int **)(param_1 + 4) + -4 + n1)].total;
-    } while (u3 <= *(uint *)(param_1 + 0xe));
+      n2 = n2 + this->players[*(int *)(**(int **)((CVector *)param_1)->data + -4 + n1)].total;
+    } while (u3 <= ((CVector *)param_1)->count);
   }
   return n2;
 }
@@ -279,17 +279,17 @@ void __thiscall FUN_00423a10(GameBoard *this,int param_1,uint param_2)
   uint u3;
   
   b2 = true;
-  u1 = *(uint *)(param_1 + 0xe);
+  u1 = ((CVector *)param_1)->count;
   if (u1 != 0) {
     if (param_2 == 0xffffffff) {
-      param_2 = (uint)this->players[*(int *)**(int **)(param_1 + 4)].color;
+      param_2 = (uint)this->players[*(int *)**(int **)((CVector *)param_1)->data].color;
     }
     u3 = 1;
     if (u1 != 0) {
       do {
         if ((!b2) ||
            (b2 = true,
-           this->players[*(int *)(**(int **)(param_1 + 4) + -4 + u3 * 4)].color
+           this->players[*(int *)(**(int **)((CVector *)param_1)->data + -4 + u3 * 4)].color
            != param_2)) {
           b2 = false;
         }
@@ -308,19 +308,19 @@ void __thiscall FUN_00423a80(GameBoard *this,int param_1,int param_2)
   uint u1;
   bool b2;
   uint u3;
-  
+
   b2 = true;
-  u1 = *(uint *)(param_1 + 0xe);
+  u1 = ((CVector *)param_1)->count;
   if (u1 != 0) {
     if (param_2 == -1) {
-      param_2 = this->players[*(int *)**(int **)(param_1 + 4)].score;
+      param_2 = this->players[*(int *)**(int **)((CVector *)param_1)->data].score;
     }
     u3 = 1;
     if (u1 != 0) {
       do {
         if ((!b2) ||
            (b2 = true,
-           this->players[*(int *)(**(int **)(param_1 + 4) + -4 + u3 * 4)].score
+           this->players[*(int *)(**(int **)((CVector *)param_1)->data + -4 + u3 * 4)].score
            != param_2)) {
           b2 = false;
         }
@@ -341,16 +341,16 @@ void FUN_00423ae0(int param_1,int param_2)
   uint u3;
   
   b2 = true;
-  u1 = *(uint *)(param_1 + 0xe);
+  u1 = ((CVector *)param_1)->count;
   if (u1 != 0) {
     if (param_2 == -1) {
-      param_2 = *(int *)**(int **)(param_1 + 4);
+      param_2 = *(int *)**(int **)((CVector *)param_1)->data;
     }
     u3 = 1;
     if (u1 != 0) {
       do {
         if ((!b2) ||
-           (b2 = true, *(int *)(**(int **)(param_1 + 4) + -4 + u3 * 4) != param_2)) {
+           (b2 = true, *(int *)(**(int **)((CVector *)param_1)->data + -4 + u3 * 4) != param_2)) {
           b2 = false;
         }
         u3 = u3 + 1;
@@ -370,11 +370,11 @@ uint __thiscall FUN_00423b30(GameBoard *this,int param_1,int param_2)
   
   u1 = 1;
   while( true ) {
-    if (*(uint *)(param_1 + 0xe) < u1) {
+    if (((CVector *)param_1)->count < u1) {
       return _eax & 0xffffff00;
     }
-    _eax = *(int *)(**(int **)(param_1 + 4) + -4 + u1 * 4) * 0x12;
-    if (this->players[*(int *)(**(int **)(param_1 + 4) + -4 + u1 * 4)].score == param_2) break;
+    _eax = *(int *)(**(int **)((CVector *)param_1)->data + -4 + u1 * 4) * 0x12;
+    if (this->players[*(int *)(**(int **)((CVector *)param_1)->data + -4 + u1 * 4)].score == param_2) break;
     u1 = u1 + 1;
   }
   return CONCAT31(_eax >> 8,1);
@@ -508,10 +508,10 @@ int * __fastcall FUN_00423d80(int *param_1)
   *_fs = &_seh_prev;
   FUN_0042cbd0(param_1);
   _seh_state = 0;
-  FUN_0040ab70((int *)((int)param_1 + 0x1a6));
-  *(short *)(param_1 + 0x68) = 1;
+  FUN_0040ab70((int *)((int)param_1 + 0x1a6)); /* TODO: unknown offset 0x1a6 */
+  *(short *)((int)param_1 + 0x1a0) = 1; /* TODO: unknown offset 0x1a0, param_1+0x68 with int* */
   *param_1 = &PTR_FUN_00473288;
-  param_1[0x67] = 0;
+  param_1[0x67] = 0; /* byte offset 0x19c */
   *(int *)((int)param_1 + 0x1a2) = 0; /* TODO: unknown offset 0x1a2 */
   *_fs = _seh_prev;
   return param_1;
@@ -582,7 +582,7 @@ void __fastcall FUN_00423eb0(int *param_1)
   
   FUN_0041d780(((UIWidget *)DAT_004897c0)->sub_widgets_a[1],param_1);
   FUN_0041dd40(((UIWidget *)DAT_004897c0)->sub_widgets_a[1]);
-  *(int *)(((UIWidget *)DAT_004897c0)->sub_widgets_a[1] + 0x16) = 3;
+  ((UIElement *)((UIWidget *)DAT_004897c0)->sub_widgets_a[1])->type_or_mode = 3;
   ((void (*)(void))((void **)(*param_1))[0xdc / 4])();
   if (((UIWidget *)DAT_004897c0)->_pad42[2] != NULL) {
     n2 = 0x423f05;
@@ -608,7 +608,7 @@ void __fastcall FUN_00423f80(void *param_1)
   int v4;
   
   FUN_004048d0(param_1);
-  switch(*(short *)(((UIElement *)param_1)->sub_widgets_a[9] + 0xc)) { /* TODO: sub-object at sub_widgets_a[9], offset 0xc */
+  switch(*(short *)((int)((UIElement *)param_1)->sub_widgets_a[9] + 0xc)) { /* sub-object at sub_widgets_a[9], UIElement::parent_widget offset */
   case 1:
     v8 = 0x762000d;
     v4 = 0x4d0011;
@@ -1568,7 +1568,7 @@ L_004260b1:
 
 int __fastcall FUN_00426230(int param_1)
 {
-  return *(int *)(param_1 + 0x1d4);
+  return *(int *)(param_1 + 0x1d4); /* TODO: count for stride-0xe sub-array, overlaps GameBoard::players[0].color */
 }
 
 
@@ -1877,7 +1877,7 @@ void __cdecl FUN_00426860(int param_1)
   HWND hWnd;
   HDC hdc;
   
-  hWnd = *(HWND *)(*(int *)(DAT_00489ac8 + 4) + 0xe);
+  hWnd = ((GameScreen *)*(int *)(DAT_00489ac8 + 4))->hwnd;
   hdc = GetDC(hWnd);
   if (DAT_004838bc != NULL) {
     FUN_004268c0(DAT_004838bc);
@@ -3014,7 +3014,7 @@ int * __fastcall FUN_00428820(int *param_1)
   _seh_state = 0;
   FUN_004112e0((int *)((int)param_1 + 0x1c2));
   *param_1 = &PTR_FUN_004739f0;
-  *(char *)(param_1 + 0x66) = 1;
+  *(char *)((int)param_1 + 0x198) = 1; /* TODO: unknown offset 0x198, param_1+0x66 with int* */
   s1 = 0;
   do {
     n2 = (int)s1;
@@ -3024,10 +3024,10 @@ int * __fastcall FUN_00428820(int *param_1)
   *(short *)((int)param_1 + 0x1b6) = 0; /* TODO: unknown offset 0x1b6 */
   *(int *)((int)param_1 + 0x1ae) = 0; /* TODO: unknown offset 0x1ae */
   *(int *)((int)param_1 + 0x1b2) = 0; /* TODO: unknown offset 0x1b2 */
-  *(char *)(param_1 + 0x6e) = 0;
+  *(char *)((int)param_1 + 0x1b8) = 0; /* TODO: unknown offset 0x1b8 */
   *(char *)((int)param_1 + 0x199) = 0; /* TODO: unknown offset 0x199 */
   *(int *)((int)param_1 + 0x39e) = 0; /* TODO: unknown offset 0x39e */
-  *(short *)(param_1 + 0x6f) = 0;
+  ((GameBoard *)param_1)->refresh_counter = 0; /* param_1 + 0x6f = byte offset 0x1BC */
   *(int *)((int)param_1 + 0x3a2) = 0; /* TODO: unknown offset 0x3a2 */
   *(int *)((int)param_1 + 0x3a6) = 0; /* TODO: unknown offset 0x3a6 */
   *(char *)((int)param_1 + 0x1b9) = 0; /* TODO: unknown offset 0x1b9 */
@@ -3186,11 +3186,11 @@ void __fastcall FUN_00428e10(void *param_1)
 {
   uint u1;
   
-  u1 = ((UIElement *)*(void **)((int)param_1 + 0x154))->flags; /* TODO: param_1 + 0x154 unknown struct */
-  FUN_0041da90(*(void **)((int)param_1 + 0x154) /* TODO: param_1 + 0x154 unknown struct */,1);
-  FUN_0041dd40(*(void **)((int)param_1 + 0x154) /* TODO: param_1 + 0x154 unknown struct */);
+  u1 = ((UIElement *)((GameBoard *)param_1)->reward_obj_b)->flags;
+  FUN_0041da90(((GameBoard *)param_1)->reward_obj_b,1);
+  FUN_0041dd40(((GameBoard *)param_1)->reward_obj_b);
   FUN_0042da60(param_1,0x5c4000d,NULL,-1,-1);
-  FUN_0041da90(*(void **)((int)param_1 + 0x154) /* TODO: param_1 + 0x154 unknown struct */,(byte)(u1 >> 4) & 1);
+  FUN_0041da90(((GameBoard *)param_1)->reward_obj_b,(byte)(u1 >> 4) & 1);
 }
 
 
@@ -3210,8 +3210,8 @@ void __fastcall FUN_00428e60(int param_1)
   s1 = 0;
   pu2 = NULL;
   do {
-    if (*(short *)(*(int *)(param_1 + 0x19a + s1 * 4) + 0x118) == 1) {
-      pu2 = FUN_00454520((void *)(*(int *)(param_1 + 0x19a + s1 * 4) + 0x120));
+    if (((GameWidget *)*(int *)(param_1 + 0x19a + s1 * 4))->field_118 == 1) { /* TODO: param_1+0x19a = sub-object array */
+      pu2 = FUN_00454520((void *)&((DialogWidget *)*(int *)(param_1 + 0x19a + s1 * 4))->is_registered); /* sub-object + 0x120 */
       break;
     }
     s1 = s1 + 1;
@@ -3238,14 +3238,13 @@ void __cdecl FUN_00428f30(void *param_1,short param_2)
   if (param_1 != NULL) {
     FUN_004094d0(param_1,param_2,'\x01');
     if ((int)((UIElement *)param_1)->child_list_2 != 0 &&
-       (u1 = 1, *(int *)((int)((UIElement *)param_1)->child_list_2 + 0xe) /* TODO: CVector count at +0xe */ != 0)) {
+       (u1 = 1, ((CVector *)((UIElement *)param_1)->child_list_2)->count != 0)) {
       n2 = 4;
       do {
         n2 = n2 + 4;
         u1 = u1 + 1;
-        FUN_00428f30(*(void **)(**(int **)((int)((UIElement *)param_1)->child_list_2 + 4) /* TODO: CVector data ptr at +0x04 */ + -8 + n2),param_2)
-        ;
-      } while (u1 <= *(uint *)((int)((UIElement *)param_1)->child_list_2 + 0xe) /* TODO: CVector count at +0xe */);
+        FUN_00428f30(*(void **)(**(int **)((CVector *)((UIElement *)param_1)->child_list_2)->data + -8 + n2),param_2);
+      } while (u1 <= ((CVector *)((UIElement *)param_1)->child_list_2)->count);
     }
   }
   return;
@@ -3262,13 +3261,13 @@ void __cdecl FUN_00428f90(void *param_1)
   if (param_1 != NULL) {
     FUN_00409580(param_1,'\x01');
     if ((int)((UIElement *)param_1)->child_list_2 != 0 &&
-       (u2 = 1, *(int *)((int)((UIElement *)param_1)->child_list_2 + 0xe) /* TODO: CVector count at +0xe */ != 0)) {
+       (u2 = 1, ((CVector *)((UIElement *)param_1)->child_list_2)->count != 0)) {
       n1 = 4;
       do {
         n1 = n1 + 4;
         u2 = u2 + 1;
-        FUN_00428f90(*(void **)(**(int **)((int)((UIElement *)param_1)->child_list_2 + 4) /* TODO: CVector data ptr at +0x04 */ + -8 + n1));
-      } while (u2 <= *(uint *)((int)((UIElement *)param_1)->child_list_2 + 0xe) /* TODO: CVector count at +0xe */);
+        FUN_00428f90(*(void **)(**(int **)((CVector *)((UIElement *)param_1)->child_list_2)->data + -8 + n1));
+      } while (u2 <= ((CVector *)((UIElement *)param_1)->child_list_2)->count);
     }
   }
   return;
@@ -3308,7 +3307,7 @@ void __fastcall FUN_004299b0(int param_1)
   
   FUN_0042db40(param_1);
   dw1 = GetTickCount();
-  *(DWORD *)(param_1 + 0x176) = dw1;
+  ((GameBoard *)param_1)->last_tick = dw1;
 }
 
 
@@ -3498,7 +3497,7 @@ void __cdecl FUN_0042a770(int param_1,char *param_2)
   
   c2 = '\0';
   v1 = '\0';
-  if (((param_1 != 0) && (param_2 != NULL)) && (n1 = *(int *)(param_1 + 0xf6), n1 != 0)
+  if (((param_1 != 0) && (param_2 != NULL)) && (n1 = (int)((UIWidget *)param_1)->level_data_ptr, n1 != 0)
      ) {
     if (*param_2 == '\0') {
       if (*(int *)(param_2 + 2) != 0) {
@@ -3507,7 +3506,7 @@ void __cdecl FUN_0042a770(int param_1,char *param_2)
       }
       if (*(ushort *)(param_2 + 6) != 0) {
         c2 = FUN_0042a710(*(short *)(param_2 + 0xc),c2,
-                             (int)*(short *)(param_1 + 0x10c) == (uint)*(ushort *)(param_2 + 6),
+                             (int)((UIWidget *)param_1)->active_anim_id == (uint)*(ushort *)(param_2 + 6),
                              &v1);
       }
       if (param_2[8] != '\0') {
@@ -3546,14 +3545,14 @@ void __cdecl FUN_0042a8b0(int param_1,char *param_2)
   int n2;
   
   if (param_1 != 0) {
-    if ((*(int *)(param_1 + 0x36) != 0) &&
-       (u1 = 1, *(int *)(*(int *)(param_1 + 0x36) + 0xe) != 0)) {
+    if (((UIElement *)param_1)->child_list_2 != 0 &&
+       (u1 = 1, ((CVector *)((UIElement *)param_1)->child_list_2)->count != 0)) {
       n2 = 4;
       do {
         n2 = n2 + 4;
         u1 = u1 + 1;
-        FUN_0042a8b0(*(int *)(**(int **)(*(int *)(param_1 + 0x36) + 4) + -8 + n2),param_2);
-      } while (u1 <= *(uint *)(*(int *)(param_1 + 0x36) + 0xe));
+        FUN_0042a8b0(*(int *)(**(int **)((CVector *)((UIElement *)param_1)->child_list_2)->data + -8 + n2),param_2);
+      } while (u1 <= ((CVector *)((UIElement *)param_1)->child_list_2)->count);
     }
     FUN_0042a770(param_1,param_2);
   }
@@ -4446,7 +4445,7 @@ FUN_0042bc70(DialogWidget *this,short param_1,short param_2,short param_3,int pa
     FUN_00401ba0(&_tmp_34,param_2);
   }
   FUN_0041d3a0(this,n3,n5,c6);
-  this->prev_dialog = *(int *)(((UIElement *)pv2)->field_06 + 0x12);
+  this->prev_dialog = ((UIElement *)((UIElement *)pv2)->field_06)->flags;
   if (param_5 == NULL) {
     param_5 = DAT_004897c0;
   }
@@ -4552,8 +4551,8 @@ void __fastcall FUN_0042bf10(int param_1)
   void *this;
   
   this = *(void **)(((UIWidget *)DAT_004897c0)->sub_widgets_a[3] + 6);
-  if ((this != NULL) && (*(char *)(param_1 + 0x120) != '\0')) {
-    FUN_00430ac0(this,*(int **)(param_1 + 0x118));
+  if ((this != NULL) && (((DialogWidget *)param_1)->is_registered != '\0')) {
+    FUN_00430ac0(this,((DialogWidget *)param_1)->prev_dialog);
   }
   return;
 }
@@ -4680,7 +4679,7 @@ void FUN_0042c580(void) { return; }
 
 int __fastcall FUN_0042c590(int param_1)
 {
-  return *(int *)(param_1 + 0xf2) + -0xc + *(short *)(param_1 + 0x110) * 0xe;
+  return (int)((UIWidget *)param_1)->tile_data_ptr + -0xc + ((UIWidget *)param_1)->cell_count * 0xe;
 }
 
 
@@ -5068,7 +5067,7 @@ int * __fastcall FUN_0042cbd0(int *param_1)
   param_1[0x59] = 0;
   param_1[0x5b] = 0;
   param_1[0x5a] = 0;
-  *(char *)(param_1 + 0x5d) = 1;
+  ((GameBoard *)param_1)->is_timed = 1; /* param_1 + 0x5d = byte offset 0x174 */
   *(char *)((int)param_1 + 0x196) = 0; /* TODO: unknown offset 0x196 */
   pu3 = param_1 + 0x36;
   for (n2 = 0x1e; n2 != 0; n2 = n2 + -1) {
@@ -5076,15 +5075,15 @@ int * __fastcall FUN_0042cbd0(int *param_1)
     pu3 = pu3 + 1;
   }
   ((GameBoard *)param_1)->score_current = 0;
-  *(short *)(param_1 + 0x5f) = 0;
+  ((GameBoard *)param_1)->score_secondary = 0; /* param_1 + 0x5f = byte offset 0x17C */
   dw1 = GetTickCount();
   ((GameBoard *)param_1)->score_current = 0;
   ((GameBoard *)param_1)->last_tick = dw1;
-  *(short *)(param_1 + 0x5f) = 0;
+  ((GameBoard *)param_1)->score_secondary = 0; /* param_1 + 0x5f = byte offset 0x17C */
   param_1[0x5c] = 0;
   ((GameBoard *)param_1)->score_checkpoint_a = 0;
   ((GameBoard *)param_1)->reward_data_a = 0;
-  *(short *)(param_1 + 0x60) = 0;
+  ((GameBoard *)param_1)->score_checkpoint_b = 0; /* param_1 + 0x60 = byte offset 0x180 */
   ((GameBoard *)param_1)->reward_data_b = 0;
   ((GameBoard *)param_1)->reward_data_c = 0;
   ((GameBoard *)param_1)->sound_handle = 0;
@@ -5225,15 +5224,15 @@ void __thiscall FUN_0042d3f0(void *this,int param_1)
 
 void __fastcall FUN_0042d590(int param_1)
 {
-  if (*(int **)(param_1 + 0x158) != NULL) {
-    ((void (*)(void))**(void ***)(param_1 + 0x158))();
-    *(int *)(param_1 + 0x158) = 0;
+  if (((GameBoard *)param_1)->callback_ptr != NULL) {
+    ((void (*)(void))*((GameBoard *)param_1)->callback_ptr)();
+    ((GameBoard *)param_1)->callback_ptr = 0;
   }
-  if (*(int *)(param_1 + 0x160) != 0) {
-    *(int *)(*(int *)(param_1 + 0x160) + 0x16) = 0;
+  if (((GameBoard *)param_1)->reward_obj_d != 0) {
+    ((UIElement *)((GameBoard *)param_1)->reward_obj_d)->type_or_mode = 0;
   }
-  if (*(int *)(param_1 + 0x15c) != 0) {
-    *(int *)(*(int *)(param_1 + 0x15c) + 0x16) = 0;
+  if (((GameBoard *)param_1)->reward_obj_c != 0) {
+    ((UIElement *)((GameBoard *)param_1)->reward_obj_c)->type_or_mode = 0;
   }
   return;
 }
@@ -5243,9 +5242,9 @@ void __fastcall FUN_0042d590(int param_1)
 
 void __fastcall FUN_0042d5d0(int param_1)
 {
-  if (*(int **)(param_1 + 0x158) != NULL) {
-    ((void (*)(void))**(void ***)(param_1 + 0x158))();
-    *(int *)(param_1 + 0x158) = 0;
+  if (((GameBoard *)param_1)->callback_ptr != NULL) {
+    ((void (*)(void))*((GameBoard *)param_1)->callback_ptr)();
+    ((GameBoard *)param_1)->callback_ptr = 0;
   }
   return;
 }
@@ -5270,19 +5269,19 @@ void __fastcall FUN_0042d7d0(int param_1)
 {
   void *this;
   
-  if ((*(int *)(param_1 + 0x154) != 0) && (*(char *)(param_1 + 0x196) == '\0')) {
+  if (((GameBoard *)param_1)->reward_obj_b != 0 && (*(char *)(param_1 + 0x196) == '\0')) { /* TODO: unknown offset 0x196 */
     FUN_0040e270(DAT_004897c0,0xb);
-    FUN_0041dad0(*(void **)(param_1 + 0x154),1,'\0');
-    FUN_0041da90(*(void **)(param_1 + 0x154),1);
-    FUN_0041dd40(*(void **)(param_1 + 0x154));
-    *(short *)(*(int *)(param_1 + 0x154) + 0x112) = 1;
-    this = *(void **)(param_1 + 0x154);
+    FUN_0041dad0(((GameBoard *)param_1)->reward_obj_b,1,'\0');
+    FUN_0041da90(((GameBoard *)param_1)->reward_obj_b,1);
+    FUN_0041dd40(((GameBoard *)param_1)->reward_obj_b);
+    ((UIWidget *)((GameBoard *)param_1)->reward_obj_b)->pending_frame = 1;
+    this = ((GameBoard *)param_1)->reward_obj_b;
     ((UIWidget *)this)->anim_flag_0 = 0;
     ((UIWidget *)this)->anim_flag_2 = 1;
     ((UIWidget *)this)->anim_flag_1 = 0;
     ((UIWidget *)this)->anim_flag_3 = 0;
     FUN_00405e10(this,0,'\0');
-    *(char *)(param_1 + 0x196) = 1;
+    *(char *)(param_1 + 0x196) = 1; /* TODO: unknown offset 0x196 */
   }
   return;
 }
@@ -5294,19 +5293,19 @@ void __fastcall FUN_0042d860(int param_1)
 {
   void *this;
   
-  if ((*(int *)(param_1 + 0x154) != 0) && (*(char *)(param_1 + 0x196) != '\0')) {
+  if (((GameBoard *)param_1)->reward_obj_b != 0 && (*(char *)(param_1 + 0x196) != '\0')) { /* TODO: unknown offset 0x196 */
     FUN_0040e270(DAT_004897c0,0xc);
-    FUN_0041da90(*(void **)(param_1 + 0x154),1);
-    *(short *)(*(int *)(param_1 + 0x154) + 0x112) = 0;
-    this = *(void **)(param_1 + 0x154);
+    FUN_0041da90(((GameBoard *)param_1)->reward_obj_b,1);
+    ((UIWidget *)((GameBoard *)param_1)->reward_obj_b)->pending_frame = 0;
+    this = ((GameBoard *)param_1)->reward_obj_b;
     ((UIWidget *)this)->anim_flag_0 = 0;
     ((UIWidget *)this)->anim_flag_2 = 1;
     ((UIWidget *)this)->anim_flag_1 = 0;
     ((UIWidget *)this)->anim_flag_3 = 0;
     FUN_00405e10(this,2,'\0');
-    FUN_0041dad0(*(void **)(param_1 + 0x154),0,'\0');
-    FUN_0041da90(*(void **)(param_1 + 0x154),0);
-    *(char *)(param_1 + 0x196) = 0;
+    FUN_0041dad0(((GameBoard *)param_1)->reward_obj_b,0,'\0');
+    FUN_0041da90(((GameBoard *)param_1)->reward_obj_b,0);
+    *(char *)(param_1 + 0x196) = 0; /* TODO: unknown offset 0x196 */
   }
   return;
 }
@@ -5343,12 +5342,12 @@ void __fastcall FUN_0042d970(int param_1)
   int _extra;
   int *pn2;
   
-  b1 = FUN_0045d930(*(int *)(param_1 + 0x18e));
+  b1 = FUN_0045d930(((GameBoard *)param_1)->sound_handle);
   if ((short)CONCAT31(_extra,b1) != 0) {
-    FUN_00434490(*(int *)(param_1 + 0x18e));
-    *(int *)(param_1 + 0x18e) = 0;
+    FUN_00434490(((GameBoard *)param_1)->sound_handle);
+    ((GameBoard *)param_1)->sound_handle = 0;
   }
-  pn2 = (int *)(param_1 + 0x192);
+  pn2 = (int *)((int)param_1 + 0x192); /* TODO: GameBoard::_pad192 */
   if (*pn2 != 0) {
     FUN_00433270(pn2);
     *pn2 = 0;
@@ -5408,8 +5407,8 @@ FUN_0042dae0(void *this,int param_1,ushort *param_2,short param_3,short param_4)
 
 void __fastcall FUN_0042db40(int param_1)
 {
-  if (*(int *)(param_1 + 0x18e) != 0) {
-    FUN_00434490(*(int *)(param_1 + 0x18e));
+  if (((GameBoard *)param_1)->sound_handle != 0) {
+    FUN_00434490(((GameBoard *)param_1)->sound_handle);
   }
   return;
 }
@@ -5529,9 +5528,9 @@ void FUN_0042e12f(void) { return; }
 
 void __fastcall FUN_0042e140(int param_1)
 {
-  if (*(int **)(param_1 + 0x16c) != NULL) {
-    ((void (*)(void))**(void ***)(param_1 + 0x16c))(); /* obj at *(param_1+0x16c)->vtable[0] */
-    *(int *)(param_1 + 0x16c) = 0;
+  if (*(int *)((int)param_1 + 0x16c) != 0) { /* TODO: GameBoard::_pad16c */
+    ((void (*)(void))**(void ***)((int)param_1 + 0x16c))(); /* obj at *(param_1+0x16c)->vtable[0] */
+    *(int *)((int)param_1 + 0x16c) = 0; /* TODO: GameBoard::_pad16c */
   }
   FUN_00403aa0();
 }
@@ -5568,7 +5567,7 @@ uint __fastcall FUN_0042e190(void *param_1)
   
   if ((DAT_0048345c != 0) && (((GameBoard *)param_1)->is_timed != '\0')) {
     u6 = FUN_0040e580();
-    n7 = *(short *)(DAT_0048345c + 0x92 + (short)u6 * 2) * 10 + ((GameBoard *)param_1)->level_data_offset
+    n7 = *(short *)((int)&((GameSession *)DAT_0048345c)->score_display + (short)u6 * 2) * 10 + ((GameBoard *)param_1)->level_data_offset
     ;
     s1 = *(short *)(n7 + -6);
     s2 = *(short *)(n7 + -10);
@@ -5636,26 +5635,26 @@ uint __fastcall FUN_0042e190(void *param_1)
 void __fastcall FUN_0042e3a0(int param_1)
 {
   FUN_0042db40(param_1);
-  if (*(int **)(param_1 + 0x158) != NULL) {
-    ((void (*)(void))**(void ***)(param_1 + 0x158))();
+  if (((GameBoard *)param_1)->callback_ptr != NULL) {
+    ((void (*)(void))*((GameBoard *)param_1)->callback_ptr)();
   }
-  if (*(int **)(param_1 + 0x150) != NULL) {
-    ((void (*)(void))((void **)(**(int **)(param_1 + 0x150)))[0x8c / 4])();
+  if (((GameBoard *)param_1)->reward_obj_a != NULL) {
+    ((void (*)(void))((void **)(**(int **)&((GameBoard *)param_1)->reward_obj_a))[0x8c / 4])();
   }
-  if (*(int **)(param_1 + 0x154) != NULL) {
-    ((void (*)(void))((void **)(**(int **)(param_1 + 0x154)))[0x8c / 4])();
+  if (((GameBoard *)param_1)->reward_obj_b != NULL) {
+    ((void (*)(void))((void **)(**(int **)&((GameBoard *)param_1)->reward_obj_b))[0x8c / 4])();
   }
-  if (*(int **)(param_1 + 0x15c) != NULL) {
-    ((void (*)(void))((void **)(**(int **)(param_1 + 0x15c)))[0x8c / 4])();
+  if (((GameBoard *)param_1)->reward_obj_c != NULL) {
+    ((void (*)(void))((void **)(**(int **)&((GameBoard *)param_1)->reward_obj_c))[0x8c / 4])();
   }
-  if (*(int **)(param_1 + 0x160) != NULL) {
-    ((void (*)(void))((void **)(**(int **)(param_1 + 0x160)))[0x8c / 4])();
+  if (((GameBoard *)param_1)->reward_obj_d != NULL) {
+    ((void (*)(void))((void **)(**(int **)&((GameBoard *)param_1)->reward_obj_d))[0x8c / 4])();
   }
-  if (*(int **)(param_1 + 0x164) != NULL) {
-    ((void (*)(void))((void **)(**(int **)(param_1 + 0x164)))[0x8c / 4])();
+  if (((GameBoard *)param_1)->reward_obj_e != NULL) {
+    ((void (*)(void))((void **)(**(int **)&((GameBoard *)param_1)->reward_obj_e))[0x8c / 4])();
   }
-  if (*(int **)(param_1 + 0x168) != NULL) {
-    ((void (*)(void))((void **)(**(int **)(param_1 + 0x168)))[0x8c / 4])();
+  if (((GameBoard *)param_1)->reward_obj_f != NULL) {
+    ((void (*)(void))((void **)(**(int **)&((GameBoard *)param_1)->reward_obj_f))[0x8c / 4])();
   }
   FUN_0041e0e0(param_1);
 }
@@ -6335,7 +6334,7 @@ void __fastcall FUN_0042f7f0(int param_1)
 {
                     /* NOTE: Could not recover jumptable at 0x0042f7f6. Too many branches */
                     /* NOTE: Treating indirect jump as call */
-  ((void (*)(void))((void **)(*(int *)(param_1 + 0x2a)))[0x58 / 4])(); /* obj at param_1+0x2a->vtable[22] */
+  ((void (*)(void))((void **)(*(int *)&((GameScreen *)param_1)->draw_context))[0x58 / 4])(); /* draw_context->vtable[22] */
   return;
 }
 
@@ -6414,7 +6413,7 @@ void FUN_0042fa30(void)
 {
   int _ebp;
   
-  FUN_004244b0((int *)(*(int *)(_ebp + -0x10) + 0x2a));
+  FUN_004244b0((int *)&((GameScreen *)*(int *)(_ebp + -0x10))->draw_context);
 }
 
 

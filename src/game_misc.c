@@ -1662,10 +1662,10 @@ void __thiscall FUN_00464230(GameWidget *this,short param_1)
 void __fastcall FUN_00464240(int param_1)
 {
   FUN_00456450();
-  if ((int)*(short *)(param_1 + 0x118) - (int)DAT_00489b68 != -1) {
+  if ((int)((GameWidget *)param_1)->field_118 - (int)DAT_00489b68 != -1) {
     FUN_00464e50(DAT_00489b9c);
     DAT_00489b48 = 1;
-    DAT_00489b68 = *(short *)(param_1 + 0x118) + 1;
+    DAT_00489b68 = ((GameWidget *)param_1)->field_118 + 1;
   }
   return;
 }
@@ -1863,10 +1863,10 @@ void FUN_00464f20(void)
   } while (s4 < 6);
   for (; pn3 != NULL; pn3 = (int *)pn3[1]) {
     if (DAT_00489b68 == 1) {
-      s4 = *(short *)(*pn3 + 0x10e) + -1;
+      s4 = ((UIWidget *)*pn3)->current_frame + -1;
     }
     else {
-      s4 = *(short *)(*pn3 + 0x10e) + -2;
+      s4 = ((UIWidget *)*pn3)->current_frame + -2;
     }
     u5 = (ushort)(s4 == 0);
     u6 = 0;
@@ -4016,9 +4016,9 @@ void ** __fastcall FUN_0046c470(int param_1)
   uint u2;
   
   do {
-    pu1 = *(int **)(param_1 + 0x18);
+    pu1 = *(int **)&((SmartHeapPool *)param_1)->_pad16[2]; /* free_list at 0x18 */
     if (pu1 != NULL) {
-      *(int *)(param_1 + 0x18) = *pu1;
+      *(int *)&((SmartHeapPool *)param_1)->_pad16[2] = *pu1; /* free_list at 0x18 */
       return pu1;
     }
     u2 = FUN_0046c530(param_1,0);
@@ -4041,7 +4041,7 @@ uint __fastcall FUN_0046c530(int param_1,ushort param_2)
   int *pu8;
   
   u3 = (uint)param_2;
-  pu5 = *(int **)(param_1 + 0x1c);
+  pu5 = (int *)((SmartHeapPool *)param_1)->data_start;
   if (param_2 == 0) {
     if (pu5 != NULL) {
       u2 = FUN_00471410(pu5);
@@ -4054,10 +4054,10 @@ uint __fastcall FUN_0046c530(int param_1,ushort param_2)
         if (0xfffe < u3) {
           u3 = 0xffff;
         }
-        n4 = FUN_00471330(pu5,u3 & 0xffff,(uint)(*(ushort *)(param_1 + 0x22) | 0x1000));
+        n4 = FUN_00471330(pu5,u3 & 0xffff,(uint)(((SmartHeapPool *)param_1)->pool_flags | 0x1000));
         if (n4 != 0) {
           pu7 = (int *)((int)pu5 + (u2 - 0xc & 0xfffffff8) + 0xc);
-          *(int *)(param_1 + 0x2c) = *(int *)(param_1 + 0x2c) - u2;
+          *(int *)(param_1 + 0x2c) = *(int *)(param_1 + 0x2c) - u2; /* TODO: _pad2c or current_size at 0x2c */
           goto L_0046c617;
         }
       }
@@ -4072,32 +4072,32 @@ L_0046c5b7:
     }
   }
   while( true ) {
-    pu5 = FUN_00471190(u3 & 0xffff,(uint)(*(ushort *)(param_1 + 0x22) | 0x1000));
+    pu5 = FUN_00471190(u3 & 0xffff,(uint)(((SmartHeapPool *)param_1)->pool_flags | 0x1000));
     if (pu5 != NULL) break;
     u3 = u3 >> 1 & 0x7fff;
     if ((ushort)u3 < 0xc) {
       u3 = (uint)(ushort)((ushort)u3 * 2);
       n4 = FUN_0046fd70(param_1,2);
       if (n4 == 0) {
-        return (uint)(*(int *)(param_1 + 0x18) != 0);
+        return (uint)(*(int *)&((SmartHeapPool *)param_1)->_pad16[2] != 0); /* free_list at 0x18 */
       }
     }
   }
   pu7 = pu5 + 1;
-  *pu5 = *(int *)(param_1 + 0x1c);
-  *(int **)(param_1 + 0x1c) = pu5;
+  *pu5 = (int)((SmartHeapPool *)param_1)->data_start;
+  ((SmartHeapPool *)param_1)->data_start = pu5;
 L_0046c617:
-  *(int *)(param_1 + 0x2c) = *(int *)(param_1 + 0x2c) + ((u3 & 0xffff) + 0xfff & 0xfffff000);
+  *(int *)(param_1 + 0x2c) = *(int *)(param_1 + 0x2c) + ((u3 & 0xffff) + 0xfff & 0xfffff000); /* TODO: _pad2c or current_size at 0x2c */
   u3 = FUN_00471410(pu5);
   u1 = (short)(u3 - 0xc >> 3) + 1;
-  pu6 = *(int **)(param_1 + 0x18);
+  pu6 = *(int **)&((SmartHeapPool *)param_1)->_pad16[2]; /* free_list at 0x18 */
   do {
     pu8 = pu7;
     *pu8 = pu6;
     pu6 = pu8;
     pu7 = pu8 + 2;
   } while (pu8 < pu5 + (uint)u1 * 2 + -1);
-  *(int **)(param_1 + 0x18) = pu8;
+  *(int **)&((SmartHeapPool *)param_1)->_pad16[2] = pu8; /* free_list at 0x18 */
   return CONCAT22((ushort)(u3 - 0xc >> 0x13),u1);
 }
 
@@ -4106,8 +4106,8 @@ L_0046c617:
 
 void __fastcall FUN_0046c660(int param_1,int *param_2)
 {
-  *param_2 = *(int *)(param_1 + 0x18);
-  *(int **)(param_1 + 0x18) = param_2;
+  *param_2 = *(int *)&((SmartHeapPool *)param_1)->_pad16[2]; /* free_list at 0x18 */
+  *(int **)&((SmartHeapPool *)param_1)->_pad16[2] = param_2; /* free_list at 0x18 */
 }
 
 
@@ -4137,14 +4137,14 @@ void __fastcall FUN_0046cb10(int param_1)
   ushort *pu2;
   
   u1 = 0;
-  pu2 = *(ushort **)(param_1 + 0x14);
+  pu2 = (ushort *)((SmartHeapPool *)param_1)->end_ptr;
   do {
     if (u1 < (*pu2 & 0xfffc)) {
-      *(ushort **)(param_1 + 0x10) = pu2;
+      ((SmartHeapPool *)param_1)->slab_head = pu2;
       u1 = *pu2 & 0xfffc;
     }
     pu2 = *(ushort **)(pu2 + 1);
-  } while (*(ushort **)(param_1 + 0x14) != pu2);
+  } while ((ushort *)((SmartHeapPool *)param_1)->end_ptr != pu2);
 }
 
 
@@ -4186,7 +4186,7 @@ ushort * __fastcall FUN_0046cb40(ushort *param_1)
         else {
           *pu4 = u1 | 2;
         }
-        n2 = *(int *)(((uint)_Dst & 0xffff0000) + 0x14);
+        n2 = (int)((SmartHeapPool *)((uint)_Dst & 0xffff0000))->end_ptr;
         *(int *)(pu4 + 3) = n2;
         *(int *)(pu4 + 1) = *(int *)(n2 + 2);
         *(ushort **)(*(int *)(n2 + 2) + 6) = pu4;
@@ -4216,7 +4216,7 @@ ushort * __fastcall FUN_0046cb40(ushort *param_1)
 
 void __fastcall FUN_0046cc80(LPCVOID param_1,uint param_2,uint param_3)
 {
-  if (param_3 <= *(ushort *)((int)param_1 + 0x2a)) { /* TODO: SmartHeap pool max_small_block at 0x2a */
+  if (param_3 <= ((SmartHeapPool *)param_1)->max_small_block) {
     FUN_0046f290(param_1,param_2,(short)param_3);
     return;
   }
@@ -4273,8 +4273,8 @@ uint FUN_0046d4d0(uint *param_1)
   }
   u5 = *param_1;
   pn4 = (int *)(u5 & 0xffff0000);
-  if ((*(ushort *)((int)pn4 + 0xe) & 0xfff8) == 0xcad0) { /* TODO: SmartHeap page magic check */
-    if (((byte)*(ushort *)((int)pn4 + 0xe) & 7) == 3) { /* TODO: SmartHeap page type field */
+  if ((((SmartHeapPool *)pn4)->page_tag & 0xfff8) == 0xcad0) {
+    if (((byte)((SmartHeapPool *)pn4)->page_tag & 7) == 3) {
       b6 = pn4[4] != 0;
     }
     else {
@@ -4296,16 +4296,16 @@ L_0046d53f:
     FUN_0046fd70(0,0xd);
     return 0;
   }
-  if ((*(byte *)(v4 + 0x22) & 2) != 0) {
-    EnterCriticalSection((LPCRITICAL_SECTION)(v4 + 0x48));
-    *(int *)(v4 + 0x60) = *(int *)(v4 + 0x60) + 1;
+  if ((((SmartHeapPool *)v4)->pool_flags & 2) != 0) {
+    EnterCriticalSection((LPCRITICAL_SECTION)&((SmartHeapPool *)v4)->critical_section);
+    ((SmartHeapPool *)v4)->lock_count = ((SmartHeapPool *)v4)->lock_count + 1;
   }
-  u2 = *(ushort *)((int)pn4 + 0xe) & 7; /* TODO: SmartHeap page type field */
-  if ((u2 != 0) && ((u2 != 3 || (*(char *)((int)pn4 + 0x15) != '\0')))) { /* TODO: SmartHeap page flags at 0x15 */
+  u2 = ((SmartHeapPool *)pn4)->page_tag & 7;
+  if ((u2 != 0) && ((u2 != 3 || (((SmartHeapPool *)pn4)->page_flags != '\0')))) {
     u1 = param_1[1];
     if ((u1 & 0xff0000) < 0xff0000) {
       param_1[1] = (u1 + 0x10000 ^ u1) & 0xff0000 ^ u1;
-      if (((u1 & 0xff0000) == 0) && (((byte)*(short *)((int)pn4 + 0xe) & 7) != 3)) { /* TODO: SmartHeap page type field */
+      if (((u1 & 0xff0000) == 0) && (((byte)((SmartHeapPool *)pn4)->page_tag & 7) != 3)) {
         *(short *)(pn4[1] + 2) = *(short *)(pn4[1] + 2) + 1;
       }
       goto L_0046d5f9;
@@ -4314,9 +4314,9 @@ L_0046d53f:
   u5 = 0;
   FUN_0046fd70(v4,6);
 L_0046d5f9:
-  if ((*(byte *)(v4 + 0x22) & 2) != 0) {
-    *(int *)(v4 + 0x60) = *(int *)(v4 + 0x60) + -1;
-    LeaveCriticalSection((LPCRITICAL_SECTION)(v4 + 0x48));
+  if ((((SmartHeapPool *)v4)->pool_flags & 2) != 0) {
+    ((SmartHeapPool *)v4)->lock_count = ((SmartHeapPool *)v4)->lock_count + -1;
+    LeaveCriticalSection((LPCRITICAL_SECTION)&((SmartHeapPool *)v4)->critical_section);
   }
   return u5;
 }
@@ -4338,9 +4338,9 @@ int FUN_0046dcf0(uint *param_1)
   DAT_00484044 = DAT_00484044 + 1;
   u1 = *param_1;
   u3 = u1 & 0xffff0000;
-  if ((*(ushort *)(u3 + 0xe) & 0xfff8) == 0xcad0) {
-    if (((byte)*(ushort *)(u3 + 0xe) & 7) == 3) {
-      b4 = *(int *)(u3 + 0x10) != 0;
+  if ((((SmartHeapPool *)u3)->page_tag & 0xfff8) == 0xcad0) {
+    if (((byte)((SmartHeapPool *)u3)->page_tag & 7) == 3) {
+      b4 = ((SmartHeapPool *)u3)->slab_head != 0;
     }
     else {
       b4 = (*(ushort *)(u1 - 2) & 0x8001) == 0x8001;
@@ -4394,24 +4394,24 @@ short FUN_0046df90(int param_1,uint param_2)
   uint u1;
   short u2;
   
-  if (*(short *)(param_1 + 0x20) != -0x4153) {
+  if (((SmartHeapPool *)param_1)->pool_signature != -0x4153) {
     FUN_0046fd70(0,10);
     return 0;
   }
   u1 = FUN_0046e010(param_2);
-  if ((*(byte *)(param_1 + 0x22) & 2) != 0) {
-    EnterCriticalSection((LPCRITICAL_SECTION)(param_1 + 0x48));
-    *(int *)(param_1 + 0x60) = *(int *)(param_1 + 0x60) + 1;
+  if ((((SmartHeapPool *)param_1)->pool_flags & 2) != 0) {
+    EnterCriticalSection((LPCRITICAL_SECTION)&((SmartHeapPool *)param_1)->critical_section);
+    ((SmartHeapPool *)param_1)->lock_count = ((SmartHeapPool *)param_1)->lock_count + 1;
   }
   u2 = 0;
-  if (*(int *)(param_1 + 0x24) + 0x1cU <= u1) {
-    u2 = *(short *)(param_1 + 0x28);
-    *(short *)(param_1 + 0x28) = (short)u1;
-    *(short *)(param_1 + 0x2a) = (short)(u1 >> 2);
+  if (((SmartHeapPool *)param_1)->alloc_unit + 0x1cU <= u1) {
+    u2 = ((SmartHeapPool *)param_1)->min_block;
+    ((SmartHeapPool *)param_1)->min_block = (short)u1;
+    ((SmartHeapPool *)param_1)->max_small_block = (short)(u1 >> 2);
   }
-  if ((*(byte *)(param_1 + 0x22) & 2) != 0) {
-    *(int *)(param_1 + 0x60) = *(int *)(param_1 + 0x60) + -1;
-    LeaveCriticalSection((LPCRITICAL_SECTION)(param_1 + 0x48));
+  if ((((SmartHeapPool *)param_1)->pool_flags & 2) != 0) {
+    ((SmartHeapPool *)param_1)->lock_count = ((SmartHeapPool *)param_1)->lock_count + -1;
+    LeaveCriticalSection((LPCRITICAL_SECTION)&((SmartHeapPool *)param_1)->critical_section);
   }
   return u2;
 }
@@ -4459,27 +4459,27 @@ int FUN_0046e060(int param_1,ushort param_2)
   else {
     u1 = (uint)(param_2 + 3 & 0xfffc);
   }
-  if (*(short *)(param_1 + 0x20) != -0x4153) {
+  if (((SmartHeapPool *)param_1)->pool_signature != -0x4153) {
     FUN_0046fd70(0,10);
     return 0;
   }
-  if ((*(byte *)(param_1 + 0x22) & 2) != 0) {
-    EnterCriticalSection((LPCRITICAL_SECTION)(param_1 + 0x48));
-    *(int *)(param_1 + 0x60) = *(int *)(param_1 + 0x60) + 1;
+  if ((((SmartHeapPool *)param_1)->pool_flags & 2) != 0) {
+    EnterCriticalSection((LPCRITICAL_SECTION)&((SmartHeapPool *)param_1)->critical_section);
+    ((SmartHeapPool *)param_1)->lock_count = ((SmartHeapPool *)param_1)->lock_count + 1;
   }
-  if ((u1 < param_2) || ((ushort)(*(short *)(param_1 + 0x28) - 0x1c) < u1)) {
+  if ((u1 < param_2) || ((ushort)(((SmartHeapPool *)param_1)->min_block - 0x1c) < u1)) {
     FUN_0046fd70(param_1,3);
   }
   else if (*(int *)(param_1 + 4) == 0) {
-    *(uint *)(param_1 + 0x24) = u1;
+    ((SmartHeapPool *)param_1)->alloc_unit = u1;
     u2 = 1;
     goto L_0046e0e6;
   }
   u2 = 0;
 L_0046e0e6:
-  if ((*(byte *)(param_1 + 0x22) & 2) != 0) {
-    *(int *)(param_1 + 0x60) = *(int *)(param_1 + 0x60) + -1;
-    LeaveCriticalSection((LPCRITICAL_SECTION)(param_1 + 0x48));
+  if ((((SmartHeapPool *)param_1)->pool_flags & 2) != 0) {
+    ((SmartHeapPool *)param_1)->lock_count = ((SmartHeapPool *)param_1)->lock_count + -1;
+    LeaveCriticalSection((LPCRITICAL_SECTION)&((SmartHeapPool *)param_1)->critical_section);
   }
   return u2;
 }
@@ -4494,7 +4494,7 @@ int FUN_0046e210(LPCVOID param_1)
 {
   int u1;
   
-  if (*(short *)((int)param_1 + 0x20) != -0x4153) { /* TODO: SmartHeap pool signature check */
+  if (((SmartHeapPool *)param_1)->pool_signature != -0x4153) {
     FUN_0046fd70(0,10);
     return 0;
   }
@@ -4524,9 +4524,9 @@ int __fastcall FUN_0046e240(LPCVOID param_1)
   if (n4 == 0) {
     return 0;
   }
-  if ((*(byte *)((int)param_1 + 0x22) & 2) != 0) { /* TODO: SmartHeap pool threadsafe flag at 0x22 */
-    EnterCriticalSection((LPCRITICAL_SECTION)((int)param_1 + 0x48)); /* TODO: SmartHeap pool critical_section at 0x48 */
-    *(int *)((int)param_1 + 0x60) = *(int *)((int)param_1 + 0x60) + 1; /* TODO: SmartHeap pool lock_count at 0x60 */
+  if ((((SmartHeapPool *)param_1)->pool_flags & 2) != 0) {
+    EnterCriticalSection((LPCRITICAL_SECTION)&((SmartHeapPool *)param_1)->critical_section);
+    ((SmartHeapPool *)param_1)->lock_count = ((SmartHeapPool *)param_1)->lock_count + 1;
   }
   _DAT_00483df0 = param_1;
   n4 = FUN_00471650((LPCRITICAL_SECTION)&DAT_00489c80,(int *)&DAT_00484034);
@@ -4535,13 +4535,13 @@ int __fastcall FUN_0046e240(LPCVOID param_1)
   }
   u6 = 0;
   FUN_00471900((int)param_1);
-  *(short *)((int)param_1 + 0x20) = 0; /* TODO: SmartHeap pool signature at 0x20 */
+  ((SmartHeapPool *)param_1)->pool_signature = 0;
   do {
     pn1 = (int *)((int)param_1 + u6 * 4);
     n4 = *pn1;
     if (n4 != 0) {
       do {
-        *(short *)(*(int *)(n4 + 4) + 0xe) = 0;
+        ((SmartHeapPool *)*(int *)(n4 + 4))->page_tag = 0;
         FUN_00471220(*(LPCVOID *)(n4 + 4));
         n4 = *(int *)(n4 + 8);
       } while (*pn1 != n4);
@@ -4549,24 +4549,24 @@ int __fastcall FUN_0046e240(LPCVOID param_1)
     u5 = (short)u6 + 1;
     u6 = (uint)u5;
   } while (u5 < 5);
-  pu3 = *(int **)((int)param_1 + 0x164); /* TODO: SmartHeap pool overflow_chain at 0x164 */
+  pu3 = (int *)((SmartHeapPool *)param_1)->overflow_chain;
   while (pu3 != NULL) {
     pu2 = (int *)*pu3;
     FUN_00471220(pu3);
     pu3 = pu2;
   }
-  pu3 = *(int **)((int)param_1 + 0x1c); /* TODO: SmartHeap pool data_start at 0x1c */
+  pu3 = (int *)((SmartHeapPool *)param_1)->data_start;
   while (pu3 != NULL) {
     pu2 = (int *)*pu3;
     FUN_00471220(pu3);
     pu3 = pu2;
   }
-  if ((*(byte *)((int)param_1 + 0x22) & 2) != 0) { /* TODO: SmartHeap pool threadsafe flag at 0x22 */
-    *(int *)((int)param_1 + 0x60) = *(int *)((int)param_1 + 0x60) + -1; /* TODO: SmartHeap pool lock_count at 0x60 */
-    LeaveCriticalSection((LPCRITICAL_SECTION)((int)param_1 + 0x48)); /* TODO: SmartHeap pool critical_section at 0x48 */
+  if ((((SmartHeapPool *)param_1)->pool_flags & 2) != 0) {
+    ((SmartHeapPool *)param_1)->lock_count = ((SmartHeapPool *)param_1)->lock_count + -1;
+    LeaveCriticalSection((LPCRITICAL_SECTION)&((SmartHeapPool *)param_1)->critical_section);
   }
-  if ((*(byte *)((int)param_1 + 0x22) & 2) != 0) { /* TODO: SmartHeap pool threadsafe flag at 0x22 */
-    DeleteCriticalSection((LPCRITICAL_SECTION)((int)param_1 + 0x48)); /* TODO: SmartHeap pool critical_section at 0x48 */
+  if ((((SmartHeapPool *)param_1)->pool_flags & 2) != 0) {
+    DeleteCriticalSection((LPCRITICAL_SECTION)&((SmartHeapPool *)param_1)->critical_section);
   }
   _DAT_00483df0 = NULL;
   LeaveCriticalSection((LPCRITICAL_SECTION)&DAT_00489c80);
@@ -4593,18 +4593,18 @@ int FUN_0046e4a0(int param_1)
 {
   int n1;
   
-  if (*(short *)(param_1 + 0x20) != -0x4153) {
+  if (((SmartHeapPool *)param_1)->pool_signature != -0x4153) {
     FUN_0046fd70(0,10);
     return -1;
   }
-  if ((*(byte *)(param_1 + 0x22) & 2) != 0) {
-    EnterCriticalSection((LPCRITICAL_SECTION)(param_1 + 0x48));
-    *(int *)(param_1 + 0x60) = *(int *)(param_1 + 0x60) + 1;
+  if ((((SmartHeapPool *)param_1)->pool_flags & 2) != 0) {
+    EnterCriticalSection((LPCRITICAL_SECTION)&((SmartHeapPool *)param_1)->critical_section);
+    ((SmartHeapPool *)param_1)->lock_count = ((SmartHeapPool *)param_1)->lock_count + 1;
   }
   n1 = FUN_0046e500(param_1);
-  if ((*(byte *)(param_1 + 0x22) & 2) != 0) {
-    *(int *)(param_1 + 0x60) = *(int *)(param_1 + 0x60) + -1;
-    LeaveCriticalSection((LPCRITICAL_SECTION)(param_1 + 0x48));
+  if ((((SmartHeapPool *)param_1)->pool_flags & 2) != 0) {
+    ((SmartHeapPool *)param_1)->lock_count = ((SmartHeapPool *)param_1)->lock_count + -1;
+    LeaveCriticalSection((LPCRITICAL_SECTION)&((SmartHeapPool *)param_1)->critical_section);
   }
   return n1;
 }
@@ -4622,7 +4622,7 @@ int __fastcall FUN_0046e500(int param_1)
   short s6;
   uint u7;
   
-  n1 = *(int *)(param_1 + 0x2c);
+  n1 = ((SmartHeapPool *)param_1)->current_size;
   u7 = 0;
   do {
     n5 = *(int *)(param_1 + u7 * 4);
@@ -4646,11 +4646,11 @@ int __fastcall FUN_0046e500(int param_1)
     }
     u7 = (uint)(ushort)(s6 + 1U);
   } while ((ushort)(s6 + 1U) < 5);
-  if (*(void (**)(void))(param_1 + 0x38) != NULL) {
-    ((void (*)(void))**(void ***)(param_1 + 0x38))(); /* obj at param_1+0x38->vtable[0] */
+  if (*(void (**)(void))((SmartHeapPool *)param_1)->_pad38 != NULL) { /* TODO: callback in _pad38 */
+    ((void (*)(void))**(void ***)((SmartHeapPool *)param_1)->_pad38)();
   }
 L_0046e57a:
-  return n1 - *(int *)(param_1 + 0x2c);
+  return n1 - ((SmartHeapPool *)param_1)->current_size;
 }
 
 
@@ -4670,14 +4670,14 @@ uint FUN_0046e590(LPCVOID param_1,uint param_2,int param_3)
   short v6;
   
   u4 = 0;
-  if (*(short *)((int)param_1 + 0x20) != -0x4153) { /* TODO: SmartHeap pool signature at 0x20 */
+  if (((SmartHeapPool *)param_1)->pool_signature != -0x4153) {
     FUN_0046fd70(0,10);
     return 0xffffffff;
   }
   _DAT_00483de0 = 1;
   if (param_3 == 1) {
     v6 = 1;
-    if (*(int *)((int)param_1 + 0x24) == 0) { /* TODO: SmartHeap pool alloc_unit at 0x24 */
+    if (((SmartHeapPool *)param_1)->alloc_unit == 0) {
       FUN_0046fd70(param_1,4);
       return 0xffffffff;
     }
@@ -4691,25 +4691,25 @@ uint FUN_0046e590(LPCVOID param_1,uint param_2,int param_3)
     }
     v6 = 0;
   }
-  if ((*(byte *)((int)param_1 + 0x22) & 2) != 0) { /* TODO: SmartHeap pool threadsafe flag at 0x22 */
-    EnterCriticalSection((LPCRITICAL_SECTION)((int)param_1 + 0x48)); /* TODO: SmartHeap pool critical_section at 0x48 */
-    *(int *)((int)param_1 + 0x60) = *(int *)((int)param_1 + 0x60) + 1; /* TODO: SmartHeap pool lock_count at 0x60 */
+  if ((((SmartHeapPool *)param_1)->pool_flags & 2) != 0) {
+    EnterCriticalSection((LPCRITICAL_SECTION)&((SmartHeapPool *)param_1)->critical_section);
+    ((SmartHeapPool *)param_1)->lock_count = ((SmartHeapPool *)param_1)->lock_count + 1;
   }
   pn1 = (int *)((int)param_1 + (uint)v6 * 4);
   n2 = *pn1;
   if (param_2 != 0) {
     do {
-      pn3 = FUN_0046e980(param_1,v6,(uint)*(ushort *)((int)param_1 + 0x28),0); /* TODO: SmartHeap pool min_block at 0x28 */
+      pn3 = FUN_0046e980(param_1,v6,(uint)((SmartHeapPool *)param_1)->min_block,0);
       if (pn3 == NULL) break;
-      u4 = u4 + *(ushort *)((int)param_1 + 0x28); /* TODO: SmartHeap pool min_block at 0x28 */
+      u4 = u4 + ((SmartHeapPool *)param_1)->min_block;
     } while (u4 < param_2);
   }
   if (n2 != 0) {
     *pn1 = n2;
   }
-  if ((*(byte *)((int)param_1 + 0x22) & 2) != 0) { /* TODO: SmartHeap pool threadsafe flag at 0x22 */
-    *(int *)((int)param_1 + 0x60) = *(int *)((int)param_1 + 0x60) + -1; /* TODO: SmartHeap pool lock_count at 0x60 */
-    LeaveCriticalSection((LPCRITICAL_SECTION)((int)param_1 + 0x48)); /* TODO: SmartHeap pool critical_section at 0x48 */
+  if ((((SmartHeapPool *)param_1)->pool_flags & 2) != 0) {
+    ((SmartHeapPool *)param_1)->lock_count = ((SmartHeapPool *)param_1)->lock_count + -1;
+    LeaveCriticalSection((LPCRITICAL_SECTION)&((SmartHeapPool *)param_1)->critical_section);
   }
   return u4;
 }
@@ -4735,10 +4735,10 @@ bool __fastcall FUN_0046e6b0(LPCVOID param_1)
   pu4 = NULL;
   v4 = NULL;
   v8 = 0;
-  if (*(int *)((int)param_1 + 0x16c) == 0) { /* TODO: SmartHeap pool field at 0x16c */
+  if (((SmartHeapPool *)param_1)->pool_field == 0) {
     u2 = 0x1000;
-    pu5 = (int *)((int)param_1 + 0x168);
-    *(int *)((int)param_1 + 0x2c) = *(int *)((int)param_1 + 0x2c) + -0x1000; /* TODO: SmartHeap pool current_size at 0x2c */
+    pu5 = (int *)((int)param_1 + 0x168); /* TODO: SmartHeapPool _pad168 region */
+    ((SmartHeapPool *)param_1)->current_size = ((SmartHeapPool *)param_1)->current_size + -0x1000;
   }
   else {
     v8 = FUN_00471410(param_1);
@@ -4751,10 +4751,10 @@ bool __fastcall FUN_0046e6b0(LPCVOID param_1)
       if (0xfffe < u2) {
         u2 = 0xffff;
       }
-      n3 = FUN_00471330(param_1,u2,(uint)(*(ushort *)((int)param_1 + 0x22) | 0x1000)); /* TODO: SmartHeap pool flags at 0x22 */
+      n3 = FUN_00471330(param_1,u2,(uint)(((SmartHeapPool *)param_1)->pool_flags | 0x1000));
       if (n3 != 0) {
         pu5 = (int *)((v8 - 0x178 & 0xfffffff0) + 0x178 + (int)param_1);
-        *(int *)((int)param_1 + 0x2c) = *(int *)((int)param_1 + 0x2c) - v8; /* TODO: SmartHeap pool current_size at 0x2c */
+        ((SmartHeapPool *)param_1)->current_size = ((SmartHeapPool *)param_1)->current_size - v8;
       }
     }
     else {
@@ -4762,7 +4762,7 @@ bool __fastcall FUN_0046e6b0(LPCVOID param_1)
     }
   }
   if (pu5 == NULL) {
-    pu4 = *(int **)((int)param_1 + 0x164); /* TODO: SmartHeap pool overflow_chain at 0x164 */
+    pu4 = (int *)((SmartHeapPool *)param_1)->overflow_chain;
     if (pu4 != NULL) {
       v8 = FUN_00471410(pu4);
       if (v8 < 0xffff) {
@@ -4771,7 +4771,7 @@ bool __fastcall FUN_0046e6b0(LPCVOID param_1)
           u2 = v8 & 0xffff;
         }
         u2 = v8 + u2;
-        n3 = FUN_00471330(pu4,u2,(uint)(*(ushort *)((int)param_1 + 0x22) | 0x1000)); /* TODO: SmartHeap pool flags at 0x22 */
+        n3 = FUN_00471330(pu4,u2,(uint)(((SmartHeapPool *)param_1)->pool_flags | 0x1000));
         if (n3 != 0) {
           pu5 = (int *)((v8 - 0x14 & 0xfffffff0) + 0x14 + (int)pu4);
           goto L_0046e844;
@@ -4781,20 +4781,20 @@ bool __fastcall FUN_0046e6b0(LPCVOID param_1)
     v8 = 0;
     u2 = 0x1000;
     while( true ) {
-      pu4 = FUN_00471190(u2,(uint)(*(ushort *)((int)param_1 + 0x22) | 0x1000)); /* TODO: SmartHeap pool flags at 0x22 */
+      pu4 = FUN_00471190(u2,(uint)(((SmartHeapPool *)param_1)->pool_flags | 0x1000));
       if (pu4 != NULL) break;
       u2 = u2 >> 1;
       if (u2 < 0x14) {
         u2 = u2 * 2;
         n3 = FUN_0046fd70(param_1,2);
         if (n3 == 0) {
-          return (bool)('\x01' - (*(int *)((int)param_1 + 0x14) == 0)); /* TODO: SmartHeap pool free_list at 0x14 */
+          return (bool)('\x01' - (((SmartHeapPool *)param_1)->end_ptr == 0));
         }
       }
     }
     pu5 = pu4 + 1;
-    *pu4 = *(int *)((int)param_1 + 0x164); /* TODO: SmartHeap pool overflow_chain at 0x164 */
-    *(int **)((int)param_1 + 0x164) = pu4; /* TODO: SmartHeap pool overflow_chain at 0x164 */
+    *pu4 = (int)((SmartHeapPool *)param_1)->overflow_chain;
+    ((SmartHeapPool *)param_1)->overflow_chain = pu4;
   }
   else {
     u2 = u2 + 0xfff & 0xfffff000;
@@ -4803,11 +4803,11 @@ bool __fastcall FUN_0046e6b0(LPCVOID param_1)
 L_0046e844:
   if (v4 == NULL) {
     u2 = u2 + 0xfff & 0xfffff000;
-    *(int *)((int)param_1 + 0x2c) = *(int *)((int)param_1 + 0x2c) - v8; /* TODO: SmartHeap pool current_size at 0x2c */
+    ((SmartHeapPool *)param_1)->current_size = ((SmartHeapPool *)param_1)->current_size - v8;
     v4 = (int *)((u2 - 0x1c) + (int)pu4);
   }
-  *(int *)((int)param_1 + 0x2c) = *(int *)((int)param_1 + 0x2c) + u2; /* TODO: SmartHeap pool current_size at 0x2c */
-  pu4 = *(int **)((int)param_1 + 0x14); /* TODO: SmartHeap pool free_list at 0x14 */
+  ((SmartHeapPool *)param_1)->current_size = ((SmartHeapPool *)param_1)->current_size + u2;
+  pu4 = (int *)((SmartHeapPool *)param_1)->end_ptr;
   do {
     pu6 = pu5;
     pu6[2] = pu4;
@@ -4817,7 +4817,7 @@ L_0046e844:
     pu4 = pu6;
     pu5 = pu6 + 4;
   } while (pu6 < v4);
-  *(int **)((int)param_1 + 0x14) = pu6; /* TODO: SmartHeap pool free_list at 0x14 */
+  ((SmartHeapPool *)param_1)->end_ptr = pu6;
   return true;
 }
 
@@ -4836,14 +4836,14 @@ int __fastcall FUN_0046e8b0(LPCVOID param_1,ushort param_2)
   int _extra;
   ushort u5;
   
-  if (*(int *)((int)param_1 + 0x14) == 0) { /* TODO: SmartHeap pool free_list at 0x14 */
+  if (((SmartHeapPool *)param_1)->end_ptr == 0) {
     b4 = FUN_0046e6b0(param_1);
     if (CONCAT31(_extra,b4) == 0) {
       return 0;
     }
   }
-  n2 = *(int *)((int)param_1 + 0x14); /* TODO: SmartHeap pool free_list at 0x14 */
-  *(int *)((int)param_1 + 0x14) = *(int *)(n2 + 8); /* TODO: SmartHeap pool free_list at 0x14 */
+  n2 = (int)((SmartHeapPool *)param_1)->end_ptr;
+  ((SmartHeapPool *)param_1)->end_ptr = (void *)*(int *)(n2 + 8);
   pn1 = (int *)((int)param_1 + (uint)param_2 * 4);
   n3 = *pn1;
   if (n3 == 0) {
@@ -4885,8 +4885,8 @@ void __fastcall FUN_0046e920(int param_1,int param_2,uint param_3)
   u2 = *(ushort *)(param_2 + 2) & 0x8fff;
   *(ushort *)(param_2 + 2) = u2;
   *(ushort *)(param_2 + 2) = u2 | 0x5000;
-  *(int *)(param_2 + 8) = *(int *)(param_1 + 0x14);
-  *(int *)(param_1 + 0x14) = param_2;
+  *(int *)(param_2 + 8) = (int)((SmartHeapPool *)param_1)->end_ptr;
+  ((SmartHeapPool *)param_1)->end_ptr = (void *)param_2;
 }
 
 
@@ -4913,18 +4913,18 @@ int __fastcall FUN_0046eac0(int *param_1,int param_2)
   uint u5;
   int _esi;
   
-  u1 = *(short *)((int)param_1 + 0xe); /* TODO: SmartHeap page type tag */
+  u1 = ((SmartHeapPool *)param_1)->page_tag;
   n2 = *param_1;
   n3 = param_1[1];
   u5 = FUN_00471410(param_1);
-  if ((param_2 == 0) || (b4 = false, *(uint *)(n2 + 0x30) <= *(int *)(n2 + 0x2c) - u5))
+  if ((param_2 == 0) || (b4 = false, *(uint *)(n2 + 0x30) <= ((SmartHeapPool *)n2)->current_size - u5))
   {
     FUN_0046e920(n2,n3,CONCAT22((short)((uint)_esi >> 0x10),u1) & 0xffff0007);
     b4 = true;
-    *(int *)(n2 + 0x2c) = *(int *)(n2 + 0x2c) - u5;
+    ((SmartHeapPool *)n2)->current_size = ((SmartHeapPool *)n2)->current_size - u5;
   }
   if (b4) {
-    *(short *)((int)param_1 + 0xe) = 0; /* TODO: SmartHeap page type tag */
+    ((SmartHeapPool *)param_1)->page_tag = 0;
     FUN_00471220(param_1);
     return 1;
   }
@@ -4937,9 +4937,9 @@ int __fastcall FUN_0046eac0(int *param_1,int param_2)
 short __fastcall FUN_0046eb40(int param_1,byte param_2)
 {
   *(void **)(param_1 + 8) = &L_0046ebc0;
-  *(int *)(param_1 + 0x10) = 0;
+  ((SmartHeapPool *)param_1)->slab_head = 0;
   *(short *)(param_1 + 0xc) = 1;
-  *(byte *)(param_1 + 0x15) = param_2 & 2;
+  ((SmartHeapPool *)param_1)->page_flags = param_2 & 2;
   return 0;
 }
 
@@ -4960,8 +4960,8 @@ int * __fastcall FUN_0046eb60(LPCVOID param_1,uint param_2,int param_3)
       return pn1 + 7;
     }
     n2 = FUN_0046e500((int)param_1);
-    if (*(uint *)((int)param_1 + 0x34) < /* TODO: SmartHeap pool max_size at 0x34 */
-        (param_3 + 0x101bU & 0xfffff000) + *(int *)((int)param_1 + 0x2c)) break; /* TODO: SmartHeap pool current_size at 0x2c */
+    if ((uint)((SmartHeapPool *)param_1)->max_size <
+        (param_3 + 0x101bU & 0xfffff000) + ((SmartHeapPool *)param_1)->current_size) break;
     if ((n2 == 0) && (n2 = FUN_0046fd70(param_1,2), n2 == 0)) {
       return NULL;
     }
@@ -4983,7 +4983,7 @@ int __fastcall FUN_0046ebd0(int *param_1,int *param_2,int param_3,uint param_4)
   
   n1 = *param_1;
   u2 = FUN_00471410(param_1);
-  u6 = (param_4 & 5) << 8 | (uint)*(ushort *)(n1 + 0x22);
+  u6 = (param_4 & 5) << 8 | (uint)(ushort)((SmartHeapPool *)n1)->pool_flags;
   if (param_2 == NULL) {
     n5 = FUN_00471330(param_1,param_3 + 0x1cU,u6 | 0x2000);
     if (n5 == 0) {
@@ -5004,7 +5004,7 @@ int __fastcall FUN_0046ebd0(int *param_1,int *param_2,int param_3,uint param_4)
     param_1 = pn3;
   }
   u6 = FUN_00471410(param_1);
-  *(int *)(n1 + 0x2c) = *(int *)(n1 + 0x2c) + (u6 - u2);
+  ((SmartHeapPool *)n1)->current_size = ((SmartHeapPool *)n1)->current_size + (u6 - u2);
   return 1;
 }
 
@@ -5018,7 +5018,7 @@ int __fastcall FUN_0046ecb0(int param_1,int param_2,short param_3)
   *(int *)(param_2 + 0x14) = param_2 + 0x1c;
   *(int *)(param_2 + 0x10) = 0;
   *(void **)(param_2 + 8) = &L_0046ef60;
-  pu1 = FUN_0046ece0(param_2,(ushort)*(int *)(param_1 + 0x24),param_3);
+  pu1 = FUN_0046ece0(param_2,(ushort)((SmartHeapPool *)param_1)->alloc_unit,param_3);
   return CONCAT22((short)((uint)pu1 >> 0x10),1);
 }
 
@@ -5072,12 +5072,12 @@ uint __fastcall FUN_0046efa0(int *param_1,uint param_2)
   *(short **)(pu4 + 3) = pu4;
   *(short **)(pu4 + 1) = pu4;
   param_1[5] = (int)pu4;
-  u5 = *(ushort *)((int)param_1 + 0xe) & 7; /* TODO: SmartHeap page type field */
+  u5 = ((SmartHeapPool *)param_1)->page_tag & 7;
   if (u5 == 2) {
     *(short *)pn2 = 0xc;
   }
   else {
-    u3 = *(int *)(*param_1 + 0x24) + 3;
+    u3 = ((SmartHeapPool *)*param_1)->alloc_unit + 3;
     if (u3 < 0xd) {
       u3 = 0xc;
     }
@@ -5118,10 +5118,10 @@ ushort * FUN_0046f060(LPCVOID param_1,uint param_2,uint param_3)
 {
   ushort *pu1;
   
-  if (*(short *)((int)param_1 + 0x20) == -0x4153) { /* TODO: SmartHeap pool signature at 0x20 */
-    if ((*(byte *)((int)param_1 + 0x22) & 2) != 0) { /* TODO: SmartHeap pool threadsafe flag at 0x22 */
-      EnterCriticalSection((LPCRITICAL_SECTION)((int)param_1 + 0x48)); /* TODO: SmartHeap pool critical_section at 0x48 */
-      *(int *)((int)param_1 + 0x60) = *(int *)((int)param_1 + 0x60) + 1; /* TODO: SmartHeap pool lock_count at 0x60 */
+  if (((SmartHeapPool *)param_1)->pool_signature == -0x4153) {
+    if ((((SmartHeapPool *)param_1)->pool_flags & 2) != 0) {
+      EnterCriticalSection((LPCRITICAL_SECTION)&((SmartHeapPool *)param_1)->critical_section);
+      ((SmartHeapPool *)param_1)->lock_count = ((SmartHeapPool *)param_1)->lock_count + 1;
     }
     if (param_2 < 0xff) {
       if (param_2 == 0) {
@@ -5132,15 +5132,15 @@ ushort * FUN_0046f060(LPCVOID param_1,uint param_2,uint param_3)
         pu1 = FUN_0046f110(param_1,param_3,(ushort)param_2);
       }
     }
-    else if (*(ushort *)((int)param_1 + 0x2a) < param_2) { /* TODO: SmartHeap pool max_small_block at 0x2a */
+    else if (((SmartHeapPool *)param_1)->max_small_block < param_2) {
       pu1 = (ushort *)FUN_0046eb60(param_1,param_3 & 0xfffffffd,param_2);
     }
     else {
       pu1 = FUN_0046f290(param_1,param_3 & 0xfffffffd,(ushort)param_2);
     }
-    if ((*(byte *)((int)param_1 + 0x22) & 2) != 0) { /* TODO: SmartHeap pool threadsafe flag at 0x22 */
-      *(int *)((int)param_1 + 0x60) = *(int *)((int)param_1 + 0x60) + -1; /* TODO: SmartHeap pool lock_count at 0x60 */
-      LeaveCriticalSection((LPCRITICAL_SECTION)((int)param_1 + 0x48)); /* TODO: SmartHeap pool critical_section at 0x48 */
+    if ((((SmartHeapPool *)param_1)->pool_flags & 2) != 0) {
+      ((SmartHeapPool *)param_1)->lock_count = ((SmartHeapPool *)param_1)->lock_count + -1;
+      LeaveCriticalSection((LPCRITICAL_SECTION)&((SmartHeapPool *)param_1)->critical_section);
     }
     return pu1;
   }
@@ -5194,7 +5194,7 @@ ushort * __fastcall FUN_0046f110(LPCVOID param_1,uint param_2,ushort param_3)
     return pu7;
   }
   u4 = u3 * 4 + 4;
-  ps1 = *(short **)((int)param_1 + 0x10); /* TODO: SmartHeap pool slab_head at 0x10 */
+  ps1 = (short *)((SmartHeapPool *)param_1)->slab_head;
   u9 = param_2;
   if ((ps1 == NULL) ||
      (u9 = *(uint *)(ps1 + 2),
@@ -5218,7 +5218,7 @@ ushort * __fastcall FUN_0046f110(LPCVOID param_1,uint param_2,ushort param_3)
       pu7 = FUN_0046f290(param_1,param_2 & 0xfffffffd,param_3);
       return pu7;
     }
-    u9 = *(uint *)(*(int *)((int)param_1 + 0x10) + 4); /* TODO: SmartHeap pool slab_head at 0x10 */
+    u9 = *(uint *)((int)((SmartHeapPool *)param_1)->slab_head + 4);
   }
   pu7 = *(ushort **)(u9 + 0x10);
   *(char *)((int)pu7 + -1) = (char)u3;
@@ -5306,14 +5306,14 @@ ushort * FUN_0046f750(ushort *param_1,uint param_2,uint param_3)
   short v2;
   uint u12;
   
-  if ((*(ushort *)((int)((uint)param_1 & 0xffff0000) + 0xe) & 0xfff8) != 0xcad0) { /* TODO: SmartHeap page magic check */
+  if ((((SmartHeapPool *)((uint)param_1 & 0xffff0000))->page_tag & 0xfff8) != 0xcad0) {
     FUN_0046fd70(0,0xe);
     return NULL;
   }
   n2 = *(int *)((uint)param_1 & 0xffff0000);
-  if ((*(byte *)(n2 + 0x22) & 2) != 0) {
-    EnterCriticalSection((LPCRITICAL_SECTION)(n2 + 0x48));
-    pn1 = (int *)(*(int *)((uint)param_1 & 0xffff0000) + 0x60);
+  if ((((SmartHeapPool *)n2)->pool_flags & 2) != 0) {
+    EnterCriticalSection((LPCRITICAL_SECTION)&((SmartHeapPool *)n2)->critical_section);
+    pn1 = &((SmartHeapPool *)(*(int *)((uint)param_1 & 0xffff0000)))->lock_count;
     *pn1 = *pn1 + 1;
   }
   u5 = param_3;
@@ -5324,9 +5324,9 @@ ushort * FUN_0046f750(ushort *param_1,uint param_2,uint param_3)
   ;
   u12 = u6 & 0xffff;
   u8 = u12;
-  if ((*(byte *)((int)pv3 + 0x22) & 2) != 0) { /* TODO: SmartHeap pool threadsafe flag at 0x22 */
-    *(int *)((int)pv3 + 0x60) = *(int *)((int)pv3 + 0x60) + -1; /* TODO: SmartHeap pool lock_count at 0x60 */
-    LeaveCriticalSection((LPCRITICAL_SECTION)((int)pv3 + 0x48));
+  if ((((SmartHeapPool *)pv3)->pool_flags & 2) != 0) {
+    ((SmartHeapPool *)pv3)->lock_count = ((SmartHeapPool *)pv3)->lock_count + -1;
+    LeaveCriticalSection((LPCRITICAL_SECTION)&((SmartHeapPool *)pv3)->critical_section);
   }
   v2 = (short)u6;
   if (v2 == 0) {
@@ -5388,7 +5388,7 @@ uint __fastcall FUN_0046f870(int *param_1,uint param_2,uint param_3,uint param_4
     return (uint)u5 << 0x10;
   }
   u5 = (ushort)param_3;
-  switch(*(ushort *)((int)pn6 + 0xe) & 7) { /* TODO: SmartHeap page type field */
+  switch(((SmartHeapPool *)pn6)->page_tag & 7) {
   case 0:
   case 2:
     pu1 = (ushort *)(param_2 - 2);
@@ -5398,7 +5398,7 @@ uint __fastcall FUN_0046f870(int *param_1,uint param_2,uint param_3,uint param_4
       u2 = u9 - 8;
     }
     u7 = (uint)u2;
-    if ((u7 < param_3) && (*(ushort *)(*pn6 + 0x2a) < param_3)) {
+    if ((u7 < param_3) && (((SmartHeapPool *)*pn6)->max_small_block < param_3)) {
       return CONCAT22((short)((uint)*pn6 >> 0x10),u2);
     }
     pu4 = (ushort *)FUN_0046faf0(pu1,u5);
@@ -5455,7 +5455,7 @@ uint __fastcall FUN_0046f870(int *param_1,uint param_2,uint param_3,uint param_4
     }
     break;
   case 3:
-    if ((param_1 != NULL) && (param_3 <= *(ushort *)(*pn6 + 0x2a))) {
+    if ((param_1 != NULL) && (param_3 <= ((SmartHeapPool *)*pn6)->max_small_block)) {
       u7 = FUN_0046fcc0(param_2);
       u9 = (ushort)u7;
       if (param_3 <= u7) {
@@ -5528,14 +5528,14 @@ int __fastcall FUN_0046faf0(ushort *param_1,short param_2)
       return 0;
     }
     u8 = (uint)param_1 & 0xffff0000;
-    if (*(ushort **)(u8 + 0x10) == pu5) {
-      *(int *)(u8 + 0x10) = *(int *)(pu5 + 1);
+    if ((ushort *)((SmartHeapPool *)u8)->slab_head == pu5) {
+      ((SmartHeapPool *)u8)->slab_head = (void *)*(int *)(pu5 + 1);
     }
     *(int *)(*(int *)(pu5 + 3) + 2) = *(int *)(pu5 + 1);
     *(int *)(*(int *)(pu5 + 1) + 6) = *(int *)(pu5 + 3);
     u6 = ((u2 & 0x7ffc) - u4) + (*pu5 & 0xfffc);
     if ((*param_1 & 0x8000) == 0) {
-      u2 = *(ushort *)(u8 + 0x18);
+      u2 = *(ushort *)&((SmartHeapPool *)u8)->_pad16[2]; /* TODO: page field at 0x18 in _pad16 */
     }
     else {
       u2 = 0xc;
@@ -5551,7 +5551,7 @@ int __fastcall FUN_0046faf0(ushort *param_1,short param_2)
     u7 = 0xc;
     u6 = (u2 & 0x7ffc) - u4;
     if ((u2 & 0x8000) == 0) {
-      u7 = *(ushort *)(((uint)param_1 & 0xffff0000) + 0x18);
+      u7 = *(ushort *)&((SmartHeapPool *)((uint)param_1 & 0xffff0000))->_pad16[2]; /* TODO: page field at 0x18 in _pad16 */
     }
     if (u6 < u7) {
       return 1;
@@ -5559,8 +5559,8 @@ int __fastcall FUN_0046faf0(ushort *param_1,short param_2)
     pu5 = (ushort *)((u2 & 0x7ffc) + (int)param_1);
     if ((*pu5 & 1) == 0) {
       u6 = u6 + (*pu5 & 0xfffc);
-      if (*(ushort **)(((uint)param_1 & 0xffff0000) + 0x10) == pu5) {
-        *(int *)(((uint)param_1 & 0xffff0000) + 0x10) = *(int *)(pu5 + 1);
+      if ((ushort *)((SmartHeapPool *)((uint)param_1 & 0xffff0000))->slab_head == pu5) {
+        ((SmartHeapPool *)((uint)param_1 & 0xffff0000))->slab_head = (void *)*(int *)(pu5 + 1);
       }
       *(int *)(*(int *)(pu5 + 3) + 2) = *(int *)(pu5 + 1);
       *(int *)(*(int *)(pu5 + 1) + 6) = *(int *)(pu5 + 3);
@@ -5573,7 +5573,7 @@ int __fastcall FUN_0046faf0(ushort *param_1,short param_2)
   pu5 = (ushort *)((uint)u4 + (int)param_1);
   *param_1 = *param_1 & 0x8003 | u4;
   *pu5 = u6 | 2;
-  n3 = *(int *)(((uint)param_1 & 0xffff0000) + 0x14);
+  n3 = (int)((SmartHeapPool *)((uint)param_1 & 0xffff0000))->end_ptr;
   *(int *)(pu5 + 3) = n3;
   *(int *)(pu5 + 1) = *(int *)(n3 + 2);
   *(ushort **)(*(int *)(n3 + 2) + 6) = pu5;
@@ -5597,11 +5597,11 @@ int FUN_0046fcc0(uint param_1)
   int *pn3;
   
   pn3 = (int *)(param_1 & 0xffff0000);
-  if ((*(ushort *)((int)pn3 + 0xe) & 0xfff8) != 0xcad0) { /* TODO: SmartHeap page magic check */
+  if ((((SmartHeapPool *)pn3)->page_tag & 0xfff8) != 0xcad0) {
     FUN_0046fd70(0,0xe);
     return -1;
   }
-  switch(*(ushort *)((int)pn3 + 0xe) & 7) { /* TODO: SmartHeap page type field */
+  switch(((SmartHeapPool *)pn3)->page_tag & 7) {
   case 0:
   case 2:
     u2 = *(ushort *)(param_1 - 2) & 0x7ffc;
@@ -5611,7 +5611,7 @@ int FUN_0046fcc0(uint param_1)
     }
     break;
   case 1:
-    return *(int *)(*pn3 + 0x24);
+    return ((SmartHeapPool *)*pn3)->alloc_unit;
   case 3:
     u2 = FUN_00471410(pn3);
     return u2 - 0x1c;
