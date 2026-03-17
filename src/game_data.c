@@ -36,11 +36,7 @@ void FUN_004517d0(void)
 
 /* FUN_004517e0 @ 0x004517e0 */
 
-void FUN_004517e0(void)
-
-{
-  return;
-}
+void FUN_004517e0(void) { return; }
 
 
 /* FUN_00451800 @ 0x00451800 */
@@ -68,11 +64,7 @@ void FUN_00451810(void)
 
 /* FUN_00451820 @ 0x00451820 */
 
-void FUN_00451820(void)
-
-{
-  return;
-}
+void FUN_00451820(void) { return; }
 
 
 /* FUN_00451b80 @ 0x00451b80 */
@@ -432,7 +424,7 @@ void __thiscall
 FUN_004520c0(void *this,int param_1,short param_2,short param_3,short param_4)
 
 {
-  FUN_00451fa0(this,&__label_00451e80,param_1,param_2,param_3,param_4);
+  FUN_00451fa0(this,&L_00451e80,param_1,param_2,param_3,param_4);
   return;
 }
 
@@ -443,7 +435,7 @@ void __thiscall
 FUN_004520f0(void *this,int param_1,short param_2,short param_3,short param_4)
 
 {
-  FUN_00451fa0(this,&__label_00451e30,param_1,param_2,param_3,param_4);
+  FUN_00451fa0(this,&L_00451e30,param_1,param_2,param_3,param_4);
   return;
 }
 
@@ -492,7 +484,7 @@ int __thiscall FUN_00452160(void *this,void *param_1,int param_2,char *param_3)
 {
   short s1;
   int u2;
-  short __extra_ret;
+  short _extra;
   char *pu3;
   short s4;
   int n5;
@@ -506,7 +498,7 @@ int __thiscall FUN_00452160(void *this,void *param_1,int param_2,char *param_3)
       do {
         n5 = (int)s4;
         s1 = FUN_00452050(param_1,*(int *)((intptr_t)this + n5 * 4 + 6),0,0xfe,-1); /* TODO: offset 0x06 = color table entries */
-        pu3 = (char *)CONCAT22(__extra_ret,s1);
+        pu3 = (char *)CONCAT22(_extra,s1);
         if (s1 == -1) {
           pu3 = (char *)
                    FUN_00451fa0(param_1,param_3,*(int *)((intptr_t)this + n5 * 4 + 6),0,0xfe,-1
@@ -567,23 +559,19 @@ void FUN_00452290(void)
 
 {
   int u1;
-  int __param_fffffff4;
+  int _p_fffffff4;
   
   u1 = 0;
-  FUN_00401050(&__stk_44,0);
-  FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00489000,u1,__param_fffffff4);
+  FUN_00401050(&_tmp_44,0);
+  FUN_00401050(&_tmp_43,0);
+  FUN_00401060(&DAT_00489000,u1,_p_fffffff4);
   return;
 }
 
 
 /* FUN_004522e0 @ 0x004522e0 */
 
-void FUN_004522e0(void)
-
-{
-  return;
-}
+void FUN_004522e0(void) { return; }
 
 
 /* FUN_00452300 @ 0x00452300 */
@@ -611,11 +599,7 @@ void FUN_00452310(void)
 
 /* FUN_00452320 @ 0x00452320 */
 
-void FUN_00452320(void)
-
-{
-  return;
-}
+void FUN_00452320(void) { return; }
 
 
 /* FUN_00452340 @ 0x00452340 */
@@ -643,11 +627,7 @@ void FUN_00452350(void)
 
 /* FUN_00452360 @ 0x00452360 */
 
-void FUN_00452360(void)
-
-{
-  return;
-}
+void FUN_00452360(void) { return; }
 
 
 /* FUN_00452370 @ 0x00452370 */
@@ -665,18 +645,20 @@ char * __fastcall FUN_00452370(char *param_1)
 void __fastcall FUN_004524e0(int param_1)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_10;
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
-  __seh_handler = &__label_00452525;
-  *__seh_chain = &loc_10;
+  /* SEH prolog */
+  loc_10 = *_fs;
+  _handler = &L_00452525;
+  *_fs = &loc_10;
   loc_8 = 0xffffffff;
   ((UIWidget *)param_1)->animation_timer = 0;
   FUN_0045252f();
-  *__seh_chain = loc_10;
+  /* SEH epilog */
+  *_fs = loc_10;
   return;
 }
 
@@ -686,9 +668,9 @@ void __fastcall FUN_004524e0(int param_1)
 void FUN_0045252f(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_0040f520((int *)(*(int *)(__saved_ebp + -0x10) + 0xf6)); /* UIWidget->level_data_ptr */
+  FUN_0040f520((int *)(*(int *)(_ebp + -0x10) + 0xf6)); /* UIWidget->level_data_ptr */
   return;
 }
 
@@ -772,23 +754,19 @@ void FUN_00452710(void)
 
 {
   int u1;
-  int __param_fffffff4;
+  int _p_fffffff4;
   
   u1 = 0;
-  FUN_00401050(&__stk_44,0);
-  FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00489010,u1,__param_fffffff4);
+  FUN_00401050(&_tmp_44,0);
+  FUN_00401050(&_tmp_43,0);
+  FUN_00401060(&DAT_00489010,u1,_p_fffffff4);
   return;
 }
 
 
 /* FUN_00452760 @ 0x00452760 */
 
-void FUN_00452760(void)
-
-{
-  return;
-}
+void FUN_00452760(void) { return; }
 
 
 /* FUN_00452780 @ 0x00452780 */
@@ -816,11 +794,7 @@ void FUN_00452790(void)
 
 /* FUN_004527a0 @ 0x004527a0 */
 
-void FUN_004527a0(void)
-
-{
-  return;
-}
+void FUN_004527a0(void) { return; }
 
 
 /* FUN_004527c0 @ 0x004527c0 */
@@ -848,11 +822,7 @@ void FUN_004527d0(void)
 
 /* FUN_004527e0 @ 0x004527e0 */
 
-void FUN_004527e0(void)
-
-{
-  return;
-}
+void FUN_004527e0(void) { return; }
 
 
 /* FUN_004527f0 @ 0x004527f0 */
@@ -1013,23 +983,19 @@ void FUN_00452a30(void)
 
 {
   int u1;
-  int __param_fffffff4;
+  int _p_fffffff4;
   
   u1 = 0;
-  FUN_00401050(&__stk_44,0);
-  FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00489020,u1,__param_fffffff4);
+  FUN_00401050(&_tmp_44,0);
+  FUN_00401050(&_tmp_43,0);
+  FUN_00401060(&DAT_00489020,u1,_p_fffffff4);
   return;
 }
 
 
 /* FUN_00452a80 @ 0x00452a80 */
 
-void FUN_00452a80(void)
-
-{
-  return;
-}
+void FUN_00452a80(void) { return; }
 
 
 /* FUN_00452aa0 @ 0x00452aa0 */
@@ -1057,11 +1023,7 @@ void FUN_00452ab0(void)
 
 /* FUN_00452ac0 @ 0x00452ac0 */
 
-void FUN_00452ac0(void)
-
-{
-  return;
-}
+void FUN_00452ac0(void) { return; }
 
 
 /* FUN_00452ae0 @ 0x00452ae0 */
@@ -1089,11 +1051,7 @@ void FUN_00452af0(void)
 
 /* FUN_00452b00 @ 0x00452b00 */
 
-void FUN_00452b00(void)
-
-{
-  return;
-}
+void FUN_00452b00(void) { return; }
 
 
 /* FUN_00452b20 @ 0x00452b20 */
@@ -1102,12 +1060,12 @@ void FUN_00452b20(void)
 
 {
   int u1;
-  int __param_fffffff4;
+  int _p_fffffff4;
   
   u1 = 0;
-  FUN_00401050(&__stk_44,0);
-  FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00489030,u1,__param_fffffff4);
+  FUN_00401050(&_tmp_44,0);
+  FUN_00401050(&_tmp_43,0);
+  FUN_00401060(&DAT_00489030,u1,_p_fffffff4);
   return;
 }
 
@@ -1124,11 +1082,7 @@ void FUN_00452b60(void)
 
 /* FUN_00452b70 @ 0x00452b70 */
 
-void FUN_00452b70(void)
-
-{
-  return;
-}
+void FUN_00452b70(void) { return; }
 
 
 /* FUN_00452b90 @ 0x00452b90 */
@@ -1156,11 +1110,7 @@ void FUN_00452ba0(void)
 
 /* FUN_00452bb0 @ 0x00452bb0 */
 
-void FUN_00452bb0(void)
-
-{
-  return;
-}
+void FUN_00452bb0(void) { return; }
 
 
 /* FUN_00452bd0 @ 0x00452bd0 */
@@ -1188,11 +1138,7 @@ void FUN_00452be0(void)
 
 /* FUN_00452bf0 @ 0x00452bf0 */
 
-void FUN_00452bf0(void)
-
-{
-  return;
-}
+void FUN_00452bf0(void) { return; }
 
 
 /* FUN_00452c10 @ 0x00452c10 */
@@ -1201,12 +1147,12 @@ void FUN_00452c10(void)
 
 {
   int u1;
-  int __param_fffffff4;
+  int _p_fffffff4;
   
   u1 = 0;
-  FUN_00401050(&__stk_44,0);
-  FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00489040,u1,__param_fffffff4);
+  FUN_00401050(&_tmp_44,0);
+  FUN_00401050(&_tmp_43,0);
+  FUN_00401060(&DAT_00489040,u1,_p_fffffff4);
   return;
 }
 
@@ -1223,11 +1169,7 @@ void FUN_00452c50(void)
 
 /* FUN_00452c60 @ 0x00452c60 */
 
-void FUN_00452c60(void)
-
-{
-  return;
-}
+void FUN_00452c60(void) { return; }
 
 
 /* FUN_00452c80 @ 0x00452c80 */
@@ -1255,11 +1197,7 @@ void FUN_00452c90(void)
 
 /* FUN_00452ca0 @ 0x00452ca0 */
 
-void FUN_00452ca0(void)
-
-{
-  return;
-}
+void FUN_00452ca0(void) { return; }
 
 
 /* FUN_00452cc0 @ 0x00452cc0 */
@@ -1287,11 +1225,7 @@ void FUN_00452cd0(void)
 
 /* FUN_00452ce0 @ 0x00452ce0 */
 
-void FUN_00452ce0(void)
-
-{
-  return;
-}
+void FUN_00452ce0(void) { return; }
 
 
 /* FUN_00452cf0 @ 0x00452cf0 */
@@ -1299,15 +1233,16 @@ void FUN_00452ce0(void)
 int * __thiscall FUN_00452cf0(void *this,char *param_1)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_10;
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
+  /* SEH prolog */
+  loc_10 = *_fs;
   loc_8 = 0xffffffff;
-  __seh_handler = &__label_00452d5c;
-  *__seh_chain = &loc_10;
+  _handler = &L_00452d5c;
+  *_fs = &loc_10;
   FUN_0041b6c0(this);
   loc_8 = 0;
   *(void ***)this = &PTR_FUN_00476258;
@@ -1316,7 +1251,7 @@ int * __thiscall FUN_00452cf0(void *this,char *param_1)
   if (param_1 != (char *)0x0) {
     FUN_00452e00(this,param_1);
   }
-  *__seh_chain = loc_10;
+  *_fs = loc_10;
   return this;
 }
 
@@ -1339,22 +1274,23 @@ int * __thiscall FUN_00452d70(void *this,byte param_1)
 void __fastcall FUN_00452d90(int *param_1)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_10;
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
-  __seh_handler = &__label_00452de1;
+  loc_10 = *_fs;
+  _handler = &L_00452de1;
   *param_1 = &PTR_FUN_00476258;
-  *__seh_chain = &loc_10;
+  *_fs = &loc_10;
   loc_8 = 0;
   if (*(uint *)((int)param_1 + 0x42) != 0) { /* UIElement._pad42 - TODO: identify field */
     FUN_0046f5f0(*(uint *)((int)param_1 + 0x42));  /* TODO: offset 0x42, UIElement._pad42 area */
   }
   loc_8 = 0xffffffff;
   FUN_00452deb();
-  *__seh_chain = loc_10;
+  /* SEH epilog */
+  *_fs = loc_10;
   return;
 }
 
@@ -1364,9 +1300,9 @@ void __fastcall FUN_00452d90(int *param_1)
 void FUN_00452deb(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_0041b890(*(int **)(__saved_ebp + -0x10));
+  FUN_0041b890(*(int **)(_ebp + -0x10));
   return;
 }
 
@@ -1397,15 +1333,15 @@ void __fastcall FUN_00452f90(int *param_1)
 
 {
   int u1;
-  int __param_ffffffec;
+  int _p_ffffffec;
   char c2;
   
   if (*(char *)(DAT_004896b0 + 0x27) == '\0') {
     c2 = '\x01';
     u1 = 0xfffffffe;
-    FUN_00401050(&__stk_42,-2);
-    FUN_00401050(&__stk_41,0);
-    FUN_0041d3a0(param_1,u1,__param_ffffffec,c2);
+    FUN_00401050(&_tmp_42,-2);
+    FUN_00401050(&_tmp_41,0);
+    FUN_0041d3a0(param_1,u1,_p_ffffffec,c2);
     if ((*(short *)((int)param_1 + 0x22) < 0) && (param_1 != (int *)0x0)) { /* TODO: offset 0x22 = UIElement->rect_bottom if param_1 is UIElement */
       ((void (*)(void))((void **)(*param_1))[1])(); /* param_1->vtable[1] */
     }
@@ -1420,23 +1356,19 @@ void FUN_004530b0(void)
 
 {
   int u1;
-  int __param_fffffff4;
+  int _p_fffffff4;
   
   u1 = 0;
-  FUN_00401050(&__stk_44,0);
-  FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00489050,u1,__param_fffffff4);
+  FUN_00401050(&_tmp_44,0);
+  FUN_00401050(&_tmp_43,0);
+  FUN_00401060(&DAT_00489050,u1,_p_fffffff4);
   return;
 }
 
 
 /* FUN_00453100 @ 0x00453100 */
 
-void FUN_00453100(void)
-
-{
-  return;
-}
+void FUN_00453100(void) { return; }
 
 
 /* FUN_00453130 @ 0x00453130 */
@@ -1474,20 +1406,12 @@ void FUN_00453290(void)
 
 /* FUN_004532a0 @ 0x004532a0 */
 
-void FUN_004532a0(void)
-
-{
-  return;
-}
+void FUN_004532a0(void) { return; }
 
 
 /* FUN_00453386 @ 0x00453386 */
 
-void FUN_00453386(void)
-
-{
-  return;
-}
+void FUN_00453386(void) { return; }
 
 
 /* FUN_004533a0 @ 0x004533a0 */
@@ -1515,11 +1439,7 @@ void FUN_004533b0(void)
 
 /* FUN_004533c0 @ 0x004533c0 */
 
-void FUN_004533c0(void)
-
-{
-  return;
-}
+void FUN_004533c0(void) { return; }
 
 
 /* FUN_004533e0 @ 0x004533e0 */
@@ -1537,23 +1457,19 @@ void FUN_00453400(void)
 
 {
   int u1;
-  int __param_fffffff4;
+  int _p_fffffff4;
   
   u1 = 0;
-  FUN_00401050(&__stk_44,0);
-  FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00489060,u1,__param_fffffff4);
+  FUN_00401050(&_tmp_44,0);
+  FUN_00401050(&_tmp_43,0);
+  FUN_00401060(&DAT_00489060,u1,_p_fffffff4);
   return;
 }
 
 
 /* FUN_00453450 @ 0x00453450 */
 
-void FUN_00453450(void)
-
-{
-  return;
-}
+void FUN_00453450(void) { return; }
 
 
 /* FUN_00453470 @ 0x00453470 */
@@ -1581,11 +1497,7 @@ void FUN_00453480(void)
 
 /* FUN_00453490 @ 0x00453490 */
 
-void FUN_00453490(void)
-
-{
-  return;
-}
+void FUN_00453490(void) { return; }
 
 
 /* FUN_004534b0 @ 0x004534b0 */
@@ -1613,11 +1525,7 @@ void FUN_004534c0(void)
 
 /* FUN_004534d0 @ 0x004534d0 */
 
-void FUN_004534d0(void)
-
-{
-  return;
-}
+void FUN_004534d0(void) { return; }
 
 
 /* FUN_004534e0 @ 0x004534e0 */
@@ -1625,20 +1533,21 @@ void FUN_004534d0(void)
 int * __fastcall FUN_004534e0(int *param_1)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_10;
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
+  /* SEH prolog */
+  loc_10 = *_fs;
   loc_8 = 0xffffffff;
-  __seh_handler = &__label_00453534;
-  *__seh_chain = &loc_10;
+  _handler = &L_00453534;
+  *_fs = &loc_10;
   FUN_0044e3f0(param_1);
   loc_8 = 0;
   *param_1 = &PTR_FUN_004762f8;
   FUN_0041da90(param_1,0);
-  *__seh_chain = loc_10;
+  *_fs = loc_10;
   return param_1;
 }
 
@@ -1668,22 +1577,23 @@ void __fastcall FUN_004535c0(void *param_1)
 int * __fastcall FUN_004535d0(int *param_1)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_10;
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
+  /* SEH prolog */
+  loc_10 = *_fs;
   loc_8 = 0xffffffff;
-  __seh_handler = &__label_0045363e;
-  *__seh_chain = &loc_10;
+  _handler = &L_0045363e;
+  *_fs = &loc_10;
   FUN_0044e3f0(param_1);
   *param_1 = &PTR_FUN_00473740;
   loc_8 = 1;
   ((UIWidget *)param_1)->flags = ((UIWidget *)param_1)->flags & 0xffffefff;
   *param_1 = &PTR_FUN_004763a0;
   FUN_004535c0(param_1);
-  *__seh_chain = loc_10;
+  *_fs = loc_10;
   return param_1;
 }
 
@@ -1703,15 +1613,16 @@ void FUN_004536a9(void)
 int * __fastcall FUN_004536c0(int *param_1)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_10;
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
+  /* SEH prolog */
+  loc_10 = *_fs;
   loc_8 = 0xffffffff;
-  __seh_handler = &__label_00453729;
-  *__seh_chain = &loc_10;
+  _handler = &L_00453729;
+  *_fs = &loc_10;
   FUN_0044e3f0(param_1);
   loc_8 = 0;
   *param_1 = &PTR_FUN_00476448;
@@ -1719,7 +1630,7 @@ int * __fastcall FUN_004536c0(int *param_1)
   ((UIWidget *)param_1)->anim_flag_2 = 1;
   ((UIWidget *)param_1)->anim_flag_1 = 0;
   ((UIWidget *)param_1)->anim_flag_3 = 0;
-  *__seh_chain = loc_10;
+  *_fs = loc_10;
   return param_1;
 }
 
@@ -1739,21 +1650,22 @@ void FUN_00453799(void)
 int * __fastcall FUN_004537b0(int *param_1)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_10;
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
+  /* SEH prolog */
+  loc_10 = *_fs;
   loc_8 = 0xffffffff;
-  __seh_handler = &__label_0045380e;
-  *__seh_chain = &loc_10;
+  _handler = &L_0045380e;
+  *_fs = &loc_10;
   FUN_00453b00(param_1);
   loc_8 = 0;
   *param_1 = &PTR_FUN_004764f0;
   FUN_0041da90(param_1,1);
   ((UIWidget *)param_1)->animation_timer = 1;
-  *__seh_chain = loc_10;
+  *_fs = loc_10;
   return param_1;
 }
 
@@ -1763,17 +1675,19 @@ int * __fastcall FUN_004537b0(int *param_1)
 void FUN_00453879(void)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_10;
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
-  __seh_handler = &__label_004538c7;
-  *__seh_chain = &loc_10;
+  /* SEH prolog */
+  loc_10 = *_fs;
+  _handler = &L_004538c7;
+  *_fs = &loc_10;
   loc_8 = 0xffffffff;
   FUN_004538d1();
-  *__seh_chain = loc_10;
+  /* SEH epilog */
+  *_fs = loc_10;
   return;
 }
 
@@ -1793,21 +1707,22 @@ void FUN_004538d1(void)
 int * __fastcall FUN_00453960(int *param_1)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_10;
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
+  /* SEH prolog */
+  loc_10 = *_fs;
   loc_8 = 0xffffffff;
-  __seh_handler = &__label_004539bf;
-  *__seh_chain = &loc_10;
+  _handler = &L_004539bf;
+  *_fs = &loc_10;
   FUN_00454b80(param_1,0);
   loc_8 = 0;
   *(short *)((int)param_1 + 0x11c) = 0; /* byte offset 0x11C, TODO: identify struct field */
   *param_1 = &PTR_FUN_00476598;
   FUN_0041da90(param_1,1);
-  *__seh_chain = loc_10;
+  *_fs = loc_10;
   return param_1;
 }
 
@@ -1827,21 +1742,22 @@ void FUN_00453a39(void)
 int * __fastcall FUN_00453b00(int *param_1)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_10;
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
+  /* SEH prolog */
+  loc_10 = *_fs;
   loc_8 = 0xffffffff;
-  __seh_handler = &__label_00453b5e;
-  *__seh_chain = &loc_10;
+  _handler = &L_00453b5e;
+  *_fs = &loc_10;
   FUN_0044e3f0(param_1);
   loc_8 = 0;
   ((UIWidget *)param_1)->animation_timer = 4;
   *param_1 = &PTR_FUN_00476648;
   FUN_0041da90(param_1,0);
-  *__seh_chain = loc_10;
+  *_fs = loc_10;
   return param_1;
 }
 
@@ -1858,38 +1774,22 @@ void FUN_00453bc9(void)
 
 /* FUN_00453e87 @ 0x00453e87 */
 
-void FUN_00453e87(void)
-
-{
-  return;
-}
+void FUN_00453e87(void) { return; }
 
 
 /* FUN_00453e8f @ 0x00453e8f */
 
-void FUN_00453e8f(void)
-
-{
-  return;
-}
+void FUN_00453e8f(void) { return; }
 
 
 /* FUN_00453e97 @ 0x00453e97 */
 
-void FUN_00453e97(void)
-
-{
-  return;
-}
+void FUN_00453e97(void) { return; }
 
 
 /* FUN_00453ea9 @ 0x00453ea9 */
 
-void FUN_00453ea9(void)
-
-{
-  return;
-}
+void FUN_00453ea9(void) { return; }
 
 
 /* FUN_00453ed0 @ 0x00453ed0 */
@@ -1915,15 +1815,16 @@ int * __thiscall FUN_00453ed0(void *this,uint param_1)
 int * __fastcall FUN_00453f30(int *param_1)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_10;
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
+  /* SEH prolog */
+  loc_10 = *_fs;
   loc_8 = 0xffffffff;
-  __seh_handler = &__label_00453fb5;
-  *__seh_chain = &loc_10;
+  _handler = &L_00453fb5;
+  *_fs = &loc_10;
   FUN_0044e3f0(param_1);
   *param_1 = &PTR_FUN_004766f0;
   ((GameWidget *)param_1)->field_12e = 0;
@@ -1935,7 +1836,7 @@ int * __fastcall FUN_00453f30(int *param_1)
   *(unsigned char *)((int)param_1 + 0x12b) = 1; /* TODO: unknown offset 0x12B on GameWidget */
   *(unsigned char *)&((GameWidget *)param_1)->field_118 = 1; /* low byte of field_118 */
   *(unsigned char *)((int)param_1 + 0x12c) = 0; /* TODO: unknown offset 0x12C on GameWidget, in _pad134 area */
-  *__seh_chain = loc_10;
+  *_fs = loc_10;
   return param_1;
 }
 
@@ -1990,23 +1891,19 @@ void FUN_00454100(void)
 
 {
   int u1;
-  int __param_fffffff4;
+  int _p_fffffff4;
   
   u1 = 0;
-  FUN_00401050(&__stk_44,0);
-  FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00489070,u1,__param_fffffff4);
+  FUN_00401050(&_tmp_44,0);
+  FUN_00401050(&_tmp_43,0);
+  FUN_00401060(&DAT_00489070,u1,_p_fffffff4);
   return;
 }
 
 
 /* FUN_00454150 @ 0x00454150 */
 
-void FUN_00454150(void)
-
-{
-  return;
-}
+void FUN_00454150(void) { return; }
 
 
 /* FUN_00454170 @ 0x00454170 */
@@ -2034,11 +1931,7 @@ void FUN_00454180(void)
 
 /* FUN_00454190 @ 0x00454190 */
 
-void FUN_00454190(void)
-
-{
-  return;
-}
+void FUN_00454190(void) { return; }
 
 
 /* FUN_004541a0 @ 0x004541a0 */
@@ -2046,21 +1939,22 @@ void FUN_00454190(void)
 int * __fastcall FUN_004541a0(int *param_1)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_10;
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
+  /* SEH prolog */
+  loc_10 = *_fs;
   loc_8 = 0xffffffff;
-  __seh_handler = &__label_004541f5;
-  *__seh_chain = &loc_10;
+  _handler = &L_004541f5;
+  *_fs = &loc_10;
   FUN_00434860(param_1);
   loc_8 = 0;
   *param_1 = &PTR_FUN_00476798;
   *(int *)((int)param_1 + 0x6a) = 0; /* TODO: unknown offset 0x6A, possibly custom struct */
   FUN_0041da90(param_1,1);
-  *__seh_chain = loc_10;
+  *_fs = loc_10;
   return param_1;
 }
 
@@ -2118,11 +2012,7 @@ void FUN_004542e0(void)
 
 /* FUN_004542f0 @ 0x004542f0 */
 
-void FUN_004542f0(void)
-
-{
-  return;
-}
+void FUN_004542f0(void) { return; }
 
 
 /* FUN_00454300 @ 0x00454300 */
@@ -2130,22 +2020,23 @@ void FUN_004542f0(void)
 int * __fastcall FUN_00454300(int *param_1)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_10;
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
+  /* SEH prolog */
+  loc_10 = *_fs;
   loc_8 = 0xffffffff;
-  __seh_handler = &__label_0045435c;
-  *__seh_chain = &loc_10;
+  _handler = &L_0045435c;
+  *_fs = &loc_10;
   FUN_004052b0(param_1);
   loc_8 = 0;
   *param_1 = &PTR_FUN_00476828;
   ((UIWidget *)param_1)->is_interactive = 0;
   *(unsigned char *)&((GameWidget *)param_1)->field_118 = 0; /* low byte of field_118 */
   FUN_0041dd40(param_1);
-  *__seh_chain = loc_10;
+  *_fs = loc_10;
   return param_1;
 }
 
@@ -2155,20 +2046,16 @@ int * __fastcall FUN_00454300(int *param_1)
 void FUN_004543c9(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_00405420(*(int **)(__saved_ebp + -0x10));
+  FUN_00405420(*(int **)(_ebp + -0x10));
   return;
 }
 
 
 /* FUN_004544f6 @ 0x004544f6 */
 
-void FUN_004544f6(void)
-
-{
-  return;
-}
+void FUN_004544f6(void) { return; }
 
 
 /* FUN_00454520 @ 0x00454520 */
@@ -2183,11 +2070,7 @@ int * __fastcall FUN_00454520(void *param_1)
 
 /* FUN_00454634 @ 0x00454634 */
 
-void FUN_00454634(void)
-
-{
-  return;
-}
+void FUN_00454634(void) { return; }
 
 
 /* FUN_00454660 @ 0x00454660 */
@@ -2195,22 +2078,23 @@ void FUN_00454634(void)
 void __fastcall FUN_00454660(int *param_1)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_10;
-  void *__seh_handler;
+  void *_handler;
   uint loc_8;
   
-  loc_10 = *__seh_chain;
-  __seh_handler = &__label_004546c8;
+  loc_10 = *_fs;
+  _handler = &L_004546c8;
   *param_1 = &PTR_FUN_00473898;
-  *__seh_chain = &loc_10;
+  *_fs = &loc_10;
   loc_8 = 1;
   FUN_0041d780(param_1 + 0x48,(void *)0x0);
   loc_8 = loc_8 & 0xffffff00;
   FUN_004546ba();
   loc_8 = 0xffffffff;
   FUN_004546d2();
-  *__seh_chain = loc_10;
+  /* SEH epilog */
+  *_fs = loc_10;
   return;
 }
 
@@ -2248,20 +2132,12 @@ void __fastcall FUN_004546e0(int *param_1)
 
 /* FUN_00454839 @ 0x00454839 */
 
-void FUN_00454839(void)
-
-{
-  return;
-}
+void FUN_00454839(void) { return; }
 
 
 /* FUN_00454971 @ 0x00454971 */
 
-void FUN_00454971(void)
-
-{
-  return;
-}
+void FUN_00454971(void) { return; }
 
 
 /* FUN_00454990 @ 0x00454990 */
@@ -2269,20 +2145,21 @@ void FUN_00454971(void)
 int * __fastcall FUN_00454990(int *param_1)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_10;
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
+  /* SEH prolog */
+  loc_10 = *_fs;
   loc_8 = 0xffffffff;
-  __seh_handler = &__label_004549e4;
-  *__seh_chain = &loc_10;
+  _handler = &L_004549e4;
+  *_fs = &loc_10;
   FUN_0044e3f0(param_1);
   loc_8 = 0;
   *param_1 = &PTR_FUN_004768c8;
   FUN_0041da90(param_1,0);
-  *__seh_chain = loc_10;
+  *_fs = loc_10;
   return param_1;
 }
 
@@ -2302,19 +2179,20 @@ void FUN_00454a59(void)
 int * __thiscall FUN_00454a70(void *this,int param_1)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_10;
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
+  /* SEH prolog */
+  loc_10 = *_fs;
   loc_8 = 0xffffffff;
-  __seh_handler = &__label_00454ac6;
-  *__seh_chain = &loc_10;
+  _handler = &L_00454ac6;
+  *_fs = &loc_10;
   FUN_0044e3f0(this);
   *(void ***)this = &PTR_FUN_00476970;
   *(int *)((intptr_t)this + 0x118) = param_1; /* GameWidget->field_118 area (4-byte write spanning field_118 + pair_x_1) */
-  *__seh_chain = loc_10;
+  *_fs = loc_10;
   return this;
 }
 
@@ -2337,18 +2215,19 @@ int * __thiscall FUN_00454ae0(void *this,byte param_1)
 void __fastcall FUN_00454b00(int *param_1)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_10;
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
-  __seh_handler = &__label_00454b3d;
+  loc_10 = *_fs;
+  _handler = &L_00454b3d;
   *param_1 = &PTR_FUN_00476970;
-  *__seh_chain = &loc_10;
+  *_fs = &loc_10;
   loc_8 = 0xffffffff;
   FUN_00454b47();
-  *__seh_chain = loc_10;
+  /* SEH epilog */
+  *_fs = loc_10;
   return;
 }
 
@@ -2368,18 +2247,19 @@ void FUN_00454b47(void)
 int * __thiscall FUN_00454b80(void *this,int param_1)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_10;
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
+  /* SEH prolog */
+  loc_10 = *_fs;
   loc_8 = 0xffffffff;
-  __seh_handler = &__label_00454bd1;
-  *__seh_chain = &loc_10;
+  _handler = &L_00454bd1;
+  *_fs = &loc_10;
   FUN_00454a70(this,param_1);
   *(void ***)this = &PTR_FUN_00476a20;
-  *__seh_chain = loc_10;
+  *_fs = loc_10;
   return this;
 }
 
@@ -2389,9 +2269,9 @@ int * __thiscall FUN_00454b80(void *this,int param_1)
 void FUN_00454c49(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_00454b00(*(int **)(__saved_ebp + -0x10));
+  FUN_00454b00(*(int **)(_ebp + -0x10));
   return;
 }
 
@@ -2401,18 +2281,19 @@ void FUN_00454c49(void)
 int * __thiscall FUN_00454c90(void *this,int param_1)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_10;
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
+  /* SEH prolog */
+  loc_10 = *_fs;
   loc_8 = 0xffffffff;
-  __seh_handler = &__label_00454ce1;
-  *__seh_chain = &loc_10;
+  _handler = &L_00454ce1;
+  *_fs = &loc_10;
   FUN_00454a70(this,param_1);
   *(void ***)this = &PTR_FUN_00476ad0;
-  *__seh_chain = loc_10;
+  *_fs = loc_10;
   return this;
 }
 
@@ -2422,9 +2303,9 @@ int * __thiscall FUN_00454c90(void *this,int param_1)
 void FUN_00454d59(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_00454b00(*(int **)(__saved_ebp + -0x10));
+  FUN_00454b00(*(int **)(_ebp + -0x10));
   return;
 }
 
@@ -2434,15 +2315,16 @@ void FUN_00454d59(void)
 int * __fastcall FUN_00454da0(int *param_1)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_10;
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
+  /* SEH prolog */
+  loc_10 = *_fs;
   loc_8 = 0xffffffff;
-  __seh_handler = &__label_00454e0d;
-  *__seh_chain = &loc_10;
+  _handler = &L_00454e0d;
+  *_fs = &loc_10;
   FUN_004534e0(param_1);
   loc_8 = 0;
   *param_1 = &PTR_FUN_00476b80;
@@ -2450,7 +2332,7 @@ int * __fastcall FUN_00454da0(int *param_1)
   ((UIWidget *)param_1)->is_interactive = 1;
   FUN_0041dad0(param_1,0,'\0');
   ((UIWidget *)param_1)->type_or_mode = 0;
-  *__seh_chain = loc_10;
+  *_fs = loc_10;
   return param_1;
 }
 
@@ -2520,19 +2402,19 @@ void __cdecl FUN_00454f00(LPCSTR param_1,LPCSTR param_2,char *param_3,char *para
     b1 = *pb6;
     b9 = b1 < *pb7;
     if (b1 != *pb7) {
-__label_00454fee:
+L_00454fee:
       n2 = (1 - (uint)b9) - (uint)(b9 != 0);
-      goto __label_00454ff3;
+      goto L_00454ff3;
     }
     if (b1 == 0) break;
     b1 = pb6[1];
     b9 = b1 < pb7[1];
-    if (b1 != pb7[1]) goto __label_00454fee;
+    if (b1 != pb7[1]) goto L_00454fee;
     pb6 = pb6 + 2;
     pb7 = pb7 + 2;
   } while (b1 != 0);
   n2 = 0;
-__label_00454ff3:
+L_00454ff3:
   if (n2 == 0) {
     *param_3 = 1;
   }
@@ -2543,19 +2425,19 @@ __label_00454ff3:
     b1 = *pb6;
     b9 = b1 < (byte)*pc8;
     if (b1 != *pc8) {
-__label_00455039:
+L_00455039:
       n2 = (1 - (uint)b9) - (uint)(b9 != 0);
-      goto __label_0045503e;
+      goto L_0045503e;
     }
     if (b1 == 0) break;
     b1 = pb6[1];
     b9 = b1 < (byte)pc8[1];
-    if (b1 != pc8[1]) goto __label_00455039;
+    if (b1 != pc8[1]) goto L_00455039;
     pb6 = pb6 + 2;
     pc8 = pc8 + 2;
   } while (b1 != 0);
   n2 = 0;
-__label_0045503e:
+L_0045503e:
   if (n2 == 0) {
     *param_4 = 1;
   }
@@ -2731,11 +2613,7 @@ uint __fastcall FUN_00455860(int param_1)
 
 /* FUN_00455950 @ 0x00455950 */
 
-void FUN_00455950(void)
-
-{
-  return;
-}
+void FUN_00455950(void) { return; }
 
 
 /* FUN_00455960 @ 0x00455960 */
@@ -2756,23 +2634,19 @@ void FUN_00455b10(void)
 
 {
   int u1;
-  int __param_fffffff4;
+  int _p_fffffff4;
   
   u1 = 0;
-  FUN_00401050(&__stk_44,0);
-  FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00489090,u1,__param_fffffff4);
+  FUN_00401050(&_tmp_44,0);
+  FUN_00401050(&_tmp_43,0);
+  FUN_00401060(&DAT_00489090,u1,_p_fffffff4);
   return;
 }
 
 
 /* FUN_00455b60 @ 0x00455b60 */
 
-void FUN_00455b60(void)
-
-{
-  return;
-}
+void FUN_00455b60(void) { return; }
 
 
 /* FUN_00455b70 @ 0x00455b70 */
@@ -2813,11 +2687,7 @@ void FUN_00455bb0(void)
 
 /* FUN_00455bc0 @ 0x00455bc0 */
 
-void FUN_00455bc0(void)
-
-{
-  return;
-}
+void FUN_00455bc0(void) { return; }
 
 
 /* FUN_00455bd0 @ 0x00455bd0 */
@@ -2825,28 +2695,26 @@ void FUN_00455bc0(void)
 void FUN_00455bd0(void)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_10;
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
-  __seh_handler = &__label_00455c07;
-  *__seh_chain = &loc_10;
+  /* SEH prolog */
+  loc_10 = *_fs;
+  _handler = &L_00455c07;
+  *_fs = &loc_10;
   loc_8 = 0xffffffff;
   FUN_00455c11();
-  *__seh_chain = loc_10;
+  /* SEH epilog */
+  *_fs = loc_10;
   return;
 }
 
 
 /* FUN_00455c11 @ 0x00455c11 */
 
-void FUN_00455c11(void)
-
-{
-  return;
-}
+void FUN_00455c11(void) { return; }
 
 
 /* FUN_00455c20 @ 0x00455c20 */
@@ -2871,29 +2739,17 @@ void FUN_00455ca3(void)
 
 /* FUN_00455cae @ 0x00455cae */
 
-void FUN_00455cae(void)
-
-{
-  return;
-}
+void FUN_00455cae(void) { return; }
 
 
 /* FUN_00455cb9 @ 0x00455cb9 */
 
-void FUN_00455cb9(void)
-
-{
-  return;
-}
+void FUN_00455cb9(void) { return; }
 
 
 /* FUN_00455cce @ 0x00455cce */
 
-void FUN_00455cce(void)
-
-{
-  return;
-}
+void FUN_00455cce(void) { return; }
 
 
 /* FUN_00455ce0 @ 0x00455ce0 */
@@ -2947,11 +2803,7 @@ void FUN_00455d60(void)
 
 /* FUN_00455d70 @ 0x00455d70 */
 
-void FUN_00455d70(void)
-
-{
-  return;
-}
+void FUN_00455d70(void) { return; }
 
 
 /* FUN_00455d80 @ 0x00455d80 */
@@ -3010,11 +2862,7 @@ uint FUN_00456060(void)
 
 /* FUN_0045617f @ 0x0045617f */
 
-void FUN_0045617f(void)
-
-{
-  return;
-}
+void FUN_0045617f(void) { return; }
 
 
 /* FUN_004561a0 @ 0x004561a0 */
@@ -3033,18 +2881,18 @@ void __fastcall FUN_004561d0(int param_1)
 
 {
   short s1;
-  int *__seh_chain;
+  int *_fs;
   short loc_18[2];
   int loc_14;
   int loc_10;
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
+  loc_10 = *_fs;
   loc_8 = 0xffffffff;
-  __seh_handler = &DAT_004562f8;
+  _handler = &DAT_004562f8;
   s1 = *(short *)(param_1 + 0x30);
-  *__seh_chain = &loc_10;
+  *_fs = &loc_10;
   loc_14 = param_1;
   if (s1 != 0x42) {
     if (s1 == 1) {
@@ -3073,36 +2921,25 @@ void __fastcall FUN_004561d0(int param_1)
   FUN_004096f0((void *)(loc_14 + 0x1c),(short *)&loc_14,(short *)(loc_14 + 0x3a));
   loc_8 = 0xffffffff;
   FUN_004562f0();
-  *__seh_chain = loc_10;
+  /* SEH epilog */
+  *_fs = loc_10;
   return;
 }
 
 
 /* FUN_0045627b @ 0x0045627b */
 
-void FUN_0045627b(void)
-
-{
-  return;
-}
+void FUN_0045627b(void) { return; }
 
 
 /* FUN_004562e8 @ 0x004562e8 */
 
-void FUN_004562e8(void)
-
-{
-  return;
-}
+void FUN_004562e8(void) { return; }
 
 
 /* FUN_004562f0 @ 0x004562f0 */
 
-void FUN_004562f0(void)
-
-{
-  return;
-}
+void FUN_004562f0(void) { return; }
 
 
 /* FUN_00456310 @ 0x00456310 */
@@ -3250,23 +3087,19 @@ void FUN_004565b0(void)
 
 {
   int u1;
-  int __param_fffffff4;
+  int _p_fffffff4;
   
   u1 = 0;
-  FUN_00401050(&__stk_44,0);
-  FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00489100,u1,__param_fffffff4);
+  FUN_00401050(&_tmp_44,0);
+  FUN_00401050(&_tmp_43,0);
+  FUN_00401060(&DAT_00489100,u1,_p_fffffff4);
   return;
 }
 
 
 /* FUN_00456600 @ 0x00456600 */
 
-void FUN_00456600(void)
-
-{
-  return;
-}
+void FUN_00456600(void) { return; }
 
 
 /* FUN_00456620 @ 0x00456620 */
@@ -3294,11 +3127,7 @@ void FUN_00456630(void)
 
 /* FUN_00456640 @ 0x00456640 */
 
-void FUN_00456640(void)
-
-{
-  return;
-}
+void FUN_00456640(void) { return; }
 
 
 /* FUN_00456660 @ 0x00456660 */
@@ -3326,11 +3155,7 @@ void FUN_00456670(void)
 
 /* FUN_00456680 @ 0x00456680 */
 
-void FUN_00456680(void)
-
-{
-  return;
-}
+void FUN_00456680(void) { return; }
 
 
 /* FUN_004566a0 @ 0x004566a0 */
@@ -3339,12 +3164,12 @@ void FUN_004566a0(void)
 
 {
   int u1;
-  int __param_fffffff4;
+  int _p_fffffff4;
   
   u1 = 0;
-  FUN_00401050(&__stk_44,0);
-  FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00489110,u1,__param_fffffff4);
+  FUN_00401050(&_tmp_44,0);
+  FUN_00401050(&_tmp_43,0);
+  FUN_00401060(&DAT_00489110,u1,_p_fffffff4);
   return;
 }
 
@@ -3361,11 +3186,7 @@ void FUN_004566e0(void)
 
 /* FUN_004566f0 @ 0x004566f0 */
 
-void FUN_004566f0(void)
-
-{
-  return;
-}
+void FUN_004566f0(void) { return; }
 
 
 /* FUN_00456710 @ 0x00456710 */
@@ -3393,11 +3214,7 @@ void FUN_00456720(void)
 
 /* FUN_00456730 @ 0x00456730 */
 
-void FUN_00456730(void)
-
-{
-  return;
-}
+void FUN_00456730(void) { return; }
 
 
 /* FUN_00456750 @ 0x00456750 */
@@ -3425,11 +3242,7 @@ void FUN_00456760(void)
 
 /* FUN_00456770 @ 0x00456770 */
 
-void FUN_00456770(void)
-
-{
-  return;
-}
+void FUN_00456770(void) { return; }
 
 
 /* FUN_00456790 @ 0x00456790 */
@@ -3438,12 +3251,12 @@ void FUN_00456790(void)
 
 {
   int u1;
-  int __param_fffffff4;
+  int _p_fffffff4;
   
   u1 = 0;
-  FUN_00401050(&__stk_44,0);
-  FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00489120,u1,__param_fffffff4);
+  FUN_00401050(&_tmp_44,0);
+  FUN_00401050(&_tmp_43,0);
+  FUN_00401060(&DAT_00489120,u1,_p_fffffff4);
   return;
 }
 
@@ -3460,11 +3273,7 @@ void FUN_004567d0(void)
 
 /* FUN_004567e0 @ 0x004567e0 */
 
-void FUN_004567e0(void)
-
-{
-  return;
-}
+void FUN_004567e0(void) { return; }
 
 
 /* FUN_00456800 @ 0x00456800 */
@@ -3492,11 +3301,7 @@ void FUN_00456810(void)
 
 /* FUN_00456820 @ 0x00456820 */
 
-void FUN_00456820(void)
-
-{
-  return;
-}
+void FUN_00456820(void) { return; }
 
 
 /* FUN_00456840 @ 0x00456840 */
@@ -3524,11 +3329,7 @@ void FUN_00456850(void)
 
 /* FUN_00456860 @ 0x00456860 */
 
-void FUN_00456860(void)
-
-{
-  return;
-}
+void FUN_00456860(void) { return; }
 
 
 /* FUN_00456940 @ 0x00456940 */
@@ -3537,12 +3338,12 @@ void FUN_00456940(void)
 
 {
   int u1;
-  int __param_fffffff4;
+  int _p_fffffff4;
   
   u1 = 0;
-  FUN_00401050(&__stk_44,0);
-  FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00489140,u1,__param_fffffff4);
+  FUN_00401050(&_tmp_44,0);
+  FUN_00401050(&_tmp_43,0);
+  FUN_00401060(&DAT_00489140,u1,_p_fffffff4);
   return;
 }
 
@@ -3559,11 +3360,7 @@ void FUN_00456980(void)
 
 /* FUN_00456990 @ 0x00456990 */
 
-void FUN_00456990(void)
-
-{
-  return;
-}
+void FUN_00456990(void) { return; }
 
 
 /* FUN_004569b0 @ 0x004569b0 */
@@ -3591,11 +3388,7 @@ void FUN_004569c0(void)
 
 /* FUN_004569d0 @ 0x004569d0 */
 
-void FUN_004569d0(void)
-
-{
-  return;
-}
+void FUN_004569d0(void) { return; }
 
 
 /* FUN_004569f0 @ 0x004569f0 */
@@ -3623,11 +3416,7 @@ void FUN_00456a00(void)
 
 /* FUN_00456a10 @ 0x00456a10 */
 
-void FUN_00456a10(void)
-
-{
-  return;
-}
+void FUN_00456a10(void) { return; }
 
 
 /* FUN_00456a30 @ 0x00456a30 */
@@ -3636,12 +3425,12 @@ void FUN_00456a30(void)
 
 {
   int u1;
-  int __param_fffffff4;
+  int _p_fffffff4;
   
   u1 = 0;
-  FUN_00401050(&__stk_44,0);
-  FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00489160,u1,__param_fffffff4);
+  FUN_00401050(&_tmp_44,0);
+  FUN_00401050(&_tmp_43,0);
+  FUN_00401060(&DAT_00489160,u1,_p_fffffff4);
   return;
 }
 
@@ -3658,11 +3447,7 @@ void FUN_00456a70(void)
 
 /* FUN_00456a80 @ 0x00456a80 */
 
-void FUN_00456a80(void)
-
-{
-  return;
-}
+void FUN_00456a80(void) { return; }
 
 
 /* FUN_00456aa0 @ 0x00456aa0 */
@@ -3690,11 +3475,7 @@ void FUN_00456ab0(void)
 
 /* FUN_00456ac0 @ 0x00456ac0 */
 
-void FUN_00456ac0(void)
-
-{
-  return;
-}
+void FUN_00456ac0(void) { return; }
 
 
 /* FUN_00456ae0 @ 0x00456ae0 */
@@ -3722,11 +3503,7 @@ void FUN_00456af0(void)
 
 /* FUN_00456b00 @ 0x00456b00 */
 
-void FUN_00456b00(void)
-
-{
-  return;
-}
+void FUN_00456b00(void) { return; }
 
 
 /* FUN_00456b80 @ 0x00456b80 */
@@ -3734,18 +3511,19 @@ void FUN_00456b00(void)
 int * __fastcall FUN_00456b80(int *param_1)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_10;
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
+  /* SEH prolog */
+  loc_10 = *_fs;
   loc_8 = 0xffffffff;
-  __seh_handler = &__label_00456bcd;
-  *__seh_chain = &loc_10;
+  _handler = &L_00456bcd;
+  *_fs = &loc_10;
   FUN_00454a70(param_1,0);
   *param_1 = &PTR_FUN_00476c58;
-  *__seh_chain = loc_10;
+  *_fs = loc_10;
   return param_1;
 }
 
@@ -3768,18 +3546,19 @@ int * __thiscall FUN_00456be0(void *this,byte param_1)
 void __fastcall FUN_00456c00(int *param_1)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_10;
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
-  __seh_handler = &__label_00456c3d;
+  loc_10 = *_fs;
+  _handler = &L_00456c3d;
   *param_1 = &PTR_FUN_00476c58;
-  *__seh_chain = &loc_10;
+  *_fs = &loc_10;
   loc_8 = 0xffffffff;
   FUN_00456c47();
-  *__seh_chain = loc_10;
+  /* SEH epilog */
+  *_fs = loc_10;
   return;
 }
 
@@ -3789,9 +3568,9 @@ void __fastcall FUN_00456c00(int *param_1)
 void FUN_00456c47(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_00454b00(*(int **)(__saved_ebp + -0x10));
+  FUN_00454b00(*(int **)(_ebp + -0x10));
   return;
 }
 
@@ -3815,18 +3594,19 @@ int * __thiscall
 FUN_00456cf0(void *this,short param_1,short param_2,short param_3,int param_4,void *param_5)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_10;
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
+  /* SEH prolog */
+  loc_10 = *_fs;
   loc_8 = 0xffffffff;
-  __seh_handler = &__label_00456d55;
-  *__seh_chain = &loc_10;
+  _handler = &L_00456d55;
+  *_fs = &loc_10;
   FUN_0042bc70(this,param_1,param_2,param_3,param_4,param_5);
   *(void ***)this = &PTR_FUN_00476d08;
-  *__seh_chain = loc_10;
+  *_fs = loc_10;
   return this;
 }
 
@@ -3849,20 +3629,21 @@ int * __thiscall FUN_00456d70(void *this,byte param_1)
 void __fastcall FUN_00456d90(int *param_1)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_10;
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
-  __seh_handler = &__label_00456dd9;
+  loc_10 = *_fs;
+  _handler = &L_00456dd9;
   *param_1 = &PTR_FUN_00476d08;
-  *__seh_chain = &loc_10;
+  *_fs = &loc_10;
   loc_8 = 0;
   FUN_00456df0();
   loc_8 = 0xffffffff;
   FUN_00456de3();
-  *__seh_chain = loc_10;
+  /* SEH epilog */
+  *_fs = loc_10;
   return;
 }
 
@@ -3872,9 +3653,9 @@ void __fastcall FUN_00456d90(int *param_1)
 void FUN_00456de3(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_0042be10(*(int **)(__saved_ebp + -0x10));
+  FUN_0042be10(*(int **)(_ebp + -0x10));
   return;
 }
 
@@ -3902,11 +3683,7 @@ void __fastcall FUN_00456e50(int *param_1)
 
 /* FUN_00457331 @ 0x00457331 */
 
-void FUN_00457331(void)
-
-{
-  return;
-}
+void FUN_00457331(void) { return; }
 
 
 /* FUN_00457340 @ 0x00457340 */
@@ -3925,23 +3702,19 @@ void FUN_004573a0(void)
 
 {
   int u1;
-  int __param_fffffff4;
+  int _p_fffffff4;
   
   u1 = 0;
-  FUN_00401050(&__stk_44,0);
-  FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00489178,u1,__param_fffffff4);
+  FUN_00401050(&_tmp_44,0);
+  FUN_00401050(&_tmp_43,0);
+  FUN_00401060(&DAT_00489178,u1,_p_fffffff4);
   return;
 }
 
 
 /* FUN_004573f0 @ 0x004573f0 */
 
-void FUN_004573f0(void)
-
-{
-  return;
-}
+void FUN_004573f0(void) { return; }
 
 
 /* FUN_00457410 @ 0x00457410 */
@@ -3969,11 +3742,7 @@ void FUN_00457420(void)
 
 /* FUN_00457430 @ 0x00457430 */
 
-void FUN_00457430(void)
-
-{
-  return;
-}
+void FUN_00457430(void) { return; }
 
 
 /* FUN_00457450 @ 0x00457450 */
@@ -4001,11 +3770,7 @@ void FUN_00457460(void)
 
 /* FUN_00457470 @ 0x00457470 */
 
-void FUN_00457470(void)
-
-{
-  return;
-}
+void FUN_00457470(void) { return; }
 
 
 /* FUN_00457490 @ 0x00457490 */
@@ -4014,12 +3779,12 @@ void FUN_00457490(void)
 
 {
   int u1;
-  int __param_fffffff4;
+  int _p_fffffff4;
   
   u1 = 0;
-  FUN_00401050(&__stk_44,0);
-  FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00489188,u1,__param_fffffff4);
+  FUN_00401050(&_tmp_44,0);
+  FUN_00401050(&_tmp_43,0);
+  FUN_00401060(&DAT_00489188,u1,_p_fffffff4);
   return;
 }
 
@@ -4036,11 +3801,7 @@ void FUN_004574d0(void)
 
 /* FUN_004574e0 @ 0x004574e0 */
 
-void FUN_004574e0(void)
-
-{
-  return;
-}
+void FUN_004574e0(void) { return; }
 
 
 /* FUN_00457500 @ 0x00457500 */
@@ -4068,11 +3829,7 @@ void FUN_00457510(void)
 
 /* FUN_00457520 @ 0x00457520 */
 
-void FUN_00457520(void)
-
-{
-  return;
-}
+void FUN_00457520(void) { return; }
 
 
 /* FUN_00457540 @ 0x00457540 */
@@ -4100,11 +3857,7 @@ void FUN_00457550(void)
 
 /* FUN_00457560 @ 0x00457560 */
 
-void FUN_00457560(void)
-
-{
-  return;
-}
+void FUN_00457560(void) { return; }
 
 
 /* FUN_00457570 @ 0x00457570 */
@@ -4116,15 +3869,16 @@ FUN_00457570(TextDisplay *this,short param_1,short param_2,short param_3,int par
 {
   short *ps1;
   int u2;
-  int *__seh_chain;
+  int *_fs;
   int loc_10;
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
+  /* SEH prolog */
+  loc_10 = *_fs;
   loc_8 = 0xffffffff;
-  __seh_handler = &__label_00457645;
-  *__seh_chain = &loc_10;
+  _handler = &L_00457645;
+  *_fs = &loc_10;
   FUN_0042bc70(this,param_1,param_2,param_3,param_4,param_5);
   loc_8 = 0;
   *(void ***)this = &PTR_FUN_00476dd0;
@@ -4137,12 +3891,12 @@ FUN_00457570(TextDisplay *this,short param_1,short param_2,short param_3,int par
   }
   *ps1 = param_6;
   if (this->field_126 == 0x1dd) {
-    if (*(short *)(DAT_0048345c + 0x92 + *ps1 * 2) != 6) goto __label_0045762a;
+    if (*(short *)(DAT_0048345c + 0x92 + *ps1 * 2) != 6) goto L_0045762a;
   }
-  else if (*(short *)(DAT_0048345c + 0x92 + *ps1 * 2) != 1) goto __label_0045762a;
+  else if (*(short *)(DAT_0048345c + 0x92 + *ps1 * 2) != 1) goto L_0045762a;
   FUN_0042c3f0(this);
-__label_0045762a:
-  *__seh_chain = loc_10;
+L_0045762a:
+  *_fs = loc_10;
   return this;
 }
 
@@ -4165,18 +3919,19 @@ int * __thiscall FUN_00457660(void *this,byte param_1)
 void __fastcall FUN_00457680(int *param_1)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_10;
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
-  __seh_handler = &__label_004576bd;
+  loc_10 = *_fs;
+  _handler = &L_004576bd;
   *param_1 = &PTR_FUN_00476dd0;
-  *__seh_chain = &loc_10;
+  *_fs = &loc_10;
   loc_8 = 0xffffffff;
   FUN_004576c7();
-  *__seh_chain = loc_10;
+  /* SEH epilog */
+  *_fs = loc_10;
   return;
 }
 
@@ -4186,9 +3941,9 @@ void __fastcall FUN_00457680(int *param_1)
 void FUN_004576c7(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_0042be10(*(int **)(__saved_ebp + -0x10));
+  FUN_0042be10(*(int **)(_ebp + -0x10));
   return;
 }
 
@@ -4199,23 +3954,19 @@ void FUN_004577a0(void)
 
 {
   int u1;
-  int __param_fffffff4;
+  int _p_fffffff4;
   
   u1 = 0;
-  FUN_00401050(&__stk_44,0);
-  FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00489198,u1,__param_fffffff4);
+  FUN_00401050(&_tmp_44,0);
+  FUN_00401050(&_tmp_43,0);
+  FUN_00401060(&DAT_00489198,u1,_p_fffffff4);
   return;
 }
 
 
 /* FUN_004577f0 @ 0x004577f0 */
 
-void FUN_004577f0(void)
-
-{
-  return;
-}
+void FUN_004577f0(void) { return; }
 
 
 /* FUN_00457820 @ 0x00457820 */
@@ -4243,11 +3994,7 @@ void FUN_00457830(void)
 
 /* FUN_00457840 @ 0x00457840 */
 
-void FUN_00457840(void)
-
-{
-  return;
-}
+void FUN_00457840(void) { return; }
 
 
 /* FUN_00457860 @ 0x00457860 */
@@ -4275,11 +4022,7 @@ void FUN_00457870(void)
 
 /* FUN_00457880 @ 0x00457880 */
 
-void FUN_00457880(void)
-
-{
-  return;
-}
+void FUN_00457880(void) { return; }
 
 
 /* FUN_004578a0 @ 0x004578a0 */
@@ -4288,12 +4031,12 @@ void FUN_004578a0(void)
 
 {
   int u1;
-  int __param_fffffff4;
+  int _p_fffffff4;
   
   u1 = 0;
-  FUN_00401050(&__stk_44,0);
-  FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_004891a8,u1,__param_fffffff4);
+  FUN_00401050(&_tmp_44,0);
+  FUN_00401050(&_tmp_43,0);
+  FUN_00401060(&DAT_004891a8,u1,_p_fffffff4);
   return;
 }
 
@@ -4310,11 +4053,7 @@ void FUN_004578e0(void)
 
 /* FUN_004578f0 @ 0x004578f0 */
 
-void FUN_004578f0(void)
-
-{
-  return;
-}
+void FUN_004578f0(void) { return; }
 
 
 /* FUN_00457910 @ 0x00457910 */
@@ -4342,11 +4081,7 @@ void FUN_00457920(void)
 
 /* FUN_00457930 @ 0x00457930 */
 
-void FUN_00457930(void)
-
-{
-  return;
-}
+void FUN_00457930(void) { return; }
 
 
 /* FUN_00457950 @ 0x00457950 */
@@ -4374,11 +4109,7 @@ void FUN_00457960(void)
 
 /* FUN_00457970 @ 0x00457970 */
 
-void FUN_00457970(void)
-
-{
-  return;
-}
+void FUN_00457970(void) { return; }
 
 
 /* FUN_00457980 @ 0x00457980 */
@@ -4445,23 +4176,19 @@ void FUN_00457b60(void)
 
 {
   int u1;
-  int __param_fffffff4;
+  int _p_fffffff4;
   
   u1 = 0;
-  FUN_00401050(&__stk_44,0);
-  FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_004891b8,u1,__param_fffffff4);
+  FUN_00401050(&_tmp_44,0);
+  FUN_00401050(&_tmp_43,0);
+  FUN_00401060(&DAT_004891b8,u1,_p_fffffff4);
   return;
 }
 
 
 /* FUN_00457bb0 @ 0x00457bb0 */
 
-void FUN_00457bb0(void)
-
-{
-  return;
-}
+void FUN_00457bb0(void) { return; }
 
 
 /* FUN_00457bd0 @ 0x00457bd0 */
@@ -4489,11 +4216,7 @@ void FUN_00457be0(void)
 
 /* FUN_00457bf0 @ 0x00457bf0 */
 
-void FUN_00457bf0(void)
-
-{
-  return;
-}
+void FUN_00457bf0(void) { return; }
 
 
 /* FUN_00457c10 @ 0x00457c10 */
@@ -4521,11 +4244,7 @@ void FUN_00457c20(void)
 
 /* FUN_00457c30 @ 0x00457c30 */
 
-void FUN_00457c30(void)
-
-{
-  return;
-}
+void FUN_00457c30(void) { return; }
 
 
 /* FUN_00457c50 @ 0x00457c50 */
@@ -4536,19 +4255,19 @@ void FUN_00457c50(void)
 
 {
   int u1;
-  int *__seh_chain;
+  int *_fs;
   char loc_10[12];
   
-  u1 = *__seh_chain;
+  u1 = *_fs;
   DAT_00489214 = 0;
   _DAT_00489218 = 0;
   _DAT_0048921c = 0;
-  *__seh_chain = loc_10;
+  *_fs = loc_10;
   _DAT_00489220 = 0xffffffff;
   DAT_00489224 = 0;
   _DAT_00489210 = &PTR_LAB_00472e00;
   _DAT_00489226 = s_aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpP_00480518;
-  *__seh_chain = u1;
+  *_fs = u1;
   return;
 }
 
@@ -4570,18 +4289,19 @@ void FUN_00457ce0(void)
 void FUN_00457cf0(void)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_10;
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
+  loc_10 = *_fs;
   _DAT_00489210 = &PTR_LAB_00472e00;
   loc_8 = 0xffffffff;
-  __seh_handler = &__label_00457d2c;
-  *__seh_chain = &loc_10;
+  _handler = &L_00457d2c;
+  *_fs = &loc_10;
   FUN_00457d36();
-  *__seh_chain = loc_10;
+  /* SEH epilog */
+  *_fs = loc_10;
   return;
 }
 
@@ -4604,19 +4324,19 @@ void FUN_00457d50(void)
 
 {
   int u1;
-  int *__seh_chain;
+  int *_fs;
   char loc_10[12];
   
-  u1 = *__seh_chain;
+  u1 = *_fs;
   _DAT_004891ec = 0;
   _DAT_004891f0 = 0;
   _DAT_004891f4 = 0;
-  *__seh_chain = loc_10;
+  *_fs = loc_10;
   _DAT_004891f8 = 0xffffffff;
   DAT_004891fc = 0;
   _DAT_004891e8 = &PTR_LAB_00472e00;
   _DAT_004891fe = s_aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpP_00480518;
-  *__seh_chain = u1;
+  *_fs = u1;
   return;
 }
 
@@ -4638,18 +4358,19 @@ void FUN_00457de0(void)
 void FUN_00457df0(void)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_10;
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
+  loc_10 = *_fs;
   _DAT_004891e8 = &PTR_LAB_00472e00;
   loc_8 = 0xffffffff;
-  __seh_handler = &__label_00457e2c;
-  *__seh_chain = &loc_10;
+  _handler = &L_00457e2c;
+  *_fs = &loc_10;
   FUN_00457e36();
-  *__seh_chain = loc_10;
+  /* SEH epilog */
+  *_fs = loc_10;
   return;
 }
 
@@ -4672,19 +4393,19 @@ void FUN_00457e50(void)
 
 {
   int u1;
-  int *__seh_chain;
+  int *_fs;
   char loc_10[12];
   
-  u1 = *__seh_chain;
+  u1 = *_fs;
   DAT_00489234 = 0;
   _DAT_00489238 = 0;
   _DAT_0048923c = 0;
-  *__seh_chain = loc_10;
+  *_fs = loc_10;
   _DAT_00489240 = 0xffffffff;
   DAT_00489244 = 0;
   _DAT_00489230 = &PTR_LAB_00472e00;
   _DAT_00489246 = s_aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpP_00480518;
-  *__seh_chain = u1;
+  *_fs = u1;
   return;
 }
 
@@ -4706,18 +4427,19 @@ void FUN_00457ee0(void)
 void FUN_00457ef0(void)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_10;
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
+  loc_10 = *_fs;
   _DAT_00489230 = &PTR_LAB_00472e00;
   loc_8 = 0xffffffff;
-  __seh_handler = &__label_00457f2c;
-  *__seh_chain = &loc_10;
+  _handler = &L_00457f2c;
+  *_fs = &loc_10;
   FUN_00457f36();
-  *__seh_chain = loc_10;
+  /* SEH epilog */
+  *_fs = loc_10;
   return;
 }
 
@@ -4740,19 +4462,19 @@ void FUN_00457f50(void)
 
 {
   int u1;
-  int *__seh_chain;
+  int *_fs;
   char loc_10[12];
   
-  u1 = *__seh_chain;
+  u1 = *_fs;
   DAT_004891cc = 0;
   DAT_004891d0 = 0;
   DAT_004891d4 = 0;
-  *__seh_chain = loc_10;
+  *_fs = loc_10;
   _DAT_004891d8 = 0xffffffff;
   DAT_004891dc = 0;
   _DAT_004891c8 = &PTR_LAB_00472e00;
   _DAT_004891de = s_aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpP_00480518;
-  *__seh_chain = u1;
+  *_fs = u1;
   return;
 }
 
@@ -4774,18 +4496,19 @@ void FUN_00457fe0(void)
 void FUN_00457ff0(void)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_10;
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
+  loc_10 = *_fs;
   _DAT_004891c8 = &PTR_LAB_00472e00;
   loc_8 = 0xffffffff;
-  __seh_handler = &__label_0045802c;
-  *__seh_chain = &loc_10;
+  _handler = &L_0045802c;
+  *_fs = &loc_10;
   FUN_00458036();
-  *__seh_chain = loc_10;
+  /* SEH epilog */
+  *_fs = loc_10;
   return;
 }
 
@@ -4868,15 +4591,15 @@ void __thiscall FUN_00458580(void *this,short param_1,short param_2)
 void __fastcall FUN_00458710(int *param_1)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_10;
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
-  __seh_handler = &__label_00458795;
+  loc_10 = *_fs;
+  _handler = &L_00458795;
   *param_1 = &PTR_FUN_00476eb8;
-  *__seh_chain = &loc_10;
+  *_fs = &loc_10;
   loc_8 = 3;
   FUN_00458830((int)param_1);
   loc_8 = (loc_8 & ~0xFF) | 2;
@@ -4887,7 +4610,8 @@ void __fastcall FUN_00458710(int *param_1)
   FUN_0045878a();
   loc_8 = 0xffffffff;
   FUN_0045879f();
-  *__seh_chain = loc_10;
+  /* SEH epilog */
+  *_fs = loc_10;
   return;
 }
 
@@ -4897,9 +4621,9 @@ void __fastcall FUN_00458710(int *param_1)
 void FUN_00458774(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_00459e90((int *)(*(int *)(__saved_ebp + -0x10) + 0x78));
+  FUN_00459e90((int *)(*(int *)(_ebp + -0x10) + 0x78));
   return;
 }
 
@@ -4909,9 +4633,9 @@ void FUN_00458774(void)
 void FUN_0045877f(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_00459e60((int *)(*(int *)(__saved_ebp + -0x10) + 0x60));
+  FUN_00459e60((int *)(*(int *)(_ebp + -0x10) + 0x60));
   return;
 }
 
@@ -4921,9 +4645,9 @@ void FUN_0045877f(void)
 void FUN_0045878a(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_004113d0((int *)(*(int *)(__saved_ebp + -0x10) + 0x42));
+  FUN_004113d0((int *)(*(int *)(_ebp + -0x10) + 0x42));
   return;
 }
 
@@ -4933,9 +4657,9 @@ void FUN_0045878a(void)
 void FUN_0045879f(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_0041b890(*(int **)(__saved_ebp + -0x10));
+  FUN_0041b890(*(int **)(_ebp + -0x10));
   return;
 }
 
@@ -5149,16 +4873,17 @@ int __fastcall FUN_004589f0(int param_1)
 void __thiscall FUN_00458a00(TextDisplay *this,short param_1)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_18;
   int loc_14;
   int loc_10;
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
-  __seh_handler = &__label_00458a85;
-  *__seh_chain = &loc_10;
+  /* SEH prolog */
+  loc_10 = *_fs;
+  _handler = &L_00458a85;
+  *_fs = &loc_10;
   loc_14 = 0;
   loc_18 = 0;
   loc_8 = 0;
@@ -5168,18 +4893,15 @@ void __thiscall FUN_00458a00(TextDisplay *this,short param_1)
   FUN_00458c00(this,&loc_18,'\0');
   loc_8 = 0xffffffff;
   FUN_00458a8f();
-  *__seh_chain = loc_10;
+  /* SEH epilog */
+  *_fs = loc_10;
   return;
 }
 
 
 /* FUN_00458a8f @ 0x00458a8f */
 
-void FUN_00458a8f(void)
-
-{
-  return;
-}
+void FUN_00458a8f(void) { return; }
 
 
 /* FUN_00458aa0 @ 0x00458aa0 */
@@ -5187,14 +4909,14 @@ void FUN_00458a8f(void)
 void __thiscall FUN_00458aa0(TextDisplay *this,short param_1)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_18 [3];
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
   
-  loc_18[2] = *__seh_chain;
-  __seh_handler = &__label_00458b25;
-  *__seh_chain = loc_18 + 2;
+  loc_18[2] = *_fs;
+  _handler = &L_00458b25;
+  *_fs = loc_18 + 2;
   loc_18[1] = 0;
   loc_18[0] = 0;
   loc_8 = 0;
@@ -5204,18 +4926,14 @@ void __thiscall FUN_00458aa0(TextDisplay *this,short param_1)
   FUN_00458c00(this,loc_18,'\0');
   loc_8 = 0xffffffff;
   FUN_00458b2f();
-  *__seh_chain = loc_18[2];
+  *_fs = loc_18[2];
   return;
 }
 
 
 /* FUN_00458b2f @ 0x00458b2f */
 
-void FUN_00458b2f(void)
-
-{
-  return;
-}
+void FUN_00458b2f(void) { return; }
 
 
 /* FUN_00458b40 @ 0x00458b40 */
@@ -5223,16 +4941,17 @@ void FUN_00458b2f(void)
 void __thiscall FUN_00458b40(TextDisplay *this,short param_1,short param_2)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_18;
   int loc_14;
   int loc_10;
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
-  __seh_handler = &__label_00458be5;
-  *__seh_chain = &loc_10;
+  /* SEH prolog */
+  loc_10 = *_fs;
+  _handler = &L_00458be5;
+  *_fs = &loc_10;
   loc_14 = 0;
   loc_18 = 0;
   loc_8 = 0;
@@ -5244,18 +4963,15 @@ void __thiscall FUN_00458b40(TextDisplay *this,short param_1,short param_2)
   FUN_00458c00(this,&loc_18,'\0');
   loc_8 = 0xffffffff;
   FUN_00458bef();
-  *__seh_chain = loc_10;
+  /* SEH epilog */
+  *_fs = loc_10;
   return;
 }
 
 
 /* FUN_00458bef @ 0x00458bef */
 
-void FUN_00458bef(void)
-
-{
-  return;
-}
+void FUN_00458bef(void) { return; }
 
 
 /* FUN_00458c00 @ 0x00458c00 */
@@ -5263,14 +4979,14 @@ void FUN_00458bef(void)
 void __thiscall FUN_00458c00(void *this,int *param_1,char param_2)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_18 [3];
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
   
-  loc_18[2] = *__seh_chain;
-  __seh_handler = &__label_00458c89;
-  *__seh_chain = loc_18 + 2;
+  loc_18[2] = *_fs;
+  _handler = &L_00458c89;
+  *_fs = loc_18 + 2;
   loc_18[1] = 0;
   loc_18[0] = 0;
   loc_8 = 0;
@@ -5281,18 +4997,14 @@ void __thiscall FUN_00458c00(void *this,int *param_1,char param_2)
   ((void (*)(void))this->vtable[0x90 / 4])();
   loc_8 = 0xffffffff;
   FUN_00458c93();
-  *__seh_chain = loc_18[2];
+  *_fs = loc_18[2];
   return;
 }
 
 
 /* FUN_00458c93 @ 0x00458c93 */
 
-void FUN_00458c93(void)
-
-{
-  return;
-}
+void FUN_00458c93(void) { return; }
 
 
 /* FUN_00458ca0 @ 0x00458ca0 */
@@ -5300,16 +5012,17 @@ void FUN_00458c93(void)
 void __thiscall FUN_00458ca0(void *this,int param_1,int param_2,char param_3)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_18;
   int loc_14;
   int loc_10;
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
-  __seh_handler = &__label_00458d27;
-  *__seh_chain = &loc_10;
+  /* SEH prolog */
+  loc_10 = *_fs;
+  _handler = &L_00458d27;
+  *_fs = &loc_10;
   loc_14 = param_1;
   loc_8 = 0;
   loc_18 = param_2;
@@ -5320,18 +5033,15 @@ void __thiscall FUN_00458ca0(void *this,int param_1,int param_2,char param_3)
   ((void (*)(void))this->vtable[0x90 / 4])();
   loc_8 = 0xffffffff;
   FUN_00458d31();
-  *__seh_chain = loc_10;
+  /* SEH epilog */
+  *_fs = loc_10;
   return;
 }
 
 
 /* FUN_00458d31 @ 0x00458d31 */
 
-void FUN_00458d31(void)
-
-{
-  return;
-}
+void FUN_00458d31(void) { return; }
 
 
 /* FUN_00458d40 @ 0x00458d40 */
@@ -5339,42 +5049,40 @@ void FUN_00458d31(void)
 void __fastcall FUN_00458d40(void *param_1)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int u1;
-  int __param_ffffffd8;
+  int _p_ffffffd8;
   char loc_20[8];
   char *loc_18;
   char *loc_14;
   int loc_10;
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
+  /* SEH prolog */
+  loc_10 = *_fs;
   loc_8 = 0xffffffff;
-  __seh_handler = &__label_00458dba;
-  *__seh_chain = &loc_10;
-  loc_18 = &__stk_37;
+  _handler = &L_00458dba;
+  *_fs = &loc_10;
+  loc_18 = &_tmp_37;
   u1 = 0;
-  FUN_00401050(&__stk_37,0);
-  loc_14 = &__stk_36;
-  FUN_00401050(&__stk_36,0);
-  FUN_00401060(loc_20,u1,__param_ffffffd8);
+  FUN_00401050(&_tmp_37,0);
+  loc_14 = &_tmp_36;
+  FUN_00401050(&_tmp_36,0);
+  FUN_00401060(loc_20,u1,_p_ffffffd8);
   loc_8 = 0;
   FUN_0041cb70(param_1,'\x01');
   loc_8 = 0xffffffff;
   FUN_00458db2();
-  *__seh_chain = loc_10;
+  /* SEH epilog */
+  *_fs = loc_10;
   return;
 }
 
 
 /* FUN_00458db2 @ 0x00458db2 */
 
-void FUN_00458db2(void)
-
-{
-  return;
-}
+void FUN_00458db2(void) { return; }
 
 
 /* FUN_00458dd0 @ 0x00458dd0 */
@@ -5458,18 +5166,19 @@ void __fastcall FUN_00459010(int param_1)
   short s4;
   ushort u5;
   int n6;
-  int *__seh_chain;
+  int *_fs;
   int loc_20;
   int loc_1c [2];
   void *loc_14;
   int loc_10;
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
+  /* SEH prolog */
+  loc_10 = *_fs;
   loc_8 = 0xffffffff;
-  __seh_handler = &__label_00459160;
-  *__seh_chain = &loc_10;
+  _handler = &L_00459160;
+  *_fs = &loc_10;
   n6 = 0;
   loc_14 = (void *)FUN_00458e30(param_1);
   loc_20 = 0;
@@ -5520,18 +5229,15 @@ void __fastcall FUN_00459010(int param_1)
   loc_8 = 0xffffffff;
   *(short *)(param_1 + 0x92) = (short)(loc_20 / (int)(short)u2); /* TextDisplay._pad90 area - avg extent y */
   FUN_0045916a();
-  *__seh_chain = loc_10;
+  /* SEH epilog */
+  *_fs = loc_10;
   return;
 }
 
 
 /* FUN_0045916a @ 0x0045916a */
 
-void FUN_0045916a(void)
-
-{
-  return;
-}
+void FUN_0045916a(void) { return; }
 
 
 /* FUN_00459180 @ 0x00459180 */
@@ -5551,23 +5257,19 @@ void FUN_00459510(void)
 
 {
   int u1;
-  int __param_fffffff4;
+  int _p_fffffff4;
   
   u1 = 0;
-  FUN_00401050(&__stk_44,0);
-  FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00489208,u1,__param_fffffff4);
+  FUN_00401050(&_tmp_44,0);
+  FUN_00401050(&_tmp_43,0);
+  FUN_00401060(&DAT_00489208,u1,_p_fffffff4);
   return;
 }
 
 
 /* FUN_00459560 @ 0x00459560 */
 
-void FUN_00459560(void)
-
-{
-  return;
-}
+void FUN_00459560(void) { return; }
 
 
 /* FUN_00459580 @ 0x00459580 */
@@ -5595,11 +5297,7 @@ void FUN_00459590(void)
 
 /* FUN_004595a0 @ 0x004595a0 */
 
-void FUN_004595a0(void)
-
-{
-  return;
-}
+void FUN_004595a0(void) { return; }
 
 
 /* FUN_004595b0 @ 0x004595b0 */
@@ -5637,11 +5335,7 @@ void FUN_00459740(void)
 
 /* FUN_00459750 @ 0x00459750 */
 
-void FUN_00459750(void)
-
-{
-  return;
-}
+void FUN_00459750(void) { return; }
 
 
 /* FUN_00459760 @ 0x00459760 */
@@ -5666,29 +5360,17 @@ void __thiscall FUN_00459c00(void *this,int *param_1,char param_2,int param_3,in
 
 /* FUN_00459dc4 @ 0x00459dc4 */
 
-void FUN_00459dc4(void)
-
-{
-  return;
-}
+void FUN_00459dc4(void) { return; }
 
 
 /* FUN_00459dcc @ 0x00459dcc */
 
-void FUN_00459dcc(void)
-
-{
-  return;
-}
+void FUN_00459dcc(void) { return; }
 
 
 /* FUN_00459dde @ 0x00459dde */
 
-void FUN_00459dde(void)
-
-{
-  return;
-}
+void FUN_00459dde(void) { return; }
 
 
 /* FUN_00459e60 @ 0x00459e60 */
@@ -5727,23 +5409,19 @@ void FUN_00459f50(void)
 
 {
   int u1;
-  int __param_fffffff4;
+  int _p_fffffff4;
   
   u1 = 0;
-  FUN_00401050(&__stk_44,0);
-  FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00489260,u1,__param_fffffff4);
+  FUN_00401050(&_tmp_44,0);
+  FUN_00401050(&_tmp_43,0);
+  FUN_00401060(&DAT_00489260,u1,_p_fffffff4);
   return;
 }
 
 
 /* FUN_00459fa0 @ 0x00459fa0 */
 
-void FUN_00459fa0(void)
-
-{
-  return;
-}
+void FUN_00459fa0(void) { return; }
 
 
 /* FUN_00459fc0 @ 0x00459fc0 */
@@ -5771,11 +5449,7 @@ void FUN_00459fd0(void)
 
 /* FUN_00459fe0 @ 0x00459fe0 */
 
-void FUN_00459fe0(void)
-
-{
-  return;
-}
+void FUN_00459fe0(void) { return; }
 
 
 /* FUN_0045a000 @ 0x0045a000 */
@@ -5803,11 +5477,7 @@ void FUN_0045a010(void)
 
 /* FUN_0045a020 @ 0x0045a020 */
 
-void FUN_0045a020(void)
-
-{
-  return;
-}
+void FUN_0045a020(void) { return; }
 
 
 /* FUN_0045a040 @ 0x0045a040 */
@@ -5816,12 +5486,12 @@ void FUN_0045a040(void)
 
 {
   int u1;
-  int __param_fffffff4;
+  int _p_fffffff4;
   
   u1 = 0;
-  FUN_00401050(&__stk_44,0);
-  FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00489270,u1,__param_fffffff4);
+  FUN_00401050(&_tmp_44,0);
+  FUN_00401050(&_tmp_43,0);
+  FUN_00401060(&DAT_00489270,u1,_p_fffffff4);
   return;
 }
 
@@ -5838,11 +5508,7 @@ void FUN_0045a080(void)
 
 /* FUN_0045a090 @ 0x0045a090 */
 
-void FUN_0045a090(void)
-
-{
-  return;
-}
+void FUN_0045a090(void) { return; }
 
 
 /* FUN_0045a0b0 @ 0x0045a0b0 */
@@ -5870,11 +5536,7 @@ void FUN_0045a0c0(void)
 
 /* FUN_0045a0d0 @ 0x0045a0d0 */
 
-void FUN_0045a0d0(void)
-
-{
-  return;
-}
+void FUN_0045a0d0(void) { return; }
 
 
 /* FUN_0045a0f0 @ 0x0045a0f0 */
@@ -5902,11 +5564,7 @@ void FUN_0045a100(void)
 
 /* FUN_0045a110 @ 0x0045a110 */
 
-void FUN_0045a110(void)
-
-{
-  return;
-}
+void FUN_0045a110(void) { return; }
 
 
 /* FUN_0045a2f0 @ 0x0045a2f0 */
@@ -5914,18 +5572,19 @@ void FUN_0045a110(void)
 int * __fastcall FUN_0045a2f0(int *param_1)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_10;
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
+  /* SEH prolog */
+  loc_10 = *_fs;
   loc_8 = 0xffffffff;
-  __seh_handler = &__label_0045a33e;
-  *__seh_chain = &loc_10;
+  _handler = &L_0045a33e;
+  *_fs = &loc_10;
   FUN_0042cbd0(param_1);
   *param_1 = &PTR_FUN_00476f60;
-  *__seh_chain = loc_10;
+  *_fs = loc_10;
   DAT_00489278 = 0;
   return param_1;
 }
@@ -5959,38 +5618,26 @@ void __fastcall FUN_0045a370(int *param_1)
 void FUN_0045a3de(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_0042cd10(*(int **)(__saved_ebp + -0x10));
+  FUN_0042cd10(*(int **)(_ebp + -0x10));
   return;
 }
 
 
 /* FUN_0045a575 @ 0x0045a575 */
 
-void FUN_0045a575(void)
-
-{
-  return;
-}
+void FUN_0045a575(void) { return; }
 
 
 /* FUN_0045ab33 @ 0x0045ab33 */
 
-void FUN_0045ab33(void)
-
-{
-  return;
-}
+void FUN_0045ab33(void) { return; }
 
 
 /* FUN_0045ab45 @ 0x0045ab45 */
 
-void FUN_0045ab45(void)
-
-{
-  return;
-}
+void FUN_0045ab45(void) { return; }
 
 
 /* FUN_0045ab60 @ 0x0045ab60 */
@@ -6062,23 +5709,19 @@ void FUN_0045b290(void)
 
 {
   int u1;
-  int __param_fffffff4;
+  int _p_fffffff4;
   
   u1 = 0;
-  FUN_00401050(&__stk_44,0);
-  FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00489290,u1,__param_fffffff4);
+  FUN_00401050(&_tmp_44,0);
+  FUN_00401050(&_tmp_43,0);
+  FUN_00401060(&DAT_00489290,u1,_p_fffffff4);
   return;
 }
 
 
 /* FUN_0045b2e0 @ 0x0045b2e0 */
 
-void FUN_0045b2e0(void)
-
-{
-  return;
-}
+void FUN_0045b2e0(void) { return; }
 
 
 /* FUN_0045b300 @ 0x0045b300 */
@@ -6106,11 +5749,7 @@ void FUN_0045b310(void)
 
 /* FUN_0045b320 @ 0x0045b320 */
 
-void FUN_0045b320(void)
-
-{
-  return;
-}
+void FUN_0045b320(void) { return; }
 
 
 /* FUN_0045b340 @ 0x0045b340 */
@@ -6138,11 +5777,7 @@ void FUN_0045b350(void)
 
 /* FUN_0045b360 @ 0x0045b360 */
 
-void FUN_0045b360(void)
-
-{
-  return;
-}
+void FUN_0045b360(void) { return; }
 
 
 /* FUN_0045b380 @ 0x0045b380 */
@@ -6151,12 +5786,12 @@ void FUN_0045b380(void)
 
 {
   int u1;
-  int __param_fffffff4;
+  int _p_fffffff4;
   
   u1 = 0;
-  FUN_00401050(&__stk_44,0);
-  FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_004893d0,u1,__param_fffffff4);
+  FUN_00401050(&_tmp_44,0);
+  FUN_00401050(&_tmp_43,0);
+  FUN_00401060(&DAT_004893d0,u1,_p_fffffff4);
   return;
 }
 
@@ -6173,11 +5808,7 @@ void FUN_0045b3c0(void)
 
 /* FUN_0045b3d0 @ 0x0045b3d0 */
 
-void FUN_0045b3d0(void)
-
-{
-  return;
-}
+void FUN_0045b3d0(void) { return; }
 
 
 /* FUN_0045b3f0 @ 0x0045b3f0 */
@@ -6205,11 +5836,7 @@ void FUN_0045b400(void)
 
 /* FUN_0045b410 @ 0x0045b410 */
 
-void FUN_0045b410(void)
-
-{
-  return;
-}
+void FUN_0045b410(void) { return; }
 
 
 /* FUN_0045b430 @ 0x0045b430 */
@@ -6237,11 +5864,7 @@ void FUN_0045b440(void)
 
 /* FUN_0045b450 @ 0x0045b450 */
 
-void FUN_0045b450(void)
-
-{
-  return;
-}
+void FUN_0045b450(void) { return; }
 
 
 /* FUN_0045b460 @ 0x0045b460 */
@@ -6249,20 +5872,21 @@ void FUN_0045b450(void)
 int * __fastcall FUN_0045b460(int *param_1)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_10;
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
+  /* SEH prolog */
+  loc_10 = *_fs;
   loc_8 = 0xffffffff;
-  __seh_handler = &__label_0045b4b6;
-  *__seh_chain = &loc_10;
+  _handler = &L_0045b4b6;
+  *_fs = &loc_10;
   FUN_0042cbd0(param_1);
   *(short *)((int)param_1 + 0x198) = 0; /* TODO: offset 0x198, GameWidget._pad160 area */
   *param_1 = &PTR_FUN_00477288;
   *(unsigned char *)((int)param_1 + 0x19a) = 0; /* TODO: offset 0x19A, GameWidget._pad160 area */
-  *__seh_chain = loc_10;
+  *_fs = loc_10;
   return param_1;
 }
 
@@ -6285,18 +5909,19 @@ int * __thiscall FUN_0045b4d0(void *this,byte param_1)
 void __fastcall FUN_0045b4f0(int *param_1)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_10;
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
-  __seh_handler = &__label_0045b52d;
+  loc_10 = *_fs;
+  _handler = &L_0045b52d;
   *param_1 = &PTR_FUN_00477288;
-  *__seh_chain = &loc_10;
+  *_fs = &loc_10;
   loc_8 = 0xffffffff;
   FUN_0045b537();
-  *__seh_chain = loc_10;
+  /* SEH epilog */
+  *_fs = loc_10;
   return;
 }
 
@@ -6306,9 +5931,9 @@ void __fastcall FUN_0045b4f0(int *param_1)
 void FUN_0045b537(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_0042cd10(*(int **)(__saved_ebp + -0x10));
+  FUN_0042cd10(*(int **)(_ebp + -0x10));
   return;
 }
 
@@ -6357,11 +5982,7 @@ void FUN_0045b9bb(void)
 
 /* FUN_0045b9d0 @ 0x0045b9d0 */
 
-void FUN_0045b9d0(void)
-
-{
-  return;
-}
+void FUN_0045b9d0(void) { return; }
 
 
 /* FUN_0045b9f0 @ 0x0045b9f0 */
@@ -6370,23 +5991,19 @@ void FUN_0045b9f0(void)
 
 {
   int u1;
-  int __param_fffffff4;
+  int _p_fffffff4;
   
   u1 = 0;
-  FUN_00401050(&__stk_44,0);
-  FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_004893e0,u1,__param_fffffff4);
+  FUN_00401050(&_tmp_44,0);
+  FUN_00401050(&_tmp_43,0);
+  FUN_00401060(&DAT_004893e0,u1,_p_fffffff4);
   return;
 }
 
 
 /* FUN_0045ba40 @ 0x0045ba40 */
 
-void FUN_0045ba40(void)
-
-{
-  return;
-}
+void FUN_0045ba40(void) { return; }
 
 
 /* FUN_0045ba60 @ 0x0045ba60 */
@@ -6414,11 +6031,7 @@ void FUN_0045ba70(void)
 
 /* FUN_0045ba80 @ 0x0045ba80 */
 
-void FUN_0045ba80(void)
-
-{
-  return;
-}
+void FUN_0045ba80(void) { return; }
 
 
 /* FUN_0045bb50 @ 0x0045bb50 */
@@ -6446,11 +6059,7 @@ void FUN_0045bb60(void)
 
 /* FUN_0045bb70 @ 0x0045bb70 */
 
-void FUN_0045bb70(void)
-
-{
-  return;
-}
+void FUN_0045bb70(void) { return; }
 
 
 /* FUN_0045bb80 @ 0x0045bb80 */
@@ -6492,20 +6101,20 @@ int __thiscall FUN_0045bbc0(void *this,short *param_1,void *param_2)
 void __fastcall FUN_0045bc70(int *param_1)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_420[256];
   short loc_1e [5];
   int *loc_14;
   int loc_10;
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
+  loc_10 = *_fs;
   loc_8 = 0xffffffff;
-  __seh_handler = &__label_0045bd9e;
+  _handler = &L_0045bd9e;
   *param_1 = &PTR_FUN_0047736c;
   *(char *)(param_1 + 3) = 1;
-  *__seh_chain = &loc_10;
+  *_fs = &loc_10;
   loc_14 = param_1;
   FUN_0045c0c0();
   if ((*(char *)((int)loc_14 + 0xd) != '\0') && (DAT_004896b0 != 0)) { /* TODO: offset 0x0D on loc_14, unknown struct */
@@ -6538,7 +6147,8 @@ void __fastcall FUN_0045bc70(int *param_1)
   FUN_0045c090();
   FUN_0045c0a0();
   FUN_0045c0b0();
-  *__seh_chain = loc_10;
+  /* SEH epilog */
+  *_fs = loc_10;
   return;
 }
 
@@ -6548,20 +6158,16 @@ void __fastcall FUN_0045bc70(int *param_1)
 void FUN_0045bd93(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_00451f60((int *)(__saved_ebp + -0x41c));
+  FUN_00451f60((int *)(_ebp + -0x41c));
   return;
 }
 
 
 /* FUN_0045bda8 @ 0x0045bda8 */
 
-void FUN_0045bda8(void)
-
-{
-  return;
-}
+void FUN_0045bda8(void) { return; }
 
 
 /* FUN_0045bdb0 @ 0x0045bdb0 */
@@ -6618,11 +6224,7 @@ void __fastcall FUN_0045be40(int param_1)
 
 /* FUN_0045bf2e @ 0x0045bf2e */
 
-void FUN_0045bf2e(void)
-
-{
-  return;
-}
+void FUN_0045bf2e(void) { return; }
 
 
 /* FUN_0045bf40 @ 0x0045bf40 */

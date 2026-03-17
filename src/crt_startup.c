@@ -79,13 +79,13 @@ FARPROC FUN_004700d0(FARPROC param_1)
 {
   bool b1;
   int n2;
-  int __extra_ret;
+  int _extra;
   FARPROC pu3;
   
   n2 = FUN_00471650((LPCRITICAL_SECTION)&DAT_00489c80,(int *)&DAT_00484034);
   if (n2 != 0) {
     if ((param_1 == (FARPROC)0x0) ||
-       (b1 = FUN_00471550(param_1), CONCAT31(__extra_ret,b1) != 0)) {
+       (b1 = FUN_00471550(param_1), CONCAT31(_extra,b1) != 0)) {
       pu3 = (FARPROC)PTR_FUN_00484048;
       PTR_FUN_00484048 = param_1;
     }
@@ -260,7 +260,7 @@ int __fastcall FUN_00470490(LPCVOID param_1,int *param_2,int param_3)
 
 {
   char c1;
-  int __extra_ret;
+  int _extra;
   uint u2;
   int n3;
   int *pn4;
@@ -275,7 +275,7 @@ int __fastcall FUN_00470490(LPCVOID param_1,int *param_2,int param_3)
     {
       return 0xfffffffe;
     }
-__label_0047050b:
+L_0047050b:
     if (b6) {
       return 0;
     }
@@ -300,14 +300,14 @@ __label_0047050b:
   u5 = (uint)(ushort)(((short)*(int *)((int)param_1 + 0x14) - (short)param_1) - 1); /* TODO: SmartHeap page end_ptr at 0x14 */
   if (u5 < 0x10000) {
     b6 = FUN_00471450(param_1,u5,0x1002);
-    if (CONCAT31(__extra_ret,b6) != 0) {
+    if (CONCAT31(_extra,b6) != 0) {
       u2 = FUN_00471410(param_1);
       if (u5 <= u2 - 1) {
         pn4 = (int *)((int)param_1 + 0x1c); /* TODO: SmartHeap page data_start at 0x1c */
         if ((pn4 <= *(int **)((int)param_1 + 0x10)) && /* TODO: SmartHeap page free_ptr at 0x10 */
            (*(int **)((int)param_1 + 0x10) <= *(int **)((int)param_1 + 0x14))) { /* TODO: SmartHeap page end_ptr at 0x14 */
           b6 = *(int **)((int)param_1 + 0x10) == pn4; /* TODO: SmartHeap page free_ptr at 0x10 */
-          goto __label_0047050b;
+          goto L_0047050b;
         }
       }
     }
@@ -354,7 +354,7 @@ int __fastcall FUN_004705d0(LPCVOID param_1,int *param_2)
 {
   ushort u1;
   int n2;
-  int __extra_ret;
+  int _extra;
   uint u3;
   ushort *pu4;
   uint u5;
@@ -375,7 +375,7 @@ int __fastcall FUN_004705d0(LPCVOID param_1,int *param_2)
        *(ushort **)((int)param_1 + 0x14) < pu4)) { /* TODO: SmartHeap page end_ptr at 0x14 */
       return 0xfffffffe;
     }
-__label_0047065b:
+L_0047065b:
     if (b6) {
       return 0;
     }
@@ -407,12 +407,12 @@ __label_0047065b:
   u5 = (uint)(ushort)(((short)*(int *)((int)param_1 + 0x14) - (short)param_1) + 9); /* TODO: SmartHeap page end_ptr at 0x14 */
   if (u5 < 0x10000) {
     b6 = FUN_00471450(param_1,u5,0x1002);
-    if (CONCAT31(__extra_ret,b6) != 0) {
+    if (CONCAT31(_extra,b6) != 0) {
       u3 = FUN_00471410(param_1);
       if (u5 <= u3 - 1) {
         pu4 = (ushort *)((int)param_1 + 0x1a);
         b6 = *(ushort **)((int)param_1 + 0x14) == pu4; /* TODO: SmartHeap page end_ptr at 0x14 */
-        goto __label_0047065b;
+        goto L_0047065b;
       }
     }
   }
@@ -430,7 +430,7 @@ int __fastcall FUN_00470750(LPCVOID param_1,int *param_2,int param_3)
 {
   ushort u1;
   bool b2;
-  int __extra_ret;
+  int _extra;
   uint u3;
   int n4;
   int *pu5;
@@ -444,7 +444,7 @@ int __fastcall FUN_00470750(LPCVOID param_1,int *param_2,int param_3)
         (*(int **)((int)param_1 + 0x14) < pu5)))) { /* TODO: SmartHeap page end_ptr at 0x14 */
       return 0xfffffffe;
     }
-__label_004707d9:
+L_004707d9:
     if (*(int **)((int)param_1 + 0x14) == pu5) { /* TODO: SmartHeap page end_ptr at 0x14 */
       return 0;
     }
@@ -465,14 +465,14 @@ __label_004707d9:
   u6 = (uint)(ushort)(((short)*(int *)((int)param_1 + 0x14) - (short)param_1) - 1); /* TODO: SmartHeap page end_ptr at 0x14 */
   if (u6 < 0x10000) {
     b2 = FUN_00471450(param_1,u6,0x1002);
-    if (CONCAT31(__extra_ret,b2) != 0) {
+    if (CONCAT31(_extra,b2) != 0) {
       u3 = FUN_00471410(param_1);
       if ((u6 <= u3 - 1) &&
          ((u6 = *(uint *)((int)param_1 + 0x10), u6 == 0 || /* TODO: SmartHeap page free_ptr at 0x10 */
           (((int)param_1 + 0x1cU <= u6 && (u6 <= *(int *)((int)param_1 + 0x14) - (uint)u1)) /* TODO: SmartHeap page data_start at 0x1c, end_ptr at 0x14 */
           )))) {
         pu5 = (int *)((int)param_1 + 0x1c);
-        goto __label_004707d9;
+        goto L_004707d9;
       }
     }
   }
@@ -545,10 +545,10 @@ bool FUN_00470ce0(int *param_1)
     if (n3 == 0) {
       n2 = -2;
     }
-    if (n2 == 0) goto __label_00470d68;
+    if (n2 == 0) goto L_00470d68;
   }
   b1 = true;
-__label_00470d68:
+L_00470d68:
   if ((*(byte *)((int)param_1 + 0x22) & 2) != 0) { /* TODO: SmartHeap pool threadsafe flag at 0x22 */
     param_1[0x18] = param_1[0x18] + -1;
     LeaveCriticalSection((LPCRITICAL_SECTION)(param_1 + 0x12));
@@ -576,7 +576,7 @@ int __fastcall FUN_00470e50(int param_1)
       if (n4 != 0) {
         do {
           n2 = FUN_00470ec0(*(int **)(n4 + 4),u3);
-          if (n2 == 0) goto __label_00470e91;
+          if (n2 == 0) goto L_00470e91;
           n4 = *(int *)(n4 + 8);
         } while (*pn1 != n4);
         if (n2 == 0) {
@@ -586,7 +586,7 @@ int __fastcall FUN_00470e50(int param_1)
     }
     u3 = u3 + 1;
   } while (u3 < 5);
-__label_00470e91:
+L_00470e91:
   if ((n2 != 0) && (n2 = FUN_00470f00(param_1), n2 != 0)) {
     return 1;
   }
@@ -670,21 +670,21 @@ int __fastcall FUN_00470f40(int *param_1)
   pu6 = pu2;
   do {
     if ((*(ushort **)(*(int *)(pu5 + 1) + 6) != pu5) ||
-       (*(ushort **)(*(int *)(pu5 + 3) + 2) != pu5)) goto __label_00470f72;
+       (*(ushort **)(*(int *)(pu5 + 3) + 2) != pu5)) goto L_00470f72;
     u1 = *pu5;
     if (pu5 == pu2) {
-      if ((u1 & 0xfffc) != 0) goto __label_00470f72;
+      if ((u1 & 0xfffc) != 0) goto L_00470f72;
       u1 = u1 & 1;
     }
     else {
-      if (((u1 & 1) != 0) || ((u1 & 2) == 0)) goto __label_00470f72;
+      if (((u1 & 1) != 0) || ((u1 & 2) == 0)) goto L_00470f72;
       u1 = u1 & 0xfffc;
     }
-    if (u1 == 0) goto __label_00470f72;
+    if (u1 == 0) goto L_00470f72;
     if ((pu6 != pu2) && (pu6 = *(ushort **)(pu6 + 1), pu6 != pu2)) {
       pu6 = *(ushort **)(pu6 + 1);
       pu4 = *(ushort **)(pu4 + 1);
-      if (pu6 == pu4) goto __label_00470f72;
+      if (pu6 == pu4) goto L_00470f72;
     }
     if ((ushort *)param_1[4] == pu5) {
       b3 = true;
@@ -694,7 +694,7 @@ int __fastcall FUN_00470f40(int *param_1)
   if (b3) {
     return 1;
   }
-__label_00470f72:
+L_00470f72:
   FUN_0046fd70(*param_1,0xc);
   return 0;
 }
@@ -731,7 +731,7 @@ int FUN_00471010(int param_1,int *param_2)
 {
   int n1;
   bool b2;
-  int __extra_ret;
+  int _extra;
   int extraout_var_00;
   int n3;
   int *pn4;
@@ -739,7 +739,7 @@ int FUN_00471010(int param_1,int *param_2)
   
   u5 = 1;
   b2 = FUN_00471450(param_2,4,0x202);
-  if (CONCAT31(__extra_ret,b2) == 0) {
+  if (CONCAT31(_extra,b2) == 0) {
     FUN_0046fd70(0,0xe);
     return 0;
   }
@@ -764,7 +764,7 @@ int FUN_00471010(int param_1,int *param_2)
   case 0:
   case 2:
     if ((*(byte *)((int)param_2 + -2) & 1) != 0) goto sw_3;
-    goto __label_00471103;
+    goto L_00471103;
   case 1:
     n3 = FUN_00470840((int)pn4,n1,param_2);
     break;
@@ -774,7 +774,7 @@ int FUN_00471010(int param_1,int *param_2)
     n3 = FUN_00470580(n1,param_2);
   }
   if (n3 == 0) {
-__label_00471103:
+L_00471103:
     u5 = 0xffffffff;
   }
 sw_3:
@@ -1062,10 +1062,10 @@ int __fastcall FUN_004718d0(LPCVOID param_1)
 
 {
   bool b1;
-  int __extra_ret;
+  int _extra;
   
   b1 = FUN_00471450(param_1,0x178,0x102);
-  if ((CONCAT31(__extra_ret,b1) != 0) && (*(short *)((int)param_1 + 0x20) == -0x4153)) { /* TODO: SmartHeap pool signature at 0x20 */
+  if ((CONCAT31(_extra,b1) != 0) && (*(short *)((int)param_1 + 0x20) == -0x4153)) { /* TODO: SmartHeap pool signature at 0x20 */
     return 1;
   }
   return 0;
@@ -1300,24 +1300,24 @@ void _eh_vector_destructor_iterator_
                (void *param_1,uint param_2,int param_3,callback_ptr *param_4)
 
 {
-  void *__saved_edi;
-  int *__seh_chain;
+  void *_edi;
+  int *_fs;
   int loc_14;
   void *puStack_10;
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
 
-  loc_14 = *__seh_chain;
-  __seh_handler = &DAT_00477d18;
+  loc_14 = *_fs;
+  _handler = &DAT_00477d18;
   puStack_10 = &DAT_00471ee2;
-  *__seh_chain = (int)&loc_14;
+  *_fs = (int)&loc_14;
   loc_8 = 0;
   while (param_3 = param_3 + -1, -1 < param_3) {
-    (*param_4)(__saved_edi);
+    (*param_4)(_edi);
   }
   loc_8 = 0xffffffff;
   FUN_00471ba0();
-  *__seh_chain = loc_14;
+  *_fs = loc_14;
   return;
 }
 
@@ -1342,22 +1342,22 @@ void FUN_00471ba0(void)
 void __ArrayUnwind(void *param_1,uint param_2,int param_3,callback_ptr *param_4)
 
 {
-  void *__saved_edi;
-  int *__seh_chain;
+  void *_edi;
+  int *_fs;
   int loc_14;
   void *puStack_10;
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
 
-  loc_14 = *__seh_chain;
-  __seh_handler = &DAT_00477d28;
+  loc_14 = *_fs;
+  _handler = &DAT_00477d28;
   puStack_10 = &DAT_00471ee2;
-  *__seh_chain = (int)&loc_14;
+  *_fs = (int)&loc_14;
   loc_8 = 0;
   while (param_3 = param_3 + -1, -1 < param_3) {
-    (*param_4)(__saved_edi);
+    (*param_4)(_edi);
   }
-  *__seh_chain = loc_14;
+  *_fs = loc_14;
   return;
 }
 
@@ -1375,29 +1375,29 @@ void _eh_vector_constructor_iterator_
                callback_ptr *param_5)
 
 {
-  void *__saved_edi;
-  int *__seh_chain;
+  void *_edi;
+  int *_fs;
   int loc_20;
   int loc_14;
   void *puStack_10;
-  void *__seh_handler;
+  void *_handler;
   int loc_8;
 
-  loc_14 = *__seh_chain;
-  __seh_handler = &DAT_00477d38;
+  loc_14 = *_fs;
+  _handler = &DAT_00477d38;
   puStack_10 = &DAT_00471ee2;
-  *__seh_chain = (int)&loc_14;
+  *_fs = (int)&loc_14;
   loc_8 = 0;
   loc_20 = 0;
   if (0 < param_3) {
     do {
-      (*param_4)(__saved_edi);
+      (*param_4)(_edi);
       loc_20 = loc_20 + 1;
     } while (loc_20 < param_3);
   }
   loc_8 = 0xffffffff;
   FUN_00471cd0();
-  *__seh_chain = loc_14;
+  *_fs = loc_14;
   return;
 }
 
@@ -1448,15 +1448,15 @@ void _CIacos(void)
 void FUN_00471d10(void)
 
 {
-  uint __reg_eax;
+  uint _eax;
   char *pu1;
-  unsigned int __return_addr;
+  unsigned int _retaddr;
 
-  pu1 = &__stk_0;
-  for (; 0xfff < __reg_eax; __reg_eax = __reg_eax - 0x1000) {
+  pu1 = &_tmp_0;
+  for (; 0xfff < _eax; _eax = _eax - 0x1000) {
     pu1 = pu1 + -0x1000;
   }
-  *(unsigned int *)(pu1 + (-4 - __reg_eax)) = __return_addr;
+  *(unsigned int *)(pu1 + (-4 - _eax)) = _retaddr;
   return;
 }
 
@@ -1527,11 +1527,7 @@ void __setdefaultprecision(void)
 
 /* FUN_00471f40 @ 0x00471f40 */
 
-void FUN_00471f40(void)
-
-{
-  return;
-}
+void FUN_00471f40(void) { return; }
 
 
 /* Function: _controlfp @ 0x00471f42 */

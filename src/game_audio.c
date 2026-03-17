@@ -13,11 +13,7 @@
 
 /* FUN_0044033c @ 0x0044033c */
 
-void FUN_0044033c(void)
-
-{
-  return;
-}
+void FUN_0044033c(void) { return; }
 
 
 /* FUN_00440356 @ 0x00440356 */
@@ -25,9 +21,9 @@ void FUN_0044033c(void)
 void FUN_00440356(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_004113d0((int *)(__saved_ebp + -0x3c));
+  FUN_004113d0((int *)(_ebp + -0x3c));
   return;
 }
 
@@ -52,15 +48,15 @@ void __fastcall FUN_00440360(GameBoard *param_1)
     c5 = '\x01';
     u1 = 0;
     n2 = 0x3f400000;
-    FUN_004404f0((int *)&__stk_38);
-    FUN_004404f0((int *)&__stk_37);
+    FUN_004404f0((int *)&_tmp_38);
+    FUN_004404f0((int *)&_tmp_37);
     FUN_00406130(pv4,n2,n3,u1,c5);
     pv4 = *(UIWidget **)(DAT_004897c0 + 0x44);
     FUN_0041b5f0(pv4,0);
     u6 = 7;
     u1 = 0x1e0;
-    FUN_00401ba0(&__stk_39,0x1e0);
-    FUN_00401ba0(&__stk_38,0x280);
+    FUN_00401ba0(&_tmp_39,0x1e0);
+    FUN_00401ba0(&_tmp_38,0x280);
     FUN_0041d020(*(void **)(DAT_004897c0 + 0x44),u1,(int)pv4,u6);
     FUN_0041dd40(*(void **)(DAT_004897c0 + 0x44));
     (*(UIWidget **)(DAT_004897c0 + 0x44))->field_109 = 0;
@@ -108,29 +104,17 @@ int * __fastcall FUN_004404f0(int *param_1)
 
 /* FUN_0044094b @ 0x0044094b */
 
-void FUN_0044094b(void)
-
-{
-  return;
-}
+void FUN_0044094b(void) { return; }
 
 
 /* FUN_00440953 @ 0x00440953 */
 
-void FUN_00440953(void)
-
-{
-  return;
-}
+void FUN_00440953(void) { return; }
 
 
 /* FUN_00440965 @ 0x00440965 */
 
-void FUN_00440965(void)
-
-{
-  return;
-}
+void FUN_00440965(void) { return; }
 
 
 /* FUN_00440980 @ 0x00440980 */
@@ -335,23 +319,19 @@ void FUN_00441370(void)
 
 {
   int u1;
-  int __param_fffffff4;
+  int _p_fffffff4;
   
   u1 = 0;
-  FUN_00401050(&__stk_44,0);
-  FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00488ed0,u1,__param_fffffff4);
+  FUN_00401050(&_tmp_44,0);
+  FUN_00401050(&_tmp_43,0);
+  FUN_00401060(&DAT_00488ed0,u1,_p_fffffff4);
   return;
 }
 
 
 /* FUN_004413c0 @ 0x004413c0 */
 
-void FUN_004413c0(void)
-
-{
-  return;
-}
+void FUN_004413c0(void) { return; }
 
 
 /* FUN_004413e0 @ 0x004413e0 */
@@ -379,11 +359,7 @@ void FUN_004413f0(void)
 
 /* FUN_00441400 @ 0x00441400 */
 
-void FUN_00441400(void)
-
-{
-  return;
-}
+void FUN_00441400(void) { return; }
 
 
 /* FUN_00441420 @ 0x00441420 */
@@ -411,11 +387,7 @@ void FUN_00441430(void)
 
 /* FUN_00441440 @ 0x00441440 */
 
-void FUN_00441440(void)
-
-{
-  return;
-}
+void FUN_00441440(void) { return; }
 
 
 /* FUN_00441460 @ 0x00441460 */
@@ -629,20 +601,12 @@ int * __fastcall FUN_004421f0(int *param_1)
 
 /* FUN_004423e5 @ 0x004423e5 */
 
-void FUN_004423e5(void)
-
-{
-  return;
-}
+void FUN_004423e5(void) { return; }
 
 
 /* FUN_004423f3 @ 0x004423f3 */
 
-void FUN_004423f3(void)
-
-{
-  return;
-}
+void FUN_004423f3(void) { return; }
 
 
 /* FUN_00442401 @ 0x00442401 */
@@ -650,9 +614,9 @@ void FUN_004423f3(void)
 void FUN_00442401(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_00449450((int *)(*(int *)(__saved_ebp + -0x10) + 0x118));
+  FUN_00449450((int *)(*(int *)(_ebp + -0x10) + 0x118));
   return;
 }
 
@@ -672,14 +636,15 @@ void FUN_00442419(void)
 void FUN_00442430(void)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_10;
-  char *__seh_handler;
+  char *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
-  __seh_handler = &__label_004424b7;
-  *__seh_chain = &loc_10;
+  /* SEH prolog */
+  loc_10 = *_fs;
+  _handler = &L_004424b7;
+  *_fs = &loc_10;
   loc_8 = (loc_8 & ~0xFF) | 2;
   loc_8 = (loc_8 & 0xFF) | (0 << 8);
   FUN_0044248d();
@@ -689,27 +654,20 @@ void FUN_00442430(void)
   FUN_004424a9();
   loc_8 = 0xffffffff;
   FUN_004424c1();
-  *__seh_chain = loc_10;
+  /* SEH epilog */
+  *_fs = loc_10;
   return;
 }
 
 
 /* FUN_0044248d @ 0x0044248d */
 
-void FUN_0044248d(void)
-
-{
-  return;
-}
+void FUN_0044248d(void) { return; }
 
 
 /* FUN_0044249b @ 0x0044249b */
 
-void FUN_0044249b(void)
-
-{
-  return;
-}
+void FUN_0044249b(void) { return; }
 
 
 /* FUN_004424a9 @ 0x004424a9 */
@@ -717,9 +675,9 @@ void FUN_0044249b(void)
 void FUN_004424a9(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_00449450((int *)(*(int *)(__saved_ebp + -0x10) + 0x118));
+  FUN_00449450((int *)(*(int *)(_ebp + -0x10) + 0x118));
   return;
 }
 
@@ -756,15 +714,15 @@ int * __thiscall FUN_00442550(void *this,byte param_1)
 void __fastcall FUN_00442570(GameWidget *param_1)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_10;
-  char *__seh_handler;
+  char *_handler;
   int loc_8;
 
-  loc_10 = *__seh_chain;
-  __seh_handler = &__label_0044263d;
+  loc_10 = *_fs;
+  _handler = &L_0044263d;
   *(void **)param_1 = &PTR_FUN_004753c0;
-  *__seh_chain = &loc_10;
+  *_fs = &loc_10;
   loc_8 = 0;
   /* offset 0x152 falls in _pad160 region */
   if (*(void **)((int)param_1 + 0x152) != (void *)0x0) { /* TODO: unknown offset 0x152 in _pad160 */
@@ -787,7 +745,8 @@ void __fastcall FUN_00442570(GameWidget *param_1)
   }
   loc_8 = 0xffffffff;
   FUN_00442647();
-  *__seh_chain = loc_10;
+  /* SEH epilog */
+  *_fs = loc_10;
   return;
 }
 
@@ -843,20 +802,12 @@ void __fastcall FUN_00442650(GameWidget *param_1)
 
 /* FUN_00442d6c @ 0x00442d6c */
 
-void FUN_00442d6c(void)
-
-{
-  return;
-}
+void FUN_00442d6c(void) { return; }
 
 
 /* FUN_00442ef0 @ 0x00442ef0 */
 
-void FUN_00442ef0(void)
-
-{
-  return;
-}
+void FUN_00442ef0(void) { return; }
 
 
 /* FUN_00443010 @ 0x00443010 */
@@ -924,11 +875,7 @@ void FUN_004431d9(void)
 
 /* FUN_004432d7 @ 0x004432d7 */
 
-void FUN_004432d7(void)
-
-{
-  return;
-}
+void FUN_004432d7(void) { return; }
 
 
 /* FUN_004432f0 @ 0x004432f0 */
@@ -954,29 +901,17 @@ void __fastcall FUN_004432f0(int *param_1)
 
 /* FUN_004434dc @ 0x004434dc */
 
-void FUN_004434dc(void)
-
-{
-  return;
-}
+void FUN_004434dc(void) { return; }
 
 
 /* FUN_004434e4 @ 0x004434e4 */
 
-void FUN_004434e4(void)
-
-{
-  return;
-}
+void FUN_004434e4(void) { return; }
 
 
 /* FUN_004434f6 @ 0x004434f6 */
 
-void FUN_004434f6(void)
-
-{
-  return;
-}
+void FUN_004434f6(void) { return; }
 
 
 /* FUN_00443500 @ 0x00443500 */
@@ -1002,11 +937,7 @@ void __fastcall FUN_00443500(int *param_1)
 
 /* FUN_00443800 @ 0x00443800 */
 
-void FUN_00443800(void)
-
-{
-  return;
-}
+void FUN_00443800(void) { return; }
 
 
 /* FUN_00443808 @ 0x00443808 */
@@ -1014,29 +945,21 @@ void FUN_00443800(void)
 void FUN_00443808(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_00432a50((int *)(__saved_ebp + -0x44));
+  FUN_00432a50((int *)(_ebp + -0x44));
   return;
 }
 
 
 /* FUN_00443810 @ 0x00443810 */
 
-void FUN_00443810(void)
-
-{
-  return;
-}
+void FUN_00443810(void) { return; }
 
 
 /* FUN_00443822 @ 0x00443822 */
 
-void FUN_00443822(void)
-
-{
-  return;
-}
+void FUN_00443822(void) { return; }
 
 
 /* FUN_00443830 @ 0x00443830 */
@@ -1071,29 +994,17 @@ void FUN_00443a1e(void)
 
 /* FUN_00443ae1 @ 0x00443ae1 */
 
-void FUN_00443ae1(void)
-
-{
-  return;
-}
+void FUN_00443ae1(void) { return; }
 
 
 /* FUN_00443c56 @ 0x00443c56 */
 
-void FUN_00443c56(void)
-
-{
-  return;
-}
+void FUN_00443c56(void) { return; }
 
 
 /* FUN_00443db2 @ 0x00443db2 */
 
-void FUN_00443db2(void)
-
-{
-  return;
-}
+void FUN_00443db2(void) { return; }
 
 
 /* FUN_00443dc0 @ 0x00443dc0 */
@@ -1128,15 +1039,15 @@ int * __thiscall FUN_00443f10(void *this,byte param_1)
 void __fastcall FUN_00443f30(GameWidget *param_1)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_10;
-  char *__seh_handler;
+  char *_handler;
   int loc_8;
 
-  loc_10 = *__seh_chain;
-  __seh_handler = &__label_00443fcb;
+  loc_10 = *_fs;
+  _handler = &L_00443fcb;
   *(void **)param_1 = &PTR_FUN_00475828;
-  *__seh_chain = &loc_10;
+  *_fs = &loc_10;
   loc_8 = 0;
   if (*(void **)&param_1->_pad14e != (void *)0x0) { /* GameWidget->_pad14e */
     ((void (*)(void))**(void ***)&param_1->_pad14e)();
@@ -1152,7 +1063,8 @@ void __fastcall FUN_00443f30(GameWidget *param_1)
   }
   loc_8 = 0xffffffff;
   FUN_00443fd5();
-  *__seh_chain = loc_10;
+  /* SEH epilog */
+  *_fs = loc_10;
   return;
 }
 
@@ -1195,11 +1107,7 @@ void __fastcall FUN_00443fe0(GameWidget *param_1)
 
 /* FUN_0044439d @ 0x0044439d */
 
-void FUN_0044439d(void)
-
-{
-  return;
-}
+void FUN_0044439d(void) { return; }
 
 
 /* FUN_004444b9 @ 0x004444b9 */
@@ -1224,47 +1132,27 @@ void FUN_00444529(void)
 
 /* FUN_00444720 @ 0x00444720 */
 
-void FUN_00444720(void)
-
-{
-  return;
-}
+void FUN_00444720(void) { return; }
 
 
 /* FUN_004448c6 @ 0x004448c6 */
 
-void FUN_004448c6(void)
-
-{
-  return;
-}
+void FUN_004448c6(void) { return; }
 
 
 /* FUN_004448ce @ 0x004448ce */
 
-void FUN_004448ce(void)
-
-{
-  return;
-}
+void FUN_004448ce(void) { return; }
 
 
 /* FUN_004448e0 @ 0x004448e0 */
 
-void FUN_004448e0(void)
-
-{
-  return;
-}
+void FUN_004448e0(void) { return; }
 
 
 /* FUN_00444a2e @ 0x00444a2e */
 
-void FUN_00444a2e(void)
-
-{
-  return;
-}
+void FUN_00444a2e(void) { return; }
 
 
 /* FUN_00444a40 @ 0x00444a40 */
@@ -1284,9 +1172,9 @@ int * __fastcall FUN_00444a40(int *param_1)
 void FUN_00444d1c(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_00413840((int *)(*(int *)(__saved_ebp + -0x10) + 0x1dc));
+  FUN_00413840((int *)(*(int *)(_ebp + -0x10) + 0x1dc));
   return;
 }
 
@@ -1296,65 +1184,41 @@ void FUN_00444d1c(void)
 void FUN_00444d34(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_0042cd10(*(int **)(__saved_ebp + -0x10));
+  FUN_0042cd10(*(int **)(_ebp + -0x10));
   return;
 }
 
 
 /* FUN_00444f71 @ 0x00444f71 */
 
-void FUN_00444f71(void)
-
-{
-  return;
-}
+void FUN_00444f71(void) { return; }
 
 
 /* FUN_00444f79 @ 0x00444f79 */
 
-void FUN_00444f79(void)
-
-{
-  return;
-}
+void FUN_00444f79(void) { return; }
 
 
 /* FUN_00444f81 @ 0x00444f81 */
 
-void FUN_00444f81(void)
-
-{
-  return;
-}
+void FUN_00444f81(void) { return; }
 
 
 /* FUN_00444f91 @ 0x00444f91 */
 
-void FUN_00444f91(void)
-
-{
-  return;
-}
+void FUN_00444f91(void) { return; }
 
 
 /* FUN_00444f99 @ 0x00444f99 */
 
-void FUN_00444f99(void)
-
-{
-  return;
-}
+void FUN_00444f99(void) { return; }
 
 
 /* FUN_00444fa1 @ 0x00444fa1 */
 
-void FUN_00444fa1(void)
-
-{
-  return;
-}
+void FUN_00444fa1(void) { return; }
 
 
 /* FUN_004453c5 @ 0x004453c5 */
@@ -1362,9 +1226,9 @@ void FUN_00444fa1(void)
 void FUN_004453c5(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_0040f520((int *)(__saved_ebp + -0x38));
+  FUN_0040f520((int *)(_ebp + -0x38));
   return;
 }
 
@@ -1374,9 +1238,9 @@ void FUN_004453c5(void)
 void FUN_00445459(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_00405420(*(int **)(__saved_ebp + -0x10));
+  FUN_00405420(*(int **)(_ebp + -0x10));
   return;
 }
 
@@ -1396,7 +1260,7 @@ FUN_00445470(void *this,int param_1,int param_2,char param_3,char param_4,int pa
   uint u6;
   short s7;
   ushort *pu8;
-  int *__seh_chain;
+  int *_fs;
   int loc_30;
   int loc_2c;
   int loc_28;
@@ -1408,13 +1272,14 @@ FUN_00445470(void *this,int param_1,int param_2,char param_3,char param_4,int pa
   char loc_12;
   char loc_11;
   int loc_10;
-  char *__seh_handler;
+  char *_handler;
   uint loc_8;
   
-  loc_10 = *__seh_chain;
+  /* SEH prolog */
+  loc_10 = *_fs;
   loc_8 = 0xffffffff;
-  __seh_handler = &__label_00445791;
-  *__seh_chain = &loc_10;
+  _handler = &L_00445791;
+  *_fs = &loc_10;
   loc_12 = 0;
   loc_13 = '\0';
   loc_18 = this;
@@ -1505,27 +1370,19 @@ FUN_00445470(void *this,int param_1,int param_2,char param_3,char param_4,int pa
     FUN_0044579b();
   }
   FUN_0041d780(loc_18,*(void **)(DAT_004897c0 + 0x4a));
-  *__seh_chain = loc_10;
+  *_fs = loc_10;
   return loc_12;
 }
 
 
 /* FUN_00445789 @ 0x00445789 */
 
-void FUN_00445789(void)
-
-{
-  return;
-}
+void FUN_00445789(void) { return; }
 
 
 /* FUN_0044579b @ 0x0044579b */
 
-void FUN_0044579b(void)
-
-{
-  return;
-}
+void FUN_0044579b(void) { return; }
 
 
 /* FUN_004457b0 @ 0x004457b0 */
@@ -1534,16 +1391,17 @@ void FUN_004457b0(void *param_1)
 
 {
   int n1;
-  int *__seh_chain;
+  int *_fs;
   int loc_18;
   int loc_14;
   int loc_10;
-  char *__seh_handler;
+  char *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
-  __seh_handler = &__label_0044583a;
-  *__seh_chain = &loc_10;
+  /* SEH prolog */
+  loc_10 = *_fs;
+  _handler = &L_0044583a;
+  *_fs = &loc_10;
   loc_14 = 0;
   loc_18 = 0;
   loc_8 = 0;
@@ -1555,45 +1413,30 @@ void FUN_004457b0(void *param_1)
   FUN_0041cef0(param_1,&loc_18,4);
   loc_8 = 0xffffffff;
   FUN_00445844();
-  *__seh_chain = loc_10;
+  /* SEH epilog */
+  *_fs = loc_10;
   return;
 }
 
 
 /* FUN_00445844 @ 0x00445844 */
 
-void FUN_00445844(void)
-
-{
-  return;
-}
+void FUN_00445844(void) { return; }
 
 
 /* FUN_004459bd @ 0x004459bd */
 
-void FUN_004459bd(void)
-
-{
-  return;
-}
+void FUN_004459bd(void) { return; }
 
 
 /* FUN_004459c5 @ 0x004459c5 */
 
-void FUN_004459c5(void)
-
-{
-  return;
-}
+void FUN_004459c5(void) { return; }
 
 
 /* FUN_004459d7 @ 0x004459d7 */
 
-void FUN_004459d7(void)
-
-{
-  return;
-}
+void FUN_004459d7(void) { return; }
 
 
 /* FUN_004459f0 @ 0x004459f0 */
@@ -1647,29 +1490,17 @@ void __thiscall FUN_00445b10(void *this,int param_1)
 
 /* FUN_00445dd3 @ 0x00445dd3 */
 
-void FUN_00445dd3(void)
-
-{
-  return;
-}
+void FUN_00445dd3(void) { return; }
 
 
 /* FUN_00445ddb @ 0x00445ddb */
 
-void FUN_00445ddb(void)
-
-{
-  return;
-}
+void FUN_00445ddb(void) { return; }
 
 
 /* FUN_00445ded @ 0x00445ded */
 
-void FUN_00445ded(void)
-
-{
-  return;
-}
+void FUN_00445ded(void) { return; }
 
 
 /* FUN_00445e10 @ 0x00445e10 */
@@ -1708,9 +1539,9 @@ void FUN_00446280(void)
 void FUN_00446c58(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_004113d0((int *)(__saved_ebp + -0x30));
+  FUN_004113d0((int *)(_ebp + -0x30));
   return;
 }
 
@@ -1720,9 +1551,9 @@ void FUN_00446c58(void)
 void FUN_004470f2(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_004113d0((int *)(__saved_ebp + -0x30));
+  FUN_004113d0((int *)(_ebp + -0x30));
   return;
 }
 
@@ -1732,20 +1563,16 @@ void FUN_004470f2(void)
 void FUN_004475fd(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_00447a70((int *)(__saved_ebp + -0x60));
+  FUN_00447a70((int *)(_ebp + -0x60));
   return;
 }
 
 
 /* FUN_00447605 @ 0x00447605 */
 
-void FUN_00447605(void)
-
-{
-  return;
-}
+void FUN_00447605(void) { return; }
 
 
 /* FUN_004479af @ 0x004479af */
@@ -1753,9 +1580,9 @@ void FUN_00447605(void)
 void FUN_004479af(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_00447a70((int *)(__saved_ebp + -0x3c));
+  FUN_00447a70((int *)(_ebp + -0x3c));
   return;
 }
 
@@ -1765,9 +1592,9 @@ void FUN_004479af(void)
 void FUN_00447a5b(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_00413840((int *)(__saved_ebp + -0x54));
+  FUN_00413840((int *)(_ebp + -0x54));
   return;
 }
 
@@ -1794,11 +1621,7 @@ void FUN_00447b18(void)
 
 /* FUN_00447f00 @ 0x00447f00 */
 
-void FUN_00447f00(void)
-
-{
-  return;
-}
+void FUN_00447f00(void) { return; }
 
 
 /* FUN_00447f1d @ 0x00447f1d */
@@ -1806,9 +1629,9 @@ void FUN_00447f00(void)
 void FUN_00447f1d(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_004113d0((int *)(__saved_ebp + -0x3c));
+  FUN_004113d0((int *)(_ebp + -0x3c));
   return;
 }
 
@@ -1910,65 +1733,37 @@ void FUN_004480c9(void)
 
 /* FUN_0044875d @ 0x0044875d */
 
-void FUN_0044875d(void)
-
-{
-  return;
-}
+void FUN_0044875d(void) { return; }
 
 
 /* FUN_0044876f @ 0x0044876f */
 
-void FUN_0044876f(void)
-
-{
-  return;
-}
+void FUN_0044876f(void) { return; }
 
 
 /* FUN_004489e1 @ 0x004489e1 */
 
-void FUN_004489e1(void)
-
-{
-  return;
-}
+void FUN_004489e1(void) { return; }
 
 
 /* FUN_00448a74 @ 0x00448a74 */
 
-void FUN_00448a74(void)
-
-{
-  return;
-}
+void FUN_00448a74(void) { return; }
 
 
 /* FUN_00448aad @ 0x00448aad */
 
-void FUN_00448aad(void)
-
-{
-  return;
-}
+void FUN_00448aad(void) { return; }
 
 
 /* FUN_00448ab5 @ 0x00448ab5 */
 
-void FUN_00448ab5(void)
-
-{
-  return;
-}
+void FUN_00448ab5(void) { return; }
 
 
 /* FUN_00448ac7 @ 0x00448ac7 */
 
-void FUN_00448ac7(void)
-
-{
-  return;
-}
+void FUN_00448ac7(void) { return; }
 
 
 /* FUN_00448ad0 @ 0x00448ad0 */
@@ -2062,9 +1857,9 @@ void __cdecl FUN_00448e50(int param_1,short *param_2)
 void FUN_0044941e(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_00413810((int *)(__saved_ebp + -0x7c));
+  FUN_00413810((int *)(_ebp + -0x7c));
   return;
 }
 
@@ -2074,9 +1869,9 @@ void FUN_0044941e(void)
 void FUN_0044942e(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_004113d0((int *)(__saved_ebp + -0x30));
+  FUN_004113d0((int *)(_ebp + -0x30));
   return;
 }
 
@@ -2086,9 +1881,9 @@ void FUN_0044942e(void)
 void FUN_00449436(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_0040f520((int *)(__saved_ebp + -0x60));
+  FUN_0040f520((int *)(_ebp + -0x60));
   return;
 }
 
@@ -2098,9 +1893,9 @@ void FUN_00449436(void)
 void FUN_00449448(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_0040f520((int *)(__saved_ebp + -0x48));
+  FUN_0040f520((int *)(_ebp + -0x48));
   return;
 }
 
@@ -2201,23 +1996,19 @@ void FUN_00449790(void)
 
 {
   int u1;
-  int __param_fffffff4;
+  int _p_fffffff4;
   
   u1 = 0;
-  FUN_00401050(&__stk_44,0);
-  FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00488f00,u1,__param_fffffff4);
+  FUN_00401050(&_tmp_44,0);
+  FUN_00401050(&_tmp_43,0);
+  FUN_00401060(&DAT_00488f00,u1,_p_fffffff4);
   return;
 }
 
 
 /* FUN_004497e0 @ 0x004497e0 */
 
-void FUN_004497e0(void)
-
-{
-  return;
-}
+void FUN_004497e0(void) { return; }
 
 
 /* FUN_004497f0 @ 0x004497f0 */
@@ -2255,11 +2046,7 @@ void FUN_00449860(void)
 
 /* FUN_00449870 @ 0x00449870 */
 
-void FUN_00449870(void)
-
-{
-  return;
-}
+void FUN_00449870(void) { return; }
 
 
 /* FUN_00449890 @ 0x00449890 */
@@ -2287,11 +2074,7 @@ void FUN_004498a0(void)
 
 /* FUN_004498b0 @ 0x004498b0 */
 
-void FUN_004498b0(void)
-
-{
-  return;
-}
+void FUN_004498b0(void) { return; }
 
 
 /* FUN_004498c0 @ 0x004498c0 */
@@ -2307,11 +2090,7 @@ FUN_004498c0(void *this,int *param_1,void *param_2,int param_3,short *param_4)
 
 /* FUN_00449abc @ 0x00449abc */
 
-void FUN_00449abc(void)
-
-{
-  return;
-}
+void FUN_00449abc(void) { return; }
 
 
 /* FUN_00449b40 @ 0x00449b40 */
@@ -2326,20 +2105,12 @@ void __thiscall FUN_00449b40(void *this,void *param_1,uint param_2)
 
 /* FUN_00449ddb @ 0x00449ddb */
 
-void FUN_00449ddb(void)
-
-{
-  return;
-}
+void FUN_00449ddb(void) { return; }
 
 
 /* FUN_00449de3 @ 0x00449de3 */
 
-void FUN_00449de3(void)
-
-{
-  return;
-}
+void FUN_00449de3(void) { return; }
 
 
 /* FUN_00449df5 @ 0x00449df5 */
@@ -2347,9 +2118,9 @@ void FUN_00449de3(void)
 void FUN_00449df5(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_0043b810((int *)(__saved_ebp + -100));
+  FUN_0043b810((int *)(_ebp + -100));
   return;
 }
 
@@ -2517,9 +2288,9 @@ uint FUN_0044a500(void)
 void FUN_0044a74b(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_00460010((int *)(__saved_ebp + -0x98));
+  FUN_00460010((int *)(_ebp + -0x98));
   return;
 }
 
@@ -2529,9 +2300,9 @@ void FUN_0044a74b(void)
 void FUN_0044a760(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_00460010((int *)(__saved_ebp + -0x58));
+  FUN_00460010((int *)(_ebp + -0x58));
   return;
 }
 
@@ -2565,9 +2336,9 @@ void * __fastcall FUN_0044a780(int *param_1)
 void FUN_0044aa10(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_004524e0(__saved_ebp + -0x120);
+  FUN_004524e0(_ebp + -0x120);
   return;
 }
 
@@ -2597,9 +2368,9 @@ short __fastcall FUN_0044aa70(int *param_1)
 void FUN_0044ab16(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_004524e0(__saved_ebp + -0x120);
+  FUN_004524e0(_ebp + -0x120);
   return;
 }
 
@@ -2651,23 +2422,19 @@ void FUN_0044ae80(void)
 
 {
   int u1;
-  int __param_fffffff4;
+  int _p_fffffff4;
   
   u1 = 0;
-  FUN_00401050(&__stk_44,0);
-  FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00488f30,u1,__param_fffffff4);
+  FUN_00401050(&_tmp_44,0);
+  FUN_00401050(&_tmp_43,0);
+  FUN_00401060(&DAT_00488f30,u1,_p_fffffff4);
   return;
 }
 
 
 /* FUN_0044aed0 @ 0x0044aed0 */
 
-void FUN_0044aed0(void)
-
-{
-  return;
-}
+void FUN_0044aed0(void) { return; }
 
 
 /* FUN_0044aef0 @ 0x0044aef0 */
@@ -2695,11 +2462,7 @@ void FUN_0044af00(void)
 
 /* FUN_0044af10 @ 0x0044af10 */
 
-void FUN_0044af10(void)
-
-{
-  return;
-}
+void FUN_0044af10(void) { return; }
 
 
 /* FUN_0044af30 @ 0x0044af30 */
@@ -2727,11 +2490,7 @@ void FUN_0044af40(void)
 
 /* FUN_0044af50 @ 0x0044af50 */
 
-void FUN_0044af50(void)
-
-{
-  return;
-}
+void FUN_0044af50(void) { return; }
 
 
 /* FUN_0044af70 @ 0x0044af70 */
@@ -2740,12 +2499,12 @@ void FUN_0044af70(void)
 
 {
   int u1;
-  int __param_fffffff4;
+  int _p_fffffff4;
   
   u1 = 0;
-  FUN_00401050(&__stk_44,0);
-  FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00488f40,u1,__param_fffffff4);
+  FUN_00401050(&_tmp_44,0);
+  FUN_00401050(&_tmp_43,0);
+  FUN_00401060(&DAT_00488f40,u1,_p_fffffff4);
   return;
 }
 
@@ -2762,11 +2521,7 @@ void FUN_0044afb0(void)
 
 /* FUN_0044afc0 @ 0x0044afc0 */
 
-void FUN_0044afc0(void)
-
-{
-  return;
-}
+void FUN_0044afc0(void) { return; }
 
 
 /* FUN_0044afe0 @ 0x0044afe0 */
@@ -2794,11 +2549,7 @@ void FUN_0044aff0(void)
 
 /* FUN_0044b000 @ 0x0044b000 */
 
-void FUN_0044b000(void)
-
-{
-  return;
-}
+void FUN_0044b000(void) { return; }
 
 
 /* FUN_0044b020 @ 0x0044b020 */
@@ -2826,11 +2577,7 @@ void FUN_0044b030(void)
 
 /* FUN_0044b040 @ 0x0044b040 */
 
-void FUN_0044b040(void)
-
-{
-  return;
-}
+void FUN_0044b040(void) { return; }
 
 
 /* FUN_0044b050 @ 0x0044b050 */
@@ -2838,19 +2585,20 @@ void FUN_0044b040(void)
 int * __fastcall FUN_0044b050(int *param_1)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_10;
-  char *__seh_handler;
+  char *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
+  /* SEH prolog */
+  loc_10 = *_fs;
   loc_8 = 0xffffffff;
-  __seh_handler = &__label_0044b09f;
-  *__seh_chain = &loc_10;
+  _handler = &L_0044b09f;
+  *_fs = &loc_10;
   FUN_0042cbd0(param_1);
   *param_1 = &PTR_FUN_00475d98;
   param_1[0x66] = 0;
-  *__seh_chain = loc_10;
+  *_fs = loc_10;
   return param_1;
 }
 
@@ -2860,9 +2608,9 @@ int * __fastcall FUN_0044b050(int *param_1)
 void FUN_0044b119(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_0042cd10(*(int **)(__saved_ebp + -0x10));
+  FUN_0042cd10(*(int **)(_ebp + -0x10));
   return;
 }
 
@@ -2883,23 +2631,19 @@ void FUN_0044b2e0(void)
 
 {
   int u1;
-  int __param_fffffff4;
+  int _p_fffffff4;
   
   u1 = 0;
-  FUN_00401050(&__stk_44,0);
-  FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00488f50,u1,__param_fffffff4);
+  FUN_00401050(&_tmp_44,0);
+  FUN_00401050(&_tmp_43,0);
+  FUN_00401060(&DAT_00488f50,u1,_p_fffffff4);
   return;
 }
 
 
 /* FUN_0044b330 @ 0x0044b330 */
 
-void FUN_0044b330(void)
-
-{
-  return;
-}
+void FUN_0044b330(void) { return; }
 
 
 /* FUN_0044b350 @ 0x0044b350 */
@@ -2927,11 +2671,7 @@ void FUN_0044b360(void)
 
 /* FUN_0044b370 @ 0x0044b370 */
 
-void FUN_0044b370(void)
-
-{
-  return;
-}
+void FUN_0044b370(void) { return; }
 
 
 /* FUN_0044b390 @ 0x0044b390 */
@@ -2959,11 +2699,7 @@ void FUN_0044b3a0(void)
 
 /* FUN_0044b3b0 @ 0x0044b3b0 */
 
-void FUN_0044b3b0(void)
-
-{
-  return;
-}
+void FUN_0044b3b0(void) { return; }
 
 
 /* FUN_0044b3d0 @ 0x0044b3d0 */
@@ -2972,12 +2708,12 @@ void FUN_0044b3d0(void)
 
 {
   int u1;
-  int __param_fffffff4;
+  int _p_fffffff4;
   
   u1 = 0;
-  FUN_00401050(&__stk_44,0);
-  FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00488f60,u1,__param_fffffff4);
+  FUN_00401050(&_tmp_44,0);
+  FUN_00401050(&_tmp_43,0);
+  FUN_00401060(&DAT_00488f60,u1,_p_fffffff4);
   return;
 }
 
@@ -2994,11 +2730,7 @@ void FUN_0044b410(void)
 
 /* FUN_0044b420 @ 0x0044b420 */
 
-void FUN_0044b420(void)
-
-{
-  return;
-}
+void FUN_0044b420(void) { return; }
 
 
 /* FUN_0044b4b0 @ 0x0044b4b0 */
@@ -3026,11 +2758,7 @@ void FUN_0044b4c0(void)
 
 /* FUN_0044b4d0 @ 0x0044b4d0 */
 
-void FUN_0044b4d0(void)
-
-{
-  return;
-}
+void FUN_0044b4d0(void) { return; }
 
 
 /* FUN_0044b5f0 @ 0x0044b5f0 */
@@ -3108,9 +2836,9 @@ int FUN_0044b6c0(void)
 void FUN_0044bab1(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_004113d0((int *)(__saved_ebp + -0x48));
+  FUN_004113d0((int *)(_ebp + -0x48));
   return;
 }
 
@@ -3140,11 +2868,7 @@ void FUN_0044bb10(void)
 
 /* FUN_0044bb20 @ 0x0044bb20 */
 
-void FUN_0044bb20(void)
-
-{
-  return;
-}
+void FUN_0044bb20(void) { return; }
 
 
 /* FUN_0044bb30 @ 0x0044bb30 */
@@ -3164,9 +2888,9 @@ int FUN_0044bb30(void)
 void FUN_0044bbf6(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_004113d0((int *)(*(int *)(__saved_ebp + -0x14) + 4));
+  FUN_004113d0((int *)(*(int *)(_ebp + -0x14) + 4));
   return;
 }
 
@@ -3196,9 +2920,9 @@ int * __fastcall FUN_0044bc50(int *param_1)
 void FUN_0044bef4(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_004113d0((int *)(__saved_ebp + -0x2c));
+  FUN_004113d0((int *)(_ebp + -0x2c));
   return;
 }
 
@@ -3224,7 +2948,7 @@ int FUN_0044bf50(int *param_1,char param_2)
   void *pv13;
   int *pu14;
   int *pn15;
-  int *__seh_chain;
+  int *_fs;
   ushort loc_1ec;
   short loc_1ea [127];
   char loc_ec [32];
@@ -3277,13 +3001,14 @@ int FUN_0044bf50(int *param_1,char param_2)
   short loc_14;
   ushort loc_12;
   int loc_10;
-  char *__seh_handler;
+  char *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
+  /* SEH prolog */
+  loc_10 = *_fs;
   loc_8 = 0xffffffff;
-  __seh_handler = &__label_0044c7cd;
-  *__seh_chain = &loc_10;
+  _handler = &L_0044c7cd;
+  *_fs = &loc_10;
   u10 = 0;
   loc_14 = 0;
   loc_4c = 0;
@@ -3468,13 +3193,13 @@ int FUN_0044bf50(int *param_1,char param_2)
                 loc_12 = (ushort)(loc_12 == 0);
               }
               if (n11 == 0x51a) {
-__label_0044c4d2:
+L_0044c4d2:
                 loc_12 = 1;
               }
               else if ((((n11 == 0x682) || (n11 == 0x885)) || (n11 == 0x67f)) ||
                       ((0x6c0 < n11 && (n11 < 0x6cf)))) {
                 if ((n11 == 0x51a) || ((n11 == 0x682 || (n11 == 0x885))))
-                goto __label_0044c4d2;
+                goto L_0044c4d2;
               }
               else {
                 loc_94 = &PTR_LAB_00472e04;
@@ -3626,7 +3351,7 @@ __label_0044c4d2:
     *pc8 = '\x1e';
     pc8[1] = '\0';
   }
-  *__seh_chain = loc_10;
+  *_fs = loc_10;
   return loc_4c;
 }
 
@@ -3636,9 +3361,9 @@ __label_0044c4d2:
 void FUN_0044c79c(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_00413810((int *)(__saved_ebp + -200));
+  FUN_00413810((int *)(_ebp + -200));
   return;
 }
 
@@ -3648,9 +3373,9 @@ void FUN_0044c79c(void)
 void FUN_0044c7a7(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_00413810((int *)(__saved_ebp + -0xac));
+  FUN_00413810((int *)(_ebp + -0xac));
   return;
 }
 
@@ -3660,9 +3385,9 @@ void FUN_0044c7a7(void)
 void FUN_0044c7b2(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_00413810((int *)(__saved_ebp + -0x90));
+  FUN_00413810((int *)(_ebp + -0x90));
   return;
 }
 
@@ -3672,9 +3397,9 @@ void FUN_0044c7b2(void)
 void FUN_0044c7bd(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_00413810((int *)(__saved_ebp + -0x74));
+  FUN_00413810((int *)(_ebp + -0x74));
   return;
 }
 
@@ -3684,9 +3409,9 @@ void FUN_0044c7bd(void)
 void FUN_0044c7d7(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_004113d0((int *)(__saved_ebp + -0x3c));
+  FUN_004113d0((int *)(_ebp + -0x3c));
   return;
 }
 
@@ -4083,23 +3808,19 @@ void FUN_0044dcb0(void)
 
 {
   int u1;
-  int __param_fffffff4;
+  int _p_fffffff4;
   
   u1 = 0;
-  FUN_00401050(&__stk_44,0);
-  FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00488f90,u1,__param_fffffff4);
+  FUN_00401050(&_tmp_44,0);
+  FUN_00401050(&_tmp_43,0);
+  FUN_00401060(&DAT_00488f90,u1,_p_fffffff4);
   return;
 }
 
 
 /* FUN_0044dd00 @ 0x0044dd00 */
 
-void FUN_0044dd00(void)
-
-{
-  return;
-}
+void FUN_0044dd00(void) { return; }
 
 
 /* FUN_0044dd20 @ 0x0044dd20 */
@@ -4127,11 +3848,7 @@ void FUN_0044dd30(void)
 
 /* FUN_0044dd40 @ 0x0044dd40 */
 
-void FUN_0044dd40(void)
-
-{
-  return;
-}
+void FUN_0044dd40(void) { return; }
 
 
 /* FUN_0044dd60 @ 0x0044dd60 */
@@ -4159,11 +3876,7 @@ void FUN_0044dd70(void)
 
 /* FUN_0044dd80 @ 0x0044dd80 */
 
-void FUN_0044dd80(void)
-
-{
-  return;
-}
+void FUN_0044dd80(void) { return; }
 
 
 /* FUN_0044dd90 @ 0x0044dd90 */
@@ -4171,20 +3884,21 @@ void FUN_0044dd80(void)
 int * __fastcall FUN_0044dd90(int *param_1)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_10;
-  char *__seh_handler;
+  char *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
+  /* SEH prolog */
+  loc_10 = *_fs;
   loc_8 = 0xffffffff;
-  __seh_handler = &__label_0044dde4;
-  *__seh_chain = &loc_10;
+  _handler = &L_0044dde4;
+  *_fs = &loc_10;
   FUN_004534e0(param_1);
   loc_8 = 0;
   *param_1 = &PTR_FUN_00475f90;
   FUN_0041da90(param_1,1);
-  *__seh_chain = loc_10;
+  *_fs = loc_10;
   return param_1;
 }
 
@@ -4211,38 +3925,22 @@ short FUN_0044de70(void *param_1,short param_2)
 
 /* FUN_0044e2c0 @ 0x0044e2c0 */
 
-void FUN_0044e2c0(void)
-
-{
-  return;
-}
+void FUN_0044e2c0(void) { return; }
 
 
 /* FUN_0044e2d5 @ 0x0044e2d5 */
 
-void FUN_0044e2d5(void)
-
-{
-  return;
-}
+void FUN_0044e2d5(void) { return; }
 
 
 /* FUN_0044e2dd @ 0x0044e2dd */
 
-void FUN_0044e2dd(void)
-
-{
-  return;
-}
+void FUN_0044e2dd(void) { return; }
 
 
 /* FUN_0044e2ef @ 0x0044e2ef */
 
-void FUN_0044e2ef(void)
-
-{
-  return;
-}
+void FUN_0044e2ef(void) { return; }
 
 
 /* FUN_0044e310 @ 0x0044e310 */
@@ -4251,23 +3949,19 @@ void FUN_0044e310(void)
 
 {
   int u1;
-  int __param_fffffff4;
+  int _p_fffffff4;
   
   u1 = 0;
-  FUN_00401050(&__stk_44,0);
-  FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00488fa0,u1,__param_fffffff4);
+  FUN_00401050(&_tmp_44,0);
+  FUN_00401050(&_tmp_43,0);
+  FUN_00401060(&DAT_00488fa0,u1,_p_fffffff4);
   return;
 }
 
 
 /* FUN_0044e360 @ 0x0044e360 */
 
-void FUN_0044e360(void)
-
-{
-  return;
-}
+void FUN_0044e360(void) { return; }
 
 
 /* FUN_0044e380 @ 0x0044e380 */
@@ -4295,11 +3989,7 @@ void FUN_0044e390(void)
 
 /* FUN_0044e3a0 @ 0x0044e3a0 */
 
-void FUN_0044e3a0(void)
-
-{
-  return;
-}
+void FUN_0044e3a0(void) { return; }
 
 
 /* FUN_0044e3c0 @ 0x0044e3c0 */
@@ -4327,11 +4017,7 @@ void FUN_0044e3d0(void)
 
 /* FUN_0044e3e0 @ 0x0044e3e0 */
 
-void FUN_0044e3e0(void)
-
-{
-  return;
-}
+void FUN_0044e3e0(void) { return; }
 
 
 /* FUN_0044e3f0 @ 0x0044e3f0
@@ -4342,21 +4028,22 @@ void FUN_0044e3e0(void)
 UIWidget * __fastcall FUN_0044e3f0(UIWidget *this)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_10;
-  char *__seh_handler;
+  char *_handler;
   int loc_8;
 
-  loc_10 = *__seh_chain;
+  /* SEH prolog */
+  loc_10 = *_fs;
   loc_8 = 0xffffffff;
-  __seh_handler = &__label_0044e44b;
-  *__seh_chain = &loc_10;
+  _handler = &L_0044e44b;
+  *_fs = &loc_10;
   FUN_004052b0(this);
   loc_8 = 0;
   this->is_interactive = 1;
   this->vtable = (void **)&PTR_FUN_00476038;
   FUN_0041da90(this,1);
-  *__seh_chain = loc_10;
+  *_fs = loc_10;
   return this;
 }
 
@@ -4366,9 +4053,9 @@ UIWidget * __fastcall FUN_0044e3f0(UIWidget *this)
 void FUN_0044e4b9(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_00405420(*(int **)(__saved_ebp + -0x10));
+  FUN_00405420(*(int **)(_ebp + -0x10));
   return;
 }
 
@@ -4379,23 +4066,19 @@ void FUN_0044e520(void)
 
 {
   int u1;
-  int __param_fffffff4;
+  int _p_fffffff4;
   
   u1 = 0;
-  FUN_00401050(&__stk_44,0);
-  FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00488fb0,u1,__param_fffffff4);
+  FUN_00401050(&_tmp_44,0);
+  FUN_00401050(&_tmp_43,0);
+  FUN_00401060(&DAT_00488fb0,u1,_p_fffffff4);
   return;
 }
 
 
 /* FUN_0044e570 @ 0x0044e570 */
 
-void FUN_0044e570(void)
-
-{
-  return;
-}
+void FUN_0044e570(void) { return; }
 
 
 /* FUN_0044e590 @ 0x0044e590 */
@@ -4423,11 +4106,7 @@ void FUN_0044e5a0(void)
 
 /* FUN_0044e5b0 @ 0x0044e5b0 */
 
-void FUN_0044e5b0(void)
-
-{
-  return;
-}
+void FUN_0044e5b0(void) { return; }
 
 
 /* FUN_0044e5d0 @ 0x0044e5d0 */
@@ -4455,11 +4134,7 @@ void FUN_0044e5e0(void)
 
 /* FUN_0044e5f0 @ 0x0044e5f0 */
 
-void FUN_0044e5f0(void)
-
-{
-  return;
-}
+void FUN_0044e5f0(void) { return; }
 
 
 /* FUN_0044e600 @ 0x0044e600 */
@@ -4508,23 +4183,19 @@ void FUN_0044e6d0(void)
 
 {
   int u1;
-  int __param_fffffff4;
+  int _p_fffffff4;
   
   u1 = 0;
-  FUN_00401050(&__stk_44,0);
-  FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00488fc0,u1,__param_fffffff4);
+  FUN_00401050(&_tmp_44,0);
+  FUN_00401050(&_tmp_43,0);
+  FUN_00401060(&DAT_00488fc0,u1,_p_fffffff4);
   return;
 }
 
 
 /* FUN_0044e720 @ 0x0044e720 */
 
-void FUN_0044e720(void)
-
-{
-  return;
-}
+void FUN_0044e720(void) { return; }
 
 
 /* FUN_0044e740 @ 0x0044e740 */
@@ -4552,11 +4223,7 @@ void FUN_0044e750(void)
 
 /* FUN_0044e760 @ 0x0044e760 */
 
-void FUN_0044e760(void)
-
-{
-  return;
-}
+void FUN_0044e760(void) { return; }
 
 
 /* FUN_0044e780 @ 0x0044e780 */
@@ -4584,11 +4251,7 @@ void FUN_0044e790(void)
 
 /* FUN_0044e7a0 @ 0x0044e7a0 */
 
-void FUN_0044e7a0(void)
-
-{
-  return;
-}
+void FUN_0044e7a0(void) { return; }
 
 
 /* FUN_0044e7b0 @ 0x0044e7b0 */
@@ -4596,20 +4259,21 @@ void FUN_0044e7a0(void)
 int * __fastcall FUN_0044e7b0(int *param_1)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_10;
-  char *__seh_handler;
+  char *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
+  /* SEH prolog */
+  loc_10 = *_fs;
   loc_8 = 0xffffffff;
-  __seh_handler = &__label_0044e7ff;
-  *__seh_chain = &loc_10;
+  _handler = &L_0044e7ff;
+  *_fs = &loc_10;
   FUN_00417c70(param_1);
   *param_1 = &PTR_LAB_004760e0;
   param_1[4] = 0;
   param_1[5] = 0;
-  *__seh_chain = loc_10;
+  *_fs = loc_10;
   return param_1;
 }
 
@@ -4632,20 +4296,21 @@ int * __thiscall FUN_0044e820(void *this,byte param_1)
 void __fastcall FUN_0044e840(int *param_1)
 
 {
-  int *__seh_chain;
+  int *_fs;
   int loc_10;
-  char *__seh_handler;
+  char *_handler;
   int loc_8;
   
-  loc_10 = *__seh_chain;
-  __seh_handler = &__label_0044e889;
+  loc_10 = *_fs;
+  _handler = &L_0044e889;
   *param_1 = &PTR_LAB_004760e0;
-  *__seh_chain = &loc_10;
+  *_fs = &loc_10;
   loc_8 = 0;
   FUN_0044e990((int)param_1);
   loc_8 = 0xffffffff;
   FUN_0044e893();
-  *__seh_chain = loc_10;
+  /* SEH epilog */
+  *_fs = loc_10;
   return;
 }
 
@@ -4655,9 +4320,9 @@ void __fastcall FUN_0044e840(int *param_1)
 void FUN_0044e893(void)
 
 {
-  int __saved_ebp;
+  int _ebp;
   
-  FUN_00417cc0(*(int **)(__saved_ebp + -0x10));
+  FUN_00417cc0(*(int **)(_ebp + -0x10));
   return;
 }
 
@@ -4863,20 +4528,12 @@ uint __thiscall FUN_0044eca0(void *this,int param_1,char param_2,byte param_3)
 
 /* FUN_0044f0de @ 0x0044f0de */
 
-void FUN_0044f0de(void)
-
-{
-  return;
-}
+void FUN_0044f0de(void) { return; }
 
 
 /* FUN_0044f0f0 @ 0x0044f0f0 */
 
-void FUN_0044f0f0(void)
-
-{
-  return;
-}
+void FUN_0044f0f0(void) { return; }
 
 
 /* FUN_0044f140 @ 0x0044f140 */
@@ -4885,23 +4542,19 @@ void FUN_0044f140(void)
 
 {
   int u1;
-  int __param_fffffff4;
+  int _p_fffffff4;
   
   u1 = 0;
-  FUN_00401050(&__stk_44,0);
-  FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00488fd0,u1,__param_fffffff4);
+  FUN_00401050(&_tmp_44,0);
+  FUN_00401050(&_tmp_43,0);
+  FUN_00401060(&DAT_00488fd0,u1,_p_fffffff4);
   return;
 }
 
 
 /* FUN_0044f190 @ 0x0044f190 */
 
-void FUN_0044f190(void)
-
-{
-  return;
-}
+void FUN_0044f190(void) { return; }
 
 
 /* FUN_0044f1b0 @ 0x0044f1b0 */
@@ -4929,11 +4582,7 @@ void FUN_0044f1c0(void)
 
 /* FUN_0044f1d0 @ 0x0044f1d0 */
 
-void FUN_0044f1d0(void)
-
-{
-  return;
-}
+void FUN_0044f1d0(void) { return; }
 
 
 /* FUN_0044f1f0 @ 0x0044f1f0 */
@@ -4961,11 +4610,7 @@ void FUN_0044f200(void)
 
 /* FUN_0044f210 @ 0x0044f210 */
 
-void FUN_0044f210(void)
-
-{
-  return;
-}
+void FUN_0044f210(void) { return; }
 
 
 /* FUN_0044f230 @ 0x0044f230 */
@@ -4974,12 +4619,12 @@ void FUN_0044f230(void)
 
 {
   int u1;
-  int __param_fffffff4;
+  int _p_fffffff4;
   
   u1 = 0;
-  FUN_00401050(&__stk_44,0);
-  FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00488fe0,u1,__param_fffffff4);
+  FUN_00401050(&_tmp_44,0);
+  FUN_00401050(&_tmp_43,0);
+  FUN_00401060(&DAT_00488fe0,u1,_p_fffffff4);
   return;
 }
 
@@ -4996,11 +4641,7 @@ void FUN_0044f270(void)
 
 /* FUN_0044f280 @ 0x0044f280 */
 
-void FUN_0044f280(void)
-
-{
-  return;
-}
+void FUN_0044f280(void) { return; }
 
 
 /* FUN_0044f2a0 @ 0x0044f2a0 */
@@ -5028,11 +4669,7 @@ void FUN_0044f2b0(void)
 
 /* FUN_0044f2c0 @ 0x0044f2c0 */
 
-void FUN_0044f2c0(void)
-
-{
-  return;
-}
+void FUN_0044f2c0(void) { return; }
 
 
 /* FUN_0044f2e0 @ 0x0044f2e0 */
@@ -5060,11 +4697,7 @@ void FUN_0044f2f0(void)
 
 /* FUN_0044f300 @ 0x0044f300 */
 
-void FUN_0044f300(void)
-
-{
-  return;
-}
+void FUN_0044f300(void) { return; }
 
 
 /* FUN_0044f310 @ 0x0044f310 */
@@ -5079,11 +4712,7 @@ char __cdecl FUN_0044f310(int *param_1)
 
 /* FUN_0044f6c4 @ 0x0044f6c4 */
 
-void FUN_0044f6c4(void)
-
-{
-  return;
-}
+void FUN_0044f6c4(void) { return; }
 
 
 /* FUN_0044f6e0 @ 0x0044f6e0 */
@@ -5092,23 +4721,19 @@ void FUN_0044f6e0(void)
 
 {
   int u1;
-  int __param_fffffff4;
+  int _p_fffffff4;
   
   u1 = 0;
-  FUN_00401050(&__stk_44,0);
-  FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00488ff0,u1,__param_fffffff4);
+  FUN_00401050(&_tmp_44,0);
+  FUN_00401050(&_tmp_43,0);
+  FUN_00401060(&DAT_00488ff0,u1,_p_fffffff4);
   return;
 }
 
 
 /* FUN_0044f730 @ 0x0044f730 */
 
-void FUN_0044f730(void)
-
-{
-  return;
-}
+void FUN_0044f730(void) { return; }
 
 
 /* FUN_0044f740 @ 0x0044f740 */
