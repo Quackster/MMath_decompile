@@ -1032,6 +1032,7 @@ typedef struct NoteEvent {
 typedef struct BitmapResource {
     unsigned char  _base[0x10];     /* +0x00 */
     int           *dib_data_ptr;    /* +0x10  pointer to DIB header/pixel data */
+    void          *palette_handle;  /* +0x14  palette GDI object handle */
 } BitmapResource;
 
 /* ========================================================================
@@ -1100,7 +1101,15 @@ typedef struct BoardSubclass_C {
  * Used in game_render.c FUN_00424410.
  * ======================================================================== */
 typedef struct BoardSubclass_D {
-    unsigned char  _base[0x452];    /* +0x00  base data */
+    unsigned char  _base[0x10];     /* +0x00  base data */
+    void          *gdi_bitmap;      /* +0x10  GDI bitmap object handle */
+    void          *gdi_hdc;         /* +0x14  GDI device context */
+    int            gdi_active;      /* +0x18  1=active, 0=inactive */
+    unsigned char  _pad1c[0x428];   /* +0x1C  (0x444 - 0x1C = 0x428) */
+    int            buf_field_444;   /* +0x444  buffer state field */
+    int            buf_field_448;   /* +0x448  buffer state field */
+    int            buf_field_44c;   /* +0x44C  buffer state field */
+    short          buf_field_450;   /* +0x450  buffer state short */
     short          extra_state;     /* +0x452  state/counter field */
 } BoardSubclass_D;
 
