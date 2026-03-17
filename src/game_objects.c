@@ -3109,7 +3109,7 @@ char __thiscall FUN_00407df0(UIWidget *this,short param_1,int param_2)
   DWORD DVar12;
   int _extra;
   uint u13;
-  int extraout_var_00;
+  int _extra;
   char uStack_12;
   short uStack_c;
   short uStack_a;
@@ -3184,7 +3184,7 @@ L_00407fdc:
       b4 = true;
     }
     b5 = FUN_0045d930((int)ps11);
-    s9 = (short)CONCAT31(extraout_var_00,b5);
+    s9 = (short)CONCAT31(_extra,b5);
   } while( true );
 }
 

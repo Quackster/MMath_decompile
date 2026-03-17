@@ -5743,7 +5743,7 @@ uint __fastcall FUN_0042e190(void *param_1)
   int n7;
   int _extra;
   DWORD DVar8;
-  int extraout_var_00;
+  int _extra;
   
   if ((DAT_0048345c != 0) && (((GameBoard *)param_1)->is_timed != '\0')) {
     u6 = FUN_0040e580();
@@ -5795,7 +5795,7 @@ uint __fastcall FUN_0042e190(void *param_1)
     }
     if (s1 != -1) {
       b5 = FUN_0042e170(param_1,s1 * 1000);
-      _eax = CONCAT31(extraout_var_00,b5);
+      _eax = CONCAT31(_extra,b5);
       if (b5) {
         if (((GameBoard *)param_1)->reward_data_a != (void *)0x0) {
           FUN_0042d9f0(param_1,0,(ushort *)((GameBoard *)param_1)->reward_data_a,-1,-1);

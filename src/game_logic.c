@@ -2013,7 +2013,7 @@ int __cdecl FUN_0040e520(short param_1)
 {
   short s1;
   short _extra;
-  short extraout_var_00;
+  short _extra;
   
   s1 = FUN_0040e4f0(&DAT_00483498,param_1);
   if (s1 != 0) {
@@ -2021,7 +2021,7 @@ int __cdecl FUN_0040e520(short param_1)
   }
   s1 = FUN_0040e4f0(&DAT_00483478,param_1);
   if (s1 != 0) {
-    return CONCAT22(extraout_var_00,3);
+    return CONCAT22(_extra,3);
   }
   s1 = FUN_0040e4f0(&DAT_00483488,param_1);
   return (-(uint)(s1 == 0) & 0xfffffffb) + 4;

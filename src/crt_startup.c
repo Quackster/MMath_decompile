@@ -712,7 +712,7 @@ int FUN_00471010(int param_1,int *param_2)
   int n1;
   bool b2;
   int _extra;
-  int extraout_var_00;
+  int _extra;
   int n3;
   int *pn4;
   int u5;
@@ -729,7 +729,7 @@ int FUN_00471010(int param_1,int *param_2)
     return 0;
   }
   b2 = FUN_00471450(pn4,0x1a,0x1002);
-  if ((((CONCAT31(extraout_var_00,b2) == 0) ||
+  if ((((CONCAT31(_extra,b2) == 0) ||
        ((*(ushort *)((int)pn4 + 0xe) & 0xfff8) != 0xcad0)) || /* TODO: SmartHeap page magic check */
       (4 < ((byte)*(ushort *)((int)pn4 + 0xe) & 7))) || ((param_1 != 0 && (*pn4 != param_1)))) /* TODO: SmartHeap page type field */
   {
@@ -1260,13 +1260,13 @@ void _eh_vector_destructor_iterator_
   void *_edi;
   int *_fs;
   int v14;
-  void *puStack_10;
+  void *_seh_param;
   void *_handler;
   int v8;
 
   v14 = *_fs;
   _handler = &DAT_00477d18;
-  puStack_10 = &DAT_00471ee2;
+  _seh_param = &DAT_00471ee2;
   *_fs = (int)&v14;
   v8 = 0;
   while (param_3 = param_3 + -1, -1 < param_3) {
@@ -1300,13 +1300,13 @@ void __ArrayUnwind(void *param_1,uint param_2,int param_3,callback_ptr *param_4)
   void *_edi;
   int *_fs;
   int v14;
-  void *puStack_10;
+  void *_seh_param;
   void *_handler;
   int v8;
 
   v14 = *_fs;
   _handler = &DAT_00477d28;
-  puStack_10 = &DAT_00471ee2;
+  _seh_param = &DAT_00471ee2;
   *_fs = (int)&v14;
   v8 = 0;
   while (param_3 = param_3 + -1, -1 < param_3) {
@@ -1333,13 +1333,13 @@ void _eh_vector_constructor_iterator_
   int *_fs;
   int v20;
   int v14;
-  void *puStack_10;
+  void *_seh_param;
   void *_handler;
   int v8;
 
   v14 = *_fs;
   _handler = &DAT_00477d38;
-  puStack_10 = &DAT_00471ee2;
+  _seh_param = &DAT_00471ee2;
   *_fs = (int)&v14;
   v8 = 0;
   v20 = 0;
