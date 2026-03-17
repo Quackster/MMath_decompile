@@ -5717,8 +5717,82 @@ void __thiscall FUN_0041b240(void *this,char param_1,char param_2)
 
 void __thiscall FUN_0041b2f0(void *this,int *param_1,byte param_2,byte param_3)
 {
-    /* STUB: 84 lines not yet reconstructed */
-    return;
+  int *self = (int *)this;
+  UIWidget *widget = (UIWidget *)this;
+  int *_fs;
+  int _seh_prev;
+  char *_handler;
+  int _seh_state;
+  short v18[4];
+  int n1, n2, n3;
+  void *pv1;
+  uint u1;
+
+  /* SEH prolog */
+  _seh_prev = *_fs;
+  _handler = &L_0041b4b0;
+  *_fs = &_seh_prev;
+  _seh_state = 0;
+
+  /* Get old widget rect */
+  v18[0] = *(short *)((char *)self + 0x1E);
+  v18[1] = *(short *)((char *)self + 0x20);
+  v18[2] = *(short *)((char *)self + 0x22);
+  v18[3] = *(short *)((char *)self + 0x24);
+
+  /* Mark old region dirty if needed */
+  if ((param_2 & 1) != 0) {
+    FUN_0041ae60(this, v18, '\x01');
+  }
+
+  /* Update position from param_1 */
+  if (param_1 != NULL) {
+    *(int *)((char *)self + 0x26) = param_1[0]; /* pos_x */
+    *(int *)((char *)self + 0x2A) = param_1[1]; /* pos_y */
+    *(int *)((char *)self + 0x2E) = param_1[2]; /* pos_w */
+    *(int *)((char *)self + 0x32) = param_1[3]; /* pos_h */
+  }
+
+  /* Recalculate rect from position */
+  FUN_0041d490((intptr_t)self);
+
+  /* Get new widget rect */
+  v18[0] = *(short *)((char *)self + 0x1E);
+  v18[1] = *(short *)((char *)self + 0x20);
+  v18[2] = *(short *)((char *)self + 0x22);
+  v18[3] = *(short *)((char *)self + 0x24);
+
+  /* Mark new region dirty */
+  if ((param_2 & 1) != 0) {
+    FUN_0041ae60(this, v18, '\x01');
+  }
+
+  /* Update children if param_3 set */
+  if ((param_3 & 1) != 0) {
+    FUN_0041d6a0((intptr_t)self);
+    if (widget->child_list_2 != 0) {
+      u1 = 1;
+      if (((CVector *)widget->child_list_2)->count != 0) {
+        n1 = 4;
+        do {
+          pv1 = *(void **)(*(int *)((CVector *)widget->child_list_2)->data[0] + -4 + n1);
+          if (pv1 != NULL) {
+            FUN_0041cb70(pv1, '\x01');
+          }
+          n1 = n1 + 4;
+          u1 = u1 + 1;
+        } while (u1 <= ((CVector *)widget->child_list_2)->count);
+      }
+    }
+  }
+
+  /* Request repaint */
+  if ((param_2 & 2) != 0) {
+    FUN_0041af60(this, v18);
+  }
+
+  _seh_state = 0xffffffff;
+  *_fs = _seh_prev;
 }
 
 
@@ -5726,8 +5800,33 @@ void __thiscall FUN_0041b2f0(void *this,int *param_1,byte param_2,byte param_3)
 
 void __thiscall FUN_0041b4b0(void *this,char param_1,char param_2)
 {
-    /* STUB: 28 lines not yet reconstructed */
-    return;
+  int *self = (int *)this;
+  int *_fs;
+  int _seh_prev;
+  char *_handler;
+  int _seh_state;
+  short v18[4];
+
+  /* SEH prolog */
+  _seh_prev = *_fs;
+  _handler = &L_0041b520;
+  *_fs = &_seh_prev;
+  _seh_state = 0;
+
+  /* Get widget rect */
+  v18[0] = *(short *)((char *)self + 0x1E);
+  v18[1] = *(short *)((char *)self + 0x20);
+  v18[2] = *(short *)((char *)self + 0x22);
+  v18[3] = *(short *)((char *)self + 0x24);
+
+  /* Mark dirty and optionally repaint */
+  FUN_0041ae60(this, v18, param_1);
+  if (param_2 != '\0') {
+    FUN_0041af60(this, v18);
+  }
+
+  _seh_state = 0xffffffff;
+  *_fs = _seh_prev;
 }
 
 
@@ -5735,8 +5834,35 @@ void __thiscall FUN_0041b4b0(void *this,char param_1,char param_2)
 
 void __thiscall FUN_0041b520(void *this,byte param_1,byte param_2)
 {
-    /* STUB: 28 lines not yet reconstructed */
-    return;
+  int *self = (int *)this;
+  int *_fs;
+  int _seh_prev;
+  char *_handler;
+  int _seh_state;
+  short v18[4];
+
+  /* SEH prolog */
+  _seh_prev = *_fs;
+  _handler = &L_0041b5be;
+  *_fs = &_seh_prev;
+  _seh_state = 0;
+
+  /* Get widget rect */
+  v18[0] = *(short *)((char *)self + 0x1E);
+  v18[1] = *(short *)((char *)self + 0x20);
+  v18[2] = *(short *)((char *)self + 0x22);
+  v18[3] = *(short *)((char *)self + 0x24);
+
+  /* Mark dirty with byte params */
+  if ((param_1 & 1) != 0) {
+    FUN_0041ae60(this, v18, '\x01');
+  }
+  if ((param_2 & 1) != 0) {
+    FUN_0041af60(this, v18);
+  }
+
+  _seh_state = 0xffffffff;
+  *_fs = _seh_prev;
 }
 
 
@@ -5910,8 +6036,60 @@ int * __thiscall FUN_0041b870(void *this,byte param_1)
 
 void __fastcall FUN_0041b890(int *param_1)
 {
-    /* STUB: 45 lines not yet reconstructed */
-    return;
+  UIWidget *widget = (UIWidget *)param_1;
+  int *_fs;
+  int _seh_prev;
+  char *_handler;
+  int _seh_state;
+  int n1;
+  void *pv1;
+
+  /* SEH prolog */
+  _seh_prev = *_fs;
+  _handler = &L_0041b995;
+  *_fs = &_seh_prev;
+
+  /* Set vtable for UIElement */
+  *param_1 = (int)&PTR_FUN_00472f28;
+  _seh_state = 0;
+
+  /* Remove from parent if attached */
+  if (widget->parent_ptr != 0) {
+    FUN_0041bd00((UIWidget *)widget->parent_ptr, (int)param_1);
+  }
+
+  /* Clean up child_list_2 */
+  if (widget->child_list_2 != 0) {
+    FUN_0041d710(widget);
+    n1 = (int)widget->child_list_2;
+    if (n1 != 0) {
+      ((void (*)(void))*(void **)n1)(); /* destroy CVector */
+    }
+    widget->child_list_2 = 0;
+  }
+
+  /* Clean up child_list_1 */
+  if (widget->child_list_1 != 0) {
+    n1 = (int)widget->child_list_1;
+    if (n1 != 0) {
+      ((void (*)(void))*(void **)n1)();
+    }
+    widget->child_list_1 = 0;
+  }
+
+  /* Clean up field_3e (focus list) */
+  if (widget->field_3e != 0) {
+    n1 = widget->field_3e;
+    if (n1 != 0) {
+      ((void (*)(void))*(void **)n1)();
+    }
+    widget->field_3e = 0;
+  }
+
+  _seh_state = 0xffffffff;
+  FUN_0041b9aa();
+  /* SEH epilog */
+  *_fs = _seh_prev;
 }
 
 
@@ -6056,8 +6234,92 @@ void __thiscall FUN_0041baf0(DialogWidget *this,byte param_1)
 
 int __thiscall FUN_0041bb70(void *this,void *param_1,char param_2)
 {
-    /* STUB: 104 lines not yet reconstructed */
+  UIWidget *widget = (UIWidget *)this;
+  int *_fs;
+  int _seh_prev;
+  char *_handler;
+  int _seh_state;
+  int n1, n2, n3;
+  uint u1;
+  void *pv1;
+  int result;
+
+  /* SEH prolog */
+  _seh_prev = *_fs;
+  _handler = &L_0041bd00;
+  *_fs = &_seh_prev;
+  _seh_state = 0;
+  result = 0;
+
+  if (param_1 == NULL) {
+    _seh_state = 0xffffffff;
+    *_fs = _seh_prev;
     return 0;
+  }
+
+  /* Check if param_1 is already a child */
+  n1 = FUN_0041ba00(widget, (int)param_1);
+  if ((char)n1 != '\0') {
+    /* Already a child */
+    _seh_state = 0xffffffff;
+    *_fs = _seh_prev;
+    return 0;
+  }
+
+  /* Remove param_1 from its current parent if any */
+  pv1 = ((UIElement *)param_1)->parent_ptr;
+  if (pv1 != NULL) {
+    FUN_0041bd00((UIWidget *)pv1, (int)param_1);
+  }
+
+  /* Set parent pointer on child */
+  ((UIElement *)param_1)->parent_ptr = this;
+
+  /* Create child_list_2 if not exists */
+  if (widget->child_list_2 == 0) {
+    /* Allocate a new CVector */
+    n1 = FUN_0046ccb0(DAT_00483df4, 7, 0x14);
+    if (n1 != 0) {
+      *(int *)n1 = 0;
+      *(int *)(n1 + 4) = 0;
+      *(int *)(n1 + 8) = 0;
+      *(int *)(n1 + 0xC) = 0;
+      *(int *)(n1 + 0xE) = 0;
+    }
+    widget->child_list_2 = (void *)n1;
+  }
+
+  /* Add to child_list_2 */
+  n1 = (int)widget->child_list_2;
+  if (n1 != 0) {
+    n2 = ((CVector *)n1)->count;
+    n3 = ((CVector *)n1)->capacity;
+    if ((int)n2 >= n3) {
+      /* Need to grow the array */
+      n3 = n3 + 4;
+      if (*(int *)(n1 + 4) == 0) {
+        *(int *)(n1 + 4) = (int)FUN_0046ccb0(DAT_00483df4, 7, n3 * 4);
+      } else {
+        *(int *)(n1 + 4) = (int)FUN_0046cdc0(*(uint **)(n1 + 4), n3 * 4, 7);
+      }
+      ((CVector *)n1)->capacity = n3;
+    }
+    /* Store the new child pointer */
+    *(int *)(*(int *)(n1 + 4) + n2 * 4) = (int)param_1;
+    ((CVector *)n1)->count = n2 + 1;
+    result = 1;
+  }
+
+  /* Update position if param_2 is set */
+  if (param_2 != '\0') {
+    FUN_0041d490((intptr_t)param_1);
+    FUN_0041d6a0((intptr_t)param_1);
+    FUN_0041cb70(param_1, '\x01');
+  }
+
+  _seh_state = 0xffffffff;
+  *_fs = _seh_prev;
+  return result;
 }
 
 

@@ -42,8 +42,14 @@ int * __thiscall FUN_004090c0(int *this,int *param_1)
 
 void FUN_004090e0(int param_1)
 {
-    /* STUB: 8 lines not yet reconstructed */
-    return;
+  short s1;
+
+  s1 = 0;
+  do {
+    (&DAT_004841a8)[s1] = *(int *)(param_1 + s1 * 8);
+    s1 = s1 + 1;
+  } while (s1 < 0x10);
+  return;
 }
 
 
@@ -51,8 +57,16 @@ void FUN_004090e0(int param_1)
 
 void FUN_00409140(short *param_1)
 {
-    /* STUB: 8 lines not yet reconstructed */
-    return;
+  short s1;
+
+  s1 = 0;
+  if (param_1 != NULL) {
+    do {
+      FUN_0045d780(param_1,s1);
+      s1 = s1 + 1;
+    } while (s1 < 0x10);
+  }
+  return;
 }
 
 
@@ -60,8 +74,41 @@ void FUN_00409140(short *param_1)
 
 void __thiscall FUN_004091a0(void *this,int *param_1)
 {
-    /* STUB: 49 lines not yet reconstructed */
+  uint u1;
+  int n2;
+  int n3;
+  int n4;
+  int v14;
+  int v18;
+
+  if (this == NULL) {
     return;
+  }
+  v14 = ((UIWidget *)this)->pos_x;
+  v18 = ((UIWidget *)this)->pos_y;
+  if (param_1 != NULL) {
+    ((UIWidget *)this)->pos_x = param_1[0];
+    ((UIWidget *)this)->pos_y = param_1[1];
+  }
+  n3 = ((UIWidget *)this)->pos_x - v14;
+  n4 = ((UIWidget *)this)->pos_y - v18;
+  if ((n3 != 0) || (n4 != 0)) {
+    ((UIWidget *)this)->rect_left = ((UIWidget *)this)->rect_left + (short)(n3 >> 8);
+    ((UIWidget *)this)->rect_right = ((UIWidget *)this)->rect_right + (short)(n3 >> 8);
+    ((UIWidget *)this)->rect_top = ((UIWidget *)this)->rect_top + (short)(n4 >> 8);
+    ((UIWidget *)this)->rect_bottom = ((UIWidget *)this)->rect_bottom + (short)(n4 >> 8);
+  }
+  if ((((UIWidget *)this)->child_list_2 != NULL) &&
+     (u1 = 1, ((CVector *)((UIWidget *)this)->child_list_2)->count != 0)) {
+    n2 = 4;
+    do {
+      n2 = n2 + 4;
+      u1 = u1 + 1;
+      FUN_004091a0(*(void **)(*(int *)((CVector *)((UIWidget *)this)->child_list_2)->data[0] + -8 + n2),
+                   NULL);
+    } while (u1 <= ((CVector *)((UIWidget *)this)->child_list_2)->count);
+  }
+  return;
 }
 
 
@@ -127,8 +174,31 @@ void FUN_00409330(void)
 
 void __cdecl FUN_004093a0(int *param_1)
 {
-    /* STUB: 30 lines not yet reconstructed */
+  short s1;
+  int n2;
+  ushort *pu3;
+
+  if (param_1 == NULL) {
     return;
+  }
+  FUN_00409330();
+  pu3 = (ushort *)param_1[4];
+  if (pu3 == NULL) {
+    return;
+  }
+  DAT_0047e7b0 = pu3;
+  s1 = 0;
+  do {
+    if (s1 < (short)*pu3) {
+      n2 = *(int *)(pu3 + 8) + s1 * 8;
+    }
+    else {
+      n2 = (short)*pu3 * 8 + *(int *)(pu3 + 8) + -8;
+    }
+    (&DAT_004841a8)[s1] = n2;
+    s1 = s1 + 1;
+  } while (s1 < 0x10);
+  return;
 }
 
 
@@ -1055,8 +1125,28 @@ void FUN_0040ab67(void) { return; }
 
 int * __fastcall FUN_0040ab70(int *param_1)
 {
-    /* STUB: 25 lines not yet reconstructed */
-    return 0;
+  int *pu1;
+  int n2;
+  int *_fs;
+  int _seh_prev;
+  char *_handler;
+  int _seh_state;
+
+  /* SEH prolog */
+  _seh_prev = *_fs;
+  _seh_state = 0xffffffff;
+  _handler = &L_0040ac10;
+  *_fs = &_seh_prev;
+  FUN_0044e3f0(param_1);
+  *param_1 = &PTR_FUN_00472758;
+  _seh_state = 0;
+  pu1 = param_1 + 0x47;
+  for (n2 = 3; n2 != 0; n2 = n2 + -1) {
+    *pu1 = 0;
+    pu1 = pu1 + 1;
+  }
+  *_fs = _seh_prev;
+  return param_1;
 }
 
 
@@ -1076,8 +1166,21 @@ void * __thiscall FUN_0040ac20(void *this,byte param_1)
 
 void __fastcall FUN_0040ac40(int *param_1)
 {
-    /* STUB: 21 lines not yet reconstructed */
-    return;
+  int *_fs;
+  int _seh_prev;
+  char *_handler;
+  int _seh_state;
+
+  _seh_prev = *_fs;
+  _handler = &L_0040acab;
+  *param_1 = &PTR_FUN_00472758;
+  *_fs = &_seh_prev;
+  _seh_state = 0;
+  FUN_0040acbb();
+  _seh_state = 0xffffffff;
+  FUN_004012a0();
+  /* SEH epilog */
+  *_fs = _seh_prev;
 }
 
 
@@ -1093,8 +1196,101 @@ void FUN_0040acbb(void)
 
 void FUN_0040acd0(void)
 {
-    /* STUB: 201 lines not yet reconstructed */
-    return;
+  int n1;
+  int n2;
+  int n3;
+  int n4;
+  int *pu1;
+  short s1;
+  short s2;
+  int v80[16];
+  int v40[16];
+  int *_fs;
+  int _seh_prev;
+  char *_handler;
+  int _seh_state;
+
+  /* SEH prolog */
+  _seh_prev = *_fs;
+  _seh_state = 0xffffffff;
+  _handler = &L_0040b199;
+  *_fs = &_seh_prev;
+
+  /* Initialize local arrays */
+  for (n1 = 0; n1 < 16; n1++) {
+    v80[n1] = 0;
+    v40[n1] = 0;
+  }
+
+  _seh_state = 0;
+
+  /* Process game session data */
+  if (DAT_0048345c == 0) {
+    goto L_cleanup;
+  }
+
+  n2 = ((GameSession *)DAT_0048345c)->display_flags;
+
+  /* Setup display based on mode flags */
+  if ((n2 & 0x20) != 0) {
+    s1 = 0;
+    while (s1 < 0x10) {
+      v80[s1] = (&DAT_004841a8)[s1];
+      s1 = s1 + 1;
+    }
+  }
+
+  if ((n2 & 0x40) != 0) {
+    s1 = 0;
+    while (s1 < 0x10) {
+      v40[s1] = (&DAT_004841a8)[s1];
+      s1 = s1 + 1;
+    }
+  }
+
+  /* Configure scoring display areas */
+  n3 = ((GameSession *)DAT_0048345c)->score_display;
+  n4 = ((GameSession *)DAT_0048345c)->total_count;
+
+  if (n3 != 0) {
+    FUN_00401050(&_tmp_44, 0);
+    FUN_00401050(&_tmp_43, 0);
+  }
+
+  /* Iterate through problem types and set up question data */
+  s2 = 0;
+  while (s2 < 0x10) {
+    if (v80[s2] != 0) {
+      FUN_0041ab40(v80[s2]);
+    }
+    if (v40[s2] != 0) {
+      FUN_0041ab40(v40[s2]);
+    }
+    s2 = s2 + 1;
+  }
+
+  /* Process difficulty levels */
+  for (n1 = 0; n1 < 8; n1++) {
+    pu1 = (int *)((char *)DAT_0048345c + 0x4a + n1 * 0x0c);
+    if (*pu1 != 0) {
+      FUN_0041ab40(*pu1);
+    }
+  }
+
+  /* Update session counters */
+  ((GameSession *)DAT_0048345c)->correct_count = 0;
+  ((GameSession *)DAT_0048345c)->wrong_count = 0;
+  ((GameSession *)DAT_0048345c)->total_count = 0;
+
+  /* Reset display flags */
+  ((GameSession *)DAT_0048345c)->field_e8 = 0;
+  ((GameSession *)DAT_0048345c)->scroll_origin = 0;
+
+L_cleanup:
+  _seh_state = 0xffffffff;
+  /* SEH epilog */
+  *_fs = _seh_prev;
+  return;
 }
 
 
@@ -1122,8 +1318,90 @@ void FUN_0040b1d8(void) { return; }
 
 void __thiscall FUN_0040b1e0(void *this,int param_1)
 {
-    /* STUB: 145 lines not yet reconstructed */
-    return;
+  int n1;
+  int n2;
+  int n3;
+  short s1;
+  short s2;
+  void *pv1;
+  ushort *pu2;
+  int *_fs;
+  int v38[4];
+  int v28;
+  int v24;
+  void *v20;
+  int _seh_prev;
+  char *_handler;
+  int _seh_state;
+
+  /* SEH prolog */
+  _seh_prev = *_fs;
+  _seh_state = 0xffffffff;
+  _handler = &L_0040b641;
+  *_fs = &_seh_prev;
+
+  if (this == NULL) {
+    goto L_done;
+  }
+
+  v20 = this;
+  v24 = param_1;
+
+  /* Initialize local state */
+  v28 = 0;
+  v38[0] = 0;
+  v38[1] = 0;
+  v38[2] = 0;
+  v38[3] = 0;
+
+  _seh_state = 0;
+
+  /* Load resource data from param_1 */
+  if (param_1 == 0) {
+    goto L_cleanup;
+  }
+
+  pu2 = (ushort *)param_1;
+  s1 = (short)*pu2;
+
+  /* Process entries */
+  if (s1 <= 0) {
+    goto L_cleanup;
+  }
+
+  /* Configure widget from resource data */
+  n1 = *(int *)((char *)v20 + 0x11c);
+  if (n1 != 0) {
+    FUN_00434490(n1);
+  }
+
+  /* Allocate and configure new objects */
+  s2 = 0;
+  while (s2 < s1) {
+    n2 = *(int *)((char *)pu2 + 4 + s2 * 8);
+    n3 = *(int *)((char *)pu2 + 8 + s2 * 8);
+    if (n2 != 0) {
+      pv1 = (void *)FUN_0045ef70((int *)n2);
+      if (pv1 != NULL) {
+        FUN_00433420((int *)pv1);
+      }
+    }
+    s2 = s2 + 1;
+  }
+
+  /* Store results back to this object */
+  *(int *)((char *)v20 + 0x11c) = v28;
+
+  /* Configure display */
+  FUN_0041ab40(*(int *)((char *)v20 + 0x104));
+
+L_cleanup:
+  _seh_state = 0xffffffff;
+
+L_done:
+  /* SEH epilog */
+  *_fs = _seh_prev;
+  return;
 }
 
 

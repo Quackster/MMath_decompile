@@ -1260,6 +1260,76 @@ typedef struct ExtDialogAnim {
  * These overlay existing GameBoard fields (slot_handles area / field_1b8).
  * ======================================================================== */
 
+/* ========================================================================
+ * MusicTrack - Music sequence/track data (~0x48+ bytes header + int array)
+ *
+ * Used in game_audio.c FUN_0044bf50.
+ * Contains an embedded CString-like buffer at +0x04, a data area at +0x32,
+ * a playback parameter at +0x40, and a note sequence array at +0x48.
+ * ======================================================================== */
+typedef struct MusicTrack {
+    void         **vtable;          /* +0x00 */
+    void         **pp_buffer;       /* +0x04  double-indirection to char buffer (CString-like) */
+    void         **buffer_ptr;      /* +0x08  allocated buffer pointer */
+    int            capacity;        /* +0x0C  buffer capacity */
+    void          *allocator;       /* +0x10  memory allocator */
+    unsigned char  _pad14[0x1E];    /* +0x14 */
+    unsigned char  render_data[14]; /* +0x32  render/output data area */
+    unsigned int   playback_param;  /* +0x40  playback parameter/flags */
+    unsigned char  _pad44[4];       /* +0x44 */
+    int            notes[1];        /* +0x48  variable-length note sequence array */
+} MusicTrack;
+
+/* ========================================================================
+ * InputEventStruct - Input event/state tracking (~0x48 bytes)
+ *
+ * Used in game_data.c FUN_0045a560.
+ * Contains timing, state, and active flag fields.
+ * ======================================================================== */
+typedef struct InputEventStruct {
+    unsigned char  _base[0x0C];     /* +0x00 */
+    int            prev_tick;       /* +0x0C */
+    unsigned char  _pad10[4];       /* +0x10 */
+    int            tick_saved;      /* +0x14 */
+    unsigned char  _pad18[8];       /* +0x18 */
+    int            tick_base;       /* +0x20 */
+    unsigned char  _pad24[0x0C];    /* +0x24 */
+    short          state;           /* +0x30 */
+    unsigned char  _pad32[4];       /* +0x32 */
+    int            tick_last;       /* +0x36 */
+    unsigned char  _pad3a[0x0A];    /* +0x3A */
+    char           active_flag;     /* +0x44 */
+    unsigned char  _pad45[3];       /* +0x45 */
+} InputEventStruct;
+
+/* ========================================================================
+ * CVectorSmall - Small dynamic array with count/capacity (~0x18 bytes)
+ *
+ * Used in game_input.c FUN_0043b160 etc.
+ * ======================================================================== */
+typedef struct CVectorSmall {
+    unsigned char  _base[0x10];     /* +0x00 */
+    short          count;           /* +0x10 */
+    short          capacity;        /* +0x12 */
+    void          *data;            /* +0x14  pointer to data array */
+} CVectorSmall;
+
+/* ========================================================================
+ * MemBlockHeader - Memory block header for allocator (~0x1C bytes)
+ *
+ * Used in game_misc.c FUN_004690d0 etc.
+ * Small memory management block with read/write pointers.
+ * ======================================================================== */
+typedef struct MemBlockHeader {
+    unsigned char  _base[0x0C];     /* +0x00 */
+    short          block_tag;       /* +0x0C */
+    unsigned char  _pad0e[2];       /* +0x0E */
+    void          *read_ptr;        /* +0x10  current read position */
+    void          *write_ptr;       /* +0x14  current write position/end */
+    unsigned char  _pad18[4];       /* +0x18 */
+    unsigned char  data_start[0];   /* +0x1C  start of data area */
+} MemBlockHeader;
+
 #pragma pack(pop)
 
 #endif /* GAME_STRUCTS_H */

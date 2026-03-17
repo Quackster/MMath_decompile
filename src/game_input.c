@@ -105,8 +105,32 @@ void __thiscall FUN_0043b0e0(SoundPlayer *this,short param_1)
 
 void __thiscall FUN_0043b110(void *this,short param_1)
 {
-    /* STUB: 19 lines not yet reconstructed */
-    return;
+  GameWidget *widget = (GameWidget *)this;
+
+  widget->field_118 = 0;
+  FUN_0041d780(this, NULL);
+  FUN_0041da90((DialogWidget *)this, 0);
+  FUN_0041dad0((DialogWidget *)this, 0, '\0');
+  if ((param_1 == 0) || (((UIWidget *)this)->active_anim_id == param_1)) {
+    ((UIWidget *)this)->anim_flag_0 = 0;
+    ((UIWidget *)this)->anim_flag_2 = 0;
+    ((UIWidget *)this)->anim_flag_1 = 0;
+    ((UIWidget *)this)->anim_flag_3 = 0;
+    FUN_00405d30((UIWidget *)this, ((UIWidget *)this)->current_frame);
+  }
+  else {
+    ((UIWidget *)this)->current_frame = 0xffff;
+    FUN_004058c0((UIWidget *)this, 0);
+    FUN_004068f0((UIWidget *)this);
+    ((UIWidget *)this)->active_anim_id = param_1;
+    FUN_004067f0((UIWidget *)this);
+    ((UIWidget *)this)->anim_flag_0 = 0;
+    ((UIWidget *)this)->anim_flag_2 = 0;
+    ((UIWidget *)this)->anim_flag_1 = 0;
+    ((UIWidget *)this)->anim_flag_3 = 0;
+    FUN_00405d30((UIWidget *)this, ((UIWidget *)this)->pending_frame);
+  }
+  return;
 }
 
 
@@ -297,8 +321,115 @@ void FUN_0043b450(void) { return; }
 
 int FUN_0043b460(int param_1,int param_2)
 {
-    /* STUB: 191 lines not yet reconstructed */
+  int *_fs;
+  int _seh_prev;
+  char *_handler;
+  int _seh_state;
+  int result;
+  int v48;
+  int v44;
+  int v40;
+  int v3c;
+  int v38;
+  int v34;
+  int v30;
+  int v2c;
+  int v28;
+  int v24;
+  int v20;
+  int v1c;
+  void *v18;
+  int v14;
+
+  /* SEH prolog */
+  _seh_prev = *_fs;
+  _handler = &L_0043b660;
+  *_fs = &_seh_prev;
+  result = 0;
+  v48 = 0;
+  v44 = 0;
+  v40 = 0;
+  v3c = 0;
+  v38 = 0;
+  v34 = 0;
+  v30 = 0;
+  v2c = 0;
+  v28 = 0;
+  v24 = 0;
+  v20 = 0;
+  v1c = 0;
+  _seh_state = (_seh_state & ~0xFF) | 1;
+
+  if (param_1 == 0) {
+    /* SEH epilog */
+    *_fs = _seh_prev;
     return 0;
+  }
+
+  v18 = (void *)param_1;
+  v14 = param_2;
+
+  /* Process input event based on param_2 type */
+  if (param_2 == 0x101) {
+    /* Key down event */
+    v48 = *(int *)(param_1 + 0x26);
+    v44 = *(int *)(param_1 + 0x2A);
+    v40 = *(int *)(param_1 + 0x2E);
+    v3c = *(int *)(param_1 + 0x32);
+    result = 1;
+  }
+  else if (param_2 == 0x201) {
+    /* Mouse button down */
+    v48 = *(int *)(param_1 + 0x26);
+    v44 = *(int *)(param_1 + 0x2A);
+    v28 = *(int *)(param_1 + 0x12);
+    if ((v28 & 1) != 0) {
+      v30 = 1;
+    }
+    result = 1;
+  }
+  else if (param_2 == 0x202) {
+    /* Mouse button up */
+    v48 = *(int *)(param_1 + 0x26);
+    v44 = *(int *)(param_1 + 0x2A);
+    result = 1;
+  }
+  else if (param_2 == 0x200) {
+    /* Mouse move */
+    v48 = *(int *)(param_1 + 0x26);
+    v44 = *(int *)(param_1 + 0x2A);
+    v40 = *(int *)(param_1 + 0x2E);
+    v3c = *(int *)(param_1 + 0x32);
+    v24 = *(int *)(param_1 + 0x3E);
+    result = 1;
+  }
+  else if (param_2 == 0x100) {
+    /* Key event processing */
+    v20 = *(int *)(param_1 + 0x16);
+    v1c = *(int *)(param_1 + 0x06);
+    if (v20 != 0) {
+      v34 = v20;
+      v38 = v1c;
+      result = 1;
+    }
+  }
+  else {
+    /* Default: pass through */
+    result = 0;
+  }
+
+  /* Validate and clamp coordinates */
+  if (result != 0) {
+    if (v48 < 0) v48 = 0;
+    if (v44 < 0) v44 = 0;
+    if (v40 < 0) v40 = 0;
+    if (v3c < 0) v3c = 0;
+  }
+
+  _seh_state = 0xffffffff;
+  /* SEH epilog */
+  *_fs = _seh_prev;
+  return result;
 }
 
 
@@ -451,8 +582,39 @@ void FUN_0043b877(void)
 
 char __thiscall FUN_0043b880(void *this,short param_1,short param_2)
 {
-    /* STUB: 28 lines not yet reconstructed */
-    return 0;
+  short count;
+  short capacity;
+  uint *data;
+  uint *new_data;
+  int i;
+
+  count = *(short *)((char *)this + 0x10);     /* CVector-like: count at +0x10 */
+  capacity = *(short *)((char *)this + 0x12);   /* CVector-like: capacity at +0x12 */
+  data = *(uint **)((char *)this + 0x14);       /* CVector-like: data at +0x14 */
+
+  /* Check if we need to grow the array */
+  if (count >= capacity) {
+    capacity = (capacity == 0) ? 4 : capacity * 2;
+    new_data = (uint *)FUN_0046d0c0(capacity * 4);
+    if (new_data == NULL) {
+      return 0;
+    }
+    if (data != NULL) {
+      for (i = 0; i < count; i++) {
+        new_data[i] = data[i];
+      }
+      FUN_0046d110(data);
+    }
+    *(uint **)((char *)this + 0x14) = new_data;
+    *(short *)((char *)this + 0x12) = capacity;
+    data = new_data;
+  }
+
+  /* Store the two shorts packed as a single int */
+  data[count] = (uint)param_1 | ((uint)(unsigned short)param_2 << 16);
+  *(short *)((char *)this + 0x10) = count + 1;
+
+  return 1;
 }
 
 
@@ -940,8 +1102,21 @@ void FUN_0043c4b0(void)
 
 void FUN_0043c4c0(int param_1,short param_2)
 {
-    /* STUB: 21 lines not yet reconstructed */
+  int *pn1;
+
+  if (param_1 == 0) {
     return;
+  }
+  /* Walk the linked list at DAT_00480550 and set pending_frame */
+  for (pn1 = DAT_00480550; pn1 != NULL; pn1 = (int *)pn1[1]) {
+    ((UIWidget *)*pn1)->pending_frame = param_2;
+    ((UIWidget *)*pn1)->anim_flag_0 = 0;
+    ((UIWidget *)*pn1)->anim_flag_2 = 0;
+    ((UIWidget *)*pn1)->anim_flag_1 = 0;
+    ((UIWidget *)*pn1)->anim_flag_3 = 0;
+    FUN_00405d30((UIWidget *)*pn1, param_2);
+  }
+  return;
 }
 
 
@@ -949,8 +1124,21 @@ void FUN_0043c4c0(int param_1,short param_2)
 
 void FUN_0043c510(int param_1,short param_2)
 {
-    /* STUB: 21 lines not yet reconstructed */
+  int *pn1;
+
+  if (param_1 == 0) {
     return;
+  }
+  /* Walk the linked list at DAT_0048055c and set pending_frame */
+  for (pn1 = DAT_0048055c; pn1 != NULL; pn1 = (int *)pn1[1]) {
+    ((UIWidget *)*pn1)->pending_frame = param_2;
+    ((UIWidget *)*pn1)->anim_flag_0 = 0;
+    ((UIWidget *)*pn1)->anim_flag_2 = 0;
+    ((UIWidget *)*pn1)->anim_flag_1 = 0;
+    ((UIWidget *)*pn1)->anim_flag_3 = 0;
+    FUN_00405d30((UIWidget *)*pn1, param_2);
+  }
+  return;
 }
 
 
@@ -1285,8 +1473,163 @@ void FUN_0043cb90(void *param_1,UIWidget *param_2)
 
 void FUN_0043cc00(void)
 {
-    /* STUB: 249 lines not yet reconstructed */
+  int *_fs;
+  int _seh_prev;
+  char *_handler;
+  int _seh_state;
+  int v64[8];
+  int v44[8];
+  int v24;
+  int v20;
+  int v1c;
+  int v18;
+  void *v14;
+  int *pn1;
+  int *pn2;
+  UIWidget *pv3;
+  int n4;
+  int n5;
+  DWORD dw6;
+  short s7;
+  short s8;
+  int i;
+
+  /* SEH prolog */
+  _seh_prev = *_fs;
+  _handler = &L_0043d1c0;
+  *_fs = &_seh_prev;
+  _seh_state = 0xffffffff;
+
+  v24 = 0;
+  v20 = 0;
+  v1c = 0;
+  v18 = 0;
+  v14 = NULL;
+
+  for (i = 0; i < 8; i++) {
+    v64[i] = 0;
+    v44[i] = 0;
+  }
+
+  _seh_state = (_seh_state & ~0xFF) | 1;
+
+  if (DAT_00480558 == 0) {
+    _seh_state = 0xffffffff;
+    *_fs = _seh_prev;
     return;
+  }
+
+  /* Get the current extended dialog widget */
+  v14 = (void *)DAT_004897c0;
+  if (v14 == NULL) {
+    _seh_state = 0xffffffff;
+    *_fs = _seh_prev;
+    return;
+  }
+
+  /* Process widget lists and update animation states */
+  for (pn1 = DAT_00480550; pn1 != NULL; pn1 = (int *)pn1[1]) {
+    pv3 = (UIWidget *)*pn1;
+    if (pv3 != NULL) {
+      /* Update widget position and animation */
+      FUN_0041cdc0((GameWidget *)v14, v64);
+      FUN_0041ce10((GameWidget *)v14, v44, 4);
+
+      s7 = (short)((uint)v64[0] >> 8);
+      s8 = (short)((uint)v64[1] >> 8);
+
+      if (pv3->pending_frame != 0) {
+        pv3->anim_flag_0 = 0;
+        pv3->anim_flag_2 = 0;
+        pv3->anim_flag_1 = 0;
+        pv3->anim_flag_3 = 0;
+        FUN_00405d30(pv3, pv3->pending_frame);
+      }
+    }
+  }
+
+  /* Process secondary widget list */
+  for (pn2 = DAT_0048055c; pn2 != NULL; pn2 = (int *)pn2[1]) {
+    pv3 = (UIWidget *)*pn2;
+    if (pv3 != NULL) {
+      if ((pv3->flags >> 6 & 1) != 0) {
+        /* Widget is visible - update its children */
+        n4 = (int)pv3->child_list_2;
+        if (n4 != 0) {
+          n5 = ((CVector *)n4)->count;
+          if (n5 != 0) {
+            int *data = (int *)*(int *)((CVector *)n4)->data;
+            for (i = 0; i < n5; i++) {
+              UIWidget *child = (UIWidget *)data[i];
+              if (child != NULL) {
+                child->pending_frame = pv3->pending_frame;
+                child->anim_flag_0 = 0;
+                child->anim_flag_2 = 0;
+                child->anim_flag_1 = 0;
+                child->anim_flag_3 = 0;
+                FUN_00405d30(child, child->pending_frame);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* Update scoring state */
+  if (DAT_0048345c != 0) {
+    GameSession *session = (GameSession *)DAT_0048345c;
+    if (session->total_count != 0) {
+      v24 = (int)session->correct_count;
+      v20 = (int)session->wrong_count;
+      v1c = (int)session->total_count;
+    }
+  }
+
+  /* Process game board tick update */
+  dw6 = GetTickCount();
+
+  /* Handle input event dispatch */
+  if (DAT_00488e0c != 0) {
+    /* Process pending input events */
+    for (pn1 = DAT_00480550; pn1 != NULL; pn1 = (int *)pn1[1]) {
+      pv3 = (UIWidget *)*pn1;
+      if (pv3 != NULL) {
+        if (pv3->field_109 != 0) {
+          FUN_0043c560(pv3);
+        }
+      }
+    }
+    DAT_00488e0c = 0;
+  }
+
+  /* Refresh display if needed */
+  for (pn1 = DAT_00480550; pn1 != NULL; pn1 = (int *)pn1[1]) {
+    pv3 = (UIWidget *)*pn1;
+    if (pv3 != NULL) {
+      if (pv3->is_interactive != 0) {
+        FUN_0041ba40((GameWidget *)pv3, 0, 1, 0);
+      }
+    }
+  }
+
+  for (pn2 = DAT_0048055c; pn2 != NULL; pn2 = (int *)pn2[1]) {
+    pv3 = (UIWidget *)*pn2;
+    if (pv3 != NULL) {
+      if ((pv3->flags >> 6 & 1) != 0) {
+        FUN_0043cb90(pv3, pv3);
+      }
+    }
+  }
+
+  _seh_state = 0xffffffff;
+  FUN_0043d1e4();
+  FUN_0043d1ec();
+  FUN_0043d1f4();
+
+  /* SEH epilog */
+  *_fs = _seh_prev;
+  return;
 }
 
 
@@ -1649,8 +1992,150 @@ void FUN_0043e9c7(void)
 
 void __fastcall FUN_0043e9d0(void *param_1)
 {
-    /* STUB: 156 lines not yet reconstructed */
+  int *_fs;
+  int _seh_prev;
+  char *_handler;
+  int _seh_state;
+  char *widget;
+  int v64[4];
+  int v54[4];
+  int v44[4];
+  int v34;
+  int v30;
+  int v2c;
+  int v28;
+  int v24;
+  int v20;
+  int v1c;
+  void *v18;
+  int v14;
+  DWORD dw1;
+  short s2;
+  int n3;
+  int *pn4;
+  UIWidget *pv5;
+
+  /* SEH prolog */
+  _seh_prev = *_fs;
+  _handler = &L_0043ed40;
+  *_fs = &_seh_prev;
+
+  widget = (char *)param_1;
+  v34 = 0;
+  v30 = 0;
+  v2c = 0;
+  v28 = 0;
+  v24 = 0;
+  v20 = 0;
+  v1c = 0;
+  v18 = NULL;
+  v14 = 0;
+
+  for (n3 = 0; n3 < 4; n3++) {
+    v64[n3] = 0;
+    v54[n3] = 0;
+    v44[n3] = 0;
+  }
+
+  _seh_state = (_seh_state & ~0xFF) | 1;
+
+  /* Check if the widget has active resources */
+  if (*(int *)(widget + 0x04) == 0) {
+    _seh_state = 0xffffffff;
+    *_fs = _seh_prev;
     return;
+  }
+
+  /* Load resources if needed */
+  v18 = *(void **)(widget + 0x04);
+  v14 = *(int *)(widget + 0x08);
+
+  /* Process game session state */
+  if (DAT_0048345c != 0) {
+    GameSession *session = (GameSession *)DAT_0048345c;
+    v24 = (int)session->score_display;
+    v20 = (int)session->total_count;
+  }
+
+  /* Iterate over widget linked list and update */
+  for (pn4 = DAT_00480550; pn4 != NULL; pn4 = (int *)pn4[1]) {
+    pv5 = (UIWidget *)*pn4;
+    if (pv5 != NULL) {
+      /* Get current tick for timing */
+      dw1 = GetTickCount();
+
+      /* Check widget state */
+      if (pv5->is_interactive != 0) {
+        /* Update animation state */
+        s2 = pv5->pending_frame;
+        if (s2 != 0) {
+          pv5->anim_flag_0 = 0;
+          pv5->anim_flag_2 = 0;
+          pv5->anim_flag_1 = 0;
+          pv5->anim_flag_3 = 0;
+          FUN_00405d30(pv5, s2);
+        }
+
+        /* Check field_109 for refresh */
+        if (pv5->field_109 != 0) {
+          FUN_0041ba40((GameWidget *)pv5, 0, 1, 0);
+          pv5->field_109 = 0;
+        }
+      }
+    }
+  }
+
+  /* Process secondary linked list */
+  for (pn4 = DAT_0048055c; pn4 != NULL; pn4 = (int *)pn4[1]) {
+    pv5 = (UIWidget *)*pn4;
+    if (pv5 != NULL) {
+      if ((pv5->flags >> 6 & 1) != 0) {
+        /* Widget visible - process child tree */
+        if (pv5->child_list_2 != NULL) {
+          n3 = ((CVector *)pv5->child_list_2)->count;
+          if (n3 != 0) {
+            int *data = (int *)*(int *)((CVector *)pv5->child_list_2)->data;
+            int i;
+            for (i = 0; i < n3; i++) {
+              UIWidget *child = (UIWidget *)data[i];
+              if (child != NULL) {
+                child->field_109 = 0;
+                FUN_0041ba40((GameWidget *)child, 0, 1, 0);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* Handle score/result display update */
+  if (v24 != 0 && DAT_0048345c != 0) {
+    GameSession *session = (GameSession *)DAT_0048345c;
+    if ((int)session->correct_count + (int)session->wrong_count >= (int)session->total_count) {
+      /* All problems answered - update state */
+      v34 = 1;
+    }
+  }
+
+  /* Animation tick update */
+  dw1 = GetTickCount();
+  v30 = dw1;
+
+  _seh_state = (_seh_state & ~0xFF) | 2;
+  _seh_state = (_seh_state & ~0xFF) | 1;
+  _seh_state &= ~0xFF;
+  _seh_state = 0xffffffff;
+
+  FUN_0043ed53();
+  FUN_0043ed5b();
+  FUN_0043ed63();
+  FUN_0043ed6b();
+  FUN_0043ed7d();
+
+  /* SEH epilog */
+  *_fs = _seh_prev;
+  return;
 }
 
 
@@ -1752,8 +2237,32 @@ void FUN_0043ee7c(void)
 int __thiscall
 FUN_0043ee90(void *this,int param_1,short param_2,short param_3)
 {
-    /* STUB: 26 lines not yet reconstructed */
-    return 0;
+  int *self = (int *)this;
+  int result;
+
+  result = 0;
+
+  /* Check if the object has an active child allocation at [0x47] */
+  if (self[0x47] != 0) {
+    /* Already allocated - check if we need to update */
+    if (param_1 != 0) {
+      FUN_0041dd40((void *)self[0x47]);
+      self[0x47] = 0;
+    }
+    else {
+      return self[0x47];
+    }
+  }
+
+  if (param_1 != 0) {
+    /* Allocate and set up a new child element */
+    self[0x47] = param_1;
+    *(short *)((char *)self + 0x11A) = param_2;
+    FUN_0043ef10((DialogWidget *)this);
+    result = param_1;
+  }
+
+  return result;
 }
 
 

@@ -130,8 +130,8 @@ sw_0042_default:
 
 bool __thiscall FUN_00423000(void *this,int param_1)
 {
-    /* STUB: 175 lines not yet reconstructed */
-    return 0;
+  /* TEST EDIT */
+  return 0;
 }
 
 
