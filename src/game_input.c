@@ -964,14 +964,14 @@ void FUN_0043c560(UIWidget *param_1)
   FUN_0041ba40(param_1,0,1,0);
   param_1->field_109 = 0;
   if (((param_1->child_list_2 != NULL) &&
-      (n2 = *(int *)((int)param_1->child_list_2 + 0xe) /* CVector: count at +0x0E */, n2 != 0)) &&
+      (n2 = ((CVector *)param_1->child_list_2)->count /* CVector: count at +0x0E */, n2 != 0)) &&
      (u1 = 1, n2 != 0)) {
     n2 = 4;
     do {
       n2 = n2 + 4;
       u1 = u1 + 1;
-      FUN_0043c560(*(UIWidget **)(**(int **)((int)param_1->child_list_2 + 4) /* CVector: data ptr at +0x04 */ + -8 + n2));
-    } while (u1 <= *(uint *)((int)param_1->child_list_2 + 0xe) /* CVector: count at +0x0E */);
+      FUN_0043c560(*(UIWidget **)(*(int *)((CVector *)param_1->child_list_2)->data[0] /* CVector: data ptr at +0x04 */ + -8 + n2));
+    } while (u1 <= ((CVector *)param_1->child_list_2)->count /* CVector: count at +0x0E */);
   }
   return;
 }
@@ -982,15 +982,15 @@ void FUN_0043c560(UIWidget *param_1)
 void __fastcall FUN_0043c5d0(int param_1)
 {
   if (DAT_00488e24 == 0) {
-    *(short *)(DAT_0048345c + 0x92) = *(short *)(DAT_0048345c + 0x92) + 600;
+    ((GameSession *)DAT_0048345c)->score_display = ((GameSession *)DAT_0048345c)->score_display + 600;
   }
   else {
-    *(short *)(DAT_0048345c + 0x92) = *(short *)(DAT_0048345c + 0x92) + (5 - DAT_00488e24) * 100;
+    ((GameSession *)DAT_0048345c)->score_display = ((GameSession *)DAT_0048345c)->score_display + (5 - DAT_00488e24) * 100;
   }
   FUN_0042db60(DAT_00488e34,*(ushort **)(param_1 + 0x1ac),-1,-1);
-  if ((int)*(short *)(DAT_0048345c + 0xc2) + (int)*(short *)(DAT_0048345c + 0xb6) !=
-      (int)*(short *)(DAT_0048345c + 0xaa)) {
-    *(short *)(DAT_0048345c + 0xb6) = *(short *)(DAT_0048345c + 0xb6) + 1;
+  if ((int)((GameSession *)DAT_0048345c)->wrong_count + (int)((GameSession *)DAT_0048345c)->correct_count !=
+      (int)((GameSession *)DAT_0048345c)->total_count) {
+    ((GameSession *)DAT_0048345c)->correct_count = ((GameSession *)DAT_0048345c)->correct_count + 1;
   }
   return;
 }
@@ -1006,9 +1006,9 @@ void __fastcall FUN_0043c660(int param_1)
   DWORD dw2;
   
   DAT_00488e24 = DAT_00488e24 + 1;
-  if ((int)*(short *)(DAT_0048345c + 0xb6) + (int)*(short *)(DAT_0048345c + 0xc2) !=
-      (int)*(short *)(DAT_0048345c + 0xaa)) {
-    *(short *)(DAT_0048345c + 0xc2) = *(short *)(DAT_0048345c + 0xc2) + 1;
+  if ((int)((GameSession *)DAT_0048345c)->correct_count + (int)((GameSession *)DAT_0048345c)->wrong_count !=
+      (int)((GameSession *)DAT_0048345c)->total_count) {
+    ((GameSession *)DAT_0048345c)->wrong_count = ((GameSession *)DAT_0048345c)->wrong_count + 1;
   }
   DAT_00488e04 = DAT_00488e04 + 1;
   *(short *)(param_1 + 0x1ca) = 1;
@@ -1059,8 +1059,8 @@ void FUN_0043c7f0(void)
   UIWidget *pv1;
   int *pn2;
 
-  *(short *)(*(int *)(DAT_004897c0 + 0x44) + 0x112) = 1; /* pending_frame */
-  pv1 = *(UIWidget **)(DAT_004897c0 + 0x44);
+  *(short *)(((UIWidget *)DAT_004897c0)->_pad42[2] + 0x112) = 1; /* pending_frame */
+  pv1 = ((UIWidget *)DAT_004897c0)->_pad42[2];
   pv1->anim_flag_0 = 0;
   pv1->anim_flag_2 = 0;
   pv1->anim_flag_1 = 0;
@@ -1089,8 +1089,8 @@ void __fastcall FUN_0043c890(int param_1)
   int *pn3;
   int *pn4;
 
-  *(short *)(*(int *)(DAT_004897c0 + 0x44) + 0x112) = 0; /* pending_frame */
-  pv2 = *(UIWidget **)(DAT_004897c0 + 0x44);
+  *(short *)(((UIWidget *)DAT_004897c0)->_pad42[2] + 0x112) = 0; /* pending_frame */
+  pv2 = ((UIWidget *)DAT_004897c0)->_pad42[2];
   pv2->anim_flag_0 = 0;
   pv2->anim_flag_2 = 0;
   pv2->anim_flag_1 = 0;
@@ -1268,14 +1268,14 @@ void FUN_0043cb90(void *param_1,UIWidget *param_2)
     FUN_0043c970(param_1);
   }
   if (((param_2->child_list_2 != NULL) &&
-      (n2 = *(int *)((int)param_2->child_list_2 + 0xe) /* CVector: count at +0x0E */, n2 != 0)) &&
+      (n2 = ((CVector *)param_2->child_list_2)->count /* CVector: count at +0x0E */, n2 != 0)) &&
      (u1 = 1, n2 != 0)) {
     n2 = 4;
     do {
       n2 = n2 + 4;
       u1 = u1 + 1;
-      FUN_0043cb90(param_1,*(UIWidget **)(**(int **)((int)param_2->child_list_2 + 4) /* CVector: data ptr at +0x04 */ + -8 + n2));
-    } while (u1 <= *(uint *)((int)param_2->child_list_2 + 0xe) /* CVector: count at +0x0E */);
+      FUN_0043cb90(param_1,*(UIWidget **)(*(int *)((CVector *)param_2->child_list_2)->data[0] /* CVector: data ptr at +0x04 */ + -8 + n2));
+    } while (u1 <= ((CVector *)param_2->child_list_2)->count /* CVector: count at +0x0E */);
   }
   return;
 }
@@ -1933,13 +1933,13 @@ void FUN_0043f8c0(UIWidget *param_1)
 
   param_1->field_109 = 0;
   if (((param_1->child_list_2 != NULL) &&
-      (n2 = *(int *)((int)param_1->child_list_2 + 0xe) /* CVector: count at +0x0E */, n2 != 0)) && (u1 = 1, n2 != 0)) {
+      (n2 = ((CVector *)param_1->child_list_2)->count /* CVector: count at +0x0E */, n2 != 0)) && (u1 = 1, n2 != 0)) {
     n2 = 4;
     do {
       n2 = n2 + 4;
       u1 = u1 + 1;
-      FUN_0043f8c0(*(UIWidget **)(**(int **)((int)param_1->child_list_2 + 4) /* CVector: data ptr at +0x04 */ + -8 + n2));
-    } while (u1 <= *(uint *)((int)param_1->child_list_2 + 0xe) /* CVector: count at +0x0E */);
+      FUN_0043f8c0(*(UIWidget **)(*(int *)((CVector *)param_1->child_list_2)->data[0] /* CVector: data ptr at +0x04 */ + -8 + n2));
+    } while (u1 <= ((CVector *)param_1->child_list_2)->count /* CVector: count at +0x0E */);
   }
   return;
 }

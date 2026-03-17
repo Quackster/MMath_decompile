@@ -1885,11 +1885,11 @@ void FUN_00464f20(void)
     } while (u6 < 0x92);
   }
   if (DAT_0048345c != 0) {
-    if ((*(ushort *)(DAT_0048345c + 0x48) & 1) != 0) {
-      *(char *)(DAT_0048345c + 0x90) = (char)*(ushort *)(DAT_0048345c + 0x48);
+    if ((((GameSession *)DAT_0048345c)->display_flags & 1) != 0) {
+      ((GameSession *)DAT_0048345c)->level_mode = (char)((GameSession *)DAT_0048345c)->display_flags;
       return;
     }
-    *(char *)(DAT_0048345c + 0x90) = 0;
+    ((GameSession *)DAT_0048345c)->level_mode = 0;
   }
   return;
 }

@@ -79,15 +79,15 @@ void __thiscall FUN_004092c0(GameWidget *this,int param_1,int param_2)
 
   this->animation_timer = param_1;
   if (((((char)param_2 != '\0') && (this->child_list_2 != 0)) &&
-      (n2 = *(int *)((int)this->child_list_2 + 0xe), n2 != 0)) && (u1 = 1, n2 != 0))  /* child_list_2 sub-struct count at +0xe */
+      (n2 = ((CVector *)this->child_list_2)->count, n2 != 0)) && (u1 = 1, n2 != 0))  /* child_list_2 sub-struct count at +0xe */
   {
     n2 = 4;
     do {
       n2 = n2 + 4;
       u1 = u1 + 1;
-      FUN_004092c0(*(void **)(**(int **)((int)this->child_list_2 + 4) + -8 + n2),param_1,  /* child_list_2 sub-struct data at +4 */
+      FUN_004092c0(*(void **)(*(int *)((CVector *)this->child_list_2)->data[0] + -8 + n2),param_1,  /* child_list_2 sub-struct data at +4 */
                    param_2);
-    } while (u1 <= *(uint *)((int)this->child_list_2 + 0xe));  /* child_list_2 sub-struct count at +0xe */
+    } while (u1 <= ((CVector *)this->child_list_2)->count);  /* child_list_2 sub-struct count at +0xe */
   }
   FUN_0041cad0(this);
 }
@@ -183,14 +183,14 @@ void __thiscall FUN_004094d0(UIWidget *this,short param_1,char param_2)
     *(short *)((int)this + 0x44) = 0;  /* TODO: unknown offset 0x44 in _pad42 region */
   }
   if (((param_2 != '\0') && ((int)this->child_list_2 != 0)) &&
-     (u2 = 1, *(int *)((int)this->child_list_2 + 0xe) /* CVector: count at +0x0E */ != 0)) {
+     (u2 = 1, ((CVector *)this->child_list_2)->count /* CVector: count at +0x0E */ != 0)) {
     n1 = 4;
     do {
       n1 = n1 + 4;
       u2 = u2 + 1;
-      FUN_004094d0(*(UIWidget **)(**(int **)((int)this->child_list_2 + 4) /* CVector: data ptr at +0x04 */ + -8 + n1),
+      FUN_004094d0(*(UIWidget **)(*(int *)((CVector *)this->child_list_2)->data[0] /* CVector: data ptr at +0x04 */ + -8 + n1),
                    *(short *)((int)this + 0x44),param_2);  /* TODO: unknown offset 0x44 in _pad42 region */
-    } while (u2 <= *(uint *)((int)this->child_list_2 + 0xe) /* CVector: count at +0x0E */);
+    } while (u2 <= ((CVector *)this->child_list_2)->count /* CVector: count at +0x0E */);
   }
   FUN_0041ab40((&DAT_004841a8)[*(short *)((int)this + 0x44)]);  /* TODO: unknown offset 0x44 in _pad42 region */
   FUN_004092c0(this,2,CONCAT31((unsigned int)((uint)_ebx >> 8),param_2));
@@ -207,13 +207,13 @@ void __thiscall FUN_00409580(UIWidget *this,char param_1)
 
   *(short *)((int)this + 0x44) = (short)0xffff;  /* TODO: unknown offset 0x44 in _pad42 region of UIWidget */
   if (((param_1 != '\0') && ((int)this->child_list_2 != 0)) &&
-     (u2 = 1, *(int *)((int)this->child_list_2 + 0xe) /* CVector: count at +0x0E */ != 0)) {
+     (u2 = 1, ((CVector *)this->child_list_2)->count /* CVector: count at +0x0E */ != 0)) {
     n1 = 4;
     do {
       n1 = n1 + 4;
       u2 = u2 + 1;
-      FUN_00409580(*(UIWidget **)(**(int **)((int)this->child_list_2 + 4) /* CVector: data ptr at +0x04 */ + -8 + n1),'\x01');
-    } while (u2 <= *(uint *)((int)this->child_list_2 + 0xe) /* CVector: count at +0x0E */);
+      FUN_00409580(*(UIWidget **)(*(int *)((CVector *)this->child_list_2)->data[0] /* CVector: data ptr at +0x04 */ + -8 + n1),'\x01');
+    } while (u2 <= ((CVector *)this->child_list_2)->count /* CVector: count at +0x0E */);
   }
   FUN_0041ab40(0);
   FUN_004092c0(this,1,CONCAT31((unsigned int)((uint)_ebx >> 8),param_1));
@@ -440,7 +440,7 @@ FUN_00409950(SoundPlayer *this,short param_1,short param_2,short param_3,int par
   FUN_0042c0e0(this);
   FUN_00409ac0();
   FUN_0042bf70(this);
-  *(char *)(*(int *)(DAT_004897c0 + 0x52) + 0x174) = 0;
+  *(char *)(((UIWidget *)DAT_004897c0)->sub_widgets_a[3] + 0x174) = 0;
   *_fs = _seh_prev;
   return this;
 }
@@ -555,8 +555,8 @@ void FUN_00409fc0(char *param_1)
 {
   void *this;
   
-  if (*(void **)(DAT_004897c0 + 0x52) != NULL) {
-    this = (void *)FUN_0042e020(*(void **)(DAT_004897c0 + 0x52));
+  if (((UIWidget *)DAT_004897c0)->sub_widgets_a[3] != NULL) {
+    this = (void *)FUN_0042e020(((UIWidget *)DAT_004897c0)->sub_widgets_a[3]);
     FUN_00458860(this,param_1);
   }
   return;
@@ -567,7 +567,7 @@ void FUN_00409fc0(char *param_1)
 
 void FUN_00409fe0(void)
 {
-  FUN_0042e020(*(void **)(DAT_004897c0 + 0x52));
+  FUN_0042e020(((UIWidget *)DAT_004897c0)->sub_widgets_a[3]);
 }
 
 
@@ -1183,14 +1183,14 @@ void FUN_0040bc70(UIWidget *this,short param_2)
 
   FUN_0041dad0(this,(byte)param_2,'\0');
   if (((this->child_list_2 != NULL) &&
-      (n2 = *(int *)((int)this->child_list_2 + 0xe), n2 != 0)) &&  /* child_list_2 sub-struct count at +0xe */
+      (n2 = ((CVector *)this->child_list_2)->count, n2 != 0)) &&  /* child_list_2 sub-struct count at +0xe */
      (u1 = 1, n2 != 0)) {
     n2 = 4;
     do {
       n2 = n2 + 4;
       u1 = u1 + 1;
-      FUN_0040bc70(*(UIWidget **)(**(int **)((int)this->child_list_2 + 4) + -8 + n2),param_2);  /* child_list_2 sub-struct data at +4 */
-    } while (u1 <= *(uint *)((int)this->child_list_2 + 0xe));  /* child_list_2 sub-struct count at +0xe */
+      FUN_0040bc70(*(UIWidget **)(*(int *)((CVector *)this->child_list_2)->data[0] + -8 + n2),param_2);  /* child_list_2 sub-struct data at +4 */
+    } while (u1 <= ((CVector *)this->child_list_2)->count);  /* child_list_2 sub-struct count at +0xe */
   }
   return;
 }
@@ -1228,32 +1228,32 @@ void FUN_0040bce0(void *param_1)
   v2c = 0;
   _seh_state = (_seh_state & ~0xFF) | 1;
   _seh_state = (_seh_state & 0xFF) | (0 << 8);
-  pu1 = FUN_0040bf50(*(void **)(DAT_004897c0 + 0x44),v34);
+  pu1 = FUN_0040bf50(((UIWidget *)DAT_004897c0)->_pad42[2],v34);
   _seh_state = (_seh_state & ~0xFF) | 2;
   FUN_00403030(&v2c,&v24,pu1);
   _seh_state = (_seh_state & ~0xFF) | 2;
   FUN_0040be81();
   _seh_state = (_seh_state & ~0xFF) | 1;
   FUN_0040be79();
-  FUN_0041bb70(*(void **)(DAT_004897c0 + 0x44),param_1,'\x01');
+  FUN_0041bb70(((UIWidget *)DAT_004897c0)->_pad42[2],param_1,'\x01');
   FUN_0041ce10(param_1,&DAT_00484250,0);
-  FUN_0041ce10(*(void **)(DAT_004897c0 + 0x44),&v1c,0);
+  FUN_0041ce10(((UIWidget *)DAT_004897c0)->_pad42[2],&v1c,0);
   DAT_00484254 = DAT_00484254 - v18;
   DAT_00484250 = DAT_00484250 - v1c;
-  FUN_0041dd40(*(void **)(DAT_004897c0 + 0x44));
+  FUN_0041dd40(((UIWidget *)DAT_004897c0)->_pad42[2]);
   FUN_0041dad0(param_1,1,'\0');
   n2 = 1;
   FUN_00407340(((DialogWidget *)v14)->is_registered,'\x01','\0',4,'\0');  /* TODO: verify offset 0x120 = is_registered */
   n3 = 0x40bded;
-  FUN_0040bc70(*(void **)(DAT_004897c0 + 0x44),0);
-  FUN_0041bd00(*(void **)(DAT_004897c0 + 0x44),(int)param_1);
+  FUN_0040bc70(((UIWidget *)DAT_004897c0)->_pad42[2],0);
+  FUN_0041bd00(((UIWidget *)DAT_004897c0)->_pad42[2],(int)param_1);
   c5 = '\x01';
   u4 = 0;
   v20 = &_tmp_29;
   FUN_004090c0(&_tmp_29,&v2c);
   _seh_state = (_seh_state & ~0xFF) | 1;
-  FUN_004060c0(*(void **)(DAT_004897c0 + 0x44),n2,n3,u4,c5);
-  FUN_0041d780(*(void **)(DAT_004897c0 + 0x44),NULL);
+  FUN_004060c0(((UIWidget *)DAT_004897c0)->_pad42[2],n2,n3,u4,c5);
+  FUN_0041d780(((UIWidget *)DAT_004897c0)->_pad42[2],NULL);
   FUN_0041d780(v14,NULL);
   _seh_state &= ~0xFF;
   ((DialogWidget *)v14)->child_list = (void *)1;  /* TODO: verify offset 0x11C = child_list */
@@ -2038,12 +2038,12 @@ int __cdecl FUN_0040e610(short param_1)
   if ((short)n5 != -1) {
     *(char *)((short)n5 + 0x41 + DAT_0048345c) = 1;
   }
-  u1 = *(ushort *)(DAT_0048345c + 0x48);
+  u1 = ((GameSession *)DAT_0048345c)->display_flags;
   if ((u1 & 1) == 0) {
-    *(char *)(DAT_0048345c + 0x90) = 0;
+    ((GameSession *)DAT_0048345c)->level_mode = 0;
   }
   else {
-    *(char *)(DAT_0048345c + 0x90) = (char)u1;
+    ((GameSession *)DAT_0048345c)->level_mode = (char)u1;
   }
   s7 = 0;
   while (u4 = DAT_00483498, u3 = DAT_00483488, u2 = DAT_00483478, s8 = s7 + 1,
@@ -2055,7 +2055,7 @@ int __cdecl FUN_0040e610(short param_1)
     n5 = n5 % 3;
     s7 = s8;
     if (n5 == 0) {
-      if (((u1 & 0x30) != 0) && (*(char *)(DAT_0048345c + 0x47) == '\0')) {
+      if (((u1 & 0x30) != 0) && (((GameSession *)DAT_0048345c)->fraction_flag == '\0')) {
         n5 = rand();
         u6 = (int)(n5 * (uint)u4) / 0x7fff;
         return CONCAT22((short)(u6 >> 0x10),*(short *)(&DAT_0048349a + (u6 & 0xffff) * 2)
@@ -2063,14 +2063,14 @@ int __cdecl FUN_0040e610(short param_1)
       }
     }
     else if (n5 == 1) {
-      if (((u1 & 0x50) != 0) && (*(char *)(DAT_0048345c + 0x45) == '\0')) {
+      if (((u1 & 0x50) != 0) && (((GameSession *)DAT_0048345c)->decimal_flag == '\0')) {
         n5 = rand();
         u6 = (int)(n5 * (uint)u3) / 0x7fff;
         return CONCAT22((short)(u6 >> 0x10),*(short *)(&DAT_0048348a + (u6 & 0xffff) * 2)
                        );
       }
     }
-    else if (((n5 == 2) && ((u1 & 0x90) != 0)) && (*(char *)(DAT_0048345c + 0x44) == '\0')) {
+    else if (((n5 == 2) && ((u1 & 0x90) != 0)) && (((GameSession *)DAT_0048345c)->_pad43[1] == '\0')) {
       n5 = rand();
       u6 = (int)(n5 * (uint)u2) / 0x7fff;
       return CONCAT22((short)(u6 >> 0x10),*(short *)(&DAT_0048347a + (u6 & 0xffff) * 2));
@@ -2091,20 +2091,20 @@ int __cdecl FUN_0040e610(short param_1)
     u6 = (int)(n5 * (uint)u2) / 0x7fff;
     return CONCAT22((short)(u6 >> 0x10),*(short *)(&DAT_0048347a + (u6 & 0xffff) * 2));
   }
-  if (*(char *)(DAT_0048345c + 0x44) == '\0') {
+  if (((GameSession *)DAT_0048345c)->_pad43[1] == '\0') {
     n5 = rand();
     u6 = (int)(n5 * (uint)u2) / 0x7fff;
     return CONCAT22((short)(u6 >> 0x10),*(short *)(&DAT_0048347a + (u6 & 0xffff) * 2));
   }
-  if (*(char *)(DAT_0048345c + 0x47) == '\0') {
+  if (((GameSession *)DAT_0048345c)->fraction_flag == '\0') {
     n5 = rand();
     u6 = (int)(n5 * (uint)u4) / 0x7fff;
     return CONCAT22((short)(u6 >> 0x10),*(short *)(&DAT_0048349a + (u6 & 0xffff) * 2));
   }
-  if (*(char *)(DAT_0048345c + 0x45) != '\0') {
-    *(char *)(DAT_0048345c + 0x44) = '\0';
-    *(char *)(DAT_0048345c + 0x45) = 0;
-    *(char *)(DAT_0048345c + 0x47) = 0;
+  if (((GameSession *)DAT_0048345c)->decimal_flag != '\0') {
+    ((GameSession *)DAT_0048345c)->_pad43[1] = '\0';
+    ((GameSession *)DAT_0048345c)->decimal_flag = 0;
+    ((GameSession *)DAT_0048345c)->fraction_flag = 0;
     u1 = DAT_00483478;
     n5 = rand();
     u6 = (int)(n5 * (uint)u1) / 0x7fff;

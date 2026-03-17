@@ -492,6 +492,96 @@ typedef struct SoundPlayer {
 } SoundPlayer;
 /* static_assert(sizeof(SoundPlayer) == 0x1D0, "SoundPlayer size mismatch"); */
 
+/* ========================================================================
+ * CVector - Dynamic array container (~0x12 bytes)
+ *
+ * Used for child_list_1 and child_list_2 in UIElement/UIWidget.
+ * Stores a pointer to an array of void* elements with a count.
+ * ======================================================================== */
+typedef struct CVector {
+    void         **vtable;          /* +0x00 */
+    void         **data;            /* +0x04  array of element pointers */
+    int            capacity;        /* +0x08 */
+    unsigned char  _pad0c[2];       /* +0x0C */
+    unsigned int   count;           /* +0x0E  number of elements */
+    unsigned char  _pad12[2];       /* +0x12 */
+} CVector;
+/* static_assert(sizeof(CVector) == 0x14, "CVector size mismatch"); */
+
+/* ========================================================================
+ * SmartHeapPool - SmartHeap memory pool descriptor (~0x170 bytes)
+ *
+ * Used by the SmartHeap allocator (SMACKW32-era memory management).
+ * ======================================================================== */
+typedef struct SmartHeapPool {
+    unsigned char  _base[0x0E];     /* +0x00 */
+    short          page_tag;        /* +0x0E  magic: 0xCAD0 */
+    void          *slab_head;       /* +0x10 */
+    void          *end_ptr;         /* +0x14 */
+    unsigned char  page_flags;      /* +0x15 */
+    unsigned char  _pad16[6];       /* +0x16 */
+    void          *data_start;      /* +0x1C */
+    short          pool_signature;  /* +0x20  magic: 0xBEAD = -0x4153 */
+    short          pool_flags;      /* +0x22  bit1 = threadsafe */
+    int            alloc_unit;      /* +0x24 */
+    int            min_block;       /* +0x28 */
+    short          max_small_block; /* +0x2A */
+    short          _pad2c;          /* +0x2C */
+    int            current_size;    /* +0x2E */
+    unsigned char  _pad32[2];       /* +0x32 */
+    int            max_size;        /* +0x34 */
+    unsigned char  _pad38[0x10];    /* +0x38 */
+    unsigned char  critical_section[0x18]; /* +0x48 */
+    int            lock_count;      /* +0x60 */
+    unsigned char  _pad64[0x100];   /* +0x64 */
+    void          *overflow_chain;  /* +0x164 */
+    unsigned char  _pad168[4];      /* +0x168 */
+    void          *pool_field;      /* +0x16C */
+} SmartHeapPool;
+/* static_assert(sizeof(SmartHeapPool) == 0x170, "SmartHeapPool size mismatch"); */
+
+/* ========================================================================
+ * GameSession - Global game session state (pointed to by DAT_0048345c)
+ *
+ * Contains current problem display state, scoring area, level info.
+ * Offsets reverse-engineered from access patterns.
+ * ======================================================================== */
+typedef struct GameSession {
+    unsigned char  _base[0x3A];     /* +0x00 */
+    void          *child_list;      /* +0x3A */
+    unsigned char  _pad3e[4];       /* +0x3E */
+    unsigned char  field_42;        /* +0x42 */
+    unsigned char  _pad43[2];       /* +0x43 */
+    char           decimal_flag;    /* +0x45 */
+    unsigned char  _pad46;          /* +0x46 */
+    char           fraction_flag;   /* +0x47 */
+    unsigned short display_flags;   /* +0x48 */
+    unsigned char  _pad4a[0x46];    /* +0x4A */
+    char           level_mode;      /* +0x90 */
+    unsigned char  _pad91;          /* +0x91 */
+    short          score_display;   /* +0x92 */
+    unsigned char  _pad94[2];       /* +0x94 */
+    short          field_96;        /* +0x96 */
+    unsigned char  _pad98[4];       /* +0x98 */
+    short          field_9c;        /* +0x9C */
+    short          field_9e;        /* +0x9E */
+    unsigned char  _pada0[0x0A];    /* +0xA0 */
+    short          total_count;     /* +0xAA */
+    unsigned char  _padac[0x0A];    /* +0xAC */
+    short          correct_count;   /* +0xB6 */
+    unsigned char  _padb8[0x0A];    /* +0xB8 */
+    short          wrong_count;     /* +0xC2 */
+    unsigned char  _padc4[0x24];    /* +0xC4 */
+    short          field_e8;        /* +0xE8 */
+    short          scroll_origin;   /* +0xEA */
+    unsigned char  _padec[4];       /* +0xEC */
+    short          field_f0;        /* +0xF0 */
+    short          field_f2;        /* +0xF2 */
+    char           field_f3;        /* +0xF3 */
+    char           field_f4;        /* +0xF4 */
+    char           field_f5;        /* +0xF5 */
+} GameSession;
+
 #pragma pack(pop)
 
 #endif /* GAME_STRUCTS_H */

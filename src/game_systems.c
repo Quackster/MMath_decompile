@@ -226,7 +226,7 @@ void __fastcall FUN_004105b0(GameWidget *this)
     }
     s10 = s10 + 1;
   } while (s10 < 10);
-  n9 = *(int *)((int)DAT_004897c0 + 0x52); /* TODO: DAT_004897c0 struct unknown */
+  n9 = ((UIWidget *)DAT_004897c0)->sub_widgets_a[3]; /* TODO: DAT_004897c0 struct unknown */
   pv2 = *(void **)(n9 + 0x84);
   if (pv2 != NULL) {
     FUN_0041cb70(pv2,'\x01');
@@ -235,9 +235,9 @@ void __fastcall FUN_004105b0(GameWidget *this)
   if (pv2 != NULL) {
     FUN_0041cb70(pv2,'\x01');
   }
-  FUN_0041cb70(*(void **)((int)DAT_004897c0 + 0x52),'\x01'); /* TODO: DAT_004897c0 struct unknown, offset 0x52 */
+  FUN_0041cb70(((UIWidget *)DAT_004897c0)->sub_widgets_a[3],'\x01'); /* TODO: DAT_004897c0 struct unknown, offset 0x52 */
   FUN_0041cb70(DAT_004897c0,'\x01');
-  FUN_0041cad0(*(void **)((int)DAT_004897c0 + 0x52)); /* TODO: DAT_004897c0 struct unknown, offset 0x52 */
+  FUN_0041cad0(((UIWidget *)DAT_004897c0)->sub_widgets_a[3]); /* TODO: DAT_004897c0 struct unknown, offset 0x52 */
   FUN_0041cad0(DAT_004897c0);
   _seh_state = _seh_state & 0xffffff00;
   FUN_004107fb();
@@ -4053,17 +4053,17 @@ void __cdecl FUN_0041b5f0(UIWidget *param_1,byte param_2)
   if (param_1 != NULL) {
     FUN_0041dad0(param_1,param_2,'\0');
     if (((param_1->child_list_2 != 0) &&
-        (n2 = *(int *)((int)param_1->child_list_2 + 0xe) /* CVector: count at +0x0E */, n2 != 0)) &&
+        (n2 = ((CVector *)param_1->child_list_2)->count /* CVector: count at +0x0E */, n2 != 0)) &&
        (u3 = 1, n2 != 0)) {
       n2 = 4;
       do {
-        pv1 = *(void **)(**(int **)((int)param_1->child_list_2 + 4) /* CVector: data ptr at +0x04 */ + -4 + n2);
+        pv1 = *(void **)(*(int *)((CVector *)param_1->child_list_2)->data[0] /* CVector: data ptr at +0x04 */ + -4 + n2);
         if (pv1 != NULL) {
           FUN_0041b5f0(pv1,param_2);
         }
         n2 = n2 + 4;
         u3 = u3 + 1;
-      } while (u3 <= *(uint *)((int)param_1->child_list_2 + 0xe) /* CVector: count at +0x0E */);
+      } while (u3 <= ((CVector *)param_1->child_list_2)->count /* CVector: count at +0x0E */);
     }
   }
   return;
@@ -4082,17 +4082,17 @@ void __cdecl FUN_0041b660(UIWidget *param_1,void *param_2)
   if (param_1 != NULL) {
     FUN_0041d780(param_1,param_2);
     if (((param_1->child_list_2 != 0) &&
-        (n3 = *(int *)((int)param_1->child_list_2 + 0xe) /* CVector: count at +0x0E */, n3 != 0)) &&
+        (n3 = ((CVector *)param_1->child_list_2)->count /* CVector: count at +0x0E */, n3 != 0)) &&
        (u2 = 1, n3 != 0)) {
       n3 = 4;
       do {
-        pv1 = *(void **)(**(int **)((int)param_1->child_list_2 + 4) /* CVector: data ptr at +0x04 */ + -4 + n3);
+        pv1 = *(void **)(*(int *)((CVector *)param_1->child_list_2)->data[0] /* CVector: data ptr at +0x04 */ + -4 + n3);
         if (pv1 != NULL) {
           FUN_0041b660(pv1,param_2);
         }
         n3 = n3 + 4;
         u2 = u2 + 1;
-      } while (u2 <= *(uint *)((int)param_1->child_list_2 + 0xe) /* CVector: count at +0x0E */);
+      } while (u2 <= ((CVector *)param_1->child_list_2)->count /* CVector: count at +0x0E */);
     }
   }
   return;
@@ -4286,28 +4286,28 @@ void __thiscall FUN_0041ba40(GameWidget *this,char param_1,int param_2,int param
   
   this->field_10 = param_1;
   if ((((char)param_3 != '\0') && (this->child_list_1 != 0)) &&
-     (u2 = 1, *(int *)(this->child_list_1 + 0xe) != 0)) {
+     (u2 = 1, ((CVector *)this->child_list_1)->count != 0)) {
     n3 = 4;
     do {
-      pv1 = *(void **)(**(int **)(this->child_list_1 + 4) + -4 + n3);
+      pv1 = *(void **)(*(int *)((CVector *)this->child_list_1)->data[0] + -4 + n3);
       if (pv1 != NULL) {
         FUN_0041ba40(pv1,param_1,param_2,param_3);
       }
       n3 = n3 + 4;
       u2 = u2 + 1;
-    } while (u2 <= *(uint *)(this->child_list_1 + 0xe));
+    } while (u2 <= ((CVector *)this->child_list_1)->count);
   }
   if ((((char)param_2 != '\0') && (this->child_list_2 != 0)) &&
-     (u2 = 1, *(int *)(this->child_list_2 + 0xe) != 0)) {
+     (u2 = 1, ((CVector *)this->child_list_2)->count != 0)) {
     n3 = 4;
     do {
-      pv1 = *(void **)(**(int **)(this->child_list_2 + 4) + -4 + n3);
+      pv1 = *(void **)(*(int *)((CVector *)this->child_list_2)->data[0] + -4 + n3);
       if (pv1 != NULL) {
         FUN_0041ba40(pv1,param_1,param_2,param_3);
       }
       n3 = n3 + 4;
       u2 = u2 + 1;
-    } while (u2 <= *(uint *)(this->child_list_2 + 0xe));
+    } while (u2 <= ((CVector *)this->child_list_2)->count);
   }
   return;
 }
@@ -4322,22 +4322,22 @@ void __thiscall FUN_0041baf0(DialogWidget *this,byte param_1)
   
   FUN_0041da90(this,param_1);
   if ((this->child_list_2 != 0) &&
-     (u2 = 1, *(int *)(this->child_list_2 + 0xe) != 0)) {
+     (u2 = 1, ((CVector *)this->child_list_2)->count != 0)) {
     n1 = 4;
     do {
       n1 = n1 + 4;
       u2 = u2 + 1;
-      FUN_0041baf0(*(void **)(**(int **)(this->child_list_2 + 4) + -8 + n1),param_1);
-    } while (u2 <= *(uint *)(this->child_list_2 + 0xe));
+      FUN_0041baf0(*(void **)(*(int *)((CVector *)this->child_list_2)->data[0] + -8 + n1),param_1);
+    } while (u2 <= ((CVector *)this->child_list_2)->count);
   }
   if ((this->child_list_1 != 0) &&
-     (u2 = 1, *(int *)(this->child_list_1 + 0xe) != 0)) {
+     (u2 = 1, ((CVector *)this->child_list_1)->count != 0)) {
     n1 = 4;
     do {
       n1 = n1 + 4;
       u2 = u2 + 1;
-      FUN_0041baf0(*(void **)(**(int **)(this->child_list_1 + 4) + -8 + n1),param_1);
-    } while (u2 <= *(uint *)(this->child_list_1 + 0xe));
+      FUN_0041baf0(*(void **)(*(int *)((CVector *)this->child_list_1)->data[0] + -8 + n1),param_1);
+    } while (u2 <= ((CVector *)this->child_list_1)->count);
   }
   return;
 }
@@ -4427,7 +4427,7 @@ void __thiscall FUN_0041bea0(GameWidget *this,short *param_1)
   *_fs = &_seh_prev;
   v18 = this->rect_top;
   v14 = this->rect_bottom;
-  if ((this->child_list_2 != 0) && (*(int *)(this->child_list_2 + 0xe) != 0)) {
+  if ((this->child_list_2 != 0) && (((CVector *)this->child_list_2)->count != 0)) {
     v1e = 0;
     u1 = 1;
     v20 = 0;
@@ -4438,8 +4438,8 @@ void __thiscall FUN_0041bea0(GameWidget *this,short *param_1)
     v1c = 0;
 L_0041bf04:
     do {
-      if (*(uint *)(this->child_list_2 + 0xe) < u1) goto L_0041bfcc;
-      FUN_0041bea0(*(void **)(**(int **)(this->child_list_2 + 4) + -4 + n2),&v20);
+      if (((CVector *)this->child_list_2)->count < u1) goto L_0041bfcc;
+      FUN_0041bea0(*(void **)(*(int *)((CVector *)this->child_list_2)->data[0] + -4 + n2),&v20);
       if ((v1e < v1a) && (v20 < v1c)) {
         if ((((unsigned short)((v18) >> 16)) < ((unsigned short)((v14) >> 16))) && ((short)v18 < (short)v14)) {
           if (v1e < ((unsigned short)((v18) >> 16))) {
@@ -4598,10 +4598,10 @@ void __thiscall FUN_0041c200(GameWidget *this,int param_1,int param_2,int param_
   uint u2;
   
   if ((this->child_list_2 != 0) &&
-     (u2 = 1, *(int *)(this->child_list_2 + 0xe) != 0)) {
+     (u2 = 1, ((CVector *)this->child_list_2)->count != 0)) {
     n1 = 4;
     do {
-      self = *(void **)(**(int **)(this->child_list_2 + 4) + -4 + n1);
+      self = *(void **)(*(int *)((CVector *)this->child_list_2)->data[0] + -4 + n1);
       if ((char)param_3 != '\0') {
         FUN_0041cb70(self,'\x01');
       }
@@ -4618,7 +4618,7 @@ void __thiscall FUN_0041c200(GameWidget *this,int param_1,int param_2,int param_
       }
       n1 = n1 + 4;
       u2 = u2 + 1;
-    } while (u2 <= *(uint *)(this->child_list_2 + 0xe));
+    } while (u2 <= ((CVector *)this->child_list_2)->count);
   }
   return;
 }
@@ -4633,14 +4633,14 @@ void __thiscall FUN_0041c2a0(GameWidget *this,int param_1)
   
   this->type_or_mode = param_1;
   if (((this->child_list_2 != 0) &&
-      (n2 = *(int *)(this->child_list_2 + 0xe), n2 != 0)) && (u1 = 1, n2 != 0))
+      (n2 = ((CVector *)this->child_list_2)->count, n2 != 0)) && (u1 = 1, n2 != 0))
   {
     n2 = 4;
     do {
       n2 = n2 + 4;
       u1 = u1 + 1;
-      FUN_0041c2a0(*(void **)(**(int **)(this->child_list_2 + 4) + -8 + n2),param_1);
-    } while (u1 <= *(uint *)(this->child_list_2 + 0xe));
+      FUN_0041c2a0(*(void **)(*(int *)((CVector *)this->child_list_2)->data[0] + -8 + n2),param_1);
+    } while (u1 <= ((CVector *)this->child_list_2)->count);
   }
   return;
 }
@@ -4806,13 +4806,13 @@ void __fastcall FUN_0041cad0(UIWidget *param_1)
 
   FUN_0041cb70(param_1,'\x01');
   if (((int)param_1->child_list_1 != 0) &&
-     (u2 = 1, *(int *)((int)param_1->child_list_1 + 0xe) /* CVector: count at +0x0E */ != 0)) {
+     (u2 = 1, ((CVector *)param_1->child_list_1)->count /* CVector: count at +0x0E */ != 0)) {
     n1 = 4;
     do {
       n1 = n1 + 4;
       u2 = u2 + 1;
-      FUN_0041cb20(*(void **)(**(int **)((int)param_1->child_list_1 + 4) /* CVector: data ptr at +0x04 */ + -8 + n1));
-    } while (u2 <= *(uint *)((int)param_1->child_list_1 + 0xe) /* CVector: count at +0x0E */);
+      FUN_0041cb20(*(void **)(*(int *)((CVector *)param_1->child_list_1)->data[0] /* CVector: data ptr at +0x04 */ + -8 + n1));
+    } while (u2 <= ((CVector *)param_1->child_list_1)->count /* CVector: count at +0x0E */);
   }
   return;
 }
@@ -4828,13 +4828,13 @@ void __fastcall FUN_0041cb20(UIWidget *param_1)
 
   FUN_0041cb70(param_1,'\x01');
   if (((int)param_1->child_list_2 != 0) &&
-     (u2 = 1, *(int *)((int)param_1->child_list_2 + 0xe) /* CVector: count at +0x0E */ != 0)) {
+     (u2 = 1, ((CVector *)param_1->child_list_2)->count /* CVector: count at +0x0E */ != 0)) {
     n1 = 4;
     do {
       n1 = n1 + 4;
       u2 = u2 + 1;
-      FUN_0041cb20(*(void **)(**(int **)((int)param_1->child_list_2 + 4) /* CVector: data ptr at +0x04 */ + -8 + n1));
-    } while (u2 <= *(uint *)((int)param_1->child_list_2 + 0xe) /* CVector: count at +0x0E */);
+      FUN_0041cb20(*(void **)(*(int *)((CVector *)param_1->child_list_2)->data[0] /* CVector: data ptr at +0x04 */ + -8 + n1));
+    } while (u2 <= ((CVector *)param_1->child_list_2)->count /* CVector: count at +0x0E */);
   }
   return;
 }
@@ -5483,17 +5483,17 @@ void __fastcall FUN_0041d6a0(UIWidget *this)
   uint u2;
 
   if (((int)this->child_list_1 != 0) &&
-      (n1 = *(int *)((int)this->child_list_1 + 0xe) /* CVector: count at +0x0E */, n1 != 0) && (u2 = 1, n1 != 0)) {
+      (n1 = ((CVector *)this->child_list_1)->count /* CVector: count at +0x0E */, n1 != 0) && (u2 = 1, n1 != 0)) {
     n1 = 4;
     do {
       u2 = u2 + 1;
       n1 = n1 + 4;
-      child = *(void **)(**(int **)((int)this->child_list_1 + 4) /* CVector: data ptr at +0x04 */ + -8 + n1);
+      child = *(void **)(*(int *)((CVector *)this->child_list_1)->data[0] /* CVector: data ptr at +0x04 */ + -8 + n1);
       FUN_0041cb70(child,'\x01');
       FUN_0041d490((UIElement *)child);
       FUN_0041d6a0((UIWidget *)child);
       FUN_0041cb70(child,'\x01');
-    } while (u2 <= *(uint *)((int)this->child_list_1 + 0xe) /* CVector: count at +0x0E */);
+    } while (u2 <= ((CVector *)this->child_list_1)->count /* CVector: count at +0x0E */);
   }
   return;
 }
@@ -5510,7 +5510,7 @@ void __fastcall FUN_0041d710(UIWidget *param_1)
   int *pu3;
 
   if ((int)param_1->child_list_1 != 0) {
-    n1 = *(int *)((int)param_1->child_list_1 + 0xe) /* CVector: count at +0x0E */;
+    n1 = ((CVector *)param_1->child_list_1)->count /* CVector: count at +0x0E */;
     while (n1 != 0) {
       n1 = (int)param_1->child_list_1;
       _Dst = (int *)**(int **)(n1 + 4);
@@ -5523,7 +5523,7 @@ void __fastcall FUN_0041d710(UIWidget *param_1)
         *(int *)(n1 + 0xe) = *(int *)(n1 + 0xe) + -1;
       }
       ((void (*)(void))((void **)*pu3)[0])(); /* pu3->vtable[0] */
-      n1 = *(int *)((int)param_1->child_list_1 + 0xe) /* CVector: count at +0x0E */;
+      n1 = ((CVector *)param_1->child_list_1)->count /* CVector: count at +0x0E */;
     }
   }
   FUN_0041cb70(param_1,'\x01');
@@ -5563,14 +5563,14 @@ void __thiscall FUN_0041da00(DialogWidget *this,void *param_1)
       FUN_00431000(param_1,(intptr_t)this);
     }
     if (((this->child_list_1 != 0) &&
-        (n1 = *(int *)(this->child_list_1 + 0xe), n1 != 0)) && (u2 = 1, n1 != 0)
+        (n1 = ((CVector *)this->child_list_1)->count, n1 != 0)) && (u2 = 1, n1 != 0)
        ) {
       do {
         u3 = (uint)(ushort)((short)u2 + 1);
-        FUN_0041da00(*(void **)(**(int **)(this->child_list_1 + 4) + -4 + u2 * 4),param_1
+        FUN_0041da00(*(void **)(*(int *)((CVector *)this->child_list_1)->data[0] + -4 + u2 * 4),param_1
                     );
         u2 = u3;
-      } while (u3 <= *(uint *)(this->child_list_1 + 0xe));
+      } while (u3 <= ((CVector *)this->child_list_1)->count);
     }
   }
   return;
@@ -5610,14 +5610,14 @@ void __thiscall FUN_0041dad0(DialogWidget *this,byte param_1,char param_2)
   FUN_0041cb70(this,'\x01');
   FUN_0041db50(this,'\x01');
   if ((((param_2 != '\0') && (this->child_list_1 != 0)) &&
-      (n1 = *(int *)(this->child_list_1 + 0xe), n1 != 0)) && (u2 = 1, n1 != 0))
+      (n1 = ((CVector *)this->child_list_1)->count, n1 != 0)) && (u2 = 1, n1 != 0))
   {
     do {
       u3 = (uint)(ushort)((short)u2 + 1);
-      FUN_0041dad0(*(void **)(**(int **)(this->child_list_1 + 4) + -4 + u2 * 4),param_1,
+      FUN_0041dad0(*(void **)(*(int *)((CVector *)this->child_list_1)->data[0] + -4 + u2 * 4),param_1,
                    '\x01');
       u2 = u3;
-    } while (u3 <= *(uint *)(this->child_list_1 + 0xe));
+    } while (u3 <= ((CVector *)this->child_list_1)->count);
   }
   return;
 }
@@ -5634,15 +5634,15 @@ void __thiscall FUN_0041db50(UIWidget *this,char param_1)
   uint u3;
 
   if (((int)this->child_list_1 != 0) &&
-      (n1 = *(int *)((int)this->child_list_1 + 0xe) /* CVector: count at +0x0E */, n1 != 0) && (u2 = 1, n1 != 0))
+      (n1 = ((CVector *)this->child_list_1)->count /* CVector: count at +0x0E */, n1 != 0) && (u2 = 1, n1 != 0))
   {
     do {
       u3 = (uint)(ushort)((short)u2 + 1);
-      self = *(void **)(**(int **)((int)this->child_list_1 + 4) /* CVector: data ptr at +0x04 */ + -4 + u2 * 4);
+      self = *(void **)(*(int *)((CVector *)this->child_list_1)->data[0] /* CVector: data ptr at +0x04 */ + -4 + u2 * 4);
       FUN_0041cb70(self,param_1);
       FUN_0041db50(self,param_1);
       u2 = u3;
-    } while (u3 <= *(uint *)((int)this->child_list_1 + 0xe) /* CVector: count at +0x0E */);
+    } while (u3 <= ((CVector *)this->child_list_1)->count /* CVector: count at +0x0E */);
   }
   return;
 }

@@ -1695,7 +1695,7 @@ void __fastcall FUN_00454040(int *param_1)
     if (((((GameWidget *)param_1)->pair_x_2 != 0) &&
         (((GameWidget *)param_1)->pair_x_2 <= ((GameWidget *)param_1)->pair_y_1)) &&
        (*(char *)((int)param_1 + 0x12b) == '\0')) { /* TODO: unknown offset 0x12B on GameWidget */
-      ((void (*)(void))((void **)(**(int **)(DAT_004897c0 + 0x52)))[0xac / 4])(); /* obj at *(DAT_004897c0+0x52)->vtable[43] */
+      ((void (*)(void))((void **)(*((UIWidget *)DAT_004897c0)->sub_widgets_a[3]))[0xac / 4])(); /* obj at *(DAT_004897c0+0x52)->vtable[43] */
     }
   }
   return;
@@ -2124,8 +2124,8 @@ void FUN_00454e79(void)
 
 void __thiscall FUN_00454ea0(SoundPlayer *this,short param_1)
 {
-  if (*(void **)(DAT_004897c0 + 0x52) != NULL) {
-    FUN_0041d780(this,*(void **)(DAT_004897c0 + 0x52));
+  if (((UIWidget *)DAT_004897c0)->sub_widgets_a[3] != NULL) {
+    FUN_0041d780(this,((UIWidget *)DAT_004897c0)->sub_widgets_a[3]);
     FUN_0041dd40(this);
     FUN_0041dad0(this,1,'\0');
     FUN_0041da90(this,1);
@@ -2756,7 +2756,7 @@ void FUN_00456450(void)
 void FUN_004564c0(void)
 {
   if (DAT_004897c0 != 0) {
-    if ((*(void **)(DAT_004897c0 + 6) != NULL) && (*(char *)(DAT_004897c0 + 0x43) == '\0')) { /* UIWidget->field_06, offset 0x43 in _pad42 */
+    if ((*(void **)(DAT_004897c0 + 6) != NULL) && (((UIWidget *)DAT_004897c0)->_pad42[1] == '\0')) { /* UIWidget->field_06, offset 0x43 in _pad42 */
       FUN_00431160(*(void **)(DAT_004897c0 + 6),'\0'); /* UIWidget->field_06 */
     }
   }

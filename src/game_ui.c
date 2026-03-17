@@ -397,14 +397,14 @@ void FUN_00430770(UIElement *param_1)
         if (param_1->child_list_1 == 0) {
           return;
         }
-        n1 = *(int *)((int)param_1->child_list_1 + 0xe) /* CVector: count at +0x0E */;
+        n1 = ((CVector *)param_1->child_list_1)->count /* CVector: count at +0x0E */;
         if (n1 == 0) {
           return;
         }
         u5 = n1 * 4;
         do {
           u5 = u5 - 4;
-          FUN_00430770(*(UIElement **)(**(int **)((int)param_1->child_list_1 + 4) /* CVector: data ptr at +0x04 */ + u5));
+          FUN_00430770(*(UIElement **)(*(int *)((CVector *)param_1->child_list_1)->data[0] /* CVector: data ptr at +0x04 */ + u5));
         } while (3 < u5);
         return;
       }
@@ -789,8 +789,8 @@ void __thiscall FUN_00430f50(GameWidget *this,char param_1)
   uint u3;
   
   if (*(char *)(DAT_004896b0 + 0x27) != '\0') {
-    if ((DAT_004897c0 != 0) && (*(int **)(DAT_004897c0 + 0x52) != NULL)) {
-      ((void (*)(void))((void **)(**(int **)(DAT_004897c0 + 0x52)))[0xc0 / 4])(); /* obj at *(DAT_004897c0+0x52)->vtable[48] */
+    if ((DAT_004897c0 != 0) && (((UIWidget *)DAT_004897c0)->sub_widgets_a[3] != NULL)) {
+      ((void (*)(void))((void **)(*((UIWidget *)DAT_004897c0)->sub_widgets_a[3]))[0xc0 / 4])(); /* obj at *(DAT_004897c0+0x52)->vtable[48] */
     }
     FUN_004564f0(DAT_004896b0);
     return;
@@ -1690,7 +1690,7 @@ void __fastcall FUN_00432610(int *param_1)
 {
   int *pn1;
   
-  pn1 = *(int **)(DAT_004897c0 + 0x52);
+  pn1 = ((UIWidget *)DAT_004897c0)->sub_widgets_a[3];
   ((void (*)(void))((void **)(*pn1))[200 / 4])(); /* pn1->vtable[50] */
   *(char *)(pn1 + 0x5d) = 1;
   FUN_0042c3f0(param_1);
@@ -3631,7 +3631,7 @@ void __fastcall FUN_00435b00(int *param_1)
      )) {
     n1 = (short)param_1[0x44] + -1;
     if (n1 < 1) {
-      ((void (*)(void))((void **)(**(int **)(DAT_004897c0 + 0x52)))[0xac / 4])(); /* obj at *(DAT_004897c0+0x52)->vtable[43] */
+      ((void (*)(void))((void **)(*((UIWidget *)DAT_004897c0)->sub_widgets_a[3]))[0xac / 4])(); /* obj at *(DAT_004897c0+0x52)->vtable[43] */
     }
     else {
       FUN_004058c0(param_1,(short)n1);
@@ -4708,7 +4708,7 @@ void __fastcall FUN_00438150(int param_1)
   v1c[1] = 0;
   v1c[0] = 0;
   _seh_state = 0;
-  this = *(void **)(DAT_004897c0 + 0x44);
+  this = ((UIWidget *)DAT_004897c0)->_pad42[2];
   if (this != NULL) {
     FUN_0041cde0(this,v1c);
     n4 = 0x4381b8;
@@ -4802,7 +4802,7 @@ void __fastcall FUN_00438280(void *param_1)
     pc4 = pc4 + 1;
     pc5 = pc5 + 1;
   }
-  _itoa((int)*(short *)(DAT_0048345c + 0x92) - (int)DAT_00488d50,v48,10);
+  _itoa((int)((GameSession *)DAT_0048345c)->score_display - (int)DAT_00488d50,v48,10);
   pc4 = v48;
   FUN_00458860(*(void **)((int)param_1 + 0x2d8),pc4); /* TODO: unknown struct, offset 0x2d8 */
   v20 = &_tmp_25;
@@ -4841,11 +4841,11 @@ void __fastcall FUN_004383b0(void *param_1)
   
   this = NULL;
   if (*(int *)((int)param_1 + 0x5ca) == 4) { /* TODO: unknown struct, offset 0x5ca (possibly TextDisplay.data_count-related) */
-    n1 = *(int *)(DAT_004897c0 + 0x4a);
+    n1 = ((UIWidget *)DAT_004897c0)->sub_widgets_a[1];
     if (((n1 != 0) && (*(int *)(n1 + 0x1a) != 0)) &&
        (u2 = *(uint *)(*(int *)(n1 + 0x1a) + 0xe), u2 != 0)) {
       u5 = 1;
-      pv3 = *(void **)(DAT_004897c0 + 0x44);
+      pv3 = ((UIWidget *)DAT_004897c0)->_pad42[2];
       if (u2 != 0) {
         n6 = 4;
         do {
@@ -4927,10 +4927,10 @@ void __fastcall FUN_00439ff0(int param_1)
   int n2;
   
   if (((*(int *)(param_1 + 0x1a0) != 0) && (DAT_004897c0 != 0)) &&
-     (n1 = *(int *)(DAT_004897c0 + 0x44), n1 != 0)) {
+     (n1 = ((UIWidget *)DAT_004897c0)->_pad42[2], n1 != 0)) {
     n2 = FUN_0041c0f0(*(int *)(param_1 + 0x1a0));
     if (n2 == n1) {
-      FUN_0041bd00(*(void **)(DAT_004897c0 + 0x44),*(int *)(param_1 + 0x1a0));
+      FUN_0041bd00(((UIWidget *)DAT_004897c0)->_pad42[2],*(int *)(param_1 + 0x1a0));
     }
   }
   return;

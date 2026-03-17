@@ -400,12 +400,12 @@ void __fastcall FUN_00401d20(GameWidget *this)
   FUN_00402f60((int)this);
   FUN_0041dad0(this,0,'\0');
   if (*(char *)(DAT_00489ac8 + 0xc) == '\0') {
-    board = *(GameBoard **)(DAT_004897c0 + 0x52);
+    board = ((UIWidget *)DAT_004897c0)->sub_widgets_a[3];
     FUN_0042dae0(board,0,this->name_data_ptr,-1,-1);
     board->refresh_counter = 1;
     board->needs_refresh = 1;
-    s1 = *(short *)(DAT_0048345c + 0x92);
-    switch(*(short *)(DAT_0048345c + 0x96)) {
+    s1 = ((GameSession *)DAT_0048345c)->score_display;
+    switch(((GameSession *)DAT_0048345c)->field_96) {
     case 1:
       s1 = s1 + 0xfa;
       break;
@@ -424,7 +424,7 @@ void __fastcall FUN_00401d20(GameWidget *this)
     case 6:
       s1 = s1 + 500;
     }
-    *(short *)(DAT_0048345c + 0x92) = s1;
+    ((GameSession *)DAT_0048345c)->score_display = s1;
   }
   FUN_0042c3f0(this);
 }
@@ -1728,15 +1728,15 @@ void FUN_00405060(void)
   UIWidget *widget;
 
   if ((DAT_004897c0 != NULL) && (DAT_0047e7a8 != '\0')) {
-    *(int *)((int)DAT_004897c0 + 0x44) = 0;  /* TODO: DAT_004897c0 offset 0x44, _pad42 region if UIElement */
-    if ((*(int *)((int)DAT_004897c0 + 0x4a) != 0) &&  /* TODO: DAT_004897c0 offset 0x4a, sub_widgets_a[1] if UIElement */
-       (((n1 = *(int *)(*(int *)((int)DAT_004897c0 + 0x4a) + 0x1a), n1 != 0 &&  /* TODO: DAT_004897c0+0x4a->child_list_1 (+0x1A) */
+    ((UIWidget *)DAT_004897c0)->_pad42[2] = 0;  /* TODO: DAT_004897c0 offset 0x44, _pad42 region if UIElement */
+    if ((((UIWidget *)DAT_004897c0)->sub_widgets_a[1] != 0) &&  /* TODO: DAT_004897c0 offset 0x4a, sub_widgets_a[1] if UIElement */
+       (((n1 = *(int *)(((UIWidget *)DAT_004897c0)->sub_widgets_a[1] + 0x1a), n1 != 0 &&  /* TODO: DAT_004897c0+0x4a->child_list_1 (+0x1A) */
          (*(int *)(n1 + 0xe) != 0)) && (*(int *)**(int **)(n1 + 4) != 0)))) {
       widget = (UIWidget *)FUN_0041c0f0(*(int *)**(int **)(n1 + 4));
       FUN_0041da90(widget,1);
       widget->field_108 = 0;
-      *(UIWidget **)((int)DAT_004897c0 + 0x44) = widget;  /* TODO: DAT_004897c0 offset 0x44 */
-      FUN_00434090(DAT_004897c0,*(int *)((int)DAT_004897c0 + 0x44));  /* TODO: DAT_004897c0 offset 0x44 */
+      ((UIWidget *)DAT_004897c0)->_pad42[2] = widget;  /* TODO: DAT_004897c0 offset 0x44 */
+      FUN_00434090(DAT_004897c0,((UIWidget *)DAT_004897c0)->_pad42[2]);  /* TODO: DAT_004897c0 offset 0x44 */
     }
   }
   return;
@@ -1895,15 +1895,15 @@ void __fastcall FUN_00405570(UIWidget *this)
     FUN_0041bd00(this->parent_ptr,(int)this);
   }
   if (this->child_list_2 != NULL) {
-    u4 = *(int *)((int)this->child_list_2 + 0xe) /* CVector: count at +0x0E */ * 4;
+    u4 = ((CVector *)this->child_list_2)->count /* CVector: count at +0x0E */ * 4;
     while (3 < u4) {
       u4 = u4 - 4;
-      pu1 = *(int **)(**(int **)((int)this->child_list_2 + 4) /* CVector: data ptr at +0x04 */ + u4);
+      pu1 = *(int **)(*(int *)((CVector *)this->child_list_2)->data[0] /* CVector: data ptr at +0x04 */ + u4);
       FUN_0041bd00(this,(int)pu1);
       /* vtable[0] call — destructor */
       ((void (*)(void))((void **)*pu1)[0])(); /* pu1->vtable[0] */
     }
-    *(int *)((int)this->child_list_2 + 0xe) /* CVector: count at +0x0E */ = 0;
+    ((CVector *)this->child_list_2)->count /* CVector: count at +0x0E */ = 0;
   }
   FUN_004068f0(this);
   s3 = 0;
@@ -1914,7 +1914,7 @@ void __fastcall FUN_00405570(UIWidget *this)
     this->sub_widgets_b[n2] = 0;
   } while (s3 < 0x10);
   if (((this->auto_focus != '\0') && (DAT_004897c0 != 0)) &&
-     (*(int **)(DAT_004897c0 + 0x44) == (int *)this)) {
+     (((UIWidget *)DAT_004897c0)->_pad42[2] == (int *)this)) {
     FUN_00405060();
   }
   FUN_0041e260(this);
@@ -1949,18 +1949,18 @@ int * __thiscall FUN_00405660(UIWidget *this,short *param_1)
     return NULL;
   }
   if (((this->child_list_1 != 0) &&
-      (n3 = *(int *)(this->child_list_1 + 0xe), n3 != 0)) && (u2 = 1, n3 != 0))
+      (n3 = ((CVector *)this->child_list_1)->count, n3 != 0)) && (u2 = 1, n3 != 0))
   {
     n3 = 4;
     do {
-      pn1 = FUN_0041c2f0(*(void **)(**(int **)(this->child_list_1 + 4) + -4 + n3),
+      pn1 = FUN_0041c2f0(*(void **)(*(int *)((CVector *)this->child_list_1)->data[0] + -4 + n3),
                             param_1);
       if (pn1 != NULL) {
         return pn1;
       }
       n3 = n3 + 4;
       u2 = u2 + 1;
-    } while (u2 <= *(uint *)(this->child_list_1 + 0xe));
+    } while (u2 <= ((CVector *)this->child_list_1)->count);
   }
   if ((this->cell_count != 0) && (this->cell_info_ptr != 0)) {
     u2 = FUN_0041a9a0((void *)&this->scroll_data,(short *)&this->rect_top,param_1,
@@ -2173,17 +2173,17 @@ void __cdecl FUN_00405ae0(UIWidget *this,short param_2,char param_3)
     if ((this->flags >> 4 & 1) == 0) {
 L_00405bd3:
       if (((this->child_list_2 != NULL) &&
-          (n5 = *(int *)((int)this->child_list_2 + 0xe) /* CVector: count at +0x0E */, n5 != 0)) &&
+          (n5 = ((CVector *)this->child_list_2)->count /* CVector: count at +0x0E */, n5 != 0)) &&
          (u4 = 1, n5 != 0)) {
         n5 = 4;
         do {
-          child = *(UIWidget **)(**(int **)((int)this->child_list_2 + 4) /* CVector: data ptr at +0x04 */ + -4 + n5);
+          child = *(UIWidget **)(*(int *)((CVector *)this->child_list_2)->data[0] /* CVector: data ptr at +0x04 */ + -4 + n5);
           if (child->is_visible == '\0') {
             FUN_00405ae0(child,param_2,'\0');
           }
           n5 = n5 + 4;
           u4 = u4 + 1;
-        } while (u4 <= *(uint *)((int)this->child_list_2 + 0xe) /* CVector: count at +0x0E */);
+        } while (u4 <= ((CVector *)this->child_list_2)->count /* CVector: count at +0x0E */);
       }
       return;
     }
@@ -2337,16 +2337,16 @@ L_00405d84:
   this->cell_info_ptr = (void *)this->sub_widgets_b[s2 - 1];  /* offset 0x86 + (s2-1)*4 */
   FUN_004058c0(this,1);
   if ((this->child_list_2 != 0) &&
-     (u5 = 1, *(int *)(this->child_list_2 + 0xe) != 0)) {
+     (u5 = 1, ((CVector *)this->child_list_2)->count != 0)) {
     n6 = 4;
     do {
-      self = *(void **)(**(int **)(this->child_list_2 + 4) + -4 + n6);
+      self = *(void **)(*(int *)((CVector *)this->child_list_2)->data[0] + -4 + n6);
       if (((UIWidget *)self)->is_visible == '\0') {
         FUN_00405d30((UIWidget *)self,param_1);
       }
       n6 = n6 + 4;
       u5 = u5 + 1;
-    } while (u5 <= *(uint *)(this->child_list_2 + 0xe));
+    } while (u5 <= ((CVector *)this->child_list_2)->count);
   }
   dw3 = GetTickCount();
   this->timestamp = dw3;
@@ -2607,18 +2607,18 @@ void __thiscall FUN_00406ca0(GameWidget *this,char param_1,char param_2)
     FUN_0041cad0(this);
   }
   if (((this->child_list_2 != 0) &&
-      (n2 = *(int *)(this->child_list_2 + 0xe), n2 != 0)) && (u3 = 1, n2 != 0))
+      (n2 = ((CVector *)this->child_list_2)->count, n2 != 0)) && (u3 = 1, n2 != 0))
   {
     n2 = 4;
     do {
-      self = *(void **)(**(int **)(this->child_list_2 + 4) + -4 + n2);
+      self = *(void **)(*(int *)((CVector *)this->child_list_2)->data[0] + -4 + n2);
       FUN_00406d60(self,param_1);
       if (param_2 != '\0') {
         FUN_00406ca0(self,param_1,'\x01');
       }
       n2 = n2 + 4;
       u3 = u3 + 1;
-    } while (u3 <= *(uint *)(this->child_list_2 + 0xe));
+    } while (u3 <= ((CVector *)this->child_list_2)->count);
   }
   if (this->parent_ptr == 0) {
     FUN_00406d60(this,param_1);
@@ -2754,14 +2754,14 @@ void __thiscall FUN_004070e0(GameWidget *this,char param_1,short param_2)
   if (this->mirror_flag != param_1) {
     this->mirror_flag = param_1;
     if ((this->child_list_2 != 0) &&
-       (n3 = *(int *)(this->child_list_2 + 0xe), n3 != 0)) {
+       (n3 = ((CVector *)this->child_list_2)->count, n3 != 0)) {
       v8 = 1;
       s1 = this->rect_right;
       s2 = this->rect_left;
       if (n3 != 0) {
         n3 = 4;
         do {
-          self = *(void **)(**(int **)(this->child_list_2 + 4) + -4 + n3);
+          self = *(void **)(*(int *)((CVector *)this->child_list_2)->data[0] + -4 + n3);
           b4 = ((GameWidget *)self)->mirror_flag == '\0';
           n3 = n3 + 4;
           _arg3 = CONCAT31((unsigned int)((uint)this->child_list_2 >> 8),b4);
@@ -2770,7 +2770,7 @@ void __thiscall FUN_004070e0(GameWidget *this,char param_1,short param_2)
                        (short)((intptr_t)((GameWidget *)self)->rect_right +
                                (intptr_t)((GameWidget *)self)->rect_left >> 1)) * 2);
           v8 = v8 + 1;
-        } while (v8 <= *(uint *)(this->child_list_2 + 0xe));
+        } while (v8 <= ((CVector *)this->child_list_2)->count);
       }
     }
     c6 = '\x01';
@@ -3136,16 +3136,16 @@ void * __cdecl FUN_00408070(int param_1)
   _handler = &L_00408148;
   *_fs = &_seh_prev;
   _seh_state = 0;
-  n1 = *(int *)(DAT_004897c0 + 0x52);
-  if (((((*(short *)(DAT_004897c0 + 0x20) <= ((unsigned short)((param_1) >> 16))) &&
-        (((unsigned short)((param_1) >> 16)) < *(short *)(DAT_004897c0 + 0x24))) &&
-       (*(short *)(DAT_004897c0 + 0x1e) <= (short)param_1)) &&
-      (((short)param_1 < *(short *)(DAT_004897c0 + 0x22) && (*(int *)(n1 + 0x1a) != 0)))) &&
+  n1 = ((UIWidget *)DAT_004897c0)->sub_widgets_a[3];
+  if (((((((UIWidget *)DAT_004897c0)->rect_left <= ((unsigned short)((param_1) >> 16))) &&
+        (((unsigned short)((param_1) >> 16)) < ((UIWidget *)DAT_004897c0)->rect_right)) &&
+       (((UIWidget *)DAT_004897c0)->rect_top <= (short)param_1)) &&
+      (((short)param_1 < ((UIWidget *)DAT_004897c0)->rect_bottom && (*(int *)(n1 + 0x1a) != 0)))) &&
      (u4 = 1, *(int *)(*(int *)(n1 + 0x1a) + 0xe) != 0)) {
     n3 = 4;
     do {
       this = *(void **)(**(int **)(*(int *)(n1 + 0x1a) + 4) + -4 + n3);
-      if (*(void **)(DAT_004897c0 + 0x4a) != this) {
+      if (((UIWidget *)DAT_004897c0)->sub_widgets_a[1] != this) {
         pn2 = FUN_0041c2f0(this,(short *)&param_1);
         if (((pn2 != NULL) && (((UIWidget *)pn2)->level_data_ptr != 0)) &&
            (((UIWidget *)pn2)->is_visible == '\0')) {
@@ -3181,14 +3181,14 @@ void __thiscall FUN_00408160(GameWidget *this,char param_1)
   
   this->field_108 = param_1;
   if (((this->child_list_2 != 0) &&
-      (n1 = *(int *)(this->child_list_2 + 0xe), n1 != 0)) && (u2 = 1, n1 != 0))
+      (n1 = ((CVector *)this->child_list_2)->count, n1 != 0)) && (u2 = 1, n1 != 0))
   {
     n1 = 4;
     do {
       n1 = n1 + 4;
       u2 = u2 + 1;
-      FUN_00408160(*(void **)(**(int **)(this->child_list_2 + 4) + -8 + n1),param_1);
-    } while (u2 <= *(uint *)(this->child_list_2 + 0xe));
+      FUN_00408160(*(void **)(*(int *)((CVector *)this->child_list_2)->data[0] + -8 + n1),param_1);
+    } while (u2 <= ((CVector *)this->child_list_2)->count);
   }
   return;
 }
@@ -3480,15 +3480,15 @@ void __cdecl FUN_00408eb0(UIWidget *param_1,void *param_2,char param_3)
       }
     }
     if (((param_1->child_list_2 != NULL) &&
-        (n4 = *(int *)((int)param_1->child_list_2 + 0xe) /* CVector: count at +0x0E */, n4 != 0)) &&
+        (n4 = ((CVector *)param_1->child_list_2)->count /* CVector: count at +0x0E */, n4 != 0)) &&
        (u3 = 1, n4 != 0)) {
       n4 = 4;
       do {
         n4 = n4 + 4;
         u3 = u3 + 1;
-        FUN_00408eb0(*(UIWidget **)(**(int **)((int)param_1->child_list_2 + 4) /* CVector: data ptr at +0x04 */ + -8 + n4),param_2,
+        FUN_00408eb0(*(UIWidget **)(*(int *)((CVector *)param_1->child_list_2)->data[0] /* CVector: data ptr at +0x04 */ + -8 + n4),param_2,
                      param_3);
-      } while (u3 <= *(uint *)((int)param_1->child_list_2 + 0xe) /* CVector: count at +0x0E */);
+      } while (u3 <= ((CVector *)param_1->child_list_2)->count /* CVector: count at +0x0E */);
     }
     _seh_state &= ~0xFF;
   }

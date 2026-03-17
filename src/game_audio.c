@@ -40,7 +40,7 @@ void __fastcall FUN_00440360(GameBoard *param_1)
   n3 = 0x440379;
   u1 = FUN_0043a6b0(DAT_004838c0,0x444000d);
   *(int *)((int)param_1 + 0x1d8) = u1; /* TODO: unknown offset 0x1d8 on GameBoard */
-  pv4 = *(UIWidget **)(DAT_004897c0 + 0x44);
+  pv4 = ((UIWidget *)DAT_004897c0)->_pad42[2];
   if (pv4 != NULL) {
     c5 = '\x01';
     u1 = 0;
@@ -48,16 +48,16 @@ void __fastcall FUN_00440360(GameBoard *param_1)
     FUN_004404f0((int *)&_tmp_38);
     FUN_004404f0((int *)&_tmp_37);
     FUN_00406130(pv4,n2,n3,u1,c5);
-    pv4 = *(UIWidget **)(DAT_004897c0 + 0x44);
+    pv4 = ((UIWidget *)DAT_004897c0)->_pad42[2];
     FUN_0041b5f0(pv4,0);
     u6 = 7;
     u1 = 0x1e0;
     FUN_00401ba0(&_tmp_39,0x1e0);
     FUN_00401ba0(&_tmp_38,0x280);
-    FUN_0041d020(*(void **)(DAT_004897c0 + 0x44),u1,(int)pv4,u6);
-    FUN_0041dd40(*(void **)(DAT_004897c0 + 0x44));
-    (*(UIWidget **)(DAT_004897c0 + 0x44))->field_109 = 0;
-    FUN_0043f8c0(*(int *)(DAT_004897c0 + 0x44));
+    FUN_0041d020(((UIWidget *)DAT_004897c0)->_pad42[2],u1,(int)pv4,u6);
+    FUN_0041dd40(((UIWidget *)DAT_004897c0)->_pad42[2]);
+    (((UIWidget *)DAT_004897c0)->_pad42[2])->field_109 = 0;
+    FUN_0043f8c0(((UIWidget *)DAT_004897c0)->_pad42[2]);
   }
   if (param_1->reward_obj_a != NULL) {
     FUN_00406ca0(param_1->reward_obj_a,'\x05','\0');
@@ -67,7 +67,7 @@ void __fastcall FUN_00440360(GameBoard *param_1)
   }
   n3 = *(int *)((int)param_1 + 0x1b8); /* TODO: unknown offset 0x1b8 on GameBoard */
   if (n3 != 0) {
-    if (3 < *(short *)(DAT_0048345c + 0x9e)) {
+    if (3 < ((GameSession *)DAT_0048345c)->field_9e) {
       *(short *)(n3 + 0x112) = 1; /* UIWidget->pending_frame */
       pv4 = *(UIWidget **)((int)param_1 + 0x1b8); /* TODO: unknown offset 0x1b8 on GameBoard */
       pv4->anim_flag_0 = 0;
@@ -269,7 +269,7 @@ void __fastcall FUN_00440ca0(void *param_1)
       *(short *)((int)param_1 + 0x1d0) = 3; /* TODO: unknown offset 0x1d0 */
     }
   }
-  *(short *)(DAT_0048345c + 0xe8) = *(short *)((int)param_1 + 0x1d0); /* TODO: unknown offset 0x1d0 */
+  ((GameSession *)DAT_0048345c)->field_e8 = *(short *)((int)param_1 + 0x1d0); /* TODO: unknown offset 0x1d0 */
   return;
 }
 
@@ -1166,7 +1166,7 @@ FUN_00445470(void *this,int param_1,int param_2,char param_3,char param_4,int pa
   v12 = 0;
   v13 = '\0';
   v18 = this;
-  FUN_0041d780(this,*(void **)(DAT_004897c0 + 0x52));
+  FUN_0041d780(this,((UIWidget *)DAT_004897c0)->sub_widgets_a[3]);
   FUN_0041dbb0(v18);
   v1c = FUN_0042c860(DAT_004838c0,param_2);
   if (v1c != NULL) {
@@ -1239,7 +1239,7 @@ FUN_00445470(void *this,int param_1,int param_2,char param_3,char param_4,int pa
             FUN_00406130(v18,*(int *)(pu8 + 6),*(int *)(pu8 + 4),0,'\x01');
           }
           if ((v13 == '\0') && (c1 = FUN_00406fc0((int)v18,param_1), c1 == '\0')) {
-            FUN_0041d780(v18,*(void **)(DAT_004897c0 + 0x4a));
+            FUN_0041d780(v18,((UIWidget *)DAT_004897c0)->sub_widgets_a[1]);
             FUN_0041dd40(v18);
             v13 = '\x01';
           }
@@ -1252,7 +1252,7 @@ FUN_00445470(void *this,int param_1,int param_2,char param_3,char param_4,int pa
     v8 = 0xffffffff;
     FUN_0044579b();
   }
-  FUN_0041d780(v18,*(void **)(DAT_004897c0 + 0x4a));
+  FUN_0041d780(v18,((UIWidget *)DAT_004897c0)->sub_widgets_a[1]);
   *_fs = v10;
   return v12;
 }
@@ -1331,20 +1331,20 @@ void __fastcall FUN_004459f0(void *param_1)
   FUN_0040b1e0(*(void **)((int)param_1 + 0x20a),  /* TODO: unknown offset 0x20a */
                *(int *)(&DAT_00480718 + *(int *)((int)param_1 + 0x1d8) * 8)); /* TODO: unknown offset 0x1d8 */
   FUN_0040d840(DAT_004897c0,9);
-  widget_44 = *(UIWidget **)((int)DAT_004897c0 + 0x44); /* TODO: unknown struct for DAT_004897c0, offset 0x44 */
+  widget_44 = ((UIWidget *)DAT_004897c0)->_pad42[2]; /* TODO: unknown struct for DAT_004897c0, offset 0x44 */
   FUN_0041dbb0(widget_44);
   FUN_0041ba40(widget_44,0,1,0);
   FUN_0041dbb0(*(void **)((int)param_1 + 0x1d4)); /* TODO: unknown offset 0x1d4 */
-  FUN_0041dd40(*(void **)((int)DAT_004897c0 + 0x4a)); /* TODO: unknown struct for DAT_004897c0, offset 0x4a */
-  ((UIWidget *)*(int *)((int)DAT_004897c0 + 0x4a))->type_or_mode = 3; /* TODO: unknown struct for DAT_004897c0, offset 0x4a; UIWidget->type_or_mode +0x16 */
+  FUN_0041dd40(((UIWidget *)DAT_004897c0)->sub_widgets_a[1]); /* TODO: unknown struct for DAT_004897c0, offset 0x4a */
+  ((UIWidget *)((UIWidget *)DAT_004897c0)->sub_widgets_a[1])->type_or_mode = 3; /* TODO: unknown struct for DAT_004897c0, offset 0x4a; UIWidget->type_or_mode +0x16 */
   FUN_0042d7d0((int)param_1);
-  if (1 < *(short *)(DAT_0048345c + 0xea)) {
+  if (1 < ((GameSession *)DAT_0048345c)->scroll_origin) {
     FUN_0042da60(param_1,0x4df000d,NULL,-1,-1);
   }
   FUN_0042da60(param_1,DAT_00488ef0,*(ushort **)((int)param_1 + 0x1bc),-1,-1); /* TODO: unknown offset 0x1bc */
   FUN_0042da60(param_1,0x4de000d,NULL,-1,-1);
   FUN_0042d860((int)param_1);
-  if ((*(char *)(DAT_0048345c + 0x90) != '\0') && (*(int *)((int)param_1 + 0x1d0) != 0)) { /* TODO: unknown offset 0x1d0 */
+  if ((((GameSession *)DAT_0048345c)->level_mode != '\0') && (*(int *)((int)param_1 + 0x1d0) != 0)) { /* TODO: unknown offset 0x1d0 */
     DAT_00480664 = 1;
     FUN_0042dba0(param_1,*(int *)((int)param_1 + 0x1d0) + 0x32); /* TODO: unknown offset 0x1d0 */
     DAT_00480664 = 0;

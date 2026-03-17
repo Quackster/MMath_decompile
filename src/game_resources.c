@@ -948,19 +948,19 @@ void __fastcall FUN_0045d040(int *param_1)
   int n2;
   char c3;
 
-  FUN_0041d780(*(void **)(DAT_004897c0 + 0x4a),param_1);
-  FUN_0041dd40(*(void **)(DAT_004897c0 + 0x4a));
-  *(int *)(*(int *)(DAT_004897c0 + 0x4a) + 0x16) = 3;
-  if (*(void **)(DAT_004897c0 + 0x44) != NULL) {
+  FUN_0041d780(((UIWidget *)DAT_004897c0)->sub_widgets_a[1],param_1);
+  FUN_0041dd40(((UIWidget *)DAT_004897c0)->sub_widgets_a[1]);
+  *(int *)(((UIWidget *)DAT_004897c0)->sub_widgets_a[1] + 0x16) = 3;
+  if (((UIWidget *)DAT_004897c0)->_pad42[2] != NULL) {
     n2 = 0x45d085;
-    FUN_0041d780(*(void **)(DAT_004897c0 + 0x44),*(void **)(DAT_004897c0 + 0x4a));
+    FUN_0041d780(((UIWidget *)DAT_004897c0)->_pad42[2],((UIWidget *)DAT_004897c0)->sub_widgets_a[1]);
     c3 = '\0';
     u1 = 0xffffff9c;
     FUN_00401050(&_tmp_42,-100);
     FUN_00401050(&_tmp_41,-100);
-    FUN_0041d3a0(*(void **)(DAT_004897c0 + 0x44),u1,n2,c3);
-    FUN_0041dd40(*(void **)(DAT_004897c0 + 0x44));
-    FUN_0041c2a0(*(void **)(DAT_004897c0 + 0x44),0);
+    FUN_0041d3a0(((UIWidget *)DAT_004897c0)->_pad42[2],u1,n2,c3);
+    FUN_0041dd40(((UIWidget *)DAT_004897c0)->_pad42[2]);
+    FUN_0041c2a0(((UIWidget *)DAT_004897c0)->_pad42[2],0);
   }
   ((void (*)(void))((void **)(*param_1))[0xdc / 4])(); /* param_1->vtable[55] */
   FUN_0041dd40((void *)param_1[0x66]);
@@ -1839,7 +1839,7 @@ void __fastcall FUN_0045e970(GameWidget *param_1)
   int n1;
   DWORD dw2;
 
-  n1 = *(int *)(DAT_004897c0 + 0x52);
+  n1 = ((UIWidget *)DAT_004897c0)->sub_widgets_a[3];
   *(char *)(n1 + 0x174) = 1;
   FUN_0041dad0(*(void **)(n1 + 0x160),1,'\0');
   n1 = DAT_004896b0;
