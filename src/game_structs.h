@@ -720,7 +720,9 @@ typedef struct TimerState {
     unsigned int   tick_a;          /* +0x04  GetTickCount timestamp */
     unsigned char  _pad08[4];       /* +0x08 */
     unsigned int   tick_b;          /* +0x0C  GetTickCount timestamp */
-    unsigned char  _pad10[0x17];    /* +0x10 */
+    short          cursor_x;       /* +0x10  cursor/input X position */
+    short          cursor_y;       /* +0x12  cursor/input Y position */
+    unsigned char  _pad14[0x13];   /* +0x14 */
     char           flag_27;         /* +0x27  animation/playback flag */
     char           flag_28;         /* +0x28  active flag */
     char           flag_29;         /* +0x29  secondary flag */
