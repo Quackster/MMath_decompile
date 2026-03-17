@@ -104,7 +104,8 @@ typedef struct UIElement {
     void          *child_list_2;    /* +0x36 */
     void          *parent_ptr;      /* +0x3A */
     int            field_3e;        /* +0x3E */
-    unsigned char  _pad42[4];       /* +0x42 */
+    unsigned char  _pad42[2];       /* +0x42 */
+    short          field_44;        /* +0x44  palette/cursor index, 0xFFFF = none */
     int            sub_widgets_a[16]; /* +0x46  (0x46 through 0x85) */
     int            sub_widgets_b[16]; /* +0x86  (0x86 through 0xC5) */
 } UIElement;
@@ -138,7 +139,8 @@ typedef struct UIWidget {
     void          *child_list_2;    /* +0x36 */
     void          *parent_ptr;      /* +0x3A */
     int            field_3e;        /* +0x3E */
-    unsigned char  _pad42[4];       /* +0x42 */
+    unsigned char  _pad42[2];       /* +0x42 */
+    short          field_44;        /* +0x44  palette/cursor index, 0xFFFF = none */
     int            sub_widgets_a[16]; /* +0x46 */
     int            sub_widgets_b[16]; /* +0x86 */
     /* --- UIWidget extensions (0xC6 - 0x117) --- */
@@ -172,7 +174,23 @@ typedef struct UIWidget {
 /* static_assert(sizeof(UIWidget) == 0x118, "UIWidget size mismatch"); */
 
 /* ========================================================================
- * GameWidget - Extends UIWidget (total ~0x19C bytes)
+ * GroupEntry - Sub-struct of GameWidget (stride = 0x16 = 22 bytes)
+ *
+ * Each GameWidget has groups_a[3] at +0x14A and groups_b[3] at +0x18C.
+ * ======================================================================== */
+typedef struct GroupEntry {
+    void          *data_ptr;        /* +0x00  pointer to slot array (CVector-like) */
+    unsigned char  _pad04[6];       /* +0x04 */
+    unsigned int   count;           /* +0x0A  number of entries */
+    unsigned char  _pad0e[2];       /* +0x0E */
+    short          selected;        /* +0x10  selected index */
+    unsigned short visible_count;   /* +0x12  visible slot count */
+    short          page_offset;     /* +0x14  page/scroll offset */
+} GroupEntry;
+/* static_assert(sizeof(GroupEntry) == 0x16, "GroupEntry size mismatch"); */
+
+/* ========================================================================
+ * GameWidget - Extends UIWidget (total ~0x1CE bytes)
  * ======================================================================== */
 typedef struct GameWidget {
     /* --- UIElement base (0x00 - 0xC5) --- */
@@ -199,7 +217,8 @@ typedef struct GameWidget {
     void          *child_list_2;    /* +0x36 */
     void          *parent_ptr;      /* +0x3A */
     int            field_3e;        /* +0x3E */
-    unsigned char  _pad42[4];       /* +0x42 */
+    unsigned char  _pad42[2];       /* +0x42 */
+    short          field_44;        /* +0x44  palette/cursor index, 0xFFFF = none */
     int            sub_widgets_a[16]; /* +0x46 */
     int            sub_widgets_b[16]; /* +0x86 */
     /* --- UIWidget extensions (0xC6 - 0x117) --- */
@@ -245,16 +264,10 @@ typedef struct GameWidget {
     unsigned char  _pad13e[4];      /* +0x13E */
     void          *name_data_ptr;   /* +0x142 */
     unsigned char  _pad146[4];      /* +0x146 */
-    void          *group_data_a;    /* +0x14A  per-group data (stride 0x16 x3) */
-    unsigned char  _pad14e[6];      /* +0x14E */
-    unsigned int   group_count_a;   /* +0x154 */
-    unsigned char  _pad158[2];      /* +0x158 */
-    short          selected_slot;   /* +0x15A */
-    unsigned short visible_slot_count; /* +0x15C */
-    short          page_offset;     /* +0x15E */
-    unsigned char  _pad160[0x3C];   /* +0x160  padding to 0x19C */
+    GroupEntry     groups_a[3];     /* +0x14A  group A entries (stride 0x16 x3, to 0x18B) */
+    GroupEntry     groups_b[3];     /* +0x18C  group B entries (stride 0x16 x3, to 0x1CD) */
 } GameWidget;
-/* static_assert(sizeof(GameWidget) == 0x19C, "GameWidget size mismatch"); */
+/* Note: actual size may be larger than 0x19C due to groups_b extending to 0x1CE */
 
 /* ========================================================================
  * PlayerSlot - Sub-struct of GameBoard (stride = 0x12 = 18 bytes)
@@ -392,7 +405,8 @@ typedef struct DialogWidget {
     void          *child_list_2;    /* +0x36 */
     void          *parent_ptr;      /* +0x3A */
     int            field_3e;        /* +0x3E */
-    unsigned char  _pad42_d[4];     /* +0x42 */
+    unsigned char  _pad42_d[2];     /* +0x42 */
+    short          field_44;        /* +0x44  palette/cursor index, 0xFFFF = none */
     int            sub_widgets_a[16]; /* +0x46 */
     int            sub_widgets_b[16]; /* +0x86 */
     /* --- UIWidget extensions (0xC6 - 0x117) --- */

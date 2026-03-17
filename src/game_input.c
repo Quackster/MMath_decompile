@@ -460,12 +460,12 @@ char __thiscall FUN_0043b880(void *this,short param_1,short param_2)
 
 void __fastcall FUN_0043b910(int param_1)
 {
-  if (*(uint **)(param_1 + 0x14) != NULL) {
+  if (*(uint **)(param_1 + 0x14) != NULL) { /* CVector-like: data at +0x14 */
     FUN_0046d110(*(uint **)(param_1 + 0x14));
   }
-  *(short *)(param_1 + 0x12) = 0;
-  *(int *)(param_1 + 0x14) = 0;
-  *(short *)(param_1 + 0x10) = 0;
+  *(short *)(param_1 + 0x12) = 0; /* CVector-like: capacity at +0x12 */
+  *(int *)(param_1 + 0x14) = 0;   /* CVector-like: data at +0x14 */
+  *(short *)(param_1 + 0x10) = 0; /* CVector-like: count at +0x10 */
 }
 
 
@@ -473,7 +473,7 @@ void __fastcall FUN_0043b910(int param_1)
 
 short __fastcall FUN_0043b940(int param_1)
 {
-  return *(short *)(param_1 + 0x12);
+  return *(short *)(param_1 + 0x12); /* CVector-like: capacity at +0x12 */
 }
 
 
@@ -481,7 +481,7 @@ short __fastcall FUN_0043b940(int param_1)
 
 short __fastcall FUN_0043b970(int param_1)
 {
-  return *(short *)(param_1 + 0x10);
+  return *(short *)(param_1 + 0x10); /* CVector-like: count at +0x10 */
 }
 
 
@@ -867,10 +867,10 @@ int * __fastcall FUN_0043c360(int *param_1)
   _handler = &L_0043c3f6;
   *_fs = &_seh_prev;
   FUN_0042cbd0(param_1);
-  *(int *)((int)param_1 + 0x1da) = 0; /* TODO: unknown offset 0x1DA on extended widget */
-  *(int *)((int)param_1 + 0x1de) = 0; /* TODO: unknown offset 0x1DE on extended widget */
-  *(int *)((int)param_1 + 0x1e2) = 0; /* TODO: unknown offset 0x1E2 on extended widget */
-  *(int *)((int)param_1 + 0x1e6) = 0; /* TODO: unknown offset 0x1E6 on extended widget */
+  ((DialogWidget *)param_1)->dialog_active = 0;     /* +0x1D8/0x1D9 area, 4-byte write at 0x1DA */
+  *(int *)((int)param_1 + 0x1de) = 0; /* extended widget field at +0x1DE, beyond DialogWidget */
+  *(int *)((int)param_1 + 0x1e2) = 0; /* extended widget field at +0x1E2 */
+  *(int *)((int)param_1 + 0x1e6) = 0; /* extended widget field at +0x1E6 */
   *param_1 = &PTR_FUN_00474d00;
   DAT_00480558 = 1;
   DAT_00488e0c = 0;
@@ -987,7 +987,7 @@ void __fastcall FUN_0043c5d0(int param_1)
   else {
     ((GameSession *)DAT_0048345c)->score_display = ((GameSession *)DAT_0048345c)->score_display + (5 - DAT_00488e24) * 100;
   }
-  FUN_0042db60(DAT_00488e34,*(ushort **)(param_1 + 0x1ac),-1,-1);
+  FUN_0042db60(DAT_00488e34,*(ushort **)(param_1 + 0x1ac),-1,-1); /* extended widget field +0x1AC */
   if ((int)((GameSession *)DAT_0048345c)->wrong_count + (int)((GameSession *)DAT_0048345c)->correct_count !=
       (int)((GameSession *)DAT_0048345c)->total_count) {
     ((GameSession *)DAT_0048345c)->correct_count = ((GameSession *)DAT_0048345c)->correct_count + 1;
@@ -1011,18 +1011,18 @@ void __fastcall FUN_0043c660(int param_1)
     ((GameSession *)DAT_0048345c)->wrong_count = ((GameSession *)DAT_0048345c)->wrong_count + 1;
   }
   DAT_00488e04 = DAT_00488e04 + 1;
-  *(short *)(param_1 + 0x1ca) = 1;
-  FUN_0042db60(DAT_00488e34,*(ushort **)(param_1 + 0x19c),-1,-1);
+  *(short *)(param_1 + 0x1ca) = 1;  /* extended widget: animation state at +0x1CA */
+  FUN_0042db60(DAT_00488e34,*(ushort **)(param_1 + 0x19c),-1,-1); /* extended widget field +0x19C */
   dw2 = GetTickCount();
-  *(short *)(param_1 + 0x1ca) = 0;
-  *(DWORD *)(param_1 + 0x176) = dw2;
+  *(short *)(param_1 + 0x1ca) = 0;  /* extended widget: animation state at +0x1CA */
+  ((GameBoard *)param_1)->last_tick = dw2; /* GameBoard->last_tick at +0x176 */
   u1 = (short)DAT_00488e04 >> 0xf;
   if (((DAT_00488e04 ^ u1) - u1 & 1 ^ u1) == u1) {
-    *(short *)(param_1 + 0x1ca) = 1;
-    FUN_0042db60(DAT_00488e34,*(ushort **)(param_1 + 0x1a4),-1,-1);
+    *(short *)(param_1 + 0x1ca) = 1;  /* extended widget: animation state at +0x1CA */
+    FUN_0042db60(DAT_00488e34,*(ushort **)(param_1 + 0x1a4),-1,-1); /* extended widget field +0x1A4 */
     dw2 = GetTickCount();
-    *(short *)(param_1 + 0x1ca) = 0;
-    *(DWORD *)(param_1 + 0x176) = dw2;
+    *(short *)(param_1 + 0x1ca) = 0;  /* extended widget: animation state at +0x1CA */
+    ((GameBoard *)param_1)->last_tick = dw2; /* GameBoard->last_tick at +0x176 */
   }
   return;
 }
@@ -1038,13 +1038,13 @@ void __fastcall FUN_0043c760(int param_1)
   
   for (pn1 = DAT_00480550; pu2 = DAT_0048055c, pn1 != NULL; pn1 = (int *)pn1[1]
       ) {
-    FUN_00451c40(*(void **)(param_1 + 0x1bc),0,(int)(short)pn1[2]);
+    FUN_00451c40(*(void **)(param_1 + 0x1bc),0,(int)(short)pn1[2]); /* extended widget: MathProblem ptr at +0x1BC */
   }
   for (; pn1 = DAT_00480550, pu2 != NULL; pu2 = (int *)pu2[1]) {
     for (; pn1 != NULL; pn1 = (int *)pn1[1]) {
       u3 = FUN_0041ba00((void *)*pu2,*pn1);
       if ((char)u3 == '\x01') {
-        FUN_00451c00(*(void **)(param_1 + 0x1bc),(int)*(short *)(pu2 + 2),(int)(short)pn1[2]);
+        FUN_00451c00(*(void **)(param_1 + 0x1bc),(int)*(short *)(pu2 + 2),(int)(short)pn1[2]); /* extended widget: MathProblem ptr at +0x1BC */
       }
     }
   }
@@ -1059,15 +1059,15 @@ void FUN_0043c7f0(void)
   UIWidget *pv1;
   int *pn2;
 
-  *(short *)(((UIWidget *)DAT_004897c0)->_pad42[2] + 0x112) = 1; /* pending_frame */
-  pv1 = ((UIWidget *)DAT_004897c0)->_pad42[2];
+  ((UIWidget *)*(void **)&((UIWidget *)DAT_004897c0)->field_44)->pending_frame = 1;
+  pv1 = *(void **)&((UIWidget *)DAT_004897c0)->field_44;
   pv1->anim_flag_0 = 0;
   pv1->anim_flag_2 = 0;
   pv1->anim_flag_1 = 0;
   pv1->anim_flag_3 = 0;
   FUN_00405d30(pv1,1);
   for (pn2 = DAT_00480550; pn2 != NULL; pn2 = (int *)pn2[1]) {
-    *(short *)(*pn2 + 0x112) = 1; /* pending_frame */
+    ((UIWidget *)*pn2)->pending_frame = 1;
     pv1 = (UIWidget *)*pn2;
     pv1->anim_flag_0 = 0;
     pv1->anim_flag_2 = 0;
@@ -1089,8 +1089,8 @@ void __fastcall FUN_0043c890(int param_1)
   int *pn3;
   int *pn4;
 
-  *(short *)(((UIWidget *)DAT_004897c0)->_pad42[2] + 0x112) = 0; /* pending_frame */
-  pv2 = ((UIWidget *)DAT_004897c0)->_pad42[2];
+  ((UIWidget *)*(void **)&((UIWidget *)DAT_004897c0)->field_44)->pending_frame = 0;
+  pv2 = *(void **)&((UIWidget *)DAT_004897c0)->field_44;
   pv2->anim_flag_0 = 0;
   pv2->anim_flag_2 = 0;
   pv2->anim_flag_1 = 0;
@@ -1098,7 +1098,7 @@ void __fastcall FUN_0043c890(int param_1)
   FUN_00405d30(pv2,0);
   for (pn3 = DAT_00480550; pn4 = DAT_0048055c, pn3 != NULL; pn3 = (int *)pn3[1]
       ) {
-    *(short *)(*pn3 + 0x112) = 0; /* pending_frame */
+    ((UIWidget *)*pn3)->pending_frame = 0;
     pv2 = (UIWidget *)*pn3;
     pv2->anim_flag_0 = 0;
     pv2->anim_flag_2 = 0;
@@ -1107,9 +1107,9 @@ void __fastcall FUN_0043c890(int param_1)
     FUN_00405d30(pv2,0);
   }
   for (; pn4 != NULL; pn4 = (int *)pn4[1]) {
-    *(short *)(*pn4 + 0x112) = *(short *)(*(int *)(param_1 + 0x1bc) + 0x22c); /* pending_frame */
+    ((UIWidget *)*pn4)->pending_frame = *(short *)(*(int *)(param_1 + 0x1bc) + 0x22c); /* MathProblem at +0x1BC, field at +0x22C */
     pv2 = (UIWidget *)*pn4;
-    s1 = *(short *)(*(int *)(param_1 + 0x1bc) + 0x22c);
+    s1 = *(short *)(*(int *)(param_1 + 0x1bc) + 0x22c); /* MathProblem at +0x1BC, field at +0x22C */
     pv2->anim_flag_0 = 0;
     pv2->anim_flag_2 = 0;
     pv2->anim_flag_1 = 0;
@@ -1154,9 +1154,9 @@ void FUN_0043c970(void *param_1)
   _seh_state = (_seh_state & 0xFF) | (0 << 8);
   FUN_0041ce10(param_1,&v28,4);
   FUN_0041ce10(v1c,&v30,4);
-  /* TODO: offsets 0x1DA-0x1E6 on v1c are beyond known struct bounds */
-  if ((((*(int *)((int)v1c + 0x1e6) /* TODO: offset 0x1E6 */ == 0) && (*(int *)((int)v1c + 0x1e2) /* TODO: offset 0x1E2 */ == 0)) &&
-      (*(int *)((int)v1c + 0x1de) /* TODO: offset 0x1DE */ == 0)) &&
+  /* Offsets 0x1DA-0x1E6 on v1c are extended widget fields beyond DialogWidget */
+  if ((((*(int *)((int)v1c + 0x1e6) == 0) && (*(int *)((int)v1c + 0x1e2) == 0)) &&
+      (*(int *)((int)v1c + 0x1de) == 0)) &&
      (v14 = (int *)((int)v1c + 0x1da), *v14 == 0)) {
     FUN_00403030((int *)((int)v1c + 0x1e2),&v38,&v28);
     _seh_state = (_seh_state & ~0xFF) | 1;
@@ -1165,7 +1165,7 @@ void FUN_0043c970(void *param_1)
     _seh_state = (_seh_state & ~0xFF) | 1;
     FUN_0043ca3a();
   }
-  n1 = *(int *)((int)v1c + 0x1e6) /* TODO: offset 0x1E6 */;
+  n1 = *(int *)((int)v1c + 0x1e6); /* extended widget field +0x1E6 */
   if (n1 < v24) {
     v14 = (int *)(v24 - n1);
     v34 = v14;
@@ -1176,7 +1176,7 @@ void FUN_0043c970(void *param_1)
     else {
       ppn2 = &v34;
     }
-    v2c = *(int *)((int)v1c + 0x1de) /* TODO: offset 0x1DE */ + (int)*ppn2;
+    v2c = *(int *)((int)v1c + 0x1de) + (int)*ppn2; /* extended widget field +0x1DE */
   }
   else {
     v14 = (int *)(v24 - n1);
@@ -1186,10 +1186,10 @@ void FUN_0043c970(void *param_1)
       v14 = (int *)-(int)v14;
       ppn2 = &v14;
     }
-    v2c = *(int *)((int)v1c + 0x1de) /* TODO: offset 0x1DE */ - (int)*ppn2;
+    v2c = *(int *)((int)v1c + 0x1de) - (int)*ppn2; /* extended widget field +0x1DE */
   }
-  v34 = (int *)((int)v1c + 0x1e2);
-  n1 = *(int *)((int)v1c + 0x1e2) /* TODO: offset 0x1E2 */;
+  v34 = (int *)((int)v1c + 0x1e2); /* extended widget field +0x1E2 */
+  n1 = *(int *)((int)v1c + 0x1e2); /* extended widget field +0x1E2 */
   if (n1 < v28) {
     v14 = (int *)(v28 - n1);
     v3c = v14;
@@ -1199,7 +1199,7 @@ void FUN_0043c970(void *param_1)
       ppn2 = &v14;
     }
     v14 = *ppn2;
-    v30 = *(int *)((int)v1c + 0x1da) /* TODO: offset 0x1DA */ + (int)v14;
+    v30 = *(int *)((int)v1c + 0x1da) + (int)v14; /* extended widget field +0x1DA */
   }
   else {
     v14 = (int *)(v28 - n1);
@@ -1210,7 +1210,7 @@ void FUN_0043c970(void *param_1)
       ppn2 = &v14;
     }
     v14 = *ppn2;
-    v30 = *(int *)((int)v1c + 0x1da) /* TODO: offset 0x1DA */ - (int)v14;
+    v30 = *(int *)((int)v1c + 0x1da) - (int)v14; /* extended widget field +0x1DA */
   }
   FUN_00403030((void *)((int)v1c + 0x1da),&v20,&v30);
   _seh_state = (_seh_state & ~0xFF) | 1;
@@ -1354,12 +1354,12 @@ void __fastcall FUN_0043d250(int param_1)
   for (pn3 = DAT_00480550; pn5 = DAT_0048055c, pn3 != NULL; pn3 = (int *)pn3[1]
       ) {
     b4 = false;
-    if (*(short *)(param_1 + 0x1cc) == 0) {
+    if (*(short *)(param_1 + 0x1cc) == 0) { /* extended widget: field at +0x1CC */
       for (; pn5 != NULL; pn5 = (int *)pn5[1]) {
-        if (((((*(uint *)(*pn5 + 0x12) >> 6 & 1) != 0) &&
-             (n2 = *(int *)(*pn5 + 0x36), n2 != 0)) &&
-            (n7 = *(int *)(n2 + 0xe), n7 != 0)) && (n7 != 0)) {
-          pn6 = (int *)**(int **)(n2 + 4);
+        if (((((((UIWidget *)*pn5)->flags >> 6 & 1) != 0) &&
+             (n2 = (int)((UIWidget *)*pn5)->child_list_2, n2 != 0)) &&
+            (n7 = ((CVector *)n2)->count, n7 != 0)) && (n7 != 0)) {
+          pn6 = (int *)*((CVector *)n2)->data;
           do {
             if (*pn6 == *pn3) {
               b4 = true;
@@ -1370,7 +1370,7 @@ void __fastcall FUN_0043d250(int param_1)
         }
       }
       if (b4) {
-        *(short *)(*pn3 + 0x112) = 4; /* pending_frame */
+        ((UIWidget *)*pn3)->pending_frame = 4;
         pv1 = (UIWidget *)*pn3;
         pv1->anim_flag_0 = 0;
         pv1->anim_flag_2 = 0;
@@ -1379,11 +1379,11 @@ void __fastcall FUN_0043d250(int param_1)
         FUN_00405d30(pv1,4);
       }
       else {
-        *(short *)(*pn3 + 0x112) = 0; /* pending_frame */
+        ((UIWidget *)*pn3)->pending_frame = 0;
       }
     }
     else {
-      *(short *)(*pn3 + 0x112) = 1; /* pending_frame */
+      ((UIWidget *)*pn3)->pending_frame = 1;
       pv1 = (UIWidget *)*pn3;
       pv1->anim_flag_0 = 0;
       pv1->anim_flag_2 = 0;
@@ -1442,32 +1442,32 @@ void FUN_0043dc4a(void)
 void __fastcall FUN_0043dc60(int param_1)
 {
   FUN_00409330();
-  FUN_0043a700(DAT_004838c0,0x5e1000d,*(int **)(param_1 + 0x1d6));
-  if (*(uint *)(param_1 + 0x198) != 0) {
+  FUN_0043a700(DAT_004838c0,0x5e1000d,*(int **)(param_1 + 0x1d6)); /* extended widget: resource handle at +0x1D6 */
+  if (*(uint *)(param_1 + 0x198) != 0) { /* extended widget: resource at +0x198 */
     FUN_0040f070(DAT_004838c0,0x2d0000c,*(uint *)(param_1 + 0x198));
     *(int *)(param_1 + 0x198) = 0;
   }
-  if (*(uint *)(param_1 + 0x1a8) != 0) {
+  if (*(uint *)(param_1 + 0x1a8) != 0) { /* extended widget: resource at +0x1A8 */
     FUN_0040f070(DAT_004838c0,0xc1000c,*(uint *)(param_1 + 0x1a8));
     *(int *)(param_1 + 0x1a8) = 0;
   }
-  if (*(uint *)(param_1 + 0x1ac) != 0) {
+  if (*(uint *)(param_1 + 0x1ac) != 0) { /* extended widget: resource at +0x1AC */
     FUN_0040f070(DAT_004838c0,0xb7000c,*(uint *)(param_1 + 0x1ac));
     *(int *)(param_1 + 0x1ac) = 0;
   }
-  if (*(uint *)(param_1 + 0x19c) != 0) {
+  if (*(uint *)(param_1 + 0x19c) != 0) { /* extended widget: resource at +0x19C */
     FUN_0040f070(DAT_004838c0,0xb2000c,*(uint *)(param_1 + 0x19c));
     *(int *)(param_1 + 0x19c) = 0;
   }
-  if (*(uint *)(param_1 + 0x1a0) != 0) {
+  if (*(uint *)(param_1 + 0x1a0) != 0) { /* extended widget: resource at +0x1A0 */
     FUN_0040f070(DAT_004838c0,0xab000c,*(uint *)(param_1 + 0x1a0));
     *(int *)(param_1 + 0x1a0) = 0;
   }
-  if (*(uint *)(param_1 + 0x1a4) != 0) {
+  if (*(uint *)(param_1 + 0x1a4) != 0) { /* extended widget: resource at +0x1A4 */
     FUN_0040f070(DAT_004838c0,0xdc000c,*(uint *)(param_1 + 0x1a4));
     *(int *)(param_1 + 0x1a4) = 0;
   }
-  if (*(uint *)(param_1 + 0x1b0) != 0) {
+  if (*(uint *)(param_1 + 0x1b0) != 0) { /* extended widget: resource at +0x1B0 */
     FUN_0040f070(DAT_004838c0,0xdc000c,*(uint *)(param_1 + 0x1b0));
     *(int *)(param_1 + 0x1b0) = 0;
   }
@@ -1494,11 +1494,11 @@ void FUN_0043e4f2(void) { return; }
 
 void __fastcall FUN_0043e500(void *param_1)
 {
-  /* TODO: offsets 0x1BC-0x1CC suggest extended widget beyond DialogWidget */
-  if (*(short *)((int)param_1 + 0x1cc) /* TODO: offset 0x1CC */ == 0) {
-    *(short *)((int)param_1 + 0x1ca) /* TODO: offset 0x1CA */ = 1;
-    FUN_0042dba0(param_1,*(int *)((int)param_1 + 0x1bc) /* TODO: offset 0x1BC */ + 0x32);
-    *(short *)((int)param_1 + 0x1ca) /* TODO: offset 0x1CA */ = 0;
+  /* Offsets 0x1BC-0x1CC on extended widget beyond DialogWidget */
+  if (*(short *)((int)param_1 + 0x1cc) == 0) { /* extended widget: state flag at +0x1CC */
+    *(short *)((int)param_1 + 0x1ca) = 1; /* extended widget: animation state at +0x1CA */
+    FUN_0042dba0(param_1,*(int *)((int)param_1 + 0x1bc) + 0x32); /* extended widget: board ptr at +0x1BC, +0x32 = _pad32 region */
+    *(short *)((int)param_1 + 0x1ca) = 0; /* extended widget: animation state at +0x1CA */
   }
   return;
 }

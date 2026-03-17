@@ -302,7 +302,7 @@ void __fastcall FUN_00401750(GameWidget *this)
   this->vtable = (void **)&PTR_FUN_00472120;
   *_fs = &_seh_prev;
   _seh_state = 2;
-  if (*(char *)((int)this + 0x12c) == '\0') {  /* TODO: byte within scrollbar_ref/_pad area */
+  if (((char *)&this->scrollbar_ref)[2] == '\0') {  /* byte 2 of scrollbar_ref, cleanup guard */
     FUN_00401d20(this);
   }
   _seh_state = (_seh_state & ~0xFF) | 1;
@@ -377,23 +377,23 @@ void __fastcall FUN_00401d20(GameWidget *this)
   short s1;
   short s2;
 
-  *(unsigned char *)((int)this + 0x12c) = 1;  /* TODO: offset 0x12C, byte 2 of scrollbar_ref (0x12A-0x12D) */
+  ((unsigned char *)&this->scrollbar_ref)[2] = 1;  /* byte 2 of scrollbar_ref, cleanup guard */
   if (this->cleanup_fn_ptr != NULL) {
     ((void (*)(void))**(void ***)&this->cleanup_fn_ptr)(); /* cleanup_fn_ptr->vtable[0] */
   }
   s1 = 0;
   do {
-    /* Iterate group_data_a slots (stride 0x16, base 0x14A/0x154) */
-    for (s2 = 1; (uint)(int)s2 <= *(uint *)((int)this + s1 * 0x16 + 0x154);  /* group_count_a + stride*s1 */
+    /* Iterate groups_a[s1] slots */
+    for (s2 = 1; (uint)(int)s2 <= this->groups_a[s1].count;
         s2 = s2 + 1) {
       ((void (*)(void))((void **)**(int **)
-                    (**(int **)((int)this + s1 * 0x16 + 0x14a) + -4 + s2 * 4))[0])();  /* group_data_a[s1][s2]->vtable[0] */
+                    (*(int *)this->groups_a[s1].data_ptr + -4 + s2 * 4))[0])();  /* groups_a[s1][s2]->vtable[0] */
     }
-    /* Iterate group_data_b slots (stride 0x16, base 0x18C/0x196) */
-    for (s2 = 1; (uint)(int)s2 <= *(uint *)((int)this + s1 * 0x16 + 0x196);  /* TODO: offset 0x196 in _pad160 region */
+    /* Iterate groups_b[s1] slots */
+    for (s2 = 1; (uint)(int)s2 <= this->groups_b[s1].count;
         s2 = s2 + 1) {
       ((void (*)(void))((void **)**(int **)
-                    (**(int **)((int)this + s1 * 0x16 + 0x18c) + -4 + s2 * 4))[0])();  /* group_data_b[s1][s2]->vtable[0] */ /* TODO: offset 0x18C in _pad160 region */
+                    (*(int *)this->groups_b[s1].data_ptr + -4 + s2 * 4))[0])();  /* groups_b[s1][s2]->vtable[0] */
     }
     s1 = s1 + 1;
   } while (s1 < 3);
@@ -452,10 +452,10 @@ int __thiscall FUN_00401f80(GameWidget *this,short param_1,char param_2)
 
   s2 = 1;
   do {
-    if (*(short *)((int)this + param_1 * 0x16 + 0x154) < s2) {  /* group_count_a + stride*param_1 */
+    if ((short)this->groups_a[param_1].count < s2) {
       return 0;
     }
-    slot = (GameWidget *)*(int *)(**(int **)((int)this + param_1 * 0x16 + 0x14a) + -4 + s2 * 4);  /* group_data_a + stride*param_1 */
+    slot = (GameWidget *)*(int *)(*(int *)this->groups_a[param_1].data_ptr + -4 + s2 * 4);
     if (slot->field_12f == '\0') {
       if (param_2 == '\0') {
         return (int)slot;
@@ -483,11 +483,11 @@ int __thiscall FUN_00401fe0(GameWidget *this,short param_1)
 
   s2 = 1;
   while( true ) {
-    if (*(short *)((int)this + param_1 * 0x16 + 0x196) < s2) {  /* TODO: offset 0x196 + stride*param_1, in _pad160 region */
+    if ((short)this->groups_b[param_1].count < s2) {
       return 0;
     }
-    n1 = *(int *)(**(int **)((int)this + param_1 * 0x16 + 0x18c) + -4 + s2 * 4);  /* TODO: offset 0x18C + stride*param_1, in _pad160 region */
-    if ((n1 != 0) && (*(char *)(n1 + 0x118) == '\0')) break;
+    n1 = *(int *)(*(int *)this->groups_b[param_1].data_ptr + -4 + s2 * 4);
+    if ((n1 != 0) && ((char)((GameWidget *)n1)->field_118 == '\0')) break;
     s2 = s2 + 1;
   }
   return n1;
@@ -619,12 +619,12 @@ int __thiscall FUN_00402a90(GameWidget *this,int param_1)
   short s3;
   uint u4;
 
-  u4 = (uint)*(byte *)(*(int *)(param_1 + 0xf6) + 7);
-  s1 = *(short *)((int)this + u4 * 0x16 + 0x154);  /* group_count_a + stride*u4 */
+  u4 = (uint)*(byte *)((int)((UIWidget *)param_1)->level_data_ptr + 7);
+  s1 = (short)this->groups_a[u4].count;
   s3 = 1;
   if (0 < s1) {
     do {
-      slot = (GameWidget *)*(int *)(**(int **)((int)this + u4 * 0x16 + 0x14a) + -4 + s3 * 4);  /* group_data_a + stride*u4 */
+      slot = (GameWidget *)*(int *)(*(int *)this->groups_a[u4].data_ptr + -4 + s3 * 4);
       if ((slot->field_12e == '\0') && (slot->field_12f == '\0')) {
         return (int)slot;
       }
@@ -669,7 +669,7 @@ int * __thiscall FUN_00402af0(SoundPlayer *this,int *param_1,int param_2,char pa
   FUN_00401050(&_tmp_30,0);
   FUN_00401060(&v20,u7,_arg2);
   _seh_state = 1;
-  u2 = (ushort)*(byte *)(*(int *)(param_2 + 0xf6) + 7);
+  u2 = (ushort)*(byte *)((int)((UIWidget *)param_2)->level_data_ptr + 7);
   v18 = 0;
   u3 = u2 + 1;
   if (param_3 != '\0') {
@@ -677,7 +677,7 @@ int * __thiscall FUN_00402af0(SoundPlayer *this,int *param_1,int param_2,char pa
   }
   if (u3 < 3) {
     n5 = (int)(short)u3;
-    s1 = *(short *)((int)this + n5 * 0x16 + 0x196);  /* TODO: offset 0x196 + stride*n5, in _pad160 region */
+    s1 = (short)this->groups_b[n5].count;
     n4 = (int)*(short *)(&DAT_00472040 + n5 * 2) << 8;
     v14 = &_tmp_30;
     v18 = n4;
@@ -698,7 +698,7 @@ int * __thiscall FUN_00402af0(SoundPlayer *this,int *param_1,int param_2,char pa
             param_1[1] = v1c;
             goto L_00402c7b;
           }
-          self = *(void **)(**(int **)((int)this + n5 * 0x16 + 0x18c) + -4 + s6 * 4);  /* TODO: offset 0x18C + stride*n5, in _pad160 region */
+          self = *(void **)((int)(*(int *)this->groups_b[n5].data_ptr) + -4 + s6 * 4);
           pn8 = &v20;
           u7 = 0x402bf8;
           FUN_0041cde0(self,pn8);
@@ -790,13 +790,13 @@ void __thiscall FUN_00402f50(void *this,int param_1,int param_2)
 
 void __fastcall FUN_00402f60(int param_1)
 {
-  if (*(void **)(param_1 + 0x1ca) != NULL) {
-    ((void (*)(void))**(void ***)(param_1 + 0x1ca))(); /* obj at param_1+0x1ca->vtable[0] */
-    *(int *)(param_1 + 0x1ca) = 0;
+  if (*(void **)&((DialogWidget *)param_1)->dialog_data[0xA4] != NULL) {
+    ((void (*)(void))**(void ***)&((DialogWidget *)param_1)->dialog_data[0xA4])(); /* dialog_data[0xA4]->vtable[0] */
+    *(int *)&((DialogWidget *)param_1)->dialog_data[0xA4] = 0;
   }
-  if (*(void **)(param_1 + 0x1ce) != NULL) {
-    ((void (*)(void))**(void ***)(param_1 + 0x1ce))(); /* obj at param_1+0x1ce->vtable[0] */
-    *(int *)(param_1 + 0x1ce) = 0;
+  if ((void *)(intptr_t)((DialogWidget *)param_1)->dialog_value != NULL) {
+    ((void (*)(void))**(void ***)&((DialogWidget *)param_1)->dialog_value)(); /* dialog_value->vtable[0] */
+    ((DialogWidget *)param_1)->dialog_value = 0;
   }
   return;
 }
@@ -816,9 +816,9 @@ void __fastcall FUN_00402fa0(GameWidget *this)
     _itoa((int)*(short *)&this->field_130,v28,10);
     FUN_00458860((void *)((DialogWidget *)this)->dialog_value,v28);
   }
-  if (*(int *)((int)this + 0x1ca) != 0) {  /* TODO: offset 0x1CA, within DialogWidget::dialog_data region */
+  if (*(int *)&((DialogWidget *)this)->dialog_data[0xA4] != 0) {  /* dialog_data[0xA4], secondary display ptr */
     _itoa((int)this->field_12e,v28,10);
-    FUN_00458860(*(void **)((int)this + 0x1ca),v28);  /* TODO: offset 0x1CA, within DialogWidget::dialog_data region */
+    FUN_00458860(*(void **)&((DialogWidget *)this)->dialog_data[0xA4],v28);  /* dialog_data[0xA4] */
   }
   return;
 }
@@ -1728,15 +1728,15 @@ void FUN_00405060(void)
   UIWidget *widget;
 
   if ((DAT_004897c0 != NULL) && (DAT_0047e7a8 != '\0')) {
-    ((UIWidget *)DAT_004897c0)->_pad42[2] = 0;  /* TODO: DAT_004897c0 offset 0x44, _pad42 region if UIElement */
+    *(int *)&((UIWidget *)DAT_004897c0)->field_44 = 0;  /* offset 0x44, stores widget ptr */
     if ((((UIWidget *)DAT_004897c0)->sub_widgets_a[1] != 0) &&  /* TODO: DAT_004897c0 offset 0x4a, sub_widgets_a[1] if UIElement */
-       (((n1 = *(int *)(((UIWidget *)DAT_004897c0)->sub_widgets_a[1] + 0x1a), n1 != 0 &&  /* TODO: DAT_004897c0+0x4a->child_list_1 (+0x1A) */
-         (*(int *)(n1 + 0xe) != 0)) && (*(int *)**(int **)(n1 + 4) != 0)))) {
-      widget = (UIWidget *)FUN_0041c0f0(*(int *)**(int **)(n1 + 4));
+       (((n1 = (int)((UIElement *)((UIWidget *)DAT_004897c0)->sub_widgets_a[1])->child_list_1, n1 != 0 &&
+         (((CVector *)n1)->count != 0)) && (*(int *)*(int *)((CVector *)n1)->data != 0)))) {
+      widget = (UIWidget *)FUN_0041c0f0(*(int *)*(int *)((CVector *)n1)->data);
       FUN_0041da90(widget,1);
       widget->field_108 = 0;
-      ((UIWidget *)DAT_004897c0)->_pad42[2] = widget;  /* TODO: DAT_004897c0 offset 0x44 */
-      FUN_00434090(DAT_004897c0,((UIWidget *)DAT_004897c0)->_pad42[2]);  /* TODO: DAT_004897c0 offset 0x44 */
+      *(int *)&((UIWidget *)DAT_004897c0)->field_44 = (int)widget;  /* offset 0x44, stores widget ptr */
+      FUN_00434090(DAT_004897c0,*(int *)&((UIWidget *)DAT_004897c0)->field_44);  /* offset 0x44 */
     }
   }
   return;
@@ -1779,7 +1779,7 @@ void __cdecl FUN_00405190(int param_1,int param_2,int param_3)
  *   param_1+0x43 = byte 0x10C = active_anim_id
  *   param_1+0x44 = byte 0x110 = cell_count
  *   param_1+0x45 = byte 0x114 = anim_flag_0
- *   param_1+0x11 = byte 0x44 = _pad42[2]
+ *   param_1+0x11 = byte 0x44 = field_44
  *   param_1+0x32 = byte 0xC8 = cursor_style_a
  *   param_1[0x41] = byte 0x104 = animation_timer
  */
@@ -1826,7 +1826,7 @@ UIWidget * __fastcall FUN_004052b0(UIWidget *this)
   FUN_00401050(&_tmp_36,1);
   FUN_00401270(&this->origin_x,u1,u2);
   this->flags = this->flags | 0x1000;
-  *(short *)((int)this + 0x44) = (short)0xffff;  /* TODO: offset 0x44, _pad42[2..3] within _pad42 region */
+  this->field_44 = (short)0xffff;
   this->cursor_style_a = 0;
   this->cursor_style_b = 0;
   this->animation_timer = 1;
@@ -1914,7 +1914,7 @@ void __fastcall FUN_00405570(UIWidget *this)
     this->sub_widgets_b[n2] = 0;
   } while (s3 < 0x10);
   if (((this->auto_focus != '\0') && (DAT_004897c0 != 0)) &&
-     (((UIWidget *)DAT_004897c0)->_pad42[2] == (int *)this)) {
+     (*(int *)&((UIWidget *)DAT_004897c0)->field_44 == (int)this)) {
     FUN_00405060();
   }
   FUN_0041e260(this);
@@ -2015,7 +2015,7 @@ void __fastcall FUN_00405730(UIWidget *this)
         ps3 = NULL;
       }
       FUN_00465c20((int *)&this->scroll_data,n2);
-      *(short *)((int)this + 0xe8) = this->cell_count;  /* TODO: offset 0xE8, scroll_data[0x1E] within scroll_data region */
+      *(short *)&this->scroll_data[0x1E] = this->cell_count;  /* scroll_data[0x1E..0x1F] = cell count for scroll */
       ((void (*)(void))((void **)(*(int *)&this->scroll_data))[0x80 / 4])(); /* scroll_data obj->vtable[32] */
       if (ps3 != NULL) {
         v20 = 0;
@@ -2552,7 +2552,7 @@ void __thiscall FUN_00406b20(SoundPlayer *this,short param_1)
     n3 = (int)param_1;
     u1 = (uint)((UIWidget *)this)->sub_widgets_a[n3 - 1];  /* offset 0x46 + (n3-1)*4; TODO: this typed as SoundPlayer but accesses UIWidget fields */
     if (u1 != 0) {
-      if (*(char *)((intptr_t)this + 0x42) == '\0') {  /* _pad42[0] */
+      if (this->_pad42[0] == '\0') {
         pn2 = this->sequence_data[43];  /* TODO: maps to UIWidget offset 0xF4 */
         if ((*pn2 == 0) || (*(char *)(*pn2 + 6) == '\0')) {
           FUN_0046b490(DAT_004838c0,*(int *)((int)pn2 + n3 * 8 + 0x12),u1);  /* TODO: stride-8 array at pn2+0x12 */
@@ -2565,7 +2565,7 @@ void __thiscall FUN_00406b20(SoundPlayer *this,short param_1)
     }
     u1 = (uint)((UIWidget *)this)->sub_widgets_b[n3 - 1];  /* offset 0x86 + (n3-1)*4 */
     if (u1 != 0) {
-      if (*(char *)((intptr_t)this + 0x42) == '\0') {  /* _pad42[0] */
+      if (this->_pad42[0] == '\0') {
         pn2 = this->sequence_data[43];  /* TODO: maps to UIWidget offset 0xF4 */
         if (((*pn2 == 0) || (*(char *)(*pn2 + 6) == '\0')) &&
            (this->sequence_data[31] != '\0')) {
@@ -2719,11 +2719,11 @@ int __fastcall FUN_00407070(UIWidget *this)
 
   s3 = FUN_0041e020(this);
   n4 = (int)((UIElement *)this->parent_widget)->child_list_1;  /* parent_widget->child_list_1 */
-  if ((n4 != 0) && (u5 = (int)s3 + 1, u5 <= *(uint *)(n4 + 0xe))) {  /* child_list_1->count */
+  if ((n4 != 0) && (u5 = (int)s3 + 1, u5 <= ((CVector *)((UIElement *)this->parent_widget)->child_list_1)->count)) {
     n4 = u5 * 4;
     do {
-      n1 = *(int *)(**(int **)((int)((UIElement *)this->parent_widget)->child_list_1 + 4) /* CVector: data ptr at +0x04 */ + -4 + n4);
-      if (*(char *)(n1 + 0x10) != '\0') {  /* field_10 on UIElement */
+      n1 = *(int *)((int)((CVector *)((UIElement *)this->parent_widget)->child_list_1)->data + -4 + n4);
+      if (((UIElement *)n1)->field_10 != '\0') {
         c2 = FUN_00406fc0((UIWidget *)this,(UIWidget *)n1);
         if (c2 != '\0') {
           return n1;
@@ -2731,7 +2731,7 @@ int __fastcall FUN_00407070(UIWidget *this)
       }
       n4 = n4 + 4;
       u5 = u5 + 1;
-    } while (u5 <= *(uint *)((int)((UIElement *)this->parent_widget)->child_list_1 + 0xe) /* CVector: count at +0x0E */);
+    } while (u5 <= ((CVector *)((UIElement *)this->parent_widget)->child_list_1)->count);
   }
   return 0;
 }
@@ -3140,11 +3140,11 @@ void * __cdecl FUN_00408070(int param_1)
   if (((((((UIWidget *)DAT_004897c0)->rect_left <= ((unsigned short)((param_1) >> 16))) &&
         (((unsigned short)((param_1) >> 16)) < ((UIWidget *)DAT_004897c0)->rect_right)) &&
        (((UIWidget *)DAT_004897c0)->rect_top <= (short)param_1)) &&
-      (((short)param_1 < ((UIWidget *)DAT_004897c0)->rect_bottom && (*(int *)(n1 + 0x1a) != 0)))) &&
-     (u4 = 1, *(int *)(*(int *)(n1 + 0x1a) + 0xe) != 0)) {
+      (((short)param_1 < ((UIWidget *)DAT_004897c0)->rect_bottom && (((UIElement *)n1)->child_list_1 != 0)))) &&
+     (u4 = 1, ((CVector *)((UIElement *)n1)->child_list_1)->count != 0)) {
     n3 = 4;
     do {
-      this = *(void **)(**(int **)(*(int *)(n1 + 0x1a) + 4) + -4 + n3);
+      this = *(void **)((int)((CVector *)((UIElement *)n1)->child_list_1)->data + -4 + n3);
       if (((UIWidget *)DAT_004897c0)->sub_widgets_a[1] != this) {
         pn2 = FUN_0041c2f0(this,(short *)&param_1);
         if (((pn2 != NULL) && (((UIWidget *)pn2)->level_data_ptr != 0)) &&
@@ -3156,7 +3156,7 @@ void * __cdecl FUN_00408070(int param_1)
       }
       n3 = n3 + 4;
       u4 = u4 + 1;
-    } while (u4 <= *(uint *)(*(int *)(n1 + 0x1a) + 0xe));
+    } while (u4 <= ((CVector *)((UIElement *)n1)->child_list_1)->count);
   }
   _seh_state = 0xffffffff;
   FUN_00408152();

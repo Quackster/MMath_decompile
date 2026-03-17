@@ -584,16 +584,16 @@ void __fastcall FUN_00423eb0(int *param_1)
   FUN_0041dd40(((UIWidget *)DAT_004897c0)->sub_widgets_a[1]);
   ((UIElement *)((UIWidget *)DAT_004897c0)->sub_widgets_a[1])->type_or_mode = 3;
   ((void (*)(void))((void **)(*param_1))[0xdc / 4])();
-  if (((UIWidget *)DAT_004897c0)->_pad42[2] != NULL) {
+  if (*(void **)&((UIWidget *)DAT_004897c0)->field_44 != NULL) {
     n2 = 0x423f05;
-    FUN_0041d780(((UIWidget *)DAT_004897c0)->_pad42[2],((UIWidget *)DAT_004897c0)->sub_widgets_a[1]);
+    FUN_0041d780(*(void **)&((UIWidget *)DAT_004897c0)->field_44,((UIWidget *)DAT_004897c0)->sub_widgets_a[1]);
     c3 = '\0';
     u1 = 0xffffff9c;
     FUN_00401050(&_tmp_41,-100);
     FUN_00401050(&_tmp_40,-100);
-    FUN_0041d3a0(((UIWidget *)DAT_004897c0)->_pad42[2],u1,n2,c3);
-    FUN_0041dd40(((UIWidget *)DAT_004897c0)->_pad42[2]);
-    FUN_0041c2a0(((UIWidget *)DAT_004897c0)->_pad42[2],0);
+    FUN_0041d3a0(*(void **)&((UIWidget *)DAT_004897c0)->field_44,u1,n2,c3);
+    FUN_0041dd40(*(void **)&((UIWidget *)DAT_004897c0)->field_44);
+    FUN_0041c2a0(*(void **)&((UIWidget *)DAT_004897c0)->field_44,0);
   }
   FUN_0041dd40((void *)param_1[0x66]);
   FUN_00404870(param_1,0x2e000c);
@@ -3202,9 +3202,9 @@ void __fastcall FUN_00428e60(int param_1)
   int *pu2;
   
   ((GameSession *)DAT_0048345c)->field_f0 = 0;
-  pu2 = ((UIWidget *)DAT_004897c0)->_pad42[2];
+  pu2 = *(void **)&((UIWidget *)DAT_004897c0)->field_44;
   if (pu2 != NULL) {
-    ((UIWidget *)DAT_004897c0)->_pad42[2] = 0;
+    *(void **)&((UIWidget *)DAT_004897c0)->field_44 = 0;
     ((void (*)(void))((void **)*pu2)[0])(); /* pu2->vtable[0] */
   }
   s1 = 0;
@@ -3224,7 +3224,7 @@ void __fastcall FUN_00428e60(int param_1)
   FUN_0041ba40(pu2,1,1,0);
   ((UIWidget *)pu2)->field_109 = 1;
   FUN_0041b5f0(pu2,1);
-  ((UIWidget *)DAT_004897c0)->_pad42[2] = pu2;
+  *(void **)&((UIWidget *)DAT_004897c0)->field_44 = pu2;
 }
 
 

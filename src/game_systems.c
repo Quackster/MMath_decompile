@@ -185,13 +185,13 @@ void __fastcall FUN_004105b0(GameWidget *this)
   FUN_0040bfd0(v30,u11,u12,u13,_arg1);
   _seh_state = CONCAT31((((_seh_state) >> 8) & 0xFFFFFF),1);
   FUN_0041ce10(this,v30 + 4,0);
-  FUN_0044a3c0(DAT_00483458,this->page_offset);
+  FUN_0044a3c0(DAT_00483458,this->groups_a[0].page_offset);
   u3 = FUN_0044a260(DAT_00483458);
   if (9 < (short)u3) {
     u3 = 10;
   }
   s10 = 0;
-  this->visible_slot_count = u3;
+  this->groups_a[0].visible_count = u3;
   do {
     n9 = (int)s10;
     pv2 = *(void **)((int)this + n9 * 4 + 0x132); /* TODO: offset 0x132+ array of slot pointers */
@@ -199,7 +199,7 @@ void __fastcall FUN_004105b0(GameWidget *this)
       FUN_00458860(pv2,(char *)&DAT_0047ef44);
       FUN_0041cb70(*(void **)((int)this + n9 * 4 + 0x132),'\x01'); /* TODO: offset 0x132+ array of slot pointers */
       u4 = FUN_0044ab30(DAT_00483458);
-      if (((char)u4 != '\0') && (s10 < this->visible_slot_count)) {
+      if (((char)u4 != '\0') && (s10 < this->groups_a[0].visible_count)) {
         FUN_0041cd60(*(void **)((int)this + n9 * 4 + 0x132),v30); /* TODO: offset 0x132+ array of slot pointers */
         v14 = (char *)(v30[5] + 0xc800);
         FUN_0041d020(*(void **)((int)this + n9 * 4 + 0x132),v14, /* TODO: offset 0x132+ array of slot pointers */
@@ -267,15 +267,15 @@ void __fastcall FUN_00410820(GameWidget *this)
   short s2;
 
   s2 = 0;
-  if (0 < this->visible_slot_count) {
+  if (0 < this->groups_a[0].visible_count) {
     do {
       pu1 = (int *)((int)this + 0x132 + s2 * 4); /* TODO: offset 0x132+ array of slot pointers */
       FUN_00458de0((void *)*pu1,DAT_0047ef3c);
-      if (this->selected_slot == s2) {
+      if (this->groups_a[0].selected == s2) {
         FUN_00458de0((void *)*pu1,DAT_0047ef38);
       }
       s2 = s2 + 1;
-    } while (s2 < this->visible_slot_count);
+    } while (s2 < this->groups_a[0].visible_count);
   }
   return;
 }
@@ -331,7 +331,7 @@ float10 __fastcall FUN_00410b90(GameWidget *this)
     u2 = 10;
   }
   if ((ushort)(u1 - u2) != 0) {
-    v4 = (float)((this->page_offset * 4 + -4) * 0x19) /
+    v4 = (float)((this->groups_a[0].page_offset * 4 + -4) * 0x19) /
               (float)(int)(short)(u1 - u2);
   }
   return (float10)v4;
@@ -349,24 +349,24 @@ void __fastcall FUN_00410bf0(GameWidget *this)
   short s4;
 
   u2 = FUN_0044a260(DAT_00483458);
-  if ((int)(short)u2 < this->page_offset + 10) {
-    s4 = this->selected_slot;
-    if ((s4 < 0) || (this->visible_slot_count + -1 <= (int)s4)) goto L_00410c97;
+  if ((int)(short)u2 < this->groups_a[0].page_offset + 10) {
+    s4 = this->groups_a[0].selected;
+    if ((s4 < 0) || (this->groups_a[0].visible_count + -1 <= (int)s4)) goto L_00410c97;
   }
   else {
-    FUN_0044a3c0(DAT_00483458,this->page_offset);
+    FUN_0044a3c0(DAT_00483458,this->groups_a[0].page_offset);
     FUN_0044a2c0(DAT_00483458);
     u3 = FUN_0044a770(DAT_00483458);
-    this->page_offset = u3;
-    s4 = this->selected_slot;
+    this->groups_a[0].page_offset = u3;
+    s4 = this->groups_a[0].selected;
     if (s4 == -1) goto L_00410c97;
     if (0 < s4) {
-      this->selected_slot = s4 + -1;
+      this->groups_a[0].selected = s4 + -1;
     }
-    s4 = this->selected_slot;
-    if (this->page_offset + -1 <= (int)s4) goto L_00410c97;
+    s4 = this->groups_a[0].selected;
+    if (this->groups_a[0].page_offset + -1 <= (int)s4) goto L_00410c97;
   }
-  this->selected_slot = s4 + 1;
+  this->groups_a[0].selected = s4 + 1;
 L_00410c97:
   FUN_004105b0(this);
   FUN_00410820(this);
@@ -388,24 +388,24 @@ void __fastcall FUN_00410cd0(GameWidget *this)
   short u2;
   short s3;
 
-  if (this->page_offset < 2) {
-    s3 = this->selected_slot;
+  if (this->groups_a[0].page_offset < 2) {
+    s3 = this->groups_a[0].selected;
     if (s3 < 1) goto L_00410d5b;
   }
   else {
-    FUN_0044a3c0(DAT_00483458,this->page_offset);
+    FUN_0044a3c0(DAT_00483458,this->groups_a[0].page_offset);
     FUN_0044a330(DAT_00483458);
     u2 = FUN_0044a770(DAT_00483458);
-    this->page_offset = u2;
-    s3 = this->selected_slot;
+    this->groups_a[0].page_offset = u2;
+    s3 = this->groups_a[0].selected;
     if (s3 == -1) goto L_00410d5b;
-    if ((-1 < s3) && ((int)s3 < this->visible_slot_count + -1)) {
-      this->selected_slot = s3 + 1;
+    if ((-1 < s3) && ((int)s3 < this->groups_a[0].visible_count + -1)) {
+      this->groups_a[0].selected = s3 + 1;
     }
-    s3 = this->selected_slot;
-    if (s3 < this->visible_slot_count) goto L_00410d5b;
+    s3 = this->groups_a[0].selected;
+    if (s3 < this->groups_a[0].visible_count) goto L_00410d5b;
   }
-  this->selected_slot = s3 + -1;
+  this->groups_a[0].selected = s3 + -1;
 L_00410d5b:
   FUN_004105b0(this);
   FUN_00410820(this);
@@ -4230,8 +4230,8 @@ uint __thiscall FUN_0041b9c0(UIWidget *this,int param_1)
   u2 = u1;
   if (u1 != 0) {
     u4 = 1;
-    if (*(uint *)(u1 + 0xe) != 0) {
-      pn3 = (int *)**(int **)(u1 + 4);
+    if (((CVector *)u1)->count != 0) {
+      pn3 = (int *)*(int *)((CVector *)u1)->data;
       do {
         if (*pn3 == param_1) {
           return CONCAT31((unsigned int)((uint)param_1 >> 8),1);
@@ -4239,7 +4239,7 @@ uint __thiscall FUN_0041b9c0(UIWidget *this,int param_1)
         pn3 = pn3 + 1;
         u4 = u4 + 1;
         u2 = param_1;
-      } while (u4 <= *(uint *)(u1 + 0xe));
+      } while (u4 <= ((CVector *)u1)->count);
     }
   }
   return u2 & 0xffffff00;
@@ -4260,8 +4260,8 @@ uint __thiscall FUN_0041ba00(UIWidget *this,int param_1)
   u2 = u1;
   if (u1 != 0) {
     u4 = 1;
-    if (*(uint *)(u1 + 0xe) != 0) {
-      pn3 = (int *)**(int **)(u1 + 4);
+    if (((CVector *)u1)->count != 0) {
+      pn3 = (int *)*(int *)((CVector *)u1)->data;
       do {
         if (*pn3 == param_1) {
           return CONCAT31((unsigned int)((uint)param_1 >> 8),1);
@@ -4269,7 +4269,7 @@ uint __thiscall FUN_0041ba00(UIWidget *this,int param_1)
         pn3 = pn3 + 1;
         u4 = u4 + 1;
         u2 = param_1;
-      } while (u4 <= *(uint *)(u1 + 0xe));
+      } while (u4 <= ((CVector *)u1)->count);
     }
   }
   return u2 & 0xffffff00;
@@ -4366,10 +4366,10 @@ void __thiscall FUN_0041bd00(UIWidget *this,int param_1)
 
   u5 = 0;
   n2 = (int)this->child_list_2;
-  pu1 = (uint *)(n2 + 0xe);
+  pu1 = &((CVector *)n2)->count;
   u3 = *pu1;
   if (u3 != 0) {
-    pn4 = (int *)**(int **)(n2 + 4);
+    pn4 = (int *)*(int *)((CVector *)n2)->data;
     do {
       if (*pn4 == param_1) {
         u5 = u5 + 1;
@@ -4384,7 +4384,7 @@ L_0041bd28:
   if (u5 != 0) {
     if (u5 <= u3) {
       if (u5 < u3) {
-        _Src = (void *)(**(int **)(n2 + 4) + u5 * 4);
+        _Src = (void *)(*(int *)((CVector *)n2)->data + u5 * 4);
         memmove((void *)((int)_Src + -4),_Src,(u3 - u5) * 4);
       }
       *pu1 = *pu1 - 1;
@@ -4720,11 +4720,11 @@ void __fastcall FUN_0041c720(UIElement *this)
   uint u5;
 
   if ((((*(byte *)&this->flags & 1) != 0) && (n4 = (int)this->parent_widget, n4 != 0)) &&
-     (*(int *)(n4 + 0x3e) != 0)) {
+     (((UIElement *)n4)->field_3e != 0)) {
     u3 = 0;
-    u5 = *(uint *)(*(int *)(n4 + 0x3e) + 0xe);
+    u5 = ((CVector *)(intptr_t)((UIElement *)n4)->field_3e)->count;
     if (u5 != 0) {
-      pn2 = (int *)**(int **)(*(int *)(n4 + 0x3e) + 4);
+      pn2 = (int *)*(int *)((CVector *)(intptr_t)((UIElement *)n4)->field_3e)->data;
       do {
         if (*pn2 == (int)this) {
           n4 = u3 + 1;
@@ -4745,14 +4745,14 @@ L_0041c759:
         u5 = n4 + 1;
       }
       n4 = ((UIElement *)this->parent_widget)->field_3e;
-      u3 = *(uint *)(n4 + 0xe);
+      u3 = ((CVector *)(intptr_t)n4)->count;
       if (u3 < u5) {
         u5 = 1;
       }
       else if (u5 == 0) {
         u5 = u3;
       }
-      FUN_00430ac0((void *)this->field_06,*(int **)(**(int **)(n4 + 4) + -4 + u5 * 4));
+      FUN_00430ac0((void *)this->field_06,*(int **)((int)((CVector *)(intptr_t)n4)->data + -4 + u5 * 4));
     }
   }
   return;
@@ -5323,7 +5323,7 @@ void __thiscall FUN_0041d2d0(void *this,int *param_1,char param_2)
     FUN_0041d385();
   }
   FUN_0041cca0(v1c,v14,v18,v14,v18,'\x01','\x01');
-  if ((((UIWidget *)v1c)->child_list_2 != 0) && (*(int *)((int)((UIWidget *)v1c)->child_list_2 + 0xe) /* CVector: count at +0x0E */ != 0)
+  if ((((UIWidget *)v1c)->child_list_2 != 0) && (((CVector *)((UIWidget *)v1c)->child_list_2)->count != 0)
      ) {
     FUN_0041c200(v1c,v14,v18,1);
   }
@@ -5513,14 +5513,14 @@ void __fastcall FUN_0041d710(UIWidget *param_1)
     n1 = ((CVector *)param_1->child_list_1)->count /* CVector: count at +0x0E */;
     while (n1 != 0) {
       n1 = (int)param_1->child_list_1;
-      _Dst = (int *)**(int **)(n1 + 4);
-      u2 = *(uint *)(n1 + 0xe);
+      _Dst = (int *)*(int *)((CVector *)n1)->data;
+      u2 = ((CVector *)n1)->count;
       pu3 = (int *)*_Dst;
       if (u2 != 0) {
         if (1 < u2) {
           memmove(_Dst,_Dst + 1,u2 * 4 - 4);
         }
-        *(int *)(n1 + 0xe) = *(int *)(n1 + 0xe) + -1;
+        ((CVector *)n1)->count = ((CVector *)n1)->count - 1;
       }
       ((void (*)(void))((void **)*pu3)[0])(); /* pu3->vtable[0] */
       n1 = ((CVector *)param_1->child_list_1)->count /* CVector: count at +0x0E */;
@@ -5554,7 +5554,7 @@ void __thiscall FUN_0041da00(DialogWidget *this,void *param_1)
       if ((this->flags >> 4 & 1) != 0) {
         FUN_00431100(self,(intptr_t)this);
       }
-      if (*(void **)((int)this->field_06 + 0x12) == this) { /* TODO: field_06 treated as UIElement*, +0x12 = flags field */
+      if (*(void **)&((UIElement *)(intptr_t)this->field_06)->flags == (void *)this) { /* field_06 as UIElement*, +0x12 stores back-pointer */
         FUN_00430ac0(this->field_06,NULL);
       }
     }
@@ -5752,9 +5752,9 @@ short __fastcall FUN_0041e020(UIElement *this)
   if (this->parent_widget != 0) {
     u4 = 0;
     n1 = (int)((UIElement *)this->parent_widget)->child_list_1;
-    u2 = *(uint *)(n1 + 0xe);
+    u2 = ((CVector *)n1)->count;
     if (u2 != 0) {
-      pn5 = (int *)**(int **)(n1 + 4);
+      pn5 = (int *)*(int *)((CVector *)n1)->data;
       do {
         if (*pn5 == (int)this) {
           return (short)u4 + 1;

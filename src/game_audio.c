@@ -39,8 +39,8 @@ void __fastcall FUN_00440360(GameBoard *param_1)
 
   n3 = 0x440379;
   u1 = FUN_0043a6b0(DAT_004838c0,0x444000d);
-  *(int *)((int)param_1 + 0x1d8) = u1; /* TODO: unknown offset 0x1d8 on GameBoard */
-  pv4 = ((UIWidget *)DAT_004897c0)->_pad42[2];
+  *(int *)((int)param_1 + 0x1d8) = u1; /* extended GameBoard field at +0x1D8, beyond players[] */
+  pv4 = *(void **)&((UIWidget *)DAT_004897c0)->field_44;
   if (pv4 != NULL) {
     c5 = '\x01';
     u1 = 0;
@@ -48,16 +48,16 @@ void __fastcall FUN_00440360(GameBoard *param_1)
     FUN_004404f0((int *)&_tmp_38);
     FUN_004404f0((int *)&_tmp_37);
     FUN_00406130(pv4,n2,n3,u1,c5);
-    pv4 = ((UIWidget *)DAT_004897c0)->_pad42[2];
+    pv4 = *(void **)&((UIWidget *)DAT_004897c0)->field_44;
     FUN_0041b5f0(pv4,0);
     u6 = 7;
     u1 = 0x1e0;
     FUN_00401ba0(&_tmp_39,0x1e0);
     FUN_00401ba0(&_tmp_38,0x280);
-    FUN_0041d020(((UIWidget *)DAT_004897c0)->_pad42[2],u1,(int)pv4,u6);
-    FUN_0041dd40(((UIWidget *)DAT_004897c0)->_pad42[2]);
-    (((UIWidget *)DAT_004897c0)->_pad42[2])->field_109 = 0;
-    FUN_0043f8c0(((UIWidget *)DAT_004897c0)->_pad42[2]);
+    FUN_0041d020(*(void **)&((UIWidget *)DAT_004897c0)->field_44,u1,(int)pv4,u6);
+    FUN_0041dd40(*(void **)&((UIWidget *)DAT_004897c0)->field_44);
+    (*(void **)&((UIWidget *)DAT_004897c0)->field_44)->field_109 = 0;
+    FUN_0043f8c0(*(void **)&((UIWidget *)DAT_004897c0)->field_44);
   }
   if (param_1->reward_obj_a != NULL) {
     FUN_00406ca0(param_1->reward_obj_a,'\x05','\0');
@@ -65,11 +65,11 @@ void __fastcall FUN_00440360(GameBoard *param_1)
   if (param_1->reward_obj_d != NULL) {
     FUN_00406ca0(param_1->reward_obj_d,'\x05','\0');
   }
-  n3 = *(int *)((int)param_1 + 0x1b8); /* TODO: unknown offset 0x1b8 on GameBoard */
+  n3 = *(int *)((int)param_1 + 0x1b8); /* extended GameBoard: UIWidget ptr at +0x1B8, in _pad192 area */
   if (n3 != 0) {
     if (3 < ((GameSession *)DAT_0048345c)->field_9e) {
-      *(short *)(n3 + 0x112) = 1; /* UIWidget->pending_frame */
-      pv4 = *(UIWidget **)((int)param_1 + 0x1b8); /* TODO: unknown offset 0x1b8 on GameBoard */
+      ((UIWidget *)n3)->pending_frame = 1;
+      pv4 = *(UIWidget **)((int)param_1 + 0x1b8); /* extended GameBoard: UIWidget ptr at +0x1B8 */
       pv4->anim_flag_0 = 0;
       pv4->anim_flag_2 = 0;
       pv4->anim_flag_1 = 0;
@@ -77,8 +77,8 @@ void __fastcall FUN_00440360(GameBoard *param_1)
       FUN_00405d30(pv4,1);
       return;
     }
-    *(short *)(n3 + 0x112) = 0; /* UIWidget->pending_frame */
-    pv4 = *(UIWidget **)((int)param_1 + 0x1b8); /* TODO: unknown offset 0x1b8 on GameBoard */
+    ((UIWidget *)n3)->pending_frame = 0;
+    pv4 = *(UIWidget **)((int)param_1 + 0x1b8); /* extended GameBoard: UIWidget ptr at +0x1B8 */
     pv4->anim_flag_0 = 0;
     pv4->anim_flag_2 = 0;
     pv4->anim_flag_1 = 0;
@@ -139,86 +139,86 @@ void __fastcall FUN_00440ca0(void *param_1)
     n1 = rand();
     s4 = (short)(n1 % 3);
   } while (s4 == s3);
-  if (*(int *)((int)param_1 + 0x6a) != 0) { /* TODO: unknown offset 0x6a */
-    switch(*(short *)(*(int *)((int)param_1 + 0x6a) + 0xc)) { /* TODO: unknown offset 0x6a */
+  if (*(int *)((int)param_1 + 0x6a) != 0) { /* unknown struct: field at +0x6A */
+    switch(*(short *)(*(int *)((int)param_1 + 0x6a) + 0xc)) { /* unknown struct: field at +0x6A */
     case 1:
       FUN_0045d510(0x13d000c,'\0');
       FUN_00404870(param_1,0x10c000c);
       u2 = rand();
       u5 = (int)u2 >> 0x1f;
       if (((u2 ^ u5) - u5 & 1 ^ u5) == u5) {
-        *(short *)((int)param_1 + 0x1d6) = 0x14; /* TODO: unknown offset 0x1d6 */
-        *(short *)((int)param_1 + 0x1d0) = 0xb;  /* TODO: unknown offset 0x1d0 */
+        *(short *)((int)param_1 + 0x1d6) = 0x14; /* unknown struct: field at +0x1D6 */
+        *(short *)((int)param_1 + 0x1d0) = 0xb;  /* unknown struct: field at +0x1D0 */
       }
       else {
-        *(short *)((int)param_1 + 0x1d6) = 0xb; /* TODO: unknown offset 0x1d6 */
-        *(short *)((int)param_1 + 0x1d0) = 0x14; /* TODO: unknown offset 0x1d0 */
+        *(short *)((int)param_1 + 0x1d6) = 0xb; /* unknown struct: field at +0x1D6 */
+        *(short *)((int)param_1 + 0x1d0) = 0x14; /* unknown struct: field at +0x1D0 */
       }
       break;
     case 2:
       FUN_0045d510(0x158000c,'\0');
       FUN_00404870(param_1,0x10d000c);
       if (s3 == 1) {
-        *(short *)((int)param_1 + 0x1d6) = 6; /* TODO: unknown offset 0x1d6 */
+        *(short *)((int)param_1 + 0x1d6) = 6; /* unknown struct: field at +0x1D6 */
       }
       else {
-        *(short *)((int)param_1 + 0x1d6) = 10; /* TODO: unknown offset 0x1d6 */
+        *(short *)((int)param_1 + 0x1d6) = 10; /* unknown struct: field at +0x1D6 */
         if (s3 != 2) {
-          *(short *)((int)param_1 + 0x1d6) = 5; /* TODO: unknown offset 0x1d6 */
+          *(short *)((int)param_1 + 0x1d6) = 5; /* unknown struct: field at +0x1D6 */
         }
       }
       if (s4 == 1) {
-        *(short *)((int)param_1 + 0x1d0) = 6; /* TODO: unknown offset 0x1d0 */
+        *(short *)((int)param_1 + 0x1d0) = 6; /* unknown struct: field at +0x1D0 */
       }
       else if (s4 == 2) {
-        *(short *)((int)param_1 + 0x1d0) = 10; /* TODO: unknown offset 0x1d0 */
+        *(short *)((int)param_1 + 0x1d0) = 10; /* unknown struct: field at +0x1D0 */
       }
       else {
-        *(short *)((int)param_1 + 0x1d0) = 5; /* TODO: unknown offset 0x1d0 */
+        *(short *)((int)param_1 + 0x1d0) = 5; /* unknown struct: field at +0x1D0 */
       }
       break;
     case 3:
       FUN_0045d510(0x159000c,'\0');
       FUN_00404870(param_1,0x10e000c);
       if (s3 == 1) {
-        *(short *)((int)param_1 + 0x1d6) = 0x1d; /* TODO: unknown offset 0x1d6 */
+        *(short *)((int)param_1 + 0x1d6) = 0x1d; /* unknown struct: field at +0x1D6 */
       }
       else {
-        *(short *)((int)param_1 + 0x1d6) = 0x11; /* TODO: unknown offset 0x1d6 */
+        *(short *)((int)param_1 + 0x1d6) = 0x11; /* unknown struct: field at +0x1D6 */
         if (s3 != 2) {
-          *(short *)((int)param_1 + 0x1d6) = 0x10; /* TODO: unknown offset 0x1d6 */
+          *(short *)((int)param_1 + 0x1d6) = 0x10; /* unknown struct: field at +0x1D6 */
         }
       }
       if (s4 == 1) {
-        *(short *)((int)param_1 + 0x1d0) = 0x1d; /* TODO: unknown offset 0x1d0 */
+        *(short *)((int)param_1 + 0x1d0) = 0x1d; /* unknown struct: field at +0x1D0 */
       }
       else if (s4 == 2) {
-        *(short *)((int)param_1 + 0x1d0) = 0x11; /* TODO: unknown offset 0x1d0 */
+        *(short *)((int)param_1 + 0x1d0) = 0x11; /* unknown struct: field at +0x1D0 */
       }
       else {
-        *(short *)((int)param_1 + 0x1d0) = 0x10; /* TODO: unknown offset 0x1d0 */
+        *(short *)((int)param_1 + 0x1d0) = 0x10; /* unknown struct: field at +0x1D0 */
       }
       break;
     case 4:
       FUN_0045d510(0x15a000c,'\0');
       FUN_00404870(param_1,0x10f000c);
       if (s3 == 1) {
-        *(short *)((int)param_1 + 0x1d6) = 0xf; /* TODO: unknown offset 0x1d6 */
+        *(short *)((int)param_1 + 0x1d6) = 0xf; /* unknown struct: field at +0x1D6 */
       }
       else {
-        *(short *)((int)param_1 + 0x1d6) = 0xc; /* TODO: unknown offset 0x1d6 */
+        *(short *)((int)param_1 + 0x1d6) = 0xc; /* unknown struct: field at +0x1D6 */
         if (s3 != 2) {
-          *(short *)((int)param_1 + 0x1d6) = 0x1c; /* TODO: unknown offset 0x1d6 */
+          *(short *)((int)param_1 + 0x1d6) = 0x1c; /* unknown struct: field at +0x1D6 */
         }
       }
       if (s4 == 1) {
-        *(short *)((int)param_1 + 0x1d0) = 0xf; /* TODO: unknown offset 0x1d0 */
+        *(short *)((int)param_1 + 0x1d0) = 0xf; /* unknown struct: field at +0x1D0 */
       }
       else if (s4 == 2) {
-        *(short *)((int)param_1 + 0x1d0) = 0xc; /* TODO: unknown offset 0x1d0 */
+        *(short *)((int)param_1 + 0x1d0) = 0xc; /* unknown struct: field at +0x1D0 */
       }
       else {
-        *(short *)((int)param_1 + 0x1d0) = 0x1c; /* TODO: unknown offset 0x1d0 */
+        *(short *)((int)param_1 + 0x1d0) = 0x1c; /* unknown struct: field at +0x1D0 */
       }
       break;
     case 5:
@@ -227,49 +227,49 @@ void __fastcall FUN_00440ca0(void *param_1)
       u2 = rand();
       u5 = (int)u2 >> 0x1f;
       if (((u2 ^ u5) - u5 & 1 ^ u5) == u5) {
-        *(short *)((int)param_1 + 0x1d6) = 8; /* TODO: unknown offset 0x1d6 */
-        *(short *)((int)param_1 + 0x1d0) = 0x13; /* TODO: unknown offset 0x1d0 */
+        *(short *)((int)param_1 + 0x1d6) = 8; /* unknown struct: field at +0x1D6 */
+        *(short *)((int)param_1 + 0x1d0) = 0x13; /* unknown struct: field at +0x1D0 */
       }
       else {
-        *(short *)((int)param_1 + 0x1d6) = 0x13; /* TODO: unknown offset 0x1d6 */
-        *(short *)((int)param_1 + 0x1d0) = 8; /* TODO: unknown offset 0x1d0 */
+        *(short *)((int)param_1 + 0x1d6) = 0x13; /* unknown struct: field at +0x1D6 */
+        *(short *)((int)param_1 + 0x1d0) = 8; /* unknown struct: field at +0x1D0 */
       }
       break;
     case 6:
       FUN_0045d510(0x15c000c,'\0');
       FUN_00404870(param_1,0x111000c);
       if (s3 == 1) {
-        *(short *)((int)param_1 + 0x1d6) = 0x1e; /* TODO: unknown offset 0x1d6 */
+        *(short *)((int)param_1 + 0x1d6) = 0x1e; /* unknown struct: field at +0x1D6 */
       }
       else {
-        *(short *)((int)param_1 + 0x1d6) = 9; /* TODO: unknown offset 0x1d6 */
+        *(short *)((int)param_1 + 0x1d6) = 9; /* unknown struct: field at +0x1D6 */
         if (s3 != 2) {
-          *(short *)((int)param_1 + 0x1d6) = 0x12; /* TODO: unknown offset 0x1d6 */
+          *(short *)((int)param_1 + 0x1d6) = 0x12; /* unknown struct: field at +0x1D6 */
         }
       }
       if (s4 == 1) {
-        *(short *)((int)param_1 + 0x1d0) = 0x1e; /* TODO: unknown offset 0x1d0 */
+        *(short *)((int)param_1 + 0x1d0) = 0x1e; /* unknown struct: field at +0x1D0 */
       }
       else if (s4 == 2) {
-        *(short *)((int)param_1 + 0x1d0) = 9; /* TODO: unknown offset 0x1d0 */
+        *(short *)((int)param_1 + 0x1d0) = 9; /* unknown struct: field at +0x1D0 */
       }
       else {
-        *(short *)((int)param_1 + 0x1d0) = 0x12; /* TODO: unknown offset 0x1d0 */
+        *(short *)((int)param_1 + 0x1d0) = 0x12; /* unknown struct: field at +0x1D0 */
       }
       break;
     case 7:
       FUN_00404870(param_1,0x111000c);
-      *(short *)((int)param_1 + 0x1d6) = 0x1e; /* TODO: unknown offset 0x1d6 */
-      *(short *)((int)param_1 + 0x1d0) = 0x12; /* TODO: unknown offset 0x1d0 */
+      *(short *)((int)param_1 + 0x1d6) = 0x1e; /* unknown struct: field at +0x1D6 */
+      *(short *)((int)param_1 + 0x1d0) = 0x12; /* unknown struct: field at +0x1D0 */
       break;
     case 8:
       FUN_0045d510(0x15d000c,'\0');
       FUN_00404870(param_1,0x113000c);
-      *(short *)((int)param_1 + 0x1d6) = 2; /* TODO: unknown offset 0x1d6 */
-      *(short *)((int)param_1 + 0x1d0) = 3; /* TODO: unknown offset 0x1d0 */
+      *(short *)((int)param_1 + 0x1d6) = 2; /* unknown struct: field at +0x1D6 */
+      *(short *)((int)param_1 + 0x1d0) = 3; /* unknown struct: field at +0x1D0 */
     }
   }
-  ((GameSession *)DAT_0048345c)->field_e8 = *(short *)((int)param_1 + 0x1d0); /* TODO: unknown offset 0x1d0 */
+  ((GameSession *)DAT_0048345c)->field_e8 = *(short *)((int)param_1 + 0x1d0); /* unknown struct: field at +0x1D0 */
   return;
 }
 
@@ -667,12 +667,12 @@ void __fastcall FUN_00442570(GameWidget *param_1)
   *_fs = &_seh_prev;
   _seh_state = 0;
   /* offset 0x152 falls in _pad160 region */
-  if (*(void **)((int)param_1 + 0x152) != NULL) { /* TODO: unknown offset 0x152 in _pad160 */
-    ((void (*)(void))**(void ***)((int)param_1 + 0x152))(); /* TODO: unknown offset 0x152 in _pad160 */
-    *(void **)((int)param_1 + 0x152) = 0; /* TODO: unknown offset 0x152 in _pad160 */
+  if (*(void **)((int)param_1 + 0x152) != NULL) { /* GameWidget._pad160: callback ptr at +0x152 */
+    ((void (*)(void))**(void ***)((int)param_1 + 0x152))(); /* GameWidget._pad160: callback ptr at +0x152 */
+    *(void **)((int)param_1 + 0x152) = 0; /* GameWidget._pad160: callback ptr at +0x152 */
   }
-  *(void **)&param_1->_pad14e = 0;  /* GameWidget->_pad14e */
-  param_1->group_data_a = 0;        /* GameWidget->group_data_a +0x14A */
+  *(void **)&param_1->groups_a[0]._pad04 = 0;  /* GameWidget->_pad14e */
+  param_1->groups_a[0].data_ptr = 0;        /* GameWidget->group_data_a +0x14A */
   if (*(void **)&param_1->_pad146 != NULL) { /* GameWidget->_pad146 */
     ((void (*)(void))**(void ***)&param_1->_pad146)();
     *(void **)&param_1->_pad146 = 0;
@@ -707,17 +707,17 @@ void FUN_00442647(void)
 void __fastcall FUN_00442650(GameWidget *param_1)
 {
   /* offset 0x152 in _pad160 region */
-  if (*(void **)((int)param_1 + 0x152) != NULL) { /* TODO: unknown offset 0x152 in _pad160 */
-    ((void (*)(void))**(void ***)((int)param_1 + 0x152))(); /* TODO: unknown offset 0x152 in _pad160 */
-    *(void **)((int)param_1 + 0x152) = 0; /* TODO: unknown offset 0x152 in _pad160 */
+  if (*(void **)((int)param_1 + 0x152) != NULL) { /* GameWidget._pad160: callback ptr at +0x152 */
+    ((void (*)(void))**(void ***)((int)param_1 + 0x152))(); /* GameWidget._pad160: callback ptr at +0x152 */
+    *(void **)((int)param_1 + 0x152) = 0; /* GameWidget._pad160: callback ptr at +0x152 */
   }
-  if (param_1->group_data_a != 0) { /* GameWidget->group_data_a +0x14A */
-    ((void (*)(void))**(void ***)&param_1->group_data_a)();
-    param_1->group_data_a = 0;
+  if (param_1->groups_a[0].data_ptr != 0) { /* GameWidget->group_data_a +0x14A */
+    ((void (*)(void))**(void ***)&param_1->groups_a[0].data_ptr)();
+    param_1->groups_a[0].data_ptr = 0;
   }
-  if (*(void **)&param_1->_pad14e != NULL) { /* GameWidget->_pad14e */
-    ((void (*)(void))**(void ***)&param_1->_pad14e)();
-    *(void **)&param_1->_pad14e = 0;
+  if (*(void **)&param_1->groups_a[0]._pad04 != NULL) { /* GameWidget->_pad14e */
+    ((void (*)(void))**(void ***)&param_1->groups_a[0]._pad04)();
+    *(void **)&param_1->groups_a[0]._pad04 = 0;
   }
   if (*(void **)&param_1->_pad146 != NULL) { /* GameWidget->_pad146 */
     ((void (*)(void))**(void ***)&param_1->_pad146)();
@@ -953,13 +953,13 @@ void __fastcall FUN_00443f30(GameWidget *param_1)
   *(void **)param_1 = &PTR_FUN_00475828;
   *_fs = &_seh_prev;
   _seh_state = 0;
-  if (*(void **)&param_1->_pad14e != NULL) { /* GameWidget->_pad14e */
-    ((void (*)(void))**(void ***)&param_1->_pad14e)();
-    *(void **)&param_1->_pad14e = 0;
+  if (*(void **)&param_1->groups_a[0]._pad04 != NULL) { /* GameWidget->_pad14e */
+    ((void (*)(void))**(void ***)&param_1->groups_a[0]._pad04)();
+    *(void **)&param_1->groups_a[0]._pad04 = 0;
   }
-  if (param_1->group_data_a != 0) { /* GameWidget->group_data_a +0x14A */
-    ((void (*)(void))**(void ***)&param_1->group_data_a)();
-    param_1->group_data_a = 0;
+  if (param_1->groups_a[0].data_ptr != 0) { /* GameWidget->group_data_a +0x14A */
+    ((void (*)(void))**(void ***)&param_1->groups_a[0].data_ptr)();
+    param_1->groups_a[0].data_ptr = 0;
   }
   if (*(void **)&param_1->_pad146 != NULL) { /* GameWidget->_pad146 */
     ((void (*)(void))**(void ***)&param_1->_pad146)();
@@ -986,13 +986,13 @@ void FUN_00443fd5(void)
  */
 void __fastcall FUN_00443fe0(GameWidget *param_1)
 {
-  if (*(void **)&param_1->_pad14e != NULL) { /* GameWidget->_pad14e */
-    ((void (*)(void))**(void ***)&param_1->_pad14e)();
-    *(void **)&param_1->_pad14e = 0;
+  if (*(void **)&param_1->groups_a[0]._pad04 != NULL) { /* GameWidget->_pad14e */
+    ((void (*)(void))**(void ***)&param_1->groups_a[0]._pad04)();
+    *(void **)&param_1->groups_a[0]._pad04 = 0;
   }
-  if (param_1->group_data_a != 0) { /* GameWidget->group_data_a +0x14A */
-    ((void (*)(void))**(void ***)&param_1->group_data_a)();
-    param_1->group_data_a = 0;
+  if (param_1->groups_a[0].data_ptr != 0) { /* GameWidget->group_data_a +0x14A */
+    ((void (*)(void))**(void ***)&param_1->groups_a[0].data_ptr)();
+    param_1->groups_a[0].data_ptr = 0;
   }
   if (*(void **)&param_1->_pad146 != NULL) { /* GameWidget->_pad146 */
     ((void (*)(void))**(void ***)&param_1->_pad146)();
@@ -1194,14 +1194,14 @@ FUN_00445470(void *this,int param_1,int param_2,char param_3,char param_4,int pa
         do {
           if ((param_6 == '\0') && (s7 != 0)) {
             if (param_3 == '\0') {
-              FUN_00431160(*(void **)((int)v18 + 6),'\0'); /* TODO: unknown offset 0x06 on v18 struct */
+              FUN_00431160((void *)((UIWidget *)v18)->field_06,'\0'); /* UIWidget->field_06 used as GameScreen ptr */
             }
             else {
               dw5 = GetTickCount();
               u6 = (int)(((longlong)(int)dw5 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000) -
                       v20;
               while (u6 < 5) {
-                FUN_00431160(*(void **)((int)v18 + 6),'\0'); /* TODO: unknown offset 0x06 on v18 struct */
+                FUN_00431160((void *)((UIWidget *)v18)->field_06,'\0'); /* UIWidget->field_06 used as GameScreen ptr */
                 dw5 = GetTickCount();
                 u6 = (int)(((longlong)(int)dw5 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000)
                         - v20;
@@ -1328,25 +1328,25 @@ void __fastcall FUN_004459f0(void *param_1)
   UIWidget *widget_44;
 
   FUN_004048d0(param_1);
-  FUN_0040b1e0(*(void **)((int)param_1 + 0x20a),  /* TODO: unknown offset 0x20a */
-               *(int *)(&DAT_00480718 + *(int *)((int)param_1 + 0x1d8) * 8)); /* TODO: unknown offset 0x1d8 */
+  FUN_0040b1e0(*(void **)((int)param_1 + 0x20a),  /* extended widget: MathProblem slots area at +0x20A */
+               *(int *)(&DAT_00480718 + *(int *)((int)param_1 + 0x1d8) * 8)); /* extended widget field at +0x1D8 */
   FUN_0040d840(DAT_004897c0,9);
-  widget_44 = ((UIWidget *)DAT_004897c0)->_pad42[2]; /* TODO: unknown struct for DAT_004897c0, offset 0x44 */
+  widget_44 = *(void **)&((UIWidget *)DAT_004897c0)->field_44; /* TODO: unknown struct for DAT_004897c0, offset 0x44 */
   FUN_0041dbb0(widget_44);
   FUN_0041ba40(widget_44,0,1,0);
-  FUN_0041dbb0(*(void **)((int)param_1 + 0x1d4)); /* TODO: unknown offset 0x1d4 */
+  FUN_0041dbb0(*(void **)((int)param_1 + 0x1d4)); /* extended widget: board widget ptr at +0x1D4 */
   FUN_0041dd40(((UIWidget *)DAT_004897c0)->sub_widgets_a[1]); /* TODO: unknown struct for DAT_004897c0, offset 0x4a */
   ((UIWidget *)((UIWidget *)DAT_004897c0)->sub_widgets_a[1])->type_or_mode = 3; /* TODO: unknown struct for DAT_004897c0, offset 0x4a; UIWidget->type_or_mode +0x16 */
   FUN_0042d7d0((int)param_1);
   if (1 < ((GameSession *)DAT_0048345c)->scroll_origin) {
     FUN_0042da60(param_1,0x4df000d,NULL,-1,-1);
   }
-  FUN_0042da60(param_1,DAT_00488ef0,*(ushort **)((int)param_1 + 0x1bc),-1,-1); /* TODO: unknown offset 0x1bc */
+  FUN_0042da60(param_1,DAT_00488ef0,*(ushort **)((int)param_1 + 0x1bc),-1,-1); /* extended widget: MathProblem ptr at +0x1BC */
   FUN_0042da60(param_1,0x4de000d,NULL,-1,-1);
   FUN_0042d860((int)param_1);
-  if ((((GameSession *)DAT_0048345c)->level_mode != '\0') && (*(int *)((int)param_1 + 0x1d0) != 0)) { /* TODO: unknown offset 0x1d0 */
+  if ((((GameSession *)DAT_0048345c)->level_mode != '\0') && (*(int *)((int)param_1 + 0x1d0) != 0)) { /* unknown struct: field at +0x1D0 */
     DAT_00480664 = 1;
-    FUN_0042dba0(param_1,*(int *)((int)param_1 + 0x1d0) + 0x32); /* TODO: unknown offset 0x1d0 */
+    FUN_0042dba0(param_1,*(int *)((int)param_1 + 0x1d0) + 0x32); /* unknown struct: field at +0x1D0 */
     DAT_00480664 = 0;
   }
   DAT_00480760 = 0;
@@ -1610,7 +1610,7 @@ int * FUN_00448ad0(short param_1,short param_2,int param_3,int param_4,int param
  */
 void __thiscall FUN_00448cb0(GameWidget *this,int param_1)
 {
-  *(int *)((intptr_t)this + 0x124) = param_1; /* TODO: unknown offset 0x124 - between pair_x_2 and object_ptr */
+  *(int *)((intptr_t)this + 0x124) = param_1; /* GameWidget: 4-byte write at +0x124, overlaps pair_x_2(+0x122) high bytes + object_ptr(+0x126) low bytes */
   FUN_00406ca0(this,(char)param_1,'\0');
 }
 
@@ -1762,11 +1762,11 @@ int * __fastcall FUN_00449610(int *param_1)
 {
   *(short *)(param_1 + 2) = 0;          /* +0x08 */
   *param_1 = 0;                          /* +0x00 */
-  *(char *)((int)param_1 + 10) = 0;     /* +0x0A  TODO: unknown struct type */
-  *(char *)((int)param_1 + 0xb) = 0;    /* +0x0B  TODO: unknown struct type */
+  *(char *)((int)param_1 + 10) = 0;     /* +0x0A  small 14-byte struct */
+  *(char *)((int)param_1 + 0xb) = 0;    /* +0x0B  small 14-byte struct */
   *(char *)(param_1 + 3) = 0;           /* +0x0C */
   param_1[1] = 0;                        /* +0x04 */
-  *(char *)((int)param_1 + 0xd) = 0;    /* +0x0D  TODO: unknown struct type */
+  *(char *)((int)param_1 + 0xd) = 0;    /* +0x0D  small 14-byte struct */
   return param_1;
 }
 
@@ -3298,7 +3298,7 @@ uint __thiscall FUN_0044d950(void *this,int param_1,int param_2,int param_3)
   int n6;
   
   u4 = 1;
-  u1 = (uint)*(short *)(DAT_0048345c + 0x3a + ((int)(short)param_2 + (short)param_3 * 6) * 2);
+  u1 = (uint)*(short *)((int)((GameSession *)DAT_0048345c)->child_list + ((int)(short)param_2 + (short)param_3 * 6) * 2); /* GameSession->child_list(+0x3A) used as array base */
   n6 = 0;
   ((SoundPlayer *)this)->playback_rate = u1;
   ps2 = (short *)(&DAT_004802a8 + (param_3 + param_2 * 6) * 0xe0);
@@ -3357,7 +3357,7 @@ char FUN_0044da50(void)
 
 void FUN_0044da60(void)
 {
-  SetFocus(*(HWND *)(*(int *)(DAT_004897c0 + 6) + 0xe));
+  SetFocus(((GameScreen *)((UIWidget *)(intptr_t)DAT_004897c0)->field_06)->hwnd); /* GameScreen->hwnd at +0x0E */
 }
 
 
@@ -3934,17 +3934,17 @@ void __fastcall FUN_0044e990(int param_1)
 {
   HGLOBAL pv1;
   
-  if (*(LPCVOID *)(param_1 + 0x10) != NULL) {
+  if (*(LPCVOID *)(param_1 + 0x10) != NULL) { /* bitmap struct: DIB data ptr at +0x10 */
     pv1 = GlobalHandle(*(LPCVOID *)(param_1 + 0x10));
     GlobalUnlock(pv1);
     pv1 = GlobalHandle(*(LPCVOID *)(param_1 + 0x10));
     GlobalFree(pv1);
   }
-  *(int *)(param_1 + 0x10) = 0;
-  if (*(HGDIOBJ *)(param_1 + 0x14) != NULL) {
+  *(int *)(param_1 + 0x10) = 0;   /* bitmap struct: DIB data ptr at +0x10 */
+  if (*(HGDIOBJ *)(param_1 + 0x14) != NULL) { /* bitmap struct: palette handle at +0x14 */
     DeleteObject(*(HGDIOBJ *)(param_1 + 0x14));
   }
-  *(int *)(param_1 + 0x14) = 0;
+  *(int *)(param_1 + 0x14) = 0;   /* bitmap struct: palette handle at +0x14 */
 }
 
 
@@ -3953,8 +3953,8 @@ void __fastcall FUN_0044e990(int param_1)
 int __fastcall FUN_0044ea40(int param_1)
 {
   int n1;
-  
-  n1 = *(int *)(param_1 + 0x10);
+
+  n1 = *(int *)(param_1 + 0x10); /* bitmap struct: DIB data ptr at +0x10 */
   if (n1 != 0) {
     return CONCAT22((short)((uint)n1 >> 0x10),*(short *)(n1 + 4));
   }
@@ -3970,8 +3970,8 @@ int __fastcall FUN_0044ea70(int param_1)
   int n2;
   short u4;
   int u3;
-  
-  n2 = *(int *)(param_1 + 0x10);
+
+  n2 = *(int *)(param_1 + 0x10); /* bitmap struct: DIB data ptr at +0x10 */
   u4 = (short)((uint)n2 >> 0x10);
   if (n2 == 0) {
     u3 = 0;
@@ -4024,7 +4024,7 @@ void __thiscall FUN_0044eb30(void *this,int param_1)
   short s4;
   int n5;
 
-  pn2 = *(int **)((intptr_t)this + 0x10); /* TODO: unknown offset 0x10 */
+  pn2 = *(int **)((intptr_t)this + 0x10); /* bitmap struct: DIB data ptr at +0x10 */
   n3 = *pn2;
   pn2[8] = 0x100;
   s4 = 0;
@@ -4055,15 +4055,15 @@ char __fastcall FUN_0044ebe0(int param_1)
   int n5;
   BYTE *pBVar6;
   
-  if (*(int **)(param_1 + 0x10) == NULL) {
+  if (*(int **)(param_1 + 0x10) == NULL) { /* bitmap struct: DIB data ptr at +0x10 */
     return '\0';
   }
-  if (**(int **)(param_1 + 0x10) == 0x28) {
-    if (*(HGDIOBJ *)(param_1 + 0x14) != NULL) {
+  if (**(int **)(param_1 + 0x10) == 0x28) { /* BITMAPINFOHEADER size check */
+    if (*(HGDIOBJ *)(param_1 + 0x14) != NULL) { /* bitmap struct: palette handle at +0x14 */
       DeleteObject(*(HGDIOBJ *)(param_1 + 0x14));
     }
-    pu2 = *(ushort **)(param_1 + 0x10);
-    *(int *)(param_1 + 0x14) = 0;
+    pu2 = *(ushort **)(param_1 + 0x10); /* bitmap struct: DIB data ptr at +0x10 */
+    *(int *)(param_1 + 0x14) = 0; /* bitmap struct: palette handle at +0x14 */
     u1 = *pu2;
     hMem = LocalAlloc(0x40,0x408);
     if (hMem != (HLOCAL)0x0) {
@@ -4083,10 +4083,10 @@ char __fastcall FUN_0044ebe0(int param_1)
         pLVar3 = (LOGPALETTE *)pLVar3->palPalEntry;
       } while (n5 != 0);
       pHVar4 = CreatePalette(plpal);
-      *(HPALETTE *)(param_1 + 0x14) = pHVar4;
+      *(HPALETTE *)(param_1 + 0x14) = pHVar4; /* bitmap struct: palette handle at +0x14 */
       LocalUnlock(hMem);
       LocalFree(hMem);
-      return '\x01' - (*(int *)(param_1 + 0x14) == 0);
+      return '\x01' - (*(int *)(param_1 + 0x14) == 0); /* bitmap struct: palette handle at +0x14 */
     }
     return '\0';
   }
@@ -4308,7 +4308,7 @@ void __thiscall FUN_0044f840(MathProblem *this,int param_1)
     param_1 = 6;
   }
   this->difficulty = param_1;
-  this->field_1cc = (int)*(short *)(DAT_0048345c + 0x44 + (short)param_1 * 0xc);
+  this->field_1cc = (int)*(short *)((int)DAT_0048345c + 0x44 + (short)param_1 * 0xc); /* GameSession: array at +0x44, stride 0x0C */
   this->problem_type = param_1 << 4;
   ((void (*)(void))this->vtable[1])();
 }

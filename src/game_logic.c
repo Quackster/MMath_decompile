@@ -171,16 +171,16 @@ void __thiscall FUN_004094d0(UIWidget *this,short param_1,char param_2)
   int n1;
   uint u2;
 
-  *(short *)((int)this + 0x44) = param_1;  /* TODO: unknown offset 0x44 in _pad42 region of UIWidget */
+  this->field_44 = param_1;
   if (param_1 == -1) {
     FUN_00409580(this,'\x01');
     return;
   }
   if (0x10 < param_1) {
-    *(short *)((int)this + 0x44) = 0x10;  /* TODO: unknown offset 0x44 in _pad42 region */
+    this->field_44 = 0x10;
   }
-  if (*(short *)((int)this + 0x44) < 0) {  /* TODO: unknown offset 0x44 in _pad42 region */
-    *(short *)((int)this + 0x44) = 0;  /* TODO: unknown offset 0x44 in _pad42 region */
+  if (this->field_44 < 0) {
+    this->field_44 = 0;
   }
   if (((param_2 != '\0') && ((int)this->child_list_2 != 0)) &&
      (u2 = 1, ((CVector *)this->child_list_2)->count /* CVector: count at +0x0E */ != 0)) {
@@ -189,10 +189,10 @@ void __thiscall FUN_004094d0(UIWidget *this,short param_1,char param_2)
       n1 = n1 + 4;
       u2 = u2 + 1;
       FUN_004094d0(*(UIWidget **)(*(int *)((CVector *)this->child_list_2)->data[0] /* CVector: data ptr at +0x04 */ + -8 + n1),
-                   *(short *)((int)this + 0x44),param_2);  /* TODO: unknown offset 0x44 in _pad42 region */
+                   this->field_44,param_2);
     } while (u2 <= ((CVector *)this->child_list_2)->count /* CVector: count at +0x0E */);
   }
-  FUN_0041ab40((&DAT_004841a8)[*(short *)((int)this + 0x44)]);  /* TODO: unknown offset 0x44 in _pad42 region */
+  FUN_0041ab40((&DAT_004841a8)[this->field_44]);
   FUN_004092c0(this,2,CONCAT31((unsigned int)((uint)_ebx >> 8),param_2));
 }
 
@@ -205,7 +205,7 @@ void __thiscall FUN_00409580(UIWidget *this,char param_1)
   int n1;
   uint u2;
 
-  *(short *)((int)this + 0x44) = (short)0xffff;  /* TODO: unknown offset 0x44 in _pad42 region of UIWidget */
+  this->field_44 = (short)0xffff;
   if (((param_1 != '\0') && ((int)this->child_list_2 != 0)) &&
      (u2 = 1, ((CVector *)this->child_list_2)->count /* CVector: count at +0x0E */ != 0)) {
     n1 = 4;
@@ -440,7 +440,7 @@ FUN_00409950(SoundPlayer *this,short param_1,short param_2,short param_3,int par
   FUN_0042c0e0(this);
   FUN_00409ac0();
   FUN_0042bf70(this);
-  *(char *)(((UIWidget *)DAT_004897c0)->sub_widgets_a[3] + 0x174) = 0;
+  ((GameBoard *)(intptr_t)((UIWidget *)DAT_004897c0)->sub_widgets_a[3])->is_timed = 0;
   *_fs = _seh_prev;
   return this;
 }
@@ -1228,32 +1228,32 @@ void FUN_0040bce0(void *param_1)
   v2c = 0;
   _seh_state = (_seh_state & ~0xFF) | 1;
   _seh_state = (_seh_state & 0xFF) | (0 << 8);
-  pu1 = FUN_0040bf50(((UIWidget *)DAT_004897c0)->_pad42[2],v34);
+  pu1 = FUN_0040bf50(*(int *)&((UIWidget *)DAT_004897c0)->field_44,v34);
   _seh_state = (_seh_state & ~0xFF) | 2;
   FUN_00403030(&v2c,&v24,pu1);
   _seh_state = (_seh_state & ~0xFF) | 2;
   FUN_0040be81();
   _seh_state = (_seh_state & ~0xFF) | 1;
   FUN_0040be79();
-  FUN_0041bb70(((UIWidget *)DAT_004897c0)->_pad42[2],param_1,'\x01');
+  FUN_0041bb70(*(int *)&((UIWidget *)DAT_004897c0)->field_44,param_1,'\x01');
   FUN_0041ce10(param_1,&DAT_00484250,0);
-  FUN_0041ce10(((UIWidget *)DAT_004897c0)->_pad42[2],&v1c,0);
+  FUN_0041ce10(*(int *)&((UIWidget *)DAT_004897c0)->field_44,&v1c,0);
   DAT_00484254 = DAT_00484254 - v18;
   DAT_00484250 = DAT_00484250 - v1c;
-  FUN_0041dd40(((UIWidget *)DAT_004897c0)->_pad42[2]);
+  FUN_0041dd40(*(int *)&((UIWidget *)DAT_004897c0)->field_44);
   FUN_0041dad0(param_1,1,'\0');
   n2 = 1;
   FUN_00407340(((DialogWidget *)v14)->is_registered,'\x01','\0',4,'\0');  /* TODO: verify offset 0x120 = is_registered */
   n3 = 0x40bded;
-  FUN_0040bc70(((UIWidget *)DAT_004897c0)->_pad42[2],0);
-  FUN_0041bd00(((UIWidget *)DAT_004897c0)->_pad42[2],(int)param_1);
+  FUN_0040bc70(*(int *)&((UIWidget *)DAT_004897c0)->field_44,0);
+  FUN_0041bd00(*(int *)&((UIWidget *)DAT_004897c0)->field_44,(int)param_1);
   c5 = '\x01';
   u4 = 0;
   v20 = &_tmp_29;
   FUN_004090c0(&_tmp_29,&v2c);
   _seh_state = (_seh_state & ~0xFF) | 1;
-  FUN_004060c0(((UIWidget *)DAT_004897c0)->_pad42[2],n2,n3,u4,c5);
-  FUN_0041d780(((UIWidget *)DAT_004897c0)->_pad42[2],NULL);
+  FUN_004060c0(*(int *)&((UIWidget *)DAT_004897c0)->field_44,n2,n3,u4,c5);
+  FUN_0041d780(*(int *)&((UIWidget *)DAT_004897c0)->field_44,NULL);
   FUN_0041d780(v14,NULL);
   _seh_state &= ~0xFF;
   ((DialogWidget *)v14)->child_list = (void *)1;  /* TODO: verify offset 0x11C = child_list */
@@ -2493,7 +2493,7 @@ void * __thiscall FUN_0040f730(void *this,int param_1)
   *_fs = &_seh_prev;
   FUN_00454a70(this,param_1);
   *(void ***)this = &PTR_FUN_00472af8;
-  *(int *)((int)this + 0x11c) = 0;  /* TODO: offset 0x11c - likely linked sibling pointer */
+  ((DialogWidget *)this)->child_list = 0;  /* linked sibling pointer */
   *_fs = _seh_prev;
   return this;
 }
@@ -2629,7 +2629,7 @@ void * __thiscall FUN_0040fd60(void *this,int param_1)
   *_fs = &_seh_prev;
   FUN_00454a70(this,param_1);
   *(void ***)this = &PTR_FUN_00472ba8;
-  *(int *)((int)this + 0x11c) = 0;  /* TODO: offset 0x11c - likely linked sibling pointer */
+  ((DialogWidget *)this)->child_list = 0;  /* linked sibling pointer */
   *_fs = _seh_prev;
   return this;
 }
@@ -2660,15 +2660,15 @@ void __thiscall FUN_0040fe40(void *this,int param_1)
   _seh_prev = *_fs;
   _handler = &L_0040fec0;
   *_fs = &_seh_prev;
-  *(int *)((int)this + 0x11c) = param_1;  /* TODO: offset 0x11c - linked sibling pointer */
+  ((DialogWidget *)this)->child_list = (void *)param_1;  /* linked sibling pointer */
   if (param_1 != 0) {
     v14 = 0;
     v18 = 0;
     _seh_state = 0;
     FUN_0041ce10(this,&v18,1);
-    FUN_0041d020(*(void **)((int)this + 0x11c),v14,v18,1);  /* TODO: offset 0x11c */
+    FUN_0041d020(((DialogWidget *)this)->child_list,v14,v18,1);
     _seh_state = 0xffffffff;
-    *(void **)(*(int *)((int)this + 0x11c) + 0x11c) = this;  /* TODO: offset 0x11c - sets reciprocal link */
+    ((DialogWidget *)((DialogWidget *)this)->child_list)->child_list = this;  /* reciprocal link */
     FUN_0040feca();
   }
   /* SEH epilog */
