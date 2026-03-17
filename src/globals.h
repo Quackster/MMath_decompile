@@ -1,11 +1,11 @@
-#ifndef GHIDRA_GLOBALS_H
-#define GHIDRA_GLOBALS_H
+#ifndef GLOBALS_H
+#define GLOBALS_H
 
-#include "ghidra_types.h"
+#include "types.h"
 
 /* Helper types */
-typedef void (*ghidra_func_ptr)(void *);
-typedef void (*ghidra_func_4879)(void);
+typedef void (*callback_ptr)(void *);
+typedef void (*void_callback)(void);
 
 /* Bitfield concatenation macros */
 #define CONCAT11(a,b) ((unsigned short)(((unsigned char)(a) << 8) | (unsigned char)(b)))
@@ -2104,4 +2104,4 @@ extern void *PTR_LAB_004760e0;
 extern void *PTR_LAB_00476eb0;
 extern void *PTR_LAB_00476eb4;
 
-#endif /* GHIDRA_GLOBALS_H */
+#endif /* GLOBALS_H */

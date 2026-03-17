@@ -22,7 +22,7 @@ all: $(OBJECTS)
 	@echo "All object files built successfully."
 	@echo "$(words $(OBJECTS)) files compiled."
 
-$(BUILDDIR)/%.o: $(SRCDIR)/%.c $(SRCDIR)/ghidra_types.h $(SRCDIR)/ghidra_funcs.h | $(BUILDDIR)
+$(BUILDDIR)/%.o: $(SRCDIR)/%.c $(SRCDIR)/types.h $(SRCDIR)/funcs.h | $(BUILDDIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(BUILDDIR):

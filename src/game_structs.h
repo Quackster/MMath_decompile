@@ -9,7 +9,7 @@
 #ifndef GAME_STRUCTS_H
 #define GAME_STRUCTS_H
 
-#include "ghidra_types.h"
+#include "types.h"
 
 #pragma pack(push, 1)
 

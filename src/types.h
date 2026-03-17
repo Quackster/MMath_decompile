@@ -1,5 +1,5 @@
-#ifndef GHIDRA_TYPES_H
-#define GHIDRA_TYPES_H
+#ifndef TYPES_H
+#define TYPES_H
 
 #include <windows.h>
 #include <stdint.h>
@@ -8,7 +8,7 @@
 #include <string.h>
 #include <math.h>
 
-/* Ghidra primitive type aliases */
+/* primitive type aliases */
 typedef unsigned char   byte;
 typedef unsigned short  word;
 typedef unsigned int    dword;
@@ -26,7 +26,7 @@ typedef unsigned long long undefined5;
 typedef unsigned long long undefined6;
 typedef unsigned long long undefined8;
 typedef unsigned short  ushort;
-typedef unsigned char   undefined3;  /* Ghidra 3-byte, treated as 4 */
+typedef unsigned char   undefined3;  /* 3-byte, treated as 4 */
 
 #ifndef __cplusplus
 #ifndef bool
@@ -36,7 +36,7 @@ typedef unsigned char   bool;
 #define false 0
 #endif
 
-/* Ghidra uses 'code' for function pointer targets */
+/* uses 'code' for function pointer targets */
 typedef void code;
 
-#endif /* GHIDRA_TYPES_H */
+#endif /* TYPES_H */

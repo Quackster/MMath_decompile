@@ -6,9 +6,9 @@
  * Auto-generated from decompilation of MMath.exe
  */
 
-#include "ghidra_types.h"
-#include "ghidra_funcs.h"
-#include "ghidra_globals.h"
+#include "types.h"
+#include "funcs.h"
+#include "globals.h"
 #include "game_structs.h"
 
 /* Function: FUN_00460010 @ 0x00460010 */

@@ -6,9 +6,9 @@
  * Auto-generated from decompilation of MMath.exe
  */
 
-#include "ghidra_types.h"
-#include "ghidra_funcs.h"
-#include "ghidra_globals.h"
+#include "types.h"
+#include "funcs.h"
+#include "globals.h"
 
 /* Function: FUN_00470000 @ 0x00470000 */
 
@@ -1313,7 +1313,7 @@ void __cdecl __onexit(_onexit_t param_1)
    
    Library: Visual Studio 1998 Release */
 
-int __cdecl _atexit(ghidra_func_4879 *param_1)
+int __cdecl _atexit(void_callback *param_1)
 
 {
   int iVar1;
@@ -1346,7 +1346,7 @@ void __CxxFrameHandler(void)
    Library: Visual Studio 1998 Release */
 
 void _eh_vector_destructor_iterator_
-               (void *param_1,uint param_2,int param_3,ghidra_func_ptr *param_4)
+               (void *param_1,uint param_2,int param_3,callback_ptr *param_4)
 
 {
   void *__saved_edi;
@@ -1390,7 +1390,7 @@ void FUN_00471ba0(void)
    
    Library: Visual Studio 1998 Release */
 
-void __ArrayUnwind(void *param_1,uint param_2,int param_3,ghidra_func_ptr *param_4)
+void __ArrayUnwind(void *param_1,uint param_2,int param_3,callback_ptr *param_4)
 
 {
   void *__saved_edi;
@@ -1423,8 +1423,8 @@ void __ArrayUnwind(void *param_1,uint param_2,int param_3,ghidra_func_ptr *param
    Library: Visual Studio 1998 Release */
 
 void _eh_vector_constructor_iterator_
-               (void *param_1,uint param_2,int param_3,ghidra_func_ptr *param_4,
-               ghidra_func_ptr *param_5)
+               (void *param_1,uint param_2,int param_3,callback_ptr *param_4,
+               callback_ptr *param_5)
 
 {
   void *__saved_edi;

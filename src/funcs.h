@@ -1,11 +1,11 @@
-#ifndef GHIDRA_FUNCS_H
-#define GHIDRA_FUNCS_H
+#ifndef FUNCS_H
+#define FUNCS_H
 
-#include "ghidra_types.h"
+#include "types.h"
 #include "game_structs.h"
 
-typedef void (*ghidra_func_ptr)(void *);
-typedef void (*ghidra_func_4879)(void);
+typedef void (*callback_ptr)(void *);
+typedef void (*void_callback)(void);
 
 /* Forward declarations for all decompiled functions */
 
@@ -3140,10 +3140,10 @@ void WinGRecommendDIBFormat(void);
 void __cdecl __onexit(_onexit_t param_1);
 /* removed: _atexit */
 void __CxxFrameHandler(void);
-void __eh_vector_destructor_iterator(void *param_1,uint param_2,int param_3,ghidra_func_ptr *param_4);
+void __eh_vector_destructor_iterator(void *param_1,uint param_2,int param_3,callback_ptr *param_4);
 void FUN_00471ba0(void);
-void __ArrayUnwind(void *param_1,uint param_2,int param_3,ghidra_func_ptr *param_4);
-void __eh_vector_constructor_iterator(void *param_1,uint param_2,int param_3,ghidra_func_ptr *param_4,ghidra_func_ptr *param_5);
+void __ArrayUnwind(void *param_1,uint param_2,int param_3,callback_ptr *param_4);
+void __eh_vector_constructor_iterator(void *param_1,uint param_2,int param_3,callback_ptr *param_4,callback_ptr *param_5);
 void FUN_00471cd0(void);
 /* removed: memmove */
 void __cdecl ftol(void);
@@ -3157,4 +3157,4 @@ void __setdefaultprecision(void);
 void FUN_00471f40(void);
 uint __cdecl _controlfp(uint _NewValue,uint _Mask);
 
-#endif /* GHIDRA_FUNCS_H */
+#endif /* FUNCS_H */
