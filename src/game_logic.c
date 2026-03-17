@@ -103,20 +103,20 @@ void FUN_00409297(void)
 void __thiscall FUN_004092c0(GameWidget *this,int param_1,int param_2)
 
 {
-  uint uVar1;
-  int iVar2;
+  uint u1;
+  int n2;
 
   this->animation_timer = param_1;
   if (((((char)param_2 != '\0') && (this->child_list_2 != 0)) &&
-      (iVar2 = *(int *)((int)this->child_list_2 + 0xe), iVar2 != 0)) && (uVar1 = 1, iVar2 != 0))  /* child_list_2 sub-struct count at +0xe */
+      (n2 = *(int *)((int)this->child_list_2 + 0xe), n2 != 0)) && (u1 = 1, n2 != 0))  /* child_list_2 sub-struct count at +0xe */
   {
-    iVar2 = 4;
+    n2 = 4;
     do {
-      iVar2 = iVar2 + 4;
-      uVar1 = uVar1 + 1;
-      FUN_004092c0(*(void **)(**(int **)((int)this->child_list_2 + 4) + -8 + iVar2),param_1,  /* child_list_2 sub-struct data at +4 */
+      n2 = n2 + 4;
+      u1 = u1 + 1;
+      FUN_004092c0(*(void **)(**(int **)((int)this->child_list_2 + 4) + -8 + n2),param_1,  /* child_list_2 sub-struct data at +4 */
                    param_2);
-    } while (uVar1 <= *(uint *)((int)this->child_list_2 + 0xe));  /* child_list_2 sub-struct count at +0xe */
+    } while (u1 <= *(uint *)((int)this->child_list_2 + 0xe));  /* child_list_2 sub-struct count at +0xe */
   }
   FUN_0041cad0(this);
   return;
@@ -129,26 +129,26 @@ void __thiscall FUN_004092c0(GameWidget *this,int param_1,int param_2)
 void FUN_00409330(void)
 
 {
-  char *pcVar1;
-  uint uVar2;
-  short sVar3;
+  char *pc1;
+  uint u2;
+  short s3;
   
-  sVar3 = 0;
-  uVar2 = DAT_0047e7b0;
+  s3 = 0;
+  u2 = DAT_0047e7b0;
   do {
-    pcVar1 = (char *)(&DAT_004841a8)[sVar3];
-    if (pcVar1 != (char *)0x0) {
-      if ((uVar2 == 0) && (pcVar1 != (char *)0x0)) {
-        thunk_FUN_0042f1c0(pcVar1);
-        FUN_0046c410((uint)pcVar1);
-        uVar2 = DAT_0047e7b0;
+    pc1 = (char *)(&DAT_004841a8)[s3];
+    if (pc1 != (char *)0x0) {
+      if ((u2 == 0) && (pc1 != (char *)0x0)) {
+        thunk_FUN_0042f1c0(pc1);
+        FUN_0046c410((uint)pc1);
+        u2 = DAT_0047e7b0;
       }
-      (&DAT_004841a8)[sVar3] = 0;
+      (&DAT_004841a8)[s3] = 0;
     }
-    sVar3 = sVar3 + 1;
-  } while (sVar3 < 0x10);
-  if (uVar2 != 0) {
-    FUN_00457b10(DAT_004838c0,0,uVar2);
+    s3 = s3 + 1;
+  } while (s3 < 0x10);
+  if (u2 != 0) {
+    FUN_00457b10(DAT_004838c0,0,u2);
     DAT_0047e7b0 = 0;
   }
   return;
@@ -172,27 +172,27 @@ void __cdecl FUN_004093a0(int *param_1)
 void __cdecl FUN_00409460(void *param_1,int param_2)
 
 {
-  ushort *puVar1;
-  int iVar2;
-  int iVar3;
-  short sVar4;
+  ushort *pu1;
+  int n2;
+  int n3;
+  short s4;
   
   if ((param_1 != (void *)0x0) && (param_2 != 0)) {
-    puVar1 = FUN_00457a10(param_1,param_2);
-    if (puVar1 != (ushort *)0x0) {
-      sVar4 = 0;
-      DAT_0047e7b0 = puVar1;
+    pu1 = FUN_00457a10(param_1,param_2);
+    if (pu1 != (ushort *)0x0) {
+      s4 = 0;
+      DAT_0047e7b0 = pu1;
       do {
-        if (sVar4 < (short)*puVar1) {
-          iVar3 = *(int *)(puVar1 + 8) + sVar4 * 8;
+        if (s4 < (short)*pu1) {
+          n3 = *(int *)(pu1 + 8) + s4 * 8;
         }
         else {
-          iVar3 = (short)*puVar1 * 8 + *(int *)(puVar1 + 8) + -8;
+          n3 = (short)*pu1 * 8 + *(int *)(pu1 + 8) + -8;
         }
-        iVar2 = (int)sVar4;
-        sVar4 = sVar4 + 1;
-        (&DAT_004841a8)[iVar2] = iVar3;
-      } while (sVar4 < 0x10);
+        n2 = (int)s4;
+        s4 = s4 + 1;
+        (&DAT_004841a8)[n2] = n3;
+      } while (s4 < 0x10);
     }
   }
   return;
@@ -206,8 +206,8 @@ void __thiscall FUN_004094d0(UIWidget *this,short param_1,char param_2)
 
 {
   int __saved_ebx;
-  int iVar1;
-  uint uVar2;
+  int n1;
+  uint u2;
 
   *(short *)((int)this + 0x44) = param_1;  /* TODO: unknown offset 0x44 in _pad42 region of UIWidget */
   if (param_1 == -1) {
@@ -221,14 +221,14 @@ void __thiscall FUN_004094d0(UIWidget *this,short param_1,char param_2)
     *(short *)((int)this + 0x44) = 0;  /* TODO: unknown offset 0x44 in _pad42 region */
   }
   if (((param_2 != '\0') && ((int)this->child_list_2 != 0)) &&
-     (uVar2 = 1, *(int *)((int)this->child_list_2 + 0xe) /* CVector: count at +0x0E */ != 0)) {
-    iVar1 = 4;
+     (u2 = 1, *(int *)((int)this->child_list_2 + 0xe) /* CVector: count at +0x0E */ != 0)) {
+    n1 = 4;
     do {
-      iVar1 = iVar1 + 4;
-      uVar2 = uVar2 + 1;
-      FUN_004094d0(*(UIWidget **)(**(int **)((int)this->child_list_2 + 4) /* CVector: data ptr at +0x04 */ + -8 + iVar1),
+      n1 = n1 + 4;
+      u2 = u2 + 1;
+      FUN_004094d0(*(UIWidget **)(**(int **)((int)this->child_list_2 + 4) /* CVector: data ptr at +0x04 */ + -8 + n1),
                    *(short *)((int)this + 0x44),param_2);  /* TODO: unknown offset 0x44 in _pad42 region */
-    } while (uVar2 <= *(uint *)((int)this->child_list_2 + 0xe) /* CVector: count at +0x0E */);
+    } while (u2 <= *(uint *)((int)this->child_list_2 + 0xe) /* CVector: count at +0x0E */);
   }
   FUN_0041ab40((&DAT_004841a8)[*(short *)((int)this + 0x44)]);  /* TODO: unknown offset 0x44 in _pad42 region */
   FUN_004092c0(this,2,CONCAT31((unsigned int)((uint)__saved_ebx >> 8),param_2));
@@ -243,18 +243,18 @@ void __thiscall FUN_00409580(UIWidget *this,char param_1)
 
 {
   int __saved_ebx;
-  int iVar1;
-  uint uVar2;
+  int n1;
+  uint u2;
 
   *(short *)((int)this + 0x44) = (short)0xffff;  /* TODO: unknown offset 0x44 in _pad42 region of UIWidget */
   if (((param_1 != '\0') && ((int)this->child_list_2 != 0)) &&
-     (uVar2 = 1, *(int *)((int)this->child_list_2 + 0xe) /* CVector: count at +0x0E */ != 0)) {
-    iVar1 = 4;
+     (u2 = 1, *(int *)((int)this->child_list_2 + 0xe) /* CVector: count at +0x0E */ != 0)) {
+    n1 = 4;
     do {
-      iVar1 = iVar1 + 4;
-      uVar2 = uVar2 + 1;
-      FUN_00409580(*(UIWidget **)(**(int **)((int)this->child_list_2 + 4) /* CVector: data ptr at +0x04 */ + -8 + iVar1),'\x01');
-    } while (uVar2 <= *(uint *)((int)this->child_list_2 + 0xe) /* CVector: count at +0x0E */);
+      n1 = n1 + 4;
+      u2 = u2 + 1;
+      FUN_00409580(*(UIWidget **)(**(int **)((int)this->child_list_2 + 4) /* CVector: data ptr at +0x04 */ + -8 + n1),'\x01');
+    } while (u2 <= *(uint *)((int)this->child_list_2 + 0xe) /* CVector: count at +0x0E */);
   }
   FUN_0041ab40(0);
   FUN_004092c0(this,1,CONCAT31((unsigned int)((uint)__saved_ebx >> 8),param_1));
@@ -268,25 +268,25 @@ void __thiscall FUN_00409580(UIWidget *this,char param_1)
 void __thiscall FUN_004095f0(int *this,int *param_1,int *param_2)
 
 {
-  int uVar1;
-  int iVar2;
-  int iVar3;
-  int iVar4;
-  int iVar5;
+  int u1;
+  int n2;
+  int n3;
+  int n4;
+  int n5;
   int *__seh_chain;
-  char local_10 [12];
+  char loc_10 [12];
 
-  uVar1 = *__seh_chain;
-  *__seh_chain = (int)local_10;
-  iVar2 = this[0];
-  iVar3 = *param_2;
-  iVar4 = this[1];
-  iVar5 = param_2[1];
+  u1 = *__seh_chain;
+  *__seh_chain = (int)loc_10;
+  n2 = this[0];
+  n3 = *param_2;
+  n4 = this[1];
+  n5 = param_2[1];
   *param_1 = 0;
   param_1[1] = 0;
-  param_1[1] = iVar4 + iVar5;
-  *param_1 = iVar2 + iVar3;
-  *__seh_chain = uVar1;
+  param_1[1] = n4 + n5;
+  *param_1 = n2 + n3;
+  *__seh_chain = u1;
   return;
 }
 
@@ -297,25 +297,25 @@ void __thiscall FUN_004095f0(int *this,int *param_1,int *param_2)
 void __thiscall FUN_00409670(int *this,int *param_1,int *param_2)
 
 {
-  int uVar1;
-  int iVar2;
-  int iVar3;
-  int iVar4;
-  int iVar5;
+  int u1;
+  int n2;
+  int n3;
+  int n4;
+  int n5;
   int *__seh_chain;
-  char local_10 [12];
+  char loc_10 [12];
 
-  uVar1 = *__seh_chain;
-  *__seh_chain = (int)local_10;
-  iVar2 = this[0];
-  iVar3 = *param_2;
-  iVar4 = this[1];
-  iVar5 = param_2[1];
+  u1 = *__seh_chain;
+  *__seh_chain = (int)loc_10;
+  n2 = this[0];
+  n3 = *param_2;
+  n4 = this[1];
+  n5 = param_2[1];
   *param_1 = 0;
   param_1[1] = 0;
-  param_1[1] = iVar4 - iVar5;
-  *param_1 = iVar2 - iVar3;
-  *__seh_chain = uVar1;
+  param_1[1] = n4 - n5;
+  *param_1 = n2 - n3;
+  *__seh_chain = u1;
   return;
 }
 
@@ -326,19 +326,19 @@ void __thiscall FUN_00409670(int *this,int *param_1,int *param_2)
 short * __thiscall FUN_004096f0(short *this,short *param_1,short *param_2)
 
 {
-  int uVar1;
-  short uVar2;
+  int u1;
+  short u2;
   int *__seh_chain;
-  char local_10 [12];
+  char loc_10 [12];
 
-  uVar1 = *__seh_chain;
-  *__seh_chain = (int)local_10;
-  uVar2 = param_2[1];
-  this[1] = uVar2;
+  u1 = *__seh_chain;
+  *__seh_chain = (int)loc_10;
+  u2 = param_2[1];
+  this[1] = u2;
   this[0] = *param_2;
-  param_1[1] = uVar2;
+  param_1[1] = u2;
   *param_1 = this[0];
-  *__seh_chain = uVar1;
+  *__seh_chain = u1;
   return param_1;
 }
 
@@ -349,13 +349,13 @@ short * __thiscall FUN_004096f0(short *this,short *param_1,short *param_2)
 ushort __fastcall FUN_00409770(ushort *param_1)
 
 {
-  ushort uVar1;
+  ushort u1;
   
-  uVar1 = param_1[3];
-  if (((short)param_1[1] < (short)uVar1) && (uVar1 = *param_1, (short)uVar1 < (short)param_1[2])) {
-    return uVar1 & 0xff00;
+  u1 = param_1[3];
+  if (((short)param_1[1] < (short)u1) && (u1 = *param_1, (short)u1 < (short)param_1[2])) {
+    return u1 & 0xff00;
   }
-  return CONCAT11((char)(uVar1 >> 8),1);
+  return CONCAT11((char)(u1 >> 8),1);
 }
 
 
@@ -410,13 +410,13 @@ void __thiscall FUN_00409830(GameWidget *this,short *param_1)
 void FUN_00409870(void)
 
 {
-  int uVar1;
+  int u1;
   int __param_fffffff4;
   
-  uVar1 = 0;
+  u1 = 0;
   FUN_00401050(&__stk_44,0);
   FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_004841f8,uVar1,__param_fffffff4);
+  FUN_00401060(&DAT_004841f8,u1,__param_fffffff4);
   return;
 }
 
@@ -508,32 +508,32 @@ int * __thiscall
 FUN_00409950(SoundPlayer *this,short param_1,short param_2,short param_3,int param_4,void *param_5)
 
 {
-  int iVar1;
+  int n1;
   DWORD DVar2;
   int *__seh_chain;
-  int local_10;
+  int loc_10;
   char *__seh_handler;
-  int local_8;
+  int loc_8;
   
-  local_10 = *__seh_chain;
-  local_8 = 0xffffffff;
+  loc_10 = *__seh_chain;
+  loc_8 = 0xffffffff;
   __seh_handler = &__label_004099fe;
-  *__seh_chain = &local_10;
+  *__seh_chain = &loc_10;
   FUN_0042bc70(this,param_1,param_2,param_3,param_4,param_5);
-  local_8 = 0;
+  loc_8 = 0;
   *(void ***)this = &PTR_FUN_004724e8;
-  iVar1 = DAT_004896b0;
+  n1 = DAT_004896b0;
   *(char *)(DAT_004896b0 + 0x28) = 1;
   DVar2 = GetTickCount();
-  *(DWORD *)(iVar1 + 4) = DVar2;
-  *(DWORD *)(iVar1 + 0xc) = DVar2;
+  *(DWORD *)(n1 + 4) = DVar2;
+  *(DWORD *)(n1 + 0xc) = DVar2;
   this->sequence_data[55] = 0;
   this->sequence_data[56] = 0;
   FUN_0042c0e0(this);
   FUN_00409ac0();
   FUN_0042bf70(this);
   *(char *)(*(int *)(DAT_004897c0 + 0x52) + 0x174) = 0;
-  *__seh_chain = local_10;
+  *__seh_chain = loc_10;
   return this;
 }
 
@@ -562,20 +562,20 @@ void __fastcall FUN_00409a30(GameWidget *this)
 
 {
   int *__seh_chain;
-  int local_10;
+  int loc_10;
   char *__seh_handler;
-  int local_8;
+  int loc_8;
 
-  local_10 = *__seh_chain;
+  loc_10 = *__seh_chain;
   __seh_handler = &__label_00409aa2;
   this->vtable = (void **)&PTR_FUN_004724e8;
-  *__seh_chain = &local_10;
-  local_8 = 0;
+  *__seh_chain = &loc_10;
+  loc_8 = 0;
   FUN_00434490((int)this->object_ptr);
   FUN_0043a700(DAT_004838c0,0,(int *)this->scrollbar_ref);
-  local_8 = 0xffffffff;
+  loc_8 = 0xffffffff;
   FUN_00409aac();
-  *__seh_chain = local_10;
+  *__seh_chain = loc_10;
   return;
 }
 
@@ -610,19 +610,19 @@ int * __fastcall FUN_00409bd0(int *param_1)
 
 {
   int *__seh_chain;
-  int local_10;
+  int loc_10;
   char *__seh_handler;
-  int local_8;
+  int loc_8;
   
-  local_10 = *__seh_chain;
-  local_8 = 0xffffffff;
+  loc_10 = *__seh_chain;
+  loc_8 = 0xffffffff;
   __seh_handler = &__label_00409c2b;
-  *__seh_chain = &local_10;
+  *__seh_chain = &loc_10;
   FUN_0044e3f0(param_1);
   *param_1 = &PTR_FUN_004725a8;
   param_1[0x47] = 0x1000d;
   param_1[0x46] = 0;
-  *__seh_chain = local_10;
+  *__seh_chain = loc_10;
   return param_1;
 }
 
@@ -702,13 +702,13 @@ void FUN_00409fe0(void)
 void FUN_0040a190(void)
 
 {
-  int uVar1;
+  int u1;
   int __param_fffffff4;
   
-  uVar1 = 0;
+  u1 = 0;
   FUN_00401050(&__stk_44,0);
   FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00484208,uVar1,__param_fffffff4);
+  FUN_00401060(&DAT_00484208,u1,__param_fffffff4);
   return;
 }
 
@@ -822,22 +822,22 @@ void __cdecl FUN_0040a270(int param_1,char *param_2,short param_3)
 int __cdecl FUN_0040a2d0(int param_1,char *param_2)
 
 {
-  char cVar1;
+  char c1;
   uint __reg_eax;
-  uint uVar2;
+  uint u2;
   
-  uVar2 = 0;
-  cVar1 = *param_2;
+  u2 = 0;
+  c1 = *param_2;
   while( true ) {
-    if (cVar1 == '\0') {
+    if (c1 == '\0') {
       return CONCAT31(__reg_eax >> 8,1);
     }
-    if (param_2[uVar2] != *(char *)(uVar2 + param_1)) break;
-    uVar2 = (uint)(ushort)((short)uVar2 + 1);
-    cVar1 = param_2[uVar2];
-    __reg_eax = uVar2;
+    if (param_2[u2] != *(char *)(u2 + param_1)) break;
+    u2 = (uint)(ushort)((short)u2 + 1);
+    c1 = param_2[u2];
+    __reg_eax = u2;
   }
-  return uVar2 & 0xffffff00;
+  return u2 & 0xffffff00;
 }
 
 
@@ -847,26 +847,26 @@ int __cdecl FUN_0040a2d0(int param_1,char *param_2)
 int __cdecl FUN_0040a310(int param_1,char *param_2)
 
 {
-  char cVar1;
+  char c1;
   uint __reg_eax;
-  uint uVar2;
-  uint uVar3;
-  uint uVar4;
+  uint u2;
+  uint u3;
+  uint u4;
   
-  uVar4 = 0;
-  cVar1 = *param_2;
+  u4 = 0;
+  c1 = *param_2;
   while( true ) {
-    if (cVar1 == '\0') {
+    if (c1 == '\0') {
       return CONCAT31(__reg_eax >> 8,1);
     }
-    uVar2 = toupper((int)param_2[uVar4]);
-    uVar3 = toupper((int)*(char *)(param_1 + uVar4));
-    if (uVar2 != uVar3) break;
-    uVar4 = (uint)(ushort)((short)uVar4 + 1);
-    cVar1 = param_2[uVar4];
-    __reg_eax = uVar4;
+    u2 = toupper((int)param_2[u4]);
+    u3 = toupper((int)*(char *)(param_1 + u4));
+    if (u2 != u3) break;
+    u4 = (uint)(ushort)((short)u4 + 1);
+    c1 = param_2[u4];
+    __reg_eax = u4;
   }
-  return uVar3 & 0xffffff00;
+  return u3 & 0xffffff00;
 }
 
 
@@ -876,22 +876,22 @@ int __cdecl FUN_0040a310(int param_1,char *param_2)
 int __cdecl FUN_0040a370(int param_1,char *param_2)
 
 {
-  char cVar1;
+  char c1;
   uint __reg_eax;
-  uint uVar2;
+  uint u2;
   
-  uVar2 = 0;
-  cVar1 = *param_2;
+  u2 = 0;
+  c1 = *param_2;
   while( true ) {
-    if (cVar1 == '\0') {
+    if (c1 == '\0') {
       return CONCAT31(__reg_eax >> 8,1);
     }
-    if (*(char *)(uVar2 + param_1) != param_2[uVar2]) break;
-    uVar2 = (uint)(ushort)((short)uVar2 + 1);
-    cVar1 = param_2[uVar2];
-    __reg_eax = uVar2;
+    if (*(char *)(u2 + param_1) != param_2[u2]) break;
+    u2 = (uint)(ushort)((short)u2 + 1);
+    c1 = param_2[u2];
+    __reg_eax = u2;
   }
-  return uVar2 & 0xffffff00;
+  return u2 & 0xffffff00;
 }
 
 
@@ -901,26 +901,26 @@ int __cdecl FUN_0040a370(int param_1,char *param_2)
 int __cdecl FUN_0040a3b0(int param_1,char *param_2)
 
 {
-  char cVar1;
+  char c1;
   uint __reg_eax;
-  uint uVar2;
-  uint uVar3;
-  uint uVar4;
+  uint u2;
+  uint u3;
+  uint u4;
   
-  uVar4 = 0;
-  cVar1 = *param_2;
+  u4 = 0;
+  c1 = *param_2;
   while( true ) {
-    if (cVar1 == '\0') {
+    if (c1 == '\0') {
       return CONCAT31(__reg_eax >> 8,1);
     }
-    uVar2 = toupper((int)*(char *)(param_1 + uVar4));
-    uVar3 = toupper((int)param_2[uVar4]);
-    if (uVar2 != uVar3) break;
-    uVar4 = (uint)(ushort)((short)uVar4 + 1);
-    cVar1 = param_2[uVar4];
-    __reg_eax = uVar4;
+    u2 = toupper((int)*(char *)(param_1 + u4));
+    u3 = toupper((int)param_2[u4]);
+    if (u2 != u3) break;
+    u4 = (uint)(ushort)((short)u4 + 1);
+    c1 = param_2[u4];
+    __reg_eax = u4;
   }
-  return uVar3 & 0xffffff00;
+  return u3 & 0xffffff00;
 }
 
 
@@ -930,13 +930,13 @@ int __cdecl FUN_0040a3b0(int param_1,char *param_2)
 char * __cdecl FUN_0040a410(char *param_1)
 
 {
-  char cVar1;
+  char c1;
   
   if (param_1 != (char *)0x0) {
-    cVar1 = *param_1;
-    while (cVar1 != '\0') {
+    c1 = *param_1;
+    while (c1 != '\0') {
       param_1 = param_1 + 1;
-      cVar1 = *param_1;
+      c1 = *param_1;
     }
     return param_1;
   }
@@ -950,13 +950,13 @@ char * __cdecl FUN_0040a410(char *param_1)
 void FUN_0040a440(void)
 
 {
-  int uVar1;
+  int u1;
   int __param_fffffff4;
   
-  uVar1 = 0;
+  u1 = 0;
   FUN_00401050(&__stk_44,0);
   FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00484218,uVar1,__param_fffffff4);
+  FUN_00401060(&DAT_00484218,u1,__param_fffffff4);
   return;
 }
 
@@ -1047,13 +1047,13 @@ void FUN_0040a510(void)
 void FUN_0040a530(void)
 
 {
-  int uVar1;
+  int u1;
   int __param_fffffff4;
   
-  uVar1 = 0;
+  u1 = 0;
   FUN_00401050(&__stk_44,0);
   FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00484240,uVar1,__param_fffffff4);
+  FUN_00401060(&DAT_00484240,u1,__param_fffffff4);
   return;
 }
 
@@ -1189,17 +1189,17 @@ int * __fastcall FUN_0040a6c0(int *param_1)
 
 {
   int *__seh_chain;
-  int local_10;
+  int loc_10;
   char *__seh_handler;
-  int local_8;
+  int loc_8;
   
-  local_10 = *__seh_chain;
-  local_8 = 0xffffffff;
+  loc_10 = *__seh_chain;
+  loc_8 = 0xffffffff;
   __seh_handler = &__label_0040a70b;
-  *__seh_chain = &local_10;
+  *__seh_chain = &loc_10;
   FUN_0044e3f0(param_1);
   *param_1 = &PTR_FUN_004726b0;
-  *__seh_chain = local_10;
+  *__seh_chain = loc_10;
   return param_1;
 }
 
@@ -1225,17 +1225,17 @@ void __fastcall FUN_0040a740(int *param_1)
 
 {
   int *__seh_chain;
-  int local_10;
+  int loc_10;
   char *__seh_handler;
-  int local_8;
+  int loc_8;
   
-  local_10 = *__seh_chain;
+  loc_10 = *__seh_chain;
   __seh_handler = &__label_0040a77d;
   *param_1 = &PTR_FUN_004726b0;
-  *__seh_chain = &local_10;
-  local_8 = 0xffffffff;
+  *__seh_chain = &loc_10;
+  loc_8 = 0xffffffff;
   FUN_0040a787();
-  *__seh_chain = local_10;
+  *__seh_chain = loc_10;
   return;
 }
 
@@ -1550,19 +1550,19 @@ void FUN_0040bc68(void)
 void FUN_0040bc70(UIWidget *this,short param_2)
 
 {
-  uint uVar1;
-  int iVar2;
+  uint u1;
+  int n2;
 
   FUN_0041dad0(this,(byte)param_2,'\0');
   if (((this->child_list_2 != NULL) &&
-      (iVar2 = *(int *)((int)this->child_list_2 + 0xe), iVar2 != 0)) &&  /* child_list_2 sub-struct count at +0xe */
-     (uVar1 = 1, iVar2 != 0)) {
-    iVar2 = 4;
+      (n2 = *(int *)((int)this->child_list_2 + 0xe), n2 != 0)) &&  /* child_list_2 sub-struct count at +0xe */
+     (u1 = 1, n2 != 0)) {
+    n2 = 4;
     do {
-      iVar2 = iVar2 + 4;
-      uVar1 = uVar1 + 1;
-      FUN_0040bc70(*(UIWidget **)(**(int **)((int)this->child_list_2 + 4) + -8 + iVar2),param_2);  /* child_list_2 sub-struct data at +4 */
-    } while (uVar1 <= *(uint *)((int)this->child_list_2 + 0xe));  /* child_list_2 sub-struct count at +0xe */
+      n2 = n2 + 4;
+      u1 = u1 + 1;
+      FUN_0040bc70(*(UIWidget **)(**(int **)((int)this->child_list_2 + 4) + -8 + n2),param_2);  /* child_list_2 sub-struct data at +4 */
+    } while (u1 <= *(uint *)((int)this->child_list_2 + 0xe));  /* child_list_2 sub-struct count at +0xe */
   }
   return;
 }
@@ -1574,66 +1574,66 @@ void FUN_0040bc70(UIWidget *this,short param_2)
 void FUN_0040bce0(void *param_1)
 
 {
-  int *puVar1;
+  int *pu1;
   int *__seh_chain;
-  int iVar2;
-  int iVar3;
-  int uVar4;
-  char cVar5;
-  int local_34 [2];
-  int local_2c;
-  int local_28;
-  int local_24;
-  char *local_20;
-  int local_1c;
-  int local_18;
-  void *local_14;
-  int local_10;
+  int n2;
+  int n3;
+  int u4;
+  char c5;
+  int loc_34 [2];
+  int loc_2c;
+  int loc_28;
+  int loc_24;
+  char *loc_20;
+  int loc_1c;
+  int loc_18;
+  void *loc_14;
+  int loc_10;
   char *__seh_handler;
-  int local_8;
+  int loc_8;
   
-  local_10 = *__seh_chain;
+  loc_10 = *__seh_chain;
   __seh_handler = &__label_0040be91;
-  *__seh_chain = &local_10;
-  local_18 = 0;
-  local_1c = 0;
-  local_28 = 0;
-  local_2c = 0;
-  local_8 = (local_8 & ~0xFF) | 1;
-  local_8 = (local_8 & 0xFF) | (0 << 8);
-  puVar1 = FUN_0040bf50(*(void **)(DAT_004897c0 + 0x44),local_34);
-  local_8 = (local_8 & ~0xFF) | 2;
-  FUN_00403030(&local_2c,&local_24,puVar1);
-  local_8 = (local_8 & ~0xFF) | 2;
+  *__seh_chain = &loc_10;
+  loc_18 = 0;
+  loc_1c = 0;
+  loc_28 = 0;
+  loc_2c = 0;
+  loc_8 = (loc_8 & ~0xFF) | 1;
+  loc_8 = (loc_8 & 0xFF) | (0 << 8);
+  pu1 = FUN_0040bf50(*(void **)(DAT_004897c0 + 0x44),loc_34);
+  loc_8 = (loc_8 & ~0xFF) | 2;
+  FUN_00403030(&loc_2c,&loc_24,pu1);
+  loc_8 = (loc_8 & ~0xFF) | 2;
   FUN_0040be81();
-  local_8 = (local_8 & ~0xFF) | 1;
+  loc_8 = (loc_8 & ~0xFF) | 1;
   FUN_0040be79();
   FUN_0041bb70(*(void **)(DAT_004897c0 + 0x44),param_1,'\x01');
   FUN_0041ce10(param_1,&DAT_00484250,0);
-  FUN_0041ce10(*(void **)(DAT_004897c0 + 0x44),&local_1c,0);
-  DAT_00484254 = DAT_00484254 - local_18;
-  DAT_00484250 = DAT_00484250 - local_1c;
+  FUN_0041ce10(*(void **)(DAT_004897c0 + 0x44),&loc_1c,0);
+  DAT_00484254 = DAT_00484254 - loc_18;
+  DAT_00484250 = DAT_00484250 - loc_1c;
   FUN_0041dd40(*(void **)(DAT_004897c0 + 0x44));
   FUN_0041dad0(param_1,1,'\0');
-  iVar2 = 1;
-  FUN_00407340(((DialogWidget *)local_14)->is_registered,'\x01','\0',4,'\0');  /* TODO: verify offset 0x120 = is_registered */
-  iVar3 = 0x40bded;
+  n2 = 1;
+  FUN_00407340(((DialogWidget *)loc_14)->is_registered,'\x01','\0',4,'\0');  /* TODO: verify offset 0x120 = is_registered */
+  n3 = 0x40bded;
   FUN_0040bc70(*(void **)(DAT_004897c0 + 0x44),0);
   FUN_0041bd00(*(void **)(DAT_004897c0 + 0x44),(int)param_1);
-  cVar5 = '\x01';
-  uVar4 = 0;
-  local_20 = &__stk_29;
-  FUN_004090c0(&__stk_29,&local_2c);
-  local_8 = (local_8 & ~0xFF) | 1;
-  FUN_004060c0(*(void **)(DAT_004897c0 + 0x44),iVar2,iVar3,uVar4,cVar5);
+  c5 = '\x01';
+  u4 = 0;
+  loc_20 = &__stk_29;
+  FUN_004090c0(&__stk_29,&loc_2c);
+  loc_8 = (loc_8 & ~0xFF) | 1;
+  FUN_004060c0(*(void **)(DAT_004897c0 + 0x44),n2,n3,u4,c5);
   FUN_0041d780(*(void **)(DAT_004897c0 + 0x44),(void *)0x0);
-  FUN_0041d780(local_14,(void *)0x0);
-  local_8 &= ~0xFF;
-  ((DialogWidget *)local_14)->child_list = (void *)1;  /* TODO: verify offset 0x11C = child_list */
+  FUN_0041d780(loc_14,(void *)0x0);
+  loc_8 &= ~0xFF;
+  ((DialogWidget *)loc_14)->child_list = (void *)1;  /* TODO: verify offset 0x11C = child_list */
   FUN_0040be89();
-  local_8 = 0xffffffff;
+  loc_8 = 0xffffffff;
   FUN_0040be9b();
-  *__seh_chain = local_10;
+  *__seh_chain = loc_10;
   return;
 }
 
@@ -1717,17 +1717,17 @@ void FUN_0040bf00(void)
 int * __thiscall FUN_0040bf50(SoundPlayer *this,int *param_1)
 
 {
-  int uVar1;
+  int u1;
   int *__seh_chain;
-  char local_10 [12];
+  char loc_10 [12];
   
-  uVar1 = *__seh_chain;
-  *__seh_chain = local_10;
+  u1 = *__seh_chain;
+  *__seh_chain = loc_10;
   param_1[1] = 0;
   *param_1 = 0;
   param_1[1] = this->sequence_data[41];
   *param_1 = this->sequence_data[40];
-  *__seh_chain = uVar1;
+  *__seh_chain = u1;
   return param_1;
 }
 
@@ -1753,13 +1753,13 @@ FUN_0040bfd0(CString *this,int param_1,int param_2,int param_3,int param_4)
 void FUN_0040c000(void)
 
 {
-  int uVar1;
+  int u1;
   int __param_fffffff4;
   
-  uVar1 = 0;
+  u1 = 0;
   FUN_00401050(&__stk_44,0);
   FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00484268,uVar1,__param_fffffff4);
+  FUN_00401060(&DAT_00484268,u1,__param_fffffff4);
   return;
 }
 
@@ -1874,17 +1874,17 @@ void FUN_0040c679(void)
 int * __fastcall FUN_0040c690(int *param_1)
 
 {
-  int iVar1;
-  int *puVar2;
+  int n1;
+  int *pu2;
   int *__seh_chain;
-  int local_10;
+  int loc_10;
   char *__seh_handler;
-  int local_8;
+  int loc_8;
   
-  local_10 = *__seh_chain;
-  local_8 = 0xffffffff;
+  loc_10 = *__seh_chain;
+  loc_8 = 0xffffffff;
   __seh_handler = &__label_0040c712;
-  *__seh_chain = &local_10;
+  *__seh_chain = &loc_10;
   FUN_004336c0(param_1);
   *param_1 = &PTR_FUN_00472a08;
   param_1[0x16] = 0;
@@ -1893,18 +1893,18 @@ int * __fastcall FUN_0040c690(int *param_1)
   param_1[0x40] = 0;
   param_1[0x41] = 0;
   param_1[0x19] = 0;
-  puVar2 = param_1 + 0x1a;
-  for (iVar1 = 7; iVar1 != 0; iVar1 = iVar1 + -1) {
-    *puVar2 = 0;
-    puVar2 = puVar2 + 1;
+  pu2 = param_1 + 0x1a;
+  for (n1 = 7; n1 != 0; n1 = n1 + -1) {
+    *pu2 = 0;
+    pu2 = pu2 + 1;
   }
   param_1[0x21] = 0;
-  puVar2 = param_1 + 0x22;
-  for (iVar1 = 0x1e; iVar1 != 0; iVar1 = iVar1 + -1) {
-    *puVar2 = 0;
-    puVar2 = puVar2 + 1;
+  pu2 = param_1 + 0x22;
+  for (n1 = 0x1e; n1 != 0; n1 = n1 + -1) {
+    *pu2 = 0;
+    pu2 = pu2 + 1;
   }
-  *__seh_chain = local_10;
+  *__seh_chain = loc_10;
   return param_1;
 }
 
@@ -2029,281 +2029,281 @@ void FUN_0040d82a(void)
 void __thiscall FUN_0040d840(void *this,uint param_1)
 
 {
-  void *pvVar1;
-  uint uVar2;
-  bool bVar3;
-  int iVar4;
+  void *pv1;
+  uint u2;
+  bool b3;
+  int n4;
   int __extra_ret;
-  short *psVar5;
-  short sVar6;
-  ushort *puVar7;
+  short *ps5;
+  short s6;
+  ushort *pu7;
   int *__seh_chain;
-  int local_1c;
-  void *local_18;
-  char local_11;
-  int local_10;
+  int loc_1c;
+  void *loc_18;
+  char loc_11;
+  int loc_10;
   char *__seh_handler;
-  int local_8;
+  int loc_8;
   
-  local_10 = *__seh_chain;
-  local_8 = 0xffffffff;
+  loc_10 = *__seh_chain;
+  loc_8 = 0xffffffff;
   __seh_handler = &__label_0040dc40;
-  *__seh_chain = &local_10;
-  sVar6 = 0;
+  *__seh_chain = &loc_10;
+  s6 = 0;
   if (*(int *)((int)this + 0x44) != 0) {  /* TODO: unknown offset 0x44 on this */
-    puVar7 = (ushort *)0x0;
-    local_11 = DAT_00480100;
-    local_18 = (void *)FUN_004050d0(*(int *)((int)this + 0x44));  /* TODO: unknown offset 0x44 on this */
+    pu7 = (ushort *)0x0;
+    loc_11 = DAT_00480100;
+    loc_18 = (void *)FUN_004050d0(*(int *)((int)this + 0x44));  /* TODO: unknown offset 0x44 on this */
     DAT_00480100 = 0;
     if (param_1 == 0xf) {
-      iVar4 = rand();
-      param_1 = (iVar4 << 2) / 0x7fff & 0xffff;
+      n4 = rand();
+      param_1 = (n4 << 2) / 0x7fff & 0xffff;
     }
     switch(param_1) {
     case 0:
-      sVar6 = 1;
+      s6 = 1;
       break;
     case 1:
-      sVar6 = 2;
+      s6 = 2;
       break;
     case 2:
-      sVar6 = 3;
+      s6 = 3;
       break;
     case 3:
-      sVar6 = 4;
+      s6 = 4;
       break;
     case 4:
-      sVar6 = 5;
+      s6 = 5;
       break;
     case 5:
-      sVar6 = 6;
+      s6 = 6;
       break;
     case 6:
-      sVar6 = 7;
+      s6 = 7;
       break;
     case 7:
-      sVar6 = 4;
+      s6 = 4;
       switch(DAT_00489398) {
       case 1:
-        puVar7 = (ushort *)&DAT_00487a08;
+        pu7 = (ushort *)&DAT_00487a08;
         break;
       case 2:
-        puVar7 = (ushort *)&DAT_00488a90;
+        pu7 = (ushort *)&DAT_00488a90;
         break;
       case 3:
-        puVar7 = (ushort *)&DAT_00487ec8;
+        pu7 = (ushort *)&DAT_00487ec8;
         break;
       case 4:
-        puVar7 = (ushort *)&DAT_00488750;
+        pu7 = (ushort *)&DAT_00488750;
         break;
       case 5:
-        puVar7 = (ushort *)&DAT_00488ad0;
+        pu7 = (ushort *)&DAT_00488ad0;
         break;
       case 6:
-        puVar7 = (ushort *)&DAT_00487b48;
+        pu7 = (ushort *)&DAT_00487b48;
       }
       break;
     case 8:
-      sVar6 = 4;
+      s6 = 4;
       switch(DAT_00489398) {
       case 1:
-        puVar7 = (ushort *)&DAT_00487bc8;
+        pu7 = (ushort *)&DAT_00487bc8;
         break;
       case 2:
-        puVar7 = (ushort *)&DAT_004879c8;
+        pu7 = (ushort *)&DAT_004879c8;
         break;
       case 3:
-        puVar7 = (ushort *)&DAT_00487b08;
+        pu7 = (ushort *)&DAT_00487b08;
         break;
       case 4:
-        puVar7 = (ushort *)&DAT_00488b10;
+        pu7 = (ushort *)&DAT_00488b10;
         break;
       case 5:
-        puVar7 = (ushort *)&DAT_00487848;
+        pu7 = (ushort *)&DAT_00487848;
         break;
       case 6:
-        puVar7 = (ushort *)&DAT_00488190;
+        pu7 = (ushort *)&DAT_00488190;
       }
       break;
     case 9:
-      sVar6 = 1;
+      s6 = 1;
       switch(DAT_00489398) {
       case 1:
-        puVar7 = (ushort *)&DAT_00487648;
+        pu7 = (ushort *)&DAT_00487648;
         break;
       case 2:
-        puVar7 = (ushort *)&DAT_00488c50;
+        pu7 = (ushort *)&DAT_00488c50;
         break;
       case 3:
-        puVar7 = (ushort *)&DAT_00488690;
+        pu7 = (ushort *)&DAT_00488690;
         break;
       case 4:
-        puVar7 = (ushort *)&DAT_00488a10;
+        pu7 = (ushort *)&DAT_00488a10;
         break;
       case 5:
-        puVar7 = (ushort *)&DAT_00488990;
+        pu7 = (ushort *)&DAT_00488990;
         break;
       case 6:
-        puVar7 = (ushort *)&DAT_00488510;
+        pu7 = (ushort *)&DAT_00488510;
       }
       break;
     case 10:
-      sVar6 = 1;
+      s6 = 1;
       switch(DAT_00489398) {
       case 1:
-        puVar7 = (ushort *)&DAT_00487a48;
+        pu7 = (ushort *)&DAT_00487a48;
         break;
       case 2:
-        puVar7 = (ushort *)&DAT_00488210;
+        pu7 = (ushort *)&DAT_00488210;
         break;
       case 3:
-        puVar7 = (ushort *)&DAT_00488050;
+        pu7 = (ushort *)&DAT_00488050;
         break;
       case 4:
-        puVar7 = (ushort *)&DAT_00488490;
+        pu7 = (ushort *)&DAT_00488490;
         break;
       case 5:
-        puVar7 = (ushort *)&DAT_00488550;
+        pu7 = (ushort *)&DAT_00488550;
         break;
       case 6:
-        puVar7 = (ushort *)&DAT_00487d08;
+        pu7 = (ushort *)&DAT_00487d08;
       }
       break;
     case 0xb:
-      sVar6 = 1;
+      s6 = 1;
       switch(DAT_00489398) {
       case 1:
-        puVar7 = (ushort *)&DAT_00487f08;
+        pu7 = (ushort *)&DAT_00487f08;
         break;
       case 2:
-        puVar7 = (ushort *)&DAT_00487dc8;
+        pu7 = (ushort *)&DAT_00487dc8;
         break;
       case 3:
-        puVar7 = (ushort *)&DAT_00488710;
+        pu7 = (ushort *)&DAT_00488710;
         break;
       case 4:
-        puVar7 = (ushort *)&DAT_004887d0;
+        pu7 = (ushort *)&DAT_004887d0;
         break;
       case 5:
-        puVar7 = (ushort *)&DAT_00487a88;
+        pu7 = (ushort *)&DAT_00487a88;
         break;
       case 6:
-        puVar7 = (ushort *)&DAT_00488450;
+        pu7 = (ushort *)&DAT_00488450;
       }
       break;
     case 0xc:
-      sVar6 = 7;
+      s6 = 7;
       switch(DAT_00489398) {
       case 1:
-        puVar7 = (ushort *)&DAT_00488a50;
+        pu7 = (ushort *)&DAT_00488a50;
         break;
       case 2:
-        puVar7 = (ushort *)&DAT_00487cc8;
+        pu7 = (ushort *)&DAT_00487cc8;
         break;
       case 3:
-        puVar7 = (ushort *)&DAT_004877c8;
+        pu7 = (ushort *)&DAT_004877c8;
         break;
       case 4:
-        puVar7 = (ushort *)&DAT_00487b88;
+        pu7 = (ushort *)&DAT_00487b88;
         break;
       case 5:
-        puVar7 = (ushort *)&DAT_00487c48;
+        pu7 = (ushort *)&DAT_00487c48;
         break;
       case 6:
-        puVar7 = (ushort *)&DAT_00487608;
+        pu7 = (ushort *)&DAT_00487608;
       }
       break;
     case 0xd:
-      sVar6 = 6;
+      s6 = 6;
       switch(DAT_00489398) {
       case 1:
-        puVar7 = (ushort *)&DAT_00487f48;
+        pu7 = (ushort *)&DAT_00487f48;
         break;
       case 2:
-        puVar7 = (ushort *)&DAT_004885d0;
+        pu7 = (ushort *)&DAT_004885d0;
         break;
       case 3:
-        puVar7 = (ushort *)&DAT_00488b50;
+        pu7 = (ushort *)&DAT_00488b50;
         break;
       case 4:
-        puVar7 = (ushort *)&DAT_00488790;
+        pu7 = (ushort *)&DAT_00488790;
         break;
       case 5:
-        puVar7 = (ushort *)&DAT_004883d0;
+        pu7 = (ushort *)&DAT_004883d0;
         break;
       case 6:
-        puVar7 = (ushort *)&DAT_00488250;
+        pu7 = (ushort *)&DAT_00488250;
       }
       break;
     case 0xe:
-      sVar6 = 5;
+      s6 = 5;
       switch(DAT_00489398) {
       case 1:
-        puVar7 = (ushort *)&DAT_00487788;
+        pu7 = (ushort *)&DAT_00487788;
         break;
       case 2:
-        puVar7 = (ushort *)&DAT_00487988;
+        pu7 = (ushort *)&DAT_00487988;
         break;
       case 3:
-        puVar7 = (ushort *)&DAT_00488010;
+        pu7 = (ushort *)&DAT_00488010;
         break;
       case 4:
-        puVar7 = (ushort *)&DAT_00488950;
+        pu7 = (ushort *)&DAT_00488950;
         break;
       case 5:
-        puVar7 = (ushort *)&DAT_004886d0;
+        pu7 = (ushort *)&DAT_004886d0;
         break;
       case 6:
-        puVar7 = (ushort *)&DAT_004881d0;
+        pu7 = (ushort *)&DAT_004881d0;
       }
     }
-    if (sVar6 != 0) {
-      if (puVar7 == (ushort *)0x0) {
-        local_18 = (void *)0x0;
-        local_1c = 0;
-        local_8 = 0;
-        FUN_0041cde0(*(void **)((int)this + 0x44),&local_1c);  /* TODO: unknown offset 0x44 on this */
+    if (s6 != 0) {
+      if (pu7 == (ushort *)0x0) {
+        loc_18 = (void *)0x0;
+        loc_1c = 0;
+        loc_8 = 0;
+        FUN_0041cde0(*(void **)((int)this + 0x44),&loc_1c);  /* TODO: unknown offset 0x44 on this */
         if ((*(int *)((int)this + 100) != 0) &&  /* TODO: unknown offset 0x64 on this */
-           (bVar3 = FUN_0045d930(*(int *)((int)this + 100)),  /* TODO: unknown offset 0x64 on this */
-           (short)CONCAT31(__extra_ret,bVar3) != 0)) {
+           (b3 = FUN_0045d930(*(int *)((int)this + 100)),  /* TODO: unknown offset 0x64 on this */
+           (short)CONCAT31(__extra_ret,b3) != 0)) {
           FUN_00434490(*(int *)((int)this + 100));  /* TODO: unknown offset 0x64 on this */
           FUN_00433420(*(int **)((int)this +
                                 *(short *)(*(int *)((int)this + 0x44) + 0x10e) * 4 + 100));  /* TODO: unknown offsets 0x44, 0x64 on this; 0x10e = current_frame on UIWidget */
         }
-        psVar5 = FUN_0045ef70(*(int **)((int)this + sVar6 * 4 + 100));  /* TODO: unknown offset (sVar6*4+0x64) on this */
-        pvVar1 = *(void **)((int)this + 0x44);  /* TODO: unknown offset 0x44 on this */
-        *(short **)((int)this + 100) = psVar5;  /* TODO: unknown offset 0x64 on this */
-        ((UIWidget *)pvVar1)->anim_flag_0 = 0;
-        ((UIWidget *)pvVar1)->anim_flag_2 = 0;
-        ((UIWidget *)pvVar1)->anim_flag_1 = 0;
-        ((UIWidget *)pvVar1)->anim_flag_3 = 0;
-        FUN_00405e10(pvVar1,sVar6,'\0');
-        local_8 = 0xffffffff;
+        ps5 = FUN_0045ef70(*(int **)((int)this + s6 * 4 + 100));  /* TODO: unknown offset (s6*4+0x64) on this */
+        pv1 = *(void **)((int)this + 0x44);  /* TODO: unknown offset 0x44 on this */
+        *(short **)((int)this + 100) = ps5;  /* TODO: unknown offset 0x64 on this */
+        ((UIWidget *)pv1)->anim_flag_0 = 0;
+        ((UIWidget *)pv1)->anim_flag_2 = 0;
+        ((UIWidget *)pv1)->anim_flag_1 = 0;
+        ((UIWidget *)pv1)->anim_flag_3 = 0;
+        FUN_00405e10(pv1,s6,'\0');
+        loc_8 = 0xffffffff;
         FUN_0040dc4a();
       }
       else {
-        pvVar1 = *(void **)((int)this + 0x44);  /* TODO: unknown offset 0x44 on this */
-        ((UIWidget *)pvVar1)->anim_flag_0 = 0;
-        ((UIWidget *)pvVar1)->anim_flag_2 = 0;
-        ((UIWidget *)pvVar1)->anim_flag_1 = 0;
-        ((UIWidget *)pvVar1)->anim_flag_3 = 0;
-        FUN_00405d30(pvVar1,sVar6);
-        if (local_18 == (void *)0x0) {
-          FUN_00407b10(*(void **)((int)this + 0x44),7,puVar7);  /* TODO: unknown offset 0x44 on this */
+        pv1 = *(void **)((int)this + 0x44);  /* TODO: unknown offset 0x44 on this */
+        ((UIWidget *)pv1)->anim_flag_0 = 0;
+        ((UIWidget *)pv1)->anim_flag_2 = 0;
+        ((UIWidget *)pv1)->anim_flag_1 = 0;
+        ((UIWidget *)pv1)->anim_flag_3 = 0;
+        FUN_00405d30(pv1,s6);
+        if (loc_18 == (void *)0x0) {
+          FUN_00407b10(*(void **)((int)this + 0x44),7,pu7);  /* TODO: unknown offset 0x44 on this */
         }
         else {
-          uVar2 = ((UIWidget *)local_18)->flags;
-          ((UIWidget *)local_18)->flags = uVar2 & 0xffffffef;
-          FUN_00407b10(local_18,7,puVar7);
-          ((UIWidget *)local_18)->flags =
-               ((uint)((byte)(uVar2 >> 4) & 1) << 4 ^ ((UIWidget *)local_18)->flags) & 0x10 ^
-               ((UIWidget *)local_18)->flags;
+          u2 = ((UIWidget *)loc_18)->flags;
+          ((UIWidget *)loc_18)->flags = u2 & 0xffffffef;
+          FUN_00407b10(loc_18,7,pu7);
+          ((UIWidget *)loc_18)->flags =
+               ((uint)((byte)(u2 >> 4) & 1) << 4 ^ ((UIWidget *)loc_18)->flags) & 0x10 ^
+               ((UIWidget *)loc_18)->flags;
         }
       }
     }
-    DAT_00480100 = local_11;
+    DAT_00480100 = loc_11;
   }
-  *__seh_chain = local_10;
+  *__seh_chain = loc_10;
   return;
 }
 
@@ -2335,15 +2335,15 @@ void __thiscall FUN_0040dde0(void *this,short param_1)
 void __fastcall FUN_0040e0c0(int param_1)
 
 {
-  int iVar1;
+  int n1;
   DWORD DVar2;
   
   if (*(int *)(param_1 + 0x5c) != 0) {
     DVar2 = GetTickCount();
     if (DVar2 < *(int *)(param_1 + 0x60) + 5000U) {
-      iVar1 = *(int *)(param_1 + 0x60);
+      n1 = *(int *)(param_1 + 0x60);
       DVar2 = GetTickCount();
-      FUN_00456310((int)(((longlong)(int)((iVar1 - DVar2) + 5000) * (longlong)DAT_004890a4 &
+      FUN_00456310((int)(((longlong)(int)((n1 - DVar2) + 5000) * (longlong)DAT_004890a4 &
                          0xffffffffU) / 1000),'\x01','\0');
     }
     FUN_004268d0(*(int **)(param_1 + 0x58),10);
@@ -2405,18 +2405,18 @@ void FUN_0040e355(void)
 void __fastcall FUN_0040e360(int param_1)
 
 {
-  int *piVar1;
-  short sVar2;
+  int *pn1;
+  short s2;
   
-  sVar2 = 0;
+  s2 = 0;
   do {
-    piVar1 = (int *)(param_1 + 0x88 + sVar2 * 6);
-    if (*piVar1 != 0) {
-      FUN_00433270(piVar1);
+    pn1 = (int *)(param_1 + 0x88 + s2 * 6);
+    if (*pn1 != 0) {
+      FUN_00433270(pn1);
     }
-    sVar2 = sVar2 + 1;
-    *piVar1 = 0;
-  } while (sVar2 < 0x14);
+    s2 = s2 + 1;
+    *pn1 = 0;
+  } while (s2 < 0x14);
   return;
 }
 
@@ -2438,16 +2438,16 @@ void __thiscall FUN_0040e3a0(void *this,short param_1)
 short __cdecl FUN_0040e4f0(short *param_1,short param_2)
 
 {
-  short sVar1;
+  short s1;
   
-  sVar1 = 1;
+  s1 = 1;
   if (0 < *param_1) {
     do {
-      if (param_1[sVar1] == param_2) {
-        return sVar1;
+      if (param_1[s1] == param_2) {
+        return s1;
       }
-      sVar1 = sVar1 + 1;
-    } while (sVar1 <= *param_1);
+      s1 = s1 + 1;
+    } while (s1 <= *param_1);
   }
   return 0;
 }
@@ -2459,20 +2459,20 @@ short __cdecl FUN_0040e4f0(short *param_1,short param_2)
 int __cdecl FUN_0040e520(short param_1)
 
 {
-  short sVar1;
+  short s1;
   short __extra_ret;
   short extraout_var_00;
   
-  sVar1 = FUN_0040e4f0(&DAT_00483498,param_1);
-  if (sVar1 != 0) {
+  s1 = FUN_0040e4f0(&DAT_00483498,param_1);
+  if (s1 != 0) {
     return CONCAT22(__extra_ret,6);
   }
-  sVar1 = FUN_0040e4f0(&DAT_00483478,param_1);
-  if (sVar1 != 0) {
+  s1 = FUN_0040e4f0(&DAT_00483478,param_1);
+  if (s1 != 0) {
     return CONCAT22(extraout_var_00,3);
   }
-  sVar1 = FUN_0040e4f0(&DAT_00483488,param_1);
-  return (-(uint)(sVar1 == 0) & 0xfffffffb) + 4;
+  s1 = FUN_0040e4f0(&DAT_00483488,param_1);
+  return (-(uint)(s1 == 0) & 0xfffffffb) + 4;
 }
 
 
@@ -2482,26 +2482,26 @@ int __cdecl FUN_0040e520(short param_1)
 int FUN_0040e580(void)
 
 {
-  short sVar1;
-  short uVar2;
+  short s1;
+  short u2;
   
-  sVar1 = FUN_00433a80(DAT_004897c0);
-  uVar2 = (short)((uint)(sVar1 + -4) >> 0x10);
-  switch(sVar1) {
+  s1 = FUN_00433a80(DAT_004897c0);
+  u2 = (short)((uint)(s1 + -4) >> 0x10);
+  switch(s1) {
   case 4:
-    return CONCAT22(uVar2,1);
+    return CONCAT22(u2,1);
   case 5:
   case 0x1c:
   case 0x1d:
   case 0x1e:
-    return CONCAT22(uVar2,4);
+    return CONCAT22(u2,4);
   case 6:
   case 0xc:
   case 0x11:
   case 0x12:
   case 0x13:
   case 0x14:
-    return CONCAT22(uVar2,6);
+    return CONCAT22(u2,6);
   case 7:
   case 0x15:
   case 0x16:
@@ -2509,16 +2509,16 @@ int FUN_0040e580(void)
   case 0x18:
   case 0x19:
   case 0x1b:
-    return CONCAT22(uVar2,5);
+    return CONCAT22(u2,5);
   case 8:
   case 9:
   case 10:
   case 0xb:
   case 0xf:
   case 0x10:
-    return CONCAT22(uVar2,3);
+    return CONCAT22(u2,3);
   default:
-    return CONCAT22(uVar2,0xffff);
+    return CONCAT22(u2,0xffff);
   }
 }
 
@@ -2529,94 +2529,94 @@ int FUN_0040e580(void)
 int __cdecl FUN_0040e610(short param_1)
 
 {
-  ushort uVar1;
-  ushort uVar2;
-  ushort uVar3;
-  ushort uVar4;
-  int iVar5;
-  uint uVar6;
-  short sVar7;
-  short sVar8;
+  ushort u1;
+  ushort u2;
+  ushort u3;
+  ushort u4;
+  int n5;
+  uint u6;
+  short s7;
+  short s8;
   
-  iVar5 = FUN_0040e520(param_1);
-  if ((short)iVar5 != -1) {
-    *(char *)((short)iVar5 + 0x41 + DAT_0048345c) = 1;
+  n5 = FUN_0040e520(param_1);
+  if ((short)n5 != -1) {
+    *(char *)((short)n5 + 0x41 + DAT_0048345c) = 1;
   }
-  uVar1 = *(ushort *)(DAT_0048345c + 0x48);
-  if ((uVar1 & 1) == 0) {
+  u1 = *(ushort *)(DAT_0048345c + 0x48);
+  if ((u1 & 1) == 0) {
     *(char *)(DAT_0048345c + 0x90) = 0;
   }
   else {
-    *(char *)(DAT_0048345c + 0x90) = (char)uVar1;
+    *(char *)(DAT_0048345c + 0x90) = (char)u1;
   }
-  sVar7 = 0;
-  while (uVar4 = DAT_00483498, uVar3 = DAT_00483488, uVar2 = DAT_00483478, sVar8 = sVar7 + 1,
-        sVar7 < 0x65) {
-    iVar5 = rand();
-    uVar4 = DAT_00483498;
-    uVar3 = DAT_00483488;
-    uVar2 = DAT_00483478;
-    iVar5 = iVar5 % 3;
-    sVar7 = sVar8;
-    if (iVar5 == 0) {
-      if (((uVar1 & 0x30) != 0) && (*(char *)(DAT_0048345c + 0x47) == '\0')) {
-        iVar5 = rand();
-        uVar6 = (int)(iVar5 * (uint)uVar4) / 0x7fff;
-        return CONCAT22((short)(uVar6 >> 0x10),*(short *)(&DAT_0048349a + (uVar6 & 0xffff) * 2)
+  s7 = 0;
+  while (u4 = DAT_00483498, u3 = DAT_00483488, u2 = DAT_00483478, s8 = s7 + 1,
+        s7 < 0x65) {
+    n5 = rand();
+    u4 = DAT_00483498;
+    u3 = DAT_00483488;
+    u2 = DAT_00483478;
+    n5 = n5 % 3;
+    s7 = s8;
+    if (n5 == 0) {
+      if (((u1 & 0x30) != 0) && (*(char *)(DAT_0048345c + 0x47) == '\0')) {
+        n5 = rand();
+        u6 = (int)(n5 * (uint)u4) / 0x7fff;
+        return CONCAT22((short)(u6 >> 0x10),*(short *)(&DAT_0048349a + (u6 & 0xffff) * 2)
                        );
       }
     }
-    else if (iVar5 == 1) {
-      if (((uVar1 & 0x50) != 0) && (*(char *)(DAT_0048345c + 0x45) == '\0')) {
-        iVar5 = rand();
-        uVar6 = (int)(iVar5 * (uint)uVar3) / 0x7fff;
-        return CONCAT22((short)(uVar6 >> 0x10),*(short *)(&DAT_0048348a + (uVar6 & 0xffff) * 2)
+    else if (n5 == 1) {
+      if (((u1 & 0x50) != 0) && (*(char *)(DAT_0048345c + 0x45) == '\0')) {
+        n5 = rand();
+        u6 = (int)(n5 * (uint)u3) / 0x7fff;
+        return CONCAT22((short)(u6 >> 0x10),*(short *)(&DAT_0048348a + (u6 & 0xffff) * 2)
                        );
       }
     }
-    else if (((iVar5 == 2) && ((uVar1 & 0x90) != 0)) && (*(char *)(DAT_0048345c + 0x44) == '\0')) {
-      iVar5 = rand();
-      uVar6 = (int)(iVar5 * (uint)uVar2) / 0x7fff;
-      return CONCAT22((short)(uVar6 >> 0x10),*(short *)(&DAT_0048347a + (uVar6 & 0xffff) * 2));
+    else if (((n5 == 2) && ((u1 & 0x90) != 0)) && (*(char *)(DAT_0048345c + 0x44) == '\0')) {
+      n5 = rand();
+      u6 = (int)(n5 * (uint)u2) / 0x7fff;
+      return CONCAT22((short)(u6 >> 0x10),*(short *)(&DAT_0048347a + (u6 & 0xffff) * 2));
     }
   }
-  if ((uVar1 & 0x20) != 0) {
-    iVar5 = rand();
-    uVar6 = (int)(iVar5 * (uint)uVar4) / 0x7fff;
-    return CONCAT22((short)(uVar6 >> 0x10),*(short *)(&DAT_0048349a + (uVar6 & 0xffff) * 2));
+  if ((u1 & 0x20) != 0) {
+    n5 = rand();
+    u6 = (int)(n5 * (uint)u4) / 0x7fff;
+    return CONCAT22((short)(u6 >> 0x10),*(short *)(&DAT_0048349a + (u6 & 0xffff) * 2));
   }
-  if ((uVar1 & 0x40) != 0) {
-    iVar5 = rand();
-    uVar6 = (int)(iVar5 * (uint)uVar3) / 0x7fff;
-    return CONCAT22((short)(uVar6 >> 0x10),*(short *)(&DAT_0048348a + (uVar6 & 0xffff) * 2));
+  if ((u1 & 0x40) != 0) {
+    n5 = rand();
+    u6 = (int)(n5 * (uint)u3) / 0x7fff;
+    return CONCAT22((short)(u6 >> 0x10),*(short *)(&DAT_0048348a + (u6 & 0xffff) * 2));
   }
-  if ((uVar1 & 0x80) != 0) {
-    iVar5 = rand();
-    uVar6 = (int)(iVar5 * (uint)uVar2) / 0x7fff;
-    return CONCAT22((short)(uVar6 >> 0x10),*(short *)(&DAT_0048347a + (uVar6 & 0xffff) * 2));
+  if ((u1 & 0x80) != 0) {
+    n5 = rand();
+    u6 = (int)(n5 * (uint)u2) / 0x7fff;
+    return CONCAT22((short)(u6 >> 0x10),*(short *)(&DAT_0048347a + (u6 & 0xffff) * 2));
   }
   if (*(char *)(DAT_0048345c + 0x44) == '\0') {
-    iVar5 = rand();
-    uVar6 = (int)(iVar5 * (uint)uVar2) / 0x7fff;
-    return CONCAT22((short)(uVar6 >> 0x10),*(short *)(&DAT_0048347a + (uVar6 & 0xffff) * 2));
+    n5 = rand();
+    u6 = (int)(n5 * (uint)u2) / 0x7fff;
+    return CONCAT22((short)(u6 >> 0x10),*(short *)(&DAT_0048347a + (u6 & 0xffff) * 2));
   }
   if (*(char *)(DAT_0048345c + 0x47) == '\0') {
-    iVar5 = rand();
-    uVar6 = (int)(iVar5 * (uint)uVar4) / 0x7fff;
-    return CONCAT22((short)(uVar6 >> 0x10),*(short *)(&DAT_0048349a + (uVar6 & 0xffff) * 2));
+    n5 = rand();
+    u6 = (int)(n5 * (uint)u4) / 0x7fff;
+    return CONCAT22((short)(u6 >> 0x10),*(short *)(&DAT_0048349a + (u6 & 0xffff) * 2));
   }
   if (*(char *)(DAT_0048345c + 0x45) != '\0') {
     *(char *)(DAT_0048345c + 0x44) = '\0';
     *(char *)(DAT_0048345c + 0x45) = 0;
     *(char *)(DAT_0048345c + 0x47) = 0;
-    uVar1 = DAT_00483478;
-    iVar5 = rand();
-    uVar6 = (int)(iVar5 * (uint)uVar1) / 0x7fff;
-    return CONCAT22((short)(uVar6 >> 0x10),*(short *)(&DAT_0048347a + (uVar6 & 0xffff) * 2));
+    u1 = DAT_00483478;
+    n5 = rand();
+    u6 = (int)(n5 * (uint)u1) / 0x7fff;
+    return CONCAT22((short)(u6 >> 0x10),*(short *)(&DAT_0048347a + (u6 & 0xffff) * 2));
   }
-  iVar5 = rand();
-  uVar6 = (int)(iVar5 * (uint)uVar3) / 0x7fff;
-  return CONCAT22((short)(uVar6 >> 0x10),*(short *)(&DAT_0048348a + (uVar6 & 0xffff) * 2));
+  n5 = rand();
+  u6 = (int)(n5 * (uint)u3) / 0x7fff;
+  return CONCAT22((short)(u6 >> 0x10),*(short *)(&DAT_0048348a + (u6 & 0xffff) * 2));
 }
 
 
@@ -2637,23 +2637,23 @@ void __fastcall FUN_0040e890(char *param_1)
 void __cdecl FUN_0040efc0(short *param_1,char param_2)
 
 {
-  short sVar1;
-  short sVar2;
-  short sVar3;
+  short s1;
+  short s2;
+  short s3;
   
   if (param_2 == '\0') {
     *param_1 = CONCAT11((char)*param_1,(char)((ushort)*param_1 >> 8));
   }
-  sVar3 = 0;
-  sVar1 = *param_1;
-  if (0 < sVar1) {
+  s3 = 0;
+  s1 = *param_1;
+  if (0 < s1) {
     do {
       if (DAT_00483ddc != '\0') {
-        sVar2 = param_1[sVar3 * 2 + 2];
-        param_1[sVar3 * 2 + 2] = CONCAT11((char)sVar2,(char)((ushort)sVar2 >> 8));
+        s2 = param_1[s3 * 2 + 2];
+        param_1[s3 * 2 + 2] = CONCAT11((char)s2,(char)((ushort)s2 >> 8));
       }
-      sVar3 = sVar3 + 1;
-    } while (sVar3 < sVar1);
+      s3 = s3 + 1;
+    } while (s3 < s1);
   }
   if (param_2 != '\0') {
     *param_1 = CONCAT11((char)*param_1,(char)((ushort)*param_1 >> 8));
@@ -2668,13 +2668,13 @@ void __cdecl FUN_0040efc0(short *param_1,char param_2)
 ushort * __cdecl FUN_0040f040(void *param_1,int param_2)
 
 {
-  ushort *puVar1;
+  ushort *pu1;
   
-  puVar1 = FUN_004607d0(param_1,param_2,(ushort *)0x0,(ushort *)0x0,0);
-  if (puVar1 != (ushort *)0x0) {
-    FUN_0040efc0((short *)puVar1,'\0');
+  pu1 = FUN_004607d0(param_1,param_2,(ushort *)0x0,(ushort *)0x0,0);
+  if (pu1 != (ushort *)0x0) {
+    FUN_0040efc0((short *)pu1,'\0');
   }
-  return puVar1;
+  return pu1;
 }
 
 
@@ -2754,34 +2754,34 @@ int __cdecl FUN_0040f2f0(void *param_1,uint param_2,int param_3)
 ushort * __cdecl FUN_0040f380(void *param_1,int param_2,ushort *param_3)
 
 {
-  short sVar1;
-  ushort *puVar2;
-  LPCVOID pvVar3;
-  int iVar4;
+  short s1;
+  ushort *pu2;
+  LPCVOID pv3;
+  int n4;
   
-  puVar2 = FUN_0040f040(param_1,param_2);
-  if (puVar2 == (ushort *)0x0) {
+  pu2 = FUN_0040f040(param_1,param_2);
+  if (pu2 == (ushort *)0x0) {
     return param_3;
   }
   if (param_3 == (ushort *)0x0) {
-    pvVar3 = DAT_00483df4;
+    pv3 = DAT_00483df4;
     if (DAT_004833cc != (LPCVOID)0x0) {
-      pvVar3 = DAT_004833cc;
+      pv3 = DAT_004833cc;
     }
-    param_3 = FUN_0046f060(pvVar3,(short)*puVar2 * 2 + 2,1);
+    param_3 = FUN_0046f060(pv3,(short)*pu2 * 2 + 2,1);
     if (param_3 == (ushort *)0x0) goto __label_0040f3f2;
   }
-  *param_3 = *puVar2;
-  sVar1 = 1;
-  if (0 < (short)*puVar2) {
+  *param_3 = *pu2;
+  s1 = 1;
+  if (0 < (short)*pu2) {
     do {
-      iVar4 = (int)sVar1;
-      sVar1 = sVar1 + 1;
-      param_3[iVar4] = puVar2[iVar4 * 2];
-    } while (sVar1 <= (short)*puVar2);
+      n4 = (int)s1;
+      s1 = s1 + 1;
+      param_3[n4] = pu2[n4 * 2];
+    } while (s1 <= (short)*pu2);
   }
 __label_0040f3f2:
-  FUN_0040f070(param_1,param_2,(uint)puVar2);
+  FUN_0040f070(param_1,param_2,(uint)pu2);
   return param_3;
 }
 
@@ -2792,26 +2792,26 @@ __label_0040f3f2:
 void __cdecl FUN_0040f410(ushort *param_1,ushort *param_2)
 
 {
-  LPCVOID pvVar1;
-  short sVar2;
-  int iVar3;
+  LPCVOID pv1;
+  short s2;
+  int n3;
   
   if (param_2 == (ushort *)0x0) {
-    pvVar1 = DAT_00483df4;
+    pv1 = DAT_00483df4;
     if (DAT_004833cc != (LPCVOID)0x0) {
-      pvVar1 = DAT_004833cc;
+      pv1 = DAT_004833cc;
     }
-    param_2 = FUN_0046f060(pvVar1,(short)*param_1 * 2 + 2,1);
+    param_2 = FUN_0046f060(pv1,(short)*param_1 * 2 + 2,1);
   }
   if (param_2 != (ushort *)0x0) {
     *param_2 = *param_1;
-    sVar2 = 1;
+    s2 = 1;
     if (0 < (short)*param_1) {
       do {
-        iVar3 = (int)sVar2;
-        sVar2 = sVar2 + 1;
-        param_2[iVar3] = param_1[iVar3 * 2];
-      } while (sVar2 <= (short)*param_1);
+        n3 = (int)s2;
+        s2 = s2 + 1;
+        param_2[n3] = param_1[n3 * 2];
+      } while (s2 <= (short)*param_1);
     }
   }
   return;
@@ -2824,27 +2824,27 @@ void __cdecl FUN_0040f410(ushort *param_1,ushort *param_2)
 char __cdecl FUN_0040f480(void *param_1,int param_2,ushort *param_3)
 
 {
-  ushort *puVar1;
-  char uVar2;
-  short sVar3;
-  int iVar4;
+  ushort *pu1;
+  char u2;
+  short s3;
+  int n4;
   
-  uVar2 = 0;
-  puVar1 = FUN_0040f040(param_1,param_2);
-  if (puVar1 != (ushort *)0x0) {
-    sVar3 = 1;
-    uVar2 = 1;
-    *param_3 = *puVar1;
-    if (0 < (short)*puVar1) {
+  u2 = 0;
+  pu1 = FUN_0040f040(param_1,param_2);
+  if (pu1 != (ushort *)0x0) {
+    s3 = 1;
+    u2 = 1;
+    *param_3 = *pu1;
+    if (0 < (short)*pu1) {
       do {
-        iVar4 = (int)sVar3;
-        sVar3 = sVar3 + 1;
-        param_3[iVar4] = puVar1[iVar4 * 2];
-      } while (sVar3 <= (short)*puVar1);
+        n4 = (int)s3;
+        s3 = s3 + 1;
+        param_3[n4] = pu1[n4 * 2];
+      } while (s3 <= (short)*pu1);
     }
-    FUN_0040f070(param_1,param_2,(uint)puVar1);
+    FUN_0040f070(param_1,param_2,(uint)pu1);
   }
-  return uVar2;
+  return u2;
 }
 
 
@@ -2870,13 +2870,13 @@ void __fastcall FUN_0040f520(int *param_1)
 void FUN_0040f560(void)
 
 {
-  int uVar1;
+  int u1;
   int __param_fffffff4;
   
-  uVar1 = 0;
+  u1 = 0;
   FUN_00401050(&__stk_44,0);
   FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00484278,uVar1,__param_fffffff4);
+  FUN_00401060(&DAT_00484278,u1,__param_fffffff4);
   return;
 }
 
@@ -2967,13 +2967,13 @@ void FUN_0040f630(void)
 void FUN_0040f650(void)
 
 {
-  int uVar1;
+  int u1;
   int __param_fffffff4;
   
-  uVar1 = 0;
+  u1 = 0;
   FUN_00401050(&__stk_44,0);
   FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00484288,uVar1,__param_fffffff4);
+  FUN_00401060(&DAT_00484288,u1,__param_fffffff4);
   return;
 }
 
@@ -3076,18 +3076,18 @@ void * __thiscall FUN_0040f730(void *this,int param_1)
 
 {
   int *__seh_chain;
-  int local_10;
+  int loc_10;
   char *__seh_handler;
-  int local_8;
+  int loc_8;
   
-  local_10 = *__seh_chain;
-  local_8 = 0xffffffff;
+  loc_10 = *__seh_chain;
+  loc_8 = 0xffffffff;
   __seh_handler = &__label_0040f785;
-  *__seh_chain = &local_10;
+  *__seh_chain = &loc_10;
   FUN_00454a70(this,param_1);
   *(void ***)this = &PTR_FUN_00472af8;
   *(int *)((int)this + 0x11c) = 0;  /* TODO: offset 0x11c - likely linked sibling pointer */
-  *__seh_chain = local_10;
+  *__seh_chain = loc_10;
   return this;
 }
 
@@ -3313,18 +3313,18 @@ void * __thiscall FUN_0040fd60(void *this,int param_1)
 
 {
   int *__seh_chain;
-  int local_10;
+  int loc_10;
   char *__seh_handler;
-  int local_8;
+  int loc_8;
   
-  local_10 = *__seh_chain;
-  local_8 = 0xffffffff;
+  loc_10 = *__seh_chain;
+  loc_8 = 0xffffffff;
   __seh_handler = &__label_0040fdb5;
-  *__seh_chain = &local_10;
+  *__seh_chain = &loc_10;
   FUN_00454a70(this,param_1);
   *(void ***)this = &PTR_FUN_00472ba8;
   *(int *)((int)this + 0x11c) = 0;  /* TODO: offset 0x11c - likely linked sibling pointer */
-  *__seh_chain = local_10;
+  *__seh_chain = loc_10;
   return this;
 }
 
@@ -3349,27 +3349,27 @@ void __thiscall FUN_0040fe40(void *this,int param_1)
 
 {
   int *__seh_chain;
-  int local_18;
-  int local_14;
-  int local_10;
+  int loc_18;
+  int loc_14;
+  int loc_10;
   char *__seh_handler;
-  int local_8;
+  int loc_8;
   
-  local_10 = *__seh_chain;
+  loc_10 = *__seh_chain;
   __seh_handler = &__label_0040fec0;
-  *__seh_chain = &local_10;
+  *__seh_chain = &loc_10;
   *(int *)((int)this + 0x11c) = param_1;  /* TODO: offset 0x11c - linked sibling pointer */
   if (param_1 != 0) {
-    local_14 = 0;
-    local_18 = 0;
-    local_8 = 0;
-    FUN_0041ce10(this,&local_18,1);
-    FUN_0041d020(*(void **)((int)this + 0x11c),local_14,local_18,1);  /* TODO: offset 0x11c */
-    local_8 = 0xffffffff;
+    loc_14 = 0;
+    loc_18 = 0;
+    loc_8 = 0;
+    FUN_0041ce10(this,&loc_18,1);
+    FUN_0041d020(*(void **)((int)this + 0x11c),loc_14,loc_18,1);  /* TODO: offset 0x11c */
+    loc_8 = 0xffffffff;
     *(void **)(*(int *)((int)this + 0x11c) + 0x11c) = this;  /* TODO: offset 0x11c - sets reciprocal link */
     FUN_0040feca();
   }
-  *__seh_chain = local_10;
+  *__seh_chain = loc_10;
   return;
 }
 

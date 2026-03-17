@@ -16,13 +16,13 @@
 void FUN_00401010(void)
 
 {
-  int uVar1;
+  int u1;
   int __param_fffffff4;
   
-  uVar1 = 0;
+  u1 = 0;
   FUN_00401050(&__stk_44,0);
   FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00484158,uVar1,__param_fffffff4);
+  FUN_00401060(&DAT_00484158,u1,__param_fffffff4);
   return;
 }
 
@@ -134,41 +134,41 @@ GameWidget * __fastcall FUN_00401140(GameWidget *this)
 
 {
   int *__seh_chain;
-  int uVar1;
-  int uVar2;
-  int local_10;
+  int u1;
+  int u2;
+  int loc_10;
   void *__seh_handler;
-  int local_8;
+  int loc_8;
 
-  local_10 = *__seh_chain;
-  local_8 = 0xffffffff;
+  loc_10 = *__seh_chain;
+  loc_8 = 0xffffffff;
   __seh_handler = &__label_0040124f;
-  *__seh_chain = &local_10;
-  uVar2 = 0x40116a;
+  *__seh_chain = &loc_10;
+  u2 = 0x40116a;
   FUN_0044e3f0(this);
   this->pair_x_1 = 0;
   this->pair_y_1 = 0;
   this->pair_x_2 = 0;
   this->object_ptr = NULL;
-  local_8 = 2;
+  loc_8 = 2;
   this->vtable = (void **)&PTR_FUN_00472078;
   this->_pad134[0] = 0;
   *(unsigned char *)&this->field_118 = 0;
   this->field_12e = 0;
   this->field_12f = 0;
   this->scrollbar_ref = 0;
-  uVar1 = 0xffffffff;
+  u1 = 0xffffffff;
   FUN_00401050(&__stk_34,-1);
   FUN_00401050(&__stk_33,-1);
-  FUN_00401270(&this->pair_x_1,uVar1,uVar2);
-  uVar1 = 0;
+  FUN_00401270(&this->pair_x_1,u1,u2);
+  u1 = 0;
   FUN_00401050(&__stk_34,0);
   FUN_00401050(&__stk_33,0);
-  FUN_00401270(&this->pair_x_2,uVar1,uVar2);
+  FUN_00401270(&this->pair_x_2,u1,u2);
   this->field_130 = 0;
   FUN_0041da90(this,1);
   this->type_or_mode = 2;
-  *__seh_chain = local_10;
+  *__seh_chain = loc_10;
   return this;
 }
 
@@ -208,16 +208,16 @@ void FUN_004012a0(void)
 
 {
   int *__seh_chain;
-  int local_10;
+  int loc_10;
   void *__seh_handler;
-  int local_8;
+  int loc_8;
   
-  local_10 = *__seh_chain;
+  loc_10 = *__seh_chain;
   __seh_handler = &__label_004012d7;
-  *__seh_chain = &local_10;
-  local_8 = 0xffffffff;
+  *__seh_chain = &loc_10;
+  loc_8 = 0xffffffff;
   FUN_004012e1();
-  *__seh_chain = local_10;
+  *__seh_chain = loc_10;
   return;
 }
 
@@ -242,22 +242,22 @@ void __fastcall FUN_004012f0(int *param_1)
 
 {
   int *__seh_chain;
-  int local_10;
+  int loc_10;
   void *__seh_handler;
-  int local_8;
+  int loc_8;
   
-  local_10 = *__seh_chain;
+  loc_10 = *__seh_chain;
   __seh_handler = &__label_00401366;
   *param_1 = &PTR_FUN_00472078;
-  *__seh_chain = &local_10;
-  local_8 = (local_8 & ~0xFF) | 1;
-  local_8 = (local_8 & 0xFF) | (0 << 8);
+  *__seh_chain = &loc_10;
+  loc_8 = (loc_8 & ~0xFF) | 1;
+  loc_8 = (loc_8 & 0xFF) | (0 << 8);
   FUN_0040134a();
-  local_8 &= ~0xFF;
+  loc_8 &= ~0xFF;
   FUN_00401358();
-  local_8 = 0xffffffff;
+  loc_8 = 0xffffffff;
   FUN_00401370();
-  *__seh_chain = local_10;
+  *__seh_chain = loc_10;
   return;
 }
 
@@ -372,25 +372,25 @@ void __fastcall FUN_00401750(GameWidget *this)
 
 {
   int *__seh_chain;
-  int local_10;
+  int loc_10;
   void *__seh_handler;
-  int local_8;
+  int loc_8;
 
-  local_10 = *__seh_chain;
+  loc_10 = *__seh_chain;
   __seh_handler = &__label_004017e4;
   this->vtable = (void **)&PTR_FUN_00472120;
-  *__seh_chain = &local_10;
-  local_8 = 2;
+  *__seh_chain = &loc_10;
+  loc_8 = 2;
   if (*(char *)((int)this + 0x12c) == '\0') {  /* TODO: byte within scrollbar_ref/_pad area */
     FUN_00401d20(this);
   }
-  local_8 = (local_8 & ~0xFF) | 1;
+  loc_8 = (loc_8 & ~0xFF) | 1;
   FUN_004017b4();
-  local_8 &= ~0xFF;
+  loc_8 &= ~0xFF;
   FUN_004017cc();
-  local_8 = 0xffffffff;
+  loc_8 = 0xffffffff;
   FUN_004017ee();
-  *__seh_chain = local_10;
+  *__seh_chain = loc_10;
   return;
 }
 
@@ -466,29 +466,29 @@ void __fastcall FUN_00401d20(GameWidget *this)
 
 {
   GameBoard *board;
-  short sVar1;
-  short sVar2;
+  short s1;
+  short s2;
 
   *(unsigned char *)((int)this + 0x12c) = 1;  /* TODO: offset 0x12C, byte 2 of scrollbar_ref (0x12A-0x12D) */
   if (this->cleanup_fn_ptr != NULL) {
     ((void (*)(void))**(void ***)&this->cleanup_fn_ptr)(); /* cleanup_fn_ptr->vtable[0] */
   }
-  sVar1 = 0;
+  s1 = 0;
   do {
     /* Iterate group_data_a slots (stride 0x16, base 0x14A/0x154) */
-    for (sVar2 = 1; (uint)(int)sVar2 <= *(uint *)((int)this + sVar1 * 0x16 + 0x154);  /* group_count_a + stride*sVar1 */
-        sVar2 = sVar2 + 1) {
+    for (s2 = 1; (uint)(int)s2 <= *(uint *)((int)this + s1 * 0x16 + 0x154);  /* group_count_a + stride*s1 */
+        s2 = s2 + 1) {
       ((void (*)(void))((void **)**(int **)
-                    (**(int **)((int)this + sVar1 * 0x16 + 0x14a) + -4 + sVar2 * 4))[0])();  /* group_data_a[sVar1][sVar2]->vtable[0] */
+                    (**(int **)((int)this + s1 * 0x16 + 0x14a) + -4 + s2 * 4))[0])();  /* group_data_a[s1][s2]->vtable[0] */
     }
     /* Iterate group_data_b slots (stride 0x16, base 0x18C/0x196) */
-    for (sVar2 = 1; (uint)(int)sVar2 <= *(uint *)((int)this + sVar1 * 0x16 + 0x196);  /* TODO: offset 0x196 in _pad160 region */
-        sVar2 = sVar2 + 1) {
+    for (s2 = 1; (uint)(int)s2 <= *(uint *)((int)this + s1 * 0x16 + 0x196);  /* TODO: offset 0x196 in _pad160 region */
+        s2 = s2 + 1) {
       ((void (*)(void))((void **)**(int **)
-                    (**(int **)((int)this + sVar1 * 0x16 + 0x18c) + -4 + sVar2 * 4))[0])();  /* group_data_b[sVar1][sVar2]->vtable[0] */ /* TODO: offset 0x18C in _pad160 region */
+                    (**(int **)((int)this + s1 * 0x16 + 0x18c) + -4 + s2 * 4))[0])();  /* group_data_b[s1][s2]->vtable[0] */ /* TODO: offset 0x18C in _pad160 region */
     }
-    sVar1 = sVar1 + 1;
-  } while (sVar1 < 3);
+    s1 = s1 + 1;
+  } while (s1 < 3);
   FUN_00402f60((int)this);
   FUN_0041dad0(this,0,'\0');
   if (*(char *)(DAT_00489ac8 + 0xc) == '\0') {
@@ -496,27 +496,27 @@ void __fastcall FUN_00401d20(GameWidget *this)
     FUN_0042dae0(board,0,this->name_data_ptr,-1,-1);
     board->refresh_counter = 1;
     board->needs_refresh = 1;
-    sVar1 = *(short *)(DAT_0048345c + 0x92);
+    s1 = *(short *)(DAT_0048345c + 0x92);
     switch(*(short *)(DAT_0048345c + 0x96)) {
     case 1:
-      sVar1 = sVar1 + 0xfa;
+      s1 = s1 + 0xfa;
       break;
     case 2:
-      sVar1 = sVar1 + 300;
+      s1 = s1 + 300;
       break;
     case 3:
-      sVar1 = sVar1 + 0x15e;
+      s1 = s1 + 0x15e;
       break;
     case 4:
-      sVar1 = sVar1 + 400;
+      s1 = s1 + 400;
       break;
     case 5:
-      sVar1 = sVar1 + 0x1c2;
+      s1 = s1 + 0x1c2;
       break;
     case 6:
-      sVar1 = sVar1 + 500;
+      s1 = s1 + 500;
     }
-    *(short *)(DAT_0048345c + 0x92) = sVar1;
+    *(short *)(DAT_0048345c + 0x92) = s1;
   }
   FUN_0042c3f0(this);
   return;
@@ -536,7 +536,7 @@ void __fastcall FUN_00401e70(void *param_1)
 
 
 /* Function: FUN_00401f80 @ 0x00401f80
- * Struct types: GameWidget (this), GameWidget (iVar1 — slot items)
+ * Struct types: GameWidget (this), GameWidget (n1 — slot items)
  * Searches group_data_a[param_1] for an available slot.
  * Returns first slot where field_12f==0 (and field_12e==0 if param_2 is set).
  */
@@ -545,14 +545,14 @@ int __thiscall FUN_00401f80(GameWidget *this,short param_1,char param_2)
 
 {
   GameWidget *slot;
-  short sVar2;
+  short s2;
 
-  sVar2 = 1;
+  s2 = 1;
   do {
-    if (*(short *)((int)this + param_1 * 0x16 + 0x154) < sVar2) {  /* group_count_a + stride*param_1 */
+    if (*(short *)((int)this + param_1 * 0x16 + 0x154) < s2) {  /* group_count_a + stride*param_1 */
       return 0;
     }
-    slot = (GameWidget *)*(int *)(**(int **)((int)this + param_1 * 0x16 + 0x14a) + -4 + sVar2 * 4);  /* group_data_a + stride*param_1 */
+    slot = (GameWidget *)*(int *)(**(int **)((int)this + param_1 * 0x16 + 0x14a) + -4 + s2 * 4);  /* group_data_a + stride*param_1 */
     if (slot->field_12f == '\0') {
       if (param_2 == '\0') {
         return (int)slot;
@@ -561,7 +561,7 @@ int __thiscall FUN_00401f80(GameWidget *this,short param_1,char param_2)
         return (int)slot;
       }
     }
-    sVar2 = sVar2 + 1;
+    s2 = s2 + 1;
   } while( true );
 }
 
@@ -577,19 +577,19 @@ int __thiscall FUN_00401f80(GameWidget *this,short param_1,char param_2)
 int __thiscall FUN_00401fe0(GameWidget *this,short param_1)
 
 {
-  int iVar1;
-  short sVar2;
+  int n1;
+  short s2;
 
-  sVar2 = 1;
+  s2 = 1;
   while( true ) {
-    if (*(short *)((int)this + param_1 * 0x16 + 0x196) < sVar2) {  /* TODO: offset 0x196 + stride*param_1, in _pad160 region */
+    if (*(short *)((int)this + param_1 * 0x16 + 0x196) < s2) {  /* TODO: offset 0x196 + stride*param_1, in _pad160 region */
       return 0;
     }
-    iVar1 = *(int *)(**(int **)((int)this + param_1 * 0x16 + 0x18c) + -4 + sVar2 * 4);  /* TODO: offset 0x18C + stride*param_1, in _pad160 region */
-    if ((iVar1 != 0) && (*(char *)(iVar1 + 0x118) == '\0')) break;
-    sVar2 = sVar2 + 1;
+    n1 = *(int *)(**(int **)((int)this + param_1 * 0x16 + 0x18c) + -4 + s2 * 4);  /* TODO: offset 0x18C + stride*param_1, in _pad160 region */
+    if ((n1 != 0) && (*(char *)(n1 + 0x118) == '\0')) break;
+    s2 = s2 + 1;
   }
-  return iVar1;
+  return n1;
 }
 
 
@@ -603,14 +603,14 @@ int __thiscall FUN_00401fe0(GameWidget *this,short param_1)
 void __fastcall FUN_00402030(GameWidget *this)
 
 {
-  int iVar1;
+  int n1;
 
-  iVar1 = FUN_00401f80(this,0,'\0');
-  if (iVar1 == 0) {
-    iVar1 = FUN_00401f80(this,1,'\0');
-    if (iVar1 == 0) {
-      iVar1 = FUN_00401f80(this,2,'\0');
-      if (iVar1 == 0) {
+  n1 = FUN_00401f80(this,0,'\0');
+  if (n1 == 0) {
+    n1 = FUN_00401f80(this,1,'\0');
+    if (n1 == 0) {
+      n1 = FUN_00401f80(this,2,'\0');
+      if (n1 == 0) {
         this->object_ptr = (void *)3;
       }
     }
@@ -783,7 +783,7 @@ void FUN_00402a7e(void)
 
 
 /* Function: FUN_00402a90 @ 0x00402a90
- * Struct types: GameWidget (this), GameWidget (iVar2 — slot items)
+ * Struct types: GameWidget (this), GameWidget (n2 — slot items)
  * Searches group_data_a for first slot with both field_12e and field_12f == 0.
  * Group index comes from param_1's level_data_ptr byte at offset +7.
  */
@@ -791,22 +791,22 @@ void FUN_00402a7e(void)
 int __thiscall FUN_00402a90(GameWidget *this,int param_1)
 
 {
-  short sVar1;
+  short s1;
   GameWidget *slot;
-  short sVar3;
-  uint uVar4;
+  short s3;
+  uint u4;
 
-  uVar4 = (uint)*(byte *)(*(int *)(param_1 + 0xf6) + 7);
-  sVar1 = *(short *)((int)this + uVar4 * 0x16 + 0x154);  /* group_count_a + stride*uVar4 */
-  sVar3 = 1;
-  if (0 < sVar1) {
+  u4 = (uint)*(byte *)(*(int *)(param_1 + 0xf6) + 7);
+  s1 = *(short *)((int)this + u4 * 0x16 + 0x154);  /* group_count_a + stride*u4 */
+  s3 = 1;
+  if (0 < s1) {
     do {
-      slot = (GameWidget *)*(int *)(**(int **)((int)this + uVar4 * 0x16 + 0x14a) + -4 + sVar3 * 4);  /* group_data_a + stride*uVar4 */
+      slot = (GameWidget *)*(int *)(**(int **)((int)this + u4 * 0x16 + 0x14a) + -4 + s3 * 4);  /* group_data_a + stride*u4 */
       if ((slot->field_12e == '\0') && (slot->field_12f == '\0')) {
         return (int)slot;
       }
-      sVar3 = sVar3 + 1;
-    } while (sVar3 <= sVar1);
+      s3 = s3 + 1;
+    } while (s3 <= s1);
   }
   return 0;
 }
@@ -818,90 +818,90 @@ int __thiscall FUN_00402a90(GameWidget *this,int param_1)
 int * __thiscall FUN_00402af0(SoundPlayer *this,int *param_1,int param_2,char param_3)
 
 {
-  short sVar1;
-  void *this_00;
-  ushort uVar2;
-  ushort uVar3;
-  int iVar4;
-  int iVar5;
-  short sVar6;
+  short s1;
+  void *self;
+  ushort u2;
+  ushort u3;
+  int n4;
+  int n5;
+  short s6;
   int *__seh_chain;
-  int uVar7;
+  int u7;
   int __param_ffffffc0;
-  int *piVar8;
-  int local_20;
-  int local_1c;
-  int local_18;
-  int local_14;
-  int local_10;
+  int *pn8;
+  int loc_20;
+  int loc_1c;
+  int loc_18;
+  int loc_14;
+  int loc_10;
   void *__seh_handler;
-  uint local_8;
+  uint loc_8;
   
-  local_10 = *__seh_chain;
-  local_8 = 0xffffffff;
+  loc_10 = *__seh_chain;
+  loc_8 = 0xffffffff;
   __seh_handler = &__label_00402ced;
-  *__seh_chain = &local_10;
-  uVar7 = 0;
+  *__seh_chain = &loc_10;
+  u7 = 0;
   FUN_00401050(&__stk_31,0);
-  local_14 = &__stk_30;
+  loc_14 = &__stk_30;
   FUN_00401050(&__stk_30,0);
-  FUN_00401060(&local_20,uVar7,__param_ffffffc0);
-  local_8 = 1;
-  uVar2 = (ushort)*(byte *)(*(int *)(param_2 + 0xf6) + 7);
-  local_18 = 0;
-  uVar3 = uVar2 + 1;
+  FUN_00401060(&loc_20,u7,__param_ffffffc0);
+  loc_8 = 1;
+  u2 = (ushort)*(byte *)(*(int *)(param_2 + 0xf6) + 7);
+  loc_18 = 0;
+  u3 = u2 + 1;
   if (param_3 != '\0') {
-    uVar3 = uVar2;
+    u3 = u2;
   }
-  if (uVar3 < 3) {
-    iVar5 = (int)(short)uVar3;
-    sVar1 = *(short *)((int)this + iVar5 * 0x16 + 0x196);  /* TODO: offset 0x196 + stride*iVar5, in _pad160 region */
-    iVar4 = (int)*(short *)(&DAT_00472040 + iVar5 * 2) << 8;
-    local_14 = &__stk_30;
-    local_18 = iVar4;
-    FUN_00401ba0(&__stk_30,*(short *)(&DAT_00472030 + iVar5 * 2));
-    FUN_00401270(&local_20,uVar7,iVar4);
-    local_14 = (char *)((uint)local_14 & 0xffff);
-    if (0 < *(short *)(&DAT_00472050 + iVar5 * 2)) {
+  if (u3 < 3) {
+    n5 = (int)(short)u3;
+    s1 = *(short *)((int)this + n5 * 0x16 + 0x196);  /* TODO: offset 0x196 + stride*n5, in _pad160 region */
+    n4 = (int)*(short *)(&DAT_00472040 + n5 * 2) << 8;
+    loc_14 = &__stk_30;
+    loc_18 = n4;
+    FUN_00401ba0(&__stk_30,*(short *)(&DAT_00472030 + n5 * 2));
+    FUN_00401270(&loc_20,u7,n4);
+    loc_14 = (char *)((uint)loc_14 & 0xffff);
+    if (0 < *(short *)(&DAT_00472050 + n5 * 2)) {
       do {
-        sVar6 = 1;
+        s6 = 1;
         while( true ) {
-          if (sVar1 < sVar6) {
-            local_14 = &__stk_30;
-            iVar4 = local_18;
-            FUN_00401ba0(&__stk_30,*(short *)(&DAT_00472030 + iVar5 * 2));
-            FUN_00401270(&local_20,uVar7,iVar4);
+          if (s1 < s6) {
+            loc_14 = &__stk_30;
+            n4 = loc_18;
+            FUN_00401ba0(&__stk_30,*(short *)(&DAT_00472030 + n5 * 2));
+            FUN_00401270(&loc_20,u7,n4);
             *param_1 = 0;
             param_1[1] = 0;
-            param_1[1] = local_1c;
+            param_1[1] = loc_1c;
             goto __label_00402c7b;
           }
-          this_00 = *(void **)(**(int **)((int)this + iVar5 * 0x16 + 0x18c) + -4 + sVar6 * 4);  /* TODO: offset 0x18C + stride*iVar5, in _pad160 region */
-          piVar8 = &local_20;
-          uVar7 = 0x402bf8;
-          FUN_0041cde0(this_00,piVar8);
-          if (((local_18 == local_20) && (*(short *)(&DAT_00472038 + iVar5 * 2) * 0x100 == local_1c)
-              ) || ((((SoundPlayer *)this_00)->sequence_data[52] != '\0' &&
-                    (((SoundPlayer *)this_00)->sequence_data[52] == local_18)))) break;
-          sVar6 = sVar6 + 1;
+          self = *(void **)(**(int **)((int)this + n5 * 0x16 + 0x18c) + -4 + s6 * 4);  /* TODO: offset 0x18C + stride*n5, in _pad160 region */
+          pn8 = &loc_20;
+          u7 = 0x402bf8;
+          FUN_0041cde0(self,pn8);
+          if (((loc_18 == loc_20) && (*(short *)(&DAT_00472038 + n5 * 2) * 0x100 == loc_1c)
+              ) || ((((SoundPlayer *)self)->sequence_data[52] != '\0' &&
+                    (((SoundPlayer *)self)->sequence_data[52] == loc_18)))) break;
+          s6 = s6 + 1;
         }
-        FUN_00401ba0(&__stk_31,*(short *)(&DAT_00472048 + iVar5 * 2));
-        uVar7 = 0x402c47;
-        FUN_00402d00(&local_18,(int)piVar8);
-        sVar6 = ((unsigned short)((local_14) >> 16)) + 1;
-        local_14 = (char *)CONCAT22(sVar6,(short)local_14);
-      } while (sVar6 < *(short *)(&DAT_00472050 + iVar5 * 2));
+        FUN_00401ba0(&__stk_31,*(short *)(&DAT_00472048 + n5 * 2));
+        u7 = 0x402c47;
+        FUN_00402d00(&loc_18,(int)pn8);
+        s6 = ((unsigned short)((loc_14) >> 16)) + 1;
+        loc_14 = (char *)CONCAT22(s6,(short)loc_14);
+      } while (s6 < *(short *)(&DAT_00472050 + n5 * 2));
     }
   }
   param_1[1] = 0;
   *param_1 = 0;
   param_1[1] = DAT_0048415c;
-  local_20 = DAT_00484158;
+  loc_20 = DAT_00484158;
 __label_00402c7b:
-  local_8 = local_8 & 0xffffff00;
-  *param_1 = local_20;
+  loc_8 = loc_8 & 0xffffff00;
+  *param_1 = loc_20;
   FUN_00402cf7();
-  *__seh_chain = local_10;
+  *__seh_chain = loc_10;
   return param_1;
 }
 
@@ -1024,15 +1024,15 @@ void __fastcall FUN_00402f60(int param_1)
 void __fastcall FUN_00402fa0(GameWidget *this)
 
 {
-  char local_28 [40];
+  char loc_28 [40];
 
   if (((DialogWidget *)this)->dialog_value != 0) {  /* offset 0x1CE, DialogWidget::dialog_value */
-    _itoa((int)*(short *)&this->field_130,local_28,10);
-    FUN_00458860((void *)((DialogWidget *)this)->dialog_value,local_28);
+    _itoa((int)*(short *)&this->field_130,loc_28,10);
+    FUN_00458860((void *)((DialogWidget *)this)->dialog_value,loc_28);
   }
   if (*(int *)((int)this + 0x1ca) != 0) {  /* TODO: offset 0x1CA, within DialogWidget::dialog_data region */
-    _itoa((int)this->field_12e,local_28,10);
-    FUN_00458860(*(void **)((int)this + 0x1ca),local_28);  /* TODO: offset 0x1CA, within DialogWidget::dialog_data region */
+    _itoa((int)this->field_12e,loc_28,10);
+    FUN_00458860(*(void **)((int)this + 0x1ca),loc_28);  /* TODO: offset 0x1CA, within DialogWidget::dialog_data region */
   }
   return;
 }
@@ -1046,19 +1046,19 @@ void __fastcall FUN_00402fa0(GameWidget *this)
 int * __thiscall FUN_00403030(void *this,int *param_1,int *param_2)
 
 {
-  int uVar1;
+  int u1;
   int *__seh_chain;
-  char local_10 [12];
+  char loc_10 [12];
 
-  uVar1 = *__seh_chain;
-  *__seh_chain = local_10;
+  u1 = *__seh_chain;
+  *__seh_chain = loc_10;
   ((int *)this)[1] = param_2[1];
   ((int *)this)[0] = *param_2;
   param_1[1] = 0;
   *param_1 = 0;
   param_1[1] = ((int *)this)[1];
   *param_1 = ((int *)this)[0];
-  *__seh_chain = uVar1;
+  *__seh_chain = u1;
   return param_1;
 }
 
@@ -1091,13 +1091,13 @@ void FUN_00403230(void)
 void FUN_00403290(void)
 
 {
-  int uVar1;
+  int u1;
   int __param_fffffff4;
   
-  uVar1 = 0;
+  u1 = 0;
   FUN_00401050(&__stk_44,0);
   FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00484168,uVar1,__param_fffffff4);
+  FUN_00401060(&DAT_00484168,u1,__param_fffffff4);
   return;
 }
 
@@ -1214,21 +1214,21 @@ void FUN_00403500(void)
 
 {
   int *__seh_chain;
-  int local_10;
+  int loc_10;
   void *__seh_handler;
-  int local_8;
+  int loc_8;
   
-  local_10 = *__seh_chain;
+  loc_10 = *__seh_chain;
   __seh_handler = &__label_0040356a;
-  *__seh_chain = &local_10;
-  local_8 = (local_8 & ~0xFF) | 1;
-  local_8 = (local_8 & 0xFF) | (0 << 8);
+  *__seh_chain = &loc_10;
+  loc_8 = (loc_8 & ~0xFF) | 1;
+  loc_8 = (loc_8 & 0xFF) | (0 << 8);
   FUN_00403554();
-  local_8 &= ~0xFF;
+  loc_8 &= ~0xFF;
   FUN_0040355f();
-  local_8 = 0xffffffff;
+  loc_8 = 0xffffffff;
   FUN_00403574();
-  *__seh_chain = local_10;
+  *__seh_chain = loc_10;
   return;
 }
 
@@ -1286,15 +1286,15 @@ void __fastcall FUN_00403580(UIWidget *this)
 
 {
   int *__seh_chain;
-  int local_10;
+  int loc_10;
   void *__seh_handler;
-  uint local_8;
+  uint loc_8;
 
-  local_10 = *__seh_chain;
+  loc_10 = *__seh_chain;
   __seh_handler = &__label_00403684;
   this->vtable = (void **)&PTR_FUN_004721f0;
-  *__seh_chain = &local_10;
-  local_8 = 1;
+  *__seh_chain = &loc_10;
+  loc_8 = 1;
   FUN_00404830(this,0);
   if (this->sub_widgets_a[9] != 0) {  /* +0x6A = sub_widgets_a[9] */
     FUN_0046f5f0(this->sub_widgets_a[9]);
@@ -1319,11 +1319,11 @@ void __fastcall FUN_00403580(UIWidget *this)
     FUN_0046e210((LPCVOID)this->sub_widgets_b[7]);
     this->sub_widgets_b[7] = 0;
   }
-  local_8 = local_8 & 0xffffff00;
+  loc_8 = loc_8 & 0xffffff00;
   FUN_00403679();
-  local_8 = 0xffffffff;
+  loc_8 = 0xffffffff;
   FUN_0040368e();
-  *__seh_chain = local_10;
+  *__seh_chain = loc_10;
   return;
 }
 
@@ -1401,115 +1401,115 @@ void __thiscall FUN_00403790(void *this,void *param_1,uint param_2)
 void __fastcall FUN_004037e0(void *param_1)
 
 {
-  ushort *puVar1;
-  short uVar2;
-  short uVar3;
-  ushort *puVar4;
-  LPCVOID pvVar5;
-  int uVar6;
-  short sVar7;
-  int iVar8;
-  int iVar9;
-  short sVar10;
+  ushort *pu1;
+  short u2;
+  short u3;
+  ushort *pu4;
+  LPCVOID pv5;
+  int u6;
+  short s7;
+  int n8;
+  int n9;
+  short s10;
   int *__seh_chain;
-  int iVar11;
+  int n11;
   int __param_ffffffa8;
-  char cVar12;
-  char cVar13;
-  uint uVar14;
-  uint uVar15;
-  int local_38 [5];
-  char *local_24;
-  int local_20;
-  short local_1c [2];
-  int local_18;
-  char *local_14;
-  int local_10;
+  char c12;
+  char c13;
+  uint u14;
+  uint u15;
+  int loc_38 [5];
+  char *loc_24;
+  int loc_20;
+  short loc_1c [2];
+  int loc_18;
+  char *loc_14;
+  int loc_10;
   void *__seh_handler;
-  int local_8;
+  int loc_8;
 
-  local_10 = *__seh_chain;
-  local_8 = 0xffffffff;
+  loc_10 = *__seh_chain;
+  loc_8 = 0xffffffff;
   __seh_handler = &__label_00403a2f;
-  *__seh_chain = &local_10;
-  puVar4 = (ushort *)0x0;
-  iVar8 = *(int *)((int)param_1 + 0x6a);  /* TODO: unknown struct offset 0x6a on param_1 */
-  if ((iVar8 != 0) && (*(int *)(iVar8 + 8) != 0)) {
+  *__seh_chain = &loc_10;
+  pu4 = (ushort *)0x0;
+  n8 = *(int *)((int)param_1 + 0x6a);  /* TODO: unknown struct offset 0x6a on param_1 */
+  if ((n8 != 0) && (*(int *)(n8 + 8) != 0)) {
     __param_ffffffa8 = 0x403826;
-    puVar4 = FUN_004607d0(DAT_004838c0,*(int *)(iVar8 + 8),(ushort *)0x0,(ushort *)0x0,0);
+    pu4 = FUN_004607d0(DAT_004838c0,*(int *)(n8 + 8),(ushort *)0x0,(ushort *)0x0,0);
   }
-  if (puVar4 == (ushort *)0x0) {
-    uVar15 = 0;
-    uVar14 = 0x400;
-    pvVar5 = (LPCVOID)FUN_00460080(DAT_004838c0,0x400);
-    puVar4 = FUN_0046f060(pvVar5,uVar14,uVar15);
-    sVar7 = 0;
+  if (pu4 == (ushort *)0x0) {
+    u15 = 0;
+    u14 = 0x400;
+    pv5 = (LPCVOID)FUN_00460080(DAT_004838c0,0x400);
+    pu4 = FUN_0046f060(pv5,u14,u15);
+    s7 = 0;
     do {
-      iVar9 = (int)sVar7;
-      sVar7 = sVar7 + 1;
-      iVar8 = iVar9 * 4;
-      puVar1 = puVar4 + iVar9 * 2;
-      *(unsigned char *)puVar1 = (&DAT_0047fcc2)[iVar8];
-      *(unsigned char *)((int)puVar1 + 1) = (&DAT_0047fcc1)[iVar8]; /* TODO: byte at puVar1+1, palette entry */
-      *(unsigned char *)(puVar1 + 1) = (&DAT_0047fcc0)[iVar8];
-      *(unsigned char *)((int)puVar1 + 3) = 0; /* TODO: byte at puVar1+3, palette padding */
-    } while (sVar7 < 0x100);
+      n9 = (int)s7;
+      s7 = s7 + 1;
+      n8 = n9 * 4;
+      pu1 = pu4 + n9 * 2;
+      *(unsigned char *)pu1 = (&DAT_0047fcc2)[n8];
+      *(unsigned char *)((int)pu1 + 1) = (&DAT_0047fcc1)[n8]; /* TODO: byte at pu1+1, palette entry */
+      *(unsigned char *)(pu1 + 1) = (&DAT_0047fcc0)[n8];
+      *(unsigned char *)((int)pu1 + 3) = 0; /* TODO: byte at pu1+3, palette padding */
+    } while (s7 < 0x100);
   }
-  FUN_004036a0(param_1,(int *)puVar4);
-  sVar7 = *(short *)((int)param_1 + 0x7c);  /* TODO: unknown struct offset 0x7c on param_1 */
-  if ((sVar7 != 0) && (sVar10 = 1, 0 < sVar7)) {
+  FUN_004036a0(param_1,(int *)pu4);
+  s7 = *(short *)((int)param_1 + 0x7c);  /* TODO: unknown struct offset 0x7c on param_1 */
+  if ((s7 != 0) && (s10 = 1, 0 < s7)) {
     do {
-      iVar8 = (int)sVar10;
-      sVar10 = sVar10 + 1;
+      n8 = (int)s10;
+      s10 = s10 + 1;
       /* vtable[0x28] call on child widget (offset 0xa0 / 4 = 0x28) */
-      ((void (*)(void))((void **)(**(int **)(**(int **)((int)param_1 + 0x72) + -4 + iVar8 * 4)))[0xa0 / 4])();  /* child->vtable[40] */ /* TODO: offset 0x72 on param_1 */
-    } while (sVar10 <= sVar7);
+      ((void (*)(void))((void **)(**(int **)(**(int **)((int)param_1 + 0x72) + -4 + n8 * 4)))[0xa0 / 4])();  /* child->vtable[40] */ /* TODO: offset 0x72 on param_1 */
+    } while (s10 <= s7);
   }
   /* vtable[0x15] call on sub-object at +0x42 (offset 0x54 / 4 = 0x15) */
   ((void (*)(void))((void **)(*(int *)((int)param_1 + 0x42)))[0x54 / 4])();  /* obj at param_1+0x42->vtable[21] */ /* TODO: offset 0x42 on param_1 */
-  cVar13 = '\0';
-  cVar12 = '\0';
-  local_24 = &__stk_25;
-  iVar11 = 0x1e0;
+  c13 = '\0';
+  c12 = '\0';
+  loc_24 = &__stk_25;
+  n11 = 0x1e0;
   FUN_00401050(&__stk_25,0x1e0);
-  local_18 = &__stk_24;
-  iVar9 = 0x280;
+  loc_18 = &__stk_24;
+  n9 = 0x280;
   FUN_00401050(&__stk_24,0x280);
-  local_14 = &__stk_23;
-  iVar8 = 0;
+  loc_14 = &__stk_23;
+  n8 = 0;
   FUN_00401050(&__stk_23,0);
-  local_20 = &__stk_22;
+  loc_20 = &__stk_22;
   FUN_00401050(&__stk_22,0);
-  FUN_0041cca0(param_1,iVar8,iVar9,iVar11,__param_ffffffa8,cVar12,cVar13);
+  FUN_0041cca0(param_1,n8,n9,n11,__param_ffffffa8,c12,c13);
   FUN_0041b150((void *)((int)param_1 + 0x42),1);
   if (*(int *)((int)param_1 + 0x6a) != 0) {  /* TODO: offset 0x6a on param_1 */
-    FUN_0043b760(local_38);
-    local_8 = 2;
-    local_14 = (char *)0x0;
-    local_1c[1] = 0;
-    local_1c[0] = 0;
-    local_18 = (char *)0x28001e0;
-    uVar6 = FUN_0041ace0(DAT_004838c0,**(int **)((int)param_1 + 0x6a));  /* TODO: offset 0x6a on param_1 */
-    if ((char)uVar6 != '\0') {
-      sVar7 = FUN_0043b970((int)local_38);
-      local_20 = (char *)CONCAT22((short)((0x1e0 - sVar7) / 2),(short)local_20);
-      sVar7 = FUN_0043b940((int)local_38);
-      local_14 = (char *)CONCAT22((short)((0x280 - sVar7) / 2),((unsigned short)((local_20) >> 16)));
-      uVar2 = FUN_0043b970((int)local_38);
-      uVar3 = FUN_0043b940((int)local_38);
-      local_1c[1] = 0;
-      local_1c[0] = 0;
-      local_18 = (char *)CONCAT22(uVar3,uVar2);
-      FUN_00419570(local_38,local_1c,(int *)((int)param_1 + 0x42),(short *)&local_14,1,0,0);
+    FUN_0043b760(loc_38);
+    loc_8 = 2;
+    loc_14 = (char *)0x0;
+    loc_1c[1] = 0;
+    loc_1c[0] = 0;
+    loc_18 = (char *)0x28001e0;
+    u6 = FUN_0041ace0(DAT_004838c0,**(int **)((int)param_1 + 0x6a));  /* TODO: offset 0x6a on param_1 */
+    if ((char)u6 != '\0') {
+      s7 = FUN_0043b970((int)loc_38);
+      loc_20 = (char *)CONCAT22((short)((0x1e0 - s7) / 2),(short)loc_20);
+      s7 = FUN_0043b940((int)loc_38);
+      loc_14 = (char *)CONCAT22((short)((0x280 - s7) / 2),((unsigned short)((loc_20) >> 16)));
+      u2 = FUN_0043b970((int)loc_38);
+      u3 = FUN_0043b940((int)loc_38);
+      loc_1c[1] = 0;
+      loc_1c[0] = 0;
+      loc_18 = (char *)CONCAT22(u3,u2);
+      FUN_00419570(loc_38,loc_1c,(int *)((int)param_1 + 0x42),(short *)&loc_14,1,0,0);
     }
-    local_8 = (local_8 & ~0xFF) | 1;
+    loc_8 = (loc_8 & ~0xFF) | 1;
     FUN_00403a1f();
-    local_8 &= ~0xFF;
+    loc_8 &= ~0xFF;
     FUN_00403a27();
-    local_8 = 0xffffffff;
+    loc_8 = 0xffffffff;
     FUN_00403a39();
   }
-  *__seh_chain = local_10;
+  *__seh_chain = loc_10;
   return;
 }
 
@@ -1556,19 +1556,19 @@ void FUN_00403a39(void)
 void __fastcall FUN_00403a50(void *param_1)
 
 {
-  short sVar1;
-  int iVar2;
-  short sVar3;
+  short s1;
+  int n2;
+  short s3;
 
   FUN_004036a0(param_1,NULL);
-  sVar1 = *(short *)((int)param_1 + 0x7c);  /* TODO: unknown struct offset 0x7c on param_1 */
-  if ((sVar1 != 0) && (sVar3 = 1, 0 < sVar1)) {
+  s1 = *(short *)((int)param_1 + 0x7c);  /* TODO: unknown struct offset 0x7c on param_1 */
+  if ((s1 != 0) && (s3 = 1, 0 < s1)) {
     do {
-      iVar2 = (int)sVar3;
-      sVar3 = sVar3 + 1;
+      n2 = (int)s3;
+      s3 = s3 + 1;
       /* vtable[0x29] call on child widget (offset 0xa4 / 4 = 0x29) */
-      ((void (*)(void))((void **)(**(int **)(**(int **)((int)param_1 + 0x72) + -4 + iVar2 * 4)))[0xa4 / 4])();  /* child->vtable[41] */ /* TODO: offset 0x72 on param_1 */
-    } while (sVar3 <= sVar1);
+      ((void (*)(void))((void **)(**(int **)(**(int **)((int)param_1 + 0x72) + -4 + n2 * 4)))[0xa4 / 4])();  /* child->vtable[41] */ /* TODO: offset 0x72 on param_1 */
+    } while (s3 <= s1);
   }
   return;
 }
@@ -1675,13 +1675,13 @@ void FUN_00404529(void)
 void FUN_00404580(void)
 
 {
-  int uVar1;
+  int u1;
   int __param_fffffff4;
   
-  uVar1 = 0;
+  u1 = 0;
   FUN_00401050(&__stk_44,0);
   FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00484178,uVar1,__param_fffffff4);
+  FUN_00401060(&DAT_00484178,u1,__param_fffffff4);
   return;
 }
 
@@ -1820,26 +1820,26 @@ void __fastcall FUN_004048d0(void *param_1)
 void __fastcall FUN_00404a80(int param_1)
 
 {
-  int *puVar1;
-  int *puVar2;
+  int *pu1;
+  int *pu2;
   
   if (*(int *)(param_1 + 0x9e) != 0) {
-    puVar1 = (int *)(param_1 + 0x96);
+    pu1 = (int *)(param_1 + 0x96);
     FUN_00434490(*(int *)(param_1 + 0x9e));
-    if ((int *)*puVar1 != (int *)0x0) {
-      FUN_00433420((int *)*puVar1);
-      FUN_00433270(puVar1);
+    if ((int *)*pu1 != (int *)0x0) {
+      FUN_00433420((int *)*pu1);
+      FUN_00433270(pu1);
     }
-    puVar2 = (int *)(param_1 + 0x9a);
-    if ((int *)*puVar2 != (int *)0x0) {
-      FUN_00433420((int *)*puVar2);
-      FUN_00433270(puVar2);
+    pu2 = (int *)(param_1 + 0x9a);
+    if ((int *)*pu2 != (int *)0x0) {
+      FUN_00433420((int *)*pu2);
+      FUN_00433270(pu2);
     }
     *(short *)(param_1 + 0x94) = 0;
     *(int *)(param_1 + 0x9e) = 0;
     *(short *)(param_1 + 0x92) = 0;
-    *puVar1 = 0;
-    *puVar2 = 0;
+    *pu1 = 0;
+    *pu2 = 0;
   }
   return;
 }
@@ -1867,7 +1867,7 @@ void __fastcall FUN_00404b00(int param_1)
 short __thiscall FUN_00404d00(UIElement *this,int *param_1)
 
 {
-  int uVar1;
+  int u1;
 
   if (param_1 == (int *)0x0) {
     return 0;
@@ -1878,10 +1878,10 @@ short __thiscall FUN_00404d00(UIElement *this,int *param_1)
   ((void (*)(void))((void **)(*param_1))[0x9c / 4])();
   FUN_0042bf70(param_1);
   do {
-    uVar1 = FUN_0041b9c0(DAT_004897c0,(int)param_1);
-    if ((char)uVar1 == '\0') {
-      uVar1 = FUN_0041b9c0(this,(int)param_1);
-      if ((char)uVar1 == '\0') {
+    u1 = FUN_0041b9c0(DAT_004897c0,(int)param_1);
+    if ((char)u1 == '\0') {
+      u1 = FUN_0041b9c0(this,(int)param_1);
+      if ((char)u1 == '\0') {
         this->sub_widgets_b[0] = 0;
         return DAT_004873c0;
       }
@@ -1966,13 +1966,13 @@ void __fastcall FUN_00404e10(int *param_1)
 void FUN_00404e90(void)
 
 {
-  int uVar1;
+  int u1;
   int __param_fffffff4;
   
-  uVar1 = 0;
+  u1 = 0;
   FUN_00401050(&__stk_44,0);
   FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00484188,uVar1,__param_fffffff4);
+  FUN_00401060(&DAT_00484188,u1,__param_fffffff4);
   return;
 }
 
@@ -2063,13 +2063,13 @@ void FUN_00404f60(void)
 void FUN_00404f80(void)
 
 {
-  int uVar1;
+  int u1;
   int __param_fffffff4;
   
-  uVar1 = 0;
+  u1 = 0;
   FUN_00401050(&__stk_44,0);
   FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_00484198,uVar1,__param_fffffff4);
+  FUN_00401060(&DAT_00484198,u1,__param_fffffff4);
   return;
 }
 
@@ -2175,15 +2175,15 @@ void FUN_00405050(void)
 void FUN_00405060(void)
 
 {
-  int iVar1;
+  int n1;
   UIWidget *widget;
 
   if ((DAT_004897c0 != (void *)0x0) && (DAT_0047e7a8 != '\0')) {
     *(int *)((int)DAT_004897c0 + 0x44) = 0;  /* TODO: DAT_004897c0 offset 0x44, _pad42 region if UIElement */
     if ((*(int *)((int)DAT_004897c0 + 0x4a) != 0) &&  /* TODO: DAT_004897c0 offset 0x4a, sub_widgets_a[1] if UIElement */
-       (((iVar1 = *(int *)(*(int *)((int)DAT_004897c0 + 0x4a) + 0x1a), iVar1 != 0 &&  /* TODO: DAT_004897c0+0x4a->child_list_1 (+0x1A) */
-         (*(int *)(iVar1 + 0xe) != 0)) && (*(int *)**(int **)(iVar1 + 4) != 0)))) {
-      widget = (UIWidget *)FUN_0041c0f0(*(int *)**(int **)(iVar1 + 4));
+       (((n1 = *(int *)(*(int *)((int)DAT_004897c0 + 0x4a) + 0x1a), n1 != 0 &&  /* TODO: DAT_004897c0+0x4a->child_list_1 (+0x1A) */
+         (*(int *)(n1 + 0xe) != 0)) && (*(int *)**(int **)(n1 + 4) != 0)))) {
+      widget = (UIWidget *)FUN_0041c0f0(*(int *)**(int **)(n1 + 4));
       FUN_0041da90(widget,1);
       widget->field_108 = 0;
       *(UIWidget **)((int)DAT_004897c0 + 0x44) = widget;  /* TODO: DAT_004897c0 offset 0x44 */
@@ -2247,23 +2247,23 @@ UIWidget * __fastcall FUN_004052b0(UIWidget *this)
 
 {
   int *__seh_chain;
-  int uVar1;
-  int uVar2;
-  int local_10;
+  int u1;
+  int u2;
+  int loc_10;
   void *__seh_handler;
-  int local_8;
+  int loc_8;
 
-  local_10 = *__seh_chain;
-  local_8 = 0xffffffff;
+  loc_10 = *__seh_chain;
+  loc_8 = 0xffffffff;
   __seh_handler = &__label_00405406;
-  *__seh_chain = &local_10;
+  *__seh_chain = &loc_10;
   FUN_0041b6c0(this);
-  local_8 = 0;
-  uVar2 = 0x4052e7;
+  loc_8 = 0;
+  u2 = 0x4052e7;
   FUN_00465a60((int *)&this->scroll_data);
   this->origin_x = 0;
   this->origin_y = 0;
-  local_8 = CONCAT31((unsigned int)((uint)local_8 >> 8),2);
+  loc_8 = CONCAT31((unsigned int)((uint)loc_8 >> 8),2);
   this->cell_count = 0;
   this->vtable = (void **)&PTR_FUN_00472420;
   this->active_anim_id = 0;
@@ -2278,12 +2278,12 @@ UIWidget * __fastcall FUN_004052b0(UIWidget *this)
   this->scrollable_flag = 0;
   this->field_108 = 0;
   this->field_c7 = 0;
-  uVar1 = 1;
+  u1 = 1;
   this->auto_focus = 1;
   this->current_frame = (short)0xffff;
   FUN_00401050(&__stk_37,1);
   FUN_00401050(&__stk_36,1);
-  FUN_00401270(&this->origin_x,uVar1,uVar2);
+  FUN_00401270(&this->origin_x,u1,u2);
   this->flags = this->flags | 0x1000;
   *(short *)((int)this + 0x44) = (short)0xffff;  /* TODO: offset 0x44, _pad42[2..3] within _pad42 region */
   this->cursor_style_a = 0;
@@ -2295,7 +2295,7 @@ UIWidget * __fastcall FUN_004052b0(UIWidget *this)
   this->anim_flag_0 = 0;
   this->_pad42[0] = 0;
   this->is_visible = 0;
-  *__seh_chain = local_10;
+  *__seh_chain = loc_10;
   return this;
 }
 
@@ -2357,10 +2357,10 @@ void FUN_00405564(void)
 void __fastcall FUN_00405570(UIWidget *this)
 
 {
-  int *puVar1;
-  int iVar2;
-  short sVar3;
-  uint uVar4;
+  int *pu1;
+  int n2;
+  short s3;
+  uint u4;
 
   FUN_00409580(this,'\x01');
   this->current_frame = (short)0xffff;
@@ -2369,24 +2369,24 @@ void __fastcall FUN_00405570(UIWidget *this)
     FUN_0041bd00(this->parent_ptr,(int)this);
   }
   if (this->child_list_2 != NULL) {
-    uVar4 = *(int *)((int)this->child_list_2 + 0xe) /* CVector: count at +0x0E */ * 4;
-    while (3 < uVar4) {
-      uVar4 = uVar4 - 4;
-      puVar1 = *(int **)(**(int **)((int)this->child_list_2 + 4) /* CVector: data ptr at +0x04 */ + uVar4);
-      FUN_0041bd00(this,(int)puVar1);
+    u4 = *(int *)((int)this->child_list_2 + 0xe) /* CVector: count at +0x0E */ * 4;
+    while (3 < u4) {
+      u4 = u4 - 4;
+      pu1 = *(int **)(**(int **)((int)this->child_list_2 + 4) /* CVector: data ptr at +0x04 */ + u4);
+      FUN_0041bd00(this,(int)pu1);
       /* vtable[0] call — destructor */
-      ((void (*)(void))((void **)*puVar1)[0])(); /* puVar1->vtable[0] */
+      ((void (*)(void))((void **)*pu1)[0])(); /* pu1->vtable[0] */
     }
     *(int *)((int)this->child_list_2 + 0xe) /* CVector: count at +0x0E */ = 0;
   }
   FUN_004068f0(this);
-  sVar3 = 0;
+  s3 = 0;
   do {
-    iVar2 = (int)sVar3;
-    sVar3 = sVar3 + 1;
-    this->sub_widgets_a[iVar2] = 0;
-    this->sub_widgets_b[iVar2] = 0;
-  } while (sVar3 < 0x10);
+    n2 = (int)s3;
+    s3 = s3 + 1;
+    this->sub_widgets_a[n2] = 0;
+    this->sub_widgets_b[n2] = 0;
+  } while (s3 < 0x10);
   if (((this->auto_focus != '\0') && (DAT_004897c0 != 0)) &&
      (*(int **)(DAT_004897c0 + 0x44) == (int *)this)) {
     FUN_00405060();
@@ -2420,32 +2420,32 @@ void __thiscall FUN_00405630(SoundPlayer *this,char param_1)
 int * __thiscall FUN_00405660(UIWidget *this,short *param_1)
 
 {
-  int *piVar1;
-  uint uVar2;
-  int iVar3;
+  int *pn1;
+  uint u2;
+  int n3;
   
   if ((((param_1[1] < this->rect_left) || (this->rect_right <= param_1[1]))
       || (*param_1 < this->rect_top)) || (this->rect_bottom <= *param_1)) {
     return (int *)0x0;
   }
   if (((this->child_list_1 != 0) &&
-      (iVar3 = *(int *)(this->child_list_1 + 0xe), iVar3 != 0)) && (uVar2 = 1, iVar3 != 0))
+      (n3 = *(int *)(this->child_list_1 + 0xe), n3 != 0)) && (u2 = 1, n3 != 0))
   {
-    iVar3 = 4;
+    n3 = 4;
     do {
-      piVar1 = FUN_0041c2f0(*(void **)(**(int **)(this->child_list_1 + 4) + -4 + iVar3),
+      pn1 = FUN_0041c2f0(*(void **)(**(int **)(this->child_list_1 + 4) + -4 + n3),
                             param_1);
-      if (piVar1 != (int *)0x0) {
-        return piVar1;
+      if (pn1 != (int *)0x0) {
+        return pn1;
       }
-      iVar3 = iVar3 + 4;
-      uVar2 = uVar2 + 1;
-    } while (uVar2 <= *(uint *)(this->child_list_1 + 0xe));
+      n3 = n3 + 4;
+      u2 = u2 + 1;
+    } while (u2 <= *(uint *)(this->child_list_1 + 0xe));
   }
   if ((this->cell_count != 0) && (this->cell_info_ptr != 0)) {
-    uVar2 = FUN_0041a9a0((void *)&this->scroll_data,(short *)&this->rect_top,param_1,
+    u2 = FUN_0041a9a0((void *)&this->scroll_data,(short *)&this->rect_top,param_1,
                          this->mirror_flag);
-    return (int *)(((char)uVar2 == '\0') - 1 & (uint)this);
+    return (int *)(((char)u2 == '\0') - 1 & (uint)this);
   }
   return (int *)0x0;
 }
@@ -2467,61 +2467,61 @@ int * __thiscall FUN_00405660(UIWidget *this,short *param_1)
 void __fastcall FUN_00405730(UIWidget *this)
 
 {
-  int iVar1;
-  int iVar2;
-  short *psVar3;
+  int n1;
+  int n2;
+  short *ps3;
   int *__seh_chain;
-  int local_24;
-  int local_20;
-  int local_1c;
-  int local_18;
-  int local_14;
-  int local_10;
+  int loc_24;
+  int loc_20;
+  int loc_1c;
+  int loc_18;
+  int loc_14;
+  int loc_10;
   void *__seh_handler;
-  int local_8;
+  int loc_8;
 
-  local_10 = *__seh_chain;
-  local_8 = 0xffffffff;
+  loc_10 = *__seh_chain;
+  loc_8 = 0xffffffff;
   __seh_handler = &__label_00405885;
-  *__seh_chain = &local_10;
-  iVar2 = this->sub_widgets_b[*(short *)((int)this->level_data_ptr + 8 +
+  *__seh_chain = &loc_10;
+  n2 = this->sub_widgets_b[*(short *)((int)this->level_data_ptr + 8 +
                             this->current_frame * 2) - 1];  /* TODO: level_data_ptr sub-struct, frame table at +0x08 */
-  this->cell_info_ptr = (void *)iVar2;
-  if (iVar2 != 0) {
-    if (*(short *)(iVar2 + 4) < this->cell_count) {
-      this->cell_count = *(short *)(iVar2 + 4);
+  this->cell_info_ptr = (void *)n2;
+  if (n2 != 0) {
+    if (*(short *)(n2 + 4) < this->cell_count) {
+      this->cell_count = *(short *)(n2 + 4);
     }
-    if ((this->cell_count != 0) && (iVar2 != 0)) {
-      iVar1 = *(int *)(iVar2 + 8 + (short)(this->cell_count + -1) * 4);
-      psVar3 = (short *)(iVar2 + iVar1);
-      if (iVar1 == 0) {
-        psVar3 = (short *)0x0;
+    if ((this->cell_count != 0) && (n2 != 0)) {
+      n1 = *(int *)(n2 + 8 + (short)(this->cell_count + -1) * 4);
+      ps3 = (short *)(n2 + n1);
+      if (n1 == 0) {
+        ps3 = (short *)0x0;
       }
-      FUN_00465c20((int *)&this->scroll_data,iVar2);
+      FUN_00465c20((int *)&this->scroll_data,n2);
       *(short *)((int)this + 0xe8) = this->cell_count;  /* TODO: offset 0xE8, scroll_data[0x1E] within scroll_data region */
       ((void (*)(void))((void **)(*(int *)&this->scroll_data))[0x80 / 4])(); /* scroll_data obj->vtable[32] */
-      if (psVar3 != (short *)0x0) {
-        local_20 = 0;
-        local_24 = 0;
-        local_8 = 0;
-        iVar2 = (int)*psVar3 * this->origin_y * 0x100;
-        local_18 = (iVar2 >> 8) - (iVar2 >> 0x1f) >> 1;
-        iVar2 = (int)psVar3[1] * this->origin_x * 0x100;
-        local_14 = (iVar2 >> 8) - (iVar2 >> 0x1f) >> 1;
-        FUN_0041cde0(this,&local_24);
-        local_1c = local_24 + local_14;
-        local_14 = local_24 - local_14;
-        this->pos_h = local_18 + local_20;
-        this->pos_x = local_14;
-        this->pos_y = local_20 - local_18;
-        this->pos_w = local_1c;
+      if (ps3 != (short *)0x0) {
+        loc_20 = 0;
+        loc_24 = 0;
+        loc_8 = 0;
+        n2 = (int)*ps3 * this->origin_y * 0x100;
+        loc_18 = (n2 >> 8) - (n2 >> 0x1f) >> 1;
+        n2 = (int)ps3[1] * this->origin_x * 0x100;
+        loc_14 = (n2 >> 8) - (n2 >> 0x1f) >> 1;
+        FUN_0041cde0(this,&loc_24);
+        loc_1c = loc_24 + loc_14;
+        loc_14 = loc_24 - loc_14;
+        this->pos_h = loc_18 + loc_20;
+        this->pos_x = loc_14;
+        this->pos_y = loc_20 - loc_18;
+        this->pos_w = loc_1c;
         FUN_0041d490((int)this);
-        local_8 = 0xffffffff;
+        loc_8 = 0xffffffff;
         FUN_0040588f();
       }
     }
   }
-  *__seh_chain = local_10;
+  *__seh_chain = loc_10;
   return;
 }
 
@@ -2545,13 +2545,13 @@ void FUN_0040588f(void)
 int __fastcall FUN_004058a0(UIWidget *this)
 
 {
-  short *puVar1;
+  short *pu1;
 
-  puVar1 = this->tile_data_ptr;
-  if (puVar1 == NULL) {
+  pu1 = this->tile_data_ptr;
+  if (pu1 == NULL) {
     return 0;
   }
-  return CONCAT22((short)((uint)puVar1 >> 0x10),*puVar1);
+  return CONCAT22((short)((uint)pu1 >> 0x10),*pu1);
 }
 
 
@@ -2561,30 +2561,30 @@ int __fastcall FUN_004058a0(UIWidget *this)
 void __thiscall FUN_004058c0(GameWidget *this,short param_1)
 
 {
-  int iVar1;
-  int iVar2;
-  int iVar3;
-  int iVar4;
-  int local_10;
-  int local_c;
-  int local_8;
+  int n1;
+  int n2;
+  int n3;
+  int n4;
+  int loc_10;
+  int loc_c;
+  int loc_8;
   
   if ((param_1 != 0) || (this->cell_count != 0)) {
-    iVar4 = 0;
-    iVar3 = 0;
-    local_10 = 0;
-    local_8 = 0;
+    n4 = 0;
+    n3 = 0;
+    loc_10 = 0;
+    loc_8 = 0;
     if (this->cell_count != 0) {
       FUN_0041cb20(this);
     }
     if (this->cell_count != 0) {
-      iVar1 = (intptr_t)this->cell_count;
-      iVar3 = this->tile_data_ptr;
-      iVar2 = iVar3 + iVar1 * 0xe;
-      iVar4 = *(short *)(iVar3 + -2 + iVar1 * 0xe) * -0x100;
-      iVar3 = *(short *)(iVar3 + -4 + iVar1 * 0xe) * -0x100;
-      local_10 = *(short *)(iVar2 + -6) * -0x100;
-      local_8 = *(short *)(iVar2 + -8) * -0x100;
+      n1 = (intptr_t)this->cell_count;
+      n3 = this->tile_data_ptr;
+      n2 = n3 + n1 * 0xe;
+      n4 = *(short *)(n3 + -2 + n1 * 0xe) * -0x100;
+      n3 = *(short *)(n3 + -4 + n1 * 0xe) * -0x100;
+      loc_10 = *(short *)(n2 + -6) * -0x100;
+      loc_8 = *(short *)(n2 + -8) * -0x100;
     }
     if (param_1 != 0) {
       if (param_1 < 0) {
@@ -2597,26 +2597,26 @@ void __thiscall FUN_004058c0(GameWidget *this,short param_1)
     this->cell_count = param_1;
     if (param_1 != 0) {
       FUN_00405730(this);
-      iVar2 = this->cell_count * 0xe + this->tile_data_ptr;
-      iVar4 = iVar4 + *(short *)(iVar2 + -2) * 0x100;
-      iVar3 = iVar3 + *(short *)(iVar2 + -4) * 0x100;
-      local_10 = local_10 + *(short *)(iVar2 + -6) * 0x100;
-      local_8 = local_8 + *(short *)(iVar2 + -8) * 0x100;
+      n2 = this->cell_count * 0xe + this->tile_data_ptr;
+      n4 = n4 + *(short *)(n2 + -2) * 0x100;
+      n3 = n3 + *(short *)(n2 + -4) * 0x100;
+      loc_10 = loc_10 + *(short *)(n2 + -6) * 0x100;
+      loc_8 = loc_8 + *(short *)(n2 + -8) * 0x100;
     }
-    iVar2 = this->origin_x;
-    local_10 = local_10 * this->origin_y >> 8;
-    local_c = iVar4 * this->origin_y >> 8;
-    iVar4 = local_8 * iVar2 >> 8;
+    n2 = this->origin_x;
+    loc_10 = loc_10 * this->origin_y >> 8;
+    loc_c = n4 * this->origin_y >> 8;
+    n4 = loc_8 * n2 >> 8;
     if (this->mirror_flag != '\0') {
-      local_10 = -local_10;
-      local_c = -local_c;
+      loc_10 = -loc_10;
+      loc_c = -loc_c;
     }
-    this->pos_y = this->pos_y + local_10;
-    this->pos_h = this->pos_h + local_10;
-    this->pos_x = this->pos_x + iVar4;
-    this->pos_w = this->pos_w + iVar4;
+    this->pos_y = this->pos_y + loc_10;
+    this->pos_h = this->pos_h + loc_10;
+    this->pos_x = this->pos_x + n4;
+    this->pos_w = this->pos_w + n4;
     FUN_0041d490((intptr_t)this);
-    FUN_0041c200(this,local_c,iVar3 * iVar2 >> 8,0);
+    FUN_0041c200(this,loc_c,n3 * n2 >> 8,0);
     if (param_1 != 0) {
       FUN_0041cb20(this);
     }
@@ -2631,13 +2631,13 @@ void __thiscall FUN_004058c0(GameWidget *this,short param_1)
 void FUN_00405a80(void)
 
 {
-  int uVar1;
+  int u1;
   int __param_fffffff4;
   
-  uVar1 = 0;
+  u1 = 0;
   FUN_00401050(&__stk_44,0);
   FUN_00401050(&__stk_43,0);
-  FUN_00401060(&DAT_004841e8,uVar1,__param_fffffff4);
+  FUN_00401060(&DAT_004841e8,u1,__param_fffffff4);
   return;
 }
 
@@ -2667,39 +2667,39 @@ void __cdecl FUN_00405ae0(UIWidget *this,short param_2,char param_3)
 
 {
   UIWidget *child;
-  short sVar2;
-  short sVar3;
-  uint uVar4;
-  int iVar5;
+  short s2;
+  short s3;
+  uint u4;
+  int n5;
 
-  sVar2 = 0;
+  s2 = 0;
   do {
     if ((this->flags >> 4 & 1) == 0) {
 __label_00405bd3:
       if (((this->child_list_2 != NULL) &&
-          (iVar5 = *(int *)((int)this->child_list_2 + 0xe) /* CVector: count at +0x0E */, iVar5 != 0)) &&
-         (uVar4 = 1, iVar5 != 0)) {
-        iVar5 = 4;
+          (n5 = *(int *)((int)this->child_list_2 + 0xe) /* CVector: count at +0x0E */, n5 != 0)) &&
+         (u4 = 1, n5 != 0)) {
+        n5 = 4;
         do {
-          child = *(UIWidget **)(**(int **)((int)this->child_list_2 + 4) /* CVector: data ptr at +0x04 */ + -4 + iVar5);
+          child = *(UIWidget **)(**(int **)((int)this->child_list_2 + 4) /* CVector: data ptr at +0x04 */ + -4 + n5);
           if (child->is_visible == '\0') {
             FUN_00405ae0(child,param_2,'\0');
           }
-          iVar5 = iVar5 + 4;
-          uVar4 = uVar4 + 1;
-        } while (uVar4 <= *(uint *)((int)this->child_list_2 + 0xe) /* CVector: count at +0x0E */);
+          n5 = n5 + 4;
+          u4 = u4 + 1;
+        } while (u4 <= *(uint *)((int)this->child_list_2 + 0xe) /* CVector: count at +0x0E */);
       }
       return;
     }
-    sVar3 = 0;
+    s3 = 0;
     while( true ) {
-      if (*this->tile_data_ptr <= sVar3) break;
-      sVar2 = sVar2 + this->tile_data_ptr[sVar3 * 7 + 7];
-      if (param_2 < sVar2) {
-        sVar3 = sVar3 + 1;
+      if (*this->tile_data_ptr <= s3) break;
+      s2 = s2 + this->tile_data_ptr[s3 * 7 + 7];
+      if (param_2 < s2) {
+        s3 = s3 + 1;
         goto __label_00405bc2;
       }
-      sVar3 = sVar3 + 1;
+      s3 = s3 + 1;
     }
     if (this->anim_flag_0 != '\0') {
       /* vtable[0] call — destructor */
@@ -2714,13 +2714,13 @@ __label_00405bd3:
       goto __label_00405bd3;
     }
     if (this->anim_flag_2 != '\0') {
-      sVar3 = *this->tile_data_ptr;
+      s3 = *this->tile_data_ptr;
       this->anim_flag_3 = 1;
       FUN_0041da90(this,0);
       (*(void (*)(void))this->vtable[0x26])();  /* vtable[0x26] (offset 0x98 / 4) */
 __label_00405bc2:
-      if (this->cell_count != sVar3) {
-        FUN_004058c0(this,sVar3);
+      if (this->cell_count != s3) {
+        FUN_004058c0(this,s3);
       }
       goto __label_00405bd3;
     }
@@ -2814,19 +2814,19 @@ void __fastcall FUN_00405cb0(UIWidget *this)
 
 {
   DWORD DVar1;
-  short sVar2;
+  short s2;
 
   if ((this->parent_ptr == NULL) && (this->level_data_ptr != NULL)) {
     DVar1 = GetTickCount();
     if (this->timestamp == 0) {
       this->cell_count = 0;
-      sVar2 = 1;
+      s2 = 1;
     }
     else {
-      sVar2 = (short)((ulonglong)(DAT_004890a4 * DVar1) / 1000) -
+      s2 = (short)((ulonglong)(DAT_004890a4 * DVar1) / 1000) -
               (short)((ulonglong)(uint)(DAT_004890a4 * this->timestamp) / 1000);
     }
-    FUN_00405ae0(this,sVar2,'\x01');
+    FUN_00405ae0(this,s2,'\x01');
   }
   return;
 }
@@ -2838,45 +2838,45 @@ void __fastcall FUN_00405cb0(UIWidget *this)
 void __thiscall FUN_00405d30(UIWidget *this,short param_1)
 
 {
-  short *psVar1;
-  short sVar2;
-  void *this_00;
+  short *ps1;
+  short s2;
+  void *self;
   DWORD DVar3;
-  short sVar4;
-  uint uVar5;
-  int iVar6;
+  short s4;
+  uint u5;
+  int n6;
   
   FUN_00460a80(DAT_004838c0,0x74727073);
   this->anim_flag_3 = 0;
   this->current_frame = param_1;
-  psVar1 = (short *)(this->level_data_ptr + 8 + param_1 * 2);
-  sVar2 = *psVar1;
-  if (sVar2 < 1) {
-    sVar4 = 1;
+  ps1 = (short *)(this->level_data_ptr + 8 + param_1 * 2);
+  s2 = *ps1;
+  if (s2 < 1) {
+    s4 = 1;
   }
   else {
-    sVar4 = *(short *)(this->level_data_ptr + 0x18);
-    if (sVar2 <= sVar4) goto __label_00405d84;
+    s4 = *(short *)(this->level_data_ptr + 0x18);
+    if (s2 <= s4) goto __label_00405d84;
   }
-  *psVar1 = sVar4;
-  sVar2 = sVar4;
+  *ps1 = s4;
+  s2 = s4;
 __label_00405d84:
   FUN_004058c0(this,0);
-  FUN_00406980(this,sVar2);
-  this->tile_data_ptr = (short *)this->sub_widgets_a[sVar2 - 1];  /* offset 0x46 + (sVar2-1)*4 */
-  this->cell_info_ptr = (void *)this->sub_widgets_b[sVar2 - 1];  /* offset 0x86 + (sVar2-1)*4 */
+  FUN_00406980(this,s2);
+  this->tile_data_ptr = (short *)this->sub_widgets_a[s2 - 1];  /* offset 0x46 + (s2-1)*4 */
+  this->cell_info_ptr = (void *)this->sub_widgets_b[s2 - 1];  /* offset 0x86 + (s2-1)*4 */
   FUN_004058c0(this,1);
   if ((this->child_list_2 != 0) &&
-     (uVar5 = 1, *(int *)(this->child_list_2 + 0xe) != 0)) {
-    iVar6 = 4;
+     (u5 = 1, *(int *)(this->child_list_2 + 0xe) != 0)) {
+    n6 = 4;
     do {
-      this_00 = *(void **)(**(int **)(this->child_list_2 + 4) + -4 + iVar6);
-      if (((UIWidget *)this_00)->is_visible == '\0') {
-        FUN_00405d30((UIWidget *)this_00,param_1);
+      self = *(void **)(**(int **)(this->child_list_2 + 4) + -4 + n6);
+      if (((UIWidget *)self)->is_visible == '\0') {
+        FUN_00405d30((UIWidget *)self,param_1);
       }
-      iVar6 = iVar6 + 4;
-      uVar5 = uVar5 + 1;
-    } while (uVar5 <= *(uint *)(this->child_list_2 + 0xe));
+      n6 = n6 + 4;
+      u5 = u5 + 1;
+    } while (u5 <= *(uint *)(this->child_list_2 + 0xe));
   }
   DVar3 = GetTickCount();
   this->timestamp = DVar3;
@@ -2902,18 +2902,18 @@ void __thiscall FUN_004060c0(void *this,int param_1,int param_2,int param_3,char
 
 {
   int *__seh_chain;
-  int local_10;
+  int loc_10;
   void *__seh_handler;
-  int local_8;
+  int loc_8;
   
-  local_10 = *__seh_chain;
+  loc_10 = *__seh_chain;
   __seh_handler = &__label_00406117;
-  *__seh_chain = &local_10;
-  local_8 = 0;
+  *__seh_chain = &loc_10;
+  loc_8 = 0;
   FUN_00406130(this,param_2,param_1,param_3,param_4);
-  local_8 = 0xffffffff;
+  loc_8 = 0xffffffff;
   FUN_0040610f();
-  *__seh_chain = local_10;
+  *__seh_chain = loc_10;
   return;
 }
 
@@ -3087,7 +3087,7 @@ void FUN_00406716(void)
 void __thiscall FUN_00406720(UIWidget *this,short param_1)
 
 {
-  uint uVar1;
+  uint u1;
   
   if ((param_1 == 0) || (this->active_anim_id == param_1)) {
     this->anim_flag_0 = 0;
@@ -3098,8 +3098,8 @@ void __thiscall FUN_00406720(UIWidget *this,short param_1)
   }
   else {
     this->current_frame = 0xffff;
-    uVar1 = this->flags >> 4;
-    if ((uVar1 & 1) != 0) {
+    u1 = this->flags >> 4;
+    if ((u1 & 1) != 0) {
       FUN_0041da90(this,0);
     }
     FUN_004058c0(this,0);
@@ -3111,7 +3111,7 @@ void __thiscall FUN_00406720(UIWidget *this,short param_1)
     this->anim_flag_1 = 0;
     this->anim_flag_3 = 0;
     FUN_00405d30(this,this->pending_frame);
-    if ((uVar1 & 1) != 0) {
+    if ((u1 & 1) != 0) {
       FUN_0041da90(this,1);
       return;
     }
@@ -3159,43 +3159,43 @@ void __thiscall FUN_00406980(void *this,short param_1)
 void __thiscall FUN_00406b20(SoundPlayer *this,short param_1)
 
 {
-  uint uVar1;
-  int *piVar2;
-  int iVar3;
+  uint u1;
+  int *pn2;
+  int n3;
   
   if ((this->sequence_data[49] == -1) ||
      (*(short *)(this->sequence_data[43] + 8 + this->sequence_data[49] * 2) != param_1)) {
-    iVar3 = (int)param_1;
-    uVar1 = (uint)((UIWidget *)this)->sub_widgets_a[iVar3 - 1];  /* offset 0x46 + (iVar3-1)*4; TODO: this typed as SoundPlayer but accesses UIWidget fields */
-    if (uVar1 != 0) {
+    n3 = (int)param_1;
+    u1 = (uint)((UIWidget *)this)->sub_widgets_a[n3 - 1];  /* offset 0x46 + (n3-1)*4; TODO: this typed as SoundPlayer but accesses UIWidget fields */
+    if (u1 != 0) {
       if (*(char *)((intptr_t)this + 0x42) == '\0') {  /* _pad42[0] */
-        piVar2 = this->sequence_data[43];  /* TODO: maps to UIWidget offset 0xF4 */
-        if ((*piVar2 == 0) || (*(char *)(*piVar2 + 6) == '\0')) {
-          FUN_0046b490(DAT_004838c0,*(int *)((int)piVar2 + iVar3 * 8 + 0x12),uVar1);  /* TODO: stride-8 array at piVar2+0x12 */
+        pn2 = this->sequence_data[43];  /* TODO: maps to UIWidget offset 0xF4 */
+        if ((*pn2 == 0) || (*(char *)(*pn2 + 6) == '\0')) {
+          FUN_0046b490(DAT_004838c0,*(int *)((int)pn2 + n3 * 8 + 0x12),u1);  /* TODO: stride-8 array at pn2+0x12 */
         }
         else {
-          FUN_0046b4e0(DAT_004838c0,*(uint *)((int)piVar2 + iVar3 * 8 + 0x12),uVar1);  /* TODO: stride-8 array at piVar2+0x12 */
+          FUN_0046b4e0(DAT_004838c0,*(uint *)((int)pn2 + n3 * 8 + 0x12),u1);  /* TODO: stride-8 array at pn2+0x12 */
         }
       }
-      ((UIWidget *)this)->sub_widgets_a[iVar3 - 1] = 0;  /* offset 0x46 + (iVar3-1)*4 */
+      ((UIWidget *)this)->sub_widgets_a[n3 - 1] = 0;  /* offset 0x46 + (n3-1)*4 */
     }
-    uVar1 = (uint)((UIWidget *)this)->sub_widgets_b[iVar3 - 1];  /* offset 0x86 + (iVar3-1)*4 */
-    if (uVar1 != 0) {
+    u1 = (uint)((UIWidget *)this)->sub_widgets_b[n3 - 1];  /* offset 0x86 + (n3-1)*4 */
+    if (u1 != 0) {
       if (*(char *)((intptr_t)this + 0x42) == '\0') {  /* _pad42[0] */
-        piVar2 = this->sequence_data[43];  /* TODO: maps to UIWidget offset 0xF4 */
-        if (((*piVar2 == 0) || (*(char *)(*piVar2 + 6) == '\0')) &&
+        pn2 = this->sequence_data[43];  /* TODO: maps to UIWidget offset 0xF4 */
+        if (((*pn2 == 0) || (*(char *)(*pn2 + 6) == '\0')) &&
            (this->sequence_data[31] != '\0')) {
-          FUN_0046b620(DAT_004838c0,*(int *)((int)piVar2 + iVar3 * 8 + 0x12),uVar1);  /* TODO: stride-8 array at piVar2+0x12 */
+          FUN_0046b620(DAT_004838c0,*(int *)((int)pn2 + n3 * 8 + 0x12),u1);  /* TODO: stride-8 array at pn2+0x12 */
         }
         else {
-          FUN_0046b680(DAT_004838c0,*(uint *)((int)piVar2 + iVar3 * 8 + 0x12),uVar1);  /* TODO: stride-8 array at piVar2+0x12 */
+          FUN_0046b680(DAT_004838c0,*(uint *)((int)pn2 + n3 * 8 + 0x12),u1);  /* TODO: stride-8 array at pn2+0x12 */
         }
       }
       else {
-        FUN_0046f5f0(uVar1);
+        FUN_0046f5f0(u1);
       }
-      ((UIWidget *)this)->sub_widgets_b[iVar3 - 1] = 0;  /* offset 0x86 + (iVar3-1)*4 */
-      if (this->sequence_data[39] == uVar1) {
+      ((UIWidget *)this)->sub_widgets_b[n3 - 1] = 0;  /* offset 0x86 + (n3-1)*4 */
+      if (this->sequence_data[39] == u1) {
         FUN_00465c20((void *)&this->sequence_data[32],0);
       }
     }
@@ -3210,38 +3210,38 @@ void __thiscall FUN_00406b20(SoundPlayer *this,short param_1)
 void __thiscall FUN_00406ca0(GameWidget *this,char param_1,char param_2)
 
 {
-  char cVar1;
-  void *this_00;
-  int iVar2;
-  uint uVar3;
-  char local_5;
+  char c1;
+  void *self;
+  int n2;
+  uint u3;
+  char loc_5;
   
-  local_5 = (byte)(this->flags >> 4) & 1;
+  loc_5 = (byte)(this->flags >> 4) & 1;
   FUN_0041da90(this,0);
-  cVar1 = *(char *)(this->level_data_ptr + 5);
-  if ((cVar1 != '\0') && (cVar1 != param_1)) {
+  c1 = *(char *)(this->level_data_ptr + 5);
+  if ((c1 != '\0') && (c1 != param_1)) {
     *(char *)(this->level_data_ptr + 5) = param_1;
     FUN_00406db0(this);
     FUN_0041cad0(this);
   }
   if (((this->child_list_2 != 0) &&
-      (iVar2 = *(int *)(this->child_list_2 + 0xe), iVar2 != 0)) && (uVar3 = 1, iVar2 != 0))
+      (n2 = *(int *)(this->child_list_2 + 0xe), n2 != 0)) && (u3 = 1, n2 != 0))
   {
-    iVar2 = 4;
+    n2 = 4;
     do {
-      this_00 = *(void **)(**(int **)(this->child_list_2 + 4) + -4 + iVar2);
-      FUN_00406d60(this_00,param_1);
+      self = *(void **)(**(int **)(this->child_list_2 + 4) + -4 + n2);
+      FUN_00406d60(self,param_1);
       if (param_2 != '\0') {
-        FUN_00406ca0(this_00,param_1,'\x01');
+        FUN_00406ca0(self,param_1,'\x01');
       }
-      iVar2 = iVar2 + 4;
-      uVar3 = uVar3 + 1;
-    } while (uVar3 <= *(uint *)(this->child_list_2 + 0xe));
+      n2 = n2 + 4;
+      u3 = u3 + 1;
+    } while (u3 <= *(uint *)(this->child_list_2 + 0xe));
   }
   if (this->parent_ptr == 0) {
     FUN_00406d60(this,param_1);
   }
-  FUN_0041da90(this,local_5);
+  FUN_0041da90(this,loc_5);
   return;
 }
 
@@ -3252,18 +3252,18 @@ void __thiscall FUN_00406ca0(GameWidget *this,char param_1,char param_2)
 void __thiscall FUN_00406d60(GameWidget *this,char param_1)
 
 {
-  char cVar1;
-  uint uVar2;
+  char c1;
+  uint u2;
   
-  uVar2 = this->flags;
+  u2 = this->flags;
   FUN_0041da90(this,0);
-  cVar1 = *(char *)(this->level_data_ptr + 6);
-  if ((cVar1 != '\0') && (param_1 != cVar1)) {
+  c1 = *(char *)(this->level_data_ptr + 6);
+  if ((c1 != '\0') && (param_1 != c1)) {
     *(char *)(this->level_data_ptr + 6) = param_1;
     FUN_00406db0(this);
     FUN_0041cad0(this);
   }
-  FUN_0041da90(this,(byte)(uVar2 >> 4) & 1);
+  FUN_0041da90(this,(byte)(u2 >> 4) & 1);
   return;
 }
 
@@ -3291,36 +3291,36 @@ void __fastcall FUN_00406db0(void *param_1)
 char __cdecl FUN_00406fc0(UIWidget *param_1,UIWidget *param_2)
 
 {
-  short sVar1;
-  char uVar2;
-  short sVar3;
-  short sVar4;
+  short s1;
+  char u2;
+  short s3;
+  short s4;
 
   if ((param_1 != NULL) && (param_2 != NULL)) {
-    sVar4 = param_2->rect_bottom;
+    s4 = param_2->rect_bottom;
     if (param_1->rect_bottom <= param_2->rect_bottom) {
-      sVar4 = param_1->rect_bottom;
+      s4 = param_1->rect_bottom;
     }
-    sVar3 = param_2->rect_top;
-    sVar1 = param_1->rect_top;
-    if (sVar3 <= sVar1) {
-      sVar3 = sVar1;
+    s3 = param_2->rect_top;
+    s1 = param_1->rect_top;
+    if (s3 <= s1) {
+      s3 = s1;
     }
-    if (sVar3 <= sVar4) {
-      sVar4 = param_2->rect_right;
+    if (s3 <= s4) {
+      s4 = param_2->rect_right;
       if (param_1->rect_right <= param_2->rect_right) {
-        sVar4 = param_1->rect_right;
+        s4 = param_1->rect_right;
       }
-      sVar3 = param_2->rect_left;
+      s3 = param_2->rect_left;
       if (param_2->rect_left <= param_1->rect_left) {
-        sVar3 = param_1->rect_left;
+        s3 = param_1->rect_left;
       }
-      if (((sVar3 <= sVar4) && (param_1->is_visible == '\0')) &&
+      if (((s3 <= s4) && (param_1->is_visible == '\0')) &&
          (param_2->is_visible == '\0')) {
-        uVar2 = FUN_0041a150(&param_1->scroll_data,&param_1->rect_top,
+        u2 = FUN_0041a150(&param_1->scroll_data,&param_1->rect_top,
                              param_1->mirror_flag,&param_2->scroll_data,
                              &param_2->rect_top,param_2->mirror_flag);
-        return uVar2;
+        return u2;
       }
     }
   }
@@ -3339,27 +3339,27 @@ char __cdecl FUN_00406fc0(UIWidget *param_1,UIWidget *param_2)
 int __fastcall FUN_00407070(UIWidget *this)
 
 {
-  int iVar1;
-  char cVar2;
-  short sVar3;
-  int iVar4;
-  uint uVar5;
+  int n1;
+  char c2;
+  short s3;
+  int n4;
+  uint u5;
 
-  sVar3 = FUN_0041e020(this);
-  iVar4 = (int)((UIElement *)this->parent_widget)->child_list_1;  /* parent_widget->child_list_1 */
-  if ((iVar4 != 0) && (uVar5 = (int)sVar3 + 1, uVar5 <= *(uint *)(iVar4 + 0xe))) {  /* child_list_1->count */
-    iVar4 = uVar5 * 4;
+  s3 = FUN_0041e020(this);
+  n4 = (int)((UIElement *)this->parent_widget)->child_list_1;  /* parent_widget->child_list_1 */
+  if ((n4 != 0) && (u5 = (int)s3 + 1, u5 <= *(uint *)(n4 + 0xe))) {  /* child_list_1->count */
+    n4 = u5 * 4;
     do {
-      iVar1 = *(int *)(**(int **)((int)((UIElement *)this->parent_widget)->child_list_1 + 4) /* CVector: data ptr at +0x04 */ + -4 + iVar4);
-      if (*(char *)(iVar1 + 0x10) != '\0') {  /* field_10 on UIElement */
-        cVar2 = FUN_00406fc0((UIWidget *)this,(UIWidget *)iVar1);
-        if (cVar2 != '\0') {
-          return iVar1;
+      n1 = *(int *)(**(int **)((int)((UIElement *)this->parent_widget)->child_list_1 + 4) /* CVector: data ptr at +0x04 */ + -4 + n4);
+      if (*(char *)(n1 + 0x10) != '\0') {  /* field_10 on UIElement */
+        c2 = FUN_00406fc0((UIWidget *)this,(UIWidget *)n1);
+        if (c2 != '\0') {
+          return n1;
         }
       }
-      iVar4 = iVar4 + 4;
-      uVar5 = uVar5 + 1;
-    } while (uVar5 <= *(uint *)((int)((UIElement *)this->parent_widget)->child_list_1 + 0xe) /* CVector: count at +0x0E */);
+      n4 = n4 + 4;
+      u5 = u5 + 1;
+    } while (u5 <= *(uint *)((int)((UIElement *)this->parent_widget)->child_list_1 + 0xe) /* CVector: count at +0x0E */);
   }
   return 0;
 }
@@ -3371,43 +3371,43 @@ int __fastcall FUN_00407070(UIWidget *this)
 void __thiscall FUN_004070e0(GameWidget *this,char param_1,short param_2)
 
 {
-  short sVar1;
-  short sVar2;
-  void *this_00;
-  int iVar3;
-  bool bVar4;
-  int uVar5;
+  short s1;
+  short s2;
+  void *self;
+  int n3;
+  bool b4;
+  int u5;
   int __param_ffffffdc;
-  char cVar6;
-  uint local_8;
+  char c6;
+  uint loc_8;
   
   if (this->mirror_flag != param_1) {
     this->mirror_flag = param_1;
     if ((this->child_list_2 != 0) &&
-       (iVar3 = *(int *)(this->child_list_2 + 0xe), iVar3 != 0)) {
-      local_8 = 1;
-      sVar1 = this->rect_right;
-      sVar2 = this->rect_left;
-      if (iVar3 != 0) {
-        iVar3 = 4;
+       (n3 = *(int *)(this->child_list_2 + 0xe), n3 != 0)) {
+      loc_8 = 1;
+      s1 = this->rect_right;
+      s2 = this->rect_left;
+      if (n3 != 0) {
+        n3 = 4;
         do {
-          this_00 = *(void **)(**(int **)(this->child_list_2 + 4) + -4 + iVar3);
-          bVar4 = ((GameWidget *)this_00)->mirror_flag == '\0';
-          iVar3 = iVar3 + 4;
-          __param_ffffffdc = CONCAT31((unsigned int)((uint)this->child_list_2 >> 8),bVar4);
-          FUN_004070e0((GameWidget *)this_00,bVar4,
-                       ((short)((int)sVar1 + (int)sVar2 >> 1) -
-                       (short)((intptr_t)((GameWidget *)this_00)->rect_right +
-                               (intptr_t)((GameWidget *)this_00)->rect_left >> 1)) * 2);
-          local_8 = local_8 + 1;
-        } while (local_8 <= *(uint *)(this->child_list_2 + 0xe));
+          self = *(void **)(**(int **)(this->child_list_2 + 4) + -4 + n3);
+          b4 = ((GameWidget *)self)->mirror_flag == '\0';
+          n3 = n3 + 4;
+          __param_ffffffdc = CONCAT31((unsigned int)((uint)this->child_list_2 >> 8),b4);
+          FUN_004070e0((GameWidget *)self,b4,
+                       ((short)((int)s1 + (int)s2 >> 1) -
+                       (short)((intptr_t)((GameWidget *)self)->rect_right +
+                               (intptr_t)((GameWidget *)self)->rect_left >> 1)) * 2);
+          loc_8 = loc_8 + 1;
+        } while (loc_8 <= *(uint *)(this->child_list_2 + 0xe));
       }
     }
-    cVar6 = '\x01';
-    uVar5 = 0;
+    c6 = '\x01';
+    u5 = 0;
     FUN_00401050(&__stk_38,0);
     FUN_00401ba0(&__stk_37,param_2);
-    FUN_0041d3a0(this,uVar5,__param_ffffffdc,cVar6);
+    FUN_0041d3a0(this,u5,__param_ffffffdc,c6);
   }
   return;
 }
@@ -3419,64 +3419,64 @@ void __thiscall FUN_004070e0(GameWidget *this,char param_1,short param_2)
 void __thiscall FUN_004071c0(DialogWidget *this,int param_1,int param_2,ushort param_3)
 
 {
-  int uVar1;
+  int u1;
   longlong lVar2;
-  int iVar3;
-  int iVar4;
+  int n3;
+  int n4;
   DWORD DVar5;
   DWORD DVar6;
-  int iVar7;
-  uint uVar8;
+  int n7;
+  uint u8;
   int *__seh_chain;
-  int local_20;
-  int local_1c;
-  short local_16;
-  int local_11;
+  int loc_20;
+  int loc_1c;
+  short loc_16;
+  int loc_11;
   char uStack_d;
   void *__seh_handler;
-  int local_8;
+  int loc_8;
   
-  uVar1 = *__seh_chain;
+  u1 = *__seh_chain;
   __seh_handler = &__label_00407329;
-  uStack_d = (char)((uint)uVar1 >> 0x18);
-  *__seh_chain = (int)&local_11 + 1;
-  local_1c = 0;
-  local_20 = 0;
-  local_8 = 2;
-  local_11 = CONCAT31((unsigned int)uVar1,(char)(this->flags >> 4)) & 0xffffff01;
+  uStack_d = (char)((uint)u1 >> 0x18);
+  *__seh_chain = (int)&loc_11 + 1;
+  loc_1c = 0;
+  loc_20 = 0;
+  loc_8 = 2;
+  loc_11 = CONCAT31((unsigned int)u1,(char)(this->flags >> 4)) & 0xffffff01;
   FUN_0041da90(this,0);
-  FUN_0041cde0(this,&local_20);
-  uVar8 = (uint)param_3;
-  iVar3 = param_2 - local_1c;
-  local_16 = 1;
-  iVar4 = param_1 - local_20;
+  FUN_0041cde0(this,&loc_20);
+  u8 = (uint)param_3;
+  n3 = param_2 - loc_1c;
+  loc_16 = 1;
+  n4 = param_1 - loc_20;
   if (param_3 != 0) {
     do {
-      local_1c = local_1c + iVar3 / (int)uVar8;
-      local_20 = local_20 + iVar4 / (int)uVar8;
-      FUN_0041d3a0(this,local_1c,local_20,'\0');
+      loc_1c = loc_1c + n3 / (int)u8;
+      loc_20 = loc_20 + n4 / (int)u8;
+      FUN_0041d3a0(this,loc_1c,loc_20,'\0');
       DVar5 = GetTickCount();
       lVar2 = (longlong)DAT_004890a4;
       DVar6 = GetTickCount();
-      iVar7 = (int)(((longlong)(int)DVar6 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000);
-      while (iVar7 == (int)(((int)DVar5 * lVar2 & 0xffffffffU) / 1000)) {
+      n7 = (int)(((longlong)(int)DVar6 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000);
+      while (n7 == (int)(((int)DVar5 * lVar2 & 0xffffffffU) / 1000)) {
         FUN_00431160(this->field_06,'\0');
         DVar6 = GetTickCount();
-        iVar7 = (int)(((longlong)(int)DVar6 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000);
+        n7 = (int)(((longlong)(int)DVar6 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000);
       }
       FUN_00431160(this->field_06,'\0');
-      local_16 = local_16 + 1;
-    } while ((int)local_16 <= (int)uVar8);
+      loc_16 = loc_16 + 1;
+    } while ((int)loc_16 <= (int)u8);
   }
   FUN_0041d3a0(this,param_2,param_1,'\0');
-  FUN_0041da90(this,(byte)local_11);
-  local_8 = (local_8 & ~0xFF) | 1;
+  FUN_0041da90(this,(byte)loc_11);
+  loc_8 = (loc_8 & ~0xFF) | 1;
   FUN_00407319();
-  local_8 &= ~0xFF;
+  loc_8 &= ~0xFF;
   FUN_00407321();
-  local_8 = 0xffffffff;
+  loc_8 = 0xffffffff;
   FUN_00407333();
-  *__seh_chain = CONCAT13(uStack_d,(((local_11) >> 8) & 0xFFFFFF));
+  *__seh_chain = CONCAT13(uStack_d,(((loc_11) >> 8) & 0xFFFFFF));
   return;
 }
 
@@ -3517,16 +3517,16 @@ void FUN_00407333(void)
 char FUN_00407340(int param_1,char param_2,char param_3,int param_4,char param_5)
 
 {
-  char uVar1;
-  ushort *puVar2;
+  char u1;
+  ushort *pu2;
   
-  uVar1 = 0;
-  puVar2 = FUN_0042c860(DAT_004838c0,param_1);
-  if (puVar2 != (ushort *)0x0) {
-    uVar1 = FUN_004073a0((short *)puVar2,param_2,param_3,param_4,param_5);
-    FUN_0042c8d0(DAT_004838c0,param_1,(uint)puVar2);
+  u1 = 0;
+  pu2 = FUN_0042c860(DAT_004838c0,param_1);
+  if (pu2 != (ushort *)0x0) {
+    u1 = FUN_004073a0((short *)pu2,param_2,param_3,param_4,param_5);
+    FUN_0042c8d0(DAT_004838c0,param_1,(uint)pu2);
   }
-  return uVar1;
+  return u1;
 }
 
 
@@ -3540,103 +3540,103 @@ char FUN_004073a0(short *param_1,char param_2,char param_3,int param_4,char para
   SHORT SVar2;
   SHORT SVar3;
   DWORD DVar4;
-  uint uVar5;
-  ushort *puVar6;
-  short sVar7;
+  uint u5;
+  ushort *pu6;
+  short s7;
   int *__seh_chain;
-  int local_2c;
-  int local_28;
-  int local_24;
-  ushort *local_20;
-  int local_1c;
-  void *local_18;
-  char local_12;
-  char local_11;
-  int local_10;
+  int loc_2c;
+  int loc_28;
+  int loc_24;
+  ushort *loc_20;
+  int loc_1c;
+  void *loc_18;
+  char loc_12;
+  char loc_11;
+  int loc_10;
   void *__seh_handler;
-  uint local_8;
+  uint loc_8;
   
-  local_10 = *__seh_chain;
-  local_8 = 0xffffffff;
+  loc_10 = *__seh_chain;
+  loc_8 = 0xffffffff;
   __seh_handler = &__label_00407617;
-  *__seh_chain = &local_10;
-  local_12 = 0;
+  *__seh_chain = &loc_10;
+  loc_12 = 0;
   SVar1 = GetAsyncKeyState(2);
   SVar2 = GetAsyncKeyState(4);
   SVar3 = GetAsyncKeyState(1);
-  local_28 = 0;
-  local_2c = 0;
-  local_8 = 0;
-  local_11 = (-1 < SVar1 && -1 < SVar2) && -1 < SVar3;
+  loc_28 = 0;
+  loc_2c = 0;
+  loc_8 = 0;
+  loc_11 = (-1 < SVar1 && -1 < SVar2) && -1 < SVar3;
   DVar4 = GetTickCount();
-  local_1c = (int)(((longlong)(int)DVar4 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000);
+  loc_1c = (int)(((longlong)(int)DVar4 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000);
   if (param_3 == '\0') {
-    FUN_00403030(&local_2c,&local_24,&DAT_004841e8);
-    local_8 = local_8 & 0xffffff00;
+    FUN_00403030(&loc_2c,&loc_24,&DAT_004841e8);
+    loc_8 = loc_8 & 0xffffff00;
     FUN_0040760f();
   }
   else {
-    FUN_0041ce10(local_18,&local_2c,param_4);
+    FUN_0041ce10(loc_18,&loc_2c,param_4);
   }
-  local_20 = FUN_0042c5b0(param_1,&local_2c,(ushort *)0x0);
-  if (local_20 != (ushort *)0x0) {
-    sVar7 = 0;
+  loc_20 = FUN_0042c5b0(param_1,&loc_2c,(ushort *)0x0);
+  if (loc_20 != (ushort *)0x0) {
+    s7 = 0;
     if (0 < *param_1) {
       do {
-        if ((param_5 == '\0') && (sVar7 != 0)) {
+        if ((param_5 == '\0') && (s7 != 0)) {
           if (param_2 == '\0') {
-            FUN_00431160((void *)((UIElement *)local_18)->field_06,'\0');  /* field_06 on UIElement */
+            FUN_00431160((void *)((UIElement *)loc_18)->field_06,'\0');  /* field_06 on UIElement */
           }
           else {
             DVar4 = GetTickCount();
-            uVar5 = (int)(((longlong)(int)DVar4 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000) -
-                    local_1c;
-            while (uVar5 < 5) {
-              FUN_00431160((void *)((UIElement *)local_18)->field_06,'\0');  /* field_06 on UIElement */
+            u5 = (int)(((longlong)(int)DVar4 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000) -
+                    loc_1c;
+            while (u5 < 5) {
+              FUN_00431160((void *)((UIElement *)loc_18)->field_06,'\0');  /* field_06 on UIElement */
               DVar4 = GetTickCount();
-              uVar5 = (int)(((longlong)(int)DVar4 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000) -
-                      local_1c;
+              u5 = (int)(((longlong)(int)DVar4 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000) -
+                      loc_1c;
             }
             DVar4 = GetTickCount();
-            local_1c = (int)(((longlong)(int)DVar4 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000);
+            loc_1c = (int)(((longlong)(int)DVar4 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000);
           }
         }
         SVar1 = GetAsyncKeyState(2);
         SVar2 = GetAsyncKeyState(4);
         SVar3 = GetAsyncKeyState(1);
         if ((SVar1 < 0 || SVar2 < 0) || SVar3 < 0) {
-          if (local_11 != '\0') {
-            local_12 = 1;
-            if (sVar7 < *param_1) {
+          if (loc_11 != '\0') {
+            loc_12 = 1;
+            if (s7 < *param_1) {
               do {
-                puVar6 = local_20 + sVar7 * 0xd;
-                FUN_0041d3a0(local_18,*(int *)(puVar6 + 2),*(int *)puVar6,'\0');
+                pu6 = loc_20 + s7 * 0xd;
+                FUN_0041d3a0(loc_18,*(int *)(pu6 + 2),*(int *)pu6,'\0');
                 if ((char)param_1[1] != '\0') {
-                  FUN_00406130(local_18,*(int *)(puVar6 + 6),*(int *)(puVar6 + 4),0,'\x01');
+                  FUN_00406130(loc_18,*(int *)(pu6 + 6),*(int *)(pu6 + 4),0,'\x01');
                 }
-                sVar7 = sVar7 + 1;
-              } while (sVar7 < *param_1);
+                s7 = s7 + 1;
+              } while (s7 < *param_1);
             }
             break;
           }
         }
-        else if (local_11 == '\0') {
-          local_11 = '\x01';
+        else if (loc_11 == '\0') {
+          loc_11 = '\x01';
         }
-        puVar6 = local_20 + sVar7 * 0xd;
-        FUN_0041d2d0(local_18,(int *)puVar6,'\0');
+        pu6 = loc_20 + s7 * 0xd;
+        FUN_0041d2d0(loc_18,(int *)pu6,'\0');
         if ((char)param_1[1] != '\0') {
-          FUN_00406130(local_18,*(int *)(puVar6 + 6),*(int *)(puVar6 + 4),0,'\x01');
+          FUN_00406130(loc_18,*(int *)(pu6 + 6),*(int *)(pu6 + 4),0,'\x01');
         }
-        sVar7 = sVar7 + 1;
-      } while (sVar7 < *param_1);
+        s7 = s7 + 1;
+      } while (s7 < *param_1);
     }
-    FUN_0046f5f0((uint)local_20);
+    FUN_0046f5f0((uint)loc_20);
   }
-  local_8 = 0xffffffff;
+  loc_8 = 0xffffffff;
   FUN_00407621();
-  *__seh_chain = local_10;
-  return local_12;
+  *__seh_chain = loc_10;
+  return loc_12;
 }
 
 
@@ -3690,35 +3690,35 @@ char __thiscall FUN_00407b10(void *this,short param_1,ushort *param_2)
 char __thiscall FUN_00407df0(UIWidget *this,short param_1,int param_2)
 
 {
-  short uVar1;
-  short sVar2;
-  uint uVar3;
-  bool bVar4;
-  bool bVar5;
+  short u1;
+  short s2;
+  uint u3;
+  bool b4;
+  bool b5;
   SHORT SVar6;
   SHORT SVar7;
   SHORT SVar8;
-  short sVar9;
-  int iVar10;
-  short *psVar11;
+  short s9;
+  int n10;
+  short *ps11;
   DWORD DVar12;
   int __extra_ret;
-  uint uVar13;
+  uint u13;
   int extraout_var_00;
   char uStack_12;
   short uStack_c;
   short uStack_a;
-  int local_8;
-  int local_4;
+  int loc_8;
+  int loc_4;
   
-  uVar1 = this->pending_frame;
-  sVar2 = this->current_frame;
+  u1 = this->pending_frame;
+  s2 = this->current_frame;
   uStack_12 = 0;
   SVar6 = GetAsyncKeyState(2);
   SVar7 = GetAsyncKeyState(4);
   SVar8 = GetAsyncKeyState(1);
-  bVar4 = (-1 < SVar6 && -1 < SVar7) && -1 < SVar8;
-  uVar3 = this->flags;
+  b4 = (-1 < SVar6 && -1 < SVar7) && -1 < SVar8;
+  u3 = this->flags;
   FUN_0041da90(this,0);
   this->anim_flag_0 = 0;
   this->anim_flag_2 = 0;
@@ -3728,58 +3728,58 @@ char __thiscall FUN_00407df0(UIWidget *this,short param_1,int param_2)
   this->pending_frame = param_1;
   uStack_c = 0;
   uStack_a = 0;
-  iVar10 = FUN_0043a6b0(DAT_004838c0,param_2);
-  uStack_c = (short)iVar10;
-  uStack_a = (short)((uint)iVar10 >> 0x10);
-  FUN_004090e0(iVar10);
+  n10 = FUN_0043a6b0(DAT_004838c0,param_2);
+  uStack_c = (short)n10;
+  uStack_a = (short)((uint)n10 >> 0x10);
+  FUN_004090e0(n10);
   FUN_004564c0();
   FUN_00433050((int *)CONCAT22(uStack_a,uStack_c));
-  psVar11 = FUN_00434300((int *)CONCAT22(uStack_a,uStack_c));
-  FUN_00409140(psVar11);
-  sVar9 = FUN_0042b700();
-  FUN_0045d780(psVar11,sVar9);
-  FUN_0045d720((int)psVar11,3);
+  ps11 = FUN_00434300((int *)CONCAT22(uStack_a,uStack_c));
+  FUN_00409140(ps11);
+  s9 = FUN_0042b700();
+  FUN_0045d780(ps11,s9);
+  FUN_0045d720((int)ps11,3);
   FUN_004564c0();
   DVar12 = GetTickCount();
-  local_8 = (int)(((longlong)(int)DVar12 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000);
-  local_4 = local_8 + 1000;
-  bVar5 = FUN_0045d930((int)psVar11);
-  sVar9 = (short)CONCAT31(__extra_ret,bVar5);
+  loc_8 = (int)(((longlong)(int)DVar12 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000);
+  loc_4 = loc_8 + 1000;
+  b5 = FUN_0045d930((int)ps11);
+  s9 = (short)CONCAT31(__extra_ret,b5);
   do {
-    if ((sVar9 == 0) || (local_4 <= local_8)) goto __label_00407fdc;
-    uVar13 = FUN_0045d8e0((int)psVar11);
-    if ((short)uVar13 < 0) goto __label_00407fdc;
+    if ((s9 == 0) || (loc_4 <= loc_8)) goto __label_00407fdc;
+    u13 = FUN_0045d8e0((int)ps11);
+    if ((short)u13 < 0) goto __label_00407fdc;
     FUN_004564c0();
-    FUN_004058c0(this,(short)((int)((uint)(ushort)((short)uVar13 >> 0xf) << 0x10 | uVar13 & 0xffff)
+    FUN_004058c0(this,(short)((int)((uint)(ushort)((short)u13 >> 0xf) << 0x10 | u13 & 0xffff)
                              % 5) + 1);
     FUN_00430860();
     DVar12 = GetTickCount();
-    local_8 = (int)(((longlong)(int)DVar12 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000);
+    loc_8 = (int)(((longlong)(int)DVar12 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000);
     SVar6 = GetAsyncKeyState(2);
     SVar7 = GetAsyncKeyState(4);
     SVar8 = GetAsyncKeyState(1);
     if ((SVar6 < 0 || SVar7 < 0) || SVar8 < 0) {
-      if (bVar4) {
+      if (b4) {
         uStack_12 = 1;
 __label_00407fdc:
-        FUN_00434490((int)psVar11);
+        FUN_00434490((int)ps11);
         FUN_00433420((int *)CONCAT22(uStack_a,uStack_c));
         FUN_00433270((int *)&uStack_c);
-        this->pending_frame = uVar1;
-        FUN_0041da90(this,(byte)(uVar3 >> 4) & 1);
+        this->pending_frame = u1;
+        FUN_0041da90(this,(byte)(u3 >> 4) & 1);
         this->anim_flag_0 = 0;
         this->anim_flag_2 = 0;
         this->anim_flag_1 = 0;
         this->anim_flag_3 = 0;
-        FUN_00405d30(this,sVar2);
+        FUN_00405d30(this,s2);
         return uStack_12;
       }
     }
-    else if (!bVar4) {
-      bVar4 = true;
+    else if (!b4) {
+      b4 = true;
     }
-    bVar5 = FUN_0045d930((int)psVar11);
-    sVar9 = (short)CONCAT31(extraout_var_00,bVar5);
+    b5 = FUN_0045d930((int)ps11);
+    s9 = (short)CONCAT31(extraout_var_00,b5);
   } while( true );
 }
 
@@ -3790,47 +3790,47 @@ __label_00407fdc:
 void * __cdecl FUN_00408070(int param_1)
 
 {
-  int iVar1;
-  int *piVar2;
+  int n1;
+  int *pn2;
   void *this;
-  int iVar3;
-  uint uVar4;
+  int n3;
+  uint u4;
   int *__seh_chain;
-  int local_10;
+  int loc_10;
   void *__seh_handler;
-  int local_8;
+  int loc_8;
   
-  local_10 = *__seh_chain;
+  loc_10 = *__seh_chain;
   __seh_handler = &__label_00408148;
-  *__seh_chain = &local_10;
-  local_8 = 0;
-  iVar1 = *(int *)(DAT_004897c0 + 0x52);
+  *__seh_chain = &loc_10;
+  loc_8 = 0;
+  n1 = *(int *)(DAT_004897c0 + 0x52);
   if (((((*(short *)(DAT_004897c0 + 0x20) <= ((unsigned short)((param_1) >> 16))) &&
         (((unsigned short)((param_1) >> 16)) < *(short *)(DAT_004897c0 + 0x24))) &&
        (*(short *)(DAT_004897c0 + 0x1e) <= (short)param_1)) &&
-      (((short)param_1 < *(short *)(DAT_004897c0 + 0x22) && (*(int *)(iVar1 + 0x1a) != 0)))) &&
-     (uVar4 = 1, *(int *)(*(int *)(iVar1 + 0x1a) + 0xe) != 0)) {
-    iVar3 = 4;
+      (((short)param_1 < *(short *)(DAT_004897c0 + 0x22) && (*(int *)(n1 + 0x1a) != 0)))) &&
+     (u4 = 1, *(int *)(*(int *)(n1 + 0x1a) + 0xe) != 0)) {
+    n3 = 4;
     do {
-      this = *(void **)(**(int **)(*(int *)(iVar1 + 0x1a) + 4) + -4 + iVar3);
+      this = *(void **)(**(int **)(*(int *)(n1 + 0x1a) + 4) + -4 + n3);
       if (*(void **)(DAT_004897c0 + 0x4a) != this) {
-        piVar2 = FUN_0041c2f0(this,(short *)&param_1);
-        if (((piVar2 != (int *)0x0) && (((UIWidget *)piVar2)->level_data_ptr != 0)) &&
-           (((UIWidget *)piVar2)->is_visible == '\0')) {
-          local_8 = 0xffffffff;
+        pn2 = FUN_0041c2f0(this,(short *)&param_1);
+        if (((pn2 != (int *)0x0) && (((UIWidget *)pn2)->level_data_ptr != 0)) &&
+           (((UIWidget *)pn2)->is_visible == '\0')) {
+          loc_8 = 0xffffffff;
           FUN_00408152();
           goto __label_00408126;
         }
       }
-      iVar3 = iVar3 + 4;
-      uVar4 = uVar4 + 1;
-    } while (uVar4 <= *(uint *)(*(int *)(iVar1 + 0x1a) + 0xe));
+      n3 = n3 + 4;
+      u4 = u4 + 1;
+    } while (u4 <= *(uint *)(*(int *)(n1 + 0x1a) + 0xe));
   }
-  local_8 = 0xffffffff;
+  loc_8 = 0xffffffff;
   FUN_00408152();
   this = (void *)0x0;
 __label_00408126:
-  *__seh_chain = local_10;
+  *__seh_chain = loc_10;
   return this;
 }
 
@@ -3851,19 +3851,19 @@ void FUN_00408152(void)
 void __thiscall FUN_00408160(GameWidget *this,char param_1)
 
 {
-  int iVar1;
-  uint uVar2;
+  int n1;
+  uint u2;
   
   this->field_108 = param_1;
   if (((this->child_list_2 != 0) &&
-      (iVar1 = *(int *)(this->child_list_2 + 0xe), iVar1 != 0)) && (uVar2 = 1, iVar1 != 0))
+      (n1 = *(int *)(this->child_list_2 + 0xe), n1 != 0)) && (u2 = 1, n1 != 0))
   {
-    iVar1 = 4;
+    n1 = 4;
     do {
-      iVar1 = iVar1 + 4;
-      uVar2 = uVar2 + 1;
-      FUN_00408160(*(void **)(**(int **)(this->child_list_2 + 4) + -8 + iVar1),param_1);
-    } while (uVar2 <= *(uint *)(this->child_list_2 + 0xe));
+      n1 = n1 + 4;
+      u2 = u2 + 1;
+      FUN_00408160(*(void **)(**(int **)(this->child_list_2 + 4) + -8 + n1),param_1);
+    } while (u2 <= *(uint *)(this->child_list_2 + 0xe));
   }
   return;
 }
@@ -3981,22 +3981,22 @@ char __thiscall FUN_00408870(void *this,void *param_1,int param_2)
 void FUN_00408a60(void *param_1,uint param_2)
 
 {
-  ushort *puVar1;
-  int iVar2;
-  short sVar3;
+  ushort *pu1;
+  int n2;
+  short s3;
   
-  puVar1 = FUN_0046b8f0(param_1,param_2);
-  if (puVar1 != (ushort *)0x0) {
-    sVar3 = 0;
-    if (0 < (short)puVar1[0x12]) {
+  pu1 = FUN_0046b8f0(param_1,param_2);
+  if (pu1 != (ushort *)0x0) {
+    s3 = 0;
+    if (0 < (short)pu1[0x12]) {
       do {
-        iVar2 = (int)sVar3;
-        sVar3 = sVar3 + 1;
-        FUN_00408a60(param_1,*(uint *)(puVar1 + iVar2 * 2 + 0x13));
-      } while (sVar3 < (short)puVar1[0x12]);
+        n2 = (int)s3;
+        s3 = s3 + 1;
+        FUN_00408a60(param_1,*(uint *)(pu1 + n2 * 2 + 0x13));
+      } while (s3 < (short)pu1[0x12]);
     }
     FUN_00461420(param_1,param_2,'\x01');
-    FUN_0046f5f0((uint)puVar1);
+    FUN_0046f5f0((uint)pu1);
   }
   return;
 }
@@ -4029,88 +4029,88 @@ void FUN_00408d29(void)
 short __cdecl FUN_00408d40(int param_1,int param_2,int param_3)
 
 {
-  int *piVar1;
-  int iVar2;
+  int *pn1;
+  int n2;
   int *__seh_chain;
-  int local_18;
-  int local_14;
-  int local_10;
+  int loc_18;
+  int loc_14;
+  int loc_10;
   void *__seh_handler;
-  int local_8;
+  int loc_8;
   
-  local_10 = *__seh_chain;
+  loc_10 = *__seh_chain;
   __seh_handler = &__label_00408e93;
-  *__seh_chain = &local_10;
-  local_14 = param_2 + ((unsigned short)((param_3) >> 16)) * -0x100;
-  local_18 = local_14;
-  piVar1 = &local_18;
-  if (local_14 < 1) {
-    local_14 = -local_14;
-    piVar1 = &local_14;
+  *__seh_chain = &loc_10;
+  loc_14 = param_2 + ((unsigned short)((param_3) >> 16)) * -0x100;
+  loc_18 = loc_14;
+  pn1 = &loc_18;
+  if (loc_14 < 1) {
+    loc_14 = -loc_14;
+    pn1 = &loc_14;
   }
-  if (*piVar1 < 0x1000) {
-    local_14 = param_1 + (short)param_3 * -0x100;
-    local_18 = local_14;
-    piVar1 = &local_18;
-    if (local_14 < 1) {
-      local_14 = -local_14;
-      piVar1 = &local_14;
+  if (*pn1 < 0x1000) {
+    loc_14 = param_1 + (short)param_3 * -0x100;
+    loc_18 = loc_14;
+    pn1 = &loc_18;
+    if (loc_14 < 1) {
+      loc_14 = -loc_14;
+      pn1 = &loc_14;
     }
-    if (*piVar1 < 0x1000) {
-      local_14 = (local_14 & ~(0xFFFF << 16)) | (((unsigned short)(1)) << 16);
+    if (*pn1 < 0x1000) {
+      loc_14 = (loc_14 & ~(0xFFFF << 16)) | (((unsigned short)(1)) << 16);
     }
     else {
-      local_14 = (local_14 & ~(0xFFFF << 16)) | (((unsigned short)(4)) << 16);
+      loc_14 = (loc_14 & ~(0xFFFF << 16)) | (((unsigned short)(4)) << 16);
       if (param_1 <= (short)param_3 * 0x100) {
-        local_14 = (local_14 & ~(0xFFFF << 16)) | (((unsigned short)(8)) << 16);
+        loc_14 = (loc_14 & ~(0xFFFF << 16)) | (((unsigned short)(8)) << 16);
       }
     }
   }
   else {
-    iVar2 = (int)(short)param_3;
+    n2 = (int)(short)param_3;
     if (param_2 < ((unsigned short)((param_3) >> 16)) * 0x100) {
-      local_14 = param_1 + iVar2 * -0x100;
-      local_18 = local_14;
-      piVar1 = &local_18;
-      if (local_14 < 1) {
-        local_14 = -local_14;
-        piVar1 = &local_14;
+      loc_14 = param_1 + n2 * -0x100;
+      loc_18 = loc_14;
+      pn1 = &loc_18;
+      if (loc_14 < 1) {
+        loc_14 = -loc_14;
+        pn1 = &loc_14;
       }
-      if (*piVar1 < 0x1000) {
-        local_14 = (local_14 & ~(0xFFFF << 16)) | (((unsigned short)(2)) << 16);
+      if (*pn1 < 0x1000) {
+        loc_14 = (loc_14 & ~(0xFFFF << 16)) | (((unsigned short)(2)) << 16);
       }
       else {
-        local_14 = (local_14 & ~(0xFFFF << 16)) | (((unsigned short)(3)) << 16);
-        if (param_1 <= iVar2 * 0x100) {
-          local_14 = (local_14 & ~(0xFFFF << 16)) | (((unsigned short)(9)) << 16);
+        loc_14 = (loc_14 & ~(0xFFFF << 16)) | (((unsigned short)(3)) << 16);
+        if (param_1 <= n2 * 0x100) {
+          loc_14 = (loc_14 & ~(0xFFFF << 16)) | (((unsigned short)(9)) << 16);
         }
       }
     }
     else {
-      local_14 = param_1 + iVar2 * -0x100;
-      local_18 = local_14;
-      piVar1 = &local_18;
-      if (local_14 < 1) {
-        local_14 = -local_14;
-        piVar1 = &local_14;
+      loc_14 = param_1 + n2 * -0x100;
+      loc_18 = loc_14;
+      pn1 = &loc_18;
+      if (loc_14 < 1) {
+        loc_14 = -loc_14;
+        pn1 = &loc_14;
       }
-      if (*piVar1 < 0x1000) {
-        local_14 = (local_14 & ~(0xFFFF << 16)) | (((unsigned short)(6)) << 16);
+      if (*pn1 < 0x1000) {
+        loc_14 = (loc_14 & ~(0xFFFF << 16)) | (((unsigned short)(6)) << 16);
       }
       else {
-        local_14 = (local_14 & ~(0xFFFF << 16)) | (((unsigned short)(5)) << 16);
-        if (param_1 <= iVar2 * 0x100) {
-          local_14 = (local_14 & ~(0xFFFF << 16)) | (((unsigned short)(7)) << 16);
+        loc_14 = (loc_14 & ~(0xFFFF << 16)) | (((unsigned short)(5)) << 16);
+        if (param_1 <= n2 * 0x100) {
+          loc_14 = (loc_14 & ~(0xFFFF << 16)) | (((unsigned short)(7)) << 16);
         }
       }
     }
   }
-  local_8 = 0;
+  loc_8 = 0;
   FUN_00408e8b();
-  local_8 = 0xffffffff;
+  loc_8 = 0xffffffff;
   FUN_00408e9d();
-  *__seh_chain = local_10;
-  return ((unsigned short)((local_14) >> 16));
+  *__seh_chain = loc_10;
+  return ((unsigned short)((loc_14) >> 16));
 }
 
 
@@ -4142,35 +4142,35 @@ void FUN_00408e9d(void)
 void __cdecl FUN_00408eb0(UIWidget *param_1,void *param_2,char param_3)
 
 {
-  short sVar1;
-  short *puVar2;
-  uint uVar3;
-  int iVar4;
+  short s1;
+  short *pu2;
+  uint u3;
+  int n4;
   int *__seh_chain;
-  int *piVar5;
-  int local_20;
-  int local_1c;
-  char *local_18;
-  short local_14;
-  short local_12;
-  int local_10;
+  int *pn5;
+  int loc_20;
+  int loc_1c;
+  char *loc_18;
+  short loc_14;
+  short loc_12;
+  int loc_10;
   void *__seh_handler;
-  int local_8;
+  int loc_8;
   
-  local_10 = *__seh_chain;
+  loc_10 = *__seh_chain;
   __seh_handler = &__label_004090a8;
-  *__seh_chain = &local_10;
-  local_1c = 0;
-  local_20 = 0;
-  local_12 = 0;
-  local_14 = 0;
-  local_8 = (local_8 & ~0xFF) | 1;
-  local_8 = (local_8 & 0xFF) | (0 << 8);
+  *__seh_chain = &loc_10;
+  loc_1c = 0;
+  loc_20 = 0;
+  loc_12 = 0;
+  loc_14 = 0;
+  loc_8 = (loc_8 & ~0xFF) | 1;
+  loc_8 = (loc_8 & 0xFF) | (0 << 8);
   if ((param_1->field_06 == 0) || (param_1->is_visible != '\0')) {
-    local_8 = 0;
+    loc_8 = 0;
   }
   else if (param_1 == param_2) {
-    local_8 = 0;
+    loc_8 = 0;
   }
   else {
     if (*(char *)((int)param_1->level_data_ptr + 4) == '\x02') {  /* TODO: level_data_ptr sub-struct, byte at +0x04 */
@@ -4191,45 +4191,45 @@ void __cdecl FUN_00408eb0(UIWidget *param_1,void *param_2,char param_3)
           FUN_00405d30(param_1,6);
         }
         FUN_0041da90(param_1,0);
-        puVar2 = (short *)FUN_00430bc0(param_1->field_06);
-        FUN_004096f0(&local_14,(short *)&local_18,puVar2);
-        local_8 = (local_8 & ~0xFF) | 1;
+        pu2 = (short *)FUN_00430bc0(param_1->field_06);
+        FUN_004096f0(&loc_14,(short *)&loc_18,pu2);
+        loc_8 = (loc_8 & ~0xFF) | 1;
         FUN_0040908f();
-        piVar5 = &local_20;
-        FUN_0041cde0(param_1,piVar5);
+        pn5 = &loc_20;
+        FUN_0041cde0(param_1,pn5);
         if (param_1->mirror_flag != '\0') {
-          iVar4 = (int)local_12;
-          local_12 = (short)((uint)local_1c >> 8);
-          local_1c = iVar4 << 8;
+          n4 = (int)loc_12;
+          loc_12 = (short)((uint)loc_1c >> 8);
+          loc_1c = n4 << 8;
         }
-        local_18 = &__stk_34;
-        puVar2 = &local_14;
-        iVar4 = 0x40904f;
-        FUN_00408830(&__stk_34,puVar2);
-        local_8 = (local_8 & ~0xFF) | 3;
-        FUN_004090c0(&__stk_32,&local_20);
-        local_8 = (local_8 & ~0xFF) | 1;
-        sVar1 = FUN_00408d40(iVar4,(int)puVar2,piVar5);
-        FUN_004058c0(param_1,sVar1);
+        loc_18 = &__stk_34;
+        pu2 = &loc_14;
+        n4 = 0x40904f;
+        FUN_00408830(&__stk_34,pu2);
+        loc_8 = (loc_8 & ~0xFF) | 3;
+        FUN_004090c0(&__stk_32,&loc_20);
+        loc_8 = (loc_8 & ~0xFF) | 1;
+        s1 = FUN_00408d40(n4,(int)pu2,pn5);
+        FUN_004058c0(param_1,s1);
       }
     }
     if (((param_1->child_list_2 != NULL) &&
-        (iVar4 = *(int *)((int)param_1->child_list_2 + 0xe) /* CVector: count at +0x0E */, iVar4 != 0)) &&
-       (uVar3 = 1, iVar4 != 0)) {
-      iVar4 = 4;
+        (n4 = *(int *)((int)param_1->child_list_2 + 0xe) /* CVector: count at +0x0E */, n4 != 0)) &&
+       (u3 = 1, n4 != 0)) {
+      n4 = 4;
       do {
-        iVar4 = iVar4 + 4;
-        uVar3 = uVar3 + 1;
-        FUN_00408eb0(*(UIWidget **)(**(int **)((int)param_1->child_list_2 + 4) /* CVector: data ptr at +0x04 */ + -8 + iVar4),param_2,
+        n4 = n4 + 4;
+        u3 = u3 + 1;
+        FUN_00408eb0(*(UIWidget **)(**(int **)((int)param_1->child_list_2 + 4) /* CVector: data ptr at +0x04 */ + -8 + n4),param_2,
                      param_3);
-      } while (uVar3 <= *(uint *)((int)param_1->child_list_2 + 0xe) /* CVector: count at +0x0E */);
+      } while (u3 <= *(uint *)((int)param_1->child_list_2 + 0xe) /* CVector: count at +0x0E */);
     }
-    local_8 &= ~0xFF;
+    loc_8 &= ~0xFF;
   }
   FUN_004090a0();
-  local_8 = 0xffffffff;
+  loc_8 = 0xffffffff;
   FUN_004090b2();
-  *__seh_chain = local_10;
+  *__seh_chain = loc_10;
   return;
 }
 
