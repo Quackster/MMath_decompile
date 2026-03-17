@@ -362,7 +362,7 @@ int __fastcall FUN_004705d0(SmartHeapPool *param_1,int *param_2)
       u5 = u1 & 0x7ffc;
     }
     pu4 = (ushort *)(n2 + -2 + u5);
-    if ((pu4 < (ushort *)((char *)param_1 + 0x1aU)) || /* TODO: offset 0x1a in _pad16 region */
+    if ((pu4 < &param_1->free_area_start) ||
        (b6 = (ushort *)param_1->end_ptr == pu4,
        (ushort *)param_1->end_ptr < pu4)) {
       return 0xfffffffe;
@@ -402,7 +402,7 @@ L_0047065b:
     if (CONCAT31(_extra,b6) != 0) {
       u3 = FUN_00471410((LPCVOID)param_1);
       if (u5 <= u3 - 1) {
-        pu4 = (ushort *)((char *)param_1 + 0x1a); /* TODO: offset 0x1a in _pad16 region */
+        pu4 = &param_1->free_area_start;
         b6 = (ushort *)param_1->end_ptr == pu4;
         goto L_0047065b;
       }
@@ -1053,7 +1053,7 @@ void __fastcall FUN_00471900(SmartHeapPool *param_1)
   int n2;
   int n3;
 
-  n1 = *(int *)(*(int *)((char *)param_1 + 0x44) + 4); /* TODO: offset 0x44 in _pad38 region -> linked list head ptr */
+  n1 = *(int *)((int)param_1->thread_data + 4); /* thread_data->next pool link */
   n3 = 0;
   if (n1 != 0) {
     while (n2 = n1, n2 != (int)param_1) {
@@ -1067,7 +1067,7 @@ void __fastcall FUN_00471900(SmartHeapPool *param_1)
       *(int *)(n3 + 0x40) = *(int *)(n2 + 0x40); /* TODO: offset 0x40 in _pad38 region */
       return;
     }
-    *(int *)(*(int *)((char *)param_1 + 0x44) + 4) = *(int *)(n2 + 0x40); /* TODO: offset 0x44 in _pad38 region */
+    *(int *)((int)param_1->thread_data + 4) = *(int *)(n2 + 0x40); /* thread_data->next = n2->next_pool_link */
   }
   return;
 }

@@ -2964,9 +2964,9 @@ L_00434392:
         n3 = n4 * 0x78;
         ps6 = (short *)(&DAT_00487128 + n3);
         (&DAT_00487132)[n4 * 0x3c] = 1;
-        *ps6 = *(short *)((char *)param_1 + 0xa); /* TODO: unknown struct for param_1 */
+        *ps6 = ((SoundEventData *)param_1)->note;
         *(short *)(n3 + 0x48712a) = (short)param_1[3];
-        *(short *)(n3 + 0x48712c) = *(short *)((char *)param_1 + 0xe); /* TODO: unknown struct for param_1 */
+        *(short *)(n3 + 0x48712c) = ((SoundEventData *)param_1)->param;
         (&DAT_0048713a)[n4 * 0x1e] = *param_1;
         (&DAT_0048713e)[n4 * 0x1e] = param_1[1];
         (&DAT_00487142)[n4 * 0x1e] = param_1[1];
@@ -2984,7 +2984,7 @@ L_00434392:
           (&DAT_0048714a)[n4 * 0x3c] = 0;
           do {
             pu1 = (uint *)((char *)&DAT_0048714c + s5 * 0xe + n3);
-            if (((*(byte *)((char *)pu1 + 0xd) & 0x10) != 0) && (*pu1 != 0)) { /* TODO: sound slot sub-entry flags byte at +0xd */
+            if (((((SoundSlotEntry *)pu1)->flags & 0x10) != 0) && (*pu1 != 0)) {
               FUN_0046f5f0(*pu1);
             }
             s5 = s5 + 1;
@@ -3049,7 +3049,7 @@ int __cdecl FUN_00434490(int param_1)
         do {
           u5 = (ushort)((uint)(s6 * 7) >> 0x10);
           pu1 = (uint *)((char *)&DAT_0048714c + s6 * 0xe + n3 * 0x78);
-          if (((*(byte *)((char *)pu1 + 0xd) & 0x10) != 0) && (u5 = 0, *pu1 != 0)) { /* TODO: sound slot sub-entry flags byte at +0xd */
+          if (((((SoundSlotEntry *)pu1)->flags & 0x10) != 0) && (u5 = 0, *pu1 != 0)) {
             u4 = FUN_0046f5f0(*pu1);
             u5 = (ushort)((uint)u4 >> 0x10);
           }
@@ -3090,7 +3090,7 @@ int __cdecl FUN_00434490(int param_1)
     do {
       _eax = s6 * 7;
       pu1 = (uint *)(param_1 + 0x24 + s6 * 0xe);
-      if (((*(byte *)((char *)pu1 + 0xd) & 0x10) != 0) && (_eax = 0, *pu1 != 0)) { /* TODO: sound slot sub-entry flags byte at +0xd */
+      if (((((SoundSlotEntry *)pu1)->flags & 0x10) != 0) && (_eax = 0, *pu1 != 0)) {
         _eax = FUN_0046f5f0(*pu1);
       }
       s6 = s6 + 1;
@@ -3625,7 +3625,7 @@ void __fastcall FUN_00435b00(int *param_1)
     FUN_00405cb0(param_1);
     return;
   }
-  if (((*(char *)(DAT_004896b0 + 0x28) == '\0') && (*(char *)((char *)param_1 + 0x123) == '\0')) && /* TODO: offset 0x123 = 1 byte into GameWidget.pair_x_2 */
+  if (((*(char *)(DAT_004896b0 + 0x28) == '\0') && (*((char *)&((GameWidget *)param_1)->pair_x_2 + 1) == '\0')) &&
      (n1 = ((GameWidget *)param_1)->pair_y_1 + -1, ((GameWidget *)param_1)->pair_y_1 = n1, n1 < 1
      )) {
     n1 = (short)param_1[0x44] + -1;
@@ -4430,7 +4430,7 @@ void __thiscall FUN_00437290(void *this,void *param_1)
   u1 = 0;
   FUN_00401050(&_tmp_34,0);
   FUN_00401050(&_tmp_33,0);
-  FUN_00401270((void *)((char *)param_1 + 0x132),u1,_arg4); /* TODO: unknown offset 0x132 on GameWidget (in field_130 or _pad134 range) */
+  FUN_00401270((void *)((char *)&((GameWidget *)param_1)->field_130 + 2), u1, _arg4); /* slot pointer array base at +0x132 */
   FUN_0041cde0(param_1,v1c);
   FUN_00436bb0(this,param_1);
   v14 = &_tmp_33;

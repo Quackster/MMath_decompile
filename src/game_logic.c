@@ -1579,10 +1579,10 @@ void __thiscall FUN_0040d840(void *this,uint param_1)
   _handler = &L_0040dc40;
   *_fs = &_seh_prev;
   s6 = 0;
-  if (*(int *)((char *)this + 0x44) != 0) {  /* TODO: unknown offset 0x44 on this */
+  if (((AnimController *)this)->anim_widget != 0) {
     pu7 = NULL;
     v11 = DAT_00480100;
-    v18 = (void *)FUN_004050d0(*(int *)((char *)this + 0x44));  /* TODO: unknown offset 0x44 on this */
+    v18 = (void *)FUN_004050d0((int)((AnimController *)this)->anim_widget);
     DAT_00480100 = 0;
     if (param_1 == 0xf) {
       n4 = rand();
@@ -1791,16 +1791,16 @@ void __thiscall FUN_0040d840(void *this,uint param_1)
         v18 = NULL;
         v1c = 0;
         _seh_state = 0;
-        FUN_0041cde0(*(void **)((char *)this + 0x44),&v1c);  /* TODO: unknown offset 0x44 on this */
-        if ((*(int *)((char *)this + 100) != 0) &&  /* TODO: unknown offset 0x64 on this */
-           (b3 = FUN_0045d930(*(int *)((char *)this + 100)),  /* TODO: unknown offset 0x64 on this */
+        FUN_0041cde0(((AnimController *)this)->anim_widget, &v1c);
+        if (((int)((AnimController *)this)->sub_widgets[0] != 0) &&
+           (b3 = FUN_0045d930((int)((AnimController *)this)->sub_widgets[0]),
            (short)CONCAT31(_extra,b3) != 0)) {
-          FUN_00434490(*(int *)((char *)this + 100));  /* TODO: unknown offset 0x64 on this */
-          FUN_00433420(*(int **)((char *)this + *(short *)(*(int *)((char *)this + 0x44) + 0x10e) * 4 + 100));  /* TODO: unknown offsets 0x44, 0x64 on this; 0x10e = current_frame on UIWidget */
+          FUN_00434490((int)((AnimController *)this)->sub_widgets[0]);
+          FUN_00433420((int *)((AnimController *)this)->sub_widgets[((UIWidget *)((AnimController *)this)->anim_widget)->current_frame]); /* sub_widgets[current_frame] */
         }
-        ps5 = FUN_0045ef70(*(int **)((char *)this + s6 * 4 + 100));  /* TODO: unknown offset (s6*4+0x64) on this */
-        pv1 = *(void **)((char *)this + 0x44);  /* TODO: unknown offset 0x44 on this */
-        *(short **)((char *)this + 100) = ps5;  /* TODO: unknown offset 0x64 on this */
+        ps5 = FUN_0045ef70((int *)((AnimController *)this)->sub_widgets[s6]); /* sub_widgets[s6] */
+        pv1 = ((AnimController *)this)->anim_widget;
+        ((AnimController *)this)->sub_widgets[0] = (void *)ps5;
         ((UIWidget *)pv1)->anim_flag_0 = 0;
         ((UIWidget *)pv1)->anim_flag_2 = 0;
         ((UIWidget *)pv1)->anim_flag_1 = 0;
@@ -1810,14 +1810,14 @@ void __thiscall FUN_0040d840(void *this,uint param_1)
         FUN_0040dc4a();
       }
       else {
-        pv1 = *(void **)((char *)this + 0x44);  /* TODO: unknown offset 0x44 on this */
+        pv1 = ((AnimController *)this)->anim_widget;
         ((UIWidget *)pv1)->anim_flag_0 = 0;
         ((UIWidget *)pv1)->anim_flag_2 = 0;
         ((UIWidget *)pv1)->anim_flag_1 = 0;
         ((UIWidget *)pv1)->anim_flag_3 = 0;
         FUN_00405d30(pv1,s6);
         if (v18 == NULL) {
-          FUN_00407b10(*(void **)((char *)this + 0x44),7,pu7);  /* TODO: unknown offset 0x44 on this */
+          FUN_00407b10(((AnimController *)this)->anim_widget, 7, pu7);
         }
         else {
           u2 = ((UIWidget *)v18)->flags;

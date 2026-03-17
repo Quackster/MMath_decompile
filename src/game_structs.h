@@ -47,8 +47,9 @@ typedef struct MathProblem {
     unsigned char  _pad11[3];       /* +0x11 */
     char           field_14;        /* +0x14 */
     unsigned char  _pad15;          /* +0x15 */
-    int            field_16;        /* +0x16 */
-    unsigned char  _pad1a[4];       /* +0x1A */
+    short          field_16;        /* +0x16 */
+    int            handler_ptr;     /* +0x18  alternate handler/callback pointer */
+    unsigned char  _pad1c[2];       /* +0x1C */
     int            active_flag;     /* +0x1E  non-zero when problem active */
     unsigned int   is_correct;      /* +0x22  0=wrong, 1=correct */
     int            difficulty;      /* +0x26  difficulty level */
@@ -104,8 +105,13 @@ typedef struct UIElement {
     void          *child_list_2;    /* +0x36 */
     void          *parent_ptr;      /* +0x3A */
     int            field_3e;        /* +0x3E */
-    unsigned char  _pad42[2];       /* +0x42 */
-    short          field_44;        /* +0x44  palette/cursor index, 0xFFFF = none */
+    union {
+        int        resource_handle_42; /* +0x42  int access: embedded resource handle */
+        struct {
+            short  _pad42;             /* +0x42 */
+            short  field_44;           /* +0x44  palette/cursor index, 0xFFFF = none */
+        };
+    };
     int            sub_widgets_a[16]; /* +0x46  (0x46 through 0x85) */
     int            sub_widgets_b[16]; /* +0x86  (0x86 through 0xC5) */
 } UIElement;
@@ -139,8 +145,13 @@ typedef struct UIWidget {
     void          *child_list_2;    /* +0x36 */
     void          *parent_ptr;      /* +0x3A */
     int            field_3e;        /* +0x3E */
-    unsigned char  _pad42[2];       /* +0x42 */
-    short          field_44;        /* +0x44  palette/cursor index, 0xFFFF = none */
+    union {
+        int        resource_handle_42; /* +0x42  int access: embedded resource handle */
+        struct {
+            short  _pad42;             /* +0x42 */
+            short  field_44;           /* +0x44  palette/cursor index, 0xFFFF = none */
+        };
+    };
     int            sub_widgets_a[16]; /* +0x46 */
     int            sub_widgets_b[16]; /* +0x86 */
     /* --- UIWidget extensions (0xC6 - 0x117) --- */
@@ -217,8 +228,13 @@ typedef struct GameWidget {
     void          *child_list_2;    /* +0x36 */
     void          *parent_ptr;      /* +0x3A */
     int            field_3e;        /* +0x3E */
-    unsigned char  _pad42[2];       /* +0x42 */
-    short          field_44;        /* +0x44  palette/cursor index, 0xFFFF = none */
+    union {
+        int        resource_handle_42; /* +0x42  int access: embedded resource handle */
+        struct {
+            short  _pad42;             /* +0x42 */
+            short  field_44;           /* +0x44  palette/cursor index, 0xFFFF = none */
+        };
+    };
     int            sub_widgets_a[16]; /* +0x46 */
     int            sub_widgets_b[16]; /* +0x86 */
     /* --- UIWidget extensions (0xC6 - 0x117) --- */
@@ -254,7 +270,15 @@ typedef struct GameWidget {
     int            pair_y_1;        /* +0x11E */
     int            pair_x_2;        /* +0x122 */
     void          *object_ptr;      /* +0x126  pointer to sub-object */
-    int            scrollbar_ref;   /* +0x12A */
+    union {
+        int        scrollbar_ref;      /* +0x12A  int access (used as handle/ref) */
+        struct {
+            unsigned char scrollbar_ref_lo;  /* +0x12A  low byte */
+            unsigned char timer_expired;     /* +0x12B  timer expired flag */
+            unsigned char pause_flag;        /* +0x12C  pause/idle flag */
+            unsigned char scrollbar_ref_hi;  /* +0x12D  high byte */
+        };
+    };
     unsigned char  field_12e;       /* +0x12E */
     unsigned char  field_12f;       /* +0x12F */
     int            field_130;       /* +0x130 */
@@ -341,7 +365,7 @@ typedef struct GameBoard {
     int            field_1ae;       /* +0x1AE  pointer/object */
     int            field_1b2;       /* +0x1B2  pointer/object with vtable */
     short          field_1b6;       /* +0x1B6 */
-    char           field_1b8;       /* +0x1B8 */
+    char           field_1b8;       /* +0x1B8  also accessed as DWORD tick_1b8 in subclass overlays */
     char           field_1b9;       /* +0x1B9 */
     unsigned char  needs_refresh;   /* +0x1BA */
     unsigned char  _pad1bb;         /* +0x1BB */
@@ -350,12 +374,14 @@ typedef struct GameBoard {
     unsigned char  _pad1c2[6];      /* +0x1C2 */
     int            field_1c8;       /* +0x1C8 */
     unsigned char  _pad1cc[4];      /* +0x1CC */
-    PlayerSlot     players[4];      /* +0x1D0  stride 0x12, 4 players to 0x217
-                                     * NOTE: Some subclasses use an alternative layout in this region:
-                                     *   +0x1D4: int board_slot_count
-                                     *   +0x1D8: BoardSlotEntry board_slots[N]  (stride 0x0E)
-                                     * Access via: ((BoardSlotEntry *)((int)board + 0x1D8))[i]
-                                     */
+    union {
+        PlayerSlot players[4];      /* +0x1D0  stride 0x12, 4 players to 0x217 */
+        struct {
+            int            _players0_score;    /* +0x1D0  overlaps players[0].score */
+            int            board_slot_count;   /* +0x1D4  number of board slots (alt layout) */
+            BoardSlotEntry board_slots[5];     /* +0x1D8  board slot entries (stride 0x0E, alt layout) */
+        };
+    };
     unsigned char  _pad218[0x12];   /* +0x218  (0x22A - 0x218 = 0x12) */
     int            match_player;    /* +0x22A */
     unsigned char  _pad22e[6];      /* +0x22E */
@@ -439,8 +465,13 @@ typedef struct DialogWidget {
     void          *child_list_2;    /* +0x36 */
     void          *parent_ptr;      /* +0x3A */
     int            field_3e;        /* +0x3E */
-    unsigned char  _pad42_d[2];     /* +0x42 */
-    short          field_44;        /* +0x44  palette/cursor index, 0xFFFF = none */
+    union {
+        int        resource_handle_42; /* +0x42  int access: embedded resource handle */
+        struct {
+            short  _pad42_d;           /* +0x42 */
+            short  field_44;           /* +0x44  palette/cursor index, 0xFFFF = none */
+        };
+    };
     int            sub_widgets_a[16]; /* +0x46 */
     int            sub_widgets_b[16]; /* +0x86 */
     /* --- UIWidget extensions (0xC6 - 0x117) --- */
@@ -513,7 +544,9 @@ typedef struct TextDisplay {
     unsigned char  _pad11e[8];      /* +0x11E */
     short          field_126;       /* +0x126 */
     short          field_128;       /* +0x128 */
-    unsigned char  _pad12a[0x104];  /* +0x12A */
+    unsigned char  _pad12a[0xFE];   /* +0x12A  (0x228 - 0x12A = 0xFE) */
+    int            entry_offset;    /* +0x228  entry offset/index value */
+    unsigned char  _pad22c[2];      /* +0x22C */
     int            max_entries;     /* +0x22E */
     unsigned char  _pad232[0x1D4]; /* +0x232  (0x406 - 0x232 = 0x1D4) */
     int            field_406;       /* +0x406 */
@@ -567,7 +600,8 @@ typedef struct SmartHeapPool {
     void          *slab_head;       /* +0x10 */
     void          *end_ptr;         /* +0x14 */
     unsigned char  page_flags;      /* +0x15 */
-    unsigned char  _pad16[6];       /* +0x16 */
+    unsigned char  _pad16[4];       /* +0x16 */
+    unsigned short free_area_start; /* +0x1A  start of allocatable area (used as address, not value) */
     void          *data_start;      /* +0x1C */
     short          pool_signature;  /* +0x20  magic: 0xBEAD = -0x4153 */
     short          pool_flags;      /* +0x22  bit1 = threadsafe */
@@ -578,12 +612,14 @@ typedef struct SmartHeapPool {
     int            current_size;    /* +0x2E */
     unsigned char  _pad32[2];       /* +0x32 */
     int            max_size;        /* +0x34 */
-    unsigned char  _pad38[0x10];    /* +0x38 */
+    unsigned char  _pad38[8];       /* +0x38 */
+    void          *next_pool_link;  /* +0x40  next pool in chain (linked list) */
+    void          *thread_data;     /* +0x44  thread-local pool data pointer */
     unsigned char  critical_section[0x18]; /* +0x48 */
     int            lock_count;      /* +0x60 */
     unsigned char  _pad64[0x100];   /* +0x64 */
     void          *overflow_chain;  /* +0x164 */
-    unsigned char  _pad168[4];      /* +0x168 */
+    void          *fallback_ptr;    /* +0x168  fallback allocation pointer */
     void          *pool_field;      /* +0x16C */
 } SmartHeapPool;
 /* static_assert(sizeof(SmartHeapPool) == 0x170, "SmartHeapPool size mismatch"); */
@@ -860,8 +896,13 @@ typedef struct ExtendedDialogWidget {
     void          *child_list_2;     /* +0x36 */
     void          *parent_ptr;       /* +0x3A */
     int            field_3e;         /* +0x3E */
-    unsigned char  _pad42_e[2];      /* +0x42 */
-    short          field_44;         /* +0x44 */
+    union {
+        int        resource_handle_42; /* +0x42  int access: embedded resource handle */
+        struct {
+            short  _pad42_e;           /* +0x42 */
+            short  field_44;           /* +0x44 */
+        };
+    };
     int            sub_widgets_a[16]; /* +0x46 */
     int            sub_widgets_b[16]; /* +0x86 */
     char           scrollable_flag;  /* +0xC6 */
@@ -943,6 +984,272 @@ typedef struct ResourceObject {
     unsigned char  _pad19[3];        /* +0x19 */
 } ResourceObject;
 /* static_assert(sizeof(ResourceObject) == 0x1C, "ResourceObject size mismatch"); */
+
+/* ========================================================================
+ * WaveHeader - Binary header for byte-swap endian conversion (~0x18 bytes)
+ *
+ * Used in game_audio.c FUN_0044e600 for byte-swapping audio headers.
+ * Each short field is endian-swapped (high/low bytes exchanged).
+ * ======================================================================== */
+typedef struct WaveHeader {
+    unsigned short field_00;        /* +0x00 */
+    unsigned short field_02;        /* +0x02 */
+    unsigned short field_04;        /* +0x04 */
+    unsigned short field_06;        /* +0x06 */
+    unsigned short field_08;        /* +0x08 */
+    unsigned short field_0a;        /* +0x0A */
+    unsigned short field_0c;        /* +0x0C */
+    unsigned short field_0e;        /* +0x0E */
+    unsigned short field_10;        /* +0x10 */
+    unsigned short field_12;        /* +0x12 */
+    unsigned short field_14;        /* +0x14 */
+    unsigned short field_16;        /* +0x16 */
+} WaveHeader;
+/* static_assert(sizeof(WaveHeader) == 0x18, "WaveHeader size mismatch"); */
+
+/* ========================================================================
+ * NoteEvent - Small audio event struct (~0x0E = 14 bytes)
+ *
+ * Used in game_audio.c FUN_00449610 for note initialization.
+ * ======================================================================== */
+typedef struct NoteEvent {
+    int            value;           /* +0x00  main value */
+    int            param;           /* +0x04  parameter */
+    short          duration;        /* +0x08  duration/timing */
+    unsigned char  note_on;         /* +0x0A  note-on flag */
+    unsigned char  velocity;        /* +0x0B  velocity/volume */
+    unsigned char  channel;         /* +0x0C  channel number */
+    unsigned char  flags;           /* +0x0D  control flags */
+} NoteEvent;
+/* static_assert(sizeof(NoteEvent) == 0x0E, "NoteEvent size mismatch"); */
+
+/* ========================================================================
+ * BitmapResource - Bitmap/DIB resource handle (~0x14 bytes min)
+ *
+ * Used in game_audio.c FUN_0044eb30 for palette operations.
+ * Contains a DIB data pointer at +0x10.
+ * ======================================================================== */
+typedef struct BitmapResource {
+    unsigned char  _base[0x10];     /* +0x00 */
+    int           *dib_data_ptr;    /* +0x10  pointer to DIB header/pixel data */
+} BitmapResource;
+
+/* ========================================================================
+ * ResourceManager - File/resource manager object (~0x3A bytes min)
+ *
+ * Used in game_misc.c for resource bank management.
+ * Contains a pointer to a resource bank at +0x0C, a secondary
+ * manager at +0x20, and a file handle at +0x26.
+ * ======================================================================== */
+typedef struct ResourceManager {
+    unsigned char  _base[0x0C];     /* +0x00 */
+    void          *bank_ptr;        /* +0x0C  pointer to resource bank (ResourceRecord-like) */
+    unsigned char  _pad10[0x10];    /* +0x10 */
+    void          *secondary_mgr;   /* +0x20  secondary resource manager */
+    unsigned char  _pad24[2];       /* +0x24 */
+    int            file_handle;     /* +0x26  file/resource handle */
+    unsigned char  _pad2a[8];       /* +0x2A */
+    int            saved_offset;    /* +0x32  saved file position */
+    int            current_offset;  /* +0x36  current file position */
+} ResourceManager;
+
+/* ========================================================================
+ * BoardSubclass_A - GameBoard subclass with vtable PTR_FUN_00473288
+ *
+ * Reuses the slot_handles region (+0x19A-+0x1AD) with alternate layout.
+ * Used in game_render.c FUN_00423db0, FUN_00423e20.
+ * ======================================================================== */
+typedef struct BoardSubclass_A {
+    unsigned char  _base_a[0x19C];  /* +0x00  GameBoard fields up to slot_handles area */
+    short          init_state;      /* +0x19C  initialization state */
+    unsigned char  _pad19e[2];      /* +0x19E */
+    short          phase;           /* +0x1A0  phase/step counter */
+    int            anim_counter;    /* +0x1A2  animation counter */
+    int            cstring_base[8]; /* +0x1A6  embedded CString data (uses slot_handles[3]..field_1ae..) */
+} BoardSubclass_A;
+
+/* ========================================================================
+ * BoardSubclass_B - GameBoard subclass with vtable PTR_LAB_004737e8
+ *
+ * Extends base with an object pointer at +0x23A (allocated beyond 0x280).
+ * Used in game_render.c FUN_00427f70, FUN_00428210, FUN_00428550.
+ * ======================================================================== */
+typedef struct BoardSubclass_B {
+    unsigned char  _base[0x23A];    /* +0x00  base data (beyond GameBoard 0x280) */
+    void          *display_obj;     /* +0x23A  display/text object pointer */
+} BoardSubclass_B;
+
+/* ========================================================================
+ * BoardSubclass_C - GameBoard subclass with vtable PTR_FUN_004739f0
+ *
+ * Extends GameBoard with extra reward handles at +0x39E, +0x3A2, +0x3A6.
+ * Used in game_render.c FUN_00428830, FUN_00428990.
+ * Also has embedded CVector at +0x1C2.
+ * ======================================================================== */
+typedef struct BoardSubclass_C {
+    unsigned char  _base[0x39E];    /* +0x00  base data */
+    int            extra_reward_a;  /* +0x39E  reward handle A */
+    int            extra_reward_b;  /* +0x3A2  reward handle B */
+    int            extra_reward_c;  /* +0x3A6  reward handle C */
+} BoardSubclass_C;
+
+/* ========================================================================
+ * BoardSubclass_D - GameBoard subclass with vtable PTR_LAB_00473418
+ *
+ * Large subclass with field at +0x452.
+ * Used in game_render.c FUN_00424410.
+ * ======================================================================== */
+typedef struct BoardSubclass_D {
+    unsigned char  _base[0x452];    /* +0x00  base data */
+    short          extra_state;     /* +0x452  state/counter field */
+} BoardSubclass_D;
+
+/* ========================================================================
+ * AnimController - Animation controller with embedded widget (~0x80+ bytes)
+ *
+ * Used in game_logic.c FUN_0040db70.
+ * Has a UIWidget pointer at +0x44 and array of sub-widget pointers
+ * starting at +0x64 (offset 100 decimal) with stride 4.
+ * ======================================================================== */
+typedef struct AnimController {
+    unsigned char  _base[0x44];     /* +0x00 */
+    void          *anim_widget;     /* +0x44  UIWidget* for animation display */
+    unsigned char  _pad48[0x1C];    /* +0x48 */
+    void          *sub_widgets[10]; /* +0x64  array of child widget pointers (0x64=100 decimal) */
+} AnimController;
+
+/* ========================================================================
+ * ExtendedGameBoard_A - Board with state machine at +0x19C and tick at +0x1B8
+ *
+ * Used in game_render.c FUN_0042ea90 and game_data.c FUN_0045b490.
+ * ======================================================================== */
+/* Access pattern overlays GameBoard:
+ *   +0x198 = short (counter)     - GameBoard.field_198
+ *   +0x19A = unsigned char (flag) - GameBoard.slot_handles area
+ *   +0x19C = short (state machine) - GameBoard.slot_handles area
+ *   +0x1B8 = DWORD (tick timestamp) - GameBoard.field_1b8
+ */
+
+/* ========================================================================
+ * GameSessionScoreArray - GameSession score_display area accessed as array
+ *
+ * GameSession +0x92 is score_display (short), but also used as base of
+ * an array indexed by player number: *(short *)((char *)session + 0x92 + idx * 2)
+ * This is just normal array indexing into sequential shorts in GameSession.
+ *
+ * GameSession +0x44 is accessed as an array with stride 0x0C:
+ *   *(short *)((char *)session + 0x44 + idx * 0x0C)
+ * This falls in the _pad4a region.
+ * ======================================================================== */
+
+/* ========================================================================
+ * LinkedListNode - Node in a linked list with field flags (~0x10+ bytes)
+ *
+ * Used in game_misc.c FUN_00462fb0.
+ * Has fields at +0x0A (short, value), +0x0B (char, flag).
+ * ======================================================================== */
+typedef struct LinkedListNode {
+    unsigned char  _base[0x0A];     /* +0x00 */
+    unsigned char  node_value;      /* +0x0A  node value/type */
+    unsigned char  node_flag;       /* +0x0B  active/enabled flag */
+    unsigned char  _pad0c[4];       /* +0x0C */
+} LinkedListNode;
+
+/* ========================================================================
+ * SoundEventData - Sound event input data (~0x10 bytes)
+ *
+ * Used in game_ui.c FUN_00434310. Accessed as int* with
+ * short values at +0x0A, +0x0C, +0x0E.
+ * ======================================================================== */
+typedef struct SoundEventData {
+    int            time_lo;         /* +0x00  time low */
+    int            time_hi;         /* +0x04  time high */
+    short          channel;         /* +0x08  channel */
+    short          note;            /* +0x0A  note value */
+    short          pressure;        /* +0x0C  pressure/velocity */
+    short          param;           /* +0x0E  parameter value */
+} SoundEventData;
+
+/* ========================================================================
+ * ResourceManagerExt - Extended resource manager for game_resources.c
+ *
+ * GameBoard subclass with extra object handles at +0x2C2, +0x2C6.
+ * Used in game_resources.c FUN_0045cf00.
+ * ======================================================================== */
+typedef struct ResourceManagerExt {
+    unsigned char  _base[0x2C2];    /* +0x00 */
+    int            ext_handle_a;    /* +0x2C2  extended handle A */
+    int            ext_handle_b;    /* +0x2C6  extended handle B */
+} ResourceManagerExt;
+
+/* ========================================================================
+ * DialogAnimState - Dialog with animation state at +0x1BC, +0x1CA, +0x1CC
+ *
+ * Used in game_input.c FUN_0043e500. Overlay on DialogWidget.dialog_data.
+ * +0x1BC = int (animation resource)
+ * +0x1CA = short (animation playing flag)
+ * +0x1CC = short (animation complete flag)
+ * These fall within the dialog_data[0xA6] area of DialogWidget (+0x126 to +0x1CB).
+ * ======================================================================== */
+
+/* ========================================================================
+ * StartupParam - Small startup parameter struct (~0x10 bytes)
+ *
+ * Used in game_data.c FUN_0045bd20 at *(char *)((char *)v14 + 0xd).
+ * Has a flag byte at +0x0D.
+ * ======================================================================== */
+typedef struct StartupParam {
+    unsigned char  _base[0x0C];     /* +0x00 */
+    unsigned char  tag;             /* +0x0C */
+    unsigned char  has_audio;       /* +0x0D  flag: audio subsystem present */
+    unsigned char  _pad0e[2];       /* +0x0E */
+} StartupParam;
+
+/* ========================================================================
+ * FileBlockEntry - Resource file block entry with per-entry data (~0x48 bytes)
+ *
+ * Used by resource manager internal linked list in game_misc.c.
+ * +0x3F = char (block ready flag, in first 0x100-byte block)
+ * +0x13F = char (block ready flag, in second 0x100-byte block)
+ * ======================================================================== */
+
+/* ========================================================================
+ * GameWidgetSlotArray - GameWidget with 10 slot pointers at +0x132
+ *
+ * Used in game_systems.c FUN_00410300, FUN_00410820.
+ * The slot_ptr_0 at +0x13A is part of this array: +0x132 + index * 4.
+ * The array overlaps field_130(+0x130), _pad134(+0x134), cleanup_fn_ptr(+0x136),
+ * slot_ptr_0(+0x13A), _pad13e(+0x13E).
+ * Access: ((char *)widget + 0x132 + i * 4) for i = 0..9 = 40 bytes = +0x132 to +0x159.
+ * ======================================================================== */
+
+/* ========================================================================
+ * ExtDialogAnim - Extended dialog widget with animation resource fields
+ *
+ * Overlay on DialogWidget for animation-related dialog functions.
+ * Used in game_input.c FUN_0043e500.
+ * These offsets fall within DialogWidget's dialog_data[0xA6] region.
+ * +0x1BC = int (animation resource pointer)  [dialog_data offset 0x96]
+ * +0x1CA = short (animation state flag)      [dialog_data offset 0xA4]
+ * +0x1CC = short (animation complete flag)   [_pad1cc_e area]
+ * ======================================================================== */
+typedef struct ExtDialogAnim {
+    unsigned char  _base[0x1BC];    /* +0x00  base (includes DialogWidget through +0x1BB) */
+    int            anim_resource;   /* +0x1BC  animation resource pointer */
+    unsigned char  _pad1c0[0x0A];   /* +0x1C0 */
+    short          anim_state;      /* +0x1CA  animation state flag */
+    short          anim_complete;   /* +0x1CC  animation complete flag */
+    int            dialog_value;    /* +0x1CE */
+} ExtDialogAnim;
+
+/* ========================================================================
+ * ExtGameBoard_State - Extended GameBoard with state/timer overlay
+ *
+ * Used in game_render.c FUN_0042ea90.
+ * +0x19C = short (state machine value)
+ * +0x1B8 = DWORD (tick timestamp)
+ * These overlay existing GameBoard fields (slot_handles area / field_1b8).
+ * ======================================================================== */
 
 #pragma pack(pop)
 

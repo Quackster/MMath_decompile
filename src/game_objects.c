@@ -302,7 +302,7 @@ void __fastcall FUN_00401750(GameWidget *this)
   this->vtable = (void **)&PTR_FUN_00472120;
   *_fs = &_seh_prev;
   _seh_state = 2;
-  if (((char *)&this->scrollbar_ref)[2] == '\0') {  /* byte 2 of scrollbar_ref, cleanup guard */
+  if (this->pause_flag == '\0') {  /* cleanup guard at +0x12C */
     FUN_00401d20(this);
   }
   _seh_state = (_seh_state & ~0xFF) | 1;
@@ -377,7 +377,7 @@ void __fastcall FUN_00401d20(GameWidget *this)
   short s1;
   short s2;
 
-  ((unsigned char *)&this->scrollbar_ref)[2] = 1;  /* byte 2 of scrollbar_ref, cleanup guard */
+  this->pause_flag = 1;  /* cleanup guard at +0x12C */
   if (this->cleanup_fn_ptr != NULL) {
     ((void (*)(void))**(void ***)&this->cleanup_fn_ptr)(); /* cleanup_fn_ptr->vtable[0] */
   }

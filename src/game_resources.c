@@ -878,8 +878,8 @@ int * __fastcall FUN_0045cf10(int *param_1)
   *(short *)(param_1 + 0xb0) = 1;       /* byte offset 0x2C0 into unknown struct */
   *param_1 = &PTR_FUN_00477380;         /* vtable */
   param_1[0x66] = 0;                    /* byte offset 0x198 into unknown struct */
-  *(int *)((char *)param_1 + 0x2c2) = 0;   /* TODO: unknown offset 0x2C2 on unknown struct */
-  *(int *)((char *)param_1 + 0x2c6) = 0;   /* TODO: unknown offset 0x2C6 on unknown struct */
+  ((ResourceManagerExt *)param_1)->ext_handle_a = 0;
+  ((ResourceManagerExt *)param_1)->ext_handle_b = 0;
   *_fs = _seh_prev;
   return param_1;
 }
@@ -1785,7 +1785,7 @@ void __fastcall FUN_0045e510(GameWidget *param_1)
     param_1->object_ptr = 0;
   }
   n1 = DAT_004896b0;
-  if (*(char *)&param_1->scrollbar_ref != '\0') {
+  if (param_1->scrollbar_ref_lo != '\0') {
     ((TimerState *)DAT_004896b0)->flag_28 = 0;
     dw2 = GetTickCount();
     ((TimerState *)n1)->tick_a = dw2;

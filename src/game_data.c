@@ -65,7 +65,7 @@ void FUN_00451820(void) { return; }
  */
 int __fastcall FUN_00451b80(TextDisplay *param_1)
 {
-  return *(int *)((char *)param_1 + 0x228); /* TextDisplay: field in _pad232 area at +0x228 */
+  return param_1->entry_offset;
 }
 
 
@@ -1121,7 +1121,7 @@ int * __thiscall FUN_00452cf0(void *this,char *param_1)
   _seh_state = 0;
   *(void ***)this = &PTR_FUN_00476258;
   FUN_0041da90(this,1);
-  *(int *)((char *)this + 0x42) = 0; /* UIElement._pad42: embedded resource handle */
+  ((UIElement *)this)->resource_handle_42 = 0;
   if (param_1 != NULL) {
     FUN_00452e00(this,param_1);
   }
@@ -1156,8 +1156,8 @@ void __fastcall FUN_00452d90(int *param_1)
   *param_1 = &PTR_FUN_00476258;
   *_fs = &_seh_prev;
   _seh_state = 0;
-  if (*(uint *)((char *)param_1 + 0x42) != 0) { /* UIElement._pad42: embedded resource handle */
-    FUN_0046f5f0(*(uint *)((char *)param_1 + 0x42));  /* UIElement._pad42: free resource */
+  if ((uint)((UIElement *)param_1)->resource_handle_42 != 0) {
+    FUN_0046f5f0((uint)((UIElement *)param_1)->resource_handle_42);
   }
   _seh_state = 0xffffffff;
   FUN_00452deb();
@@ -1653,9 +1653,9 @@ int * __fastcall FUN_00453f30(int *param_1)
   ((GameWidget *)param_1)->object_ptr = (void *)0xffffffff; /* sentinel value */
   ((GameWidget *)param_1)->scrollbar_ref = 1;
   ((GameWidget *)param_1)->pair_x_2 = 0;
-  *(unsigned char *)((char *)param_1 + 0x12b) = 1; /* GameWidget: byte at +0x12B, between scrollbar_ref(+0x12A) and field_12e(+0x12E) */
+  ((GameWidget *)param_1)->timer_expired = 1;
   *(unsigned char *)&((GameWidget *)param_1)->field_118 = 1; /* low byte of field_118 */
-  *(unsigned char *)((char *)param_1 + 0x12c) = 0; /* GameWidget: byte at +0x12C, between scrollbar_ref(+0x12A) and field_12e(+0x12E) */
+  ((GameWidget *)param_1)->pause_flag = 0;
   *_fs = _seh_prev;
   return param_1;
 }
@@ -1680,7 +1680,7 @@ void __fastcall FUN_00454040(int *param_1)
     FUN_00405cb0(param_1);
     return;
   }
-  if ((*(char *)(DAT_004896b0 + 0x28) == '\0') && (*(char *)((char *)param_1 + 0x12c) == '\0')) { /* GameWidget: byte at +0x12C */
+  if ((*(char *)(DAT_004896b0 + 0x28) == '\0') && (((GameWidget *)param_1)->pause_flag == '\0')) {
     dw1 = GetTickCount();
     n2 = ((int)(((longlong)(int)dw1 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000) -
             ((GameWidget *)param_1)->pair_x_1) / 0x3c;
@@ -1694,7 +1694,7 @@ void __fastcall FUN_00454040(int *param_1)
     }
     if (((((GameWidget *)param_1)->pair_x_2 != 0) &&
         (((GameWidget *)param_1)->pair_x_2 <= ((GameWidget *)param_1)->pair_y_1)) &&
-       (*(char *)((char *)param_1 + 0x12b) == '\0')) { /* GameWidget: byte at +0x12B */
+       (((GameWidget *)param_1)->timer_expired == '\0')) {
       ((void (*)(void))((void **)(*((UIWidget *)DAT_004897c0)->sub_widgets_a[3]))[0xac / 4])(); /* obj at *(DAT_004897c0+0x52)->vtable[43] */
     }
   }
@@ -3512,9 +3512,9 @@ FUN_00457570(TextDisplay *this,short param_1,short param_2,short param_3,int par
   }
   *ps1 = param_6;
   if (this->field_126 == 0x1dd) {
-    if (*(short *)((char *)DAT_0048345c + 0x92 + *ps1 * 2) != 6) goto L_0045762a; /* GameSession->score_display(+0x92) area, indexed by *ps1 */
+    if ((&((GameSession *)DAT_0048345c)->score_display)[*ps1] != 6) goto L_0045762a;
   }
-  else if (*(short *)((char *)DAT_0048345c + 0x92 + *ps1 * 2) != 1) goto L_0045762a; /* GameSession->score_display(+0x92) area, indexed by *ps1 */
+  else if ((&((GameSession *)DAT_0048345c)->score_display)[*ps1] != 1) goto L_0045762a;
   FUN_0042c3f0(this);
 L_0045762a:
   *_fs = v10;
@@ -5303,9 +5303,9 @@ int * __fastcall FUN_0045b460(int *param_1)
   _handler = &L_0045b4b6;
   *_fs = &_seh_prev;
   FUN_0042cbd0(param_1);
-  *(short *)((char *)param_1 + 0x198) = 0; /* GameWidget._pad160: counter at +0x198 */
+  *(short *)&((GameBoard *)param_1)->field_198 = 0; /* zeros both field_198 and field_199 */
   *param_1 = &PTR_FUN_00477288;
-  *(unsigned char *)((char *)param_1 + 0x19a) = 0; /* GameWidget._pad160: flag at +0x19A */
+  *(unsigned char *)&((GameBoard *)param_1)->slot_handles[0] = 0; /* flag at +0x19A (first byte of slot_handles[0]) */
   *_fs = _seh_prev;
   return param_1;
 }
@@ -5514,7 +5514,7 @@ void __fastcall FUN_0045bc70(int *param_1)
   *_fs = &_seh_prev;
   v14 = param_1;
   FUN_0045c0c0();
-  if ((*(char *)((char *)v14 + 0xd) != '\0') && (DAT_004896b0 != 0)) { /* small startup struct: flag at +0x0D */
+  if ((((StartupParam *)v14)->has_audio != '\0') && (DAT_004896b0 != 0)) {
     FUN_00455dc0(DAT_004896b0);
   }
   if (DAT_004838bc != NULL) {

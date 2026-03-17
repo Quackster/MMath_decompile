@@ -1495,10 +1495,10 @@ void FUN_0043e4f2(void) { return; }
 void __fastcall FUN_0043e500(void *param_1)
 {
   /* ExtendedDialogWidget: check state before animating */
-  if (*(short *)((char *)param_1 + 0x1cc) == 0) { /* DialogWidget._pad1cc_e area */
-    *(short *)((char *)param_1 + 0x1ca) = 1; /* DialogWidget dialog_data area */
-    FUN_0042dba0(param_1,*(int *)((char *)param_1 + 0x1bc) + 0x32); /* TODO: offset 0x1BC in DialogWidget.dialog_data */
-    *(short *)((char *)param_1 + 0x1ca) = 0;
+  if (((ExtDialogAnim *)param_1)->anim_complete == 0) {
+    ((ExtDialogAnim *)param_1)->anim_state = 1;
+    FUN_0042dba0(param_1, ((ExtDialogAnim *)param_1)->anim_resource + 0x32);
+    ((ExtDialogAnim *)param_1)->anim_state = 0;
   }
   return;
 }

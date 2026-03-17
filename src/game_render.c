@@ -508,11 +508,11 @@ int * __fastcall FUN_00423d80(int *param_1)
   *_fs = &_seh_prev;
   FUN_0042cbd0(param_1);
   _seh_state = 0;
-  FUN_0040ab70((int *)((char *)param_1 + 0x1a6)); /* TODO: offset 0x1A6 on GameBoard subclass (PTR_FUN_00473288) */
-  *(short *)((char *)param_1 + 0x1a0) = 1; /* TODO: offset 0x1A0 on GameBoard subclass (PTR_FUN_00473288) */
+  FUN_0040ab70(&((GameBoard *)param_1)->slot_handles[3]); /* embedded CString init at slot_handles[3] (+0x1A6) */
+  ((BoardSubclass_A *)param_1)->phase = 1;
   *param_1 = &PTR_FUN_00473288;
   param_1[0x67] = 0; /* byte offset 0x19c */
-  *(int *)((char *)param_1 + 0x1a2) = 0; /* TODO: offset 0x1A2 on GameBoard subclass (PTR_FUN_00473288) */
+  ((BoardSubclass_A *)param_1)->anim_counter = 0;
   *_fs = _seh_prev;
   return param_1;
 }
@@ -639,8 +639,8 @@ void __fastcall FUN_00423f80(void *param_1)
     ((GameSession *)DAT_0048345c)->score_display = ((GameSession *)DAT_0048345c)->score_display + 0xfa;
   }
   FUN_0045f100(v8,'\x01');
-  FUN_0040b1e0((void *)((char *)param_1 + 0x1a6),v4);
-  *(short *)((char *)param_1 + 0x1a0) = 2; /* TODO: offset 0x1A0 on GameBoard subclass (PTR_FUN_00473288) */
+  FUN_0040b1e0((void *)((BoardSubclass_A *)param_1)->cstring_base, v4);
+  ((BoardSubclass_A *)param_1)->phase = 2;
   return;
 }
 
@@ -683,7 +683,7 @@ int * __fastcall FUN_00424400(int *param_1)
   param_1[5] = 0;
   *(short *)(param_1 + 0x114) = 0;
   param_1[4] = 0;
-  *(short *)((char *)param_1 + 0x452) = 0; /* TODO: offset 0x452 on PTR_LAB_00473418 subclass - beyond known structs */
+  ((BoardSubclass_D *)param_1)->extra_state = 0;
   param_1[0x111] = 0;
   param_1[6] = 1;
   *_fs = _seh_prev;
@@ -1115,17 +1115,17 @@ int __fastcall FUN_00425200(void *param_1)
   case 0x52:
   case 0x62:
     v18 = (uint)(((GameBoard *)param_1)->field_254 == -1);
-    FUN_00424f40(param_1,(short)((BoardSlotEntry *)((char *)param_1 + 0x1D8))[v18].pos_x,
-                 (short)((BoardSlotEntry *)((char *)param_1 + 0x1D8))[v18].pos_y);
+    FUN_00424f40(param_1,(short)((GameBoard *)param_1)->board_slots[v18].pos_x,
+                 (short)((GameBoard *)param_1)->board_slots[v18].pos_y);
     FUN_0044c7e0(param_1,*(int *)
                           (&DAT_00480888 +
-                          (uint)((BoardSlotEntry *)((char *)param_1 + 0x1D8))[v18].slot_type * 4),0,'\x01');
+                          (uint)((GameBoard *)param_1)->board_slots[v18].slot_type * 4),0,'\x01');
     FUN_0044c7e0(param_1,*(int *)
-                          (&DAT_0047f830 + ((BoardSlotEntry *)((char *)param_1 + 0x1D8))[v18].resource_id * 4),0,
+                          (&DAT_0047f830 + ((GameBoard *)param_1)->board_slots[v18].resource_id * 4),0,
                  '\x01');
     FUN_0044bf50((int *)&DAT_004734c4,'\x01');
-    ((GameBoard *)param_1)->target_x = ((BoardSlotEntry *)((char *)param_1 + 0x1D8))[v18].pos_x;
-    ((GameBoard *)param_1)->target_y = ((BoardSlotEntry *)((char *)param_1 + 0x1D8))[v18].pos_y;
+    ((GameBoard *)param_1)->target_x = ((GameBoard *)param_1)->board_slots[v18].pos_x;
+    ((GameBoard *)param_1)->target_y = ((GameBoard *)param_1)->board_slots[v18].pos_y;
     break;
   case 0x12:
   case 0x13:
@@ -1221,10 +1221,10 @@ int __fastcall FUN_00425200(void *param_1)
   case 0x4e:
     s7 = 1000;
     n2 = rand();
-    v18 = n2 % *(int *)((char *)param_1 + 0x1D4) /* board_slot_count */;
+    v18 = n2 % ((GameBoard *)param_1)->board_slot_count;
     do {
-      FUN_00426350(param_1,((BoardSlotEntry *)((char *)param_1 + 0x1D8))[v18].pos_x,
-                   ((BoardSlotEntry *)((char *)param_1 + 0x1D8))[v18].pos_y,&v14,&v10,
+      FUN_00426350(param_1,((GameBoard *)param_1)->board_slots[v18].pos_x,
+                   ((GameBoard *)param_1)->board_slots[v18].pos_y,&v14,&v10,
                    (int *)&vc,&v8);
       u3 = FUN_00424f40(param_1,(short)v14,(short)v10);
       if ((short)u3 != 0) break;
@@ -1235,10 +1235,10 @@ int __fastcall FUN_00425200(void *param_1)
     if (((GameBoard *)param_1)->event_type != 0x4e) {
       FUN_0044c7e0(param_1,*(int *)
                             (&DAT_00480888 +
-                            (uint)((BoardSlotEntry *)((char *)param_1 + 0x1D8))[v18].slot_type * 4),0,'\x01');
+                            (uint)((GameBoard *)param_1)->board_slots[v18].slot_type * 4),0,'\x01');
     }
     FUN_0044c7e0(param_1,*(int *)
-                          (&DAT_0047f830 + ((BoardSlotEntry *)((char *)param_1 + 0x1D8))[v18].resource_id * 4),0,
+                          (&DAT_0047f830 + ((GameBoard *)param_1)->board_slots[v18].resource_id * 4),0,
                  '\x01');
     if (((GameBoard *)param_1)->event_type == 0x4e) {
       b1 = 0;
@@ -1258,10 +1258,10 @@ int __fastcall FUN_00425200(void *param_1)
   case 0x27:
     s7 = 1000;
     n2 = rand();
-    v18 = n2 % *(int *)((char *)param_1 + 0x1D4) /* board_slot_count */;
+    v18 = n2 % ((GameBoard *)param_1)->board_slot_count;
     do {
-      FUN_00426350(param_1,((BoardSlotEntry *)((char *)param_1 + 0x1D8))[v18].pos_x,
-                   ((BoardSlotEntry *)((char *)param_1 + 0x1D8))[v18].pos_y,&v14,&v10,
+      FUN_00426350(param_1,((GameBoard *)param_1)->board_slots[v18].pos_x,
+                   ((GameBoard *)param_1)->board_slots[v18].pos_y,&v14,&v10,
                    (int *)&vc,&v8);
       u3 = FUN_00424f40(param_1,(short)v14,(short)v10);
       if ((short)u3 != 0) break;
@@ -1271,9 +1271,9 @@ int __fastcall FUN_00425200(void *param_1)
     FUN_0044c7e0(param_1,*(int *)(&DAT_0047f800 + v8 * 4),0,'\x01');
     FUN_0044c7e0(param_1,*(int *)
                           (&DAT_00480888 +
-                          (uint)((BoardSlotEntry *)((char *)param_1 + 0x1D8))[v18].slot_type * 4),0,'\x01');
+                          (uint)((GameBoard *)param_1)->board_slots[v18].slot_type * 4),0,'\x01');
     FUN_0044c7e0(param_1,*(int *)
-                          (&DAT_0047f830 + ((BoardSlotEntry *)((char *)param_1 + 0x1D8))[v18].resource_id * 4),0,
+                          (&DAT_0047f830 + ((GameBoard *)param_1)->board_slots[v18].resource_id * 4),0,
                  '\x01');
     b1 = (byte)((GameBoard *)param_1)->event_type & 1;
     pn8 = (int *)&DAT_004734d8;
@@ -1286,10 +1286,10 @@ int __fastcall FUN_00425200(void *param_1)
   case 0x46:
     s7 = 1000;
     n2 = rand();
-    v18 = n2 % *(int *)((char *)param_1 + 0x1D4) /* board_slot_count */;
+    v18 = n2 % ((GameBoard *)param_1)->board_slot_count;
     do {
-      FUN_00426350(param_1,((BoardSlotEntry *)((char *)param_1 + 0x1D8))[v18].pos_x,
-                   ((BoardSlotEntry *)((char *)param_1 + 0x1D8))[v18].pos_y,&v14,&v10,
+      FUN_00426350(param_1,((GameBoard *)param_1)->board_slots[v18].pos_x,
+                   ((GameBoard *)param_1)->board_slots[v18].pos_y,&v14,&v10,
                    (int *)&vc,&v8);
       u3 = FUN_00424f40(param_1,(short)v14,(short)v10);
       if ((short)u3 != 0) break;
@@ -1299,7 +1299,7 @@ int __fastcall FUN_00425200(void *param_1)
       FUN_0044c7e0(param_1,*(int *)(&DAT_0047f800 + v8 * 4),0,'\x01');
       FUN_0044c990(param_1,vc,0,'\x01');
       FUN_0044c7e0(param_1,*(int *)
-                            (&DAT_0047f830 + ((BoardSlotEntry *)((char *)param_1 + 0x1D8))[v18].resource_id * 4),0,
+                            (&DAT_0047f830 + ((GameBoard *)param_1)->board_slots[v18].resource_id * 4),0,
                    '\x01');
       b1 = (byte)((GameBoard *)param_1)->event_type & 1;
       pn8 = (int *)&DAT_004734e8;
@@ -1308,7 +1308,7 @@ int __fastcall FUN_00425200(void *param_1)
       FUN_0044c7e0(param_1,*(int *)(&DAT_0047f800 + v8 * 4),0,'\x01');
       FUN_0044c990(param_1,vc,0,'\x01');
       FUN_0044c7e0(param_1,*(int *)
-                            (&DAT_0047f830 + ((BoardSlotEntry *)((char *)param_1 + 0x1D8))[v18].resource_id * 4),0,
+                            (&DAT_0047f830 + ((GameBoard *)param_1)->board_slots[v18].resource_id * 4),0,
                    '\x01');
       b1 = (byte)((GameBoard *)param_1)->event_type & 1;
       pn8 = (int *)&DAT_004734ec;
@@ -1318,9 +1318,9 @@ int __fastcall FUN_00425200(void *param_1)
       FUN_0044c7e0(param_1,*(int *)(&DAT_0047f800 + v8 * 4),0,'\x01');
       FUN_0044c7e0(param_1,*(int *)
                             (&DAT_00480888 +
-                            (uint)((BoardSlotEntry *)((char *)param_1 + 0x1D8))[v18].slot_type * 4),0,'\x01');
+                            (uint)((GameBoard *)param_1)->board_slots[v18].slot_type * 4),0,'\x01');
       FUN_0044c7e0(param_1,*(int *)
-                            (&DAT_0047f830 + ((BoardSlotEntry *)((char *)param_1 + 0x1D8))[v18].resource_id * 4),0,
+                            (&DAT_0047f830 + ((GameBoard *)param_1)->board_slots[v18].resource_id * 4),0,
                    '\x01');
       b1 = (byte)((GameBoard *)param_1)->event_type & 1;
       pn8 = (int *)&DAT_004734d8;
@@ -1407,10 +1407,10 @@ int __fastcall FUN_00425200(void *param_1)
   case 100:
     s7 = 1000;
     n2 = rand();
-    v18 = n2 % *(int *)((char *)param_1 + 0x1D4) /* board_slot_count */;
+    v18 = n2 % ((GameBoard *)param_1)->board_slot_count;
     do {
-      FUN_00426350(param_1,((BoardSlotEntry *)((char *)param_1 + 0x1D8))[v18].pos_x,
-                   ((BoardSlotEntry *)((char *)param_1 + 0x1D8))[v18].pos_y,&v14,&v10,
+      FUN_00426350(param_1,((GameBoard *)param_1)->board_slots[v18].pos_x,
+                   ((GameBoard *)param_1)->board_slots[v18].pos_y,&v14,&v10,
                    (int *)&vc,&v8);
       u3 = FUN_00424f40(param_1,(short)v14,(short)v10);
       if ((short)u3 != 0) break;
@@ -1421,10 +1421,10 @@ int __fastcall FUN_00425200(void *param_1)
     if ((((GameBoard *)param_1)->event_type == 99) || (((GameBoard *)param_1)->event_type == 100)) {
       FUN_0044c7e0(param_1,*(int *)
                             (&DAT_00480888 +
-                            (uint)((BoardSlotEntry *)((char *)param_1 + 0x1D8))[v18].slot_type * 4),0,'\x01');
+                            (uint)((GameBoard *)param_1)->board_slots[v18].slot_type * 4),0,'\x01');
     }
     FUN_0044c7e0(param_1,*(int *)
-                          (&DAT_0047f830 + ((BoardSlotEntry *)((char *)param_1 + 0x1D8))[v18].resource_id * 4),0,
+                          (&DAT_0047f830 + ((GameBoard *)param_1)->board_slots[v18].resource_id * 4),0,
                  '\x01');
     if ((((GameBoard *)param_1)->event_type == 0x53) || (((GameBoard *)param_1)->event_type == 0x54)) {
       pn8 = (int *)&DAT_00473514;
@@ -1496,10 +1496,10 @@ int __fastcall FUN_00425200(void *param_1)
   case 0x69:
     s7 = 1000;
     n2 = rand();
-    v18 = n2 % *(int *)((char *)param_1 + 0x1D4) /* board_slot_count */;
+    v18 = n2 % ((GameBoard *)param_1)->board_slot_count;
     do {
-      FUN_00426350(param_1,((BoardSlotEntry *)((char *)param_1 + 0x1D8))[v18].pos_x,
-                   ((BoardSlotEntry *)((char *)param_1 + 0x1D8))[v18].pos_y,&v14,&v10,
+      FUN_00426350(param_1,((GameBoard *)param_1)->board_slots[v18].pos_x,
+                   ((GameBoard *)param_1)->board_slots[v18].pos_y,&v14,&v10,
                    (int *)&vc,&v8);
       u3 = FUN_00424f40(param_1,(short)v14,(short)v10);
       if ((short)u3 != 0) break;
@@ -1510,10 +1510,10 @@ int __fastcall FUN_00425200(void *param_1)
     if (((GameBoard *)param_1)->event_type == 0x69) {
       FUN_0044c7e0(param_1,*(int *)
                             (&DAT_00480888 +
-                            (uint)((BoardSlotEntry *)((char *)param_1 + 0x1D8))[v18].slot_type * 4),0,'\x01');
+                            (uint)((GameBoard *)param_1)->board_slots[v18].slot_type * 4),0,'\x01');
     }
     FUN_0044c7e0(param_1,*(int *)
-                          (&DAT_0047f830 + ((BoardSlotEntry *)((char *)param_1 + 0x1D8))[v18].resource_id * 4),0,
+                          (&DAT_0047f830 + ((GameBoard *)param_1)->board_slots[v18].resource_id * 4),0,
                  '\x01');
     if (((GameBoard *)param_1)->event_type == 0x69) {
       pn8 = (int *)&DAT_00473530;
@@ -1576,7 +1576,7 @@ int __fastcall FUN_00426230(int param_1)
 
 int __thiscall FUN_00426240(GameBoard *this,int param_1)
 {
-  if ((-1 < param_1) && (param_1 < *(int *)((char *)this + 0x1D4))) { /* board_slot_count */
+  if ((-1 < param_1) && (param_1 < this->board_slot_count)) {
     return *(int *)(&DAT_0047f810 + this->players[param_1].total * 4);
   }
   return 0xffffffff;
@@ -1587,8 +1587,8 @@ int __thiscall FUN_00426240(GameBoard *this,int param_1)
 
 char __thiscall FUN_00426280(GameBoard *this,int param_1)
 {
-  if ((-1 < param_1) && (param_1 < *(int *)((char *)this + 0x1D4))) { /* board_slot_count */
-    return (&DAT_00480848)[(uint)((BoardSlotEntry *)((char *)this + 0x1D8))[param_1].slot_type * 4];
+  if ((-1 < param_1) && (param_1 < this->board_slot_count)) {
+    return (&DAT_00480848)[(uint)this->board_slots[param_1].slot_type * 4];
   }
   return 0xff;
 }
@@ -1598,8 +1598,8 @@ char __thiscall FUN_00426280(GameBoard *this,int param_1)
 
 int __thiscall FUN_004262c0(GameBoard *this,int param_1)
 {
-  if ((-1 < param_1) && (param_1 < *(int *)((char *)this + 0x1D4))) { /* board_slot_count */
-    return ((BoardSlotEntry *)((char *)this + 0x1D8))[param_1].pos_x;
+  if ((-1 < param_1) && (param_1 < this->board_slot_count)) {
+    return this->board_slots[param_1].pos_x;
   }
   return 0xffffffff;
 }
@@ -1609,8 +1609,8 @@ int __thiscall FUN_004262c0(GameBoard *this,int param_1)
 
 int __thiscall FUN_004262f0(GameBoard *this,int param_1)
 {
-  if ((-1 < param_1) && (param_1 < *(int *)((char *)this + 0x1D4))) { /* board_slot_count */
-    return ((BoardSlotEntry *)((char *)this + 0x1D8))[param_1].pos_y;
+  if ((-1 < param_1) && (param_1 < this->board_slot_count)) {
+    return this->board_slots[param_1].pos_y;
   }
   return 0xffffffff;
 }
@@ -1769,7 +1769,7 @@ int __thiscall FUN_00426550(GameBoard *this,int param_1,char param_2,char param_
         n7 = rand();
         pn10[2] = n7 % 6 + 1;
         if (-1 < n6) {
-          pn9 = (int *)&((BoardSlotEntry *)((char *)this + 0x1D8))[n6].pos_x;
+          pn9 = (int *)&this->board_slots[n6].pos_x;
           n7 = n6;
           do {
             if ((*pn9 == pn10[1]) && (pn9[1] == pn10[2])) {
@@ -2755,7 +2755,7 @@ int * __fastcall FUN_00427f30(int *param_1)
   _seh_state = 1;
   FUN_00454300(param_1 + 0x48);
   *param_1 = &PTR_FUN_00473898;
-  *(int *)((char *)param_1 + 0x23a) = 0; /* TODO: offset 0x23A on PTR_LAB_004737e8 subclass */
+  ((BoardSubclass_B *)param_1)->display_obj = NULL;
   *param_1 = &PTR_LAB_004737e8;
   *_fs = _seh_prev;
   return param_1;
@@ -2866,9 +2866,9 @@ void __fastcall FUN_004281b0(int *param_1)
   *param_1 = &PTR_LAB_004737e8;
   *_fs = &_seh_prev;
   _seh_state = 0;
-  if (*(void ***)((char *)param_1 + 0x23a) != (void **)0x0) { /* TODO: offset 0x23A on PTR_LAB_004737e8 subclass */
-    ((void (*)(void))**(void ***)((char *)param_1 + 0x23a))(); /* obj at +0x23A->vtable[0] */
-    *(int *)((char *)param_1 + 0x23a) = 0; /* TODO: offset 0x23A on PTR_LAB_004737e8 subclass */
+  if (((BoardSubclass_B *)param_1)->display_obj != NULL) {
+    ((void (*)(void))*(void **)((BoardSubclass_B *)param_1)->display_obj)(); /* display_obj->vtable[0] */
+    ((BoardSubclass_B *)param_1)->display_obj = NULL;
   }
   _seh_state = 0xffffffff;
   FUN_00428219();
@@ -2914,7 +2914,7 @@ void __thiscall FUN_00428550(void *this,short param_1)
   char v28 [40];
   
   _itoa((int)param_1,v28,10);
-  FUN_00458860(*(void **)((char *)this + 0x23a),v28); /* TODO: offset 0x23A on PTR_LAB_004737e8 subclass */
+  FUN_00458860(((BoardSubclass_B *)this)->display_obj, v28);
   return;
 }
 
@@ -3011,7 +3011,7 @@ int * __fastcall FUN_00428820(int *param_1)
   *_fs = &_seh_prev;
   FUN_0042cbd0(param_1);
   _seh_state = 0;
-  FUN_004112e0((int *)((char *)param_1 + 0x1c2));
+  FUN_004112e0((int *)((GameBoard *)param_1)->_pad1c2); /* GameBoard._pad1c2: embedded CVector init */
   *param_1 = &PTR_FUN_004739f0;
   ((GameBoard *)param_1)->field_198 = 1;
   s1 = 0;
@@ -3025,10 +3025,10 @@ int * __fastcall FUN_00428820(int *param_1)
   ((GameBoard *)param_1)->field_1b2 = 0;
   ((GameBoard *)param_1)->field_1b8 = 0;
   ((GameBoard *)param_1)->field_199 = 0;
-  *(int *)((char *)param_1 + 0x39e) = 0; /* TODO: offset 0x39E on GameBoard subclass (PTR_FUN_004739f0), beyond struct */
+  ((BoardSubclass_C *)param_1)->extra_reward_a = 0;
   ((GameBoard *)param_1)->refresh_counter = 0; /* param_1 + 0x6f = byte offset 0x1BC */
-  *(int *)((char *)param_1 + 0x3a2) = 0; /* TODO: offset 0x3A2 on GameBoard subclass (PTR_FUN_004739f0), beyond struct */
-  *(int *)((char *)param_1 + 0x3a6) = 0; /* TODO: offset 0x3A6 on GameBoard subclass (PTR_FUN_004739f0), beyond struct */
+  ((BoardSubclass_C *)param_1)->extra_reward_b = 0;
+  ((BoardSubclass_C *)param_1)->extra_reward_c = 0;
   ((GameBoard *)param_1)->field_1b9 = 0;
   ((GameBoard *)param_1)->needs_refresh = 0;
   ((GameBoard *)param_1)->field_1be = 0;
@@ -3335,12 +3335,12 @@ void __fastcall FUN_00429b20(int *param_1)
   }
   FUN_0040f070(DAT_004838c0,0,(uint)((GameBoard *)param_1)->reward_data_a);
   ((GameBoard *)param_1)->reward_data_a = 0;
-  FUN_0040f070(DAT_004838c0,0,*(uint *)((char *)param_1 + 0x39e)); /* TODO: offset 0x39E beyond GameBoard struct */
-  *(int *)((char *)param_1 + 0x39e) = 0; /* TODO: offset 0x39E beyond GameBoard struct */
-  FUN_0040f070(DAT_004838c0,0,*(uint *)((char *)param_1 + 0x3a2)); /* TODO: offset 0x3A2 beyond GameBoard struct */
-  *(int *)((char *)param_1 + 0x3a2) = 0; /* TODO: offset 0x3A2 beyond GameBoard struct */
-  FUN_0040f070(DAT_004838c0,0,*(uint *)((char *)param_1 + 0x3a6)); /* TODO: offset 0x3A6 beyond GameBoard struct */
-  *(int *)((char *)param_1 + 0x3a6) = 0; /* TODO: offset 0x3A6 beyond GameBoard struct */
+  FUN_0040f070(DAT_004838c0,0,(uint)((BoardSubclass_C *)param_1)->extra_reward_a);
+  ((BoardSubclass_C *)param_1)->extra_reward_a = 0;
+  FUN_0040f070(DAT_004838c0,0,(uint)((BoardSubclass_C *)param_1)->extra_reward_b);
+  ((BoardSubclass_C *)param_1)->extra_reward_b = 0;
+  FUN_0040f070(DAT_004838c0,0,(uint)((BoardSubclass_C *)param_1)->extra_reward_c);
+  ((BoardSubclass_C *)param_1)->extra_reward_c = 0;
   FUN_0040f070(DAT_004838c0,0,(uint)((GameBoard *)param_1)->reward_data_b);
   ((GameBoard *)param_1)->reward_data_b = 0;
   FUN_0040f070(DAT_004838c0,0,(uint)((GameBoard *)param_1)->reward_data_c);
@@ -5201,8 +5201,8 @@ void __fastcall FUN_0042d3c0(void *param_1)
 {
   DWORD dw1;
   
-  if (*(void ***)((char *)param_1 + 0xd4) != (void **)0x0) { /* UIWidget::scroll_data[0x0A] - embedded object pointer */
-    ((void (*)(void))**(void ***)((char *)param_1 + 0xd4))(); /* scroll_data embedded obj->vtable[0] */
+  if (*(void ***)&((UIWidget *)param_1)->scroll_data[0x0A] != (void **)0x0) { /* scroll_data embedded object pointer */
+    ((void (*)(void))**(void ***)&((UIWidget *)param_1)->scroll_data[0x0A])(); /* scroll_data embedded obj->vtable[0] */
   }
   FUN_0041cad0(param_1);
   dw1 = GetTickCount();
@@ -5839,8 +5839,8 @@ void __fastcall FUN_0042ea90(void *param_1)
   
   FUN_004048d0(param_1);
   dw1 = GetTickCount();
-  *(short *)((char *)param_1 + 0x19c) = 2; /* TODO: offset 0x19C on GameBoard subclass - state machine value */
-  *(DWORD *)((char *)param_1 + 0x1b8) = dw1; /* TODO: offset 0x1B8 on GameBoard subclass - tick timestamp */
+  ((BoardSubclass_A *)param_1)->init_state = 2; /* state machine value */
+  *(DWORD *)&((GameBoard *)param_1)->field_1b8 = dw1; /* tick timestamp (DWORD overlay on field_1b8) */
   return;
 }
 

@@ -96,7 +96,7 @@ void __fastcall FUN_00410300(GameWidget *this)
   }
   s3 = 0;
   do {
-    pn1 = (int *)((char *)this + 0x132 + s3 * 4); /* TODO: offset 0x132+ is in _pad134 region, array of 10 pointers */
+    pn1 = (int *)((char *)&this->field_130 + 2 + s3 * 4); /* slot pointer array at +0x132, stride 4 */
     pu2 = (int *)*pn1;
     if (pu2 != NULL) {
       ((void (*)(void))((void **)*pu2)[0])(); /* pu2->vtable[0] */
@@ -269,7 +269,7 @@ void __fastcall FUN_00410820(GameWidget *this)
   s2 = 0;
   if (0 < this->groups_a[0].visible_count) {
     do {
-      pu1 = (int *)((char *)this + 0x132 + s2 * 4); /* TODO: offset 0x132+ array of slot pointers */
+      pu1 = (int *)((char *)&this->field_130 + 2 + s2 * 4); /* slot pointer array at +0x132, stride 4 */
       FUN_00458de0((void *)*pu1,DAT_0047ef3c);
       if (this->groups_a[0].selected == s2) {
         FUN_00458de0((void *)*pu1,DAT_0047ef38);
@@ -926,17 +926,17 @@ int * __fastcall FUN_00413900(int *param_1)
   _handler = &L_004139b9;
   *_fs = &_seh_prev;
   FUN_0044bc50(param_1);
-  *(int *)((char *)param_1 + 0x1d6) = 0;            /* TODO: unknown offset 0x1D6 */
-  *(int *)((char *)param_1 + 0x1da) = 0;             /* TODO: unknown offset 0x1DA */
-  *(int *)((char *)param_1 + 0x1de) = 0;             /* TODO: unknown offset 0x1DE */
+  *(int *)&((ExtendedDialogWidget *)param_1)->_pad1d3_e[3] = 0; /* +0x1D6: clear padding area */
+  ((ExtendedDialogWidget *)param_1)->drag_y = 0;
+  ((ExtendedDialogWidget *)param_1)->drag_x = 0;
   param_1[0x7a] = 0;                              /* offset 0x1E8 */
-  *(int *)((char *)param_1 + 0x1e2) = 0xffffffff;    /* TODO: unknown offset 0x1E2 */
-  *(unsigned char *)((char *)param_1 + 0x1e6) = 0;   /* TODO: unknown offset 0x1E6 */
-  *(void ***)((char *)param_1 + 0x1d2) = &PTR_LAB_00472e04; /* TODO: unknown offset 0x1D2 */
-  *(void ***)((char *)param_1 + 0x1d2) = &PTR_LAB_00472e00; /* TODO: unknown offset 0x1D2 */
+  ((ExtendedDialogWidget *)param_1)->scroll_y = 0xffffffff;
+  ((ExtendedDialogWidget *)param_1)->scroll_x = 0;
+  *(void ***)&((ExtendedDialogWidget *)param_1)->input_mode = &PTR_LAB_00472e04;
+  *(void ***)&((ExtendedDialogWidget *)param_1)->input_mode = &PTR_LAB_00472e00;
   param_1[0x7a] = s_aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpP_00480518;
   *param_1 = &PTR_LAB_00472e40;
-  *(int *)((char *)param_1 + 0x2e) = 0;              /* TODO: unknown offset 0x2E on this struct */
+  ((UIWidget *)param_1)->pos_w = 0;
   *(unsigned char *)(param_1 + 0x74) = 0;          /* offset 0x1D0 */
   *_fs = _seh_prev;
   return param_1;

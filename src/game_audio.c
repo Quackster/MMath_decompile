@@ -39,7 +39,7 @@ void __fastcall FUN_00440360(GameBoard *param_1)
 
   n3 = 0x440379;
   u1 = FUN_0043a6b0(DAT_004838c0,0x444000d);
-  *(int *)((char *)param_1 + 0x1D8) = u1; /* TODO: GameBoard +0x1D8, overlaps players[0] area */
+  *(int *)&((GameBoard *)param_1)->board_slots[0] = u1; /* store int at GameBoard +0x1D8 (board_slots base) */
   pv4 = *(void **)&((UIWidget *)DAT_004897c0)->field_44;
   if (pv4 != NULL) {
     c5 = '\x01';
@@ -1291,24 +1291,24 @@ void __fastcall FUN_004459f0(void *param_1)
   UIWidget *widget_44;
 
   FUN_004048d0(param_1);
-  FUN_0040b1e0(*(void **)((char *)param_1 + 0x20A),  /* TODO: unknown struct field at +0x20A */
-               *(int *)(&DAT_00480718 + *(int *)((char *)param_1 + 0x1D8) * 8)); /* TODO: unknown struct field at +0x1D8 */
+  FUN_0040b1e0(*(void **)&((GameBoard *)param_1)->players[3].color,  /* GameBoard +0x20A: ptr in players overlay */
+               *(int *)(&DAT_00480718 + *(int *)&((GameBoard *)param_1)->board_slots[0] * 8));
   FUN_0040d840(DAT_004897c0,9);
   widget_44 = *(void **)&((UIWidget *)DAT_004897c0)->field_44; /* TODO: unknown struct for DAT_004897c0, offset 0x44 */
   FUN_0041dbb0(widget_44);
   FUN_0041ba40(widget_44,0,1,0);
-  FUN_0041dbb0(*(void **)((char *)param_1 + 0x1D4)); /* TODO: unknown struct field at +0x1D4 */
+  FUN_0041dbb0((void *)(intptr_t)((GameBoard *)param_1)->board_slot_count);
   FUN_0041dd40(((UIWidget *)DAT_004897c0)->sub_widgets_a[1]); /* TODO: unknown struct for DAT_004897c0, offset 0x4a */
   ((UIWidget *)((UIWidget *)DAT_004897c0)->sub_widgets_a[1])->type_or_mode = 3; /* TODO: unknown struct for DAT_004897c0, offset 0x4a; UIWidget->type_or_mode +0x16 */
   FUN_0042d7d0((int)param_1);
   if (1 < ((GameSession *)DAT_0048345c)->scroll_origin) {
     FUN_0042da60(param_1,0x4df000d,NULL,-1,-1);
   }
-  FUN_0042da60(param_1,DAT_00488ef0,*(ushort **)((char *)param_1 + 0x1BC),-1,-1); /* TODO: unknown struct field at +0x1BC */
+  FUN_0042da60(param_1,DAT_00488ef0,(ushort *)((GameBoard *)param_1)->refresh_counter,-1,-1);
   FUN_0042da60(param_1,0x4de000d,NULL,-1,-1);
   FUN_0042d860((int)param_1);
-  if ((((GameSession *)DAT_0048345c)->level_mode != '\0') && (*(int *)((char *)param_1 + 0x1D0) != 0)) {    DAT_00480664 = 1;
-    FUN_0042dba0(param_1,*(int *)((char *)param_1 + 0x1D0) + 0x32);    DAT_00480664 = 0;
+  if ((((GameSession *)DAT_0048345c)->level_mode != '\0') && (((GameBoard *)param_1)->_players0_score != 0)) {    DAT_00480664 = 1;
+    FUN_0042dba0(param_1,((GameBoard *)param_1)->_players0_score + 0x32);    DAT_00480664 = 0;
   }
   DAT_00480760 = 0;
 }
@@ -1571,7 +1571,7 @@ int * FUN_00448ad0(short param_1,short param_2,int param_3,int param_4,int param
  */
 void __thiscall FUN_00448cb0(GameWidget *this,int param_1)
 {
-  *(int *)((char *)this + 0x124) = param_1; /* TODO: GameWidget +0x124, misaligned: overlaps pair_x_2(+0x122) and object_ptr(+0x126) */
+  *(int *)((char *)&this->pair_x_2 + 2) = param_1; /* misaligned 4-byte write spanning pair_x_2(+0x122) and object_ptr(+0x126) */
   FUN_00406ca0(this,(char)param_1,'\0');
 }
 
@@ -1723,11 +1723,11 @@ int * __fastcall FUN_00449610(int *param_1)
 {
   *(short *)(param_1 + 2) = 0;          /* +0x08 */
   *param_1 = 0;                          /* +0x00 */
-  *((char *)param_1 + 0x0A) = 0;        /* +0x0A  small 14-byte struct */
-  *((char *)param_1 + 0x0B) = 0;        /* +0x0B  small 14-byte struct */
+  ((NoteEvent *)param_1)->note_on = 0;
+  ((NoteEvent *)param_1)->velocity = 0;
   *(char *)(param_1 + 3) = 0;           /* +0x0C */
   param_1[1] = 0;                        /* +0x04 */
-  *((char *)param_1 + 0x0D) = 0;        /* +0x0D  small 14-byte struct */
+  ((NoteEvent *)param_1)->flags = 0;
   return param_1;
 }
 
@@ -1974,7 +1974,7 @@ void __fastcall FUN_0044a330(int *param_1)
  */
 void __thiscall FUN_0044a3a0(void *this,short param_1)
 {
-  *(short *)((char *)this + 0x08) = param_1; /* TODO: unknown struct, offset 0x08 */
+  ((NoteEvent *)this)->duration = param_1;
   FUN_0044ab30(this);
 }
 
@@ -3720,28 +3720,28 @@ void __fastcall FUN_0044e600(int *param_1)
 
   u1 = *(unsigned short *)(param_1 + 3);                /* +0x0C */
   param_1[3] = CONCAT22(CONCAT11((char)u1,(char)(u1 >> 8)),
-                        CONCAT11((char)*(unsigned short *)((char *)param_1 + 0x0E), /* byte-swap at +0x0E */
-                                 (char)(*(unsigned short *)((char *)param_1 + 0x0E) >> 8)));
+                        CONCAT11((char)((WaveHeader *)param_1)->field_0e, /* byte-swap at +0x0E */
+                                 (char)(((WaveHeader *)param_1)->field_0e >> 8)));
   u1 = *(unsigned short *)(param_1 + 2);                /* +0x08 */
   param_1[2] = CONCAT22(CONCAT11((char)u1,(char)(u1 >> 8)),
-                        CONCAT11((char)*(unsigned short *)((char *)param_1 + 0x0A), /* byte-swap at +0x0A */
-                                 (char)(*(unsigned short *)((char *)param_1 + 0x0A) >> 8)));
+                        CONCAT11((char)((WaveHeader *)param_1)->field_0a, /* byte-swap at +0x0A */
+                                 (char)(((WaveHeader *)param_1)->field_0a >> 8)));
   u1 = *(unsigned short *)(param_1 + 1);                /* +0x04 */
   param_1[1] = CONCAT22(CONCAT11((char)u1,(char)(u1 >> 8)),
-                        CONCAT11((char)*(unsigned short *)((char *)param_1 + 0x06), /* byte-swap at +0x06 */
-                                 (char)(*(unsigned short *)((char *)param_1 + 0x06) >> 8)));
+                        CONCAT11((char)((WaveHeader *)param_1)->field_06, /* byte-swap at +0x06 */
+                                 (char)(((WaveHeader *)param_1)->field_06 >> 8)));
   *param_1 = CONCAT22(CONCAT11((char)*(unsigned short *)param_1,    /* +0x00 */
                                (char)(*(unsigned short *)param_1 >> 8)),
-                      CONCAT11((char)*(unsigned short *)((char *)param_1 + 0x02), /* byte-swap at +0x02 */
-                               (char)(*(unsigned short *)((char *)param_1 + 0x02) >> 8)));
+                      CONCAT11((char)((WaveHeader *)param_1)->field_02, /* byte-swap at +0x02 */
+                               (char)(((WaveHeader *)param_1)->field_02 >> 8)));
   u1 = *(unsigned short *)(param_1 + 4);                /* +0x10 */
   param_1[4] = CONCAT22(CONCAT11((char)u1,(char)(u1 >> 8)),
-                        CONCAT11((char)*(unsigned short *)((char *)param_1 + 0x12), /* byte-swap at +0x12 */
-                                 (char)(*(unsigned short *)((char *)param_1 + 0x12) >> 8)));
+                        CONCAT11((char)((WaveHeader *)param_1)->field_12, /* byte-swap at +0x12 */
+                                 (char)(((WaveHeader *)param_1)->field_12 >> 8)));
   u1 = *(unsigned short *)(param_1 + 5);                /* +0x14 */
   *(unsigned short *)(param_1 + 5) = CONCAT11((char)u1,(char)(u1 >> 8));
-  u1 = *(unsigned short *)((char *)param_1 + 0x16);     /* +0x16  byte-swap at +0x16 */
-  *(unsigned short *)((char *)param_1 + 0x16) = CONCAT11((char)u1,(char)(u1 >> 8)); /* byte-swap at +0x16 */
+  u1 = ((WaveHeader *)param_1)->field_16;
+  ((WaveHeader *)param_1)->field_16 = CONCAT11((char)u1,(char)(u1 >> 8));
   return;
 }
 
@@ -3985,7 +3985,7 @@ void __thiscall FUN_0044eb30(void *this,int param_1)
   short s4;
   int n5;
 
-  pn2 = *(int **)((char *)this + 0x10); /* bitmap struct: DIB data ptr at +0x10 */
+  pn2 = ((BitmapResource *)this)->dib_data_ptr;
   n3 = *pn2;
   pn2[8] = 0x100;
   s4 = 0;
@@ -4269,7 +4269,7 @@ void __thiscall FUN_0044f840(MathProblem *this,int param_1)
     param_1 = 6;
   }
   this->difficulty = param_1;
-  this->field_1cc = (int)*(short *)((char *)DAT_0048345c + 0x44 + (short)param_1 * 0x0C); /* GameSession: array at +0x44, stride 0x0C */
+  this->field_1cc = (int)*(short *)((char *)&((GameSession *)DAT_0048345c)->field_42 + 2 + (short)param_1 * 0x0C); /* GameSession +0x44: stride-0x0C lookup table */
   this->problem_type = param_1 << 4;
   ((void (*)(void))this->vtable[1])();
 }

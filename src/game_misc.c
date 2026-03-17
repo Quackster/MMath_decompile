@@ -58,7 +58,7 @@ int __thiscall FUN_00460080(MathProblem *this,uint param_1)
 {
   int n1;
 
-  n1 = *(int *)((char *)this + 0x18); /* TODO: offset 0x18 spans MathProblem._pad1a region, may be alternate struct */
+  n1 = this->handler_ptr;
   if (param_1 != 0) {
     if ((param_1 < 0x1001) && (this->field_10 != 0)) {
       return this->field_10;
@@ -188,11 +188,11 @@ char __thiscall FUN_00460670(void *this,uint param_1,uint *param_2,uint *param_3
   ushort *v4;
 
   if ((byte)param_1 == 0) {
-    *param_2 = *(int *)(*(int *)((char *)this + 0xc) + 8) + 0xc; /* TODO: custom internal struct via offset 0xc */
+    *param_2 = *(int *)((int)((ResourceManager *)this)->bank_ptr + 8) + 0xc; /* TODO: custom internal struct via offset 0xc */
     *param_3 = 0;
     return '\x01';
   }
-  n2 = (param_1 & 0xff) * 0xe + *(int *)((char *)this + 0xc); /* TODO: custom internal struct via offset 0xc */
+  n2 = (param_1 & 0xff) * 0xe + (int)((ResourceManager *)this)->bank_ptr; /* TODO: custom internal struct via offset 0xc */
   if (((unsigned short)((param_1) >> 16)) != 0) {
     v4 = FUN_004608a0(this,(byte)param_1);
     c1 = FUN_00460730(param_1,(int)v4,param_2,param_3);
@@ -290,10 +290,10 @@ ushort * __thiscall FUN_004608a0(void *this,byte param_1)
   
   if (param_1 != 0) {
     u1 = (ushort)param_1;
-    if (u1 <= *(ushort *)(*(int *)((char *)this + 0xc) + 0xc)) {
+    if (u1 <= *(ushort *)((int)((ResourceManager *)this)->bank_ptr + 0xc)) {
       pu4 = NULL;
       if (param_1 != 0) {
-        pu4 = *(ushort **)(*(int *)((char *)this + 0xc) + 0x16 + (uint)u1 * 0xe);
+        pu4 = *(ushort **)((int)((ResourceManager *)this)->bank_ptr + 0x16 + (uint)u1 * 0xe);
       }
       if (pu4 == NULL) {
         v8 = (uint)param_1;
@@ -314,8 +314,8 @@ ushort * __thiscall FUN_004608a0(void *this,byte param_1)
             } while (u2 < pu4[6]);
           }
           if (param_1 != 0) {
-            *(ushort **)(*(int *)((char *)this + 0xc) + 0x16 + (uint)u1 * 0xe) = pu4;
-            *(short *)(*(int *)((char *)this + 0xc) + 0xc + (uint)u1 * 0xe) = 0;
+            *(ushort **)((int)((ResourceManager *)this)->bank_ptr + 0x16 + (uint)u1 * 0xe) = pu4;
+            *(short *)((int)((ResourceManager *)this)->bank_ptr + 0xc + (uint)u1 * 0xe) = 0;
           }
         }
       }
@@ -369,7 +369,7 @@ byte __thiscall FUN_00460a00(void *this,int param_1,int param_2)
   ushort *v4;
   
   b1 = 1;
-  if (*(short *)(*(int *)((char *)this + 0xc) + 0xc) != 0) {
+  if (*(short *)((int)((ResourceManager *)this)->bank_ptr + 0xc) != 0) {
     do {
       v4 = FUN_004608a0(this,b1);
       if ((*(int *)(v4 + 9) == param_1) && (*(int *)(v4 + 0xb) == param_2)) {
@@ -378,7 +378,7 @@ byte __thiscall FUN_00460a00(void *this,int param_1,int param_2)
       }
       b1 = b1 + 1;
       FUN_004609a0(&v4);
-    } while ((ushort)b1 <= *(ushort *)(*(int *)((char *)this + 0xc) + 0xc));
+    } while ((ushort)b1 <= *(ushort *)((int)((ResourceManager *)this)->bank_ptr + 0xc));
   }
   return 0;
 }
@@ -685,8 +685,8 @@ char __thiscall FUN_00461320(void *this,int param_1,LPVOID param_2)
         s3 = s3 + 1;
       } while (s3 < 0x400);
       u4 = 1;
-      *(char *)((char *)param_2 + 0x3f) = 0; /* TODO: unknown struct for param_2 */
-      *(char *)((char *)param_2 + 0x13f) = 0; /* TODO: unknown struct for param_2 */
+      *((char *)param_2 + 0x3f) = 0; /* resource block: ready flag for block A */
+      *((char *)param_2 + 0x13f) = 0; /* resource block: ready flag for block B */
     }
   }
   FUN_004609a0(&vc);
@@ -779,7 +779,7 @@ void __thiscall FUN_004615d0(void *this,uint param_1)
             }
             (v4 + u3 * 7 + 0xb)[0] = 0;
             (v4 + u3 * 7 + 0xb)[1] = 0;
-            ps1 = (short *)(*(int *)((char *)this + 0xc) + 0xc + (param_1 & 0xff) * 0xe);
+            ps1 = (short *)((int)((ResourceManager *)this)->bank_ptr + 0xc + (param_1 & 0xff) * 0xe);
             *ps1 = *ps1 + -1;
           }
         }
@@ -807,7 +807,7 @@ void __thiscall FUN_00461670(void *this,uint param_1,int param_2)
         if ((v4[u2 * 7 + 6] == 0) && (*(int *)(v4 + u2 * 7 + 0xb) == 0)) {
           v4[u2 * 7 + 6] = 1;
           *(int *)(v4 + u2 * 7 + 0xb) = param_2;
-          ps1 = (short *)(*(int *)((char *)this + 0xc) + 0xc + (param_1 & 0xff) * 0xe);
+          ps1 = (short *)((int)((ResourceManager *)this)->bank_ptr + 0xc + (param_1 & 0xff) * 0xe);
           *ps1 = *ps1 + 1;
         }
         FUN_004609a0(&v4);
@@ -971,12 +971,12 @@ void __fastcall FUN_00461b60(void *param_1)
   ushort va;
   uint v4;
 
-  if (*(int *)((char *)param_1 + 0x26) != 0) { /* TODO: resource manager field 0x26 */
+  if (((ResourceManager *)param_1)->file_handle != 0) {
     vb = 1;
-    if (*(short *)(*(int *)((char *)param_1 + 0xc) + 0xc) != 0) { /* TODO: resource manager->0x0c->0x0c */
+    if (*(short *)((int)((ResourceManager *)param_1)->bank_ptr + 0xc) != 0) { /* TODO: resource manager->0x0c->0x0c */
       do {
         pu3 = NULL;
-        n2 = *(int *)(*(int *)((char *)param_1 + 0xc) + 0x16 + (uint)vb * 0xe); /* TODO: resource manager->0x0c->0x16 + stride 0x0e */
+        n2 = *(int *)((int)((ResourceManager *)param_1)->bank_ptr + 0x16 + (uint)vb * 0xe); /* TODO: resource manager->0x0c->0x16 + stride 0x0e */
         if (n2 != 0) {
           va = 1;
           if (*(short *)(n2 + 0xe) != 0) {
@@ -998,9 +998,9 @@ void __fastcall FUN_00461b60(void *param_1)
           }
         }
         vb = vb + 1;
-      } while ((ushort)vb <= *(ushort *)(*(int *)((char *)param_1 + 0xc) + 0xc)); /* TODO: resource manager->0x0c->0x0c */
+      } while ((ushort)vb <= *(ushort *)((int)((ResourceManager *)param_1)->bank_ptr + 0xc)); /* TODO: resource manager->0x0c->0x0c */
     }
-    *(int *)((char *)param_1 + 0x36) = *(int *)((char *)param_1 + 0x32); /* TODO: resource manager fields 0x36 = 0x32 */
+    ((ResourceManager *)param_1)->current_offset = ((ResourceManager *)param_1)->saved_offset;
   }
   return;
 }
@@ -1050,30 +1050,30 @@ int __fastcall FUN_00461d70(void *param_1)
   uint v4;
   
   b6 = 1;
-  if (*(short *)(*(int *)((char *)param_1 + 0xc) + 0xe) != 0) { /* TODO: resource manager->0x0c->0x0e */
+  if (*(short *)((int)((ResourceManager *)param_1)->bank_ptr + 0xe) != 0) { /* TODO: resource manager->0x0c->0x0e */
     do {
       vc = FUN_004608a0(param_1,b6);
       if (vc != NULL) {
-        pu2 = FUN_004608a0(*(void **)((char *)param_1 + 0x20),b6); /* TODO: resource manager field 0x20 */
+        pu2 = FUN_004608a0(((ResourceManager *)param_1)->secondary_mgr,b6); /* TODO: resource manager field 0x20 */
         if ((pu2 != NULL) && (*(int *)(pu2 + 0xb) != *(int *)(vc + 0xb))) {
           return (uint)pu2 & 0xffffff00;
         }
         FUN_004609a0(&vc);
       }
       b6 = b6 + 1;
-    } while ((ushort)b6 <= *(ushort *)(*(int *)((char *)param_1 + 0xc) + 0xe)); /* TODO: resource manager->0x0c->0x0e */
+    } while ((ushort)b6 <= *(ushort *)((int)((ResourceManager *)param_1)->bank_ptr + 0xe)); /* TODO: resource manager->0x0c->0x0e */
   }
-  n4 = *(int *)(*(int *)((char *)param_1 + 0x20) + 0xc); /* TODO: resource manager->0x20->0x0c */
-  if (*(ushort *)(*(int *)((char *)param_1 + 0xc) + 0xe) < *(ushort *)(n4 + 0xe)) { /* TODO: resource manager->0x0c->0x0e */
+  n4 = *(int *)((int)((ResourceManager *)param_1)->secondary_mgr + 0xc); /* TODO: resource manager->0x20->0x0c */
+  if (*(ushort *)((int)((ResourceManager *)param_1)->bank_ptr + 0xe) < *(ushort *)(n4 + 0xe)) { /* TODO: resource manager->0x0c->0x0e */
     FUN_004624b0(param_1,*(ushort *)(n4 + 0xc));
   }
   v11 = 1;
   pv5 = param_1;
-  if (*(short *)(*(int *)(*(int *)((char *)param_1 + 0x20) + 0xc) + 0xe) != 0) { /* TODO: resource manager->0x20->0x0c->0x0e */
+  if (*(short *)(*(int *)((int)((ResourceManager *)param_1)->secondary_mgr + 0xc) + 0xe) != 0) { /* TODO: resource manager->0x20->0x0c->0x0e */
     do {
-      pu2 = FUN_004608a0(*(void **)((char *)param_1 + 0x20),v11); /* TODO: resource manager field 0x20 */
+      pu2 = FUN_004608a0(((ResourceManager *)param_1)->secondary_mgr,v11); /* TODO: resource manager field 0x20 */
       if (pu2 != NULL) {
-        if (*(ushort *)(*(int *)((char *)param_1 + 0xc) + 0xc) < (ushort)v11) { /* TODO: resource manager->0x0c->0x0c */
+        if (*(ushort *)((int)((ResourceManager *)param_1)->bank_ptr + 0xc) < (ushort)v11) { /* TODO: resource manager->0x0c->0x0c */
           FUN_00460510(param_1,pu2[7],pu2[8],*(int *)(pu2 + 9),
                        *(int *)(pu2 + 0xb));
         }
@@ -1090,7 +1090,7 @@ int __fastcall FUN_00461d70(void *param_1)
                  ) {
                 v8 = (uint)u7 << 0x10;
                 v8 = CONCAT31((((v8) >> 8) & 0xFFFFFF),v11);
-                FUN_00461130(*(void **)((char *)param_1 + 0x20),v8,&v4,(uint *)&vc, /* TODO: resource manager field 0x20 */
+                FUN_00461130(((ResourceManager *)param_1)->secondary_mgr,v8,&v4,(uint *)&vc, /* TODO: resource manager field 0x20 */
                              pu2);
                 if (*(int *)(pu3 + n4 * 7 + 9) == 0) {
                   if (v4 != 0) {
@@ -1119,7 +1119,7 @@ L_00461f1a:
       }
       v11 = v11 + 1;
       pv5 = (void *)CONCAT22((short)((uint)param_1 >> 0x10),(ushort)v11);
-    } while ((ushort)v11 <= *(ushort *)(*(int *)(*(int *)((char *)param_1 + 0x20) + 0xc) + 0xe)); /* TODO: resource manager->0x20->0x0c->0x0e */
+    } while ((ushort)v11 <= *(ushort *)(*(int *)((int)((ResourceManager *)param_1)->secondary_mgr + 0xc) + 0xe)); /* TODO: resource manager->0x20->0x0c->0x0e */
   }
   return CONCAT31((unsigned int)((uint)pv5 >> 8),1);
 }
@@ -1139,18 +1139,18 @@ void __fastcall FUN_00461fa0(void *param_1)
   pu1 = FUN_00460780(param_1,0);
   b3 = 1;
   FUN_0045feb0((int)pu1,'\0');
-  if (*(short *)(*(int *)((char *)param_1 + 0xc) + 0xe) != 0) { /* TODO: resource manager->0x0c->0x0e */
+  if (*(short *)((int)((ResourceManager *)param_1)->bank_ptr + 0xe) != 0) { /* TODO: resource manager->0x0c->0x0e */
     do {
       pu2 = FUN_004608a0(param_1,b3);
       if (pu2 != NULL) {
-        FUN_0046f5f0(*(uint *)(*(int *)((char *)param_1 + 0xc) + 0x16 + (uint)b3 * 0xe)); /* TODO: resource manager->0x0c->0x16 + stride 0x0e */
-        *(int *)(*(int *)((char *)param_1 + 0xc) + 0x16 + (uint)b3 * 0xe) = 0; /* TODO: resource manager->0x0c->0x16 + stride 0x0e */
+        FUN_0046f5f0(*(uint *)((int)((ResourceManager *)param_1)->bank_ptr + 0x16 + (uint)b3 * 0xe)); /* TODO: resource manager->0x0c->0x16 + stride 0x0e */
+        *(int *)((int)((ResourceManager *)param_1)->bank_ptr + 0x16 + (uint)b3 * 0xe) = 0; /* TODO: resource manager->0x0c->0x16 + stride 0x0e */
       }
       if ((ushort)b3 <= pu1[6]) {
         FUN_004608a0(param_1,b3);
       }
       b3 = b3 + 1;
-    } while ((ushort)b3 <= *(ushort *)(*(int *)((char *)param_1 + 0xc) + 0xe)); /* TODO: resource manager->0x0c->0x0e */
+    } while ((ushort)b3 <= *(ushort *)((int)((ResourceManager *)param_1)->bank_ptr + 0xe)); /* TODO: resource manager->0x0c->0x0e */
   }
   FUN_0046f5f0((uint)pu1);
 }
@@ -1274,9 +1274,9 @@ uint __thiscall FUN_004623a0(void *this,byte param_1,ushort param_2)
     n1 = (uint)param_1 * 0xe;
     FUN_00461400();
     u4 = FUN_0046f5f0((uint)_Src);
-    *(uint *)(*(int *)((char *)this + 0xc) + 0xe + n1) = u2;
-    *(int *)(*(int *)((char *)this + 0xc) + 0x12 + n1) = 0;
-    *(ushort **)(*(int *)((char *)this + 0xc) + 0x16 + n1) = _Dst;
+    *(uint *)((int)((ResourceManager *)this)->bank_ptr + 0xe + n1) = u2;
+    *(int *)((int)((ResourceManager *)this)->bank_ptr + 0x12 + n1) = 0;
+    *(ushort **)((int)((ResourceManager *)this)->bank_ptr + 0x16 + n1) = _Dst;
     return CONCAT31((unsigned int)((uint)u4 >> 8),1);
   }
   return 0;
@@ -1936,7 +1936,7 @@ void FUN_00465080(void)
             s5 = 0;
           }
         }
-        else if ((*(char *)((char *)pu2 + 0xb) == '\0') || (DAT_00489b68 == 1)) { /* TODO: unknown linked-list node field at offset 0x0b */
+        else if ((((LinkedListNode *)pu2)->node_flag == '\0') || (DAT_00489b68 == 1)) {
           s5 = 1;
         }
         else {
@@ -4733,7 +4733,7 @@ bool __fastcall FUN_0046e6b0(LPCVOID param_1)
   v8 = 0;
   if (((SmartHeapPool *)param_1)->pool_field == 0) {
     u2 = 0x1000;
-    pu5 = (int *)((char *)param_1 + 0x168); /* TODO: SmartHeapPool _pad168 region */
+    pu5 = (int *)&((SmartHeapPool *)param_1)->fallback_ptr;
     ((SmartHeapPool *)param_1)->current_size = ((SmartHeapPool *)param_1)->current_size + -0x1000;
   }
   else {
@@ -5058,7 +5058,7 @@ uint __fastcall FUN_0046efa0(int *param_1,uint param_2)
   short *pu4;
   ushort u5;
   
-  pu1 = (ushort *)((char *)param_1 + 0x1a);
+  pu1 = &((SmartHeapPool *)param_1)->free_area_start;
   pu4 = (short *)
            ((((param_2 & 0xffff) - ((char *)pu1 - (int)param_1 & 0xffffU)) - 10 & 0xfffc) +
            (int)pu1);
