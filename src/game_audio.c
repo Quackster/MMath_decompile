@@ -123,9 +123,9 @@ void __fastcall FUN_00440980(int param_1)
 
 
 /* FUN_00440ca0 @ 0x00440ca0
- * TODO: param_1 struct unknown - offsets 0x6a, 0x1d0, 0x1d6 don't match known structs cleanly
+ * Struct types: SoundChannelState (param_1)
  */
-void __fastcall FUN_00440ca0(void *param_1)
+void __fastcall FUN_00440ca0(SoundChannelState *param_1)
 {
   int n1;
   uint u2;
@@ -139,87 +139,65 @@ void __fastcall FUN_00440ca0(void *param_1)
     n1 = rand();
     s4 = (short)(n1 % 3);
   } while (s4 == s3);
-  if (*(int *)((char *)param_1 + 0x6A) != 0) { /* TODO: unknown struct field at +0x6A */
-    switch(*(short *)(*(int *)((char *)param_1 + 0x6A) + 0xC)) { /* TODO: unknown struct field at +0x6A, deref +0x0C */
+  if (param_1->resource_handle != 0) {
+    switch(*(short *)(param_1->resource_handle + 0xC)) {
     case 1:
       FUN_0045d510(0x13d000c,'\0');
       FUN_00404870(param_1,0x10c000c);
       u2 = rand();
       u5 = (int)u2 >> 0x1f;
       if (((u2 ^ u5) - u5 & 1 ^ u5) == u5) {
-        *(short *)((char *)param_1 + 0x1D6) = 0x14; /* TODO: unknown struct field at +0x1D6 */
-        *(short *)((char *)param_1 + 0x1D0) = 0xb;  /* TODO: unknown struct field at +0x1D0 */
-      }
+        param_1->channel_b = 0x14;        param_1->channel_a = 0xb;       }
       else {
-        *(short *)((char *)param_1 + 0x1D6) = 0xb; /* TODO: unknown struct field at +0x1D6 */
-        *(short *)((char *)param_1 + 0x1D0) = 0x14; /* TODO: unknown struct field at +0x1D0 */
-      }
+        param_1->channel_b = 0xb;        param_1->channel_a = 0x14;      }
       break;
     case 2:
       FUN_0045d510(0x158000c,'\0');
       FUN_00404870(param_1,0x10d000c);
       if (s3 == 1) {
-        *(short *)((char *)param_1 + 0x1D6) = 6; /* TODO: unknown struct field at +0x1D6 */
-      }
+        param_1->channel_b = 6;      }
       else {
-        *(short *)((char *)param_1 + 0x1D6) = 10; /* TODO: unknown struct field at +0x1D6 */
-        if (s3 != 2) {
-          *(short *)((char *)param_1 + 0x1D6) = 5; /* TODO: unknown struct field at +0x1D6 */
-        }
+        param_1->channel_b = 10;        if (s3 != 2) {
+          param_1->channel_b = 5;        }
       }
       if (s4 == 1) {
-        *(short *)((char *)param_1 + 0x1D0) = 6; /* TODO: unknown struct field at +0x1D0 */
-      }
+        param_1->channel_a = 6;      }
       else if (s4 == 2) {
-        *(short *)((char *)param_1 + 0x1D0) = 10; /* TODO: unknown struct field at +0x1D0 */
-      }
+        param_1->channel_a = 10;      }
       else {
-        *(short *)((char *)param_1 + 0x1D0) = 5; /* TODO: unknown struct field at +0x1D0 */
-      }
+        param_1->channel_a = 5;      }
       break;
     case 3:
       FUN_0045d510(0x159000c,'\0');
       FUN_00404870(param_1,0x10e000c);
       if (s3 == 1) {
-        *(short *)((char *)param_1 + 0x1D6) = 0x1d; /* TODO: unknown struct field at +0x1D6 */
-      }
+        param_1->channel_b = 0x1d;      }
       else {
-        *(short *)((char *)param_1 + 0x1D6) = 0x11; /* TODO: unknown struct field at +0x1D6 */
-        if (s3 != 2) {
-          *(short *)((char *)param_1 + 0x1D6) = 0x10; /* TODO: unknown struct field at +0x1D6 */
-        }
+        param_1->channel_b = 0x11;        if (s3 != 2) {
+          param_1->channel_b = 0x10;        }
       }
       if (s4 == 1) {
-        *(short *)((char *)param_1 + 0x1D0) = 0x1d; /* TODO: unknown struct field at +0x1D0 */
-      }
+        param_1->channel_a = 0x1d;      }
       else if (s4 == 2) {
-        *(short *)((char *)param_1 + 0x1D0) = 0x11; /* TODO: unknown struct field at +0x1D0 */
-      }
+        param_1->channel_a = 0x11;      }
       else {
-        *(short *)((char *)param_1 + 0x1D0) = 0x10; /* TODO: unknown struct field at +0x1D0 */
-      }
+        param_1->channel_a = 0x10;      }
       break;
     case 4:
       FUN_0045d510(0x15a000c,'\0');
       FUN_00404870(param_1,0x10f000c);
       if (s3 == 1) {
-        *(short *)((char *)param_1 + 0x1D6) = 0xf; /* TODO: unknown struct field at +0x1D6 */
-      }
+        param_1->channel_b = 0xf;      }
       else {
-        *(short *)((char *)param_1 + 0x1D6) = 0xc; /* TODO: unknown struct field at +0x1D6 */
-        if (s3 != 2) {
-          *(short *)((char *)param_1 + 0x1D6) = 0x1c; /* TODO: unknown struct field at +0x1D6 */
-        }
+        param_1->channel_b = 0xc;        if (s3 != 2) {
+          param_1->channel_b = 0x1c;        }
       }
       if (s4 == 1) {
-        *(short *)((char *)param_1 + 0x1D0) = 0xf; /* TODO: unknown struct field at +0x1D0 */
-      }
+        param_1->channel_a = 0xf;      }
       else if (s4 == 2) {
-        *(short *)((char *)param_1 + 0x1D0) = 0xc; /* TODO: unknown struct field at +0x1D0 */
-      }
+        param_1->channel_a = 0xc;      }
       else {
-        *(short *)((char *)param_1 + 0x1D0) = 0x1c; /* TODO: unknown struct field at +0x1D0 */
-      }
+        param_1->channel_a = 0x1c;      }
       break;
     case 5:
       FUN_0045d510(0x15b000c,'\0');
@@ -227,50 +205,35 @@ void __fastcall FUN_00440ca0(void *param_1)
       u2 = rand();
       u5 = (int)u2 >> 0x1f;
       if (((u2 ^ u5) - u5 & 1 ^ u5) == u5) {
-        *(short *)((char *)param_1 + 0x1D6) = 8; /* TODO: unknown struct field at +0x1D6 */
-        *(short *)((char *)param_1 + 0x1D0) = 0x13; /* TODO: unknown struct field at +0x1D0 */
-      }
+        param_1->channel_b = 8;        param_1->channel_a = 0x13;      }
       else {
-        *(short *)((char *)param_1 + 0x1D6) = 0x13; /* TODO: unknown struct field at +0x1D6 */
-        *(short *)((char *)param_1 + 0x1D0) = 8; /* TODO: unknown struct field at +0x1D0 */
-      }
+        param_1->channel_b = 0x13;        param_1->channel_a = 8;      }
       break;
     case 6:
       FUN_0045d510(0x15c000c,'\0');
       FUN_00404870(param_1,0x111000c);
       if (s3 == 1) {
-        *(short *)((char *)param_1 + 0x1D6) = 0x1e; /* TODO: unknown struct field at +0x1D6 */
-      }
+        param_1->channel_b = 0x1e;      }
       else {
-        *(short *)((char *)param_1 + 0x1D6) = 9; /* TODO: unknown struct field at +0x1D6 */
-        if (s3 != 2) {
-          *(short *)((char *)param_1 + 0x1D6) = 0x12; /* TODO: unknown struct field at +0x1D6 */
-        }
+        param_1->channel_b = 9;        if (s3 != 2) {
+          param_1->channel_b = 0x12;        }
       }
       if (s4 == 1) {
-        *(short *)((char *)param_1 + 0x1D0) = 0x1e; /* TODO: unknown struct field at +0x1D0 */
-      }
+        param_1->channel_a = 0x1e;      }
       else if (s4 == 2) {
-        *(short *)((char *)param_1 + 0x1D0) = 9; /* TODO: unknown struct field at +0x1D0 */
-      }
+        param_1->channel_a = 9;      }
       else {
-        *(short *)((char *)param_1 + 0x1D0) = 0x12; /* TODO: unknown struct field at +0x1D0 */
-      }
+        param_1->channel_a = 0x12;      }
       break;
     case 7:
       FUN_00404870(param_1,0x111000c);
-      *(short *)((char *)param_1 + 0x1D6) = 0x1e; /* TODO: unknown struct field at +0x1D6 */
-      *(short *)((char *)param_1 + 0x1D0) = 0x12; /* TODO: unknown struct field at +0x1D0 */
-      break;
+      param_1->channel_b = 0x1e;      param_1->channel_a = 0x12;      break;
     case 8:
       FUN_0045d510(0x15d000c,'\0');
       FUN_00404870(param_1,0x113000c);
-      *(short *)((char *)param_1 + 0x1D6) = 2; /* TODO: unknown struct field at +0x1D6 */
-      *(short *)((char *)param_1 + 0x1D0) = 3; /* TODO: unknown struct field at +0x1D0 */
-    }
+      param_1->channel_b = 2;      param_1->channel_a = 3;    }
   }
-  ((GameSession *)DAT_0048345c)->field_e8 = *(short *)((char *)param_1 + 0x1D0); /* TODO: unknown struct field at +0x1D0 */
-  return;
+  ((GameSession *)DAT_0048345c)->field_e8 = param_1->channel_a;  return;
 }
 
 
@@ -1344,10 +1307,8 @@ void __fastcall FUN_004459f0(void *param_1)
   FUN_0042da60(param_1,DAT_00488ef0,*(ushort **)((char *)param_1 + 0x1BC),-1,-1); /* TODO: unknown struct field at +0x1BC */
   FUN_0042da60(param_1,0x4de000d,NULL,-1,-1);
   FUN_0042d860((int)param_1);
-  if ((((GameSession *)DAT_0048345c)->level_mode != '\0') && (*(int *)((char *)param_1 + 0x1D0) != 0)) { /* TODO: unknown struct field at +0x1D0 */
-    DAT_00480664 = 1;
-    FUN_0042dba0(param_1,*(int *)((char *)param_1 + 0x1D0) + 0x32); /* TODO: unknown struct field at +0x1D0 */
-    DAT_00480664 = 0;
+  if ((((GameSession *)DAT_0048345c)->level_mode != '\0') && (*(int *)((char *)param_1 + 0x1D0) != 0)) {    DAT_00480664 = 1;
+    FUN_0042dba0(param_1,*(int *)((char *)param_1 + 0x1D0) + 0x32);    DAT_00480664 = 0;
   }
   DAT_00480760 = 0;
 }

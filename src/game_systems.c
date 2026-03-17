@@ -1420,7 +1420,7 @@ int __thiscall FUN_00414440(MathProblem *this,uint param_1,char param_2)
           if ((param_1 != u3) && (*pn11 == *pn10)) {
             FUN_00414440(this,u3,'\0');
           }
-          pn10 = (int *)((char *)pn10 + 0x12);
+          pn10 = (int *)((char *)pn10 + sizeof(PlayerSlot));
           u3 = u3 + 1;
         } while ((int)u3 < 6);
       }
@@ -3899,7 +3899,7 @@ void __thiscall FUN_0041abd0(void *this,void *param_1,char param_2)
     *pu2 = u1;
     pu2 = pu2 + 1;
   } while (pu2 < &DAT_0048572e);
-  _DAT_0048572e = *(int *)((char *)param_1 + 0x406);       /* TODO: param_1 struct unknown, offset +0x406, could be TextDisplay.field_406 */
+  _DAT_0048572e = ((TextDisplay *)param_1)->field_406;
   /* SEH epilog */
   *_fs = _seh_prev;
 }
@@ -5940,9 +5940,9 @@ void __thiscall FUN_0041e5c0(MathProblem *this,int param_1)
       pn7[3] = pn4[3];
       *(short *)(pn7 + 4) = (short)pn4[4];
     }
-    pn7 = (int *)((char *)pn7 + 0x12);
-    pn8 = (int *)((char *)pn8 + 0x12);
-    pn4 = (int *)((char *)pn4 + 0x12);
+    pn7 = (int *)((char *)pn7 + sizeof(PlayerSlot));
+    pn8 = (int *)((char *)pn8 + sizeof(PlayerSlot));
+    pn4 = (int *)((char *)pn4 + sizeof(PlayerSlot));
   } while (pn7 < &DAT_004861d0);
   u1 = rand();
   u5 = (int)u1 >> 0x1f;

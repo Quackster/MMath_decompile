@@ -159,7 +159,7 @@ void __fastcall FUN_00423890(int param_1)
     if (((GameBoard *)param_1)->players[n1].total < *pn3) {
       n1 = n2;
     }
-    pn3 = (int *)((char *)pn3 + 0x12); /* advance by PlayerSlot stride */
+    pn3 = (int *)((char *)pn3 + sizeof(PlayerSlot));
     n2 = n2 + 1;
   } while (n2 < 4);
 }
@@ -180,7 +180,7 @@ void __fastcall FUN_004238d0(int param_1)
     if (*pn3 < ((GameBoard *)param_1)->players[n1].total) {
       n1 = n2;
     }
-    pn3 = (int *)((char *)pn3 + 0x12); /* advance by PlayerSlot stride */
+    pn3 = (int *)((char *)pn3 + sizeof(PlayerSlot));
     n2 = n2 + 1;
   } while (n2 < 4);
 }
@@ -201,7 +201,7 @@ void __fastcall FUN_00423910(int param_1)
     if (((GameBoard *)param_1)->players[n1].rank < *pn3) {
       n1 = n2;
     }
-    pn3 = (int *)((char *)pn3 + 0x12); /* advance by PlayerSlot stride */
+    pn3 = (int *)((char *)pn3 + sizeof(PlayerSlot));
     n2 = n2 + 1;
   } while (n2 < 4);
 }
@@ -222,7 +222,7 @@ void __fastcall FUN_00423950(int param_1)
     if (*pn2 < ((GameBoard *)param_1)->players[n1].rank) {
       n1 = n3;
     }
-    pn2 = (int *)((char *)pn2 + 0x12); /* advance by PlayerSlot stride */
+    pn2 = (int *)((char *)pn2 + sizeof(PlayerSlot));
     n3 = n3 + 1;
   } while (n3 < 4);
 }
@@ -1775,7 +1775,7 @@ int __thiscall FUN_00426550(GameBoard *this,int param_1,char param_2,char param_
             if ((*pn9 == pn10[1]) && (pn9[1] == pn10[2])) {
               b2 = true;
             }
-            pn9 = (int *)((char *)pn9 + -0xe);
+            pn9 = (int *)((char *)pn9 + -(int)sizeof(BoardSlotEntry));
             n7 = n7 + -1;
           } while (-1 < n7);
         }
@@ -1801,7 +1801,7 @@ int __thiscall FUN_00426550(GameBoard *this,int param_1,char param_2,char param_
           b2 = true;
         }
       } while ((b2) && (v4 = v4 + -1, v4 != 0));
-      pn10 = (int *)((char *)pn10 + 0xe);
+      pn10 = (int *)((char *)pn10 + sizeof(BoardSlotEntry));
       v14 = v14 + 1;
     } while (v14 < param_1);
   }
@@ -5346,7 +5346,7 @@ void __fastcall FUN_0042d970(int param_1)
     FUN_00434490(((GameBoard *)param_1)->sound_handle);
     ((GameBoard *)param_1)->sound_handle = 0;
   }
-  pn2 = (int *)((char *)param_1 + 0x192); /* TODO: GameBoard::_pad192 */
+  pn2 = (int *)&((GameBoard *)param_1)->field_192;
   if (*pn2 != 0) {
     FUN_00433270(pn2);
     *pn2 = 0;

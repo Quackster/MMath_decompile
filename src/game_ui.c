@@ -2022,7 +2022,7 @@ int * __thiscall FUN_004329d0(CString *this,int *param_1)
   this->pp_buffer = *param_1;
   this->tag = param_1[3];
   this->allocator = param_1[2];
-  *(int *)((char *)this + 0x18) = param_1[5]; /* TODO: unknown offset 0x18 on CString (past extra_data at 0x16) */
+  ((ExtendedCString *)this)->extra_hi = param_1[5];
   this->owns_buffer = param_1[4];
   return this;
 }
@@ -2039,7 +2039,7 @@ FUN_00432a10(CString *this,int param_1,int param_2,int param_3,int param_4,
   this->pp_buffer = param_1;
   this->tag = param_4;
   this->allocator = param_3;
-  *(int *)((char *)this + 0x18) = param_6; /* TODO: unknown offset 0x18 on CString (past extra_data at 0x16) */
+  ((ExtendedCString *)this)->extra_hi = param_6;
   this->owns_buffer = param_5;
   return this;
 }
@@ -2063,7 +2063,7 @@ FUN_00432a60(CString *this,int param_1,int param_2,int param_3,int param_4,
   this->pp_buffer = param_1;
   this->tag = param_4;
   this->allocator = param_3;
-  *(int *)((char *)this + 0x18) = param_6; /* TODO: unknown offset 0x18 on CString (past extra_data at 0x16) */
+  ((ExtendedCString *)this)->extra_hi = param_6;
   this->owns_buffer = param_5;
 }
 
@@ -2154,21 +2154,20 @@ float10 __thiscall FUN_00432b90(int param_1,double param_2,double param_3)
 
 /* FUN_00432bb0 @ 0x00432bb0 */
 
-void __thiscall FUN_00432bb0(void *this,double param_1)
+void __thiscall FUN_00432bb0(PointF64 *this,double param_1)
 {
-  double *pthis = (double *)this;
   double d1;
   float10 f2;
   float10 f3;
 
   f2 = (float10)fcos((float10)param_1);
   f3 = (float10)fsin((float10)param_1);
-  d1 = *(double *)((char *)this + 0x04);
-  *(double *)((char *)this + 0x04) =
-       (double)(f2 * (float10)*(double *)((char *)this + 0x04) -
-               (float10)*(double *)((char *)this + 0x0C) * f3);
-  *(double *)((char *)this + 0x0C) =
-       (double)((float10)*(double *)((char *)this + 0x0C) * f2 + (float10)d1 * f3);
+  d1 = this->x;
+  this->x =
+       (double)(f2 * (float10)this->x -
+               (float10)this->y * f3);
+  this->y =
+       (double)((float10)this->y * f2 + (float10)d1 * f3);
 }
 
 
@@ -3153,7 +3152,7 @@ int __cdecl FUN_00434640(int *param_1,int param_2)
       if ((&DAT_0048714a)[s7 * 0x3c] != 0) {
         s6 = 0;
         do {
-          if (*(int *)((char *)&DAT_0048714c + s6 * 0xe + n3) == *param_1) { /* TODO: DAT_0048714c sound slot sub-entry, stride 0x0E */
+          if (*(int *)((char *)&DAT_0048714c + s6 * sizeof(SoundSlotEntry) + n3) == *param_1) {
             pu4 = &DAT_00487128 + n3;
             if (b8) {
               *(short *)(param_2 + 10) = 0;
@@ -3265,18 +3264,18 @@ int * __fastcall FUN_00434860(int *param_1)
   *_fs = &_seh_prev;
   FUN_0041b6c0(param_1);
   _seh_state = 0;
-  FUN_0043b760((int *)((char *)param_1 + 0x42)); /* TODO: unknown struct, offset 0x42 */
+  FUN_0043b760((int *)&((GameWidgetInit *)param_1)->sub_object);
   *(short *)(param_1 + 0x17) = 0;
-  *(short *)((char *)param_1 + 0x5a) = 0; /* TODO: unknown struct, offset 0x5a */
-  *(int *)((char *)param_1 + 0x62) = 0; /* TODO: unknown struct, offset 0x62 */
+  ((GameWidgetInit *)param_1)->init_state = 0;
+  ((GameWidgetInit *)param_1)->scale_x = 0;
   *(short *)(param_1 + 0x17) = 0;
   *param_1 = &PTR_FUN_00474448;
-  *(short *)((char *)param_1 + 0x5a) = 0; /* TODO: unknown struct, offset 0x5a */
-  *(unsigned char *)((char *)param_1 + 0x5e) = 0xff; /* TODO: unknown struct, offset 0x5e */
-  *(unsigned char *)((char *)param_1 + 0x5f) = 0xff; /* TODO: unknown struct, offset 0x5f */
+  ((GameWidgetInit *)param_1)->init_state = 0;
+  ((GameWidgetInit *)param_1)->style_a = 0xff;
+  ((GameWidgetInit *)param_1)->style_b = 0xff;
   *(unsigned char *)(param_1 + 0x18) = 0;
-  *(int *)((char *)param_1 + 0x66) = 0; /* TODO: unknown struct, offset 0x66 */
-  *(int *)((char *)param_1 + 0x62) = 0x100; /* TODO: unknown struct, offset 0x62 */
+  ((GameWidgetInit *)param_1)->scale_y = 0;
+  ((GameWidgetInit *)param_1)->scale_x = 0x100;
   *_fs = _seh_prev;
   return param_1;
 }
@@ -3626,8 +3625,8 @@ void __fastcall FUN_00435b00(int *param_1)
     FUN_00405cb0(param_1);
     return;
   }
-  if (((*(char *)(DAT_004896b0 + 0x28) == '\0') && (*(char *)((char *)param_1 + 0x123) == '\0')) && /* TODO: unknown struct, offset 0x123 */
-     (n1 = *(int *)((char *)param_1 + 0x11e) + -1, *(int *)((char *)param_1 + 0x11e) = n1, n1 < 1 /* TODO: unknown struct, offset 0x11e */
+  if (((*(char *)(DAT_004896b0 + 0x28) == '\0') && (*(char *)((char *)param_1 + 0x123) == '\0')) && /* TODO: offset 0x123 = 1 byte into GameWidget.pair_x_2 */
+     (n1 = ((GameWidget *)param_1)->pair_y_1 + -1, ((GameWidget *)param_1)->pair_y_1 = n1, n1 < 1
      )) {
     n1 = (short)param_1[0x44] + -1;
     if (n1 < 1) {
@@ -3636,7 +3635,7 @@ void __fastcall FUN_00435b00(int *param_1)
     else {
       FUN_004058c0(param_1,(short)n1);
     }
-    *(int *)((char *)param_1 + 0x11e) = 0x1e; /* TODO: unknown struct, offset 0x11e */
+    ((GameWidget *)param_1)->pair_y_1 = 0x1e;
   }
   return;
 }
@@ -4804,17 +4803,17 @@ void __fastcall FUN_00438280(void *param_1)
   }
   _itoa((int)((GameSession *)DAT_0048345c)->score_display - (int)DAT_00488d50,v48,10);
   pc4 = v48;
-  FUN_00458860(*(void **)((char *)param_1 + 0x2d8),pc4); /* TODO: unknown struct, offset 0x2d8 */
+  FUN_00458860(((ExtendedWidget *)param_1)->render_data,pc4);
   v20 = &_tmp_25;
   FUN_00401ba0(&_tmp_25,
-               *(short *)(&DAT_0048026c + *(short *)(*(int *)((char *)param_1 + 0x6a) + 0xc) * 4)); /* TODO: unknown struct, offset 0x6a */
+               *(short *)(&DAT_0048026c + *(short *)(((ExtendedWidget *)param_1)->resource_id + 0xc) * 4));
   FUN_00402d00(&v14,(int)pc4);
   v1c = &_tmp_25;
   FUN_00401ba0(&_tmp_25,
-               *(short *)(&DAT_0048026e + *(short *)(*(int *)((char *)param_1 + 0x6a) + 0xc) * 4)); /* TODO: unknown struct, offset 0x6a */
+               *(short *)(&DAT_0048026e + *(short *)(((ExtendedWidget *)param_1)->resource_id + 0xc) * 4));
   FUN_00402d00(&v18,(int)pc4);
-  FUN_0041d020(*(void **)((char *)param_1 + 0x2d8),v14,v18,2); /* TODO: unknown struct, offset 0x2d8 */
-  FUN_0041dd40(*(void **)((char *)param_1 + 0x2d8)); /* TODO: unknown struct, offset 0x2d8 */
+  FUN_0041d020(((ExtendedWidget *)param_1)->render_data,v14,v18,2);
+  FUN_0041dd40(((ExtendedWidget *)param_1)->render_data);
   _seh_state = 0xffffffff;
   FUN_004383a4();
   /* SEH epilog */
@@ -4840,7 +4839,7 @@ void __fastcall FUN_004383b0(void *param_1)
   void *this;
   
   this = NULL;
-  if (*(int *)((char *)param_1 + 0x5ca) == 4) { /* TODO: unknown struct, offset 0x5ca (possibly TextDisplay.data_count-related) */
+  if (((ExtendedWidget *)param_1)->item_count == 4) {
     n1 = ((UIWidget *)DAT_004897c0)->sub_widgets_a[1];
     if (((n1 != 0) && (((UIElement *)n1)->child_list_1 != 0)) &&
        (u2 = ((CVector *)((UIElement *)n1)->child_list_1)->count, u2 != 0)) {
@@ -4853,7 +4852,7 @@ void __fastcall FUN_004383b0(void *param_1)
           ;
           if (this != pv3) {
             n4 = FUN_0042a910((int)this);
-            if (*(short *)((char *)param_1 + 0x5b0) == n4) break; /* TODO: unknown struct, offset 0x5b0 */
+            if (((ExtendedWidget *)param_1)->active_item == n4) break;
           }
           n6 = n6 + 4;
           u5 = u5 + 1;
@@ -4863,7 +4862,7 @@ void __fastcall FUN_004383b0(void *param_1)
     if (this != NULL) {
       FUN_0041c2a0(this,0);
     }
-    FUN_0042db60(0,*(ushort **)((char *)param_1 + 0x314),-1,-1); /* TODO: unknown struct, offset 0x314 */
+    FUN_0042db60(0,((ExtendedWidget *)param_1)->display_list,-1,-1);
     FUN_00437bc0(param_1);
   }
   return;

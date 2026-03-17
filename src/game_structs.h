@@ -727,6 +727,223 @@ typedef struct PoolCacheEntry {
 } PoolCacheEntry;
 /* static_assert(sizeof(PoolCacheEntry) == 0x0E, "PoolCacheEntry size mismatch"); */
 
+/* ========================================================================
+ * SoundChannelState - Sound/animation channel state (~0x1D8 bytes)
+ *
+ * Used in game_audio.c FUN_00440ca0 and related functions.
+ * Contains a resource handle pointer and two channel selection shorts.
+ * ======================================================================== */
+typedef struct SoundChannelState {
+    unsigned char  _base[0x6A];
+    int            resource_handle;  /* +0x6A  resource/sprite handle ptr */
+    unsigned char  _pad6e[0x162];    /* +0x6E  (0x1D0 - 0x6E = 0x162) */
+    short          channel_a;        /* +0x1D0  first channel selection */
+    unsigned char  _pad1d2[4];       /* +0x1D2 */
+    short          channel_b;        /* +0x1D6  second channel selection */
+} SoundChannelState;
+/* static_assert(sizeof(SoundChannelState) == 0x1D8, "SoundChannelState size mismatch"); */
+
+/* ========================================================================
+ * PointF64 - 2D point with double-precision coordinates (~0x14 bytes)
+ *
+ * Used in game_ui.c FUN_00432fb0 for rotation math.
+ * ======================================================================== */
+typedef struct PointF64 {
+    int            type;             /* +0x00  type/flags */
+    double         x;               /* +0x04  x coordinate */
+    double         y;               /* +0x0C  y coordinate */
+} PointF64;
+/* static_assert(sizeof(PointF64) == 0x14, "PointF64 size mismatch"); */
+
+/* ========================================================================
+ * ExtendedCString - CString with additional field at +0x18 (~0x1C bytes)
+ *
+ * Extends CString. The extra_data field at +0x16 is split into two shorts,
+ * and a new int field is added at +0x18.
+ * Used in game_ui.c FUN_004329d0, FUN_00432a10, FUN_00432a60.
+ * ======================================================================== */
+typedef struct ExtendedCString {
+    void         **vtable;           /* +0x00 */
+    void         **pp_buffer;        /* +0x04  double-indirection to char buffer */
+    int            capacity;         /* +0x08  allocated size, rounded to 0x20 */
+    void          *allocator;        /* +0x0C */
+    int            tag;              /* +0x10  0xFFFFFFFF sentinel initially */
+    unsigned char  owns_buffer;      /* +0x14 */
+    unsigned char  _pad15;           /* +0x15 */
+    short          extra_lo;         /* +0x16  low part of original extra_data */
+    int            extra_hi;         /* +0x18  extended field (set from param_1[5] or param_6) */
+} ExtendedCString;
+/* static_assert(sizeof(ExtendedCString) == 0x1C, "ExtendedCString size mismatch"); */
+
+/* ========================================================================
+ * SoundSlotEntry - Sound slot sub-entry (stride = 0x0E = 14 bytes)
+ *
+ * Used at DAT_0048714c area in game_ui.c, stride-0x0E lookup.
+ * ======================================================================== */
+typedef struct SoundSlotEntry {
+    unsigned char  _base[0x0A];      /* +0x00 */
+    short          field_0a;         /* +0x0A */
+    unsigned char  field_0c;         /* +0x0C */
+    unsigned char  flags;            /* +0x0D  bit4=active */
+} SoundSlotEntry;
+/* static_assert(sizeof(SoundSlotEntry) == 0x0E, "SoundSlotEntry size mismatch"); */
+
+/* ========================================================================
+ * ExtendedWidget - Large widget with display/render fields (>0x5CE bytes)
+ *
+ * Likely a TextDisplay subclass or composite widget.
+ * Used in game_ui.c FUN_00434860, FUN_004383b0, etc.
+ * ======================================================================== */
+typedef struct ExtendedWidget {
+    unsigned char  _base[0x6A];      /* +0x00  base widget data */
+    int            resource_id;      /* +0x6A  resource/sprite handle ptr */
+    unsigned char  _pad6e[0x26A];    /* +0x6E  (0x2D8 - 0x6E = 0x26A) */
+    void          *render_data;      /* +0x2D8  render/text data pointer */
+    unsigned char  _pad2dc[0x38];    /* +0x2DC  (0x314 - 0x2DC = 0x38) */
+    void          *display_list;     /* +0x314  display list/sound data pointer */
+    unsigned char  _pad318[0x298];   /* +0x318  (0x5B0 - 0x318 = 0x298) */
+    short          active_item;      /* +0x5B0  active/selected item index */
+    unsigned char  _pad5b2[0x18];    /* +0x5B2  (0x5CA - 0x5B2 = 0x18) */
+    int            item_count;       /* +0x5CA  number of items */
+} ExtendedWidget;
+/* static_assert(sizeof(ExtendedWidget) == 0x5CE, "ExtendedWidget size mismatch"); */
+
+/* ========================================================================
+ * GameWidgetInit - Widget initialization struct (~0x6A bytes)
+ *
+ * Used in game_ui.c FUN_00433880. Offsets match UIElement subrange
+ * but accessed via raw int pointer. Has sub-object at +0x42,
+ * display fields at +0x5a, +0x5e, +0x5f, +0x62, +0x66.
+ * ======================================================================== */
+typedef struct GameWidgetInit {
+    unsigned char  _base[0x42];      /* +0x00 */
+    void          *sub_object;       /* +0x42  embedded sub-object pointer */
+    unsigned char  _pad46[0x14];     /* +0x46  (0x5A - 0x46 = 0x14) */
+    short          init_state;       /* +0x5A  initialization state */
+    unsigned char  _pad5c[2];        /* +0x5C */
+    unsigned char  style_a;          /* +0x5E  style byte (0xFF=none) */
+    unsigned char  style_b;          /* +0x5F  style byte (0xFF=none) */
+    unsigned char  _pad60[2];        /* +0x60 */
+    int            scale_x;          /* +0x62  scale/transform X (init 0x100) */
+    int            scale_y;          /* +0x66  scale/transform Y */
+} GameWidgetInit;
+/* static_assert(sizeof(GameWidgetInit) == 0x6A, "GameWidgetInit size mismatch"); */
+
+/* ========================================================================
+ * ExtendedDialogWidget - DialogWidget with scroll/drag extensions (~0x1E8 bytes)
+ *
+ * Extends DialogWidget (0x1DA) with additional scroll/drag tracking fields.
+ * Used in game_input.c FUN_0043c3a0, FUN_0043c9e0, FUN_0043e500.
+ * ======================================================================== */
+typedef struct ExtendedDialogWidget {
+    /* --- DialogWidget base (0x00 - 0x1D9) --- */
+    void         **vtable;           /* +0x00 */
+    unsigned char  field_04;         /* +0x04 */
+    unsigned char  _pad05_e;         /* +0x05 */
+    int            field_06;         /* +0x06 */
+    unsigned char  is_visible;       /* +0x0A */
+    unsigned char  _pad0b_e;         /* +0x0B */
+    void          *parent_widget;    /* +0x0C */
+    unsigned char  field_10;         /* +0x10 */
+    unsigned char  _pad11_e;         /* +0x11 */
+    unsigned int   flags;            /* +0x12 */
+    int            type_or_mode;     /* +0x16 */
+    void          *child_list_1;     /* +0x1A */
+    short          rect_top;         /* +0x1E */
+    short          rect_left;        /* +0x20 */
+    short          rect_bottom;      /* +0x22 */
+    short          rect_right;       /* +0x24 */
+    int            pos_x;            /* +0x26 */
+    int            pos_y;            /* +0x2A */
+    int            pos_w;            /* +0x2E */
+    int            pos_h;            /* +0x32 */
+    void          *child_list_2;     /* +0x36 */
+    void          *parent_ptr;       /* +0x3A */
+    int            field_3e;         /* +0x3E */
+    unsigned char  _pad42_e[2];      /* +0x42 */
+    short          field_44;         /* +0x44 */
+    int            sub_widgets_a[16]; /* +0x46 */
+    int            sub_widgets_b[16]; /* +0x86 */
+    char           scrollable_flag;  /* +0xC6 */
+    char           field_c7;         /* +0xC7 */
+    char           cursor_style_a;   /* +0xC8 */
+    char           cursor_style_b;   /* +0xC9 */
+    unsigned char  scroll_data[32];  /* +0xCA */
+    int            origin_x;         /* +0xEA */
+    int            origin_y;         /* +0xEE */
+    short         *tile_data_ptr;    /* +0xF2 */
+    void          *level_data_ptr;   /* +0xF6 */
+    void          *cell_info_ptr;    /* +0xFA */
+    unsigned int   timestamp;        /* +0xFE */
+    char           mirror_flag;      /* +0x102 */
+    unsigned char  _pad103_e;        /* +0x103 */
+    int            animation_timer;  /* +0x104 */
+    char           field_108;        /* +0x108 */
+    char           field_109;        /* +0x109 */
+    char           is_interactive;   /* +0x10A */
+    char           auto_focus;       /* +0x10B */
+    short          active_anim_id;   /* +0x10C */
+    short          current_frame;    /* +0x10E */
+    short          cell_count;       /* +0x110 */
+    short          pending_frame;    /* +0x112 */
+    unsigned char  anim_flag_0;      /* +0x114 */
+    unsigned char  anim_flag_1;      /* +0x115 */
+    unsigned char  anim_flag_2;      /* +0x116 */
+    unsigned char  anim_flag_3;      /* +0x117 */
+    void          *prev_dialog;      /* +0x118 */
+    void          *child_list;       /* +0x11C */
+    unsigned char  is_registered;    /* +0x120 */
+    unsigned char  is_closing;       /* +0x121 */
+    int            dialog_result;    /* +0x122 */
+    unsigned char  dialog_data[0xA6]; /* +0x126 */
+    unsigned char  _pad1cc_e[2];     /* +0x1CC */
+    int            dialog_value;     /* +0x1CE */
+    unsigned char  input_mode;       /* +0x1D2 */
+    unsigned char  _pad1d3_e[5];     /* +0x1D3 */
+    unsigned char  dialog_active;    /* +0x1D8 */
+    unsigned char  dialog_initialized; /* +0x1D9 */
+    /* --- ExtendedDialogWidget extensions (0x1DA - 0x1E7) --- */
+    int            drag_y;           /* +0x1DA  drag/scroll Y position */
+    int            drag_x;           /* +0x1DE  drag/scroll X position */
+    int            scroll_y;         /* +0x1E2  scroll offset Y */
+    short          scroll_x;         /* +0x1E6  scroll offset X */
+} ExtendedDialogWidget;
+/* static_assert(sizeof(ExtendedDialogWidget) == 0x1E8, "ExtendedDialogWidget size mismatch"); */
+
+/* ========================================================================
+ * PaletteContainer - Palette/resource container (~0x7E bytes)
+ *
+ * Used in game_objects.c FUN_004037e0.
+ * Contains sub-object, palette handle, child list, and child count.
+ * ======================================================================== */
+typedef struct PaletteContainer {
+    unsigned char  _base[0x42];      /* +0x00 */
+    void          *sub_object;       /* +0x42  embedded sub-object ptr */
+    unsigned char  _pad46[0x24];     /* +0x46  (0x6A - 0x46 = 0x24) */
+    int            palette_handle;   /* +0x6A  palette/resource handle */
+    unsigned char  _pad6e[4];        /* +0x6E */
+    void          *child_list_ptr;   /* +0x72  child widget list pointer */
+    unsigned char  _pad76[6];        /* +0x76  (0x7C - 0x76 = 6) */
+    short          child_count;      /* +0x7C  number of child widgets */
+} PaletteContainer;
+/* static_assert(sizeof(PaletteContainer) == 0x7E, "PaletteContainer size mismatch"); */
+
+/* ========================================================================
+ * ResourceObject - Sprite/resource object (~0x1C bytes)
+ *
+ * Used in game_misc.c FUN_00465c40, FUN_00465c80 for resource management.
+ * Contains data pointer, secondary pointer, and ownership flag.
+ * ======================================================================== */
+typedef struct ResourceObject {
+    unsigned char  _base[0x0C];      /* +0x00 */
+    void          *buffer_ptr;       /* +0x0C  internal buffer pointer */
+    unsigned int   data_ptr;         /* +0x10  resource data pointer */
+    int            secondary_ptr;    /* +0x14  secondary data/resource pointer */
+    char           owns_data;        /* +0x18  1=owns data, 0=borrowed */
+    unsigned char  _pad19[3];        /* +0x19 */
+} ResourceObject;
+/* static_assert(sizeof(ResourceObject) == 0x1C, "ResourceObject size mismatch"); */
+
 #pragma pack(pop)
 
 #endif /* GAME_STRUCTS_H */

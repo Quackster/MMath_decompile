@@ -167,9 +167,9 @@ uint __thiscall FUN_00451cf0(void *this,int param_1)
   int n1;
   int n2;
 
-  n1 = *(int *)((char *)this + param_1 * 0x16 + 0x1de); /* TODO: unknown struct, stride-0x16 array */
+  n1 = *(int *)((char *)this + param_1 * sizeof(GroupEntry) + 0x1de); /* TODO: GroupEntry stride array at +0x1D4 */
   n2 = rand();
-  return *(uint *)(**(int **)((char *)this + param_1 * 0x16 + 0x1d4) /* TODO: unknown struct, stride-0x16 array at +0x1D4 */ + (n2 % n1) * 4) >> 0x10;
+  return *(uint *)(**(int **)((char *)this + param_1 * sizeof(GroupEntry) + 0x1d4) + (n2 % n1) * 4) >> 0x10;
 }
 
 
@@ -209,7 +209,7 @@ int __thiscall FUN_00451d80(MathProblem *this,int param_1)
       if (*pn2 == param_1) {
         n1 = n1 + 1;
       }
-      pn2 = (int *)((char *)pn2 + 0x12);
+      pn2 = (int *)((char *)pn2 + sizeof(AnswerSlot));
       n3 = n3 + -1;
     } while (n3 != 0);
   }
@@ -233,7 +233,7 @@ int __thiscall FUN_00451db0(MathProblem *this,int param_1,uint param_2)
       if ((*pn2 == param_1) && (*(byte *)((char *)pn2 + -10) == param_2)) { /* TODO: pn2-10 = AnswerSlot.symbol relative to flags ptr */
         n1 = n1 + 1;
       }
-      pn2 = (int *)((char *)pn2 + 0x12);
+      pn2 = (int *)((char *)pn2 + sizeof(AnswerSlot));
       n3 = n3 + -1;
     } while (n3 != 0);
   }
@@ -257,7 +257,7 @@ int __thiscall FUN_00451df0(MathProblem *this,int param_1,int param_2)
       if ((*pn2 == param_1) && (pn2[-2] == param_2)) {
         n1 = n1 + 1;
       }
-      pn2 = (int *)((char *)pn2 + 0x12);
+      pn2 = (int *)((char *)pn2 + sizeof(AnswerSlot));
       n3 = n3 + -1;
     } while (n3 != 0);
   }
@@ -1762,7 +1762,7 @@ int * __fastcall FUN_004541a0(int *param_1)
   FUN_00434860(param_1);
   _seh_state = 0;
   *param_1 = &PTR_FUN_00476798;
-  *(int *)((char *)param_1 + 0x6a) = 0; /* custom struct: timestamp field at +0x6A */
+  ((ExtendedWidget *)param_1)->resource_id = 0; /* timestamp/resource field at +0x6A */
   FUN_0041da90(param_1,1);
   *_fs = _seh_prev;
   return param_1;
@@ -1786,8 +1786,8 @@ void __fastcall FUN_00454280(void *param_1)
   
   n2 = (DAT_004890a4 >> 1) * DAT_00489084;
   dw1 = GetTickCount();
-  if ((uint)(*(int *)((char *)param_1 + 0x6a) + n2) < dw1) { /* custom struct: timestamp at +0x6A */
-    *(DWORD *)((char *)param_1 + 0x6a) = dw1; /* custom struct: timestamp at +0x6A */
+  if ((uint)(((ExtendedWidget *)param_1)->resource_id + n2) < dw1) {
+    ((ExtendedWidget *)param_1)->resource_id = dw1;
     FUN_0041dad0(param_1,~(byte)(((UIWidget *)param_1)->flags >> 6) & 1,'\0');
   }
   return;
@@ -1978,7 +1978,7 @@ int * __thiscall FUN_00454a70(void *this,int param_1)
   *_fs = &_seh_prev;
   FUN_0044e3f0(this);
   *(void ***)this = &PTR_FUN_00476970;
-  *(int *)((char *)this + 0x118) = param_1; /* GameWidget->field_118 at +0x118, 4-byte write spanning field_118 + pair_x_1 low bytes */
+  *(int *)&((GameWidget *)this)->field_118 = param_1; /* 4-byte write spanning field_118 + pair_x_1 low bytes */
   *_fs = _seh_prev;
   return this;
 }

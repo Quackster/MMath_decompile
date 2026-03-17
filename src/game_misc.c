@@ -58,7 +58,7 @@ int __thiscall FUN_00460080(MathProblem *this,uint param_1)
 {
   int n1;
 
-  n1 = *(int *)((char *)this + 0x18); /* TODO: unknown offset 0x18 on MathProblem (_pad15 region) */
+  n1 = *(int *)((char *)this + 0x18); /* TODO: offset 0x18 spans MathProblem._pad1a region, may be alternate struct */
   if (param_1 != 0) {
     if ((param_1 < 0x1001) && (this->field_10 != 0)) {
       return this->field_10;
@@ -2250,9 +2250,9 @@ void ** __fastcall FUN_00465a60(void **param_1)
   _handler = &L_00465ab9;
   *_fs = &_seh_prev;
   FUN_00417c70(param_1);
-  *(short *)((char *)param_1 + 0x1e) = 0; /* TODO: unknown struct, offset 0x1e */
+  ((UIElement *)param_1)->rect_top = 0;
   *param_1 = &PTR_FUN_00477bc8;
-  *(int *)((char *)param_1 + 0x1a) = 0; /* TODO: unknown struct, offset 0x1a */
+  ((UIElement *)param_1)->child_list_1 = 0;
   param_1[5] = 0;
   param_1[4] = 0;
   *(char *)(param_1 + 6) = 0;
@@ -2397,27 +2397,25 @@ void __thiscall FUN_00465c20(GameWidget *this,int param_1)
 
 /* FUN_00465c40 @ 0x00465c40 */
 
-/* TODO: this is a resource/sprite object, not a known game struct.
- * Offsets: 0x10 = data pointer, 0x18 = owns_data flag
- */
-void __thiscall FUN_00465c40(void *this,uint param_1)
+/* Struct types: ResourceObject (this) */
+void __thiscall FUN_00465c40(ResourceObject *this,uint param_1)
 {
-  if ((*(char *)((char *)this + 0x18) != '\0') && (*(uint *)((char *)this + 0x10) != param_1)) {
-    FUN_0046f5f0(*(uint *)((char *)this + 0x10));
-    *(char *)((char *)this + 0x18) = 0;
-    *(uint *)((char *)this + 0x10) = param_1;
+  if ((this->owns_data != '\0') && (this->data_ptr != param_1)) {
+    FUN_0046f5f0(this->data_ptr);
+    this->owns_data = 0;
+    this->data_ptr = param_1;
     return;
   }
-  *(uint *)((char *)this + 0x10) = param_1;
+  this->data_ptr = param_1;
 }
 
 
 /* FUN_00465c80 @ 0x00465c80 */
 
-/* TODO: this is a resource/sprite object, offset 0x14 = secondary data pointer */
-void __thiscall FUN_00465c80(void *this,int param_1)
+/* Struct types: ResourceObject (this) */
+void __thiscall FUN_00465c80(ResourceObject *this,int param_1)
 {
-  *(int *)((char *)this + 0x14) = param_1; /* resource obj offset 0x14 */
+  this->secondary_ptr = param_1;
   if (param_1 != 0) {
     FUN_00465c40(this,*(uint *)(param_1 + 10));
     return;
@@ -2450,7 +2448,7 @@ void __thiscall FUN_00465cb0(MathProblem *this,int *param_1)
       }
       pu3 = FUN_0045c1c0(pu2,-1,-1,NULL);
       FUN_00465c40(this,(uint)pu3);
-      *(char *)((char *)this + 0x18) = 1; /* TODO: offset 0x18 on MathProblem, falls in _pad15 region */
+      ((ResourceObject *)this)->owns_data = 1;
     }
     else {
       if ((ps4 == NULL) || (c1 == '\0')) {
