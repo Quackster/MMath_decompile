@@ -3,7 +3,7 @@
  * Address range: 0x440000 - 0x44FFFF
  * Functions: 353
  *
- * Reconstructed source for MMath.exe
+ * Part of MMath (Educational Math Game, ~1995)
  */
 
 #include "types.h"
@@ -23,7 +23,6 @@ void FUN_00440356(void)
   int _ebp;
   
   FUN_004113d0((int *)(_ebp + -0x3c));
-  return;
 }
 
 
@@ -42,7 +41,7 @@ void __fastcall FUN_00440360(GameBoard *param_1)
   u1 = FUN_0043a6b0(DAT_004838c0,0x444000d);
   *(int *)((int)param_1 + 0x1d8) = u1; /* TODO: unknown offset 0x1d8 on GameBoard */
   pv4 = *(UIWidget **)(DAT_004897c0 + 0x44);
-  if (pv4 != (UIWidget *)0x0) {
+  if (pv4 != NULL) {
     c5 = '\x01';
     u1 = 0;
     n2 = 0x3f400000;
@@ -60,10 +59,10 @@ void __fastcall FUN_00440360(GameBoard *param_1)
     (*(UIWidget **)(DAT_004897c0 + 0x44))->field_109 = 0;
     FUN_0043f8c0(*(int *)(DAT_004897c0 + 0x44));
   }
-  if (param_1->reward_obj_a != (void *)0x0) {
+  if (param_1->reward_obj_a != NULL) {
     FUN_00406ca0(param_1->reward_obj_a,'\x05','\0');
   }
-  if (param_1->reward_obj_d != (void *)0x0) {
+  if (param_1->reward_obj_d != NULL) {
     FUN_00406ca0(param_1->reward_obj_d,'\x05','\0');
   }
   n3 = *(int *)((int)param_1 + 0x1b8); /* TODO: unknown offset 0x1b8 on GameBoard */
@@ -289,7 +288,6 @@ void __cdecl FUN_004412d0(int param_1,int param_2)
   DAT_00488e38 = (int *)FUN_0043a6b0(DAT_004838c0,param_1);
   DAT_00488e58 = param_1;
   DAT_0048065c = FUN_00434300(DAT_00488e38);
-  return;
 }
 
 
@@ -311,13 +309,12 @@ void FUN_00441320(void)
 void FUN_00441370(void)
 {
   int u1;
-  int _p_fffffff4;
+  int _arg1;
   
   u1 = 0;
   FUN_00401050(&_tmp_44,0);
   FUN_00401050(&_tmp_43,0);
-  FUN_00401060(&DAT_00488ed0,u1,_p_fffffff4);
-  return;
+  FUN_00401060(&DAT_00488ed0,u1,_arg1);
 }
 
 
@@ -334,7 +331,6 @@ void FUN_004413e0(void)
 {
   _DAT_00488eee = 0;
   _DAT_00488eec = 0;
-  return;
 }
 
 
@@ -343,7 +339,6 @@ void FUN_004413e0(void)
 void FUN_004413f0(void)
 {
   _atexit(FUN_00441400);
-  return;
 }
 
 
@@ -360,7 +355,6 @@ void FUN_00441420(void)
 {
   _DAT_00488eea = 0;
   _DAT_00488ee8 = 0;
-  return;
 }
 
 
@@ -369,7 +363,6 @@ void FUN_00441420(void)
 void FUN_00441430(void)
 {
   _atexit(FUN_00441440);
-  return;
 }
 
 
@@ -394,7 +387,6 @@ void FUN_00441460(void)
 void FUN_004414a0(void)
 {
   _atexit(FUN_004414b0);
-  return;
 }
 
 
@@ -405,12 +397,11 @@ void FUN_004414a0(void)
 void FUN_004414b0(void)
 {
   _DAT_00488ea0 = &PTR_LAB_00472e08;
-  if (DAT_00488ea4 != (uint *)0x0) {
+  if (DAT_00488ea4 != NULL) {
     FUN_0046d110(DAT_00488ea4);
   }
-  DAT_00488ea4 = (uint *)0x0;
+  DAT_00488ea4 = NULL;
   _DAT_00488ea8 = 0;
-  return;
 }
 
 
@@ -430,7 +421,6 @@ void FUN_00441da0(void)
 void FUN_00441de0(void)
 {
   _atexit(FUN_00441df0);
-  return;
 }
 
 
@@ -441,12 +431,11 @@ void FUN_00441de0(void)
 void FUN_00441df0(void)
 {
   _DAT_00488e80 = &PTR_LAB_004752f0;
-  if (DAT_00488e84 != (uint *)0x0) {
+  if (DAT_00488e84 != NULL) {
     FUN_0046d110(DAT_00488e84);
   }
-  DAT_00488e84 = (uint *)0x0;
+  DAT_00488e84 = NULL;
   _DAT_00488e88 = 0;
-  return;
 }
 
 
@@ -466,7 +455,6 @@ void FUN_00441e30(void)
 void FUN_00441e70(void)
 {
   _atexit(FUN_00441e80);
-  return;
 }
 
 
@@ -477,12 +465,11 @@ void FUN_00441e70(void)
 void FUN_00441e80(void)
 {
   _DAT_00488eb8 = &PTR_LAB_004752f0;
-  if (DAT_00488ebc != (uint *)0x0) {
+  if (DAT_00488ebc != NULL) {
     FUN_0046d110(DAT_00488ebc);
   }
-  DAT_00488ebc = (uint *)0x0;
+  DAT_00488ebc = NULL;
   _DAT_00488ec0 = 0;
-  return;
 }
 
 
@@ -514,7 +501,6 @@ void __fastcall FUN_00441f10(UIWidget *this)
   FUN_00405d30(this,0);
   this->pending_frame = 0;
   DAT_00480748 = 0;
-  return;
 }
 
 
@@ -539,7 +525,6 @@ void __fastcall FUN_00441f60(UIWidget *this)
   this->pending_frame = 2;
   FUN_00405d30(this,2);
   DAT_00480748 = this;
-  return;
 }
 
 
@@ -589,7 +574,6 @@ void FUN_00442401(void)
   int _ebp;
   
   FUN_00449450((int *)(*(int *)(_ebp + -0x10) + 0x118));
-  return;
 }
 
 
@@ -598,7 +582,6 @@ void FUN_00442401(void)
 void FUN_00442419(void)
 {
   FUN_004012a0();
-  return;
 }
 
 
@@ -626,7 +609,6 @@ void FUN_00442430(void)
   FUN_004424c1();
   /* SEH epilog */
   *_fs = _seh_prev;
-  return;
 }
 
 
@@ -647,7 +629,6 @@ void FUN_004424a9(void)
   int _ebp;
   
   FUN_00449450((int *)(*(int *)(_ebp + -0x10) + 0x118));
-  return;
 }
 
 
@@ -656,7 +637,6 @@ void FUN_004424a9(void)
 void FUN_004424c1(void)
 {
   FUN_004012a0();
-  return;
 }
 
 
@@ -691,21 +671,21 @@ void __fastcall FUN_00442570(GameWidget *param_1)
   *_fs = &_seh_prev;
   _seh_state = 0;
   /* offset 0x152 falls in _pad160 region */
-  if (*(void **)((int)param_1 + 0x152) != (void *)0x0) { /* TODO: unknown offset 0x152 in _pad160 */
+  if (*(void **)((int)param_1 + 0x152) != NULL) { /* TODO: unknown offset 0x152 in _pad160 */
     ((void (*)(void))**(void ***)((int)param_1 + 0x152))(); /* TODO: unknown offset 0x152 in _pad160 */
     *(void **)((int)param_1 + 0x152) = 0; /* TODO: unknown offset 0x152 in _pad160 */
   }
   *(void **)&param_1->_pad14e = 0;  /* GameWidget->_pad14e */
   param_1->group_data_a = 0;        /* GameWidget->group_data_a +0x14A */
-  if (*(void **)&param_1->_pad146 != (void *)0x0) { /* GameWidget->_pad146 */
+  if (*(void **)&param_1->_pad146 != NULL) { /* GameWidget->_pad146 */
     ((void (*)(void))**(void ***)&param_1->_pad146)();
     *(void **)&param_1->_pad146 = 0;
   }
-  if (param_1->name_data_ptr != (void *)0x0) { /* GameWidget->name_data_ptr +0x142 */
+  if (param_1->name_data_ptr != NULL) { /* GameWidget->name_data_ptr +0x142 */
     ((void (*)(void))**(void ***)&param_1->name_data_ptr)();
     param_1->name_data_ptr = 0;
   }
-  if (*(void **)&param_1->_pad13e != (void *)0x0) { /* GameWidget->_pad13e */
+  if (*(void **)&param_1->_pad13e != NULL) { /* GameWidget->_pad13e */
     ((void (*)(void))**(void ***)&param_1->_pad13e)();
     *(void **)&param_1->_pad13e = 0;
   }
@@ -713,7 +693,6 @@ void __fastcall FUN_00442570(GameWidget *param_1)
   FUN_00442647();
   /* SEH epilog */
   *_fs = _seh_prev;
-  return;
 }
 
 
@@ -722,7 +701,6 @@ void __fastcall FUN_00442570(GameWidget *param_1)
 void FUN_00442647(void)
 {
   FUN_00442430();
-  return;
 }
 
 
@@ -735,7 +713,7 @@ void FUN_00442647(void)
 void __fastcall FUN_00442650(GameWidget *param_1)
 {
   /* offset 0x152 in _pad160 region */
-  if (*(void **)((int)param_1 + 0x152) != (void *)0x0) { /* TODO: unknown offset 0x152 in _pad160 */
+  if (*(void **)((int)param_1 + 0x152) != NULL) { /* TODO: unknown offset 0x152 in _pad160 */
     ((void (*)(void))**(void ***)((int)param_1 + 0x152))(); /* TODO: unknown offset 0x152 in _pad160 */
     *(void **)((int)param_1 + 0x152) = 0; /* TODO: unknown offset 0x152 in _pad160 */
   }
@@ -743,24 +721,23 @@ void __fastcall FUN_00442650(GameWidget *param_1)
     ((void (*)(void))**(void ***)&param_1->group_data_a)();
     param_1->group_data_a = 0;
   }
-  if (*(void **)&param_1->_pad14e != (void *)0x0) { /* GameWidget->_pad14e */
+  if (*(void **)&param_1->_pad14e != NULL) { /* GameWidget->_pad14e */
     ((void (*)(void))**(void ***)&param_1->_pad14e)();
     *(void **)&param_1->_pad14e = 0;
   }
-  if (*(void **)&param_1->_pad146 != (void *)0x0) { /* GameWidget->_pad146 */
+  if (*(void **)&param_1->_pad146 != NULL) { /* GameWidget->_pad146 */
     ((void (*)(void))**(void ***)&param_1->_pad146)();
     *(void **)&param_1->_pad146 = 0;
   }
-  if (param_1->name_data_ptr != (void *)0x0) { /* GameWidget->name_data_ptr +0x142 */
+  if (param_1->name_data_ptr != NULL) { /* GameWidget->name_data_ptr +0x142 */
     ((void (*)(void))**(void ***)&param_1->name_data_ptr)();
     param_1->name_data_ptr = 0;
   }
-  if (*(void **)&param_1->_pad13e != (void *)0x0) { /* GameWidget->_pad13e */
+  if (*(void **)&param_1->_pad13e != NULL) { /* GameWidget->_pad13e */
     ((void (*)(void))**(void ***)&param_1->_pad13e)();
     *(void **)&param_1->_pad13e = 0;
   }
   FUN_00441f10((UIWidget *)param_1);
-  return;
 }
 
 
@@ -792,7 +769,6 @@ void __thiscall FUN_00443010(GameWidget *this,int param_1)
 void FUN_00443079(void)
 {
   FUN_004012a0();
-  return;
 }
 
 
@@ -809,7 +785,6 @@ int FUN_00443090(void)
 void FUN_004430f9(void)
 {
   FUN_004012a0();
-  return;
 }
 
 
@@ -818,7 +793,6 @@ void FUN_004430f9(void)
 void FUN_00443169(void)
 {
   FUN_004012a0();
-  return;
 }
 
 
@@ -827,7 +801,6 @@ void FUN_00443169(void)
 void FUN_004431d9(void)
 {
   FUN_004012a0();
-  return;
 }
 
 
@@ -852,7 +825,6 @@ void __fastcall FUN_004432f0(int *param_1)
   board->last_tick = DVar2;
   /* vtable[0x25] call (offset 0x94 / 4 = 0x25) */
   ((void (*)(void))((void **)(*param_1))[0x25])();
-  return;
 }
 
 
@@ -887,7 +859,6 @@ void __fastcall FUN_00443500(int *param_1)
   board->last_tick = DVar2;
   /* vtable[0x25] call (offset 0x94 / 4 = 0x25) */
   ((void (*)(void))((void **)(*param_1))[0x25])();
-  return;
 }
 
 
@@ -903,7 +874,6 @@ void FUN_00443808(void)
   int _ebp;
   
   FUN_00432a50((int *)(_ebp + -0x44));
-  return;
 }
 
 
@@ -940,7 +910,6 @@ void FUN_004439fc(void)
 void FUN_00443a1e(void)
 {
   FUN_00442430();
-  return;
 }
 
 
@@ -998,7 +967,7 @@ void __fastcall FUN_00443f30(GameWidget *param_1)
   *(void **)param_1 = &PTR_FUN_00475828;
   *_fs = &_seh_prev;
   _seh_state = 0;
-  if (*(void **)&param_1->_pad14e != (void *)0x0) { /* GameWidget->_pad14e */
+  if (*(void **)&param_1->_pad14e != NULL) { /* GameWidget->_pad14e */
     ((void (*)(void))**(void ***)&param_1->_pad14e)();
     *(void **)&param_1->_pad14e = 0;
   }
@@ -1006,7 +975,7 @@ void __fastcall FUN_00443f30(GameWidget *param_1)
     ((void (*)(void))**(void ***)&param_1->group_data_a)();
     param_1->group_data_a = 0;
   }
-  if (*(void **)&param_1->_pad146 != (void *)0x0) { /* GameWidget->_pad146 */
+  if (*(void **)&param_1->_pad146 != NULL) { /* GameWidget->_pad146 */
     ((void (*)(void))**(void ***)&param_1->_pad146)();
     *(void **)&param_1->_pad146 = 0;
   }
@@ -1014,7 +983,6 @@ void __fastcall FUN_00443f30(GameWidget *param_1)
   FUN_00443fd5();
   /* SEH epilog */
   *_fs = _seh_prev;
-  return;
 }
 
 
@@ -1023,7 +991,6 @@ void __fastcall FUN_00443f30(GameWidget *param_1)
 void FUN_00443fd5(void)
 {
   FUN_00442430();
-  return;
 }
 
 
@@ -1035,7 +1002,7 @@ void FUN_00443fd5(void)
  */
 void __fastcall FUN_00443fe0(GameWidget *param_1)
 {
-  if (*(void **)&param_1->_pad14e != (void *)0x0) { /* GameWidget->_pad14e */
+  if (*(void **)&param_1->_pad14e != NULL) { /* GameWidget->_pad14e */
     ((void (*)(void))**(void ***)&param_1->_pad14e)();
     *(void **)&param_1->_pad14e = 0;
   }
@@ -1043,12 +1010,11 @@ void __fastcall FUN_00443fe0(GameWidget *param_1)
     ((void (*)(void))**(void ***)&param_1->group_data_a)();
     param_1->group_data_a = 0;
   }
-  if (*(void **)&param_1->_pad146 != (void *)0x0) { /* GameWidget->_pad146 */
+  if (*(void **)&param_1->_pad146 != NULL) { /* GameWidget->_pad146 */
     ((void (*)(void))**(void ***)&param_1->_pad146)();
     *(void **)&param_1->_pad146 = 0;
   }
   FUN_00441f10((UIWidget *)param_1);
-  return;
 }
 
 
@@ -1062,7 +1028,6 @@ void FUN_0044439d(void) { return; }
 void FUN_004444b9(void)
 {
   FUN_004012a0();
-  return;
 }
 
 
@@ -1071,7 +1036,6 @@ void FUN_004444b9(void)
 void FUN_00444529(void)
 {
   FUN_004012a0();
-  return;
 }
 
 
@@ -1118,7 +1082,6 @@ void FUN_00444d1c(void)
   int _ebp;
   
   FUN_00413840((int *)(*(int *)(_ebp + -0x10) + 0x1dc));
-  return;
 }
 
 
@@ -1129,7 +1092,6 @@ void FUN_00444d34(void)
   int _ebp;
   
   FUN_0042cd10(*(int **)(_ebp + -0x10));
-  return;
 }
 
 
@@ -1170,7 +1132,6 @@ void FUN_004453c5(void)
   int _ebp;
   
   FUN_0040f520((int *)(_ebp + -0x38));
-  return;
 }
 
 
@@ -1181,7 +1142,6 @@ void FUN_00445459(void)
   int _ebp;
   
   FUN_00405420(*(int **)(_ebp + -0x10));
-  return;
 }
 
 
@@ -1225,7 +1185,7 @@ FUN_00445470(void *this,int param_1,int param_2,char param_3,char param_4,int pa
   FUN_0041d780(this,*(void **)(DAT_004897c0 + 0x52));
   FUN_0041dbb0(v18);
   v1c = FUN_0042c860(DAT_004838c0,param_2);
-  if (v1c != (ushort *)0x0) {
+  if (v1c != NULL) {
     SVar2 = GetAsyncKeyState(2);
     SVar3 = GetAsyncKeyState(4);
     SVar4 = GetAsyncKeyState(1);
@@ -1243,8 +1203,8 @@ FUN_00445470(void *this,int param_1,int param_2,char param_3,char param_4,int pa
     else {
       FUN_0041ce10(v18,&v30,param_5);
     }
-    v24 = FUN_0042c5b0((short *)v1c,&v30,(ushort *)0x0);
-    if (v24 != (ushort *)0x0) {
+    v24 = FUN_0042c5b0((short *)v1c,&v30,NULL);
+    if (v24 != NULL) {
       s7 = 0;
       if (0 < (short)*v1c) {
         do {
@@ -1353,7 +1313,6 @@ void FUN_004457b0(void *param_1)
   FUN_00445844();
   /* SEH epilog */
   *_fs = _seh_prev;
-  return;
 }
 
 
@@ -1398,10 +1357,10 @@ void __fastcall FUN_004459f0(void *param_1)
   ((UIWidget *)*(int *)((int)DAT_004897c0 + 0x4a))->type_or_mode = 3; /* TODO: unknown struct for DAT_004897c0, offset 0x4a; UIWidget->type_or_mode +0x16 */
   FUN_0042d7d0((int)param_1);
   if (1 < *(short *)(DAT_0048345c + 0xea)) {
-    FUN_0042da60(param_1,0x4df000d,(ushort *)0x0,-1,-1);
+    FUN_0042da60(param_1,0x4df000d,NULL,-1,-1);
   }
   FUN_0042da60(param_1,DAT_00488ef0,*(ushort **)((int)param_1 + 0x1bc),-1,-1); /* TODO: unknown offset 0x1bc */
-  FUN_0042da60(param_1,0x4de000d,(ushort *)0x0,-1,-1);
+  FUN_0042da60(param_1,0x4de000d,NULL,-1,-1);
   FUN_0042d860((int)param_1);
   if ((*(char *)(DAT_0048345c + 0x90) != '\0') && (*(int *)((int)param_1 + 0x1d0) != 0)) { /* TODO: unknown offset 0x1d0 */
     DAT_00480664 = 1;
@@ -1409,7 +1368,6 @@ void __fastcall FUN_004459f0(void *param_1)
     DAT_00480664 = 0;
   }
   DAT_00480760 = 0;
-  return;
 }
 
 
@@ -1445,7 +1403,6 @@ void __fastcall FUN_00445e10(int param_1)
 {
   FUN_00448df0();
   FUN_00404a80(param_1);
-  return;
 }
 
 
@@ -1454,7 +1411,6 @@ void __fastcall FUN_00445e10(int param_1)
 void FUN_004461a2(void)
 {
   FUN_00411360();
-  return;
 }
 
 
@@ -1474,7 +1430,6 @@ void FUN_00446c58(void)
   int _ebp;
   
   FUN_004113d0((int *)(_ebp + -0x30));
-  return;
 }
 
 
@@ -1485,7 +1440,6 @@ void FUN_004470f2(void)
   int _ebp;
   
   FUN_004113d0((int *)(_ebp + -0x30));
-  return;
 }
 
 
@@ -1496,7 +1450,6 @@ void FUN_004475fd(void)
   int _ebp;
   
   FUN_00447a70((int *)(_ebp + -0x60));
-  return;
 }
 
 
@@ -1512,7 +1465,6 @@ void FUN_004479af(void)
   int _ebp;
   
   FUN_00447a70((int *)(_ebp + -0x3c));
-  return;
 }
 
 
@@ -1523,7 +1475,6 @@ void FUN_00447a5b(void)
   int _ebp;
   
   FUN_00413840((int *)(_ebp + -0x54));
-  return;
 }
 
 
@@ -1532,7 +1483,6 @@ void FUN_00447a5b(void)
 void __fastcall FUN_00447a70(int *param_1)
 {
   *param_1 = &PTR_LAB_00474de4;
-  return;
 }
 
 
@@ -1541,7 +1491,6 @@ void __fastcall FUN_00447a70(int *param_1)
 void FUN_00447b18(void)
 {
   FUN_00411360();
-  return;
 }
 
 
@@ -1557,7 +1506,6 @@ void FUN_00447f1d(void)
   int _ebp;
   
   FUN_004113d0((int *)(_ebp + -0x3c));
-  return;
 }
 
 
@@ -1570,7 +1518,6 @@ void FUN_00447f1d(void)
 void __thiscall FUN_00447fb0(GameWidget *this,short param_1)
 {
   this->field_118 = param_1;
-  return;
 }
 
 
@@ -1583,7 +1530,6 @@ void __thiscall FUN_00447fb0(GameWidget *this,short param_1)
 void __thiscall FUN_00447fd0(GameWidget *this,int param_1)
 {
   this->pair_x_1 = param_1;
-  return;
 }
 
 
@@ -1596,7 +1542,6 @@ void __thiscall FUN_00447fd0(GameWidget *this,int param_1)
 void __thiscall FUN_00447ff0(GameWidget *this,int param_1)
 {
   this->pair_y_1 = param_1;
-  return;
 }
 
 
@@ -1610,7 +1555,6 @@ void __thiscall FUN_00448010(GameWidget *this,int param_1)
 {
   this->pair_x_2 = param_1;
   FUN_00406ca0(this,(char)param_1,'\0');
-  return;
 }
 
 
@@ -1623,7 +1567,6 @@ void __thiscall FUN_00448010(GameWidget *this,int param_1)
 void __thiscall FUN_00448030(GameWidget *this,void *param_1)
 {
   this->object_ptr = param_1;
-  return;
 }
 
 
@@ -1636,7 +1579,6 @@ void __thiscall FUN_00448030(GameWidget *this,void *param_1)
 void __thiscall FUN_00448050(GameWidget *this,int param_1)
 {
   this->scrollbar_ref = param_1;
-  return;
 }
 
 
@@ -1645,7 +1587,6 @@ void __thiscall FUN_00448050(GameWidget *this,int param_1)
 void FUN_004480c9(void)
 {
   FUN_004012a0();
-  return;
 }
 
 
@@ -1703,7 +1644,6 @@ void __thiscall FUN_00448cb0(GameWidget *this,int param_1)
 {
   *(int *)((intptr_t)this + 0x124) = param_1; /* TODO: unknown offset 0x124 - between pair_x_2 and object_ptr */
   FUN_00406ca0(this,(char)param_1,'\0');
-  return;
 }
 
 
@@ -1712,7 +1652,6 @@ void __thiscall FUN_00448cb0(GameWidget *this,int param_1)
 void FUN_00448d49(void)
 {
   FUN_004012a0();
-  return;
 }
 
 
@@ -1737,7 +1676,6 @@ void __cdecl FUN_00448da0(int param_1,int param_2)
   DAT_00488e78 = (int *)FUN_0043a6b0(DAT_004838c0,param_1);
   DAT_00488edc = param_1;
   DAT_004807a0 = FUN_00434300(DAT_00488e78);
-  return;
 }
 
 
@@ -1770,7 +1708,6 @@ void FUN_0044941e(void)
   int _ebp;
   
   FUN_00413810((int *)(_ebp + -0x7c));
-  return;
 }
 
 
@@ -1781,7 +1718,6 @@ void FUN_0044942e(void)
   int _ebp;
   
   FUN_004113d0((int *)(_ebp + -0x30));
-  return;
 }
 
 
@@ -1792,7 +1728,6 @@ void FUN_00449436(void)
   int _ebp;
   
   FUN_0040f520((int *)(_ebp + -0x60));
-  return;
 }
 
 
@@ -1803,7 +1738,6 @@ void FUN_00449448(void)
   int _ebp;
   
   FUN_0040f520((int *)(_ebp + -0x48));
-  return;
 }
 
 
@@ -1812,12 +1746,11 @@ void FUN_00449448(void)
 void __fastcall FUN_00449450(int *param_1)
 {
   *param_1 = &PTR_LAB_004752f4;
-  if ((uint *)param_1[1] != (uint *)0x0) {
+  if ((uint *)param_1[1] != NULL) {
     FUN_0046d110((uint *)param_1[1]);
   }
   param_1[1] = 0;
   param_1[2] = 0;
-  return;
 }
 
 
@@ -1850,7 +1783,6 @@ void __cdecl FUN_004495a0(short *param_1)
     param_1[s3 * 3 + 3] = CONCAT11((char)u1,(char)((ushort)u1 >> 8));
     s3 = s3 + 1;
   } while (s3 < 7);
-  return;
 }
 
 
@@ -1896,13 +1828,12 @@ uint __thiscall FUN_00449660(void *this,char *param_1)
 void FUN_00449790(void)
 {
   int u1;
-  int _p_fffffff4;
+  int _arg1;
   
   u1 = 0;
   FUN_00401050(&_tmp_44,0);
   FUN_00401050(&_tmp_43,0);
-  FUN_00401060(&DAT_00488f00,u1,_p_fffffff4);
-  return;
+  FUN_00401060(&DAT_00488f00,u1,_arg1);
 }
 
 
@@ -1928,7 +1859,6 @@ void FUN_00449850(void)
 {
   _DAT_00488f2a = 0;
   _DAT_00488f28 = 0;
-  return;
 }
 
 
@@ -1937,7 +1867,6 @@ void FUN_00449850(void)
 void FUN_00449860(void)
 {
   _atexit(FUN_00449870);
-  return;
 }
 
 
@@ -1954,7 +1883,6 @@ void FUN_00449890(void)
 {
   _DAT_00488f26 = 0;
   _DAT_00488f24 = 0;
-  return;
 }
 
 
@@ -1963,7 +1891,6 @@ void FUN_00449890(void)
 void FUN_004498a0(void)
 {
   _atexit(FUN_004498b0);
-  return;
 }
 
 
@@ -2013,7 +1940,6 @@ void FUN_00449df5(void)
   int _ebp;
   
   FUN_0043b810((int *)(_ebp + -100));
-  return;
 }
 
 
@@ -2125,7 +2051,6 @@ void __thiscall FUN_0044a3a0(void *this,short param_1)
 {
   *(short *)((intptr_t)this + 8) = param_1; /* TODO: unknown offset 0x08 */
   FUN_0044ab30(this);
-  return;
 }
 
 
@@ -2138,7 +2063,6 @@ void __thiscall FUN_0044a3c0(void *this,short param_1)
     FUN_0044a2c0(this);
   }
   FUN_0044ab30(this);
-  return;
 }
 
 
@@ -2167,7 +2091,6 @@ void FUN_0044a74b(void)
   int _ebp;
   
   FUN_00460010((int *)(_ebp + -0x98));
-  return;
 }
 
 
@@ -2178,7 +2101,6 @@ void FUN_0044a760(void)
   int _ebp;
   
   FUN_00460010((int *)(_ebp + -0x58));
-  return;
 }
 
 
@@ -2211,7 +2133,6 @@ void FUN_0044aa10(void)
   int _ebp;
   
   FUN_004524e0(_ebp + -0x120);
-  return;
 }
 
 
@@ -2220,7 +2141,6 @@ void FUN_0044aa10(void)
 void FUN_0044aa66(void)
 {
   FUN_00413810((int *)&DAT_00488f08);
-  return;
 }
 
 
@@ -2240,7 +2160,6 @@ void FUN_0044ab16(void)
   int _ebp;
   
   FUN_004524e0(_ebp + -0x120);
-  return;
 }
 
 
@@ -2286,13 +2205,12 @@ int __thiscall FUN_0044add0(void *this,int param_1,char param_2)
 void FUN_0044ae80(void)
 {
   int u1;
-  int _p_fffffff4;
+  int _arg1;
   
   u1 = 0;
   FUN_00401050(&_tmp_44,0);
   FUN_00401050(&_tmp_43,0);
-  FUN_00401060(&DAT_00488f30,u1,_p_fffffff4);
-  return;
+  FUN_00401060(&DAT_00488f30,u1,_arg1);
 }
 
 
@@ -2309,7 +2227,6 @@ void FUN_0044aef0(void)
 {
   _DAT_00488f3e = 0;
   _DAT_00488f3c = 0;
-  return;
 }
 
 
@@ -2318,7 +2235,6 @@ void FUN_0044aef0(void)
 void FUN_0044af00(void)
 {
   _atexit(FUN_0044af10);
-  return;
 }
 
 
@@ -2335,7 +2251,6 @@ void FUN_0044af30(void)
 {
   _DAT_00488f3a = 0;
   _DAT_00488f38 = 0;
-  return;
 }
 
 
@@ -2344,7 +2259,6 @@ void FUN_0044af30(void)
 void FUN_0044af40(void)
 {
   _atexit(FUN_0044af50);
-  return;
 }
 
 
@@ -2358,13 +2272,12 @@ void FUN_0044af50(void) { return; }
 void FUN_0044af70(void)
 {
   int u1;
-  int _p_fffffff4;
+  int _arg1;
   
   u1 = 0;
   FUN_00401050(&_tmp_44,0);
   FUN_00401050(&_tmp_43,0);
-  FUN_00401060(&DAT_00488f40,u1,_p_fffffff4);
-  return;
+  FUN_00401060(&DAT_00488f40,u1,_arg1);
 }
 
 
@@ -2373,7 +2286,6 @@ void FUN_0044af70(void)
 void FUN_0044afb0(void)
 {
   _atexit(FUN_0044afc0);
-  return;
 }
 
 
@@ -2390,7 +2302,6 @@ void FUN_0044afe0(void)
 {
   _DAT_00488f4e = 0;
   _DAT_00488f4c = 0;
-  return;
 }
 
 
@@ -2399,7 +2310,6 @@ void FUN_0044afe0(void)
 void FUN_0044aff0(void)
 {
   _atexit(FUN_0044b000);
-  return;
 }
 
 
@@ -2416,7 +2326,6 @@ void FUN_0044b020(void)
 {
   _DAT_00488f4a = 0;
   _DAT_00488f48 = 0;
-  return;
 }
 
 
@@ -2425,7 +2334,6 @@ void FUN_0044b020(void)
 void FUN_0044b030(void)
 {
   _atexit(FUN_0044b040);
-  return;
 }
 
 
@@ -2463,7 +2371,6 @@ void FUN_0044b119(void)
   int _ebp;
   
   FUN_0042cd10(*(int **)(_ebp + -0x10));
-  return;
 }
 
 
@@ -2481,13 +2388,12 @@ void __fastcall FUN_0044b1c0(int param_1)
 void FUN_0044b2e0(void)
 {
   int u1;
-  int _p_fffffff4;
+  int _arg1;
   
   u1 = 0;
   FUN_00401050(&_tmp_44,0);
   FUN_00401050(&_tmp_43,0);
-  FUN_00401060(&DAT_00488f50,u1,_p_fffffff4);
-  return;
+  FUN_00401060(&DAT_00488f50,u1,_arg1);
 }
 
 
@@ -2504,7 +2410,6 @@ void FUN_0044b350(void)
 {
   _DAT_00488f5e = 0;
   _DAT_00488f5c = 0;
-  return;
 }
 
 
@@ -2513,7 +2418,6 @@ void FUN_0044b350(void)
 void FUN_0044b360(void)
 {
   _atexit(FUN_0044b370);
-  return;
 }
 
 
@@ -2530,7 +2434,6 @@ void FUN_0044b390(void)
 {
   _DAT_00488f5a = 0;
   _DAT_00488f58 = 0;
-  return;
 }
 
 
@@ -2539,7 +2442,6 @@ void FUN_0044b390(void)
 void FUN_0044b3a0(void)
 {
   _atexit(FUN_0044b3b0);
-  return;
 }
 
 
@@ -2553,13 +2455,12 @@ void FUN_0044b3b0(void) { return; }
 void FUN_0044b3d0(void)
 {
   int u1;
-  int _p_fffffff4;
+  int _arg1;
   
   u1 = 0;
   FUN_00401050(&_tmp_44,0);
   FUN_00401050(&_tmp_43,0);
-  FUN_00401060(&DAT_00488f60,u1,_p_fffffff4);
-  return;
+  FUN_00401060(&DAT_00488f60,u1,_arg1);
 }
 
 
@@ -2568,7 +2469,6 @@ void FUN_0044b3d0(void)
 void FUN_0044b410(void)
 {
   _atexit(FUN_0044b420);
-  return;
 }
 
 
@@ -2585,7 +2485,6 @@ void FUN_0044b4b0(void)
 {
   _DAT_00488f8a = 0;
   _DAT_00488f88 = 0;
-  return;
 }
 
 
@@ -2594,7 +2493,6 @@ void FUN_0044b4b0(void)
 void FUN_0044b4c0(void)
 {
   _atexit(FUN_0044b4d0);
-  return;
 }
 
 
@@ -2636,7 +2534,6 @@ void FUN_0044b630(void)
 void FUN_0044b670(void)
 {
   _atexit(FUN_0044b680);
-  return;
 }
 
 
@@ -2649,10 +2546,10 @@ void FUN_0044b680(void)
   if ((DAT_00488f84 & 1) == 0) {
     _DAT_00488f68 = &PTR_LAB_00475f64;
     DAT_00488f84 = DAT_00488f84 | 1;
-    if (DAT_00488f6c != (uint *)0x0) {
+    if (DAT_00488f6c != NULL) {
       FUN_0046d110(DAT_00488f6c);
     }
-    DAT_00488f6c = (uint *)0x0;
+    DAT_00488f6c = NULL;
     DAT_00488f70 = 0;
   }
   return;
@@ -2675,7 +2572,6 @@ void FUN_0044bab1(void)
   int _ebp;
   
   FUN_004113d0((int *)(_ebp + -0x48));
-  return;
 }
 
 
@@ -2687,7 +2583,6 @@ void FUN_0044bb00(void)
 {
   _DAT_00488f82 = 0;
   _DAT_00488f80 = 0;
-  return;
 }
 
 
@@ -2696,7 +2591,6 @@ void FUN_0044bb00(void)
 void FUN_0044bb10(void)
 {
   _atexit(FUN_0044bb20);
-  return;
 }
 
 
@@ -2723,7 +2617,6 @@ void FUN_0044bbf6(void)
   int _ebp;
   
   FUN_004113d0((int *)(*(int *)(_ebp + -0x14) + 4));
-  return;
 }
 
 
@@ -2752,7 +2645,6 @@ void FUN_0044bef4(void)
   int _ebp;
   
   FUN_004113d0((int *)(_ebp + -0x2c));
-  return;
 }
 
 
@@ -2845,16 +2737,16 @@ int FUN_0044bf50(int *param_1,char param_2)
   srand(_Seed);
   v40 = &PTR_LAB_00472e04;
   *(int *)(v18 + 0x40) = 0;
-  v3c = (int *)0x0;
+  v3c = NULL;
   v38 = 0;
   v34 = 0;
-  v2a = (void *)0x0;
+  v2a = NULL;
   v30 = 0xffffffff;
   v2c = 0;
   FUN_004173e0(&v40,(char *)&DAT_0047ef44,0xffffffff);
   v40 = &PTR_LAB_00472e00;
   _seh_state = 1;
-  if ((v3c != (int *)0x0) && (pc8 = (char *)*v3c, pc8 != (char *)0x0)) {
+  if ((v3c != NULL) && (pc8 = (char *)*v3c, pc8 != NULL)) {
     c1 = *pc8;
     while (c1 != '\0') {
       pc8 = pc8 + 1;
@@ -2869,9 +2761,9 @@ int FUN_0044bf50(int *param_1,char param_2)
       n11 = n3 + 1;
     }
     n11 = (((int)(n11 + (n11 >> 0x1f & 0x1fU)) >> 5) + 1) * 0x20;
-    if (*(uint **)(v18 + 8) == (uint *)0x0) {
+    if (*(uint **)(v18 + 8) == NULL) {
       pv4 = *(LPCVOID *)(v18 + 0x10);
-      if (*(LPCVOID *)(v18 + 0x10) == (LPCVOID)0x0) {
+      if (*(LPCVOID *)(v18 + 0x10) == NULL) {
         pv4 = DAT_00483df4;
       }
       pu5 = FUN_0046ccb0(pv4,7,n11);
@@ -2910,8 +2802,8 @@ int FUN_0044bf50(int *param_1,char param_2)
         v2a = (void *)(v18 + 4);
         n11 = FUN_00417570((int)v2a);
         FUN_004176a0(v2a,n11 + 1);
-        pc8 = (char *)0x0;
-        if (*(int **)(v18 + 8) != (int *)0x0) {
+        pc8 = NULL;
+        if (*(int **)(v18 + 8) != NULL) {
           pc8 = (char *)**(int **)(v18 + 8);
           c1 = *pc8;
           while (c1 != '\0') {
@@ -2928,7 +2820,7 @@ int FUN_0044bf50(int *param_1,char param_2)
             _itoa(-n11,vec,10);
             if (v12 == 0) {
               vb0 = &PTR_LAB_00472e04;
-              vac = (int *)0x0;
+              vac = NULL;
               va8 = 0;
               va4 = 0;
               v9a = 0;
@@ -2939,9 +2831,9 @@ int FUN_0044bf50(int *param_1,char param_2)
               n11 = FUN_00417570((int)&vb0);
               n3 = FUN_00417570((int)v2a);
               if (n11 != 0) {
-                pc8 = (char *)0x0;
+                pc8 = NULL;
                 FUN_004176a0(v2a,n3 + n11);
-                if (*(int **)(v18 + 8) != (int *)0x0) {
+                if (*(int **)(v18 + 8) != NULL) {
                   pc8 = (char *)**(int **)(v18 + 8);
                   c1 = *pc8;
                   while (c1 != '\0') {
@@ -2968,7 +2860,7 @@ int FUN_0044bf50(int *param_1,char param_2)
               v12 = (ushort)(v12 == 0);
             }
             vcc = &PTR_LAB_00472e04;
-            vc8 = (int *)0x0;
+            vc8 = NULL;
             vc4 = 0;
             vc0 = 0;
             vb6 = 0;
@@ -2979,9 +2871,9 @@ int FUN_0044bf50(int *param_1,char param_2)
             n11 = FUN_00417570((int)&vcc);
             n3 = FUN_00417570((int)v2a);
             if (n11 != 0) {
-              pc8 = (char *)0x0;
+              pc8 = NULL;
               FUN_004176a0(v2a,n3 + n11);
-              if (*(int **)(v18 + 8) != (int *)0x0) {
+              if (*(int **)(v18 + 8) != NULL) {
                 pc8 = (char *)**(int **)(v18 + 8);
                 c1 = *pc8;
                 while (c1 != '\0') {
@@ -3031,7 +2923,7 @@ L_0044c4d2:
               }
               else {
                 v94 = &PTR_LAB_00472e04;
-                v90 = (int *)0x0;
+                v90 = NULL;
                 _seh_statec = 0;
                 _seh_state8 = 0;
                 v7e = 0;
@@ -3094,8 +2986,8 @@ L_0044c4d2:
         }
         n11 = FUN_00417570((int)v2a);
         FUN_004176a0(v2a,n11 + 1);
-        pc8 = (char *)0x0;
-        if (*(int **)(v18 + 8) != (int *)0x0) {
+        pc8 = NULL;
+        if (*(int **)(v18 + 8) != NULL) {
           pc8 = (char *)**(int **)(v18 + 8);
           c1 = *pc8;
           while (c1 != '\0') {
@@ -3116,7 +3008,7 @@ L_0044c4d2:
         if ((((s2 != 0x51a) && (s2 != 0x682)) && (s2 != 0x885)) &&
            ((s2 != 0x67f && (s2 != 0x795)))) {
           v78 = &PTR_LAB_00472e04;
-          v74 = (int *)0x0;
+          v74 = NULL;
           v70 = 0;
           v6c = 0;
           v62 = 0;
@@ -3191,7 +3083,6 @@ void FUN_0044c79c(void)
   int _ebp;
   
   FUN_00413810((int *)(_ebp + -200));
-  return;
 }
 
 
@@ -3202,7 +3093,6 @@ void FUN_0044c7a7(void)
   int _ebp;
   
   FUN_00413810((int *)(_ebp + -0xac));
-  return;
 }
 
 
@@ -3213,7 +3103,6 @@ void FUN_0044c7b2(void)
   int _ebp;
   
   FUN_00413810((int *)(_ebp + -0x90));
-  return;
 }
 
 
@@ -3224,7 +3113,6 @@ void FUN_0044c7bd(void)
   int _ebp;
   
   FUN_00413810((int *)(_ebp + -0x74));
-  return;
 }
 
 
@@ -3235,7 +3123,6 @@ void FUN_0044c7d7(void)
   int _ebp;
   
   FUN_004113d0((int *)(_ebp + -0x3c));
-  return;
 }
 
 
@@ -3483,8 +3370,8 @@ char * __fastcall FUN_0044da30(int param_1)
   char c1;
   char *pc2;
   
-  pc2 = (char *)0x0;
-  if (*(int **)(param_1 + 4) != (int *)0x0) {
+  pc2 = NULL;
+  if (*(int **)(param_1 + 4) != NULL) {
     pc2 = (char *)**(int **)(param_1 + 4);
     c1 = *pc2;
     while (c1 != '\0') {
@@ -3509,7 +3396,6 @@ char FUN_0044da50(void)
 void FUN_0044da60(void)
 {
   SetFocus(*(HWND *)(*(int *)(DAT_004897c0 + 6) + 0xe));
-  return;
 }
 
 
@@ -3607,13 +3493,12 @@ int __cdecl FUN_0044dc20(int param_1,int *param_2)
 void FUN_0044dcb0(void)
 {
   int u1;
-  int _p_fffffff4;
+  int _arg1;
   
   u1 = 0;
   FUN_00401050(&_tmp_44,0);
   FUN_00401050(&_tmp_43,0);
-  FUN_00401060(&DAT_00488f90,u1,_p_fffffff4);
-  return;
+  FUN_00401060(&DAT_00488f90,u1,_arg1);
 }
 
 
@@ -3630,7 +3515,6 @@ void FUN_0044dd20(void)
 {
   _DAT_00488f9e = 0;
   _DAT_00488f9c = 0;
-  return;
 }
 
 
@@ -3639,7 +3523,6 @@ void FUN_0044dd20(void)
 void FUN_0044dd30(void)
 {
   _atexit(FUN_0044dd40);
-  return;
 }
 
 
@@ -3656,7 +3539,6 @@ void FUN_0044dd60(void)
 {
   _DAT_00488f9a = 0;
   _DAT_00488f98 = 0;
-  return;
 }
 
 
@@ -3665,7 +3547,6 @@ void FUN_0044dd60(void)
 void FUN_0044dd70(void)
 {
   _atexit(FUN_0044dd80);
-  return;
 }
 
 
@@ -3702,7 +3583,6 @@ int * __fastcall FUN_0044dd90(int *param_1)
 void FUN_0044de59(void)
 {
   FUN_00427c00();
-  return;
 }
 
 
@@ -3740,13 +3620,12 @@ void FUN_0044e2ef(void) { return; }
 void FUN_0044e310(void)
 {
   int u1;
-  int _p_fffffff4;
+  int _arg1;
   
   u1 = 0;
   FUN_00401050(&_tmp_44,0);
   FUN_00401050(&_tmp_43,0);
-  FUN_00401060(&DAT_00488fa0,u1,_p_fffffff4);
-  return;
+  FUN_00401060(&DAT_00488fa0,u1,_arg1);
 }
 
 
@@ -3763,7 +3642,6 @@ void FUN_0044e380(void)
 {
   _DAT_00488fae = 0;
   _DAT_00488fac = 0;
-  return;
 }
 
 
@@ -3772,7 +3650,6 @@ void FUN_0044e380(void)
 void FUN_0044e390(void)
 {
   _atexit(FUN_0044e3a0);
-  return;
 }
 
 
@@ -3789,7 +3666,6 @@ void FUN_0044e3c0(void)
 {
   _DAT_00488faa = 0;
   _DAT_00488fa8 = 0;
-  return;
 }
 
 
@@ -3798,7 +3674,6 @@ void FUN_0044e3c0(void)
 void FUN_0044e3d0(void)
 {
   _atexit(FUN_0044e3e0);
-  return;
 }
 
 
@@ -3841,7 +3716,6 @@ void FUN_0044e4b9(void)
   int _ebp;
   
   FUN_00405420(*(int **)(_ebp + -0x10));
-  return;
 }
 
 
@@ -3850,13 +3724,12 @@ void FUN_0044e4b9(void)
 void FUN_0044e520(void)
 {
   int u1;
-  int _p_fffffff4;
+  int _arg1;
   
   u1 = 0;
   FUN_00401050(&_tmp_44,0);
   FUN_00401050(&_tmp_43,0);
-  FUN_00401060(&DAT_00488fb0,u1,_p_fffffff4);
-  return;
+  FUN_00401060(&DAT_00488fb0,u1,_arg1);
 }
 
 
@@ -3873,7 +3746,6 @@ void FUN_0044e590(void)
 {
   _DAT_00488fbe = 0;
   _DAT_00488fbc = 0;
-  return;
 }
 
 
@@ -3882,7 +3754,6 @@ void FUN_0044e590(void)
 void FUN_0044e5a0(void)
 {
   _atexit(FUN_0044e5b0);
-  return;
 }
 
 
@@ -3899,7 +3770,6 @@ void FUN_0044e5d0(void)
 {
   _DAT_00488fba = 0;
   _DAT_00488fb8 = 0;
-  return;
 }
 
 
@@ -3908,7 +3778,6 @@ void FUN_0044e5d0(void)
 void FUN_0044e5e0(void)
 {
   _atexit(FUN_0044e5f0);
-  return;
 }
 
 
@@ -3961,13 +3830,12 @@ void __fastcall FUN_0044e600(int *param_1)
 void FUN_0044e6d0(void)
 {
   int u1;
-  int _p_fffffff4;
+  int _arg1;
   
   u1 = 0;
   FUN_00401050(&_tmp_44,0);
   FUN_00401050(&_tmp_43,0);
-  FUN_00401060(&DAT_00488fc0,u1,_p_fffffff4);
-  return;
+  FUN_00401060(&DAT_00488fc0,u1,_arg1);
 }
 
 
@@ -3984,7 +3852,6 @@ void FUN_0044e740(void)
 {
   _DAT_00488fce = 0;
   _DAT_00488fcc = 0;
-  return;
 }
 
 
@@ -3993,7 +3860,6 @@ void FUN_0044e740(void)
 void FUN_0044e750(void)
 {
   _atexit(FUN_0044e760);
-  return;
 }
 
 
@@ -4010,7 +3876,6 @@ void FUN_0044e780(void)
 {
   _DAT_00488fca = 0;
   _DAT_00488fc8 = 0;
-  return;
 }
 
 
@@ -4019,7 +3884,6 @@ void FUN_0044e780(void)
 void FUN_0044e790(void)
 {
   _atexit(FUN_0044e7a0);
-  return;
 }
 
 
@@ -4082,7 +3946,6 @@ void __fastcall FUN_0044e840(int *param_1)
   FUN_0044e893();
   /* SEH epilog */
   *_fs = _seh_prev;
-  return;
 }
 
 
@@ -4093,7 +3956,6 @@ void FUN_0044e893(void)
   int _ebp;
   
   FUN_00417cc0(*(int **)(_ebp + -0x10));
-  return;
 }
 
 
@@ -4112,7 +3974,7 @@ void __fastcall FUN_0044e990(int param_1)
 {
   HGLOBAL pv1;
   
-  if (*(LPCVOID *)(param_1 + 0x10) != (LPCVOID)0x0) {
+  if (*(LPCVOID *)(param_1 + 0x10) != NULL) {
     pv1 = GlobalHandle(*(LPCVOID *)(param_1 + 0x10));
     GlobalUnlock(pv1);
     pv1 = GlobalHandle(*(LPCVOID *)(param_1 + 0x10));
@@ -4123,7 +3985,6 @@ void __fastcall FUN_0044e990(int param_1)
     DeleteObject(*(HGDIOBJ *)(param_1 + 0x14));
   }
   *(int *)(param_1 + 0x14) = 0;
-  return;
 }
 
 
@@ -4189,7 +4050,6 @@ void __thiscall FUN_0044eb10(void *this,void *param_1,char param_2)
 {
   FUN_0041abd0(this,param_1,param_2);
   FUN_0044eb30(this,(int)param_1);
-  return;
 }
 
 
@@ -4221,7 +4081,6 @@ void __thiscall FUN_0044eb30(void *this,int param_1)
     pu1[3] = 0;
   } while (s4 < 0x100);
   FUN_0044ebe0((intptr_t)this);
-  return;
 }
 
 
@@ -4238,7 +4097,7 @@ char __fastcall FUN_0044ebe0(int param_1)
   int n5;
   BYTE *pBVar6;
   
-  if (*(int **)(param_1 + 0x10) == (int *)0x0) {
+  if (*(int **)(param_1 + 0x10) == NULL) {
     return '\0';
   }
   if (**(int **)(param_1 + 0x10) == 0x28) {
@@ -4301,13 +4160,12 @@ void FUN_0044f0f0(void) { return; }
 void FUN_0044f140(void)
 {
   int u1;
-  int _p_fffffff4;
+  int _arg1;
   
   u1 = 0;
   FUN_00401050(&_tmp_44,0);
   FUN_00401050(&_tmp_43,0);
-  FUN_00401060(&DAT_00488fd0,u1,_p_fffffff4);
-  return;
+  FUN_00401060(&DAT_00488fd0,u1,_arg1);
 }
 
 
@@ -4324,7 +4182,6 @@ void FUN_0044f1b0(void)
 {
   _DAT_00488fde = 0;
   _DAT_00488fdc = 0;
-  return;
 }
 
 
@@ -4333,7 +4190,6 @@ void FUN_0044f1b0(void)
 void FUN_0044f1c0(void)
 {
   _atexit(FUN_0044f1d0);
-  return;
 }
 
 
@@ -4350,7 +4206,6 @@ void FUN_0044f1f0(void)
 {
   _DAT_00488fda = 0;
   _DAT_00488fd8 = 0;
-  return;
 }
 
 
@@ -4359,7 +4214,6 @@ void FUN_0044f1f0(void)
 void FUN_0044f200(void)
 {
   _atexit(FUN_0044f210);
-  return;
 }
 
 
@@ -4373,13 +4227,12 @@ void FUN_0044f210(void) { return; }
 void FUN_0044f230(void)
 {
   int u1;
-  int _p_fffffff4;
+  int _arg1;
   
   u1 = 0;
   FUN_00401050(&_tmp_44,0);
   FUN_00401050(&_tmp_43,0);
-  FUN_00401060(&DAT_00488fe0,u1,_p_fffffff4);
-  return;
+  FUN_00401060(&DAT_00488fe0,u1,_arg1);
 }
 
 
@@ -4388,7 +4241,6 @@ void FUN_0044f230(void)
 void FUN_0044f270(void)
 {
   _atexit(FUN_0044f280);
-  return;
 }
 
 
@@ -4405,7 +4257,6 @@ void FUN_0044f2a0(void)
 {
   _DAT_00488fee = 0;
   _DAT_00488fec = 0;
-  return;
 }
 
 
@@ -4414,7 +4265,6 @@ void FUN_0044f2a0(void)
 void FUN_0044f2b0(void)
 {
   _atexit(FUN_0044f2c0);
-  return;
 }
 
 
@@ -4431,7 +4281,6 @@ void FUN_0044f2e0(void)
 {
   _DAT_00488fea = 0;
   _DAT_00488fe8 = 0;
-  return;
 }
 
 
@@ -4440,7 +4289,6 @@ void FUN_0044f2e0(void)
 void FUN_0044f2f0(void)
 {
   _atexit(FUN_0044f300);
-  return;
 }
 
 
@@ -4468,13 +4316,12 @@ void FUN_0044f6c4(void) { return; }
 void FUN_0044f6e0(void)
 {
   int u1;
-  int _p_fffffff4;
+  int _arg1;
   
   u1 = 0;
   FUN_00401050(&_tmp_44,0);
   FUN_00401050(&_tmp_43,0);
-  FUN_00401060(&DAT_00488ff0,u1,_p_fffffff4);
-  return;
+  FUN_00401060(&DAT_00488ff0,u1,_arg1);
 }
 
 
@@ -4506,7 +4353,6 @@ void __thiscall FUN_0044f840(MathProblem *this,int param_1)
   this->field_1cc = (int)*(short *)(DAT_0048345c + 0x44 + (short)param_1 * 0xc);
   this->problem_type = param_1 << 4;
   ((void (*)(void))this->vtable[1])();
-  return;
 }
 
 

@@ -3,7 +3,7 @@
  * Address range: 0x470000 - 0x47FFFF
  * Functions: 65
  *
- * Reconstructed source for MMath.exe
+ * Part of MMath (Educational Math Game, ~1995)
  */
 
 #include "types.h"
@@ -21,7 +21,7 @@ void FUN_00470000(void)
   n2 = FUN_00471650((LPCRITICAL_SECTION)&DAT_00489c80,(int *)&DAT_00484034);
   if (n2 != 0) {
     pDVar3 = FUN_00471930(0x484048,0);
-    if ((pDVar3 != (DWORD *)0x0) && (DVar1 = pDVar3[1], pDVar3[1] = DVar1 - 1, DVar1 - 1 == 0)) {
+    if ((pDVar3 != NULL) && (DVar1 = pDVar3[1], pDVar3[1] = DVar1 - 1, DVar1 - 1 == 0)) {
       FUN_00471990(0x484048,pDVar3);
     }
     LeaveCriticalSection((LPCRITICAL_SECTION)&DAT_00489c80);
@@ -221,7 +221,7 @@ int __fastcall FUN_004703f0(LPCVOID param_1,int *param_2)
   param_2[4] = u2 - 0x1c;
   pn1 = *(int **)((int)param_1 + 0x10); /* TODO: SmartHeap page free_ptr at 0x10 */
   param_2[5] = (int)pn1;
-  if ((pn1 != (int *)0x0) && (*pn1 != *param_2)) {
+  if ((pn1 != NULL) && (*pn1 != *param_2)) {
     return 0xfffffffe;
   }
   if (*(int *)((int)param_1 + 0x10) == 0) { /* TODO: SmartHeap page free_ptr at 0x10 */
@@ -317,17 +317,17 @@ int __fastcall FUN_00470580(int param_1,int *param_2)
   pn1 = *(int **)(param_1 + 100 + *(char *)((int)param_2 + -1) * 4);
   pn2 = pn1;
   do {
-    if (pn2 == (int *)0x0) {
+    if (pn2 == NULL) {
       return 1;
     }
     if (pn2 == param_2) {
       return 0;
     }
     pn2 = (int *)*pn2;
-    if (pn2 == (int *)0x0) {
+    if (pn2 == NULL) {
       return 1;
     }
-  } while (((pn1 == (int *)0x0) || (pn1 = (int *)*pn1, pn1 == (int *)0x0)) ||
+  } while (((pn1 == NULL) || (pn1 = (int *)*pn1, pn1 == NULL)) ||
           (pn1 = (int *)*pn1, pn2 != pn1));
   FUN_0046fd70(param_1,0xc);
   return 0xffffffff;
@@ -482,7 +482,7 @@ int __fastcall FUN_00470840(int param_1,int param_2,int *param_3)
   pu4 = (int *)(param_1 + 0x1c);
   s3 = (short)((*(int *)(param_1 + 0x14) - (int)pu4 & 0xffffU) / (uint)u1);
   while( true ) {
-    if (pu2 == (int *)0x0) {
+    if (pu2 == NULL) {
       return 1;
     }
     if ((((pu2 < pu4) || ((int *)(*(int *)(param_1 + 0x14) - (uint)u1) < pu2)) ||
@@ -616,8 +616,8 @@ int __fastcall FUN_00470f00(int param_1)
   u4 = 0;
   do {
     pn2 = (int *)*pn3;
-    if (pn2 != (int *)0x0) {
-      if ((int *)*pn2 != (int *)0x0) {
+    if (pn2 != NULL) {
+      if ((int *)*pn2 != NULL) {
         pn2 = (int *)*pn2;
       }
       n1 = FUN_00470580(param_1,pn2);
@@ -689,8 +689,8 @@ int __fastcall FUN_00470fd0(int *param_1)
   int *pu1;
   int n2;
   
-  if (((int *)param_1[4] != (int *)0x0) &&
-     (pu1 = *(int **)param_1[4], pu1 != (int *)0x0)) {
+  if (((int *)param_1[4] != NULL) &&
+     (pu1 = *(int **)param_1[4], pu1 != NULL)) {
     n2 = FUN_00470840((int)param_1,*param_1,pu1);
     if (n2 == -1) {
       FUN_0046fd70(*param_1,0xc);
@@ -799,10 +799,10 @@ void * __fastcall FUN_00471190(uint param_1,uint param_2)
   lpAddress = FUN_00471150(dwSize);
   lpAddress_00 = (void *)VirtualAlloc(lpAddress,dwSize,flAllocationType,flProtect);
   pu3 = lpAddress_00;
-  if (lpAddress_00 != (void *)0x0) {
+  if (lpAddress_00 != NULL) {
     pv1 = VirtualAlloc(lpAddress_00,u4,0x1000,4);
     if (pv1 == (LPVOID)0x0) {
-      pu3 = (void *)0x0;
+      pu3 = NULL;
       FUN_00471220(lpAddress_00);
     }
     else if ((param_2 & 0x100) != 0) {
@@ -829,7 +829,7 @@ int __fastcall FUN_00471220(LPCVOID param_1)
   BOOL flag1;
   
   dwSize = FUN_00471410(param_1);
-  if (((dwSize < 0x10001) && (DAT_00484030 != (LPCVOID)0x0)) && (param_1 < DAT_00484030)) {
+  if (((dwSize < 0x10001) && (DAT_00484030 != NULL)) && (param_1 < DAT_00484030)) {
     DAT_00484030 = param_1;
   }
   flag1 = VirtualFree(param_1,dwSize,0x4000);
@@ -860,7 +860,7 @@ void * __fastcall FUN_00471280(void *param_1,uint param_2,uint param_3)
     return param_1;
   }
   pu2 = FUN_00471190(param_2,param_3 & 0xfffffeff);
-  if (pu2 != (void *)0x0) {
+  if (pu2 != NULL) {
     u3 = FUN_00471410(param_1);
     u5 = u3;
     if (param_2 <= u3) {
@@ -1003,7 +1003,6 @@ void FUN_00471590(void)
 {
   LeaveCriticalSection((LPCRITICAL_SECTION)&DAT_00489c28);
   DeleteCriticalSection((LPCRITICAL_SECTION)&DAT_00489c28);
-  return;
 }
 
 
@@ -1109,7 +1108,6 @@ void __fastcall FUN_00471990(int param_1,DWORD *param_2)
   u1 = *(DWORD *)(n2 + 0x14);
   *param_2 = *(DWORD *)(n2 + 0x10);
   param_2[1] = u1;
-  return;
 }
 
 
@@ -1149,7 +1147,6 @@ void WinGCreateBitmap(void)
                     /* NOTE: Could not recover jumptable at 0x00471a30. Too many branches */
                     /* NOTE: Treating indirect jump as call */
   WinGCreateBitmap();
-  return;
 }
 
 
@@ -1160,7 +1157,6 @@ void WinGCreateDC(void)
                     /* NOTE: Could not recover jumptable at 0x00471a36. Too many branches */
                     /* NOTE: Treating indirect jump as call */
   WinGCreateDC();
-  return;
 }
 
 
@@ -1171,7 +1167,6 @@ void WinGRecommendDIBFormat(void)
                     /* NOTE: Could not recover jumptable at 0x00471a3c. Too many branches */
                     /* NOTE: Treating indirect jump as call */
   WinGRecommendDIBFormat();
-  return;
 }
 
 
@@ -1242,7 +1237,6 @@ void __CxxFrameHandler(void)
                     /* NOTE: Could not recover jumptable at 0x00471b24. Too many branches */
                     /* NOTE: Treating indirect jump as call */
   __CxxFrameHandler();
-  return;
 }
 
 
@@ -1275,7 +1269,6 @@ void _eh_vector_destructor_iterator_
   v8 = 0xffffffff;
   FUN_00471ba0();
   *_fs = v14;
-  return;
 }
 
 
@@ -1313,7 +1306,6 @@ void __ArrayUnwind(void *param_1,uint param_2,int param_3,callback_ptr *param_4)
     (*param_4)(_edi);
   }
   *_fs = v14;
-  return;
 }
 
 
@@ -1352,7 +1344,6 @@ void _eh_vector_constructor_iterator_
   v8 = 0xffffffff;
   FUN_00471cd0();
   *_fs = v14;
-  return;
 }
 
 
@@ -1377,7 +1368,6 @@ void __cdecl ftol(void)
                     /* NOTE: Could not recover jumptable at 0x00471cf2. Too many branches */
                     /* NOTE: Treating indirect jump as call */
   ftol();
-  return;
 }
 
 
@@ -1388,7 +1378,6 @@ void _CIacos(void)
                     /* NOTE: Could not recover jumptable at 0x00471cfe. Too many branches */
                     /* NOTE: Treating indirect jump as call */
   _CIacos();
-  return;
 }
 
 
@@ -1407,7 +1396,6 @@ void FUN_00471d10(void)
     pu1 = pu1 + -0x1000;
   }
   *(unsigned int *)(pu1 + (-4 - _eax)) = _retaddr;
-  return;
 }
 
 
@@ -1430,7 +1418,6 @@ void __cdecl abort(void)
                     /* NOTE: Subroutine does not return */
                     /* NOTE: Treating indirect jump as call */
   abort();
-  return;
 }
 
 
@@ -1441,7 +1428,6 @@ void __dllonexit(void)
                     /* NOTE: Could not recover jumptable at 0x00471eee. Too many branches */
                     /* NOTE: Treating indirect jump as call */
   __dllonexit();
-  return;
 }
 
 
@@ -1452,7 +1438,6 @@ void __cdecl _initterm(void)
                     /* NOTE: Could not recover jumptable at 0x00471f00. Too many branches */
                     /* NOTE: Treating indirect jump as call */
   _initterm();
-  return;
 }
 
 
@@ -1466,7 +1451,6 @@ void __cdecl _initterm(void)
 void __setdefaultprecision(void)
 {
   _controlfp(0x10000,0x30000);
-  return;
 }
 
 

@@ -3,7 +3,7 @@
  * Address range: 0x409000 - 0x40FFFF
  * Functions: 209
  *
- * Reconstructed source for MMath.exe
+ * Part of MMath (Educational Math Game, ~1995)
  */
 
 #include "types.h"
@@ -90,7 +90,6 @@ void __thiscall FUN_004092c0(GameWidget *this,int param_1,int param_2)
     } while (u1 <= *(uint *)((int)this->child_list_2 + 0xe));  /* child_list_2 sub-struct count at +0xe */
   }
   FUN_0041cad0(this);
-  return;
 }
 
 
@@ -106,8 +105,8 @@ void FUN_00409330(void)
   u2 = DAT_0047e7b0;
   do {
     pc1 = (char *)(&DAT_004841a8)[s3];
-    if (pc1 != (char *)0x0) {
-      if ((u2 == 0) && (pc1 != (char *)0x0)) {
+    if (pc1 != NULL) {
+      if ((u2 == 0) && (pc1 != NULL)) {
         thunk_FUN_0042f1c0(pc1);
         FUN_0046c410((uint)pc1);
         u2 = DAT_0047e7b0;
@@ -142,9 +141,9 @@ void __cdecl FUN_00409460(void *param_1,int param_2)
   int n3;
   short s4;
   
-  if ((param_1 != (void *)0x0) && (param_2 != 0)) {
+  if ((param_1 != NULL) && (param_2 != 0)) {
     pu1 = FUN_00457a10(param_1,param_2);
-    if (pu1 != (ushort *)0x0) {
+    if (pu1 != NULL) {
       s4 = 0;
       DAT_0047e7b0 = pu1;
       do {
@@ -195,7 +194,6 @@ void __thiscall FUN_004094d0(UIWidget *this,short param_1,char param_2)
   }
   FUN_0041ab40((&DAT_004841a8)[*(short *)((int)this + 0x44)]);  /* TODO: unknown offset 0x44 in _pad42 region */
   FUN_004092c0(this,2,CONCAT31((unsigned int)((uint)_ebx >> 8),param_2));
-  return;
 }
 
 
@@ -219,7 +217,6 @@ void __thiscall FUN_00409580(UIWidget *this,char param_1)
   }
   FUN_0041ab40(0);
   FUN_004092c0(this,1,CONCAT31((unsigned int)((uint)_ebx >> 8),param_1));
-  return;
 }
 
 
@@ -246,7 +243,6 @@ void __thiscall FUN_004095f0(int *this,int *param_1,int *param_2)
   param_1[1] = n4 + n5;
   *param_1 = n2 + n3;
   *_fs = u1;
-  return;
 }
 
 
@@ -273,7 +269,6 @@ void __thiscall FUN_00409670(int *this,int *param_1,int *param_2)
   param_1[1] = n4 - n5;
   *param_1 = n2 - n3;
   *_fs = u1;
-  return;
 }
 
 
@@ -321,7 +316,6 @@ FUN_00409790(GameWidget *this,short param_1,short param_2,short param_3,short pa
   *(short *)this = param_2;
   this->field_06 = param_3;
   this->field_04 = param_4;
-  return;
 }
 
 
@@ -330,12 +324,11 @@ FUN_00409790(GameWidget *this,short param_1,short param_2,short param_3,short pa
 void __fastcall FUN_004097c0(int *param_1)
 {
   *param_1 = &PTR_LAB_0047241c;
-  if ((uint *)param_1[1] != (uint *)0x0) {
+  if ((uint *)param_1[1] != NULL) {
     FUN_0046d110((uint *)param_1[1]);
   }
   param_1[1] = 0;
   param_1[2] = 0;
-  return;
 }
 
 
@@ -347,7 +340,6 @@ void __thiscall FUN_00409830(GameWidget *this,short *param_1)
   *(short *)this = *param_1;
   this->field_06 = param_1[3];
   this->field_04 = param_1[2];
-  return;
 }
 
 
@@ -356,13 +348,12 @@ void __thiscall FUN_00409830(GameWidget *this,short *param_1)
 void FUN_00409870(void)
 {
   int u1;
-  int _p_fffffff4;
+  int _arg1;
   
   u1 = 0;
   FUN_00401050(&_tmp_44,0);
   FUN_00401050(&_tmp_43,0);
-  FUN_00401060(&DAT_004841f8,u1,_p_fffffff4);
-  return;
+  FUN_00401060(&DAT_004841f8,u1,_arg1);
 }
 
 
@@ -379,7 +370,6 @@ void FUN_004098e0(void)
 {
   _DAT_00484206 = 0;
   _DAT_00484204 = 0;
-  return;
 }
 
 
@@ -388,7 +378,6 @@ void FUN_004098e0(void)
 void FUN_004098f0(void)
 {
   _atexit(FUN_00409900);
-  return;
 }
 
 
@@ -405,7 +394,6 @@ void FUN_00409920(void)
 {
   _DAT_00484202 = 0;
   _DAT_00484200 = 0;
-  return;
 }
 
 
@@ -414,7 +402,6 @@ void FUN_00409920(void)
 void FUN_00409930(void)
 {
   _atexit(FUN_00409940);
-  return;
 }
 
 
@@ -494,7 +481,6 @@ void __fastcall FUN_00409a30(GameWidget *this)
   FUN_00409aac();
   /* SEH epilog */
   *_fs = _seh_prev;
-  return;
 }
 
 
@@ -505,7 +491,6 @@ void FUN_00409aac(void)
   int _ebp;
   
   FUN_0042be10(*(int **)(_ebp + -0x10));
-  return;
 }
 
 
@@ -542,7 +527,6 @@ int * __fastcall FUN_00409bd0(int *param_1)
 void FUN_00409cc9(void)
 {
   FUN_004012a0();
-  return;
 }
 
 
@@ -571,7 +555,7 @@ void FUN_00409fc0(char *param_1)
 {
   void *this;
   
-  if (*(void **)(DAT_004897c0 + 0x52) != (void *)0x0) {
+  if (*(void **)(DAT_004897c0 + 0x52) != NULL) {
     this = (void *)FUN_0042e020(*(void **)(DAT_004897c0 + 0x52));
     FUN_00458860(this,param_1);
   }
@@ -584,7 +568,6 @@ void FUN_00409fc0(char *param_1)
 void FUN_00409fe0(void)
 {
   FUN_0042e020(*(void **)(DAT_004897c0 + 0x52));
-  return;
 }
 
 
@@ -593,13 +576,12 @@ void FUN_00409fe0(void)
 void FUN_0040a190(void)
 {
   int u1;
-  int _p_fffffff4;
+  int _arg1;
   
   u1 = 0;
   FUN_00401050(&_tmp_44,0);
   FUN_00401050(&_tmp_43,0);
-  FUN_00401060(&DAT_00484208,u1,_p_fffffff4);
-  return;
+  FUN_00401060(&DAT_00484208,u1,_arg1);
 }
 
 
@@ -616,7 +598,6 @@ void FUN_0040a200(void)
 {
   _DAT_00484216 = 0;
   _DAT_00484214 = 0;
-  return;
 }
 
 
@@ -625,7 +606,6 @@ void FUN_0040a200(void)
 void FUN_0040a210(void)
 {
   _atexit(FUN_0040a220);
-  return;
 }
 
 
@@ -642,7 +622,6 @@ void FUN_0040a240(void)
 {
   _DAT_00484212 = 0;
   _DAT_00484210 = 0;
-  return;
 }
 
 
@@ -651,7 +630,6 @@ void FUN_0040a240(void)
 void FUN_0040a250(void)
 {
   _atexit(FUN_0040a260);
-  return;
 }
 
 
@@ -677,7 +655,6 @@ void __cdecl FUN_0040a270(int param_1,char *param_2,short param_3)
     return;
   }
   FUN_0040a310(param_1,param_2);
-  return;
 }
 
 
@@ -787,7 +764,7 @@ char * __cdecl FUN_0040a410(char *param_1)
 {
   char c1;
   
-  if (param_1 != (char *)0x0) {
+  if (param_1 != NULL) {
     c1 = *param_1;
     while (c1 != '\0') {
       param_1 = param_1 + 1;
@@ -795,7 +772,7 @@ char * __cdecl FUN_0040a410(char *param_1)
     }
     return param_1;
   }
-  return (char *)0x0;
+  return NULL;
 }
 
 
@@ -804,13 +781,12 @@ char * __cdecl FUN_0040a410(char *param_1)
 void FUN_0040a440(void)
 {
   int u1;
-  int _p_fffffff4;
+  int _arg1;
   
   u1 = 0;
   FUN_00401050(&_tmp_44,0);
   FUN_00401050(&_tmp_43,0);
-  FUN_00401060(&DAT_00484218,u1,_p_fffffff4);
-  return;
+  FUN_00401060(&DAT_00484218,u1,_arg1);
 }
 
 
@@ -827,7 +803,6 @@ void FUN_0040a4b0(void)
 {
   _DAT_00484236 = 0;
   _DAT_00484234 = 0;
-  return;
 }
 
 
@@ -836,7 +811,6 @@ void FUN_0040a4b0(void)
 void FUN_0040a4c0(void)
 {
   _atexit(FUN_0040a4d0);
-  return;
 }
 
 
@@ -853,7 +827,6 @@ void FUN_0040a4f0(void)
 {
   _DAT_00484232 = 0;
   _DAT_00484230 = 0;
-  return;
 }
 
 
@@ -862,7 +835,6 @@ void FUN_0040a4f0(void)
 void FUN_0040a500(void)
 {
   _atexit(FUN_0040a510);
-  return;
 }
 
 
@@ -876,13 +848,12 @@ void FUN_0040a510(void) { return; }
 void FUN_0040a530(void)
 {
   int u1;
-  int _p_fffffff4;
+  int _arg1;
   
   u1 = 0;
   FUN_00401050(&_tmp_44,0);
   FUN_00401050(&_tmp_43,0);
-  FUN_00401060(&DAT_00484240,u1,_p_fffffff4);
-  return;
+  FUN_00401060(&DAT_00484240,u1,_arg1);
 }
 
 
@@ -891,7 +862,6 @@ void FUN_0040a530(void)
 void FUN_0040a570(void)
 {
   _atexit(FUN_0040a580);
-  return;
 }
 
 
@@ -908,7 +878,6 @@ void FUN_0040a5a0(void)
 {
   _DAT_00484266 = 0;
   _DAT_00484264 = 0;
-  return;
 }
 
 
@@ -917,7 +886,6 @@ void FUN_0040a5a0(void)
 void FUN_0040a5b0(void)
 {
   _atexit(FUN_0040a5c0);
-  return;
 }
 
 
@@ -934,7 +902,6 @@ void FUN_0040a5e0(void)
 {
   _DAT_00484262 = 0;
   _DAT_00484260 = 0;
-  return;
 }
 
 
@@ -943,7 +910,6 @@ void FUN_0040a5e0(void)
 void FUN_0040a5f0(void)
 {
   _atexit(FUN_0040a600);
-  return;
 }
 
 
@@ -958,7 +924,6 @@ void FUN_0040a620(void)
 {
   DAT_00484254 = 0;
   DAT_00484250 = 0;
-  return;
 }
 
 
@@ -967,7 +932,6 @@ void FUN_0040a620(void)
 void FUN_0040a630(void)
 {
   _atexit(FUN_0040a640);
-  return;
 }
 
 
@@ -1026,7 +990,6 @@ void __fastcall FUN_0040a740(int *param_1)
   FUN_0040a787();
   /* SEH epilog */
   *_fs = _seh_prev;
-  return;
 }
 
 
@@ -1035,7 +998,6 @@ void __fastcall FUN_0040a740(int *param_1)
 void FUN_0040a787(void)
 {
   FUN_004012a0();
-  return;
 }
 
 
@@ -1124,7 +1086,6 @@ void __fastcall FUN_0040ac40(int *param_1)
 void FUN_0040acbb(void)
 {
   FUN_004012a0();
-  return;
 }
 
 
@@ -1292,8 +1253,8 @@ void FUN_0040bce0(void *param_1)
   FUN_004090c0(&_tmp_29,&v2c);
   _seh_state = (_seh_state & ~0xFF) | 1;
   FUN_004060c0(*(void **)(DAT_004897c0 + 0x44),n2,n3,u4,c5);
-  FUN_0041d780(*(void **)(DAT_004897c0 + 0x44),(void *)0x0);
-  FUN_0041d780(v14,(void *)0x0);
+  FUN_0041d780(*(void **)(DAT_004897c0 + 0x44),NULL);
+  FUN_0041d780(v14,NULL);
   _seh_state &= ~0xFF;
   ((DialogWidget *)v14)->child_list = (void *)1;  /* TODO: verify offset 0x11C = child_list */
   FUN_0040be89();
@@ -1301,7 +1262,6 @@ void FUN_0040bce0(void *param_1)
   FUN_0040be9b();
   /* SEH epilog */
   *_fs = _seh_prev;
-  return;
 }
 
 
@@ -1337,7 +1297,6 @@ void __cdecl FUN_0040beb0(int param_1,int param_2)
   DAT_00484238 = (int *)FUN_0043a6b0(DAT_004838c0,param_1);
   DAT_00484248 = param_1;
   DAT_0047e7c8 = FUN_00434300(DAT_00484238);
-  return;
 }
 
 
@@ -1382,7 +1341,6 @@ FUN_0040bfd0(CString *this,int param_1,int param_2,int param_3,int param_4)
   *(int *)this = param_2;  /* TODO: direct write to vtable - may be intentional init */
   this->allocator = param_3;
   this->capacity = param_4;
-  return;
 }
 
 
@@ -1391,13 +1349,12 @@ FUN_0040bfd0(CString *this,int param_1,int param_2,int param_3,int param_4)
 void FUN_0040c000(void)
 {
   int u1;
-  int _p_fffffff4;
+  int _arg1;
   
   u1 = 0;
   FUN_00401050(&_tmp_44,0);
   FUN_00401050(&_tmp_43,0);
-  FUN_00401060(&DAT_00484268,u1,_p_fffffff4);
-  return;
+  FUN_00401060(&DAT_00484268,u1,_arg1);
 }
 
 
@@ -1414,7 +1371,6 @@ void FUN_0040c070(void)
 {
   _DAT_00484276 = 0;
   _DAT_00484274 = 0;
-  return;
 }
 
 
@@ -1423,7 +1379,6 @@ void FUN_0040c070(void)
 void FUN_0040c080(void)
 {
   _atexit(FUN_0040c090);
-  return;
 }
 
 
@@ -1440,7 +1395,6 @@ void FUN_0040c0b0(void)
 {
   _DAT_00484272 = 0;
   _DAT_00484270 = 0;
-  return;
 }
 
 
@@ -1449,7 +1403,6 @@ void FUN_0040c0b0(void)
 void FUN_0040c0c0(void)
 {
   _atexit(FUN_0040c0d0);
-  return;
 }
 
 
@@ -1474,7 +1427,6 @@ void FUN_0040c679(void)
   int _ebp;
   
   FUN_0042cd10(*(int **)(_ebp + -0x10));
-  return;
 }
 
 
@@ -1546,7 +1498,6 @@ void FUN_0040c85e(void)
   int _ebp;
   
   FUN_004337b0(*(int **)(_ebp + -0x10));
-  return;
 }
 
 
@@ -1599,7 +1550,6 @@ void FUN_0040d82a(void)
   int _ebp;
   
   FUN_00451f60((int *)(_ebp + -0x418));
-  return;
 }
 
 
@@ -1630,7 +1580,7 @@ void __thiscall FUN_0040d840(void *this,uint param_1)
   *_fs = &_seh_prev;
   s6 = 0;
   if (*(int *)((int)this + 0x44) != 0) {  /* TODO: unknown offset 0x44 on this */
-    pu7 = (ushort *)0x0;
+    pu7 = NULL;
     v11 = DAT_00480100;
     v18 = (void *)FUN_004050d0(*(int *)((int)this + 0x44));  /* TODO: unknown offset 0x44 on this */
     DAT_00480100 = 0;
@@ -1837,8 +1787,8 @@ void __thiscall FUN_0040d840(void *this,uint param_1)
       }
     }
     if (s6 != 0) {
-      if (pu7 == (ushort *)0x0) {
-        v18 = (void *)0x0;
+      if (pu7 == NULL) {
+        v18 = NULL;
         v1c = 0;
         _seh_state = 0;
         FUN_0041cde0(*(void **)((int)this + 0x44),&v1c);  /* TODO: unknown offset 0x44 on this */
@@ -1867,7 +1817,7 @@ void __thiscall FUN_0040d840(void *this,uint param_1)
         ((UIWidget *)pv1)->anim_flag_1 = 0;
         ((UIWidget *)pv1)->anim_flag_3 = 0;
         FUN_00405d30(pv1,s6);
-        if (v18 == (void *)0x0) {
+        if (v18 == NULL) {
           FUN_00407b10(*(void **)((int)this + 0x44),7,pu7);  /* TODO: unknown offset 0x44 on this */
         }
         else {
@@ -1884,7 +1834,6 @@ void __thiscall FUN_0040d840(void *this,uint param_1)
   }
   /* SEH epilog */
   *_fs = _seh_prev;
-  return;
 }
 
 
@@ -1975,7 +1924,6 @@ void __fastcall FUN_0040e360(int param_1)
     s2 = s2 + 1;
     *pn1 = 0;
   } while (s2 < 0x14);
-  return;
 }
 
 
@@ -2212,8 +2160,8 @@ ushort * __cdecl FUN_0040f040(void *param_1,int param_2)
 {
   ushort *pu1;
   
-  pu1 = FUN_004607d0(param_1,param_2,(ushort *)0x0,(ushort *)0x0,0);
-  if (pu1 != (ushort *)0x0) {
+  pu1 = FUN_004607d0(param_1,param_2,NULL,NULL,0);
+  if (pu1 != NULL) {
     FUN_0040efc0((short *)pu1,'\0');
   }
   return pu1;
@@ -2259,7 +2207,7 @@ CString * __thiscall FUN_0040f280(CString *this,uint param_1)
     return this;
   }
   *(void ***)this = &PTR_FUN_00472acc;
-  if (this->pp_buffer != (uint *)0x0) {
+  if (this->pp_buffer != NULL) {
     FUN_0046d110(this->pp_buffer);
   }
   this->pp_buffer = 0;
@@ -2290,16 +2238,16 @@ ushort * __cdecl FUN_0040f380(void *param_1,int param_2,ushort *param_3)
   int n4;
   
   pu2 = FUN_0040f040(param_1,param_2);
-  if (pu2 == (ushort *)0x0) {
+  if (pu2 == NULL) {
     return param_3;
   }
-  if (param_3 == (ushort *)0x0) {
+  if (param_3 == NULL) {
     pv3 = DAT_00483df4;
-    if (DAT_004833cc != (LPCVOID)0x0) {
+    if (DAT_004833cc != NULL) {
       pv3 = DAT_004833cc;
     }
     param_3 = FUN_0046f060(pv3,(short)*pu2 * 2 + 2,1);
-    if (param_3 == (ushort *)0x0) goto L_0040f3f2;
+    if (param_3 == NULL) goto L_0040f3f2;
   }
   *param_3 = *pu2;
   s1 = 1;
@@ -2324,14 +2272,14 @@ void __cdecl FUN_0040f410(ushort *param_1,ushort *param_2)
   short s2;
   int n3;
   
-  if (param_2 == (ushort *)0x0) {
+  if (param_2 == NULL) {
     pv1 = DAT_00483df4;
-    if (DAT_004833cc != (LPCVOID)0x0) {
+    if (DAT_004833cc != NULL) {
       pv1 = DAT_004833cc;
     }
     param_2 = FUN_0046f060(pv1,(short)*param_1 * 2 + 2,1);
   }
-  if (param_2 != (ushort *)0x0) {
+  if (param_2 != NULL) {
     *param_2 = *param_1;
     s2 = 1;
     if (0 < (short)*param_1) {
@@ -2357,7 +2305,7 @@ char __cdecl FUN_0040f480(void *param_1,int param_2,ushort *param_3)
   
   u2 = 0;
   pu1 = FUN_0040f040(param_1,param_2);
-  if (pu1 != (ushort *)0x0) {
+  if (pu1 != NULL) {
     s3 = 1;
     u2 = 1;
     *param_3 = *pu1;
@@ -2379,12 +2327,11 @@ char __cdecl FUN_0040f480(void *param_1,int param_2,ushort *param_3)
 void __fastcall FUN_0040f520(int *param_1)
 {
   *param_1 = &PTR_FUN_00472acc;
-  if ((uint *)param_1[1] != (uint *)0x0) {
+  if ((uint *)param_1[1] != NULL) {
     FUN_0046d110((uint *)param_1[1]);
   }
   param_1[1] = 0;
   param_1[2] = 0;
-  return;
 }
 
 
@@ -2393,13 +2340,12 @@ void __fastcall FUN_0040f520(int *param_1)
 void FUN_0040f560(void)
 {
   int u1;
-  int _p_fffffff4;
+  int _arg1;
   
   u1 = 0;
   FUN_00401050(&_tmp_44,0);
   FUN_00401050(&_tmp_43,0);
-  FUN_00401060(&DAT_00484278,u1,_p_fffffff4);
-  return;
+  FUN_00401060(&DAT_00484278,u1,_arg1);
 }
 
 
@@ -2416,7 +2362,6 @@ void FUN_0040f5d0(void)
 {
   _DAT_00484286 = 0;
   _DAT_00484284 = 0;
-  return;
 }
 
 
@@ -2425,7 +2370,6 @@ void FUN_0040f5d0(void)
 void FUN_0040f5e0(void)
 {
   _atexit(FUN_0040f5f0);
-  return;
 }
 
 
@@ -2442,7 +2386,6 @@ void FUN_0040f610(void)
 {
   _DAT_00484282 = 0;
   _DAT_00484280 = 0;
-  return;
 }
 
 
@@ -2451,7 +2394,6 @@ void FUN_0040f610(void)
 void FUN_0040f620(void)
 {
   _atexit(FUN_0040f630);
-  return;
 }
 
 
@@ -2465,13 +2407,12 @@ void FUN_0040f630(void) { return; }
 void FUN_0040f650(void)
 {
   int u1;
-  int _p_fffffff4;
+  int _arg1;
   
   u1 = 0;
   FUN_00401050(&_tmp_44,0);
   FUN_00401050(&_tmp_43,0);
-  FUN_00401060(&DAT_00484288,u1,_p_fffffff4);
-  return;
+  FUN_00401060(&DAT_00484288,u1,_arg1);
 }
 
 
@@ -2480,7 +2421,6 @@ void FUN_0040f650(void)
 void FUN_0040f690(void)
 {
   _atexit(FUN_0040f6a0);
-  return;
 }
 
 
@@ -2497,7 +2437,6 @@ void FUN_0040f6c0(void)
 {
   _DAT_00484296 = 0;
   _DAT_00484294 = 0;
-  return;
 }
 
 
@@ -2506,7 +2445,6 @@ void FUN_0040f6c0(void)
 void FUN_0040f6d0(void)
 {
   _atexit(FUN_0040f6e0);
-  return;
 }
 
 
@@ -2523,7 +2461,6 @@ void FUN_0040f700(void)
 {
   _DAT_00484292 = 0;
   _DAT_00484290 = 0;
-  return;
 }
 
 
@@ -2532,7 +2469,6 @@ void FUN_0040f700(void)
 void FUN_0040f710(void)
 {
   _atexit(FUN_0040f720);
-  return;
 }
 
 
@@ -2570,7 +2506,6 @@ void FUN_0040f819(void)
   int _ebp;
   
   FUN_00454b00(*(int **)(_ebp + -0x10));
-  return;
 }
 
 
@@ -2707,7 +2642,6 @@ void FUN_0040fe29(void)
   int _ebp;
   
   FUN_00454b00(*(int **)(_ebp + -0x10));
-  return;
 }
 
 
@@ -2739,7 +2673,6 @@ void __thiscall FUN_0040fe40(void *this,int param_1)
   }
   /* SEH epilog */
   *_fs = _seh_prev;
-  return;
 }
 
 
@@ -2752,7 +2685,7 @@ void FUN_0040feca(void) { return; }
 
 void __fastcall FUN_0040fee0(int param_1)
 {
-  if (*(void **)(param_1 + 0x11c) != (void *)0x0) {  /* TODO: offset 0x11c - linked sibling pointer */
+  if (*(void **)(param_1 + 0x11c) != NULL) {  /* TODO: offset 0x11c - linked sibling pointer */
     FUN_0040fb80(*(void **)(param_1 + 0x11c));  /* TODO: offset 0x11c */
   }
   return;
