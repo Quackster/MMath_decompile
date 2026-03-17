@@ -702,7 +702,7 @@ void __fastcall FUN_00423f80(void *param_1)
   int local_4;
   
   FUN_004048d0(param_1);
-  switch(*(short *)(*(int *)((int)param_1 + 0x6a) + 0xc)) {
+  switch(*(short *)(((UIElement *)param_1)->sub_widgets_a[9] + 0xc)) { /* TODO: sub-object at sub_widgets_a[9], offset 0xc */
   case 1:
     local_8 = 0x762000d;
     local_4 = 0x4d0011;
@@ -1342,13 +1342,13 @@ int __fastcall FUN_00425200(void *param_1)
                  (short)*(int *)((int)param_1 + local_18 * 0xe + 0x1e2) /* TODO: stride-0xe sub-array */);
     FUN_0044c7e0(param_1,*(int *)
                           (&DAT_00480888 +
-                          (uint)*(byte *)((int)param_1 + local_18 * 0xe + 0x1d8) * 4),0,'\x01');
+                          (uint)*(byte *)((int)param_1 + local_18 * 0xe + 0x1d8) /* TODO: stride-0xe sub-array field +0x00 */ * 4),0,'\x01');
     FUN_0044c7e0(param_1,*(int *)
-                          (&DAT_0047f830 + *(int *)((int)param_1 + local_18 * 0xe + 0x1da) * 4),0,
+                          (&DAT_0047f830 + *(int *)((int)param_1 + local_18 * 0xe + 0x1da) /* TODO: stride-0xe sub-array field +0x02 */ * 4),0,
                  '\x01');
     FUN_0044bf50((int *)&DAT_004734c4,'\x01');
-    ((GameBoard *)param_1)->target_x = *(int *)((int)param_1 + local_18 * 0xe + 0x1de) /* TODO: stride-0xe sub-array */;
-    ((GameBoard *)param_1)->target_y = *(int *)((int)param_1 + local_18 * 0xe + 0x1e2) /* TODO: stride-0xe sub-array */;
+    ((GameBoard *)param_1)->target_x = *(int *)((int)param_1 + local_18 * 0xe + 0x1de) /* TODO: stride-0xe sub-array field +0x06 */;
+    ((GameBoard *)param_1)->target_y = *(int *)((int)param_1 + local_18 * 0xe + 0x1e2) /* TODO: stride-0xe sub-array field +0x0a */;
     break;
   case 0x12:
   case 0x13:
@@ -1446,8 +1446,8 @@ int __fastcall FUN_00425200(void *param_1)
     iVar2 = rand();
     local_18 = iVar2 % *(int *)((int)param_1 + 0x1d4) /* TODO: offset 0x1d4, count for stride-0xe array */;
     do {
-      FUN_00426350(param_1,*(int *)((int)param_1 + local_18 * 0xe + 0x1de),
-                   *(int *)((int)param_1 + local_18 * 0xe + 0x1e2),&local_14,&local_10,
+      FUN_00426350(param_1,*(int *)((int)param_1 + local_18 * 0xe + 0x1de) /* TODO: stride-0xe sub-array field +0x06 */,
+                   *(int *)((int)param_1 + local_18 * 0xe + 0x1e2) /* TODO: stride-0xe sub-array field +0x0a */,&local_14,&local_10,
                    (int *)&local_c,&local_8);
       uVar3 = FUN_00424f40(param_1,(short)local_14,(short)local_10);
       if ((short)uVar3 != 0) break;
@@ -1458,10 +1458,10 @@ int __fastcall FUN_00425200(void *param_1)
     if (((GameBoard *)param_1)->event_type != 0x4e) {
       FUN_0044c7e0(param_1,*(int *)
                             (&DAT_00480888 +
-                            (uint)*(byte *)((int)param_1 + local_18 * 0xe + 0x1d8) * 4),0,'\x01');
+                            (uint)*(byte *)((int)param_1 + local_18 * 0xe + 0x1d8) /* TODO: stride-0xe sub-array field +0x00 */ * 4),0,'\x01');
     }
     FUN_0044c7e0(param_1,*(int *)
-                          (&DAT_0047f830 + *(int *)((int)param_1 + local_18 * 0xe + 0x1da) * 4),0,
+                          (&DAT_0047f830 + *(int *)((int)param_1 + local_18 * 0xe + 0x1da) /* TODO: stride-0xe sub-array field +0x02 */ * 4),0,
                  '\x01');
     if (((GameBoard *)param_1)->event_type == 0x4e) {
       bVar1 = 0;
@@ -1483,8 +1483,8 @@ int __fastcall FUN_00425200(void *param_1)
     iVar2 = rand();
     local_18 = iVar2 % *(int *)((int)param_1 + 0x1d4) /* TODO: offset 0x1d4, count for stride-0xe array */;
     do {
-      FUN_00426350(param_1,*(int *)((int)param_1 + local_18 * 0xe + 0x1de),
-                   *(int *)((int)param_1 + local_18 * 0xe + 0x1e2),&local_14,&local_10,
+      FUN_00426350(param_1,*(int *)((int)param_1 + local_18 * 0xe + 0x1de) /* TODO: stride-0xe sub-array field +0x06 */,
+                   *(int *)((int)param_1 + local_18 * 0xe + 0x1e2) /* TODO: stride-0xe sub-array field +0x0a */,&local_14,&local_10,
                    (int *)&local_c,&local_8);
       uVar3 = FUN_00424f40(param_1,(short)local_14,(short)local_10);
       if ((short)uVar3 != 0) break;
@@ -1494,9 +1494,9 @@ int __fastcall FUN_00425200(void *param_1)
     FUN_0044c7e0(param_1,*(int *)(&DAT_0047f800 + local_8 * 4),0,'\x01');
     FUN_0044c7e0(param_1,*(int *)
                           (&DAT_00480888 +
-                          (uint)*(byte *)((int)param_1 + local_18 * 0xe + 0x1d8) * 4),0,'\x01');
+                          (uint)*(byte *)((int)param_1 + local_18 * 0xe + 0x1d8) /* TODO: stride-0xe sub-array field +0x00 */ * 4),0,'\x01');
     FUN_0044c7e0(param_1,*(int *)
-                          (&DAT_0047f830 + *(int *)((int)param_1 + local_18 * 0xe + 0x1da) * 4),0,
+                          (&DAT_0047f830 + *(int *)((int)param_1 + local_18 * 0xe + 0x1da) /* TODO: stride-0xe sub-array field +0x02 */ * 4),0,
                  '\x01');
     bVar1 = (byte)((GameBoard *)param_1)->event_type & 1;
     piVar8 = (int *)&DAT_004734d8;
@@ -1511,8 +1511,8 @@ int __fastcall FUN_00425200(void *param_1)
     iVar2 = rand();
     local_18 = iVar2 % *(int *)((int)param_1 + 0x1d4) /* TODO: offset 0x1d4, count for stride-0xe array */;
     do {
-      FUN_00426350(param_1,*(int *)((int)param_1 + local_18 * 0xe + 0x1de),
-                   *(int *)((int)param_1 + local_18 * 0xe + 0x1e2),&local_14,&local_10,
+      FUN_00426350(param_1,*(int *)((int)param_1 + local_18 * 0xe + 0x1de) /* TODO: stride-0xe sub-array field +0x06 */,
+                   *(int *)((int)param_1 + local_18 * 0xe + 0x1e2) /* TODO: stride-0xe sub-array field +0x0a */,&local_14,&local_10,
                    (int *)&local_c,&local_8);
       uVar3 = FUN_00424f40(param_1,(short)local_14,(short)local_10);
       if ((short)uVar3 != 0) break;
@@ -1522,7 +1522,7 @@ int __fastcall FUN_00425200(void *param_1)
       FUN_0044c7e0(param_1,*(int *)(&DAT_0047f800 + local_8 * 4),0,'\x01');
       FUN_0044c990(param_1,local_c,0,'\x01');
       FUN_0044c7e0(param_1,*(int *)
-                            (&DAT_0047f830 + *(int *)((int)param_1 + local_18 * 0xe + 0x1da) * 4),0,
+                            (&DAT_0047f830 + *(int *)((int)param_1 + local_18 * 0xe + 0x1da) /* TODO: stride-0xe sub-array field +0x02 */ * 4),0,
                    '\x01');
       bVar1 = (byte)((GameBoard *)param_1)->event_type & 1;
       piVar8 = (int *)&DAT_004734e8;
@@ -1531,7 +1531,7 @@ int __fastcall FUN_00425200(void *param_1)
       FUN_0044c7e0(param_1,*(int *)(&DAT_0047f800 + local_8 * 4),0,'\x01');
       FUN_0044c990(param_1,local_c,0,'\x01');
       FUN_0044c7e0(param_1,*(int *)
-                            (&DAT_0047f830 + *(int *)((int)param_1 + local_18 * 0xe + 0x1da) * 4),0,
+                            (&DAT_0047f830 + *(int *)((int)param_1 + local_18 * 0xe + 0x1da) /* TODO: stride-0xe sub-array field +0x02 */ * 4),0,
                    '\x01');
       bVar1 = (byte)((GameBoard *)param_1)->event_type & 1;
       piVar8 = (int *)&DAT_004734ec;
@@ -1541,9 +1541,9 @@ int __fastcall FUN_00425200(void *param_1)
       FUN_0044c7e0(param_1,*(int *)(&DAT_0047f800 + local_8 * 4),0,'\x01');
       FUN_0044c7e0(param_1,*(int *)
                             (&DAT_00480888 +
-                            (uint)*(byte *)((int)param_1 + local_18 * 0xe + 0x1d8) * 4),0,'\x01');
+                            (uint)*(byte *)((int)param_1 + local_18 * 0xe + 0x1d8) /* TODO: stride-0xe sub-array field +0x00 */ * 4),0,'\x01');
       FUN_0044c7e0(param_1,*(int *)
-                            (&DAT_0047f830 + *(int *)((int)param_1 + local_18 * 0xe + 0x1da) * 4),0,
+                            (&DAT_0047f830 + *(int *)((int)param_1 + local_18 * 0xe + 0x1da) /* TODO: stride-0xe sub-array field +0x02 */ * 4),0,
                    '\x01');
       bVar1 = (byte)((GameBoard *)param_1)->event_type & 1;
       piVar8 = (int *)&DAT_004734d8;
@@ -1632,8 +1632,8 @@ int __fastcall FUN_00425200(void *param_1)
     iVar2 = rand();
     local_18 = iVar2 % *(int *)((int)param_1 + 0x1d4) /* TODO: offset 0x1d4, count for stride-0xe array */;
     do {
-      FUN_00426350(param_1,*(int *)((int)param_1 + local_18 * 0xe + 0x1de),
-                   *(int *)((int)param_1 + local_18 * 0xe + 0x1e2),&local_14,&local_10,
+      FUN_00426350(param_1,*(int *)((int)param_1 + local_18 * 0xe + 0x1de) /* TODO: stride-0xe sub-array field +0x06 */,
+                   *(int *)((int)param_1 + local_18 * 0xe + 0x1e2) /* TODO: stride-0xe sub-array field +0x0a */,&local_14,&local_10,
                    (int *)&local_c,&local_8);
       uVar3 = FUN_00424f40(param_1,(short)local_14,(short)local_10);
       if ((short)uVar3 != 0) break;
@@ -1644,10 +1644,10 @@ int __fastcall FUN_00425200(void *param_1)
     if ((((GameBoard *)param_1)->event_type == 99) || (((GameBoard *)param_1)->event_type == 100)) {
       FUN_0044c7e0(param_1,*(int *)
                             (&DAT_00480888 +
-                            (uint)*(byte *)((int)param_1 + local_18 * 0xe + 0x1d8) * 4),0,'\x01');
+                            (uint)*(byte *)((int)param_1 + local_18 * 0xe + 0x1d8) /* TODO: stride-0xe sub-array field +0x00 */ * 4),0,'\x01');
     }
     FUN_0044c7e0(param_1,*(int *)
-                          (&DAT_0047f830 + *(int *)((int)param_1 + local_18 * 0xe + 0x1da) * 4),0,
+                          (&DAT_0047f830 + *(int *)((int)param_1 + local_18 * 0xe + 0x1da) /* TODO: stride-0xe sub-array field +0x02 */ * 4),0,
                  '\x01');
     if ((((GameBoard *)param_1)->event_type == 0x53) || (((GameBoard *)param_1)->event_type == 0x54)) {
       piVar8 = (int *)&DAT_00473514;
@@ -1721,8 +1721,8 @@ int __fastcall FUN_00425200(void *param_1)
     iVar2 = rand();
     local_18 = iVar2 % *(int *)((int)param_1 + 0x1d4) /* TODO: offset 0x1d4, count for stride-0xe array */;
     do {
-      FUN_00426350(param_1,*(int *)((int)param_1 + local_18 * 0xe + 0x1de),
-                   *(int *)((int)param_1 + local_18 * 0xe + 0x1e2),&local_14,&local_10,
+      FUN_00426350(param_1,*(int *)((int)param_1 + local_18 * 0xe + 0x1de) /* TODO: stride-0xe sub-array field +0x06 */,
+                   *(int *)((int)param_1 + local_18 * 0xe + 0x1e2) /* TODO: stride-0xe sub-array field +0x0a */,&local_14,&local_10,
                    (int *)&local_c,&local_8);
       uVar3 = FUN_00424f40(param_1,(short)local_14,(short)local_10);
       if ((short)uVar3 != 0) break;
@@ -1733,10 +1733,10 @@ int __fastcall FUN_00425200(void *param_1)
     if (((GameBoard *)param_1)->event_type == 0x69) {
       FUN_0044c7e0(param_1,*(int *)
                             (&DAT_00480888 +
-                            (uint)*(byte *)((int)param_1 + local_18 * 0xe + 0x1d8) * 4),0,'\x01');
+                            (uint)*(byte *)((int)param_1 + local_18 * 0xe + 0x1d8) /* TODO: stride-0xe sub-array field +0x00 */ * 4),0,'\x01');
     }
     FUN_0044c7e0(param_1,*(int *)
-                          (&DAT_0047f830 + *(int *)((int)param_1 + local_18 * 0xe + 0x1da) * 4),0,
+                          (&DAT_0047f830 + *(int *)((int)param_1 + local_18 * 0xe + 0x1da) /* TODO: stride-0xe sub-array field +0x02 */ * 4),0,
                  '\x01');
     if (((GameBoard *)param_1)->event_type == 0x69) {
       piVar8 = (int *)&DAT_00473530;
@@ -2482,14 +2482,14 @@ int __cdecl FUN_00427050(uint param_1,LPCVOID param_2)
   }
   sVar4 = 0;
   while (((iVar1 = sVar4 * 0xe, (&DAT_0048624c)[iVar1] != '\0' ||
-          (*(int *)((int)&DAT_00486240 + iVar1) == 0)) ||
-         (*(uint *)((int)&DAT_00486244 + iVar1) < param_1))) {
+          (*(int *)((int)&DAT_00486240 + iVar1) /* TODO: DAT_00486240 stride-0xe array field +0x00 */ == 0)) ||
+         (*(uint *)((int)&DAT_00486244 + iVar1) /* TODO: DAT_00486240 stride-0xe array field +0x04 */ < param_1))) {
     sVar4 = sVar4 + 1;
     if (0xff < sVar4) {
       sVar4 = 0;
       while (((iVar1 = sVar4 * 0xe, (&DAT_0048624c)[sVar4 * 0xe] != '\0' ||
-              (*(int *)((int)&DAT_00486240 + iVar1) != 0)) ||
-             (*(int *)((int)&DAT_00486244 + iVar1) != 0))) {
+              (*(int *)((int)&DAT_00486240 + iVar1) /* TODO: DAT_00486240 stride-0xe array field +0x00 */ != 0)) ||
+             (*(int *)((int)&DAT_00486244 + iVar1) /* TODO: DAT_00486240 stride-0xe array field +0x04 */ != 0))) {
         sVar4 = sVar4 + 1;
         if (0xff < sVar4) {
           return 0;
@@ -2497,15 +2497,15 @@ int __cdecl FUN_00427050(uint param_1,LPCVOID param_2)
       }
       iVar1 = sVar4 * 0xe;
       (&DAT_0048624c)[iVar1] = 1;
-      *(uint *)((int)&DAT_00486248 + iVar1) = param_1;
-      *(uint *)((int)&DAT_00486244 + iVar1) = param_1;
+      *(uint *)((int)&DAT_00486248 + iVar1) /* TODO: DAT_00486240 stride-0xe array field +0x08 */ = param_1;
+      *(uint *)((int)&DAT_00486244 + iVar1) /* TODO: DAT_00486240 stride-0xe array field +0x04 */ = param_1;
       puVar2 = FUN_0046f060(param_2,param_1,0);
       _DAT_0047fc00 = _DAT_0047fc00 + 1;
-      *(ushort **)((int)&DAT_00486240 + iVar1) = puVar2;
+      *(ushort **)((int)&DAT_00486240 + iVar1) /* TODO: DAT_00486240 stride-0xe array field +0x00 */ = puVar2;
       _DAT_0047fc04 = _DAT_0047fc04 + 1;
-      DAT_0047fc08 = DAT_0047fc08 + *(int *)((int)&DAT_00486244 + iVar1);
-      DAT_0047fc0c = DAT_0047fc0c + *(int *)((int)&DAT_00486248 + iVar1);
-      puVar5 = *(int **)((int)&DAT_00486240 + iVar1);
+      DAT_0047fc08 = DAT_0047fc08 + *(int *)((int)&DAT_00486244 + iVar1) /* TODO: DAT_00486240 stride-0xe array field +0x04 */;
+      DAT_0047fc0c = DAT_0047fc0c + *(int *)((int)&DAT_00486248 + iVar1) /* TODO: DAT_00486240 stride-0xe array field +0x08 */;
+      puVar5 = *(int **)((int)&DAT_00486240 + iVar1) /* TODO: DAT_00486240 stride-0xe array field +0x00 */;
       for (uVar3 = param_1 >> 2; uVar3 != 0; uVar3 = uVar3 - 1) {
         *puVar5 = 0;
         puVar5 = puVar5 + 1;
@@ -2514,7 +2514,7 @@ int __cdecl FUN_00427050(uint param_1,LPCVOID param_2)
         *(char *)puVar5 = 0;
         puVar5 = (int *)((int)puVar5 + 1);
       }
-      return *(int *)((int)&DAT_00486240 + iVar1);
+      return *(int *)((int)&DAT_00486240 + iVar1) /* TODO: DAT_00486240 stride-0xe array field +0x00 */;
     }
   }
   _DAT_0047fc04 = _DAT_0047fc04 + 1;
@@ -2522,8 +2522,8 @@ int __cdecl FUN_00427050(uint param_1,LPCVOID param_2)
   uVar3 = param_1 >> 2;
   iVar1 = sVar4 * 0xe;
   (&DAT_0048624c)[iVar1] = 1;
-  *(uint *)((int)&DAT_00486248 + iVar1) = param_1;
-  puVar5 = *(int **)((int)&DAT_00486240 + iVar1);
+  *(uint *)((int)&DAT_00486248 + iVar1) /* TODO: DAT_00486240 stride-0xe array field +0x08 */ = param_1;
+  puVar5 = *(int **)((int)&DAT_00486240 + iVar1) /* TODO: DAT_00486240 stride-0xe array field +0x00 */;
   for (; uVar3 != 0; uVar3 = uVar3 - 1) {
     *puVar5 = 0;
     puVar5 = puVar5 + 1;
@@ -2532,7 +2532,7 @@ int __cdecl FUN_00427050(uint param_1,LPCVOID param_2)
     *(char *)puVar5 = 0;
     puVar5 = (int *)((int)puVar5 + 1);
   }
-  return *(int *)((int)&DAT_00486240 + iVar1);
+  return *(int *)((int)&DAT_00486240 + iVar1) /* TODO: DAT_00486240 stride-0xe array field +0x00 */;
 }
 
 
@@ -2553,9 +2553,9 @@ void FUN_004271c0(void)
     sVar2 = sVar2 + 1;
     iVar1 = iVar1 * 0xe;
     (&DAT_0048624c)[iVar1] = 0;
-    *(int *)((int)&DAT_00486240 + iVar1) = 0;
-    *(int *)((int)&DAT_00486248 + iVar1) = 0;
-    *(int *)((int)&DAT_00486244 + iVar1) = 0;
+    *(int *)((int)&DAT_00486240 + iVar1) /* TODO: DAT_00486240 stride-0xe array field +0x00 */ = 0;
+    *(int *)((int)&DAT_00486248 + iVar1) /* TODO: DAT_00486240 stride-0xe array field +0x08 */ = 0;
+    *(int *)((int)&DAT_00486244 + iVar1) /* TODO: DAT_00486240 stride-0xe array field +0x04 */ = 0;
   } while (sVar2 < 0x100);
   _DAT_0047fc00 = 0;
   DAT_0047fc0c = 0;
@@ -2586,13 +2586,13 @@ uint __cdecl FUN_00427220(int *param_1)
     if (0xff < sVar3) {
       return uVar4 & 0xffffff00;
     }
-    if (*(int *)((int)&DAT_00486240 + sVar3 * 0xe) == *param_1) break;
+    if (*(int *)((int)&DAT_00486240 + sVar3 * 0xe) /* TODO: DAT_00486240 stride-0xe array field +0x00 */ == *param_1) break;
     uVar4 = CONCAT22((short)(uVar4 >> 0x10),sVar3 + 1);
   }
   _DAT_0047fc04 = _DAT_0047fc04 + -1;
   iVar2 = sVar3 * 0xe;
-  iVar1 = *(int *)((int)&DAT_00486248 + iVar2);
-  *(int *)((int)&DAT_00486248 + iVar2) = 0;
+  iVar1 = *(int *)((int)&DAT_00486248 + iVar2) /* TODO: DAT_00486240 stride-0xe array field +0x08 */;
+  *(int *)((int)&DAT_00486248 + iVar2) /* TODO: DAT_00486240 stride-0xe array field +0x08 */ = 0;
   (&DAT_0048624c)[iVar2] = 0;
   DAT_0047fc0c = DAT_0047fc0c - iVar1;
   *param_1 = 0;
@@ -2619,20 +2619,20 @@ void FUN_00427290(void)
   iVar4 = DAT_0047fc0c;
   do {
     iVar1 = sVar5 * 0xe;
-    uVar2 = *(uint *)((int)&DAT_00486240 + sVar5 * 0xe);
+    uVar2 = *(uint *)((int)&DAT_00486240 + sVar5 * 0xe) /* TODO: DAT_00486240 stride-0xe array field +0x00 */;
     if (uVar2 != 0) {
       _DAT_0047fc00 = _DAT_0047fc00 + -1;
       if ((&DAT_0048624c)[iVar1] != '\0') {
         _DAT_0047fc04 = _DAT_0047fc04 + -1;
       }
-      DAT_0047fc08 = iVar3 - *(int *)((int)&DAT_00486244 + iVar1);
-      DAT_0047fc0c = iVar4 - *(int *)((int)&DAT_00486248 + iVar1);
+      DAT_0047fc08 = iVar3 - *(int *)((int)&DAT_00486244 + iVar1) /* TODO: DAT_00486240 stride-0xe array field +0x04 */;
+      DAT_0047fc0c = iVar4 - *(int *)((int)&DAT_00486248 + iVar1) /* TODO: DAT_00486240 stride-0xe array field +0x08 */;
       FUN_0046f5f0(uVar2);
       iVar4 = DAT_0047fc0c;
       iVar3 = DAT_0047fc08;
-      *(int *)((int)&DAT_00486240 + iVar1) = 0;
-      *(int *)((int)&DAT_00486244 + iVar1) = 0;
-      *(int *)((int)&DAT_00486248 + iVar1) = 0;
+      *(int *)((int)&DAT_00486240 + iVar1) /* TODO: DAT_00486240 stride-0xe array field +0x00 */ = 0;
+      *(int *)((int)&DAT_00486244 + iVar1) /* TODO: DAT_00486240 stride-0xe array field +0x04 */ = 0;
+      *(int *)((int)&DAT_00486248 + iVar1) /* TODO: DAT_00486240 stride-0xe array field +0x08 */ = 0;
       (&DAT_0048624c)[iVar1] = 0;
     }
     sVar5 = sVar5 + 1;
@@ -3396,8 +3396,8 @@ void __fastcall FUN_004281b0(int *param_1)
   *unaff_FS_OFFSET = &local_10;
   local_8 = 0;
   if (*(void ***)((int)param_1 + 0x23a) != (void **)0x0) { /* TODO: unknown offset 0x23a */
-    ((void (*)(void))**(void ***)((int)param_1 + 0x23a))(); /* obj at param_1+0x23a->vtable[0] */
-    *(int *)((int)param_1 + 0x23a) = 0;
+    ((void (*)(void))**(void ***)((int)param_1 + 0x23a))(); /* TODO: unknown offset 0x23a, obj->vtable[0] */
+    *(int *)((int)param_1 + 0x23a) = 0; /* TODO: unknown offset 0x23a */
   }
   local_8 = 0xffffffff;
   FUN_00428219();
@@ -3787,10 +3787,10 @@ void __fastcall FUN_00428e10(void *param_1)
   uint uVar1;
   
   uVar1 = ((UIElement *)*(void **)((int)param_1 + 0x154))->flags; /* TODO: param_1 + 0x154 unknown struct */
-  FUN_0041da90(*(void **)((int)param_1 + 0x154),1);
-  FUN_0041dd40(*(void **)((int)param_1 + 0x154));
+  FUN_0041da90(*(void **)((int)param_1 + 0x154) /* TODO: param_1 + 0x154 unknown struct */,1);
+  FUN_0041dd40(*(void **)((int)param_1 + 0x154) /* TODO: param_1 + 0x154 unknown struct */);
   FUN_0042da60(param_1,0x5c4000d,(ushort *)0x0,-1,-1);
-  FUN_0041da90(*(void **)((int)param_1 + 0x154),(byte)(uVar1 >> 4) & 1);
+  FUN_0041da90(*(void **)((int)param_1 + 0x154) /* TODO: param_1 + 0x154 unknown struct */,(byte)(uVar1 >> 4) & 1);
   return;
 }
 
@@ -3844,14 +3844,14 @@ void __cdecl FUN_00428f30(void *param_1,short param_2)
   if (param_1 != (void *)0x0) {
     FUN_004094d0(param_1,param_2,'\x01');
     if ((int)((UIElement *)param_1)->child_list_2 != 0 &&
-       (uVar1 = 1, *(int *)((int)((UIElement *)param_1)->child_list_2 + 0xe) != 0)) {
+       (uVar1 = 1, *(int *)((int)((UIElement *)param_1)->child_list_2 + 0xe) /* TODO: CVector count at +0xe */ != 0)) {
       iVar2 = 4;
       do {
         iVar2 = iVar2 + 4;
         uVar1 = uVar1 + 1;
-        FUN_00428f30(*(void **)(**(int **)((int)((UIElement *)param_1)->child_list_2 + 4) + -8 + iVar2),param_2)
+        FUN_00428f30(*(void **)(**(int **)((int)((UIElement *)param_1)->child_list_2 + 4) /* TODO: CVector data ptr at +0x04 */ + -8 + iVar2),param_2)
         ;
-      } while (uVar1 <= *(uint *)((int)((UIElement *)param_1)->child_list_2 + 0xe));
+      } while (uVar1 <= *(uint *)((int)((UIElement *)param_1)->child_list_2 + 0xe) /* TODO: CVector count at +0xe */);
     }
   }
   return;
@@ -3870,13 +3870,13 @@ void __cdecl FUN_00428f90(void *param_1)
   if (param_1 != (void *)0x0) {
     FUN_00409580(param_1,'\x01');
     if ((int)((UIElement *)param_1)->child_list_2 != 0 &&
-       (uVar2 = 1, *(int *)((int)((UIElement *)param_1)->child_list_2 + 0xe) != 0)) {
+       (uVar2 = 1, *(int *)((int)((UIElement *)param_1)->child_list_2 + 0xe) /* TODO: CVector count at +0xe */ != 0)) {
       iVar1 = 4;
       do {
         iVar1 = iVar1 + 4;
         uVar2 = uVar2 + 1;
-        FUN_00428f90(*(void **)(**(int **)((int)((UIElement *)param_1)->child_list_2 + 4) + -8 + iVar1));
-      } while (uVar2 <= *(uint *)((int)((UIElement *)param_1)->child_list_2 + 0xe));
+        FUN_00428f90(*(void **)(**(int **)((int)((UIElement *)param_1)->child_list_2 + 4) /* TODO: CVector data ptr at +0x04 */ + -8 + iVar1));
+      } while (uVar2 <= *(uint *)((int)((UIElement *)param_1)->child_list_2 + 0xe) /* TODO: CVector count at +0xe */);
     }
   }
   return;
@@ -3946,8 +3946,8 @@ void __fastcall FUN_00429b20(int *param_1)
 
 {
   if (*(void ***)((int)param_1 + 0x1b2) != (void **)0x0) { /* TODO: unknown offset 0x1b2 */
-    ((void (*)(void))**(void ***)((int)param_1 + 0x1b2))(); /* obj at param_1+0x1b2->vtable[0] */
-    *(int *)((int)param_1 + 0x1b2) = 0;
+    ((void (*)(void))**(void ***)((int)param_1 + 0x1b2))(); /* TODO: unknown offset 0x1b2, obj->vtable[0] */
+    *(int *)((int)param_1 + 0x1b2) = 0; /* TODO: unknown offset 0x1b2 */
   }
   FUN_00409330();
   ((void (*)(void))((void **)(*param_1))[0x90 / 4])();
@@ -3958,11 +3958,11 @@ void __fastcall FUN_00429b20(int *param_1)
   FUN_0040f070(DAT_004838c0,0,(uint)((GameBoard *)param_1)->reward_data_a);
   ((GameBoard *)param_1)->reward_data_a = 0;
   FUN_0040f070(DAT_004838c0,0,*(uint *)((int)param_1 + 0x39e)); /* TODO: unknown offset 0x39e */
-  *(int *)((int)param_1 + 0x39e) = 0;
+  *(int *)((int)param_1 + 0x39e) = 0; /* TODO: unknown offset 0x39e */
   FUN_0040f070(DAT_004838c0,0,*(uint *)((int)param_1 + 0x3a2)); /* TODO: unknown offset 0x3a2 */
-  *(int *)((int)param_1 + 0x3a2) = 0;
+  *(int *)((int)param_1 + 0x3a2) = 0; /* TODO: unknown offset 0x3a2 */
   FUN_0040f070(DAT_004838c0,0,*(uint *)((int)param_1 + 0x3a6)); /* TODO: unknown offset 0x3a6 */
-  *(int *)((int)param_1 + 0x3a6) = 0;
+  *(int *)((int)param_1 + 0x3a6) = 0; /* TODO: unknown offset 0x3a6 */
   FUN_0040f070(DAT_004838c0,0,(uint)((GameBoard *)param_1)->reward_data_b);
   ((GameBoard *)param_1)->reward_data_b = 0;
   FUN_0040f070(DAT_004838c0,0,(uint)((GameBoard *)param_1)->reward_data_c);
@@ -5302,7 +5302,7 @@ FUN_0042bc70(DialogWidget *this,short param_1,short param_2,short param_3,int pa
   FUN_004052b0(this);
   *(char ***)this = &PTR_FUN_00473c28;
   local_8 = 0;
-  pvVar2 = *(void **)((int)DAT_004897c0 + 0x52);
+  pvVar2 = *(void **)((int)DAT_004897c0 + 0x52); /* TODO: unknown struct at DAT_004897c0, offset 0x52 */
   this->dialog_result = 0;
   this->child_list = 0;
   iVar5 = 0x42bccf;
@@ -5724,7 +5724,7 @@ void __cdecl FUN_0042c740(short *param_1,char param_2)
         FUN_0044e600((int *)(param_1 + iVar1 * 0xd + 0x19));
       } while (sVar2 < *param_1);
     }
-    if (*(char *)((int)param_1 + 3) != '\0') {
+    if (*(char *)((int)param_1 + 3) /* TODO: unknown offset 0x03 on param_1 */ != '\0') {
       FUN_00457980(*(short **)(param_1 + 0xf),param_2);
     }
     if ((char)param_1[2] != '\0') {
@@ -5749,8 +5749,8 @@ ushort * __cdecl FUN_0042c860(void *param_1,int param_2)
   puVar1 = FUN_004607d0(param_1,param_2,(ushort *)0x0,(ushort *)0x0,0);
   if (puVar1 != (ushort *)0x0) {
     FUN_0042c740((short *)puVar1,'\0');
-    if (*(char *)((int)puVar1 + 3) != '\0') {
-      *(char *)((int)puVar1 + 3) = 0;
+    if (*(char *)((int)puVar1 + 3) /* TODO: unknown offset 0x03 */ != '\0') {
+      *(char *)((int)puVar1 + 3) /* TODO: unknown offset 0x03 */ = 0;
     }
     puVar1[0xf] = 0;
     puVar1[0x10] = 0;
@@ -6298,7 +6298,7 @@ void __fastcall FUN_0042d3c0(void *param_1)
   DWORD DVar1;
   
   if (*(void ***)((int)param_1 + 0xd4) != (void **)0x0) { /* TODO: unknown offset 0xd4, within UIWidget::scroll_data */
-    ((void (*)(void))**(void ***)((int)param_1 + 0xd4))(); /* obj at param_1+0xd4->vtable[0] */
+    ((void (*)(void))**(void ***)((int)param_1 + 0xd4))(); /* TODO: unknown offset 0xd4, obj->vtable[0] */
   }
   FUN_0041cad0(param_1);
   DVar1 = GetTickCount();

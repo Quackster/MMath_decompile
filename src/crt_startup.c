@@ -128,7 +128,11 @@ unsigned int FUN_00470140(int param_1)
 
 
 
-/* Function: FUN_00470240 @ 0x00470240 */
+/* Function: FUN_00470240 @ 0x00470240
+ * NOTE: SmartHeap pool walk/iterate entry point. param_1 is a SmartHeap pool descriptor.
+ * Offset 0x22 = pool flags (bit 1 = threadsafe), 0x48 = critical_section, 0x60 = lock_count.
+ * NOT a game struct.
+ */
 
 int FUN_00470240(int *param_1,int *param_2)
 
@@ -139,12 +143,12 @@ int FUN_00470240(int *param_1,int *param_2)
     FUN_0046fd70(0,10);
     return -2;
   }
-  if ((*(byte *)((int)param_1 + 0x22) & 2) != 0) {
+  if ((*(byte *)((int)param_1 + 0x22) & 2) != 0) { /* TODO: SmartHeap pool threadsafe flag at 0x22 */
     EnterCriticalSection((LPCRITICAL_SECTION)(param_1 + 0x12));
     param_1[0x18] = param_1[0x18] + 1;
   }
   iVar1 = FUN_004702b0(param_1,param_2,1,0);
-  if ((*(byte *)((int)param_1 + 0x22) & 2) != 0) {
+  if ((*(byte *)((int)param_1 + 0x22) & 2) != 0) { /* TODO: SmartHeap pool threadsafe flag at 0x22 */
     param_1[0x18] = param_1[0x18] + -1;
     LeaveCriticalSection((LPCRITICAL_SECTION)(param_1 + 0x12));
   }
@@ -213,7 +217,10 @@ int __fastcall FUN_004702b0(int *param_1,int *param_2,int param_3,int param_4)
 
 
 
-/* Function: FUN_004703f0 @ 0x004703f0 */
+/* Function: FUN_004703f0 @ 0x004703f0
+ * NOTE: SmartHeap large-block walk. param_1 is a SmartHeap page descriptor.
+ * Offsets 0x10, 0x14, 0x15 are page descriptor fields. NOT a game struct.
+ */
 
 int __fastcall FUN_004703f0(LPCVOID param_1,int *param_2)
 
@@ -227,20 +234,20 @@ int __fastcall FUN_004703f0(LPCVOID param_1,int *param_2)
   *param_2 = (int)param_1 + 0x1c;
   uVar2 = FUN_00471410(param_1);
   param_2[4] = uVar2 - 0x1c;
-  piVar1 = *(int **)((int)param_1 + 0x10);
+  piVar1 = *(int **)((int)param_1 + 0x10); /* TODO: SmartHeap page free_ptr at 0x10 */
   param_2[5] = (int)piVar1;
   if ((piVar1 != (int *)0x0) && (*piVar1 != *param_2)) {
     return 0xfffffffe;
   }
-  if (*(int *)((int)param_1 + 0x10) == 0) {
+  if (*(int *)((int)param_1 + 0x10) == 0) { /* TODO: SmartHeap page free_ptr at 0x10 */
     param_2[6] = 0;
   }
   else {
-    param_2[6] = (*(uint *)(*(int *)((int)param_1 + 0x10) + 4) & 0xff0000) >> 0x10;
+    param_2[6] = (*(uint *)(*(int *)((int)param_1 + 0x10) + 4) & 0xff0000) >> 0x10; /* TODO: SmartHeap page->free_ptr->ref_count */
   }
   param_2[3] = 1;
-  if (*(char *)((int)param_1 + 0x15) != '\0') {
-    if (*(char *)((int)param_1 + 0x15) != '\x02') {
+  if (*(char *)((int)param_1 + 0x15) != '\0') { /* TODO: SmartHeap page flags at 0x15 */
+    if (*(char *)((int)param_1 + 0x15) != '\x02') { /* TODO: SmartHeap page flags at 0x15 */
       return 0xfffffffe;
     }
     param_2[2] = 2;
@@ -252,7 +259,10 @@ int __fastcall FUN_004703f0(LPCVOID param_1,int *param_2)
 
 
 
-/* Function: FUN_00470490 @ 0x00470490 */
+/* Function: FUN_00470490 @ 0x00470490
+ * NOTE: SmartHeap slab walk. param_1 is a SmartHeap page descriptor.
+ * Offsets 0x10, 0x14, 0x1c are page descriptor fields. NOT a game struct.
+ */
 
 int __fastcall FUN_00470490(LPCVOID param_1,int *param_2,int param_3)
 
@@ -268,8 +278,8 @@ int __fastcall FUN_00470490(LPCVOID param_1,int *param_2,int param_3)
   iVar3 = *param_2;
   if (iVar3 != 0) {
     piVar4 = (int *)(iVar3 + 4 + *(char *)(iVar3 + -1) * 4);
-    if (((*(int **)((int)param_1 + 0x14) != piVar4) && (piVar4 < (int *)((int)param_1 + 0x1cU))) ||
-       (bVar6 = *(int **)((int)param_1 + 0x10) == piVar4, *(int **)((int)param_1 + 0x10) < piVar4))
+    if (((*(int **)((int)param_1 + 0x14) != piVar4) && (piVar4 < (int *)((int)param_1 + 0x1cU))) || /* TODO: SmartHeap page end_ptr at 0x14, data_start at 0x1c */
+       (bVar6 = *(int **)((int)param_1 + 0x10) == piVar4, *(int **)((int)param_1 + 0x10) < piVar4)) /* TODO: SmartHeap page free_ptr at 0x10 */
     {
       return 0xfffffffe;
     }
@@ -295,16 +305,16 @@ LAB_0047050b:
     }
     return 1;
   }
-  uVar5 = (uint)(ushort)(((short)*(int *)((int)param_1 + 0x14) - (short)param_1) - 1);
+  uVar5 = (uint)(ushort)(((short)*(int *)((int)param_1 + 0x14) - (short)param_1) - 1); /* TODO: SmartHeap page end_ptr at 0x14 */
   if (uVar5 < 0x10000) {
     bVar6 = FUN_00471450(param_1,uVar5,0x1002);
     if (CONCAT31(extraout_var,bVar6) != 0) {
       uVar2 = FUN_00471410(param_1);
       if (uVar5 <= uVar2 - 1) {
-        piVar4 = (int *)((int)param_1 + 0x1c);
-        if ((piVar4 <= *(int **)((int)param_1 + 0x10)) &&
-           (*(int **)((int)param_1 + 0x10) <= *(int **)((int)param_1 + 0x14))) {
-          bVar6 = *(int **)((int)param_1 + 0x10) == piVar4;
+        piVar4 = (int *)((int)param_1 + 0x1c); /* TODO: SmartHeap page data_start at 0x1c */
+        if ((piVar4 <= *(int **)((int)param_1 + 0x10)) && /* TODO: SmartHeap page free_ptr at 0x10 */
+           (*(int **)((int)param_1 + 0x10) <= *(int **)((int)param_1 + 0x14))) { /* TODO: SmartHeap page end_ptr at 0x14 */
+          bVar6 = *(int **)((int)param_1 + 0x10) == piVar4; /* TODO: SmartHeap page free_ptr at 0x10 */
           goto LAB_0047050b;
         }
       }
@@ -344,7 +354,10 @@ int __fastcall FUN_00470580(int param_1,int *param_2)
 
 
 
-/* Function: FUN_004705d0 @ 0x004705d0 */
+/* Function: FUN_004705d0 @ 0x004705d0
+ * NOTE: SmartHeap free-list block walk. param_1 is a SmartHeap page descriptor.
+ * Offsets 0x0e, 0x14 are page descriptor fields. NOT a game struct.
+ */
 
 int __fastcall FUN_004705d0(LPCVOID param_1,int *param_2)
 
@@ -368,8 +381,8 @@ int __fastcall FUN_004705d0(LPCVOID param_1,int *param_2)
     }
     puVar4 = (ushort *)(iVar2 + -2 + uVar5);
     if ((puVar4 < (ushort *)((int)param_1 + 0x1aU)) ||
-       (bVar6 = *(ushort **)((int)param_1 + 0x14) == puVar4,
-       *(ushort **)((int)param_1 + 0x14) < puVar4)) {
+       (bVar6 = *(ushort **)((int)param_1 + 0x14) == puVar4, /* TODO: SmartHeap page end_ptr at 0x14 */
+       *(ushort **)((int)param_1 + 0x14) < puVar4)) { /* TODO: SmartHeap page end_ptr at 0x14 */
       return 0xfffffffe;
     }
 LAB_0047065b:
@@ -377,7 +390,7 @@ LAB_0047065b:
       return 0;
     }
     *param_2 = (int)(puVar4 + 1);
-    param_2[2] = (-(uint)((*(ushort *)((int)param_1 + 0xe) & 7) == 0) & 2) + 2;
+    param_2[2] = (-(uint)((*(ushort *)((int)param_1 + 0xe) & 7) == 0) & 2) + 2; /* TODO: SmartHeap page type field */
     uVar1 = *puVar4;
     param_2[3] = uVar1 & 1;
     if ((uVar1 & 1) != 0) {
@@ -386,10 +399,10 @@ LAB_0047065b:
         param_2[5] = 0;
       }
       else {
-        param_2[5] = *(int *)((int)puVar4 + ((*puVar4 & 0x7ffc) - 6));
+        param_2[5] = *(int *)((int)puVar4 + ((*puVar4 & 0x7ffc) - 6)); /* TODO: SmartHeap block owner pointer */
       }
       if ((*puVar4 & 0x8000) != 0) {
-        param_2[6] = (*(uint *)(*(int *)((int)puVar4 + ((*puVar4 & 0x7ffc) - 6)) + 4) & 0xff0000) >>
+        param_2[6] = (*(uint *)(*(int *)((int)puVar4 + ((*puVar4 & 0x7ffc) - 6)) + 4) & 0xff0000) >> /* TODO: SmartHeap block ref_count */
                      0x10;
         return 1;
       }
@@ -401,14 +414,14 @@ LAB_0047065b:
     param_2[6] = 0;
     return 1;
   }
-  uVar5 = (uint)(ushort)(((short)*(int *)((int)param_1 + 0x14) - (short)param_1) + 9);
+  uVar5 = (uint)(ushort)(((short)*(int *)((int)param_1 + 0x14) - (short)param_1) + 9); /* TODO: SmartHeap page end_ptr at 0x14 */
   if (uVar5 < 0x10000) {
     bVar6 = FUN_00471450(param_1,uVar5,0x1002);
     if (CONCAT31(extraout_var,bVar6) != 0) {
       uVar3 = FUN_00471410(param_1);
       if (uVar5 <= uVar3 - 1) {
         puVar4 = (ushort *)((int)param_1 + 0x1a);
-        bVar6 = *(ushort **)((int)param_1 + 0x14) == puVar4;
+        bVar6 = *(ushort **)((int)param_1 + 0x14) == puVar4; /* TODO: SmartHeap page end_ptr at 0x14 */
         goto LAB_0047065b;
       }
     }
@@ -418,7 +431,10 @@ LAB_0047065b:
 
 
 
-/* Function: FUN_00470750 @ 0x00470750 */
+/* Function: FUN_00470750 @ 0x00470750
+ * NOTE: SmartHeap fixed-block walk. param_1 is a SmartHeap page descriptor.
+ * Offsets 0x10, 0x14, 0x1c are page descriptor fields. NOT a game struct.
+ */
 
 int __fastcall FUN_00470750(LPCVOID param_1,int *param_2,int param_3)
 
@@ -434,13 +450,13 @@ int __fastcall FUN_00470750(LPCVOID param_1,int *param_2,int param_3)
   uVar1 = *(ushort *)(param_2[1] + 0x24);
   if (*param_2 != 0) {
     puVar5 = (int *)((uint)uVar1 + *param_2);
-    if ((puVar5 != *(int **)((int)param_1 + 0x14)) &&
-       ((puVar5 < (int *)((int)param_1 + 0x1cU) ||
-        (*(int **)((int)param_1 + 0x14) < puVar5)))) {
+    if ((puVar5 != *(int **)((int)param_1 + 0x14)) && /* TODO: SmartHeap page end_ptr at 0x14 */
+       ((puVar5 < (int *)((int)param_1 + 0x1cU) || /* TODO: SmartHeap page data_start at 0x1c */
+        (*(int **)((int)param_1 + 0x14) < puVar5)))) { /* TODO: SmartHeap page end_ptr at 0x14 */
       return 0xfffffffe;
     }
 LAB_004707d9:
-    if (*(int **)((int)param_1 + 0x14) == puVar5) {
+    if (*(int **)((int)param_1 + 0x14) == puVar5) { /* TODO: SmartHeap page end_ptr at 0x14 */
       return 0;
     }
     *param_2 = (int)puVar5;
@@ -457,14 +473,14 @@ LAB_004707d9:
     }
     return 1;
   }
-  uVar6 = (uint)(ushort)(((short)*(int *)((int)param_1 + 0x14) - (short)param_1) - 1);
+  uVar6 = (uint)(ushort)(((short)*(int *)((int)param_1 + 0x14) - (short)param_1) - 1); /* TODO: SmartHeap page end_ptr at 0x14 */
   if (uVar6 < 0x10000) {
     bVar2 = FUN_00471450(param_1,uVar6,0x1002);
     if (CONCAT31(extraout_var,bVar2) != 0) {
       uVar3 = FUN_00471410(param_1);
       if ((uVar6 <= uVar3 - 1) &&
-         ((uVar6 = *(uint *)((int)param_1 + 0x10), uVar6 == 0 ||
-          (((int)param_1 + 0x1cU <= uVar6 && (uVar6 <= *(int *)((int)param_1 + 0x14) - (uint)uVar1))
+         ((uVar6 = *(uint *)((int)param_1 + 0x10), uVar6 == 0 || /* TODO: SmartHeap page free_ptr at 0x10 */
+          (((int)param_1 + 0x1cU <= uVar6 && (uVar6 <= *(int *)((int)param_1 + 0x14) - (uint)uVar1)) /* TODO: SmartHeap page data_start at 0x1c, end_ptr at 0x14 */
           )))) {
         puVar5 = (int *)((int)param_1 + 0x1c);
         goto LAB_004707d9;
@@ -507,7 +523,10 @@ int __fastcall FUN_00470840(int param_1,int param_2,int *param_3)
 
 
 
-/* Function: FUN_00470ce0 @ 0x00470ce0 */
+/* Function: FUN_00470ce0 @ 0x00470ce0
+ * NOTE: SmartHeap pool validation. param_1 is a SmartHeap pool descriptor.
+ * Offset 0x22 = pool flags (bit 1 = threadsafe). NOT a game struct.
+ */
 
 bool FUN_00470ce0(int *param_1)
 
@@ -523,7 +542,7 @@ bool FUN_00470ce0(int *param_1)
     return false;
   }
   local_24[0] = 0;
-  if ((*(byte *)((int)param_1 + 0x22) & 2) != 0) {
+  if ((*(byte *)((int)param_1 + 0x22) & 2) != 0) { /* TODO: SmartHeap pool threadsafe flag at 0x22 */
     EnterCriticalSection((LPCRITICAL_SECTION)(param_1 + 0x12));
     param_1[0x18] = param_1[0x18] + 1;
   }
@@ -543,7 +562,7 @@ bool FUN_00470ce0(int *param_1)
   }
   bVar1 = true;
 LAB_00470d68:
-  if ((*(byte *)((int)param_1 + 0x22) & 2) != 0) {
+  if ((*(byte *)((int)param_1 + 0x22) & 2) != 0) { /* TODO: SmartHeap pool threadsafe flag at 0x22 */
     param_1[0x18] = param_1[0x18] + -1;
     LeaveCriticalSection((LPCRITICAL_SECTION)(param_1 + 0x12));
   }
@@ -720,7 +739,11 @@ int __fastcall FUN_00470fd0(int *param_1)
 
 
 
-/* Function: FUN_00471010 @ 0x00471010 */
+/* Function: FUN_00471010 @ 0x00471010
+ * NOTE: SmartHeap block ownership check. piVar4 is a SmartHeap page descriptor.
+ * Offset 0x0e = page magic/type tag, 0x22 = pool flags, 0x48 = critical_section,
+ * 0x60 = lock_count. NOT a game struct.
+ */
 
 int FUN_00471010(int param_1,int *param_2)
 
@@ -740,14 +763,14 @@ int FUN_00471010(int param_1,int *param_2)
     return 0;
   }
   piVar4 = (int *)((uint)param_2 & 0xffff0000);
-  if ((*(ushort *)((int)piVar4 + 0xe) & 0xfff8) != 0xcad0) {
+  if ((*(ushort *)((int)piVar4 + 0xe) & 0xfff8) != 0xcad0) { /* TODO: SmartHeap page magic check */
     FUN_0046fd70(0,0xe);
     return 0;
   }
   bVar2 = FUN_00471450(piVar4,0x1a,0x1002);
   if ((((CONCAT31(extraout_var_00,bVar2) == 0) ||
-       ((*(ushort *)((int)piVar4 + 0xe) & 0xfff8) != 0xcad0)) ||
-      (4 < ((byte)*(ushort *)((int)piVar4 + 0xe) & 7))) || ((param_1 != 0 && (*piVar4 != param_1))))
+       ((*(ushort *)((int)piVar4 + 0xe) & 0xfff8) != 0xcad0)) || /* TODO: SmartHeap page magic check */
+      (4 < ((byte)*(ushort *)((int)piVar4 + 0xe) & 7))) || ((param_1 != 0 && (*piVar4 != param_1)))) /* TODO: SmartHeap page type field */
   {
     return 0;
   }
@@ -756,7 +779,7 @@ int FUN_00471010(int param_1,int *param_2)
     EnterCriticalSection((LPCRITICAL_SECTION)(iVar1 + 0x48));
     *(int *)(iVar1 + 0x60) = *(int *)(iVar1 + 0x60) + 1;
   }
-  switch(*(ushort *)((int)piVar4 + 0xe) & 7) {
+  switch(*(ushort *)((int)piVar4 + 0xe) & 7) { /* TODO: SmartHeap page type field */
   case 0:
   case 2:
     if ((*(byte *)((int)param_2 + -2) & 1) != 0) goto switchD_004710d7_caseD_3;
@@ -1074,7 +1097,7 @@ int __fastcall FUN_004718d0(LPCVOID param_1)
   int extraout_var;
   
   bVar1 = FUN_00471450(param_1,0x178,0x102);
-  if ((CONCAT31(extraout_var,bVar1) != 0) && (*(short *)((int)param_1 + 0x20) == -0x4153)) {
+  if ((CONCAT31(extraout_var,bVar1) != 0) && (*(short *)((int)param_1 + 0x20) == -0x4153)) { /* TODO: SmartHeap pool signature at 0x20 */
     return 1;
   }
   return 0;

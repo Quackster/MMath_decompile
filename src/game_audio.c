@@ -78,7 +78,7 @@ void __fastcall FUN_00440360(GameBoard *param_1)
   if (iVar3 != 0) {
     if (3 < *(short *)(DAT_0048345c + 0x9e)) {
       *(short *)(iVar3 + 0x112) = 1; /* UIWidget->pending_frame */
-      pvVar4 = *(UIWidget **)((int)param_1 + 0x1b8);
+      pvVar4 = *(UIWidget **)((int)param_1 + 0x1b8); /* TODO: unknown offset 0x1b8 on GameBoard */
       pvVar4->anim_flag_0 = 0;
       pvVar4->anim_flag_2 = 0;
       pvVar4->anim_flag_1 = 0;
@@ -87,7 +87,7 @@ void __fastcall FUN_00440360(GameBoard *param_1)
       return;
     }
     *(short *)(iVar3 + 0x112) = 0; /* UIWidget->pending_frame */
-    pvVar4 = *(UIWidget **)((int)param_1 + 0x1b8);
+    pvVar4 = *(UIWidget **)((int)param_1 + 0x1b8); /* TODO: unknown offset 0x1b8 on GameBoard */
     pvVar4->anim_flag_0 = 0;
     pvVar4->anim_flag_2 = 0;
     pvVar4->anim_flag_1 = 0;
@@ -172,7 +172,7 @@ void __fastcall FUN_00440ca0(void *param_1)
     sVar4 = (short)(iVar1 % 3);
   } while (sVar4 == sVar3);
   if (*(int *)((int)param_1 + 0x6a) != 0) { /* TODO: unknown offset 0x6a */
-    switch(*(short *)(*(int *)((int)param_1 + 0x6a) + 0xc)) {
+    switch(*(short *)(*(int *)((int)param_1 + 0x6a) + 0xc)) { /* TODO: unknown offset 0x6a */
     case 1:
       FUN_0045d510(0x13d000c,'\0');
       FUN_00404870(param_1,0x10c000c);
@@ -183,74 +183,74 @@ void __fastcall FUN_00440ca0(void *param_1)
         *(short *)((int)param_1 + 0x1d0) = 0xb;  /* TODO: unknown offset 0x1d0 */
       }
       else {
-        *(short *)((int)param_1 + 0x1d6) = 0xb;
-        *(short *)((int)param_1 + 0x1d0) = 0x14;
+        *(short *)((int)param_1 + 0x1d6) = 0xb; /* TODO: unknown offset 0x1d6 */
+        *(short *)((int)param_1 + 0x1d0) = 0x14; /* TODO: unknown offset 0x1d0 */
       }
       break;
     case 2:
       FUN_0045d510(0x158000c,'\0');
       FUN_00404870(param_1,0x10d000c);
       if (sVar3 == 1) {
-        *(short *)((int)param_1 + 0x1d6) = 6;
+        *(short *)((int)param_1 + 0x1d6) = 6; /* TODO: unknown offset 0x1d6 */
       }
       else {
-        *(short *)((int)param_1 + 0x1d6) = 10;
+        *(short *)((int)param_1 + 0x1d6) = 10; /* TODO: unknown offset 0x1d6 */
         if (sVar3 != 2) {
-          *(short *)((int)param_1 + 0x1d6) = 5;
+          *(short *)((int)param_1 + 0x1d6) = 5; /* TODO: unknown offset 0x1d6 */
         }
       }
       if (sVar4 == 1) {
-        *(short *)((int)param_1 + 0x1d0) = 6;
+        *(short *)((int)param_1 + 0x1d0) = 6; /* TODO: unknown offset 0x1d0 */
       }
       else if (sVar4 == 2) {
-        *(short *)((int)param_1 + 0x1d0) = 10;
+        *(short *)((int)param_1 + 0x1d0) = 10; /* TODO: unknown offset 0x1d0 */
       }
       else {
-        *(short *)((int)param_1 + 0x1d0) = 5;
+        *(short *)((int)param_1 + 0x1d0) = 5; /* TODO: unknown offset 0x1d0 */
       }
       break;
     case 3:
       FUN_0045d510(0x159000c,'\0');
       FUN_00404870(param_1,0x10e000c);
       if (sVar3 == 1) {
-        *(short *)((int)param_1 + 0x1d6) = 0x1d;
+        *(short *)((int)param_1 + 0x1d6) = 0x1d; /* TODO: unknown offset 0x1d6 */
       }
       else {
-        *(short *)((int)param_1 + 0x1d6) = 0x11;
+        *(short *)((int)param_1 + 0x1d6) = 0x11; /* TODO: unknown offset 0x1d6 */
         if (sVar3 != 2) {
-          *(short *)((int)param_1 + 0x1d6) = 0x10;
+          *(short *)((int)param_1 + 0x1d6) = 0x10; /* TODO: unknown offset 0x1d6 */
         }
       }
       if (sVar4 == 1) {
-        *(short *)((int)param_1 + 0x1d0) = 0x1d;
+        *(short *)((int)param_1 + 0x1d0) = 0x1d; /* TODO: unknown offset 0x1d0 */
       }
       else if (sVar4 == 2) {
-        *(short *)((int)param_1 + 0x1d0) = 0x11;
+        *(short *)((int)param_1 + 0x1d0) = 0x11; /* TODO: unknown offset 0x1d0 */
       }
       else {
-        *(short *)((int)param_1 + 0x1d0) = 0x10;
+        *(short *)((int)param_1 + 0x1d0) = 0x10; /* TODO: unknown offset 0x1d0 */
       }
       break;
     case 4:
       FUN_0045d510(0x15a000c,'\0');
       FUN_00404870(param_1,0x10f000c);
       if (sVar3 == 1) {
-        *(short *)((int)param_1 + 0x1d6) = 0xf;
+        *(short *)((int)param_1 + 0x1d6) = 0xf; /* TODO: unknown offset 0x1d6 */
       }
       else {
-        *(short *)((int)param_1 + 0x1d6) = 0xc;
+        *(short *)((int)param_1 + 0x1d6) = 0xc; /* TODO: unknown offset 0x1d6 */
         if (sVar3 != 2) {
-          *(short *)((int)param_1 + 0x1d6) = 0x1c;
+          *(short *)((int)param_1 + 0x1d6) = 0x1c; /* TODO: unknown offset 0x1d6 */
         }
       }
       if (sVar4 == 1) {
-        *(short *)((int)param_1 + 0x1d0) = 0xf;
+        *(short *)((int)param_1 + 0x1d0) = 0xf; /* TODO: unknown offset 0x1d0 */
       }
       else if (sVar4 == 2) {
-        *(short *)((int)param_1 + 0x1d0) = 0xc;
+        *(short *)((int)param_1 + 0x1d0) = 0xc; /* TODO: unknown offset 0x1d0 */
       }
       else {
-        *(short *)((int)param_1 + 0x1d0) = 0x1c;
+        *(short *)((int)param_1 + 0x1d0) = 0x1c; /* TODO: unknown offset 0x1d0 */
       }
       break;
     case 5:
@@ -259,49 +259,49 @@ void __fastcall FUN_00440ca0(void *param_1)
       uVar2 = rand();
       uVar5 = (int)uVar2 >> 0x1f;
       if (((uVar2 ^ uVar5) - uVar5 & 1 ^ uVar5) == uVar5) {
-        *(short *)((int)param_1 + 0x1d6) = 8;
-        *(short *)((int)param_1 + 0x1d0) = 0x13;
+        *(short *)((int)param_1 + 0x1d6) = 8; /* TODO: unknown offset 0x1d6 */
+        *(short *)((int)param_1 + 0x1d0) = 0x13; /* TODO: unknown offset 0x1d0 */
       }
       else {
-        *(short *)((int)param_1 + 0x1d6) = 0x13;
-        *(short *)((int)param_1 + 0x1d0) = 8;
+        *(short *)((int)param_1 + 0x1d6) = 0x13; /* TODO: unknown offset 0x1d6 */
+        *(short *)((int)param_1 + 0x1d0) = 8; /* TODO: unknown offset 0x1d0 */
       }
       break;
     case 6:
       FUN_0045d510(0x15c000c,'\0');
       FUN_00404870(param_1,0x111000c);
       if (sVar3 == 1) {
-        *(short *)((int)param_1 + 0x1d6) = 0x1e;
+        *(short *)((int)param_1 + 0x1d6) = 0x1e; /* TODO: unknown offset 0x1d6 */
       }
       else {
-        *(short *)((int)param_1 + 0x1d6) = 9;
+        *(short *)((int)param_1 + 0x1d6) = 9; /* TODO: unknown offset 0x1d6 */
         if (sVar3 != 2) {
-          *(short *)((int)param_1 + 0x1d6) = 0x12;
+          *(short *)((int)param_1 + 0x1d6) = 0x12; /* TODO: unknown offset 0x1d6 */
         }
       }
       if (sVar4 == 1) {
-        *(short *)((int)param_1 + 0x1d0) = 0x1e;
+        *(short *)((int)param_1 + 0x1d0) = 0x1e; /* TODO: unknown offset 0x1d0 */
       }
       else if (sVar4 == 2) {
-        *(short *)((int)param_1 + 0x1d0) = 9;
+        *(short *)((int)param_1 + 0x1d0) = 9; /* TODO: unknown offset 0x1d0 */
       }
       else {
-        *(short *)((int)param_1 + 0x1d0) = 0x12;
+        *(short *)((int)param_1 + 0x1d0) = 0x12; /* TODO: unknown offset 0x1d0 */
       }
       break;
     case 7:
       FUN_00404870(param_1,0x111000c);
-      *(short *)((int)param_1 + 0x1d6) = 0x1e;
-      *(short *)((int)param_1 + 0x1d0) = 0x12;
+      *(short *)((int)param_1 + 0x1d6) = 0x1e; /* TODO: unknown offset 0x1d6 */
+      *(short *)((int)param_1 + 0x1d0) = 0x12; /* TODO: unknown offset 0x1d0 */
       break;
     case 8:
       FUN_0045d510(0x15d000c,'\0');
       FUN_00404870(param_1,0x113000c);
-      *(short *)((int)param_1 + 0x1d6) = 2;
-      *(short *)((int)param_1 + 0x1d0) = 3;
+      *(short *)((int)param_1 + 0x1d6) = 2; /* TODO: unknown offset 0x1d6 */
+      *(short *)((int)param_1 + 0x1d0) = 3; /* TODO: unknown offset 0x1d0 */
     }
   }
-  *(short *)(DAT_0048345c + 0xe8) = *(short *)((int)param_1 + 0x1d0);
+  *(short *)(DAT_0048345c + 0xe8) = *(short *)((int)param_1 + 0x1d0); /* TODO: unknown offset 0x1d0 */
   return;
 }
 
@@ -812,8 +812,8 @@ void __fastcall FUN_00442570(GameWidget *param_1)
   local_8 = 0;
   /* offset 0x152 falls in _pad160 region */
   if (*(void **)((int)param_1 + 0x152) != (void *)0x0) { /* TODO: unknown offset 0x152 in _pad160 */
-    ((void (*)(void))**(void ***)((int)param_1 + 0x152))();
-    *(void **)((int)param_1 + 0x152) = 0;
+    ((void (*)(void))**(void ***)((int)param_1 + 0x152))(); /* TODO: unknown offset 0x152 in _pad160 */
+    *(void **)((int)param_1 + 0x152) = 0; /* TODO: unknown offset 0x152 in _pad160 */
   }
   *(void **)&param_1->_pad14e = 0;  /* GameWidget->_pad14e */
   param_1->group_data_a = 0;        /* GameWidget->group_data_a +0x14A */
@@ -858,9 +858,9 @@ void __fastcall FUN_00442650(GameWidget *param_1)
 
 {
   /* offset 0x152 in _pad160 region */
-  if (*(void **)((int)param_1 + 0x152) != (void *)0x0) { /* TODO: unknown offset 0x152 */
-    ((void (*)(void))**(void ***)((int)param_1 + 0x152))();
-    *(void **)((int)param_1 + 0x152) = 0;
+  if (*(void **)((int)param_1 + 0x152) != (void *)0x0) { /* TODO: unknown offset 0x152 in _pad160 */
+    ((void (*)(void))**(void ***)((int)param_1 + 0x152))(); /* TODO: unknown offset 0x152 in _pad160 */
+    *(void **)((int)param_1 + 0x152) = 0; /* TODO: unknown offset 0x152 in _pad160 */
   }
   if (param_1->group_data_a != 0) { /* GameWidget->group_data_a +0x14A */
     ((void (*)(void))**(void ***)&param_1->group_data_a)();
@@ -1713,12 +1713,12 @@ void __fastcall FUN_004459f0(void *param_1)
   FUN_0040b1e0(*(void **)((int)param_1 + 0x20a),  /* TODO: unknown offset 0x20a */
                *(int *)(&DAT_00480718 + *(int *)((int)param_1 + 0x1d8) * 8)); /* TODO: unknown offset 0x1d8 */
   FUN_0040d840(DAT_004897c0,9);
-  widget_44 = *(UIWidget **)((int)DAT_004897c0 + 0x44);
+  widget_44 = *(UIWidget **)((int)DAT_004897c0 + 0x44); /* TODO: unknown struct for DAT_004897c0, offset 0x44 */
   FUN_0041dbb0(widget_44);
   FUN_0041ba40(widget_44,0,1,0);
   FUN_0041dbb0(*(void **)((int)param_1 + 0x1d4)); /* TODO: unknown offset 0x1d4 */
-  FUN_0041dd40(*(void **)((int)DAT_004897c0 + 0x4a));
-  ((UIWidget *)*(int *)((int)DAT_004897c0 + 0x4a))->type_or_mode = 3; /* UIWidget->type_or_mode +0x16 */
+  FUN_0041dd40(*(void **)((int)DAT_004897c0 + 0x4a)); /* TODO: unknown struct for DAT_004897c0, offset 0x4a */
+  ((UIWidget *)*(int *)((int)DAT_004897c0 + 0x4a))->type_or_mode = 3; /* TODO: unknown struct for DAT_004897c0, offset 0x4a; UIWidget->type_or_mode +0x16 */
   FUN_0042d7d0((int)param_1);
   if (1 < *(short *)(DAT_0048345c + 0xea)) {
     FUN_0042da60(param_1,0x4df000d,(ushort *)0x0,-1,-1);
@@ -1728,7 +1728,7 @@ void __fastcall FUN_004459f0(void *param_1)
   FUN_0042d860((int)param_1);
   if ((*(char *)(DAT_0048345c + 0x90) != '\0') && (*(int *)((int)param_1 + 0x1d0) != 0)) { /* TODO: unknown offset 0x1d0 */
     DAT_00480664 = 1;
-    FUN_0042dba0(param_1,*(int *)((int)param_1 + 0x1d0) + 0x32);
+    FUN_0042dba0(param_1,*(int *)((int)param_1 + 0x1d0) + 0x32); /* TODO: unknown offset 0x1d0 */
     DAT_00480664 = 0;
   }
   DAT_00480760 = 0;
@@ -2315,11 +2315,11 @@ int * __fastcall FUN_00449610(int *param_1)
 {
   *(short *)(param_1 + 2) = 0;          /* +0x08 */
   *param_1 = 0;                          /* +0x00 */
-  *(char *)((int)param_1 + 10) = 0;     /* +0x0A */
-  *(char *)((int)param_1 + 0xb) = 0;    /* +0x0B */
+  *(char *)((int)param_1 + 10) = 0;     /* +0x0A  TODO: unknown struct type */
+  *(char *)((int)param_1 + 0xb) = 0;    /* +0x0B  TODO: unknown struct type */
   *(char *)(param_1 + 3) = 0;           /* +0x0C */
   param_1[1] = 0;                        /* +0x04 */
-  *(char *)((int)param_1 + 0xd) = 0;    /* +0x0D */
+  *(char *)((int)param_1 + 0xd) = 0;    /* +0x0D  TODO: unknown struct type */
   return param_1;
 }
 
@@ -4780,28 +4780,28 @@ void __fastcall FUN_0044e600(int *param_1)
 
   uVar1 = *(unsigned short *)(param_1 + 3);                /* +0x0C */
   param_1[3] = CONCAT22(CONCAT11((char)uVar1,(char)(uVar1 >> 8)),
-                        CONCAT11((char)*(unsigned short *)((int)param_1 + 0xe),
+                        CONCAT11((char)*(unsigned short *)((int)param_1 + 0xe), /* TODO: unknown struct - byte-swap at +0x0E */
                                  (char)(*(unsigned short *)((int)param_1 + 0xe) >> 8)));
   uVar1 = *(unsigned short *)(param_1 + 2);                /* +0x08 */
   param_1[2] = CONCAT22(CONCAT11((char)uVar1,(char)(uVar1 >> 8)),
-                        CONCAT11((char)*(unsigned short *)((int)param_1 + 10),
+                        CONCAT11((char)*(unsigned short *)((int)param_1 + 10), /* TODO: unknown struct - byte-swap at +0x0A */
                                  (char)(*(unsigned short *)((int)param_1 + 10) >> 8)));
   uVar1 = *(unsigned short *)(param_1 + 1);                /* +0x04 */
   param_1[1] = CONCAT22(CONCAT11((char)uVar1,(char)(uVar1 >> 8)),
-                        CONCAT11((char)*(unsigned short *)((int)param_1 + 6),
+                        CONCAT11((char)*(unsigned short *)((int)param_1 + 6), /* TODO: unknown struct - byte-swap at +0x06 */
                                  (char)(*(unsigned short *)((int)param_1 + 6) >> 8)));
   *param_1 = CONCAT22(CONCAT11((char)*(unsigned short *)param_1,    /* +0x00 */
                                (char)(*(unsigned short *)param_1 >> 8)),
-                      CONCAT11((char)*(unsigned short *)((int)param_1 + 2),
+                      CONCAT11((char)*(unsigned short *)((int)param_1 + 2), /* TODO: unknown struct - byte-swap at +0x02 */
                                (char)(*(unsigned short *)((int)param_1 + 2) >> 8)));
   uVar1 = *(unsigned short *)(param_1 + 4);                /* +0x10 */
   param_1[4] = CONCAT22(CONCAT11((char)uVar1,(char)(uVar1 >> 8)),
-                        CONCAT11((char)*(unsigned short *)((int)param_1 + 0x12),
+                        CONCAT11((char)*(unsigned short *)((int)param_1 + 0x12), /* TODO: unknown struct - byte-swap at +0x12 */
                                  (char)(*(unsigned short *)((int)param_1 + 0x12) >> 8)));
   uVar1 = *(unsigned short *)(param_1 + 5);                /* +0x14 */
   *(unsigned short *)(param_1 + 5) = CONCAT11((char)uVar1,(char)(uVar1 >> 8));
-  uVar1 = *(unsigned short *)((int)param_1 + 0x16);        /* +0x16 */
-  *(unsigned short *)((int)param_1 + 0x16) = CONCAT11((char)uVar1,(char)(uVar1 >> 8));
+  uVar1 = *(unsigned short *)((int)param_1 + 0x16);        /* +0x16  TODO: unknown struct - byte-swap at +0x16 */
+  *(unsigned short *)((int)param_1 + 0x16) = CONCAT11((char)uVar1,(char)(uVar1 >> 8)); /* TODO: unknown struct - byte-swap at +0x16 */
   return;
 }
 
