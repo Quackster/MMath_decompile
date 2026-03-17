@@ -221,14 +221,14 @@ void __thiscall FUN_004094d0(UIWidget *this,short param_1,char param_2)
     *(short *)((int)this + 0x44) = 0;  /* TODO: unknown offset 0x44 in _pad42 region */
   }
   if (((param_2 != '\0') && ((int)this->child_list_2 != 0)) &&
-     (uVar2 = 1, *(int *)((int)this->child_list_2 + 0xe) != 0)) {
+     (uVar2 = 1, *(int *)((int)this->child_list_2 + 0xe) /* CVector: count at +0x0E */ != 0)) {
     iVar1 = 4;
     do {
       iVar1 = iVar1 + 4;
       uVar2 = uVar2 + 1;
-      FUN_004094d0(*(UIWidget **)(**(int **)((int)this->child_list_2 + 4) + -8 + iVar1),
+      FUN_004094d0(*(UIWidget **)(**(int **)((int)this->child_list_2 + 4) /* CVector: data ptr at +0x04 */ + -8 + iVar1),
                    *(short *)((int)this + 0x44),param_2);  /* TODO: unknown offset 0x44 in _pad42 region */
-    } while (uVar2 <= *(uint *)((int)this->child_list_2 + 0xe));
+    } while (uVar2 <= *(uint *)((int)this->child_list_2 + 0xe) /* CVector: count at +0x0E */);
   }
   FUN_0041ab40((&DAT_004841a8)[*(short *)((int)this + 0x44)]);  /* TODO: unknown offset 0x44 in _pad42 region */
   FUN_004092c0(this,2,CONCAT31((unsigned int)((uint)unaff_EBX >> 8),param_2));
@@ -248,13 +248,13 @@ void __thiscall FUN_00409580(UIWidget *this,char param_1)
 
   *(short *)((int)this + 0x44) = (short)0xffff;  /* TODO: unknown offset 0x44 in _pad42 region of UIWidget */
   if (((param_1 != '\0') && ((int)this->child_list_2 != 0)) &&
-     (uVar2 = 1, *(int *)((int)this->child_list_2 + 0xe) != 0)) {
+     (uVar2 = 1, *(int *)((int)this->child_list_2 + 0xe) /* CVector: count at +0x0E */ != 0)) {
     iVar1 = 4;
     do {
       iVar1 = iVar1 + 4;
       uVar2 = uVar2 + 1;
-      FUN_00409580(*(UIWidget **)(**(int **)((int)this->child_list_2 + 4) + -8 + iVar1),'\x01');
-    } while (uVar2 <= *(uint *)((int)this->child_list_2 + 0xe));
+      FUN_00409580(*(UIWidget **)(**(int **)((int)this->child_list_2 + 4) /* CVector: data ptr at +0x04 */ + -8 + iVar1),'\x01');
+    } while (uVar2 <= *(uint *)((int)this->child_list_2 + 0xe) /* CVector: count at +0x0E */);
   }
   FUN_0041ab40(0);
   FUN_004092c0(this,1,CONCAT31((unsigned int)((uint)unaff_EBX >> 8),param_1));
@@ -2720,7 +2720,7 @@ CString * __thiscall FUN_0040f280(CString *this,uint param_1)
 
 {
   if ((param_1 & 2) != 0) {
-    _eh_vector_destructor_iterator_(this,0x16,*(int *)((int)this - 4),FUN_0040f520);  /* array count stored before this */
+    _eh_vector_destructor_iterator_(this,0x16,*(int *)((int)this - 4),FUN_0040f520);  /* TODO: array count stored at (this - 4), MSVC array cookie */
     FUN_0046c410((int)this - 4);
     return this;
   }

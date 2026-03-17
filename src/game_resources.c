@@ -218,8 +218,8 @@ ushort * __cdecl FUN_0045c1c0(int *param_1,short param_2,short param_3,ushort *p
         iVar2 = (int)sVar3;
         sVar3 = sVar3 + 1;
         param_4[iVar2 + local_12 * 0x10] =
-             CONCAT11(*(char *)((int)&local_10 + (int)local_12),
-                      *(char *)((int)&local_10 + iVar2));
+             CONCAT11(*(char *)((int)&local_10 + (int)local_12), /* TODO: local_10 byte array access */
+                      *(char *)((int)&local_10 + iVar2)); /* TODO: local_10 byte array access */
       } while (sVar3 < 0x10);
       local_12 = local_12 + 1;
     } while (local_12 < 0x10);
@@ -3031,25 +3031,25 @@ void __fastcall FUN_0045fbe0(GameWidget *param_1)
   local_8 = 0;
   do {
     /* array access at 0x126 + sVar4*4: object_ptr, scrollbar_ref, field_12e area, field_130 area, cleanup_fn_ptr */
-    puVar1 = *(int **)((int)param_1 + sVar4 * 4 + 0x126);
+    puVar1 = *(int **)((int)param_1 + sVar4 * 4 + 0x126); /* TODO: stride-4 slot array at GameWidget+0x126 */
     if (puVar1 != (int *)0x0) {
       ((void (*)(void))((void **)*puVar1)[0])();
     }
-    /* array access at 0x13A + sVar4*4: slot_ptr_0, _pad13e area, name_data_ptr, _pad146 area, group_data_a */
-    puVar1 = *(int **)((int)param_1 + sVar4 * 4 + 0x13a);
+    /* TODO: stride-4 slot array at GameWidget+0x13A: slot_ptr_0, _pad13e area, name_data_ptr, _pad146 area, group_data_a */
+    puVar1 = *(int **)((int)param_1 + sVar4 * 4 + 0x13a); /* TODO: stride-4 slot array at GameWidget+0x13A */
     if (puVar1 != (int *)0x0) {
       ((void (*)(void))((void **)*puVar1)[0])();
     }
     sVar4 = sVar4 + 1;
   } while (sVar4 < 5);
   /* 0x152 falls in _pad14e+4 area */
-  if (*(int **)((int)param_1 + 0x152) != (int *)0x0) {
-    ((void (*)(void))**(void ***)((int)param_1 + 0x152))(); /* obj at param_1+0x152->vtable[0] */
+  if (*(int **)((int)param_1 + 0x152) != (int *)0x0) { /* TODO: offset 0x152 on GameWidget (_pad14e area) */
+    ((void (*)(void))**(void ***)((int)param_1 + 0x152))(); /* TODO: obj at param_1+0x152->vtable[0], _pad14e area */
     *(int *)((int)param_1 + 0x152) = 0; /* TODO: unknown offset 0x152 on GameWidget (_pad14e area) */
   }
-  /* 0x14e = _pad14e */
-  if (*(int **)((int)param_1 + 0x14e) != (int *)0x0) {
-    ((void (*)(void))**(void ***)((int)param_1 + 0x14e))(); /* obj at param_1+0x14e->vtable[0] */
+  /* TODO: offset 0x14E = GameWidget._pad14e */
+  if (*(int **)((int)param_1 + 0x14e) != (int *)0x0) { /* TODO: offset 0x14E, GameWidget._pad14e area */
+    ((void (*)(void))**(void ***)((int)param_1 + 0x14e))(); /* TODO: obj at param_1+0x14E->vtable[0], _pad14e area */
   }
   iVar2 = DAT_004896b0;
   *(char *)(DAT_004896b0 + 0x28) = 0;
@@ -3132,8 +3132,8 @@ void __cdecl FUN_0045feb0(int param_1,char param_2)
       iVar1 = param_1 + sVar6 * 0xe;
       *puVar5 = CONCAT22(CONCAT11((char)*(short *)puVar5,
                                   (char)((ushort)*(short *)puVar5 >> 8)),
-                         CONCAT11((char)*(short *)((int)puVar5 + 2),
-                                  (char)((ushort)*(short *)((int)puVar5 + 2) >> 8)));
+                         CONCAT11((char)*(short *)((int)puVar5 + 2), /* TODO: puVar5+2 sub-struct byte access */
+                                  (char)((ushort)*(short *)((int)puVar5 + 2) >> 8))); /* TODO: puVar5+2 sub-struct byte access */
       puVar5 = (int *)(iVar1 + 0x20);
       uVar2 = *(short *)puVar5;
       uVar4 = *(short *)(iVar1 + 0x22);

@@ -485,14 +485,14 @@ void FUN_00430770(UIElement *param_1)
         if (param_1->child_list_1 == 0) {
           return;
         }
-        iVar1 = *(int *)((int)param_1->child_list_1 + 0xe);
+        iVar1 = *(int *)((int)param_1->child_list_1 + 0xe) /* CVector: count at +0x0E */;
         if (iVar1 == 0) {
           return;
         }
         uVar5 = iVar1 * 4;
         do {
           uVar5 = uVar5 - 4;
-          FUN_00430770(*(UIElement **)(**(int **)((int)param_1->child_list_1 + 4) + uVar5));
+          FUN_00430770(*(UIElement **)(**(int **)((int)param_1->child_list_1 + 4) /* CVector: data ptr at +0x04 */ + uVar5));
         } while (3 < uVar5);
         return;
       }
@@ -584,7 +584,7 @@ LAB_00430933:
     SelectClipRgn((HDC)((GameScreen *)local_1c)->hdc_active,pHVar6);
     DeleteObject(pHVar6);
     if (*(int **)((int)local_1c + 0x1a) != (int *)0x0) { /* TODO: unknown offset 0x1a on GameScreen */
-      FUN_00430770(*(UIElement **)((int)local_1c + 0x1a));
+      FUN_00430770(*(UIElement **)((int)local_1c + 0x1a)); /* TODO: unknown offset 0x1a on GameScreen */
     }
     sVar7 = 0;
     local_8 = (local_8 & ~0xFF) | ((unsigned char)(1));
@@ -1631,8 +1631,8 @@ void __fastcall FUN_00431be0(int param_1)
         iVar6 = iVar6 + -1;
         if (-1 < iVar6) {
           iVar3 = 0;
-          if ((*(int **)((int)pvVar2 + 4) != (int *)0x0) &&
-             (pcVar7 = (char *)**(int **)((int)pvVar2 + 4), pcVar7 != (char *)0x0)) {
+          if ((*(int **)((int)pvVar2 + 4) /* CString: pp_buffer at +0x04 */ != (int *)0x0) &&
+             (pcVar7 = (char *)**(int **)((int)pvVar2 + 4) /* CString: pp_buffer at +0x04 */, pcVar7 != (char *)0x0)) {
             cVar1 = *pcVar7;
             while (cVar1 != '\0') {
               pcVar7 = pcVar7 + 1;
@@ -1647,7 +1647,7 @@ void __fastcall FUN_00431be0(int param_1)
               iVar4 = FUN_00417570((int)pvVar2);
               iVar5 = iVar3;
               if (iVar6 < iVar4) {
-                _Dst = (void *)(**(int **)((int)pvVar2 + 4) + iVar6);
+                _Dst = (void *)(**(int **)((int)pvVar2 + 4) /* CString: pp_buffer at +0x04 */ + iVar6);
                 memmove(_Dst,(void *)((int)_Dst + 1),(iVar4 - iVar6) + 1);
               }
             }
@@ -1683,8 +1683,8 @@ void __fastcall FUN_00431be0(int param_1)
         iVar6 = iVar6 + -1;
         if (-1 < iVar6) {
           iVar3 = 0;
-          if ((*(int **)((int)pvVar2 + 4) != (int *)0x0) &&
-             (pcVar7 = (char *)**(int **)((int)pvVar2 + 4), pcVar7 != (char *)0x0)) {
+          if ((*(int **)((int)pvVar2 + 4) /* CString: pp_buffer at +0x04 */ != (int *)0x0) &&
+             (pcVar7 = (char *)**(int **)((int)pvVar2 + 4) /* CString: pp_buffer at +0x04 */, pcVar7 != (char *)0x0)) {
             cVar1 = *pcVar7;
             while (cVar1 != '\0') {
               pcVar7 = pcVar7 + 1;
@@ -3553,7 +3553,7 @@ LAB_00434392:
         (&DAT_0048713e)[iVar4 * 0x1e] = param_1[1];
         (&DAT_00487142)[iVar4 * 0x1e] = param_1[1];
         (&DAT_00487146)[iVar4 * 0x1e] = param_1;
-        if (((*(byte *)((int)&DAT_00487134 + iVar3 + 1) & 0x10) != 0) &&
+        if (((*(byte *)((int)&DAT_00487134 + iVar3 + 1) & 0x10) != 0) && /* TODO: DAT_00487134 sound slot flags byte */
            ((&DAT_00487136)[iVar4 * 0x1e] != 0)) {
           FUN_0046f5f0((&DAT_00487136)[iVar4 * 0x1e]);
         }
@@ -3566,7 +3566,7 @@ LAB_00434392:
           (&DAT_0048714a)[iVar4 * 0x3c] = 0;
           do {
             puVar1 = (uint *)((int)&DAT_0048714c + sVar5 * 0xe + iVar3);
-            if (((*(byte *)((int)puVar1 + 0xd) & 0x10) != 0) && (*puVar1 != 0)) {
+            if (((*(byte *)((int)puVar1 + 0xd) & 0x10) != 0) && (*puVar1 != 0)) { /* TODO: sound slot sub-entry flags byte at +0xd */
               FUN_0046f5f0(*puVar1);
             }
             sVar5 = sVar5 + 1;
@@ -3622,7 +3622,7 @@ int __cdecl FUN_00434490(int param_1)
       do {
         iVar3 = (int)local_2;
         (&DAT_00487132)[iVar3 * 0x3c] = 1;
-        if (((*(byte *)((int)&DAT_00487134 + iVar3 * 0x78 + 1) & 0x10) != 0) &&
+        if (((*(byte *)((int)&DAT_00487134 + iVar3 * 0x78 + 1) & 0x10) != 0) && /* TODO: DAT_00487134 sound slot flags byte */
            ((&DAT_00487136)[iVar3 * 0x1e] != 0)) {
           FUN_0046f5f0((&DAT_00487136)[iVar3 * 0x1e]);
           (&DAT_00487136)[iVar3 * 0x1e] = 0;
@@ -3633,7 +3633,7 @@ int __cdecl FUN_00434490(int param_1)
         do {
           uVar5 = (ushort)((uint)(sVar6 * 7) >> 0x10);
           puVar1 = (uint *)((int)&DAT_0048714c + sVar6 * 0xe + iVar3 * 0x78);
-          if (((*(byte *)((int)puVar1 + 0xd) & 0x10) != 0) && (uVar5 = 0, *puVar1 != 0)) {
+          if (((*(byte *)((int)puVar1 + 0xd) & 0x10) != 0) && (uVar5 = 0, *puVar1 != 0)) { /* TODO: sound slot sub-entry flags byte at +0xd */
             uVar4 = FUN_0046f5f0(*puVar1);
             uVar5 = (ushort)((uint)uVar4 >> 0x10);
           }
@@ -3674,7 +3674,7 @@ int __cdecl FUN_00434490(int param_1)
     do {
       in_EAX = sVar6 * 7;
       puVar1 = (uint *)(param_1 + 0x24 + sVar6 * 0xe);
-      if (((*(byte *)((int)puVar1 + 0xd) & 0x10) != 0) && (in_EAX = 0, *puVar1 != 0)) {
+      if (((*(byte *)((int)puVar1 + 0xd) & 0x10) != 0) && (in_EAX = 0, *puVar1 != 0)) { /* TODO: sound slot sub-entry flags byte at +0xd */
         in_EAX = FUN_0046f5f0(*puVar1);
       }
       sVar6 = sVar6 + 1;
@@ -3738,7 +3738,7 @@ int __cdecl FUN_00434640(int *param_1,int param_2)
       if ((&DAT_0048714a)[sVar7 * 0x3c] != 0) {
         sVar6 = 0;
         do {
-          if (*(int *)((int)&DAT_0048714c + sVar6 * 0xe + iVar3) == *param_1) {
+          if (*(int *)((int)&DAT_0048714c + sVar6 * 0xe + iVar3) == *param_1) { /* TODO: DAT_0048714c sound slot sub-entry, stride 0x0E */
             puVar4 = &DAT_00487128 + iVar3;
             if (bVar8) {
               *(short *)(param_2 + 10) = 0;
@@ -4592,8 +4592,8 @@ void __thiscall FUN_00435da0(void *this,int param_1)
       iVar3 = iVar3 + -1;
       if (-1 < iVar3) {
         iVar4 = 0;
-        if ((*(int **)((int)pvVar2 + 4) != (int *)0x0) &&
-           (pcVar6 = (char *)**(int **)((int)pvVar2 + 4), pcVar6 != (char *)0x0)) {
+        if ((*(int **)((int)pvVar2 + 4) /* CString: pp_buffer at +0x04 */ != (int *)0x0) &&
+           (pcVar6 = (char *)**(int **)((int)pvVar2 + 4) /* CString: pp_buffer at +0x04 */, pcVar6 != (char *)0x0)) {
           cVar1 = *pcVar6;
           while (cVar1 != '\0') {
             pcVar6 = pcVar6 + 1;
@@ -4608,7 +4608,7 @@ void __thiscall FUN_00435da0(void *this,int param_1)
             iVar5 = FUN_00417570((int)pvVar2);
             iVar9 = iVar4;
             if (iVar3 < iVar5) {
-              pvVar7 = (void *)(**(int **)((int)pvVar2 + 4) + iVar3);
+              pvVar7 = (void *)(**(int **)((int)pvVar2 + 4) /* CString: pp_buffer at +0x04 */ + iVar3);
               memmove(pvVar7,(void *)((int)pvVar7 + 1),(iVar5 - iVar3) + 1);
             }
           }
@@ -4644,8 +4644,8 @@ void __thiscall FUN_00435da0(void *this,int param_1)
       iVar3 = iVar3 + -1;
       if (-1 < iVar3) {
         iVar4 = 0;
-        if ((*(int **)((int)pvVar2 + 4) != (int *)0x0) &&
-           (pcVar6 = (char *)**(int **)((int)pvVar2 + 4), pcVar6 != (char *)0x0)) {
+        if ((*(int **)((int)pvVar2 + 4) /* CString: pp_buffer at +0x04 */ != (int *)0x0) &&
+           (pcVar6 = (char *)**(int **)((int)pvVar2 + 4) /* CString: pp_buffer at +0x04 */, pcVar6 != (char *)0x0)) {
           cVar1 = *pcVar6;
           while (cVar1 != '\0') {
             pcVar6 = pcVar6 + 1;
@@ -4660,7 +4660,7 @@ void __thiscall FUN_00435da0(void *this,int param_1)
             iVar5 = FUN_00417570((int)pvVar2);
             iVar9 = iVar4;
             if (iVar3 < iVar5) {
-              pvVar7 = (void *)(**(int **)((int)pvVar2 + 4) + iVar3);
+              pvVar7 = (void *)(**(int **)((int)pvVar2 + 4) /* CString: pp_buffer at +0x04 */ + iVar3);
               memmove(pvVar7,(void *)((int)pvVar7 + 1),(iVar5 - iVar3) + 1);
             }
           }

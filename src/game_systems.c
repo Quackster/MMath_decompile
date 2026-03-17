@@ -238,16 +238,16 @@ void __fastcall FUN_004105b0(GameWidget *this)
     pvVar2 = *(void **)((int)this + iVar9 * 4 + 0x132); /* TODO: offset 0x132+ array of slot pointers */
     if (pvVar2 != (void *)0x0) {
       FUN_00458860(pvVar2,(char *)&DAT_0047ef44);
-      FUN_0041cb70(*(void **)((int)this + iVar9 * 4 + 0x132),'\x01');
+      FUN_0041cb70(*(void **)((int)this + iVar9 * 4 + 0x132),'\x01'); /* TODO: offset 0x132+ array of slot pointers */
       uVar4 = FUN_0044ab30(DAT_00483458);
       if (((char)uVar4 != '\0') && (sVar10 < this->visible_slot_count)) {
-        FUN_0041cd60(*(void **)((int)this + iVar9 * 4 + 0x132),local_30);
+        FUN_0041cd60(*(void **)((int)this + iVar9 * 4 + 0x132),local_30); /* TODO: offset 0x132+ array of slot pointers */
         local_14 = (char *)(local_30[5] + 0xc800);
-        FUN_0041d020(*(void **)((int)this + iVar9 * 4 + 0x132),local_14,
+        FUN_0041d020(*(void **)((int)this + iVar9 * 4 + 0x132),local_14, /* TODO: offset 0x132+ array of slot pointers */
                      (local_30[2] - local_30[0] & 0xffffff00U) * iVar9 + local_30[4] + 0xd200,0);
         puVar5 = FUN_0044a780(DAT_00483458);
-        FUN_00458920(*(void **)((int)this + iVar9 * 4 + 0x132),(int)puVar5);
-        iVar6 = FUN_004589f0(*(int *)((int)this + iVar9 * 4 + 0x132));
+        FUN_00458920(*(void **)((int)this + iVar9 * 4 + 0x132),(int)puVar5); /* TODO: offset 0x132+ array of slot pointers */
+        iVar6 = FUN_004589f0(*(int *)((int)this + iVar9 * 4 + 0x132)); /* TODO: offset 0x132+ array of slot pointers */
         iVar8 = 0;
         if ((*(int **)(iVar6 + 4) != (int *)0x0) &&
            (pcVar7 = (char *)**(int **)(iVar6 + 4), pcVar7 != (char *)0x0)) {
@@ -259,7 +259,7 @@ void __fastcall FUN_004105b0(GameWidget *this)
           }
         }
         if (iVar8 == 0) {
-          FUN_00458860(*(void **)((int)this + iVar9 * 4 + 0x132),s_____No_Name_Hero_____0047ef48)
+          FUN_00458860(*(void **)((int)this + iVar9 * 4 + 0x132),s_____No_Name_Hero_____0047ef48) /* TODO: offset 0x132+ array of slot pointers */
           ;
         }
       }
@@ -276,9 +276,9 @@ void __fastcall FUN_004105b0(GameWidget *this)
   if (pvVar2 != (void *)0x0) {
     FUN_0041cb70(pvVar2,'\x01');
   }
-  FUN_0041cb70(*(void **)((int)DAT_004897c0 + 0x52),'\x01');
+  FUN_0041cb70(*(void **)((int)DAT_004897c0 + 0x52),'\x01'); /* TODO: DAT_004897c0 struct unknown, offset 0x52 */
   FUN_0041cb70(DAT_004897c0,'\x01');
-  FUN_0041cad0(*(void **)((int)DAT_004897c0 + 0x52));
+  FUN_0041cad0(*(void **)((int)DAT_004897c0 + 0x52)); /* TODO: DAT_004897c0 struct unknown, offset 0x52 */
   FUN_0041cad0(DAT_004897c0);
   local_8 = local_8 & 0xffffff00;
   FUN_004107fb();
@@ -1100,7 +1100,7 @@ int * __fastcall FUN_00413900(int *param_1)
   *(int *)((int)param_1 + 0x1e2) = 0xffffffff;    /* TODO: unknown offset 0x1E2 */
   *(unsigned char *)((int)param_1 + 0x1e6) = 0;   /* TODO: unknown offset 0x1E6 */
   *(void ***)((int)param_1 + 0x1d2) = &PTR_LAB_00472e04; /* TODO: unknown offset 0x1D2 */
-  *(void ***)((int)param_1 + 0x1d2) = &PTR_LAB_00472e00;
+  *(void ***)((int)param_1 + 0x1d2) = &PTR_LAB_00472e00; /* TODO: unknown offset 0x1D2 */
   param_1[0x7a] = s_aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpP_00480518;
   *param_1 = &PTR_LAB_00472e40;
   *(int *)((int)param_1 + 0x2e) = 0;              /* TODO: unknown offset 0x2E on this struct */
@@ -4627,17 +4627,17 @@ void __cdecl FUN_0041b5f0(UIWidget *param_1,byte param_2)
   if (param_1 != (UIWidget *)0x0) {
     FUN_0041dad0(param_1,param_2,'\0');
     if (((param_1->child_list_2 != 0) &&
-        (iVar2 = *(int *)((int)param_1->child_list_2 + 0xe), iVar2 != 0)) &&
+        (iVar2 = *(int *)((int)param_1->child_list_2 + 0xe) /* CVector: count at +0x0E */, iVar2 != 0)) &&
        (uVar3 = 1, iVar2 != 0)) {
       iVar2 = 4;
       do {
-        pvVar1 = *(void **)(**(int **)((int)param_1->child_list_2 + 4) + -4 + iVar2);
+        pvVar1 = *(void **)(**(int **)((int)param_1->child_list_2 + 4) /* CVector: data ptr at +0x04 */ + -4 + iVar2);
         if (pvVar1 != (void *)0x0) {
           FUN_0041b5f0(pvVar1,param_2);
         }
         iVar2 = iVar2 + 4;
         uVar3 = uVar3 + 1;
-      } while (uVar3 <= *(uint *)((int)param_1->child_list_2 + 0xe));
+      } while (uVar3 <= *(uint *)((int)param_1->child_list_2 + 0xe) /* CVector: count at +0x0E */);
     }
   }
   return;
@@ -4658,17 +4658,17 @@ void __cdecl FUN_0041b660(UIWidget *param_1,void *param_2)
   if (param_1 != (UIWidget *)0x0) {
     FUN_0041d780(param_1,param_2);
     if (((param_1->child_list_2 != 0) &&
-        (iVar3 = *(int *)((int)param_1->child_list_2 + 0xe), iVar3 != 0)) &&
+        (iVar3 = *(int *)((int)param_1->child_list_2 + 0xe) /* CVector: count at +0x0E */, iVar3 != 0)) &&
        (uVar2 = 1, iVar3 != 0)) {
       iVar3 = 4;
       do {
-        pvVar1 = *(void **)(**(int **)((int)param_1->child_list_2 + 4) + -4 + iVar3);
+        pvVar1 = *(void **)(**(int **)((int)param_1->child_list_2 + 4) /* CVector: data ptr at +0x04 */ + -4 + iVar3);
         if (pvVar1 != (void *)0x0) {
           FUN_0041b660(pvVar1,param_2);
         }
         iVar3 = iVar3 + 4;
         uVar2 = uVar2 + 1;
-      } while (uVar2 <= *(uint *)((int)param_1->child_list_2 + 0xe));
+      } while (uVar2 <= *(uint *)((int)param_1->child_list_2 + 0xe) /* CVector: count at +0x0E */);
     }
   }
   return;
@@ -5486,13 +5486,13 @@ void __fastcall FUN_0041cad0(UIWidget *param_1)
 
   FUN_0041cb70(param_1,'\x01');
   if (((int)param_1->child_list_1 != 0) &&
-     (uVar2 = 1, *(int *)((int)param_1->child_list_1 + 0xe) != 0)) {
+     (uVar2 = 1, *(int *)((int)param_1->child_list_1 + 0xe) /* CVector: count at +0x0E */ != 0)) {
     iVar1 = 4;
     do {
       iVar1 = iVar1 + 4;
       uVar2 = uVar2 + 1;
-      FUN_0041cb20(*(void **)(**(int **)((int)param_1->child_list_1 + 4) + -8 + iVar1));
-    } while (uVar2 <= *(uint *)((int)param_1->child_list_1 + 0xe));
+      FUN_0041cb20(*(void **)(**(int **)((int)param_1->child_list_1 + 4) /* CVector: data ptr at +0x04 */ + -8 + iVar1));
+    } while (uVar2 <= *(uint *)((int)param_1->child_list_1 + 0xe) /* CVector: count at +0x0E */);
   }
   return;
 }
@@ -5510,13 +5510,13 @@ void __fastcall FUN_0041cb20(UIWidget *param_1)
 
   FUN_0041cb70(param_1,'\x01');
   if (((int)param_1->child_list_2 != 0) &&
-     (uVar2 = 1, *(int *)((int)param_1->child_list_2 + 0xe) != 0)) {
+     (uVar2 = 1, *(int *)((int)param_1->child_list_2 + 0xe) /* CVector: count at +0x0E */ != 0)) {
     iVar1 = 4;
     do {
       iVar1 = iVar1 + 4;
       uVar2 = uVar2 + 1;
-      FUN_0041cb20(*(void **)(**(int **)((int)param_1->child_list_2 + 4) + -8 + iVar1));
-    } while (uVar2 <= *(uint *)((int)param_1->child_list_2 + 0xe));
+      FUN_0041cb20(*(void **)(**(int **)((int)param_1->child_list_2 + 4) /* CVector: data ptr at +0x04 */ + -8 + iVar1));
+    } while (uVar2 <= *(uint *)((int)param_1->child_list_2 + 0xe) /* CVector: count at +0x0E */);
   }
   return;
 }
@@ -6098,7 +6098,7 @@ void __thiscall FUN_0041d2d0(void *this,int *param_1,char param_2)
     FUN_0041d385();
   }
   FUN_0041cca0(local_1c,local_14,local_18,local_14,local_18,'\x01','\x01');
-  if ((((UIWidget *)local_1c)->child_list_2 != 0) && (*(int *)((int)((UIWidget *)local_1c)->child_list_2 + 0xe) != 0)
+  if ((((UIWidget *)local_1c)->child_list_2 != 0) && (*(int *)((int)((UIWidget *)local_1c)->child_list_2 + 0xe) /* CVector: count at +0x0E */ != 0)
      ) {
     FUN_0041c200(local_1c,local_14,local_18,1);
   }
@@ -6309,17 +6309,17 @@ void __fastcall FUN_0041d6a0(UIWidget *this)
   uint uVar2;
 
   if (((int)this->child_list_1 != 0) &&
-      (iVar1 = *(int *)((int)this->child_list_1 + 0xe), iVar1 != 0) && (uVar2 = 1, iVar1 != 0)) {
+      (iVar1 = *(int *)((int)this->child_list_1 + 0xe) /* CVector: count at +0x0E */, iVar1 != 0) && (uVar2 = 1, iVar1 != 0)) {
     iVar1 = 4;
     do {
       uVar2 = uVar2 + 1;
       iVar1 = iVar1 + 4;
-      child = *(void **)(**(int **)((int)this->child_list_1 + 4) + -8 + iVar1);
+      child = *(void **)(**(int **)((int)this->child_list_1 + 4) /* CVector: data ptr at +0x04 */ + -8 + iVar1);
       FUN_0041cb70(child,'\x01');
       FUN_0041d490((UIElement *)child);
       FUN_0041d6a0((UIWidget *)child);
       FUN_0041cb70(child,'\x01');
-    } while (uVar2 <= *(uint *)((int)this->child_list_1 + 0xe));
+    } while (uVar2 <= *(uint *)((int)this->child_list_1 + 0xe) /* CVector: count at +0x0E */);
   }
   return;
 }
@@ -6338,7 +6338,7 @@ void __fastcall FUN_0041d710(UIWidget *param_1)
   int *puVar3;
 
   if ((int)param_1->child_list_1 != 0) {
-    iVar1 = *(int *)((int)param_1->child_list_1 + 0xe);
+    iVar1 = *(int *)((int)param_1->child_list_1 + 0xe) /* CVector: count at +0x0E */;
     while (iVar1 != 0) {
       iVar1 = (int)param_1->child_list_1;
       _Dst = (int *)**(int **)(iVar1 + 4);
@@ -6351,7 +6351,7 @@ void __fastcall FUN_0041d710(UIWidget *param_1)
         *(int *)(iVar1 + 0xe) = *(int *)(iVar1 + 0xe) + -1;
       }
       ((void (*)(void))((void **)*puVar3)[0])(); /* puVar3->vtable[0] */
-      iVar1 = *(int *)((int)param_1->child_list_1 + 0xe);
+      iVar1 = *(int *)((int)param_1->child_list_1 + 0xe) /* CVector: count at +0x0E */;
     }
   }
   FUN_0041cb70(param_1,'\x01');
@@ -6387,7 +6387,7 @@ void __thiscall FUN_0041da00(DialogWidget *this,void *param_1)
       if ((this->flags >> 4 & 1) != 0) {
         FUN_00431100(this_00,(intptr_t)this);
       }
-      if (*(void **)((int)this->field_06 + 0x12) == this) { /* field_06 + 0x12 = flags on child UIElement */
+      if (*(void **)((int)this->field_06 + 0x12) == this) { /* TODO: field_06 treated as UIElement*, +0x12 = flags field */
         FUN_00430ac0(this->field_06,(int *)0x0);
       }
     }
@@ -6473,15 +6473,15 @@ void __thiscall FUN_0041db50(UIWidget *this,char param_1)
   uint uVar3;
 
   if (((int)this->child_list_1 != 0) &&
-      (iVar1 = *(int *)((int)this->child_list_1 + 0xe), iVar1 != 0) && (uVar2 = 1, iVar1 != 0))
+      (iVar1 = *(int *)((int)this->child_list_1 + 0xe) /* CVector: count at +0x0E */, iVar1 != 0) && (uVar2 = 1, iVar1 != 0))
   {
     do {
       uVar3 = (uint)(ushort)((short)uVar2 + 1);
-      this_00 = *(void **)(**(int **)((int)this->child_list_1 + 4) + -4 + uVar2 * 4);
+      this_00 = *(void **)(**(int **)((int)this->child_list_1 + 4) /* CVector: data ptr at +0x04 */ + -4 + uVar2 * 4);
       FUN_0041cb70(this_00,param_1);
       FUN_0041db50(this_00,param_1);
       uVar2 = uVar3;
-    } while (uVar3 <= *(uint *)((int)this->child_list_1 + 0xe));
+    } while (uVar3 <= *(uint *)((int)this->child_list_1 + 0xe) /* CVector: count at +0x0E */);
   }
   return;
 }

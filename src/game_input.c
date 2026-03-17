@@ -1285,14 +1285,14 @@ void FUN_0043c560(UIWidget *param_1)
   FUN_0041ba40(param_1,0,1,0);
   param_1->field_109 = 0;
   if (((param_1->child_list_2 != NULL) &&
-      (iVar2 = *(int *)((int)param_1->child_list_2 + 0xe), iVar2 != 0)) &&
+      (iVar2 = *(int *)((int)param_1->child_list_2 + 0xe) /* CVector: count at +0x0E */, iVar2 != 0)) &&
      (uVar1 = 1, iVar2 != 0)) {
     iVar2 = 4;
     do {
       iVar2 = iVar2 + 4;
       uVar1 = uVar1 + 1;
-      FUN_0043c560(*(UIWidget **)(**(int **)((int)param_1->child_list_2 + 4) + -8 + iVar2));
-    } while (uVar1 <= *(uint *)((int)param_1->child_list_2 + 0xe));
+      FUN_0043c560(*(UIWidget **)(**(int **)((int)param_1->child_list_2 + 4) /* CVector: data ptr at +0x04 */ + -8 + iVar2));
+    } while (uVar1 <= *(uint *)((int)param_1->child_list_2 + 0xe) /* CVector: count at +0x0E */);
   }
   return;
 }
@@ -1487,8 +1487,8 @@ void FUN_0043c970(void *param_1)
   FUN_0041ce10(param_1,&local_28,4);
   FUN_0041ce10(local_1c,&local_30,4);
   /* TODO: offsets 0x1DA-0x1E6 on local_1c are beyond known struct bounds */
-  if ((((*(int *)((int)local_1c + 0x1e6) == 0) && (*(int *)((int)local_1c + 0x1e2) == 0)) &&
-      (*(int *)((int)local_1c + 0x1de) == 0)) &&
+  if ((((*(int *)((int)local_1c + 0x1e6) /* TODO: offset 0x1E6 */ == 0) && (*(int *)((int)local_1c + 0x1e2) /* TODO: offset 0x1E2 */ == 0)) &&
+      (*(int *)((int)local_1c + 0x1de) /* TODO: offset 0x1DE */ == 0)) &&
      (local_14 = (int *)((int)local_1c + 0x1da), *local_14 == 0)) {
     FUN_00403030((int *)((int)local_1c + 0x1e2),&local_38,&local_28);
     local_8 = (local_8 & ~0xFF) | ((unsigned char)(1));
@@ -1497,7 +1497,7 @@ void FUN_0043c970(void *param_1)
     local_8 = (local_8 & ~0xFF) | ((unsigned char)(1));
     FUN_0043ca3a();
   }
-  iVar1 = *(int *)((int)local_1c + 0x1e6);
+  iVar1 = *(int *)((int)local_1c + 0x1e6) /* TODO: offset 0x1E6 */;
   if (iVar1 < local_24) {
     local_14 = (int *)(local_24 - iVar1);
     local_34 = local_14;
@@ -1508,7 +1508,7 @@ void FUN_0043c970(void *param_1)
     else {
       ppiVar2 = &local_34;
     }
-    local_2c = *(int *)((int)local_1c + 0x1de) + (int)*ppiVar2;
+    local_2c = *(int *)((int)local_1c + 0x1de) /* TODO: offset 0x1DE */ + (int)*ppiVar2;
   }
   else {
     local_14 = (int *)(local_24 - iVar1);
@@ -1518,10 +1518,10 @@ void FUN_0043c970(void *param_1)
       local_14 = (int *)-(int)local_14;
       ppiVar2 = &local_14;
     }
-    local_2c = *(int *)((int)local_1c + 0x1de) - (int)*ppiVar2;
+    local_2c = *(int *)((int)local_1c + 0x1de) /* TODO: offset 0x1DE */ - (int)*ppiVar2;
   }
   local_34 = (int *)((int)local_1c + 0x1e2);
-  iVar1 = *(int *)((int)local_1c + 0x1e2);
+  iVar1 = *(int *)((int)local_1c + 0x1e2) /* TODO: offset 0x1E2 */;
   if (iVar1 < local_28) {
     local_14 = (int *)(local_28 - iVar1);
     local_3c = local_14;
@@ -1531,7 +1531,7 @@ void FUN_0043c970(void *param_1)
       ppiVar2 = &local_14;
     }
     local_14 = *ppiVar2;
-    local_30 = *(int *)((int)local_1c + 0x1da) + (int)local_14;
+    local_30 = *(int *)((int)local_1c + 0x1da) /* TODO: offset 0x1DA */ + (int)local_14;
   }
   else {
     local_14 = (int *)(local_28 - iVar1);
@@ -1542,7 +1542,7 @@ void FUN_0043c970(void *param_1)
       ppiVar2 = &local_14;
     }
     local_14 = *ppiVar2;
-    local_30 = *(int *)((int)local_1c + 0x1da) - (int)local_14;
+    local_30 = *(int *)((int)local_1c + 0x1da) /* TODO: offset 0x1DA */ - (int)local_14;
   }
   FUN_00403030((void *)((int)local_1c + 0x1da),&local_20,&local_30);
   local_8 = (local_8 & ~0xFF) | ((unsigned char)(1));
@@ -1632,14 +1632,14 @@ void FUN_0043cb90(void *param_1,UIWidget *param_2)
     FUN_0043c970(param_1);
   }
   if (((param_2->child_list_2 != NULL) &&
-      (iVar2 = *(int *)((int)param_2->child_list_2 + 0xe), iVar2 != 0)) &&
+      (iVar2 = *(int *)((int)param_2->child_list_2 + 0xe) /* CVector: count at +0x0E */, iVar2 != 0)) &&
      (uVar1 = 1, iVar2 != 0)) {
     iVar2 = 4;
     do {
       iVar2 = iVar2 + 4;
       uVar1 = uVar1 + 1;
-      FUN_0043cb90(param_1,*(UIWidget **)(**(int **)((int)param_2->child_list_2 + 4) + -8 + iVar2));
-    } while (uVar1 <= *(uint *)((int)param_2->child_list_2 + 0xe));
+      FUN_0043cb90(param_1,*(UIWidget **)(**(int **)((int)param_2->child_list_2 + 4) /* CVector: data ptr at +0x04 */ + -8 + iVar2));
+    } while (uVar1 <= *(uint *)((int)param_2->child_list_2 + 0xe) /* CVector: count at +0x0E */);
   }
   return;
 }
@@ -1928,10 +1928,10 @@ void __fastcall FUN_0043e500(void *param_1)
 
 {
   /* TODO: offsets 0x1BC-0x1CC suggest extended widget beyond DialogWidget */
-  if (*(short *)((int)param_1 + 0x1cc) == 0) {
-    *(short *)((int)param_1 + 0x1ca) = 1;
-    FUN_0042dba0(param_1,*(int *)((int)param_1 + 0x1bc) + 0x32);
-    *(short *)((int)param_1 + 0x1ca) = 0;
+  if (*(short *)((int)param_1 + 0x1cc) /* TODO: offset 0x1CC */ == 0) {
+    *(short *)((int)param_1 + 0x1ca) /* TODO: offset 0x1CA */ = 1;
+    FUN_0042dba0(param_1,*(int *)((int)param_1 + 0x1bc) /* TODO: offset 0x1BC */ + 0x32);
+    *(short *)((int)param_1 + 0x1ca) /* TODO: offset 0x1CA */ = 0;
   }
   return;
 }
@@ -2276,7 +2276,7 @@ void __fastcall FUN_0043ef10(DialogWidget *param_1)
   int *puVar1;
 
   for (puVar1 = (int *)param_1->child_list; puVar1 != (int *)0x0;
-      puVar1 = *(int **)((int)puVar1 + 10)) {  /* linked list next pointer at node+10 */
+      puVar1 = *(int **)((int)puVar1 + 10)) {  /* TODO: linked list next pointer at node+0x0A */
     FUN_0041dd40((void *)*puVar1);
   }
   return;
@@ -2537,13 +2537,13 @@ void FUN_0043f8c0(UIWidget *param_1)
 
   param_1->field_109 = 0;
   if (((param_1->child_list_2 != NULL) &&
-      (iVar2 = *(int *)((int)param_1->child_list_2 + 0xe), iVar2 != 0)) && (uVar1 = 1, iVar2 != 0)) {
+      (iVar2 = *(int *)((int)param_1->child_list_2 + 0xe) /* CVector: count at +0x0E */, iVar2 != 0)) && (uVar1 = 1, iVar2 != 0)) {
     iVar2 = 4;
     do {
       iVar2 = iVar2 + 4;
       uVar1 = uVar1 + 1;
-      FUN_0043f8c0(*(UIWidget **)(**(int **)((int)param_1->child_list_2 + 4) + -8 + iVar2));
-    } while (uVar1 <= *(uint *)((int)param_1->child_list_2 + 0xe));
+      FUN_0043f8c0(*(UIWidget **)(**(int **)((int)param_1->child_list_2 + 4) /* CVector: data ptr at +0x04 */ + -8 + iVar2));
+    } while (uVar1 <= *(uint *)((int)param_1->child_list_2 + 0xe) /* CVector: count at +0x0E */);
   }
   return;
 }
