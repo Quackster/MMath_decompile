@@ -858,7 +858,7 @@ L_00431128:
   if ((u5 != 0) && (u5 <= u3)) {
     if (u5 < u3) {
       _Src = (void *)(**(int **)(n2 + 4) + u5 * 4);
-      memmove((void *)((int)_Src + -4),_Src,(u3 - u5) * 4);
+      memmove((void *)((char *)_Src + -4),_Src,(u3 - u5) * 4);
     }
     *pu1 = *pu1 - 1;
   }
@@ -1400,8 +1400,8 @@ void __fastcall FUN_00431be0(int param_1)
         n6 = n6 + -1;
         if (-1 < n6) {
           n3 = 0;
-          if ((*(int **)((int)pv2 + 4) /* CString: pp_buffer at +0x04 */ != NULL) &&
-             (pc7 = (char *)**(int **)((int)pv2 + 4) /* CString: pp_buffer at +0x04 */, pc7 != NULL)) {
+          if ((*(int **)((char *)pv2 + 4) /* CString: pp_buffer at +0x04 */ != NULL) &&
+             (pc7 = (char *)**(int **)((char *)pv2 + 4) /* CString: pp_buffer at +0x04 */, pc7 != NULL)) {
             c1 = *pc7;
             while (c1 != '\0') {
               pc7 = pc7 + 1;
@@ -1416,8 +1416,8 @@ void __fastcall FUN_00431be0(int param_1)
               n4 = FUN_00417570((int)pv2);
               n5 = n3;
               if (n6 < n4) {
-                _Dst = (void *)(**(int **)((int)pv2 + 4) /* CString: pp_buffer at +0x04 */ + n6);
-                memmove(_Dst,(void *)((int)_Dst + 1),(n4 - n6) + 1);
+                _Dst = (void *)(**(int **)((char *)pv2 + 4) /* CString: pp_buffer at +0x04 */ + n6);
+                memmove(_Dst,(void *)((char *)_Dst + 1),(n4 - n6) + 1);
               }
             }
           }
@@ -1452,8 +1452,8 @@ void __fastcall FUN_00431be0(int param_1)
         n6 = n6 + -1;
         if (-1 < n6) {
           n3 = 0;
-          if ((*(int **)((int)pv2 + 4) /* CString: pp_buffer at +0x04 */ != NULL) &&
-             (pc7 = (char *)**(int **)((int)pv2 + 4) /* CString: pp_buffer at +0x04 */, pc7 != NULL)) {
+          if ((*(int **)((char *)pv2 + 4) /* CString: pp_buffer at +0x04 */ != NULL) &&
+             (pc7 = (char *)**(int **)((char *)pv2 + 4) /* CString: pp_buffer at +0x04 */, pc7 != NULL)) {
             c1 = *pc7;
             while (c1 != '\0') {
               pc7 = pc7 + 1;
@@ -1558,7 +1558,7 @@ void __thiscall FUN_00431f50(DialogWidget *this,char param_1)
   
   if (this->dialog_active == '\0') {
     if (this->dialog_initialized != '\0') goto L_00431fab;
-    n1 = FUN_004589f0((intptr_t)this->dialog_data);
+    n1 = FUN_004589f0((char *)this - >dialog_data);
     sscanf((char *)**(int **)(n1 + 4),&DAT_00480118,&this->dialog_value);
     this->dialog_active = 1;
   }
@@ -2022,7 +2022,7 @@ int * __thiscall FUN_004329d0(CString *this,int *param_1)
   this->pp_buffer = *param_1;
   this->tag = param_1[3];
   this->allocator = param_1[2];
-  *(int *)((intptr_t)this + 0x18) = param_1[5]; /* TODO: unknown offset 0x18 on CString (past extra_data at 0x16) */
+  *(int *)((char *)this + 0x18) = param_1[5]; /* TODO: unknown offset 0x18 on CString (past extra_data at 0x16) */
   this->owns_buffer = param_1[4];
   return this;
 }
@@ -2039,7 +2039,7 @@ FUN_00432a10(CString *this,int param_1,int param_2,int param_3,int param_4,
   this->pp_buffer = param_1;
   this->tag = param_4;
   this->allocator = param_3;
-  *(int *)((intptr_t)this + 0x18) = param_6; /* TODO: unknown offset 0x18 on CString (past extra_data at 0x16) */
+  *(int *)((char *)this + 0x18) = param_6; /* TODO: unknown offset 0x18 on CString (past extra_data at 0x16) */
   this->owns_buffer = param_5;
   return this;
 }
@@ -2063,7 +2063,7 @@ FUN_00432a60(CString *this,int param_1,int param_2,int param_3,int param_4,
   this->pp_buffer = param_1;
   this->tag = param_4;
   this->allocator = param_3;
-  *(int *)((intptr_t)this + 0x18) = param_6; /* TODO: unknown offset 0x18 on CString (past extra_data at 0x16) */
+  *(int *)((char *)this + 0x18) = param_6; /* TODO: unknown offset 0x18 on CString (past extra_data at 0x16) */
   this->owns_buffer = param_5;
 }
 
@@ -2575,8 +2575,8 @@ int __cdecl FUN_00433140(ushort *param_1,int *param_2)
       }
       for (u5 = u3 & 3; u5 != 0; u5 = u5 - 1) {
         *(char *)pu6 = (char)*pu1;
-        pu1 = (ushort *)((int)pu1 + 1);
-        pu6 = (int *)((int)pu6 + 1);
+        pu1 = (ushort *)((char *)pu1 + 1);
+        pu6 = (int *)((char *)pu6 + 1);
       }
     }
     v4[4] = *param_1;
@@ -2965,14 +2965,14 @@ L_00434392:
         n3 = n4 * 0x78;
         ps6 = (short *)(&DAT_00487128 + n3);
         (&DAT_00487132)[n4 * 0x3c] = 1;
-        *ps6 = *(short *)((int)param_1 + 0xa); /* TODO: unknown struct for param_1 */
+        *ps6 = *(short *)((char *)param_1 + 0xa); /* TODO: unknown struct for param_1 */
         *(short *)(n3 + 0x48712a) = (short)param_1[3];
-        *(short *)(n3 + 0x48712c) = *(short *)((int)param_1 + 0xe); /* TODO: unknown struct for param_1 */
+        *(short *)(n3 + 0x48712c) = *(short *)((char *)param_1 + 0xe); /* TODO: unknown struct for param_1 */
         (&DAT_0048713a)[n4 * 0x1e] = *param_1;
         (&DAT_0048713e)[n4 * 0x1e] = param_1[1];
         (&DAT_00487142)[n4 * 0x1e] = param_1[1];
         (&DAT_00487146)[n4 * 0x1e] = param_1;
-        if (((*(byte *)((int)&DAT_00487134 + n3 + 1) & 0x10) != 0) && /* TODO: DAT_00487134 sound slot flags byte */
+        if (((*(byte *)((char *)&DAT_00487134 + n3 + 1) & 0x10) != 0) && /* TODO: DAT_00487134 sound slot flags byte */
            ((&DAT_00487136)[n4 * 0x1e] != 0)) {
           FUN_0046f5f0((&DAT_00487136)[n4 * 0x1e]);
         }
@@ -2984,8 +2984,8 @@ L_00434392:
           s5 = 0;
           (&DAT_0048714a)[n4 * 0x3c] = 0;
           do {
-            pu1 = (uint *)((int)&DAT_0048714c + s5 * 0xe + n3);
-            if (((*(byte *)((int)pu1 + 0xd) & 0x10) != 0) && (*pu1 != 0)) { /* TODO: sound slot sub-entry flags byte at +0xd */
+            pu1 = (uint *)((char *)&DAT_0048714c + s5 * 0xe + n3);
+            if (((*(byte *)((char *)pu1 + 0xd) & 0x10) != 0) && (*pu1 != 0)) { /* TODO: sound slot sub-entry flags byte at +0xd */
               FUN_0046f5f0(*pu1);
             }
             s5 = s5 + 1;
@@ -3039,7 +3039,7 @@ int __cdecl FUN_00434490(int param_1)
       do {
         n3 = (int)v2;
         (&DAT_00487132)[n3 * 0x3c] = 1;
-        if (((*(byte *)((int)&DAT_00487134 + n3 * 0x78 + 1) & 0x10) != 0) && /* TODO: DAT_00487134 sound slot flags byte */
+        if (((*(byte *)((char *)&DAT_00487134 + n3 * 0x78 + 1) & 0x10) != 0) && /* TODO: DAT_00487134 sound slot flags byte */
            ((&DAT_00487136)[n3 * 0x1e] != 0)) {
           FUN_0046f5f0((&DAT_00487136)[n3 * 0x1e]);
           (&DAT_00487136)[n3 * 0x1e] = 0;
@@ -3049,8 +3049,8 @@ int __cdecl FUN_00434490(int param_1)
         (&DAT_0048714a)[n3 * 0x3c] = 0;
         do {
           u5 = (ushort)((uint)(s6 * 7) >> 0x10);
-          pu1 = (uint *)((int)&DAT_0048714c + s6 * 0xe + n3 * 0x78);
-          if (((*(byte *)((int)pu1 + 0xd) & 0x10) != 0) && (u5 = 0, *pu1 != 0)) { /* TODO: sound slot sub-entry flags byte at +0xd */
+          pu1 = (uint *)((char *)&DAT_0048714c + s6 * 0xe + n3 * 0x78);
+          if (((*(byte *)((char *)pu1 + 0xd) & 0x10) != 0) && (u5 = 0, *pu1 != 0)) { /* TODO: sound slot sub-entry flags byte at +0xd */
             u4 = FUN_0046f5f0(*pu1);
             u5 = (ushort)((uint)u4 >> 0x10);
           }
@@ -3091,7 +3091,7 @@ int __cdecl FUN_00434490(int param_1)
     do {
       _eax = s6 * 7;
       pu1 = (uint *)(param_1 + 0x24 + s6 * 0xe);
-      if (((*(byte *)((int)pu1 + 0xd) & 0x10) != 0) && (_eax = 0, *pu1 != 0)) { /* TODO: sound slot sub-entry flags byte at +0xd */
+      if (((*(byte *)((char *)pu1 + 0xd) & 0x10) != 0) && (_eax = 0, *pu1 != 0)) { /* TODO: sound slot sub-entry flags byte at +0xd */
         _eax = FUN_0046f5f0(*pu1);
       }
       s6 = s6 + 1;
@@ -3153,7 +3153,7 @@ int __cdecl FUN_00434640(int *param_1,int param_2)
       if ((&DAT_0048714a)[s7 * 0x3c] != 0) {
         s6 = 0;
         do {
-          if (*(int *)((int)&DAT_0048714c + s6 * 0xe + n3) == *param_1) { /* TODO: DAT_0048714c sound slot sub-entry, stride 0x0E */
+          if (*(int *)((char *)&DAT_0048714c + s6 * 0xe + n3) == *param_1) { /* TODO: DAT_0048714c sound slot sub-entry, stride 0x0E */
             pu4 = &DAT_00487128 + n3;
             if (b8) {
               *(short *)(param_2 + 10) = 0;
@@ -3265,18 +3265,18 @@ int * __fastcall FUN_00434860(int *param_1)
   *_fs = &_seh_prev;
   FUN_0041b6c0(param_1);
   _seh_state = 0;
-  FUN_0043b760((int *)((int)param_1 + 0x42)); /* TODO: unknown struct, offset 0x42 */
+  FUN_0043b760((int *)((char *)param_1 + 0x42)); /* TODO: unknown struct, offset 0x42 */
   *(short *)(param_1 + 0x17) = 0;
-  *(short *)((int)param_1 + 0x5a) = 0; /* TODO: unknown struct, offset 0x5a */
-  *(int *)((int)param_1 + 0x62) = 0; /* TODO: unknown struct, offset 0x62 */
+  *(short *)((char *)param_1 + 0x5a) = 0; /* TODO: unknown struct, offset 0x5a */
+  *(int *)((char *)param_1 + 0x62) = 0; /* TODO: unknown struct, offset 0x62 */
   *(short *)(param_1 + 0x17) = 0;
   *param_1 = &PTR_FUN_00474448;
-  *(short *)((int)param_1 + 0x5a) = 0; /* TODO: unknown struct, offset 0x5a */
-  *(unsigned char *)((int)param_1 + 0x5e) = 0xff; /* TODO: unknown struct, offset 0x5e */
-  *(unsigned char *)((int)param_1 + 0x5f) = 0xff; /* TODO: unknown struct, offset 0x5f */
+  *(short *)((char *)param_1 + 0x5a) = 0; /* TODO: unknown struct, offset 0x5a */
+  *(unsigned char *)((char *)param_1 + 0x5e) = 0xff; /* TODO: unknown struct, offset 0x5e */
+  *(unsigned char *)((char *)param_1 + 0x5f) = 0xff; /* TODO: unknown struct, offset 0x5f */
   *(unsigned char *)(param_1 + 0x18) = 0;
-  *(int *)((int)param_1 + 0x66) = 0; /* TODO: unknown struct, offset 0x66 */
-  *(int *)((int)param_1 + 0x62) = 0x100; /* TODO: unknown struct, offset 0x62 */
+  *(int *)((char *)param_1 + 0x66) = 0; /* TODO: unknown struct, offset 0x66 */
+  *(int *)((char *)param_1 + 0x62) = 0x100; /* TODO: unknown struct, offset 0x62 */
   *_fs = _seh_prev;
   return param_1;
 }
@@ -3626,8 +3626,8 @@ void __fastcall FUN_00435b00(int *param_1)
     FUN_00405cb0(param_1);
     return;
   }
-  if (((*(char *)(DAT_004896b0 + 0x28) == '\0') && (*(char *)((int)param_1 + 0x123) == '\0')) && /* TODO: unknown struct, offset 0x123 */
-     (n1 = *(int *)((int)param_1 + 0x11e) + -1, *(int *)((int)param_1 + 0x11e) = n1, n1 < 1 /* TODO: unknown struct, offset 0x11e */
+  if (((*(char *)(DAT_004896b0 + 0x28) == '\0') && (*(char *)((char *)param_1 + 0x123) == '\0')) && /* TODO: unknown struct, offset 0x123 */
+     (n1 = *(int *)((char *)param_1 + 0x11e) + -1, *(int *)((char *)param_1 + 0x11e) = n1, n1 < 1 /* TODO: unknown struct, offset 0x11e */
      )) {
     n1 = (short)param_1[0x44] + -1;
     if (n1 < 1) {
@@ -3636,7 +3636,7 @@ void __fastcall FUN_00435b00(int *param_1)
     else {
       FUN_004058c0(param_1,(short)n1);
     }
-    *(int *)((int)param_1 + 0x11e) = 0x1e; /* TODO: unknown struct, offset 0x11e */
+    *(int *)((char *)param_1 + 0x11e) = 0x1e; /* TODO: unknown struct, offset 0x11e */
   }
   return;
 }
@@ -3816,8 +3816,8 @@ void __thiscall FUN_00435da0(void *this,int param_1)
       n3 = n3 + -1;
       if (-1 < n3) {
         n4 = 0;
-        if ((*(int **)((int)pv2 + 4) /* CString: pp_buffer at +0x04 */ != NULL) &&
-           (pc6 = (char *)**(int **)((int)pv2 + 4) /* CString: pp_buffer at +0x04 */, pc6 != NULL)) {
+        if ((*(int **)((char *)pv2 + 4) /* CString: pp_buffer at +0x04 */ != NULL) &&
+           (pc6 = (char *)**(int **)((char *)pv2 + 4) /* CString: pp_buffer at +0x04 */, pc6 != NULL)) {
           c1 = *pc6;
           while (c1 != '\0') {
             pc6 = pc6 + 1;
@@ -3832,8 +3832,8 @@ void __thiscall FUN_00435da0(void *this,int param_1)
             n5 = FUN_00417570((int)pv2);
             n9 = n4;
             if (n3 < n5) {
-              pv7 = (void *)(**(int **)((int)pv2 + 4) /* CString: pp_buffer at +0x04 */ + n3);
-              memmove(pv7,(void *)((int)pv7 + 1),(n5 - n3) + 1);
+              pv7 = (void *)(**(int **)((char *)pv2 + 4) /* CString: pp_buffer at +0x04 */ + n3);
+              memmove(pv7,(void *)((char *)pv7 + 1),(n5 - n3) + 1);
             }
           }
         }
@@ -3868,8 +3868,8 @@ void __thiscall FUN_00435da0(void *this,int param_1)
       n3 = n3 + -1;
       if (-1 < n3) {
         n4 = 0;
-        if ((*(int **)((int)pv2 + 4) /* CString: pp_buffer at +0x04 */ != NULL) &&
-           (pc6 = (char *)**(int **)((int)pv2 + 4) /* CString: pp_buffer at +0x04 */, pc6 != NULL)) {
+        if ((*(int **)((char *)pv2 + 4) /* CString: pp_buffer at +0x04 */ != NULL) &&
+           (pc6 = (char *)**(int **)((char *)pv2 + 4) /* CString: pp_buffer at +0x04 */, pc6 != NULL)) {
           c1 = *pc6;
           while (c1 != '\0') {
             pc6 = pc6 + 1;
@@ -3884,8 +3884,8 @@ void __thiscall FUN_00435da0(void *this,int param_1)
             n5 = FUN_00417570((int)pv2);
             n9 = n4;
             if (n3 < n5) {
-              pv7 = (void *)(**(int **)((int)pv2 + 4) /* CString: pp_buffer at +0x04 */ + n3);
-              memmove(pv7,(void *)((int)pv7 + 1),(n5 - n3) + 1);
+              pv7 = (void *)(**(int **)((char *)pv2 + 4) /* CString: pp_buffer at +0x04 */ + n3);
+              memmove(pv7,(void *)((char *)pv7 + 1),(n5 - n3) + 1);
             }
           }
         }
@@ -4341,7 +4341,7 @@ L_00436be1:
     if ((u3 != 0) && (u3 <= u1)) {
       if (u3 < u1) {
         _Src = (void *)(*this->pp_data + u3 * 4);
-        memmove((void *)((int)_Src + -4),_Src,(u1 - u3) * 4);
+        memmove((void *)((char *)_Src + -4),_Src,(u1 - u3) * 4);
       }
       this->data_count = this->data_count + -1;
     }
@@ -4431,7 +4431,7 @@ void __thiscall FUN_00437290(void *this,void *param_1)
   u1 = 0;
   FUN_00401050(&_tmp_34,0);
   FUN_00401050(&_tmp_33,0);
-  FUN_00401270((void *)((int)param_1 + 0x132),u1,_arg4); /* TODO: unknown offset 0x132 on GameWidget (in field_130 or _pad134 range) */
+  FUN_00401270((void *)((char *)param_1 + 0x132),u1,_arg4); /* TODO: unknown offset 0x132 on GameWidget (in field_130 or _pad134 range) */
   FUN_0041cde0(param_1,v1c);
   FUN_00436bb0(this,param_1);
   v14 = &_tmp_33;
@@ -4530,7 +4530,7 @@ void __fastcall FUN_00437980(int param_1)
         if ((uint)v20[2] <= u1) {
           if ((uint)v20[2] < u1) {
             pv2 = (void *)(**(int **)((TextDisplay *)param_1)->pp_data + u3);
-            memmove((void *)((int)pv2 + -4),pv2,(u1 - v20[2]) * 4);
+            memmove((void *)((char *)pv2 + -4),pv2,(u1 - v20[2]) * 4);
           }
           ((TextDisplay *)param_1)->data_count = ((TextDisplay *)param_1)->data_count + -1;
         }
@@ -4804,17 +4804,17 @@ void __fastcall FUN_00438280(void *param_1)
   }
   _itoa((int)((GameSession *)DAT_0048345c)->score_display - (int)DAT_00488d50,v48,10);
   pc4 = v48;
-  FUN_00458860(*(void **)((int)param_1 + 0x2d8),pc4); /* TODO: unknown struct, offset 0x2d8 */
+  FUN_00458860(*(void **)((char *)param_1 + 0x2d8),pc4); /* TODO: unknown struct, offset 0x2d8 */
   v20 = &_tmp_25;
   FUN_00401ba0(&_tmp_25,
-               *(short *)(&DAT_0048026c + *(short *)(*(int *)((int)param_1 + 0x6a) + 0xc) * 4)); /* TODO: unknown struct, offset 0x6a */
+               *(short *)(&DAT_0048026c + *(short *)(*(int *)((char *)param_1 + 0x6a) + 0xc) * 4)); /* TODO: unknown struct, offset 0x6a */
   FUN_00402d00(&v14,(int)pc4);
   v1c = &_tmp_25;
   FUN_00401ba0(&_tmp_25,
-               *(short *)(&DAT_0048026e + *(short *)(*(int *)((int)param_1 + 0x6a) + 0xc) * 4)); /* TODO: unknown struct, offset 0x6a */
+               *(short *)(&DAT_0048026e + *(short *)(*(int *)((char *)param_1 + 0x6a) + 0xc) * 4)); /* TODO: unknown struct, offset 0x6a */
   FUN_00402d00(&v18,(int)pc4);
-  FUN_0041d020(*(void **)((int)param_1 + 0x2d8),v14,v18,2); /* TODO: unknown struct, offset 0x2d8 */
-  FUN_0041dd40(*(void **)((int)param_1 + 0x2d8)); /* TODO: unknown struct, offset 0x2d8 */
+  FUN_0041d020(*(void **)((char *)param_1 + 0x2d8),v14,v18,2); /* TODO: unknown struct, offset 0x2d8 */
+  FUN_0041dd40(*(void **)((char *)param_1 + 0x2d8)); /* TODO: unknown struct, offset 0x2d8 */
   _seh_state = 0xffffffff;
   FUN_004383a4();
   /* SEH epilog */
@@ -4840,7 +4840,7 @@ void __fastcall FUN_004383b0(void *param_1)
   void *this;
   
   this = NULL;
-  if (*(int *)((int)param_1 + 0x5ca) == 4) { /* TODO: unknown struct, offset 0x5ca (possibly TextDisplay.data_count-related) */
+  if (*(int *)((char *)param_1 + 0x5ca) == 4) { /* TODO: unknown struct, offset 0x5ca (possibly TextDisplay.data_count-related) */
     n1 = ((UIWidget *)DAT_004897c0)->sub_widgets_a[1];
     if (((n1 != 0) && (((UIElement *)n1)->child_list_1 != 0)) &&
        (u2 = ((CVector *)((UIElement *)n1)->child_list_1)->count, u2 != 0)) {
@@ -4853,7 +4853,7 @@ void __fastcall FUN_004383b0(void *param_1)
           ;
           if (this != pv3) {
             n4 = FUN_0042a910((int)this);
-            if (*(short *)((int)param_1 + 0x5b0) == n4) break; /* TODO: unknown struct, offset 0x5b0 */
+            if (*(short *)((char *)param_1 + 0x5b0) == n4) break; /* TODO: unknown struct, offset 0x5b0 */
           }
           n6 = n6 + 4;
           u5 = u5 + 1;
@@ -4863,7 +4863,7 @@ void __fastcall FUN_004383b0(void *param_1)
     if (this != NULL) {
       FUN_0041c2a0(this,0);
     }
-    FUN_0042db60(0,*(ushort **)((int)param_1 + 0x314),-1,-1); /* TODO: unknown struct, offset 0x314 */
+    FUN_0042db60(0,*(ushort **)((char *)param_1 + 0x314),-1,-1); /* TODO: unknown struct, offset 0x314 */
     FUN_00437bc0(param_1);
   }
   return;

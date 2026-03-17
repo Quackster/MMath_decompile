@@ -182,7 +182,7 @@ void __thiscall FUN_004094d0(UIWidget *this,short param_1,char param_2)
   if (this->field_44 < 0) {
     this->field_44 = 0;
   }
-  if (((param_2 != '\0') && ((int)this->child_list_2 != 0)) &&
+  if (((param_2 != '\0') && ((char *)this - >child_list_2 != 0)) &&
      (u2 = 1, ((CVector *)this->child_list_2)->count /* CVector: count at +0x0E */ != 0)) {
     n1 = 4;
     do {
@@ -206,7 +206,7 @@ void __thiscall FUN_00409580(UIWidget *this,char param_1)
   uint u2;
 
   this->field_44 = (short)0xffff;
-  if (((param_1 != '\0') && ((int)this->child_list_2 != 0)) &&
+  if (((param_1 != '\0') && ((char *)this - >child_list_2 != 0)) &&
      (u2 = 1, ((CVector *)this->child_list_2)->count /* CVector: count at +0x0E */ != 0)) {
     n1 = 4;
     do {
@@ -312,7 +312,7 @@ ushort __fastcall FUN_00409770(ushort *param_1)
 void __thiscall
 FUN_00409790(GameWidget *this,short param_1,short param_2,short param_3,short param_4)
 {
-  *(short *)((int)this + 2) = param_1;  /* TODO: offset 0x02 within vtable pointer - likely not GameWidget */
+  *(short *)((char *)this + 2) = param_1;  /* TODO: offset 0x02 within vtable pointer - likely not GameWidget */
   *(short *)this = param_2;
   this->field_06 = param_3;
   this->field_04 = param_4;
@@ -336,7 +336,7 @@ void __fastcall FUN_004097c0(int *param_1)
 
 void __thiscall FUN_00409830(GameWidget *this,short *param_1)
 {
-  *(short *)((int)this + 2) = param_1[1];  /* TODO: offset 0x02 within vtable pointer - likely not GameWidget */
+  *(short *)((char *)this + 2) = param_1[1];  /* TODO: offset 0x02 within vtable pointer - likely not GameWidget */
   *(short *)this = *param_1;
   this->field_06 = param_1[3];
   this->field_04 = param_1[2];
@@ -475,7 +475,7 @@ void __fastcall FUN_00409a30(GameWidget *this)
   this->vtable = (void **)&PTR_FUN_004724e8;
   *_fs = &_seh_prev;
   _seh_state = 0;
-  FUN_00434490((int)this->object_ptr);
+  FUN_00434490((char *)this - >object_ptr);
   FUN_0043a700(DAT_004838c0,0,(int *)this->scrollbar_ref);
   _seh_state = 0xffffffff;
   FUN_00409aac();
@@ -1579,10 +1579,10 @@ void __thiscall FUN_0040d840(void *this,uint param_1)
   _handler = &L_0040dc40;
   *_fs = &_seh_prev;
   s6 = 0;
-  if (*(int *)((int)this + 0x44) != 0) {  /* TODO: unknown offset 0x44 on this */
+  if (*(int *)((char *)this + 0x44) != 0) {  /* TODO: unknown offset 0x44 on this */
     pu7 = NULL;
     v11 = DAT_00480100;
-    v18 = (void *)FUN_004050d0(*(int *)((int)this + 0x44));  /* TODO: unknown offset 0x44 on this */
+    v18 = (void *)FUN_004050d0(*(int *)((char *)this + 0x44));  /* TODO: unknown offset 0x44 on this */
     DAT_00480100 = 0;
     if (param_1 == 0xf) {
       n4 = rand();
@@ -1791,17 +1791,16 @@ void __thiscall FUN_0040d840(void *this,uint param_1)
         v18 = NULL;
         v1c = 0;
         _seh_state = 0;
-        FUN_0041cde0(*(void **)((int)this + 0x44),&v1c);  /* TODO: unknown offset 0x44 on this */
-        if ((*(int *)((int)this + 100) != 0) &&  /* TODO: unknown offset 0x64 on this */
-           (b3 = FUN_0045d930(*(int *)((int)this + 100)),  /* TODO: unknown offset 0x64 on this */
+        FUN_0041cde0(*(void **)((char *)this + 0x44),&v1c);  /* TODO: unknown offset 0x44 on this */
+        if ((*(int *)((char *)this + 100) != 0) &&  /* TODO: unknown offset 0x64 on this */
+           (b3 = FUN_0045d930(*(int *)((char *)this + 100)),  /* TODO: unknown offset 0x64 on this */
            (short)CONCAT31(_extra,b3) != 0)) {
-          FUN_00434490(*(int *)((int)this + 100));  /* TODO: unknown offset 0x64 on this */
-          FUN_00433420(*(int **)((int)this +
-                                *(short *)(*(int *)((int)this + 0x44) + 0x10e) * 4 + 100));  /* TODO: unknown offsets 0x44, 0x64 on this; 0x10e = current_frame on UIWidget */
+          FUN_00434490(*(int *)((char *)this + 100));  /* TODO: unknown offset 0x64 on this */
+          FUN_00433420(*(int **)((char *)this + *(short *)(*(int *)((char *)this + 0x44) + 0x10e) * 4 + 100));  /* TODO: unknown offsets 0x44, 0x64 on this; 0x10e = current_frame on UIWidget */
         }
-        ps5 = FUN_0045ef70(*(int **)((int)this + s6 * 4 + 100));  /* TODO: unknown offset (s6*4+0x64) on this */
-        pv1 = *(void **)((int)this + 0x44);  /* TODO: unknown offset 0x44 on this */
-        *(short **)((int)this + 100) = ps5;  /* TODO: unknown offset 0x64 on this */
+        ps5 = FUN_0045ef70(*(int **)((char *)this + s6 * 4 + 100));  /* TODO: unknown offset (s6*4+0x64) on this */
+        pv1 = *(void **)((char *)this + 0x44);  /* TODO: unknown offset 0x44 on this */
+        *(short **)((char *)this + 100) = ps5;  /* TODO: unknown offset 0x64 on this */
         ((UIWidget *)pv1)->anim_flag_0 = 0;
         ((UIWidget *)pv1)->anim_flag_2 = 0;
         ((UIWidget *)pv1)->anim_flag_1 = 0;
@@ -1811,14 +1810,14 @@ void __thiscall FUN_0040d840(void *this,uint param_1)
         FUN_0040dc4a();
       }
       else {
-        pv1 = *(void **)((int)this + 0x44);  /* TODO: unknown offset 0x44 on this */
+        pv1 = *(void **)((char *)this + 0x44);  /* TODO: unknown offset 0x44 on this */
         ((UIWidget *)pv1)->anim_flag_0 = 0;
         ((UIWidget *)pv1)->anim_flag_2 = 0;
         ((UIWidget *)pv1)->anim_flag_1 = 0;
         ((UIWidget *)pv1)->anim_flag_3 = 0;
         FUN_00405d30(pv1,s6);
         if (v18 == NULL) {
-          FUN_00407b10(*(void **)((int)this + 0x44),7,pu7);  /* TODO: unknown offset 0x44 on this */
+          FUN_00407b10(*(void **)((char *)this + 0x44),7,pu7);  /* TODO: unknown offset 0x44 on this */
         }
         else {
           u2 = ((UIWidget *)v18)->flags;
@@ -2202,8 +2201,8 @@ ushort * __cdecl FUN_0040f0f0(void *param_1,int param_2,ushort *param_3)
 CString * __thiscall FUN_0040f280(CString *this,uint param_1)
 {
   if ((param_1 & 2) != 0) {
-    _eh_vector_destructor_iterator_(this,0x16,*(int *)((int)this - 4),FUN_0040f520);  /* TODO: array count stored at (this - 4), MSVC array cookie */
-    FUN_0046c410((int)this - 4);
+    _eh_vector_destructor_iterator_(this,0x16,*(int *)((char *)this - 4),FUN_0040f520);  /* TODO: array count stored at (this - 4), MSVC array cookie */
+    FUN_0046c410((char *)this - 4);
     return this;
   }
   *(void ***)this = &PTR_FUN_00472acc;

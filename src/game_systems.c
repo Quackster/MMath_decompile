@@ -96,7 +96,7 @@ void __fastcall FUN_00410300(GameWidget *this)
   }
   s3 = 0;
   do {
-    pn1 = (int *)((int)this + 0x132 + s3 * 4); /* TODO: offset 0x132+ is in _pad134 region, array of 10 pointers */
+    pn1 = (int *)((char *)this + 0x132 + s3 * 4); /* TODO: offset 0x132+ is in _pad134 region, array of 10 pointers */
     pu2 = (int *)*pn1;
     if (pu2 != NULL) {
       ((void (*)(void))((void **)*pu2)[0])(); /* pu2->vtable[0] */
@@ -194,19 +194,19 @@ void __fastcall FUN_004105b0(GameWidget *this)
   this->groups_a[0].visible_count = u3;
   do {
     n9 = (int)s10;
-    pv2 = *(void **)((int)this + n9 * 4 + 0x132); /* TODO: offset 0x132+ array of slot pointers */
+    pv2 = *(void **)((char *)this + n9 * 4 + 0x132); /* TODO: offset 0x132+ array of slot pointers */
     if (pv2 != NULL) {
       FUN_00458860(pv2,(char *)&DAT_0047ef44);
-      FUN_0041cb70(*(void **)((int)this + n9 * 4 + 0x132),'\x01'); /* TODO: offset 0x132+ array of slot pointers */
+      FUN_0041cb70(*(void **)((char *)this + n9 * 4 + 0x132),'\x01'); /* TODO: offset 0x132+ array of slot pointers */
       u4 = FUN_0044ab30(DAT_00483458);
       if (((char)u4 != '\0') && (s10 < this->groups_a[0].visible_count)) {
-        FUN_0041cd60(*(void **)((int)this + n9 * 4 + 0x132),v30); /* TODO: offset 0x132+ array of slot pointers */
+        FUN_0041cd60(*(void **)((char *)this + n9 * 4 + 0x132),v30); /* TODO: offset 0x132+ array of slot pointers */
         v14 = (char *)(v30[5] + 0xc800);
-        FUN_0041d020(*(void **)((int)this + n9 * 4 + 0x132),v14, /* TODO: offset 0x132+ array of slot pointers */
+        FUN_0041d020(*(void **)((char *)this + n9 * 4 + 0x132),v14, /* TODO: offset 0x132+ array of slot pointers */
                      (v30[2] - v30[0] & 0xffffff00U) * n9 + v30[4] + 0xd200,0);
         pu5 = FUN_0044a780(DAT_00483458);
-        FUN_00458920(*(void **)((int)this + n9 * 4 + 0x132),(int)pu5); /* TODO: offset 0x132+ array of slot pointers */
-        n6 = FUN_004589f0(*(int *)((int)this + n9 * 4 + 0x132)); /* TODO: offset 0x132+ array of slot pointers */
+        FUN_00458920(*(void **)((char *)this + n9 * 4 + 0x132),(int)pu5); /* TODO: offset 0x132+ array of slot pointers */
+        n6 = FUN_004589f0(*(int *)((char *)this + n9 * 4 + 0x132)); /* TODO: offset 0x132+ array of slot pointers */
         n8 = 0;
         if ((*(int **)(n6 + 4) != NULL) &&
            (pc7 = (char *)**(int **)(n6 + 4), pc7 != NULL)) {
@@ -218,7 +218,7 @@ void __fastcall FUN_004105b0(GameWidget *this)
           }
         }
         if (n8 == 0) {
-          FUN_00458860(*(void **)((int)this + n9 * 4 + 0x132),s_____No_Name_Hero_____0047ef48) /* TODO: offset 0x132+ array of slot pointers */
+          FUN_00458860(*(void **)((char *)this + n9 * 4 + 0x132),s_____No_Name_Hero_____0047ef48) /* TODO: offset 0x132+ array of slot pointers */
           ;
         }
       }
@@ -269,7 +269,7 @@ void __fastcall FUN_00410820(GameWidget *this)
   s2 = 0;
   if (0 < this->groups_a[0].visible_count) {
     do {
-      pu1 = (int *)((int)this + 0x132 + s2 * 4); /* TODO: offset 0x132+ array of slot pointers */
+      pu1 = (int *)((char *)this + 0x132 + s2 * 4); /* TODO: offset 0x132+ array of slot pointers */
       FUN_00458de0((void *)*pu1,DAT_0047ef3c);
       if (this->groups_a[0].selected == s2) {
         FUN_00458de0((void *)*pu1,DAT_0047ef38);
@@ -926,17 +926,17 @@ int * __fastcall FUN_00413900(int *param_1)
   _handler = &L_004139b9;
   *_fs = &_seh_prev;
   FUN_0044bc50(param_1);
-  *(int *)((int)param_1 + 0x1d6) = 0;            /* TODO: unknown offset 0x1D6 */
-  *(int *)((int)param_1 + 0x1da) = 0;             /* TODO: unknown offset 0x1DA */
-  *(int *)((int)param_1 + 0x1de) = 0;             /* TODO: unknown offset 0x1DE */
+  *(int *)((char *)param_1 + 0x1d6) = 0;            /* TODO: unknown offset 0x1D6 */
+  *(int *)((char *)param_1 + 0x1da) = 0;             /* TODO: unknown offset 0x1DA */
+  *(int *)((char *)param_1 + 0x1de) = 0;             /* TODO: unknown offset 0x1DE */
   param_1[0x7a] = 0;                              /* offset 0x1E8 */
-  *(int *)((int)param_1 + 0x1e2) = 0xffffffff;    /* TODO: unknown offset 0x1E2 */
-  *(unsigned char *)((int)param_1 + 0x1e6) = 0;   /* TODO: unknown offset 0x1E6 */
-  *(void ***)((int)param_1 + 0x1d2) = &PTR_LAB_00472e04; /* TODO: unknown offset 0x1D2 */
-  *(void ***)((int)param_1 + 0x1d2) = &PTR_LAB_00472e00; /* TODO: unknown offset 0x1D2 */
+  *(int *)((char *)param_1 + 0x1e2) = 0xffffffff;    /* TODO: unknown offset 0x1E2 */
+  *(unsigned char *)((char *)param_1 + 0x1e6) = 0;   /* TODO: unknown offset 0x1E6 */
+  *(void ***)((char *)param_1 + 0x1d2) = &PTR_LAB_00472e04; /* TODO: unknown offset 0x1D2 */
+  *(void ***)((char *)param_1 + 0x1d2) = &PTR_LAB_00472e00; /* TODO: unknown offset 0x1D2 */
   param_1[0x7a] = s_aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpP_00480518;
   *param_1 = &PTR_LAB_00472e40;
-  *(int *)((int)param_1 + 0x2e) = 0;              /* TODO: unknown offset 0x2E on this struct */
+  *(int *)((char *)param_1 + 0x2e) = 0;              /* TODO: unknown offset 0x2E on this struct */
   *(unsigned char *)(param_1 + 0x74) = 0;          /* offset 0x1D0 */
   *_fs = _seh_prev;
   return param_1;
@@ -1420,7 +1420,7 @@ int __thiscall FUN_00414440(MathProblem *this,uint param_1,char param_2)
           if ((param_1 != u3) && (*pn11 == *pn10)) {
             FUN_00414440(this,u3,'\0');
           }
-          pn10 = (int *)((int)pn10 + 0x12);
+          pn10 = (int *)((char *)pn10 + 0x12);
           u3 = u3 + 1;
         } while ((int)u3 < 6);
       }
@@ -2520,8 +2520,8 @@ int * __thiscall FUN_00417320(CString *this,int param_1,uint param_2)
   }
   for (u5 = u6 & 3; u5 != 0; u5 = u5 - 1) {
     *(char *)pu8 = *(char *)pu7;
-    pu7 = (int *)((int)pu7 + 1);
-    pu8 = (int *)((int)pu8 + 1);
+    pu7 = (int *)((char *)pu7 + 1);
+    pu8 = (int *)((char *)pu8 + 1);
   }
   *(char *)(*this->pp_buffer + u6) = 0;
   return this;
@@ -2663,8 +2663,8 @@ void __thiscall FUN_004174a0(CString *this,int param_1,uint param_2)
   }
   for (u6 = u8 & 3; u6 != 0; u6 = u6 - 1) {
     *(char *)pu10 = *(char *)pu9;
-    pu9 = (int *)((int)pu9 + 1);
-    pu10 = (int *)((int)pu10 + 1);
+    pu9 = (int *)((char *)pu9 + 1);
+    pu10 = (int *)((char *)pu10 + 1);
   }
   *(char *)(*this->pp_buffer + u8) = 0;
 }
@@ -2965,7 +2965,7 @@ bool __cdecl FUN_004179a0(HANDLE param_1,DWORD param_2,LPVOID param_3)
     flag1 = ReadFile(param_1,param_3,0x10000,&v4,(LPOVERLAPPED)0x0);
     if (flag1 == 0 || v4 != 0x10000) break;
     param_2 = param_2 - 0x10000;
-    param_3 = (LPVOID)((int)param_3 + 0x10000);
+    param_3 = (LPVOID)((char *)param_3 + 0x10000);
   }
   return false;
 }
@@ -3396,7 +3396,7 @@ void FUN_00418820(void)
     s4 = s4 + -1;
     c1 = *(char *)(n2 + s4);
     if (c1 != '\0') {
-      *(char *)(((int)DAT_00486154 - (int)s4) + -1 + n3) = c1;
+      *(char *)(((char *)DAT_00486154 - (int)s4) + -1 + n3) = c1;
     }
   }
   return;
@@ -3883,15 +3883,15 @@ void __thiscall FUN_0041abd0(void *this,void *param_1,char param_2)
   _handler = &L_0041ac81;
   *_fs = &_seh_prev;
   if (param_2 != '\0') {
-    FUN_0042f120(v18,*(short *)((int)param_1 + 4)); /* TODO: param_1 struct unknown, offset +0x04 */
+    FUN_0042f120(v18,*(short *)((char *)param_1 + 4)); /* TODO: param_1 struct unknown, offset +0x04 */
     _seh_state = 0;
     FUN_00452160(&DAT_00485328,param_1,(int)v18,&L_00451e80);
     FUN_0041ab60(this,v18);
     _seh_state = 0xffffffff;
     FUN_0041ac8b();
   }
-  _DAT_0048532c = *(short *)((int)param_1 + 4);   /* TODO: param_1 struct unknown, offset +0x04 */
-  pu3 = (int *)((int)param_1 + 6);            /* TODO: param_1 struct unknown, offset +0x06 */
+  _DAT_0048532c = *(short *)((char *)param_1 + 4);   /* TODO: param_1 struct unknown, offset +0x04 */
+  pu3 = (int *)((char *)param_1 + 6);            /* TODO: param_1 struct unknown, offset +0x06 */
   pu2 = &DAT_0048532e;
   do {
     u1 = *pu3;
@@ -3899,7 +3899,7 @@ void __thiscall FUN_0041abd0(void *this,void *param_1,char param_2)
     *pu2 = u1;
     pu2 = pu2 + 1;
   } while (pu2 < &DAT_0048572e);
-  _DAT_0048572e = *(int *)((int)param_1 + 0x406);       /* TODO: param_1 struct unknown, offset +0x406, could be TextDisplay.field_406 */
+  _DAT_0048572e = *(int *)((char *)param_1 + 0x406);       /* TODO: param_1 struct unknown, offset +0x406, could be TextDisplay.field_406 */
   /* SEH epilog */
   *_fs = _seh_prev;
 }
@@ -4385,7 +4385,7 @@ L_0041bd28:
     if (u5 <= u3) {
       if (u5 < u3) {
         _Src = (void *)(*(int *)((CVector *)n2)->data + u5 * 4);
-        memmove((void *)((int)_Src + -4),_Src,(u3 - u5) * 4);
+        memmove((void *)((char *)_Src + -4),_Src,(u3 - u5) * 4);
       }
       *pu1 = *pu1 - 1;
     }
@@ -4752,7 +4752,7 @@ L_0041c759:
       else if (u5 == 0) {
         u5 = u3;
       }
-      FUN_00430ac0((void *)this->field_06,*(int **)((int)((CVector *)(intptr_t)n4)->data + -4 + u5 * 4));
+      FUN_00430ac0((void *)this->field_06,*(int **)((char *)((CVector *)(intptr_t)n4)->data + -4 + u5 * 4));
     }
   }
   return;
@@ -4805,7 +4805,7 @@ void __fastcall FUN_0041cad0(UIWidget *param_1)
   uint u2;
 
   FUN_0041cb70(param_1,'\x01');
-  if (((int)param_1->child_list_1 != 0) &&
+  if (((char *)param_1 - >child_list_1 != 0) &&
      (u2 = 1, ((CVector *)param_1->child_list_1)->count /* CVector: count at +0x0E */ != 0)) {
     n1 = 4;
     do {
@@ -4827,7 +4827,7 @@ void __fastcall FUN_0041cb20(UIWidget *param_1)
   uint u2;
 
   FUN_0041cb70(param_1,'\x01');
-  if (((int)param_1->child_list_2 != 0) &&
+  if (((char *)param_1 - >child_list_2 != 0) &&
      (u2 = 1, ((CVector *)param_1->child_list_2)->count /* CVector: count at +0x0E */ != 0)) {
     n1 = 4;
     do {
@@ -5033,7 +5033,7 @@ void __thiscall FUN_0041ce10(GameWidget *this,int *param_1,int param_2)
   case 1:
   case 4:
   case 7:
-    param_1[1] = ((intptr_t)this->rect_right + (intptr_t)this->rect_left) / 2 << 8;
+    param_1[1] = ((char *)this - >rect_right + (intptr_t)this->rect_left) / 2 << 8;
     break;
   case 2:
   case 5:
@@ -5049,7 +5049,7 @@ void __thiscall FUN_0041ce10(GameWidget *this,int *param_1,int param_2)
   case 3:
   case 4:
   case 5:
-    *param_1 = ((intptr_t)this->rect_bottom + (intptr_t)this->rect_top) / 2 << 8;
+    *param_1 = ((char *)this - >rect_bottom + (intptr_t)this->rect_top) / 2 << 8;
     return;
   case 6:
   case 7:
@@ -5428,11 +5428,11 @@ void __fastcall FUN_0041d4f0(UIElement *this)
   ps3 = (short *)FUN_0041d410((int)this);
   s1 = ps3[1];
   s2 = *ps3;
-  this->pos_y = ((int)this->rect_left - (int)s1) * 0x100;
-  this->pos_x = ((int)this->rect_top - (int)s2) * 0x100;
+  this->pos_y = ((char *)this - >rect_left - (int)s1) * 0x100;
+  this->pos_x = ((char *)this - >rect_top - (int)s2) * 0x100;
   _seh_state = 0xffffffff;
-  this->pos_h = ((int)this->rect_right - (int)s1) * 0x100;
-  this->pos_w = ((int)this->rect_bottom - (int)s2) * 0x100;
+  this->pos_h = ((char *)this - >rect_right - (int)s1) * 0x100;
+  this->pos_w = ((char *)this - >rect_bottom - (int)s2) * 0x100;
   FUN_0041d585();
   /* SEH epilog */
   *_fs = _seh_prev;
@@ -5482,7 +5482,7 @@ void __fastcall FUN_0041d6a0(UIWidget *this)
   int n1;
   uint u2;
 
-  if (((int)this->child_list_1 != 0) &&
+  if (((char *)this - >child_list_1 != 0) &&
       (n1 = ((CVector *)this->child_list_1)->count /* CVector: count at +0x0E */, n1 != 0) && (u2 = 1, n1 != 0)) {
     n1 = 4;
     do {
@@ -5509,7 +5509,7 @@ void __fastcall FUN_0041d710(UIWidget *param_1)
   uint u2;
   int *pu3;
 
-  if ((int)param_1->child_list_1 != 0) {
+  if ((char *)param_1 - >child_list_1 != 0) {
     n1 = ((CVector *)param_1->child_list_1)->count /* CVector: count at +0x0E */;
     while (n1 != 0) {
       n1 = (int)param_1->child_list_1;
@@ -5633,7 +5633,7 @@ void __thiscall FUN_0041db50(UIWidget *this,char param_1)
   uint u2;
   uint u3;
 
-  if (((int)this->child_list_1 != 0) &&
+  if (((char *)this - >child_list_1 != 0) &&
       (n1 = ((CVector *)this->child_list_1)->count /* CVector: count at +0x0E */, n1 != 0) && (u2 = 1, n1 != 0))
   {
     do {
@@ -5940,9 +5940,9 @@ void __thiscall FUN_0041e5c0(MathProblem *this,int param_1)
       pn7[3] = pn4[3];
       *(short *)(pn7 + 4) = (short)pn4[4];
     }
-    pn7 = (int *)((int)pn7 + 0x12);
-    pn8 = (int *)((int)pn8 + 0x12);
-    pn4 = (int *)((int)pn4 + 0x12);
+    pn7 = (int *)((char *)pn7 + 0x12);
+    pn8 = (int *)((char *)pn8 + 0x12);
+    pn4 = (int *)((char *)pn4 + 0x12);
   } while (pn7 < &DAT_004861d0);
   u1 = rand();
   u5 = (int)u1 >> 0x1f;

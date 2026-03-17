@@ -230,7 +230,7 @@ int __fastcall FUN_004703f0(SmartHeapPool *param_1,int *param_2)
     param_2[6] = 0;
   }
   else {
-    param_2[6] = (*(uint *)((int)param_1->slab_head + 4) & 0xff0000) >> 0x10;
+    param_2[6] = (*(uint *)((char *)param_1 - >slab_head + 4) & 0xff0000) >> 0x10;
   }
   param_2[3] = 1;
   if (param_1->page_flags != '\0') {
@@ -272,7 +272,7 @@ L_0047050b:
     if (b6) {
       return 0;
     }
-    c1 = *(char *)((int)pn4 + -1);
+    c1 = *(char *)((char *)pn4 + -1);
     if (0x3f < (uint)(int)c1) {
       return 0xfffffffe;
     }
@@ -316,7 +316,7 @@ int __fastcall FUN_00470580(int param_1,int *param_2)
   int *pn1;
   int *pn2;
   
-  pn1 = *(int **)(param_1 + 100 + *(char *)((int)param_2 + -1) * 4);
+  pn1 = *(int **)(param_1 + 100 + *(char *)((char *)param_2 + -1) * 4);
   pn2 = pn1;
   do {
     if (pn2 == NULL) {
@@ -362,7 +362,7 @@ int __fastcall FUN_004705d0(SmartHeapPool *param_1,int *param_2)
       u5 = u1 & 0x7ffc;
     }
     pu4 = (ushort *)(n2 + -2 + u5);
-    if ((pu4 < (ushort *)((int)param_1 + 0x1aU)) || /* TODO: offset 0x1a in _pad16 region */
+    if ((pu4 < (ushort *)((char *)param_1 + 0x1aU)) || /* TODO: offset 0x1a in _pad16 region */
        (b6 = (ushort *)param_1->end_ptr == pu4,
        (ushort *)param_1->end_ptr < pu4)) {
       return 0xfffffffe;
@@ -381,10 +381,10 @@ L_0047065b:
         param_2[5] = 0;
       }
       else {
-        param_2[5] = *(int *)((int)pu4 + ((*pu4 & 0x7ffc) - 6));
+        param_2[5] = *(int *)((char *)pu4 + ((*pu4 & 0x7ffc) - 6));
       }
       if ((*pu4 & 0x8000) != 0) {
-        param_2[6] = (*(uint *)(*(int *)((int)pu4 + ((*pu4 & 0x7ffc) - 6)) + 4) & 0xff0000) >>
+        param_2[6] = (*(uint *)(*(int *)((char *)pu4 + ((*pu4 & 0x7ffc) - 6)) + 4) & 0xff0000) >>
                      0x10;
         return 1;
       }
@@ -402,7 +402,7 @@ L_0047065b:
     if (CONCAT31(_extra,b6) != 0) {
       u3 = FUN_00471410((LPCVOID)param_1);
       if (u5 <= u3 - 1) {
-        pu4 = (ushort *)((int)param_1 + 0x1a); /* TODO: offset 0x1a in _pad16 region */
+        pu4 = (ushort *)((char *)param_1 + 0x1a); /* TODO: offset 0x1a in _pad16 region */
         b6 = (ushort *)param_1->end_ptr == pu4;
         goto L_0047065b;
       }
@@ -460,7 +460,7 @@ L_004707d9:
       u3 = FUN_00471410((LPCVOID)param_1);
       if ((u6 <= u3 - 1) &&
          ((u6 = (uint)(int)param_1->slab_head, u6 == 0 ||
-          (((int)&param_1->data_start <= u6 && (u6 <= (int)param_1->end_ptr - (uint)u1))
+          (((char *)&param_1 - >data_start <= u6 && (u6 <= (int)param_1->end_ptr - (uint)u1))
           )))) {
         pu5 = (int *)&param_1->data_start;
         goto L_004707d9;
@@ -486,13 +486,13 @@ int __fastcall FUN_00470840(SmartHeapPool *param_1,int param_2,int *param_3)
   u1 = ((SmartHeapPool *)param_2)->alloc_unit; /* alloc_unit from pool descriptor at param_2 */
   pu2 = (int *)param_1->slab_head;
   pu4 = (int *)&param_1->data_start;
-  s3 = (short)(((int)param_1->end_ptr - (int)pu4 & 0xffffU) / (uint)u1);
+  s3 = (short)(((char *)param_1 - >end_ptr - (int)pu4 & 0xffffU) / (uint)u1);
   while( true ) {
     if (pu2 == NULL) {
       return 1;
     }
-    if ((((pu2 < pu4) || ((int *)((int)param_1->end_ptr - (uint)u1) < pu2)) ||
-        (s3 == 0)) || ((short)(((int)pu2 - (int)pu4 & 0xffffU) % (uint)u1) != 0)) break;
+    if ((((pu2 < pu4) || ((int *)((char *)param_1 - >end_ptr - (uint)u1) < pu2)) ||
+        (s3 == 0)) || ((short)(((char *)pu2 - (int)pu4 & 0xffffU) % (uint)u1) != 0)) break;
     if (pu2 == param_3) {
       return 0;
     }
@@ -749,7 +749,7 @@ int FUN_00471010(int param_1,int *param_2)
   switch(pn4->page_tag & 7) {
   case 0:
   case 2:
-    if ((*(byte *)((int)param_2 + -2) & 1) != 0) goto sw_3;
+    if ((*(byte *)((char *)param_2 + -2) & 1) != 0) goto sw_3;
     goto L_00471103;
   case 1:
     n3 = FUN_00470840(pn4,(int)pool,param_2);
@@ -814,11 +814,11 @@ void * __fastcall FUN_00471190(uint param_1,uint param_2)
     else if ((param_2 & 0x100) != 0) {
       for (u4 = u4 >> 2; u4 != 0; u4 = u4 - 1) {
         *(int *)pu3 = 0;
-        pu3 = (void *)((int)pu3 + 4);
+        pu3 = (void *)((char *)pu3 + 4);
       }
       for (n2 = 0; n2 != 0; n2 = n2 + -1) {
         *(char *)pu3 = 0;
-        pu3 = (void *)((int)pu3 + 1);
+        pu3 = (void *)((char *)pu3 + 1);
       }
       return lpAddress_00;
     }
@@ -881,8 +881,8 @@ void * __fastcall FUN_00471280(void *param_1,uint param_2,uint param_3)
     }
     for (u5 = u5 & 3; u5 != 0; u5 = u5 - 1) {
       *(char *)pu7 = *(char *)pu6;
-      pu6 = (int *)((int)pu6 + 1);
-      pu7 = (int *)((int)pu7 + 1);
+      pu6 = (int *)((char *)pu6 + 1);
+      pu7 = (int *)((char *)pu7 + 1);
     }
     FUN_00471220(param_1);
     if (((param_3 & 0x100) != 0) && (u3 < param_2)) {
@@ -893,7 +893,7 @@ void * __fastcall FUN_00471280(void *param_1,uint param_2,uint param_3)
       }
       for (u5 = param_2 - u3 & 3; u5 != 0; u5 = u5 - 1) {
         *(char *)pu6 = 0;
-        pu6 = (int *)((int)pu6 + 1);
+        pu6 = (int *)((char *)pu6 + 1);
       }
     }
   }
@@ -920,20 +920,20 @@ int __fastcall FUN_00471330(LPCVOID param_1,uint param_2,uint param_3)
   u5 = u5 + 0xfff & 0xfffff000;
   if (u5 <= u1) {
     if (u5 < u1) {
-      flag2 = VirtualFree((LPVOID)((int)param_1 + u5),u1 - u5,0x4000);
+      flag2 = VirtualFree((LPVOID)((char *)param_1 + u5),u1 - u5,0x4000);
       if (flag2 == 0) {
         return 0;
       }
     }
     if (((param_3 & 0x100) != 0) && ((param_2 & 0xfff) != 0)) {
-      pu6 = (int *)((int)param_1 + param_2);
+      pu6 = (int *)((char *)param_1 + param_2);
       for (u1 = u5 - param_2 >> 2; u1 != 0; u1 = u1 - 1) {
         *pu6 = 0;
         pu6 = pu6 + 1;
       }
       for (u5 = u5 - param_2 & 3; u5 != 0; u5 = u5 - 1) {
         *(char *)pu6 = 0;
-        pu6 = (int *)((int)pu6 + 1);
+        pu6 = (int *)((char *)pu6 + 1);
       }
     }
     return 1;
@@ -942,17 +942,17 @@ int __fastcall FUN_00471330(LPCVOID param_1,uint param_2,uint param_3)
     return 0;
   }
   u5 = u5 - u1;
-  pv3 = VirtualAlloc((LPVOID)((int)param_1 + u1),u5,0x1000,4);
+  pv3 = VirtualAlloc((LPVOID)((char *)param_1 + u1),u5,0x1000,4);
   if (pv3 != (LPVOID)0x0) {
     if ((param_3 & 0x100) != 0) {
-      pu6 = (int *)((int)param_1 + u1);
+      pu6 = (int *)((char *)param_1 + u1);
       for (u4 = u5 >> 2; u4 != 0; u4 = u4 - 1) {
         *pu6 = 0;
         pu6 = pu6 + 1;
       }
       for (u5 = u5 & 3; u5 != 0; u5 = u5 - 1) {
         *(char *)pu6 = 0;
-        pu6 = (int *)((int)pu6 + 1);
+        pu6 = (int *)((char *)pu6 + 1);
       }
     }
     return 1;
@@ -1053,7 +1053,7 @@ void __fastcall FUN_00471900(SmartHeapPool *param_1)
   int n2;
   int n3;
 
-  n1 = *(int *)(*(int *)((int)param_1 + 0x44) + 4); /* TODO: offset 0x44 in _pad38 region -> linked list head ptr */
+  n1 = *(int *)(*(int *)((char *)param_1 + 0x44) + 4); /* TODO: offset 0x44 in _pad38 region -> linked list head ptr */
   n3 = 0;
   if (n1 != 0) {
     while (n2 = n1, n2 != (int)param_1) {
@@ -1067,7 +1067,7 @@ void __fastcall FUN_00471900(SmartHeapPool *param_1)
       *(int *)(n3 + 0x40) = *(int *)(n2 + 0x40); /* TODO: offset 0x40 in _pad38 region */
       return;
     }
-    *(int *)(*(int *)((int)param_1 + 0x44) + 4) = *(int *)(n2 + 0x40); /* TODO: offset 0x44 in _pad38 region */
+    *(int *)(*(int *)((char *)param_1 + 0x44) + 4) = *(int *)(n2 + 0x40); /* TODO: offset 0x44 in _pad38 region */
   }
   return;
 }

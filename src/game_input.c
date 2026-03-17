@@ -868,9 +868,9 @@ int * __fastcall FUN_0043c360(int *param_1)
   *_fs = &_seh_prev;
   FUN_0042cbd0(param_1);
   ((DialogWidget *)param_1)->dialog_active = 0;     /* +0x1D8/0x1D9 area, 4-byte write at 0x1DA */
-  *(int *)((int)param_1 + 0x1de) = 0; /* extended widget field at +0x1DE, beyond DialogWidget */
-  *(int *)((int)param_1 + 0x1e2) = 0; /* extended widget field at +0x1E2 */
-  *(int *)((int)param_1 + 0x1e6) = 0; /* extended widget field at +0x1E6 */
+  *(int *)((char *)param_1 + 0x1de) = 0; /* extended widget field at +0x1DE, beyond DialogWidget */
+  *(int *)((char *)param_1 + 0x1e2) = 0; /* extended widget field at +0x1E2 */
+  *(int *)((char *)param_1 + 0x1e6) = 0; /* extended widget field at +0x1E6 */
   *param_1 = &PTR_FUN_00474d00;
   DAT_00480558 = 1;
   DAT_00488e0c = 0;
@@ -1155,17 +1155,17 @@ void FUN_0043c970(void *param_1)
   FUN_0041ce10(param_1,&v28,4);
   FUN_0041ce10(v1c,&v30,4);
   /* Offsets 0x1DA-0x1E6 on v1c are extended widget fields beyond DialogWidget */
-  if ((((*(int *)((int)v1c + 0x1e6) == 0) && (*(int *)((int)v1c + 0x1e2) == 0)) &&
-      (*(int *)((int)v1c + 0x1de) == 0)) &&
-     (v14 = (int *)((int)v1c + 0x1da), *v14 == 0)) {
-    FUN_00403030((int *)((int)v1c + 0x1e2),&v38,&v28);
+  if ((((*(int *)((char *)v1c + 0x1e6) == 0) && (*(int *)((char *)v1c + 0x1e2) == 0)) &&
+      (*(int *)((char *)v1c + 0x1de) == 0)) &&
+     (v14 = (int *)((char *)v1c + 0x1da), *v14 == 0)) {
+    FUN_00403030((int *)((char *)v1c + 0x1e2),&v38,&v28);
     _seh_state = (_seh_state & ~0xFF) | 1;
     FUN_0043ca42();
     FUN_00403030(v14,&v18,&v30);
     _seh_state = (_seh_state & ~0xFF) | 1;
     FUN_0043ca3a();
   }
-  n1 = *(int *)((int)v1c + 0x1e6); /* extended widget field +0x1E6 */
+  n1 = *(int *)((char *)v1c + 0x1e6); /* extended widget field +0x1E6 */
   if (n1 < v24) {
     v14 = (int *)(v24 - n1);
     v34 = v14;
@@ -1176,7 +1176,7 @@ void FUN_0043c970(void *param_1)
     else {
       ppn2 = &v34;
     }
-    v2c = *(int *)((int)v1c + 0x1de) + (int)*ppn2; /* extended widget field +0x1DE */
+    v2c = *(int *)((char *)v1c + 0x1de) + (int)*ppn2; /* extended widget field +0x1DE */
   }
   else {
     v14 = (int *)(v24 - n1);
@@ -1186,10 +1186,10 @@ void FUN_0043c970(void *param_1)
       v14 = (int *)-(int)v14;
       ppn2 = &v14;
     }
-    v2c = *(int *)((int)v1c + 0x1de) - (int)*ppn2; /* extended widget field +0x1DE */
+    v2c = *(int *)((char *)v1c + 0x1de) - (int)*ppn2; /* extended widget field +0x1DE */
   }
-  v34 = (int *)((int)v1c + 0x1e2); /* extended widget field +0x1E2 */
-  n1 = *(int *)((int)v1c + 0x1e2); /* extended widget field +0x1E2 */
+  v34 = (int *)((char *)v1c + 0x1e2); /* extended widget field +0x1E2 */
+  n1 = *(int *)((char *)v1c + 0x1e2); /* extended widget field +0x1E2 */
   if (n1 < v28) {
     v14 = (int *)(v28 - n1);
     v3c = v14;
@@ -1199,7 +1199,7 @@ void FUN_0043c970(void *param_1)
       ppn2 = &v14;
     }
     v14 = *ppn2;
-    v30 = *(int *)((int)v1c + 0x1da) + (int)v14; /* extended widget field +0x1DA */
+    v30 = *(int *)((char *)v1c + 0x1da) + (int)v14; /* extended widget field +0x1DA */
   }
   else {
     v14 = (int *)(v28 - n1);
@@ -1210,9 +1210,9 @@ void FUN_0043c970(void *param_1)
       ppn2 = &v14;
     }
     v14 = *ppn2;
-    v30 = *(int *)((int)v1c + 0x1da) - (int)v14; /* extended widget field +0x1DA */
+    v30 = *(int *)((char *)v1c + 0x1da) - (int)v14; /* extended widget field +0x1DA */
   }
-  FUN_00403030((void *)((int)v1c + 0x1da),&v20,&v30);
+  FUN_00403030((void *)((char *)v1c + 0x1da),&v20,&v30);
   _seh_state = (_seh_state & ~0xFF) | 1;
   FUN_0043cb66();
   FUN_00403030(v34,&v20,&v28);
@@ -1495,10 +1495,10 @@ void FUN_0043e4f2(void) { return; }
 void __fastcall FUN_0043e500(void *param_1)
 {
   /* Offsets 0x1BC-0x1CC on extended widget beyond DialogWidget */
-  if (*(short *)((int)param_1 + 0x1cc) == 0) { /* extended widget: state flag at +0x1CC */
-    *(short *)((int)param_1 + 0x1ca) = 1; /* extended widget: animation state at +0x1CA */
-    FUN_0042dba0(param_1,*(int *)((int)param_1 + 0x1bc) + 0x32); /* extended widget: board ptr at +0x1BC, +0x32 = _pad32 region */
-    *(short *)((int)param_1 + 0x1ca) = 0; /* extended widget: animation state at +0x1CA */
+  if (*(short *)((char *)param_1 + 0x1cc) == 0) { /* extended widget: state flag at +0x1CC */
+    *(short *)((char *)param_1 + 0x1ca) = 1; /* extended widget: animation state at +0x1CA */
+    FUN_0042dba0(param_1,*(int *)((char *)param_1 + 0x1bc) + 0x32); /* extended widget: board ptr at +0x1BC, +0x32 = _pad32 region */
+    *(short *)((char *)param_1 + 0x1ca) = 0; /* extended widget: animation state at +0x1CA */
   }
   return;
 }
@@ -1764,7 +1764,7 @@ void __fastcall FUN_0043ef10(DialogWidget *param_1)
   int *pu1;
 
   for (pu1 = (int *)param_1->child_list; pu1 != NULL;
-      pu1 = *(int **)((int)pu1 + 10)) {  /* TODO: linked list next pointer at node+0x0A */
+      pu1 = *(int **)((char *)pu1 + 10)) {  /* TODO: linked list next pointer at node+0x0A */
     FUN_0041dd40((void *)*pu1);
   }
   return;

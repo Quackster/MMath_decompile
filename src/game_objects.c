@@ -619,7 +619,7 @@ int __thiscall FUN_00402a90(GameWidget *this,int param_1)
   short s3;
   uint u4;
 
-  u4 = (uint)*(byte *)((int)((UIWidget *)param_1)->level_data_ptr + 7);
+  u4 = (uint)*(byte *)((char *)((UIWidget *)param_1)->level_data_ptr + 7);
   s1 = (short)this->groups_a[u4].count;
   s3 = 1;
   if (0 < s1) {
@@ -669,7 +669,7 @@ int * __thiscall FUN_00402af0(SoundPlayer *this,int *param_1,int param_2,char pa
   FUN_00401050(&_tmp_30,0);
   FUN_00401060(&v20,u7,_arg2);
   _seh_state = 1;
-  u2 = (ushort)*(byte *)((int)((UIWidget *)param_2)->level_data_ptr + 7);
+  u2 = (ushort)*(byte *)((char *)((UIWidget *)param_2)->level_data_ptr + 7);
   v18 = 0;
   u3 = u2 + 1;
   if (param_3 != '\0') {
@@ -698,7 +698,7 @@ int * __thiscall FUN_00402af0(SoundPlayer *this,int *param_1,int param_2,char pa
             param_1[1] = v1c;
             goto L_00402c7b;
           }
-          self = *(void **)((int)(*(int *)this->groups_b[n5].data_ptr) + -4 + s6 * 4);
+          self = *(void **)((char *)(*(int *)this->groups_b[n5].data_ptr) + -4 + s6 * 4);
           pn8 = &v20;
           u7 = 0x402bf8;
           FUN_0041cde0(self,pn8);
@@ -817,7 +817,7 @@ void __fastcall FUN_00402fa0(GameWidget *this)
     FUN_00458860((void *)((DialogWidget *)this)->dialog_value,v28);
   }
   if (*(int *)&((DialogWidget *)this)->dialog_data[0xA4] != 0) {  /* dialog_data[0xA4], secondary display ptr */
-    _itoa((int)this->field_12e,v28,10);
+    _itoa((char *)this - >field_12e,v28,10);
     FUN_00458860(*(void **)&((DialogWidget *)this)->dialog_data[0xA4],v28);  /* dialog_data[0xA4] */
   }
   return;
@@ -1149,7 +1149,7 @@ void __fastcall FUN_004037e0(void *param_1)
   _handler = &L_00403a2f;
   *_fs = &_seh_prev;
   pu4 = NULL;
-  n8 = *(int *)((int)param_1 + 0x6a);  /* TODO: unknown struct offset 0x6a on param_1 */
+  n8 = *(int *)((char *)param_1 + 0x6a);  /* TODO: unknown struct offset 0x6a on param_1 */
   if ((n8 != 0) && (*(int *)(n8 + 8) != 0)) {
     _arg1 = 0x403826;
     pu4 = FUN_004607d0(DAT_004838c0,*(int *)(n8 + 8),NULL,NULL,0);
@@ -1166,23 +1166,23 @@ void __fastcall FUN_004037e0(void *param_1)
       n8 = n9 * 4;
       pu1 = pu4 + n9 * 2;
       *(unsigned char *)pu1 = (&DAT_0047fcc2)[n8];
-      *(unsigned char *)((int)pu1 + 1) = (&DAT_0047fcc1)[n8]; /* TODO: byte at pu1+1, palette entry */
+      *(unsigned char *)((char *)pu1 + 1) = (&DAT_0047fcc1)[n8]; /* TODO: byte at pu1+1, palette entry */
       *(unsigned char *)(pu1 + 1) = (&DAT_0047fcc0)[n8];
-      *(unsigned char *)((int)pu1 + 3) = 0; /* TODO: byte at pu1+3, palette padding */
+      *(unsigned char *)((char *)pu1 + 3) = 0; /* TODO: byte at pu1+3, palette padding */
     } while (s7 < 0x100);
   }
   FUN_004036a0(param_1,(int *)pu4);
-  s7 = *(short *)((int)param_1 + 0x7c);  /* TODO: unknown struct offset 0x7c on param_1 */
+  s7 = *(short *)((char *)param_1 + 0x7c);  /* TODO: unknown struct offset 0x7c on param_1 */
   if ((s7 != 0) && (s10 = 1, 0 < s7)) {
     do {
       n8 = (int)s10;
       s10 = s10 + 1;
       /* vtable[0x28] call on child widget (offset 0xa0 / 4 = 0x28) */
-      ((void (*)(void))((void **)(**(int **)(**(int **)((int)param_1 + 0x72) + -4 + n8 * 4)))[0xa0 / 4])();  /* child->vtable[40] */ /* TODO: offset 0x72 on param_1 */
+      ((void (*)(void))((void **)(**(int **)(**(int **)((char *)param_1 + 0x72) + -4 + n8 * 4)))[0xa0 / 4])();  /* child->vtable[40] */ /* TODO: offset 0x72 on param_1 */
     } while (s10 <= s7);
   }
   /* vtable[0x15] call on sub-object at +0x42 (offset 0x54 / 4 = 0x15) */
-  ((void (*)(void))((void **)(*(int *)((int)param_1 + 0x42)))[0x54 / 4])();  /* obj at param_1+0x42->vtable[21] */ /* TODO: offset 0x42 on param_1 */
+  ((void (*)(void))((void **)(*(int *)((char *)param_1 + 0x42)))[0x54 / 4])();  /* obj at param_1+0x42->vtable[21] */ /* TODO: offset 0x42 on param_1 */
   c13 = '\0';
   c12 = '\0';
   v24 = &_tmp_25;
@@ -1197,15 +1197,15 @@ void __fastcall FUN_004037e0(void *param_1)
   v20 = &_tmp_22;
   FUN_00401050(&_tmp_22,0);
   FUN_0041cca0(param_1,n8,n9,n11,_arg1,c12,c13);
-  FUN_0041b150((void *)((int)param_1 + 0x42),1);
-  if (*(int *)((int)param_1 + 0x6a) != 0) {  /* TODO: offset 0x6a on param_1 */
+  FUN_0041b150((void *)((char *)param_1 + 0x42),1);
+  if (*(int *)((char *)param_1 + 0x6a) != 0) {  /* TODO: offset 0x6a on param_1 */
     FUN_0043b760(v38);
     _seh_state = 2;
     v14 = NULL;
     v1c[1] = 0;
     v1c[0] = 0;
     v18 = (char *)0x28001e0;
-    u6 = FUN_0041ace0(DAT_004838c0,**(int **)((int)param_1 + 0x6a));  /* TODO: offset 0x6a on param_1 */
+    u6 = FUN_0041ace0(DAT_004838c0,**(int **)((char *)param_1 + 0x6a));  /* TODO: offset 0x6a on param_1 */
     if ((char)u6 != '\0') {
       s7 = FUN_0043b970((int)v38);
       v20 = (char *)CONCAT22((short)((0x1e0 - s7) / 2),(short)v20);
@@ -1216,7 +1216,7 @@ void __fastcall FUN_004037e0(void *param_1)
       v1c[1] = 0;
       v1c[0] = 0;
       v18 = (char *)CONCAT22(u3,u2);
-      FUN_00419570(v38,v1c,(int *)((int)param_1 + 0x42),(short *)&v14,1,0,0);
+      FUN_00419570(v38,v1c,(int *)((char *)param_1 + 0x42),(short *)&v14,1,0,0);
     }
     _seh_state = (_seh_state & ~0xFF) | 1;
     FUN_00403a1f();
@@ -1262,13 +1262,13 @@ void __fastcall FUN_00403a50(void *param_1)
   short s3;
 
   FUN_004036a0(param_1,NULL);
-  s1 = *(short *)((int)param_1 + 0x7c);  /* TODO: unknown struct offset 0x7c on param_1 */
+  s1 = *(short *)((char *)param_1 + 0x7c);  /* TODO: unknown struct offset 0x7c on param_1 */
   if ((s1 != 0) && (s3 = 1, 0 < s1)) {
     do {
       n2 = (int)s3;
       s3 = s3 + 1;
       /* vtable[0x29] call on child widget (offset 0xa4 / 4 = 0x29) */
-      ((void (*)(void))((void **)(**(int **)(**(int **)((int)param_1 + 0x72) + -4 + n2 * 4)))[0xa4 / 4])();  /* child->vtable[41] */ /* TODO: offset 0x72 on param_1 */
+      ((void (*)(void))((void **)(**(int **)(**(int **)((char *)param_1 + 0x72) + -4 + n2 * 4)))[0xa4 / 4])();  /* child->vtable[41] */ /* TODO: offset 0x72 on param_1 */
     } while (s3 <= s1);
   }
   return;
@@ -2001,7 +2001,7 @@ void __fastcall FUN_00405730(UIWidget *this)
   _seh_state = 0xffffffff;
   _handler = &L_00405885;
   *_fs = &_seh_prev;
-  n2 = this->sub_widgets_b[*(short *)((int)this->level_data_ptr + 8 +
+  n2 = this->sub_widgets_b[*(short *)((char *)this - >level_data_ptr + 8 +
                             this->current_frame * 2) - 1];  /* TODO: level_data_ptr sub-struct, frame table at +0x08 */
   this->cell_info_ptr = (void *)n2;
   if (n2 != 0) {
@@ -2555,10 +2555,10 @@ void __thiscall FUN_00406b20(SoundPlayer *this,short param_1)
       if (this->_pad42[0] == '\0') {
         pn2 = this->sequence_data[43];  /* TODO: maps to UIWidget offset 0xF4 */
         if ((*pn2 == 0) || (*(char *)(*pn2 + 6) == '\0')) {
-          FUN_0046b490(DAT_004838c0,*(int *)((int)pn2 + n3 * 8 + 0x12),u1);  /* TODO: stride-8 array at pn2+0x12 */
+          FUN_0046b490(DAT_004838c0,*(int *)((char *)pn2 + n3 * 8 + 0x12),u1);  /* TODO: stride-8 array at pn2+0x12 */
         }
         else {
-          FUN_0046b4e0(DAT_004838c0,*(uint *)((int)pn2 + n3 * 8 + 0x12),u1);  /* TODO: stride-8 array at pn2+0x12 */
+          FUN_0046b4e0(DAT_004838c0,*(uint *)((char *)pn2 + n3 * 8 + 0x12),u1);  /* TODO: stride-8 array at pn2+0x12 */
         }
       }
       ((UIWidget *)this)->sub_widgets_a[n3 - 1] = 0;  /* offset 0x46 + (n3-1)*4 */
@@ -2569,10 +2569,10 @@ void __thiscall FUN_00406b20(SoundPlayer *this,short param_1)
         pn2 = this->sequence_data[43];  /* TODO: maps to UIWidget offset 0xF4 */
         if (((*pn2 == 0) || (*(char *)(*pn2 + 6) == '\0')) &&
            (this->sequence_data[31] != '\0')) {
-          FUN_0046b620(DAT_004838c0,*(int *)((int)pn2 + n3 * 8 + 0x12),u1);  /* TODO: stride-8 array at pn2+0x12 */
+          FUN_0046b620(DAT_004838c0,*(int *)((char *)pn2 + n3 * 8 + 0x12),u1);  /* TODO: stride-8 array at pn2+0x12 */
         }
         else {
-          FUN_0046b680(DAT_004838c0,*(uint *)((int)pn2 + n3 * 8 + 0x12),u1);  /* TODO: stride-8 array at pn2+0x12 */
+          FUN_0046b680(DAT_004838c0,*(uint *)((char *)pn2 + n3 * 8 + 0x12),u1);  /* TODO: stride-8 array at pn2+0x12 */
         }
       }
       else {
@@ -2722,7 +2722,7 @@ int __fastcall FUN_00407070(UIWidget *this)
   if ((n4 != 0) && (u5 = (int)s3 + 1, u5 <= ((CVector *)((UIElement *)this->parent_widget)->child_list_1)->count)) {
     n4 = u5 * 4;
     do {
-      n1 = *(int *)((int)((CVector *)((UIElement *)this->parent_widget)->child_list_1)->data + -4 + n4);
+      n1 = *(int *)((char *)((CVector *)((UIElement *)this->parent_widget)->child_list_1)->data + -4 + n4);
       if (((UIElement *)n1)->field_10 != '\0') {
         c2 = FUN_00406fc0((UIWidget *)this,(UIWidget *)n1);
         if (c2 != '\0') {
@@ -2766,7 +2766,7 @@ void __thiscall FUN_004070e0(GameWidget *this,char param_1,short param_2)
           n3 = n3 + 4;
           _arg3 = CONCAT31((unsigned int)((uint)this->child_list_2 >> 8),b4);
           FUN_004070e0((GameWidget *)self,b4,
-                       ((short)((int)s1 + (int)s2 >> 1) -
+                       ((short)((char *)s1 + (int)s2 >> 1) -
                        (short)((intptr_t)((GameWidget *)self)->rect_right +
                                (intptr_t)((GameWidget *)self)->rect_left >> 1)) * 2);
           v8 = v8 + 1;
@@ -3144,7 +3144,7 @@ void * __cdecl FUN_00408070(int param_1)
      (u4 = 1, ((CVector *)((UIElement *)n1)->child_list_1)->count != 0)) {
     n3 = 4;
     do {
-      this = *(void **)((int)((CVector *)((UIElement *)n1)->child_list_1)->data + -4 + n3);
+      this = *(void **)((char *)((CVector *)((UIElement *)n1)->child_list_1)->data + -4 + n3);
       if (((UIWidget *)DAT_004897c0)->sub_widgets_a[1] != this) {
         pn2 = FUN_0041c2f0(this,(short *)&param_1);
         if (((pn2 != NULL) && (((UIWidget *)pn2)->level_data_ptr != 0)) &&
@@ -3439,7 +3439,7 @@ void __cdecl FUN_00408eb0(UIWidget *param_1,void *param_2,char param_3)
     _seh_state = 0;
   }
   else {
-    if (*(char *)((int)param_1->level_data_ptr + 4) == '\x02') {  /* TODO: level_data_ptr sub-struct, byte at +0x04 */
+    if (*(char *)((char *)param_1 - >level_data_ptr + 4) == '\x02') {  /* TODO: level_data_ptr sub-struct, byte at +0x04 */
       if (param_3 == '\0') {
         FUN_0041da90(param_1,1);
         param_1->anim_flag_0 = 0;

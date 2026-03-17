@@ -65,7 +65,7 @@ void FUN_00451820(void) { return; }
  */
 int __fastcall FUN_00451b80(TextDisplay *param_1)
 {
-  return *(int *)((int)param_1 + 0x228); /* TextDisplay: field in _pad232 area at +0x228 */
+  return *(int *)((char *)param_1 + 0x228); /* TextDisplay: field in _pad232 area at +0x228 */
 }
 
 
@@ -167,9 +167,9 @@ uint __thiscall FUN_00451cf0(void *this,int param_1)
   int n1;
   int n2;
 
-  n1 = *(int *)((int)this + param_1 * 0x16 + 0x1de); /* TODO: unknown struct, stride-0x16 array */
+  n1 = *(int *)((char *)this + param_1 * 0x16 + 0x1de); /* TODO: unknown struct, stride-0x16 array */
   n2 = rand();
-  return *(uint *)(**(int **)((int)this + param_1 * 0x16 + 0x1d4) /* TODO: unknown struct, stride-0x16 array at +0x1D4 */ + (n2 % n1) * 4) >> 0x10;
+  return *(uint *)(**(int **)((char *)this + param_1 * 0x16 + 0x1d4) /* TODO: unknown struct, stride-0x16 array at +0x1D4 */ + (n2 % n1) * 4) >> 0x10;
 }
 
 
@@ -209,7 +209,7 @@ int __thiscall FUN_00451d80(MathProblem *this,int param_1)
       if (*pn2 == param_1) {
         n1 = n1 + 1;
       }
-      pn2 = (int *)((int)pn2 + 0x12);
+      pn2 = (int *)((char *)pn2 + 0x12);
       n3 = n3 + -1;
     } while (n3 != 0);
   }
@@ -230,10 +230,10 @@ int __thiscall FUN_00451db0(MathProblem *this,int param_1,uint param_2)
   if (0 < n3) {
     pn2 = (int *)&this->slots[2].flags;
     do {
-      if ((*pn2 == param_1) && (*(byte *)((int)pn2 + -10) == param_2)) { /* TODO: pn2-10 = AnswerSlot.symbol relative to flags ptr */
+      if ((*pn2 == param_1) && (*(byte *)((char *)pn2 + -10) == param_2)) { /* TODO: pn2-10 = AnswerSlot.symbol relative to flags ptr */
         n1 = n1 + 1;
       }
-      pn2 = (int *)((int)pn2 + 0x12);
+      pn2 = (int *)((char *)pn2 + 0x12);
       n3 = n3 + -1;
     } while (n3 != 0);
   }
@@ -257,7 +257,7 @@ int __thiscall FUN_00451df0(MathProblem *this,int param_1,int param_2)
       if ((*pn2 == param_1) && (pn2[-2] == param_2)) {
         n1 = n1 + 1;
       }
-      pn2 = (int *)((int)pn2 + 0x12);
+      pn2 = (int *)((char *)pn2 + 0x12);
       n3 = n3 + -1;
     } while (n3 != 0);
   }
@@ -275,8 +275,8 @@ int * __fastcall FUN_00451ee0(TextDisplay *param_1)
 
   *(void ***)param_1 = &PTR_FUN_00476250; /* vtable assignment */
   param_1->field_406 = 0;
-  *(short *)((int)param_1 + 4) = 0x100; /* TODO: offset 0x04 on unknown struct, initialization to 256 */
-  pu2 = (int *)((int)param_1 + 6);
+  *(short *)((char *)param_1 + 4) = 0x100; /* TODO: offset 0x04 on unknown struct, initialization to 256 */
+  pu2 = (int *)((char *)param_1 + 6);
   for (n1 = 0x100; n1 != 0; n1 = n1 + -1) {
     *pu2 = 0;
     pu2 = pu2 + 1;
@@ -303,7 +303,7 @@ int * __thiscall FUN_00451f30(void *this,int *param_1)
 {
   *(void ***)this = &PTR_FUN_00476250; /* vtable assignment */
   ((TextDisplay *)this)->field_406 = 0;
-  *(short *)((intptr_t)this + 4) = 0x100;
+  *(short *)((char *)this + 4) = 0x100;
   FUN_00451f70(this,param_1);
   return this;
 }
@@ -363,10 +363,10 @@ FUN_00452050(void *this,int param_1,short param_2,short param_3,short param_4)
   if (param_2 <= param_3) {
     do {
       if ((((param_4 != param_2) &&
-           (n1 = (int)param_2, *(char *)((int)this + n1 * 4 + 6) == (char)param_1)) && /* TODO: stride-4 byte array at this+6, color palette lookup */
-          (*(char *)((int)this + n1 * 4 + 7) == ((unsigned char)((param_1) >> 8)))) &&
-         ((*(char *)((int)this + n1 * 4 + 8) == ((unsigned char)((param_1) >> 16)) &&
-          (*(char *)((int)this + n1 * 4 + 9) == ((unsigned char)((param_1) >> 24)))))) {
+           (n1 = (int)param_2, *(char *)((char *)this + n1 * 4 + 6) == (char)param_1)) && /* TODO: stride-4 byte array at this+6, color palette lookup */
+          (*(char *)((char *)this + n1 * 4 + 7) == ((unsigned char)((param_1) >> 8)))) &&
+         ((*(char *)((char *)this + n1 * 4 + 8) == ((unsigned char)((param_1) >> 16)) &&
+          (*(char *)((char *)this + n1 * 4 + 9) == ((unsigned char)((param_1) >> 24)))))) {
         return param_2;
       }
       param_2 = param_2 + 1;
@@ -446,30 +446,30 @@ int __thiscall FUN_00452160(void *this,void *param_1,int param_2,char *param_3)
     s4 = 1;
     pu3 = *(char **)(param_2 + 4);
     *pu3 = 0;
-    if (1 < *(short *)((intptr_t)this + 4)) { /* TODO: unknown struct, offset 0x04 = count field */
+    if (1 < *(short *)((char *)this + 4)) { /* TODO: unknown struct, offset 0x04 = count field */
       do {
         n5 = (int)s4;
-        s1 = FUN_00452050(param_1,*(int *)((intptr_t)this + n5 * 4 + 6),0,0xfe,-1); /* TODO: offset 0x06 = color table entries */
+        s1 = FUN_00452050(param_1,*(int *)((char *)this + n5 * 4 + 6),0,0xfe,-1); /* TODO: offset 0x06 = color table entries */
         pu3 = (char *)CONCAT22(_extra,s1);
         if (s1 == -1) {
           pu3 = (char *)
-                   FUN_00451fa0(param_1,param_3,*(int *)((intptr_t)this + n5 * 4 + 6),0,0xfe,-1
+                   FUN_00451fa0(param_1,param_3,*(int *)((char *)this + n5 * 4 + 6),0,0xfe,-1
                                );
         }
         s4 = s4 + 1;
         *(char *)(*(int *)(param_2 + 4) + n5) = (char)pu3;
-      } while (s4 < *(short *)((intptr_t)this + 4));
+      } while (s4 < *(short *)((char *)this + 4));
     }
     return (uint)pu3 & 0xffffff00;
   }
   s4 = 0;
-  if (0 < *(short *)((intptr_t)this + 4)) {
+  if (0 < *(short *)((char *)this + 4)) {
     do {
       u2 = CONCAT22((short)((uint)u2 >> 0x10),s4);
       n5 = (int)s4;
       s4 = s4 + 1;
       *(char *)(n5 + *(int *)(param_2 + 4)) = (char)s4;
-    } while (s4 < *(short *)((intptr_t)this + 4));
+    } while (s4 < *(short *)((char *)this + 4));
   }
   return CONCAT31((unsigned int)((uint)u2 >> 8),1);
 }
@@ -657,7 +657,7 @@ void __fastcall FUN_00452540(int param_1)
   do {
     s7 = 0;
     do {
-      pu4 = (short *)(param_1 + ((int)s7 + s8 * 6) * 2 + 0x48);
+      pu4 = (short *)(param_1 + ((char *)s7 + s8 * 6) * 2 + 0x48);
       u2 = *pu4;
       *pu4 = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
       s7 = s7 + 1;
@@ -1121,7 +1121,7 @@ int * __thiscall FUN_00452cf0(void *this,char *param_1)
   _seh_state = 0;
   *(void ***)this = &PTR_FUN_00476258;
   FUN_0041da90(this,1);
-  *(int *)((intptr_t)this + 0x42) = 0; /* UIElement._pad42: embedded resource handle */
+  *(int *)((char *)this + 0x42) = 0; /* UIElement._pad42: embedded resource handle */
   if (param_1 != NULL) {
     FUN_00452e00(this,param_1);
   }
@@ -1156,8 +1156,8 @@ void __fastcall FUN_00452d90(int *param_1)
   *param_1 = &PTR_FUN_00476258;
   *_fs = &_seh_prev;
   _seh_state = 0;
-  if (*(uint *)((int)param_1 + 0x42) != 0) { /* UIElement._pad42: embedded resource handle */
-    FUN_0046f5f0(*(uint *)((int)param_1 + 0x42));  /* UIElement._pad42: free resource */
+  if (*(uint *)((char *)param_1 + 0x42) != 0) { /* UIElement._pad42: embedded resource handle */
+    FUN_0046f5f0(*(uint *)((char *)param_1 + 0x42));  /* UIElement._pad42: free resource */
   }
   _seh_state = 0xffffffff;
   FUN_00452deb();
@@ -1619,8 +1619,8 @@ void FUN_00453ea9(void) { return; }
 int * __thiscall FUN_00453ed0(void *this,uint param_1)
 {
   if ((param_1 & 2) != 0) {
-    _eh_vector_destructor_iterator_(this,0x118,*(int *)((int)this - 4U),FUN_00405420); /* TODO: MSVC array cookie at (this - 4) */
-    FUN_0046c410((int)this - 4U);
+    _eh_vector_destructor_iterator_(this,0x118,*(int *)((char *)this - 4U),FUN_00405420); /* TODO: MSVC array cookie at (this - 4) */
+    FUN_0046c410((char *)this - 4U);
     return this;
   }
   FUN_00405420(this);
@@ -1653,9 +1653,9 @@ int * __fastcall FUN_00453f30(int *param_1)
   ((GameWidget *)param_1)->object_ptr = (void *)0xffffffff; /* sentinel value */
   ((GameWidget *)param_1)->scrollbar_ref = 1;
   ((GameWidget *)param_1)->pair_x_2 = 0;
-  *(unsigned char *)((int)param_1 + 0x12b) = 1; /* GameWidget: byte at +0x12B, between scrollbar_ref(+0x12A) and field_12e(+0x12E) */
+  *(unsigned char *)((char *)param_1 + 0x12b) = 1; /* GameWidget: byte at +0x12B, between scrollbar_ref(+0x12A) and field_12e(+0x12E) */
   *(unsigned char *)&((GameWidget *)param_1)->field_118 = 1; /* low byte of field_118 */
-  *(unsigned char *)((int)param_1 + 0x12c) = 0; /* GameWidget: byte at +0x12C, between scrollbar_ref(+0x12A) and field_12e(+0x12E) */
+  *(unsigned char *)((char *)param_1 + 0x12c) = 0; /* GameWidget: byte at +0x12C, between scrollbar_ref(+0x12A) and field_12e(+0x12E) */
   *_fs = _seh_prev;
   return param_1;
 }
@@ -1680,7 +1680,7 @@ void __fastcall FUN_00454040(int *param_1)
     FUN_00405cb0(param_1);
     return;
   }
-  if ((*(char *)(DAT_004896b0 + 0x28) == '\0') && (*(char *)((int)param_1 + 0x12c) == '\0')) { /* GameWidget: byte at +0x12C */
+  if ((*(char *)(DAT_004896b0 + 0x28) == '\0') && (*(char *)((char *)param_1 + 0x12c) == '\0')) { /* GameWidget: byte at +0x12C */
     dw1 = GetTickCount();
     n2 = ((int)(((longlong)(int)dw1 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000) -
             ((GameWidget *)param_1)->pair_x_1) / 0x3c;
@@ -1694,7 +1694,7 @@ void __fastcall FUN_00454040(int *param_1)
     }
     if (((((GameWidget *)param_1)->pair_x_2 != 0) &&
         (((GameWidget *)param_1)->pair_x_2 <= ((GameWidget *)param_1)->pair_y_1)) &&
-       (*(char *)((int)param_1 + 0x12b) == '\0')) { /* GameWidget: byte at +0x12B */
+       (*(char *)((char *)param_1 + 0x12b) == '\0')) { /* GameWidget: byte at +0x12B */
       ((void (*)(void))((void **)(*((UIWidget *)DAT_004897c0)->sub_widgets_a[3]))[0xac / 4])(); /* obj at *(DAT_004897c0+0x52)->vtable[43] */
     }
   }
@@ -1762,7 +1762,7 @@ int * __fastcall FUN_004541a0(int *param_1)
   FUN_00434860(param_1);
   _seh_state = 0;
   *param_1 = &PTR_FUN_00476798;
-  *(int *)((int)param_1 + 0x6a) = 0; /* custom struct: timestamp field at +0x6A */
+  *(int *)((char *)param_1 + 0x6a) = 0; /* custom struct: timestamp field at +0x6A */
   FUN_0041da90(param_1,1);
   *_fs = _seh_prev;
   return param_1;
@@ -1786,8 +1786,8 @@ void __fastcall FUN_00454280(void *param_1)
   
   n2 = (DAT_004890a4 >> 1) * DAT_00489084;
   dw1 = GetTickCount();
-  if ((uint)(*(int *)((int)param_1 + 0x6a) + n2) < dw1) { /* custom struct: timestamp at +0x6A */
-    *(DWORD *)((int)param_1 + 0x6a) = dw1; /* custom struct: timestamp at +0x6A */
+  if ((uint)(*(int *)((char *)param_1 + 0x6a) + n2) < dw1) { /* custom struct: timestamp at +0x6A */
+    *(DWORD *)((char *)param_1 + 0x6a) = dw1; /* custom struct: timestamp at +0x6A */
     FUN_0041dad0(param_1,~(byte)(((UIWidget *)param_1)->flags >> 6) & 1,'\0');
   }
   return;
@@ -1978,7 +1978,7 @@ int * __thiscall FUN_00454a70(void *this,int param_1)
   *_fs = &_seh_prev;
   FUN_0044e3f0(this);
   *(void ***)this = &PTR_FUN_00476970;
-  *(int *)((intptr_t)this + 0x118) = param_1; /* GameWidget->field_118 at +0x118, 4-byte write spanning field_118 + pair_x_1 low bytes */
+  *(int *)((char *)this + 0x118) = param_1; /* GameWidget->field_118 at +0x118, 4-byte write spanning field_118 + pair_x_1 low bytes */
   *_fs = _seh_prev;
   return this;
 }
@@ -3512,9 +3512,9 @@ FUN_00457570(TextDisplay *this,short param_1,short param_2,short param_3,int par
   }
   *ps1 = param_6;
   if (this->field_126 == 0x1dd) {
-    if (*(short *)((int)DAT_0048345c + 0x92 + *ps1 * 2) != 6) goto L_0045762a; /* GameSession->score_display(+0x92) area, indexed by *ps1 */
+    if (*(short *)((char *)DAT_0048345c + 0x92 + *ps1 * 2) != 6) goto L_0045762a; /* GameSession->score_display(+0x92) area, indexed by *ps1 */
   }
-  else if (*(short *)((int)DAT_0048345c + 0x92 + *ps1 * 2) != 1) goto L_0045762a; /* GameSession->score_display(+0x92) area, indexed by *ps1 */
+  else if (*(short *)((char *)DAT_0048345c + 0x92 + *ps1 * 2) != 1) goto L_0045762a; /* GameSession->score_display(+0x92) area, indexed by *ps1 */
   FUN_0042c3f0(this);
 L_0045762a:
   *_fs = v10;
@@ -3752,8 +3752,8 @@ void __cdecl FUN_00457b10(int param_1,int param_2,uint param_3)
   if (param_3 != 0) {
     pv1 = *(void **)(param_3 + 0x10); /* resource struct: data array ptr at +0x10 */
     if (pv1 != NULL) {
-      _eh_vector_destructor_iterator_(pv1,8,*(int *)((int)pv1 - 4U),thunk_FUN_0042f1c0); /* TODO: MSVC array cookie at (pv1 - 4) */
-      FUN_0046c410((int)pv1 - 4U);
+      _eh_vector_destructor_iterator_(pv1,8,*(int *)((char *)pv1 - 4U),thunk_FUN_0042f1c0); /* TODO: MSVC array cookie at (pv1 - 4) */
+      FUN_0046c410((char *)pv1 - 4U);
     }
     FUN_0046f5f0(param_3);
   }
@@ -4375,8 +4375,8 @@ void __thiscall FUN_00458920(TextDisplay *this,int param_1)
   }
   for (u7 = u8 & 3; u7 != 0; u7 = u7 - 1) {
     *(char *)pu10 = *(char *)pu9;
-    pu9 = (int *)((int)pu9 + 1);
-    pu10 = (int *)((int)pu10 + 1);
+    pu9 = (int *)((char *)pu9 + 1);
+    pu10 = (int *)((char *)pu10 + 1);
   }
   *(char *)(*this->text_buffer_ptr + u8) = 0;
   ((void (*)(void))this->vtable[0x90 / 4])();
@@ -4410,7 +4410,7 @@ void __thiscall FUN_00458a00(TextDisplay *this,short param_1)
   v18 = 0;
   _seh_state = 0;
   FUN_0041cdc0(this,&v18);
-  v14 = (((intptr_t)this->extent_x + (intptr_t)this->origin_x) * (int)param_1
+  v14 = (((char *)this - >extent_x + (intptr_t)this->origin_x) * (int)param_1
              + 2) * 0x100;
   FUN_00458c00(this,&v18,'\0');
   _seh_state = 0xffffffff;
@@ -4441,7 +4441,7 @@ void __thiscall FUN_00458aa0(TextDisplay *this,short param_1)
   v18[0] = 0;
   v8 = 0;
   FUN_0041cdc0(this,v18);
-  v18[0] = (((intptr_t)this->extent_y + (intptr_t)this->origin_y) *
+  v18[0] = (((char *)this - >extent_y + (intptr_t)this->origin_y) *
                  (int)param_1 + 2) * 0x100;
   FUN_00458c00(this,v18,'\0');
   v8 = 0xffffffff;
@@ -4474,9 +4474,9 @@ void __thiscall FUN_00458b40(TextDisplay *this,short param_1,short param_2)
   v18 = 0;
   _seh_state = 0;
   FUN_0041cdc0(this,&v18);
-  v14 = (((intptr_t)this->extent_x + (intptr_t)this->origin_x) * (int)param_1
+  v14 = (((char *)this - >extent_x + (intptr_t)this->origin_x) * (int)param_1
              + 2) * 0x100;
-  v18 = (((intptr_t)this->extent_y + (intptr_t)this->origin_y) * (int)param_2
+  v18 = (((char *)this - >extent_y + (intptr_t)this->origin_y) * (int)param_2
              + 2) * 0x100;
   FUN_00458c00(this,&v18,'\0');
   _seh_state = 0xffffffff;
@@ -5139,7 +5139,7 @@ void FUN_0045af90(void *param_1,short param_2)
     do {
       n2 = n2 + 4;
       u1 = u1 + 1;
-      FUN_0045af90(*(void **)((int)*((CVector *)((UIWidget *)param_1)->child_list_2)->data + -8 + n2),param_2);
+      FUN_0045af90(*(void **)((char *)*((CVector *)((UIWidget *)param_1)->child_list_2)->data + -8 + n2),param_2);
     } while (u1 <= ((CVector *)((UIWidget *)param_1)->child_list_2)->count);
   }
   return;
@@ -5303,9 +5303,9 @@ int * __fastcall FUN_0045b460(int *param_1)
   _handler = &L_0045b4b6;
   *_fs = &_seh_prev;
   FUN_0042cbd0(param_1);
-  *(short *)((int)param_1 + 0x198) = 0; /* GameWidget._pad160: counter at +0x198 */
+  *(short *)((char *)param_1 + 0x198) = 0; /* GameWidget._pad160: counter at +0x198 */
   *param_1 = &PTR_FUN_00477288;
-  *(unsigned char *)((int)param_1 + 0x19a) = 0; /* GameWidget._pad160: flag at +0x19A */
+  *(unsigned char *)((char *)param_1 + 0x19a) = 0; /* GameWidget._pad160: flag at +0x19A */
   *_fs = _seh_prev;
   return param_1;
 }
@@ -5514,7 +5514,7 @@ void __fastcall FUN_0045bc70(int *param_1)
   *_fs = &_seh_prev;
   v14 = param_1;
   FUN_0045c0c0();
-  if ((*(char *)((int)v14 + 0xd) != '\0') && (DAT_004896b0 != 0)) { /* small startup struct: flag at +0x0D */
+  if ((*(char *)((char *)v14 + 0xd) != '\0') && (DAT_004896b0 != 0)) { /* small startup struct: flag at +0x0D */
     FUN_00455dc0(DAT_004896b0);
   }
   if (DAT_004838bc != NULL) {

@@ -155,8 +155,8 @@ ushort * __cdecl FUN_0045c1c0(int *param_1,short param_2,short param_3,ushort *p
         n2 = (int)s3;
         s3 = s3 + 1;
         param_4[n2 + v12 * 0x10] =
-             CONCAT11(*(char *)((int)&v10 + (int)v12), /* TODO: v10 byte array access */
-                      *(char *)((int)&v10 + n2)); /* TODO: v10 byte array access */
+             CONCAT11(*(char *)((char *)&v10 + (int)v12), /* TODO: v10 byte array access */
+                      *(char *)((char *)&v10 + n2)); /* TODO: v10 byte array access */
       } while (s3 < 0x10);
       v12 = v12 + 1;
     } while (v12 < 0x10);
@@ -239,8 +239,7 @@ int __cdecl FUN_0045c470(byte *param_1,int param_2,int param_3,short *param_4)
     case 9:
     case 0x89:
       pb8 = param_1 + 3;
-      u5 = FUN_0045c470((byte *)((int)param_4 +
-                                   (uint)(ushort)param_4[param_1[2] + 7] + *param_4 * 2 + 0xe),
+      u5 = FUN_0045c470((byte *)((char *)param_4 + (uint)(ushort)param_4[param_1[2] + 7] + *param_4 * 2 + 0xe),
                            param_2,param_3,param_4);
       _edx = _extra_edx;
       break;
@@ -879,8 +878,8 @@ int * __fastcall FUN_0045cf10(int *param_1)
   *(short *)(param_1 + 0xb0) = 1;       /* byte offset 0x2C0 into unknown struct */
   *param_1 = &PTR_FUN_00477380;         /* vtable */
   param_1[0x66] = 0;                    /* byte offset 0x198 into unknown struct */
-  *(int *)((int)param_1 + 0x2c2) = 0;   /* TODO: unknown offset 0x2C2 on unknown struct */
-  *(int *)((int)param_1 + 0x2c6) = 0;   /* TODO: unknown offset 0x2C6 on unknown struct */
+  *(int *)((char *)param_1 + 0x2c2) = 0;   /* TODO: unknown offset 0x2C2 on unknown struct */
+  *(int *)((char *)param_1 + 0x2c6) = 0;   /* TODO: unknown offset 0x2C6 on unknown struct */
   *_fs = _seh_prev;
   return param_1;
 }

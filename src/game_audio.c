@@ -2747,8 +2747,8 @@ int FUN_0044bf50(int *param_1,char param_2)
   }
   for (u9 = u10 & 3; u9 != 0; u9 = u9 - 1) {
     *(char *)pu14 = *(char *)pu12;
-    pu12 = (int *)((int)pu12 + 1);
-    pu14 = (int *)((int)pu14 + 1);
+    pu12 = (int *)((char *)pu12 + 1);
+    pu14 = (int *)((char *)pu14 + 1);
   }
   _seh_state = 0xffffffff;
   *(char *)(**(int **)(v18 + 8) + u10) = 0;
@@ -4032,7 +4032,7 @@ void __thiscall FUN_0044eb30(void *this,int param_1)
     n5 = (int)s4;
     s4 = s4 + 1;
     n5 = n5 * 4;
-    pu1 = (char *)((int)pn2 + n5 + n3);
+    pu1 = (char *)((char *)pn2 + n5 + n3);
     pu1[2] = *(char *)(n5 + 6 + param_1);
     pu1[1] = *(char *)(n5 + param_1 + 7);
     *pu1 = *(char *)(n5 + param_1 + 8);
@@ -4071,7 +4071,7 @@ char __fastcall FUN_0044ebe0(int param_1)
       n5 = 0x100;
       plpal->palNumEntries = 0x100;
       plpal->palVersion = 0x300;
-      pBVar6 = (BYTE *)((int)pu2 + u1 + 2);
+      pBVar6 = (BYTE *)((char *)pu2 + u1 + 2);
       pLVar3 = plpal;
       do {
         n5 = n5 + -1;
