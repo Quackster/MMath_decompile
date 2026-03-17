@@ -458,7 +458,7 @@ char __thiscall FUN_0043b880(void *this,short param_1,short param_2)
 
 /* FUN_0043b910 @ 0x0043b910 */
 
-void __fastcall FUN_0043b910(int param_1)
+void __fastcall FUN_0043b910(char *param_1)
 {
   if (*(uint **)(param_1 + 0x14) != NULL) { /* CVector-like: data at +0x14 */
     FUN_0046d110(*(uint **)(param_1 + 0x14));
@@ -471,7 +471,7 @@ void __fastcall FUN_0043b910(int param_1)
 
 /* FUN_0043b940 @ 0x0043b940 */
 
-short __fastcall FUN_0043b940(int param_1)
+short __fastcall FUN_0043b940(char *param_1)
 {
   return *(short *)(param_1 + 0x12); /* CVector-like: capacity at +0x12 */
 }
@@ -479,7 +479,7 @@ short __fastcall FUN_0043b940(int param_1)
 
 /* FUN_0043b970 @ 0x0043b970 */
 
-short __fastcall FUN_0043b970(int param_1)
+short __fastcall FUN_0043b970(char *param_1)
 {
   return *(short *)(param_1 + 0x10); /* CVector-like: count at +0x10 */
 }
@@ -1000,7 +1000,7 @@ void __fastcall FUN_0043c5d0(int param_1)
 
 /* NOTE: Removing unreachable block (ram,0x0043c6fe) */
 
-void __fastcall FUN_0043c660(int param_1)
+void __fastcall FUN_0043c660(char *param_1)
 {
   ushort u1;
   DWORD dw2;
@@ -1082,7 +1082,7 @@ void FUN_0043c7f0(void)
 
 /* FUN_0043c890 @ 0x0043c890 */
 
-void __fastcall FUN_0043c890(int param_1)
+void __fastcall FUN_0043c890(char *param_1)
 {
   short s1;
   UIWidget *pv2;
@@ -1341,7 +1341,7 @@ void __cdecl FUN_0043d240(int *param_1,int param_2,int param_3)
 
 /* FUN_0043d250 @ 0x0043d250 */
 
-void __fastcall FUN_0043d250(int param_1)
+void __fastcall FUN_0043d250(char *param_1)
 {
   UIWidget *pv1;
   int n2;
@@ -1439,7 +1439,7 @@ void FUN_0043dc4a(void)
 
 /* FUN_0043dc60 @ 0x0043dc60 */
 
-void __fastcall FUN_0043dc60(int param_1)
+void __fastcall FUN_0043dc60(char *param_1)
 {
   FUN_00409330();
   FUN_0043a700(DAT_004838c0,0x5e1000d,*(int **)(param_1 + 0x1d6)); /* extended widget: resource handle at +0x1D6 */

@@ -399,7 +399,7 @@ void __fastcall FUN_00401d20(GameWidget *this)
   } while (s1 < 3);
   FUN_00402f60((int)this);
   FUN_0041dad0(this,0,'\0');
-  if (*(char *)(DAT_00489ac8 + 0xc) == '\0') {
+  if (((UIElement *)DAT_00489ac8)->parent_widget == NULL) {
     board = ((UIWidget *)DAT_004897c0)->sub_widgets_a[3];
     FUN_0042dae0(board,0,this->name_data_ptr,-1,-1);
     board->refresh_counter = 1;
@@ -1446,14 +1446,15 @@ void __fastcall FUN_004048d0(void *param_1)
 
 /* FUN_00404a80 @ 0x00404a80 */
 
-void __fastcall FUN_00404a80(int param_1)
+/* TODO: param_1 is unknown struct with ptrs at +0x96, +0x9A, int at +0x9E, shorts at +0x92, +0x94 */
+void __fastcall FUN_00404a80(char *param_1)
 {
   int *pu1;
   int *pu2;
-  
-  if (*(int *)(param_1 + 0x9e) != 0) {
+
+  if (*(int *)(param_1 + 0x9e) != 0) { /* TODO: unknown struct +0x9E */
     pu1 = (int *)(param_1 + 0x96);
-    FUN_00434490(*(int *)(param_1 + 0x9e));
+    FUN_00434490(*(int *)(param_1 + 0x9e)); /* TODO: unknown struct +0x9E */
     if ((int *)*pu1 != NULL) {
       FUN_00433420((int *)*pu1);
       FUN_00433270(pu1);
@@ -1463,9 +1464,9 @@ void __fastcall FUN_00404a80(int param_1)
       FUN_00433420((int *)*pu2);
       FUN_00433270(pu2);
     }
-    *(short *)(param_1 + 0x94) = 0;
-    *(int *)(param_1 + 0x9e) = 0;
-    *(short *)(param_1 + 0x92) = 0;
+    *(short *)(param_1 + 0x94) = 0; /* TODO: unknown struct +0x94 */
+    *(int *)(param_1 + 0x9e) = 0; /* TODO: unknown struct +0x9E */
+    *(short *)(param_1 + 0x92) = 0; /* TODO: unknown struct +0x92 */
     *pu1 = 0;
     *pu2 = 0;
   }
@@ -1555,9 +1556,10 @@ void __thiscall FUN_00404db0(UIElement *this,int *param_1)
 
 /* FUN_00404de0 @ 0x00404de0 */
 
-void __fastcall FUN_00404de0(int param_1)
+/* TODO: param_1 is unknown struct, +0x84 is int field */
+void __fastcall FUN_00404de0(char *param_1)
 {
-  *(int *)(param_1 + 0x84) = 0;
+  *(int *)(param_1 + 0x84) = 0; /* TODO: unknown struct +0x84 */
 }
 
 

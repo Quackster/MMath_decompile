@@ -431,10 +431,10 @@ FUN_00409950(SoundPlayer *this,short param_1,short param_2,short param_3,int par
   _seh_state = 0;
   *(void ***)this = &PTR_FUN_004724e8;
   n1 = DAT_004896b0;
-  *(char *)(DAT_004896b0 + 0x28) = 1;
+  ((TimerState *)DAT_004896b0)->flag_28 = 1;
   dw2 = GetTickCount();
-  *(DWORD *)(n1 + 4) = dw2;
-  *(DWORD *)(n1 + 0xc) = dw2;
+  ((TimerState *)n1)->tick_a = dw2;
+  ((TimerState *)n1)->tick_b = dw2;
   this->sequence_data[55] = 0;
   this->sequence_data[56] = 0;
   FUN_0042c0e0(this);
@@ -1852,24 +1852,25 @@ void __thiscall FUN_0040dde0(void *this,short param_1)
 
 /* FUN_0040e0c0 @ 0x0040e0c0 */
 
-void __fastcall FUN_0040e0c0(int param_1)
+/* TODO: param_1 is unknown struct with obj_ptr at +0x58, vtable_obj at +0x5c, tick at +0x60 */
+void __fastcall FUN_0040e0c0(char *param_1)
 {
   int n1;
   DWORD dw2;
-  
-  if (*(int *)(param_1 + 0x5c) != 0) {
+
+  if (*(int *)(param_1 + 0x5c) != 0) { /* TODO: unknown struct +0x5c */
     dw2 = GetTickCount();
-    if (dw2 < *(int *)(param_1 + 0x60) + 5000U) {
-      n1 = *(int *)(param_1 + 0x60);
+    if (dw2 < *(unsigned int *)(param_1 + 0x60) + 5000U) { /* TODO: unknown struct +0x60 */
+      n1 = *(int *)(param_1 + 0x60); /* TODO: unknown struct +0x60 */
       dw2 = GetTickCount();
       FUN_00456310((int)(((longlong)(int)((n1 - dw2) + 5000) * (longlong)DAT_004890a4 &
                          0xffffffffU) / 1000),'\x01','\0');
     }
-    FUN_004268d0(*(int **)(param_1 + 0x58),10);
-    ((void (*)(void))*(void **)**(int **)(param_1 + 0x5c))(); /* obj at *(param_1+0x5c)->vtable[0] */
-    *(int *)(param_1 + 0x5c) = 0;
-    FUN_0046f5f0(*(uint *)(param_1 + 0x58));
-    *(int *)(param_1 + 0x58) = 0;
+    FUN_004268d0(*(int **)(param_1 + 0x58),10); /* TODO: unknown struct +0x58 */
+    ((void (*)(void))*(void **)**(int **)(param_1 + 0x5c))(); /* obj at +0x5c->vtable[0] */
+    *(int *)(param_1 + 0x5c) = 0; /* TODO: unknown struct +0x5c */
+    FUN_0046f5f0(*(uint *)(param_1 + 0x58)); /* TODO: unknown struct +0x58 */
+    *(int *)(param_1 + 0x58) = 0; /* TODO: unknown struct +0x58 */
   }
   return;
 }

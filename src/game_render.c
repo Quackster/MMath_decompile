@@ -681,7 +681,7 @@ int * __fastcall FUN_00424400(int *param_1)
   param_1[0x112] = 0;
   param_1[0x113] = 0;
   param_1[5] = 0;
-  *(short *)(param_1 + 0x114) = 0;
+  *(short *)((char *)param_1 + 0x450) = 0; /* BoardSubclass_D _base[0x450]: short before extra_state */
   param_1[4] = 0;
   ((BoardSubclass_D *)param_1)->extra_state = 0;
   param_1[0x111] = 0;
@@ -737,7 +737,7 @@ void FUN_00424503(void)
 
 /* FUN_004246b0 @ 0x004246b0 */
 
-void __fastcall FUN_004246b0(int param_1)
+void __fastcall FUN_004246b0(char *param_1)
 {
   HGDIOBJ ho;
   
@@ -757,7 +757,7 @@ void __fastcall FUN_004246b0(int param_1)
 
 /* FUN_004247a0 @ 0x004247a0 */
 
-int __fastcall FUN_004247a0(int param_1)
+int __fastcall FUN_004247a0(char *param_1)
 {
   return *(int *)(param_1 + 0x14);
 }
@@ -1022,7 +1022,7 @@ int * __fastcall FUN_00424e40(int *param_1)
   _handler = &L_00424e96;
   *_fs = &_seh_prev;
   FUN_0044bc50(param_1);
-  *(short *)(param_1 + 0x95) = 0;
+  ((GameBoard *)param_1)->field_254 = 0; /* +0x254 */
   *param_1 = &PTR_LAB_004735e0;
   param_1[0x92] = 0;
   *_fs = _seh_prev;
@@ -1566,7 +1566,7 @@ L_004260b1:
 
 /* FUN_00426230 @ 0x00426230 */
 
-int __fastcall FUN_00426230(int param_1)
+int __fastcall FUN_00426230(char *param_1)
 {
   return *(int *)(param_1 + 0x1d4); /* board_slot_count */
 }
@@ -3148,7 +3148,7 @@ short FUN_00428c00(void)
 
 /* FUN_00428d80 @ 0x00428d80 */
 
-int __fastcall FUN_00428d80(int param_1)
+int __fastcall FUN_00428d80(char *param_1)
 {
   int n1;
   short u2;
@@ -3195,7 +3195,7 @@ void __fastcall FUN_00428e10(void *param_1)
 
 /* FUN_00428e60 @ 0x00428e60 */
 
-void __fastcall FUN_00428e60(int param_1)
+void __fastcall FUN_00428e60(char *param_1)
 {
   short s1;
   int *pu2;
@@ -3663,7 +3663,7 @@ int * __fastcall FUN_0042aa30(int *param_1)
   param_1[0x2b] = 0;
   param_1[0x2c] = 0;
   param_1[0x2d] = 0;
-  *(char *)(param_1 + 0x27) = 0;
+  *(char *)((char *)param_1 + 0x9C) = 0; /* byte at +0x9C; TODO: unknown field in UIElement subclass */
   ((UIElement *)param_1)->type_or_mode = 1;
   FUN_0042ac60(param_1,0x14);
   *_fs = _seh_prev;
@@ -3835,7 +3835,7 @@ void __thiscall FUN_0042af00(void *this,char param_1)
 
 /* FUN_0042b170 @ 0x0042b170 */
 
-void __fastcall FUN_0042b170(int param_1)
+void __fastcall FUN_0042b170(char *param_1)
 {
   DWORD dw1;
   
@@ -4804,7 +4804,7 @@ ushort * __cdecl FUN_0042c860(void *param_1,int param_2)
 
 /* FUN_0042c8d0 @ 0x0042c8d0 */
 
-void __cdecl FUN_0042c8d0(int param_1,int param_2,uint param_3)
+void __cdecl FUN_0042c8d0(int param_1,int param_2,char *param_3)
 {
   if (param_3 != 0) {
     if (*(char *)(param_3 + 3) != '\0') {
@@ -5264,7 +5264,7 @@ void FUN_0042d7b9(void)
 
 /* FUN_0042d7d0 @ 0x0042d7d0 */
 
-void __fastcall FUN_0042d7d0(int param_1)
+void __fastcall FUN_0042d7d0(char *param_1)
 {
   void *this;
   
@@ -5288,7 +5288,7 @@ void __fastcall FUN_0042d7d0(int param_1)
 
 /* FUN_0042d860 @ 0x0042d860 */
 
-void __fastcall FUN_0042d860(int param_1)
+void __fastcall FUN_0042d860(char *param_1)
 {
   void *this;
   
@@ -5847,13 +5847,13 @@ void __fastcall FUN_0042ea90(void *param_1)
 
 /* FUN_0042eab0 @ 0x0042eab0 */
 
-void __fastcall FUN_0042eab0(int param_1)
+void __fastcall FUN_0042eab0(char *param_1)
 {
   short s1;
   DWORD dw2;
   
   FUN_00404b00(param_1);
-  if (*(char *)(DAT_004896b0 + 0x27) == '\0') {
+  if (((TimerState *)DAT_004896b0)->flag_27 == '\0') {
     s1 = *(short *)(param_1 + 0x19c);
     if (s1 == 2) {
       dw2 = GetTickCount();

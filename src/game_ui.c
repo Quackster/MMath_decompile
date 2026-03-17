@@ -788,7 +788,7 @@ void __thiscall FUN_00430f50(GameWidget *this,char param_1)
   int n2;
   uint u3;
   
-  if (*(char *)(DAT_004896b0 + 0x27) != '\0') {
+  if (((TimerState *)DAT_004896b0)->flag_27 != '\0') {
     if ((DAT_004897c0 != 0) && (((UIWidget *)DAT_004897c0)->sub_widgets_a[3] != NULL)) {
       ((void (*)(void))((void **)(*((UIWidget *)DAT_004897c0)->sub_widgets_a[3]))[0xc0 / 4])(); /* obj at *(DAT_004897c0+0x52)->vtable[48] */
     }
@@ -928,7 +928,7 @@ void __fastcall FUN_004311e0(void *param_1)
   pn1 = *(int **)(DAT_004896b0 + 0x40);
   _DAT_004838c8 = pn3;
   if (pn3 == pn1) {
-    if (((pn3 != NULL) && (*(short *)(DAT_004896b0 + 0x30) == 0)) &&
+    if (((pn3 != NULL) && (((TimerState *)DAT_004896b0)->state_30 == 0)) &&
        ((((UIElement *)pn3)->flags >> 5 & 1) != 0)) {
       ((void (*)(void))((void **)(*pn3))[0x20 / 4])(); /* pn3->vtable[8] */
     }
@@ -950,17 +950,17 @@ void __fastcall FUN_004311e0(void *param_1)
     *ps4 = 0x41;
   }
   pn1 = pn3;
-  if ((*(short *)(DAT_004896b0 + 0x30) == 0x41) && (DAT_004838d8 != pn3)) {
-    *(short *)(DAT_004896b0 + 0x30) = 2;
+  if ((((TimerState *)DAT_004896b0)->state_30 == 0x41) && (DAT_004838d8 != pn3)) {
+    ((TimerState *)DAT_004896b0)->state_30 = 2;
     pn1 = DAT_004838d4;
   }
   DAT_004838d4 = pn1;
   n7 = DAT_004896b0;
-  n6 = (int)*(short *)(DAT_004896b0 + 0x30);
+  n6 = (int)((TimerState *)DAT_004896b0)->state_30;
   switch(n6) {
   case 1:
     dw5 = GetTickCount();
-    *(DWORD *)(n7 + 0xc) = dw5;
+    ((TimerState *)n7)->tick_b = dw5;
     if (pn3 != NULL) {
       ((void (*)(void))((void **)(*pn3))[0x2c / 4])(); /* pn3->vtable[11] */
     }
@@ -977,9 +977,9 @@ void __fastcall FUN_004311e0(void *param_1)
   case 3:
   case 4:
   case 5:
-    if ((*(char *)(DAT_004896b0 + 0x3e) == '\x10') || (((UIElement *)param_1)->flags == 0) /* flags reinterpreted as pointer */
+    if ((((TimerState *)DAT_004896b0)->field_3e == '\x10') || (((UIElement *)param_1)->flags == 0) /* flags reinterpreted as pointer */
        ) goto sw_7;
-    if (*(short *)(DAT_004896b0 + 0x30) == 4) {
+    if (((TimerState *)DAT_004896b0)->state_30 == 4) {
       ((void (*)(void))((void **)(**(int **)(int)((UIElement *)param_1)->flags))[0x40 / 4])(); /* obj at flags->vtable[16] */
     }
     n7 = DAT_004896b0;
@@ -1036,7 +1036,7 @@ void __fastcall FUN_004311e0(void *param_1)
     FUN_0045be00(DAT_00489ac8);
     goto sw_7;
   }
-  *(DWORD *)(n7 + 0xc) = dw5;
+  ((TimerState *)n7)->tick_b = dw5;
 sw_7:
   /* SEH epilog */
   *_fs = _seh_prev;
@@ -1186,14 +1186,14 @@ FUN_004315e0(void *this,short param_1,short param_2,short param_3,int param_4,vo
   ((UIWidget *)v14)->field_109 = 1;
   FUN_00431860((int)v14);
   n2 = DAT_004896b0;
-  if (*(char *)(DAT_004896b0 + 0x28) == '\0') {
-    *(char *)(DAT_004896b0 + 0x28) = '\x01';
+  if (((TimerState *)DAT_004896b0)->flag_28 == '\0') {
+    ((TimerState *)DAT_004896b0)->flag_28 = '\x01';
     dw1 = GetTickCount();
     *(DWORD *)(n2 + 4) = dw1;
-    *(DWORD *)(n2 + 0xc) = dw1;
+    ((TimerState *)n2)->tick_b = dw1;
   }
   _seh_state = (_seh_state & ~0xFF) | 2;
-  *(char *)(DAT_004896b0 + 0x2a) = 1;
+  ((TimerState *)DAT_004896b0)->_pad2a[0] = 1;
   FUN_00431756();
   _seh_state = CONCAT31((((_seh_state) >> 8) & 0xFFFFFF),1);
   FUN_0043175e();
@@ -1241,14 +1241,14 @@ void __fastcall FUN_004317b0(int *param_1)
   *_fs = &_seh_prev;
   n1 = DAT_004896b0;
   _seh_state = 1;
-  if ((*(char *)(DAT_004896b0 + 0x28) != '\0') && (*(char *)(DAT_004896b0 + 0x29) == '\0')) {
-    *(char *)(DAT_004896b0 + 0x28) = '\0';
+  if ((((TimerState *)DAT_004896b0)->flag_28 != '\0') && (((TimerState *)DAT_004896b0)->flag_29 == '\0')) {
+    ((TimerState *)DAT_004896b0)->flag_28 = '\0';
     dw2 = GetTickCount();
     *(DWORD *)(n1 + 4) = dw2;
-    *(DWORD *)(n1 + 0xc) = dw2;
+    ((TimerState *)n1)->tick_b = dw2;
   }
   _seh_state = _seh_state & 0xffffff00;
-  *(char *)(DAT_004896b0 + 0x2a) = 0;
+  ((TimerState *)DAT_004896b0)->_pad2a[0] = 0;
   FUN_00431832();
   _seh_state = 0xffffffff;
   FUN_0043184a();
@@ -1279,7 +1279,7 @@ void FUN_0043184a(void)
 
 /* FUN_00431860 @ 0x00431860 */
 
-void __fastcall FUN_00431860(int param_1)
+void __fastcall FUN_00431860(char *param_1)
 {
   ((DialogWidget *)param_1)->dialog_initialized = 1;
   ((DialogWidget *)param_1)->dialog_value = 0;
@@ -1692,7 +1692,7 @@ void __fastcall FUN_00432610(int *param_1)
   
   pn1 = ((UIWidget *)DAT_004897c0)->sub_widgets_a[3];
   ((void (*)(void))((void **)(*pn1))[200 / 4])(); /* pn1->vtable[50] */
-  *(char *)(pn1 + 0x5d) = 1;
+  ((GameBoard *)pn1)->is_timed = 1; /* +0x174 */
   FUN_0042c3f0(param_1);
 }
 
@@ -2070,7 +2070,7 @@ FUN_00432a60(CString *this,int param_1,int param_2,int param_3,int param_4,
 
 /* FUN_00432a90 @ 0x00432a90 */
 
-float10 __fastcall FUN_00432a90(int param_1)
+float10 __fastcall FUN_00432a90(char *param_1)
 {
   return SQRT((float10)*(double *)(param_1 + 0xc) * (float10)*(double *)(param_1 + 0xc) +
               (float10)*(double *)(param_1 + 4) * (float10)*(double *)(param_1 + 4));
@@ -2145,7 +2145,7 @@ void FUN_00432b82(void)
 
 /* FUN_00432b90 @ 0x00432b90 */
 
-float10 __thiscall FUN_00432b90(int param_1,double param_2,double param_3)
+float10 __thiscall FUN_00432b90(char *param_1,double param_2,double param_3)
 {
   return (float10)*(double *)(param_1 + 0xc) * (float10)param_3 +
          (float10)*(double *)(param_1 + 4) * (float10)param_2;
@@ -2412,7 +2412,7 @@ short __cdecl FUN_00432f50(int param_1,ushort param_2)
 
 /* FUN_00432fb0 @ 0x00432fb0 */
 
-int __cdecl FUN_00432fb0(int param_1,short param_2,short param_3)
+int __cdecl FUN_00432fb0(char *param_1,short param_2,short param_3)
 {
   bool b1;
   
@@ -2939,7 +2939,7 @@ short * __cdecl FUN_00434300(int *param_1)
 {
   uint *pu1;
   uint u2;
-  int n3;
+  char *n3;
   int n4;
   short s5;
   short *ps6;
@@ -2961,7 +2961,7 @@ short * __cdecl FUN_00434300(int *param_1)
       n4 = (int)s5;
       if (((&DAT_00487134)[n4 * 0x3c] & 0xff) < (*(ushort *)(param_1 + 2) & 0xff)) {
 L_00434392:
-        n3 = n4 * 0x78;
+        n3 = (char *)n4 * 0x78;
         ps6 = (short *)(&DAT_00487128 + n3);
         (&DAT_00487132)[n4 * 0x3c] = 1;
         *ps6 = ((SoundEventData *)param_1)->note;
@@ -3018,7 +3018,7 @@ L_00434392:
 
 /* FUN_00434490 @ 0x00434490 */
 
-int __cdecl FUN_00434490(int param_1)
+int __cdecl FUN_00434490(char *param_1)
 {
   uint *pu1;
   uint u2;
@@ -3119,7 +3119,7 @@ int __cdecl FUN_00434490(int param_1)
 
 /* FUN_00434640 @ 0x00434640 */
 
-int __cdecl FUN_00434640(int *param_1,int param_2)
+int __cdecl FUN_00434640(int *param_1,char *param_2)
 {
   int *pn1;
   uint u2;
@@ -3265,15 +3265,15 @@ int * __fastcall FUN_00434860(int *param_1)
   FUN_0041b6c0(param_1);
   _seh_state = 0;
   FUN_0043b760((int *)&((GameWidgetInit *)param_1)->sub_object);
-  *(short *)(param_1 + 0x17) = 0;
+  *(short *)((char *)param_1 + 0x5C) = 0; /* GameWidgetInit._pad5c */
   ((GameWidgetInit *)param_1)->init_state = 0;
   ((GameWidgetInit *)param_1)->scale_x = 0;
-  *(short *)(param_1 + 0x17) = 0;
+  *(short *)((char *)param_1 + 0x5C) = 0; /* GameWidgetInit._pad5c */
   *param_1 = &PTR_FUN_00474448;
   ((GameWidgetInit *)param_1)->init_state = 0;
   ((GameWidgetInit *)param_1)->style_a = 0xff;
   ((GameWidgetInit *)param_1)->style_b = 0xff;
-  *(unsigned char *)(param_1 + 0x18) = 0;
+  *(unsigned char *)((char *)param_1 + 0x60) = 0; /* GameWidgetInit._pad60 */
   ((GameWidgetInit *)param_1)->scale_y = 0;
   ((GameWidgetInit *)param_1)->scale_x = 0x100;
   *_fs = _seh_prev;
@@ -3578,7 +3578,7 @@ void FUN_00435a49(void)
 
 /* FUN_00435a60 @ 0x00435a60 */
 
-void __fastcall FUN_00435a60(int param_1)
+void __fastcall FUN_00435a60(char *param_1)
 {
   *(int *)(param_1 + 0x11a) = 0;
   *(int *)(param_1 + 0x11e) = 0x1e;
@@ -3590,7 +3590,7 @@ void __fastcall FUN_00435a60(int param_1)
 
 /* FUN_00435a90 @ 0x00435a90 */
 
-void __fastcall FUN_00435a90(int param_1)
+void __fastcall FUN_00435a90(char *param_1)
 {
   *(int *)(param_1 + 0x11a) = 0;
   *(char *)(param_1 + 0x122) = 1;
@@ -3625,7 +3625,7 @@ void __fastcall FUN_00435b00(int *param_1)
     FUN_00405cb0(param_1);
     return;
   }
-  if (((*(char *)(DAT_004896b0 + 0x28) == '\0') && (*((char *)&((GameWidget *)param_1)->pair_x_2 + 1) == '\0')) &&
+  if (((((TimerState *)DAT_004896b0)->flag_28 == '\0') && (*((char *)&((GameWidget *)param_1)->pair_x_2 + 1) == '\0')) &&
      (n1 = ((GameWidget *)param_1)->pair_y_1 + -1, ((GameWidget *)param_1)->pair_y_1 = n1, n1 < 1
      )) {
     n1 = (short)param_1[0x44] + -1;
@@ -4484,7 +4484,7 @@ void FUN_00437975(void) { return; }
 
 /* FUN_00437980 @ 0x00437980 */
 
-void __fastcall FUN_00437980(int param_1)
+void __fastcall FUN_00437980(char *param_1)
 {
   uint u1;
   void *pv2;
@@ -4559,7 +4559,7 @@ void __fastcall FUN_00437b00(int param_1)
 
 /* FUN_00437b20 @ 0x00437b20 */
 
-void __fastcall FUN_00437b20(int param_1)
+void __fastcall FUN_00437b20(char *param_1)
 {
   FUN_00435a90(*(int *)(param_1 + 0x1b0));
 }
@@ -4632,7 +4632,7 @@ void FUN_00438020(void) { return; }
 
 /* FUN_00438030 @ 0x00438030 */
 
-void __fastcall FUN_00438030(int param_1)
+void __fastcall FUN_00438030(char *param_1)
 {
   void *pv1;
   int *_fs;
@@ -4646,7 +4646,7 @@ void __fastcall FUN_00438030(int param_1)
   _seh_state = 0;
   *_fs = &_seh_prev;
   if (*(void **)(param_1 + 0x19c) != NULL) {
-    if ((*(char *)(DAT_004896b0 + 0x2d) == '\0') || (*(int *)(param_1 + 0xd0) == 0)) {
+    if ((((TimerState *)DAT_004896b0)->_pad2d[0] == '\0') || (*(int *)(param_1 + 0xd0) == 0)) {
       u2 = 1;
     }
     else {
@@ -4685,7 +4685,7 @@ void FUN_0043813c(void) { return; }
 
 /* FUN_00438150 @ 0x00438150 */
 
-void __fastcall FUN_00438150(int param_1)
+void __fastcall FUN_00438150(char *param_1)
 {
   void *this;
   SHORT sz1;
@@ -4920,7 +4920,7 @@ void FUN_00439bc7(void) { return; }
 
 /* FUN_00439ff0 @ 0x00439ff0 */
 
-void __fastcall FUN_00439ff0(int param_1)
+void __fastcall FUN_00439ff0(char *param_1)
 {
   int n1;
   int n2;
@@ -5066,13 +5066,13 @@ FUN_0043a250(void *this,short param_1,short param_2,short param_3,int param_4,vo
   FUN_0042bc70(this,param_1,param_2,param_3,param_4,param_5);
   *(void ***)this = &PTR_FUN_004749f0;
   _seh_state = 0;
-  *(char *)(DAT_004896b0 + 0x2b) = 1;
+  ((TimerState *)DAT_004896b0)->_pad2a[1] = 1;
   n1 = DAT_004896b0;
-  *(char *)(DAT_004896b0 + 0x28) = 1;
+  ((TimerState *)DAT_004896b0)->flag_28 = 1;
   dw2 = GetTickCount();
   *(DWORD *)(n1 + 4) = dw2;
   *_fs = _seh_prev;
-  *(DWORD *)(n1 + 0xc) = dw2;
+  ((TimerState *)n1)->tick_b = dw2;
   return this;
 }
 
@@ -5105,13 +5105,13 @@ void __fastcall FUN_0043a310(int *param_1)
   *param_1 = &PTR_FUN_004749f0;
   *_fs = &_seh_prev;
   _seh_state = 0;
-  *(char *)(DAT_004896b0 + 0x2b) = 0;
+  ((TimerState *)DAT_004896b0)->_pad2a[1] = 0;
   n1 = DAT_004896b0;
-  *(char *)(DAT_004896b0 + 0x28) = 0;
+  ((TimerState *)DAT_004896b0)->flag_28 = 0;
   dw2 = GetTickCount();
   _seh_state = 0xffffffff;
   *(DWORD *)(n1 + 4) = dw2;
-  *(DWORD *)(n1 + 0xc) = dw2;
+  ((TimerState *)n1)->tick_b = dw2;
   FUN_0043a37d();
   /* SEH epilog */
   *_fs = _seh_prev;

@@ -2642,7 +2642,7 @@ int FUN_0044bf50(int *param_1,char param_2)
   short *v24;
   int v20;
   int v1c;
-  int v18;
+  char *v18;
   short v14;
   ushort v12;
   int _seh_prev;
@@ -3891,7 +3891,7 @@ int __thiscall FUN_0044e8a0(void *this,short param_1,short param_2)
 
 /* FUN_0044e990 @ 0x0044e990 */
 
-void __fastcall FUN_0044e990(int param_1)
+void __fastcall FUN_0044e990(char *param_1)
 {
   HGLOBAL pv1;
   
@@ -3911,7 +3911,7 @@ void __fastcall FUN_0044e990(int param_1)
 
 /* FUN_0044ea40 @ 0x0044ea40 */
 
-int __fastcall FUN_0044ea40(int param_1)
+int __fastcall FUN_0044ea40(char *param_1)
 {
   int n1;
 
@@ -3925,7 +3925,7 @@ int __fastcall FUN_0044ea40(int param_1)
 
 /* FUN_0044ea70 @ 0x0044ea70 */
 
-int __fastcall FUN_0044ea70(int param_1)
+int __fastcall FUN_0044ea70(char *param_1)
 {
   short s1;
   int n2;
@@ -4005,7 +4005,7 @@ void __thiscall FUN_0044eb30(void *this,int param_1)
 
 /* FUN_0044ebe0 @ 0x0044ebe0 */
 
-char __fastcall FUN_0044ebe0(int param_1)
+char __fastcall FUN_0044ebe0(char *param_1)
 {
   ushort u1;
   ushort *pu2;

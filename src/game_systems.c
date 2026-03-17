@@ -937,7 +937,7 @@ int * __fastcall FUN_00413900(int *param_1)
   param_1[0x7a] = s_aAbBcCdDeEfFgGhHiIjJkKlLmMnNoOpP_00480518;
   *param_1 = &PTR_LAB_00472e40;
   ((UIWidget *)param_1)->pos_w = 0;
-  *(unsigned char *)(param_1 + 0x74) = 0;          /* offset 0x1D0 */
+  *(unsigned char *)((char *)&((ExtendedDialogWidget *)param_1)->dialog_value + 2) = 0; /* byte at +0x1D0 within dialog_value */
   *_fs = _seh_prev;
   return param_1;
 }
@@ -5950,7 +5950,7 @@ void __thiscall FUN_0041e5c0(MathProblem *this,int param_1)
   this->slots[2].denom =
        *(int *)((((u1 ^ u5) - u5 & 3 ^ u5) - u5) * 0x12 + 0x1de + (intptr_t)this);
   this->field_1cc =
-       (int)*(short *)(DAT_0048345c + 0x42 + (short)((short)param_1 + 1) * 0xc);
+       (int)*(short *)((char *)DAT_0048345c + 0x42 + (short)((short)param_1 + 1) * 0xc); /* GameSession +0x42 stride-0x0C array */
   this->problem_type = (param_1 + 1) * 0x100;
   ((void (*)(void))this->vtable[1])(); /* vtable[1] */
   return;

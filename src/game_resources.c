@@ -875,7 +875,7 @@ int * __fastcall FUN_0045cf10(int *param_1)
   FUN_0042cbd0(param_1);
   _seh_state = 0;
   FUN_0040ab70(param_1 + 0x67);          /* byte offset 0x19C into unknown struct */
-  *(short *)(param_1 + 0xb0) = 1;       /* byte offset 0x2C0 into unknown struct */
+  *(short *)((char *)param_1 + 0x2C0) = 1; /* ResourceManagerExt: short before ext_handle_a at +0x2C0 */
   *param_1 = &PTR_FUN_00477380;         /* vtable */
   param_1[0x66] = 0;                    /* byte offset 0x198 into unknown struct */
   ((ResourceManagerExt *)param_1)->ext_handle_a = 0;
@@ -2351,7 +2351,7 @@ void FUN_0045fe99(void)
  */
 void __cdecl FUN_0045feb0(char *data,char param_2)
 {
-  int n1;
+  char *n1;
   short u2;
   ushort u3;
   short u4;
@@ -2379,7 +2379,7 @@ void __cdecl FUN_0045feb0(char *data,char param_2)
     do {
       /* sub-entry at +0x1C + s6 * 0x0E: swap first 4 bytes (two shorts) */
       pu5 = (int *)(data + 0x1C + s6 * 0x0E);
-      n1 = (int)data + s6 * 0x0E;
+      n1 = (char *)(int)data + s6 * 0x0E;
       *pu5 = CONCAT22(CONCAT11((char)*(short *)pu5,
                                   (char)((ushort)*(short *)pu5 >> 8)),
                          CONCAT11((char)*(short *)((char *)pu5 + 2),

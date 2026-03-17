@@ -1050,15 +1050,15 @@ int __fastcall FUN_004718d0(SmartHeapPool *param_1)
 void __fastcall FUN_00471900(SmartHeapPool *param_1)
 {
   int n1;
-  int n2;
-  int n3;
+  char *n2;
+  char *n3;
 
   n1 = *(int *)((int)param_1->thread_data + 4); /* thread_data->next pool link */
   n3 = 0;
   if (n1 != 0) {
     while (n2 = n1, n2 != (int)param_1) {
       n1 = *(int *)(n2 + 0x40); /* TODO: offset 0x40 in _pad38 region -> next pool link */
-      n3 = n2;
+      n3 = (char *)n2;
       if (*(int *)(n2 + 0x40) == 0) {
         return;
       }
@@ -1075,7 +1075,7 @@ void __fastcall FUN_00471900(SmartHeapPool *param_1)
 
 /* FUN_00471930 @ 0x00471930 */
 
-DWORD * __fastcall FUN_00471930(int param_1,int param_2)
+DWORD * __fastcall FUN_00471930(char *param_1,int param_2)
 {
   DWORD dw1;
   DWORD *pDVar2;
@@ -1103,14 +1103,14 @@ DWORD * __fastcall FUN_00471930(int param_1,int param_2)
 
 /* FUN_00471990 @ 0x00471990 */
 
-void __fastcall FUN_00471990(int param_1,DWORD *param_2)
+void __fastcall FUN_00471990(char *param_1,DWORD *param_2)
 {
   DWORD u1;
-  int n2;
+  char *n2;
 
-  n2 = *(int *)(param_1 + 0xd8) + -1;
+  n2 = (char *)*(int *)(param_1 + 0xd8) + -1;
   *(int *)(param_1 + 0xd8) = n2;
-  n2 = param_1 + n2 * 8;
+  n2 = (char *)param_1 + n2 * 8;
   u1 = *(DWORD *)(n2 + 0x14);
   *param_2 = *(DWORD *)(n2 + 0x10);
   param_2[1] = u1;

@@ -610,14 +610,14 @@ void FUN_0045252f(void)
 
 /* FUN_00452540 @ 0x00452540 */
 
-void __fastcall FUN_00452540(int param_1)
+void __fastcall FUN_00452540(char *param_1)
 {
-  int n1;
+  char *n1;
   short u2;
   short u3;
   short *pu4;
   int *pu5;
-  int n6;
+  char *n6;
   short s7;
   short s8;
   
@@ -625,7 +625,7 @@ void __fastcall FUN_00452540(int param_1)
   *(short *)(param_1 + 0x40) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
   s8 = 0;
   do {
-    n6 = (int)s8;
+    n6 = (char *)(int)s8;
     s7 = 0;
     do {
       pu4 = (short *)(param_1 + (n6 + s7 * 6) * 2 + 0x48);
@@ -634,7 +634,7 @@ void __fastcall FUN_00452540(int param_1)
       s7 = s7 + 1;
     } while (s7 < 6);
     pu4 = (short *)(param_1 + 0xa0 + n6 * 2);
-    n1 = param_1 + n6 * 2;
+    n1 = (char *)param_1 + n6 * 2;
     u2 = *pu4;
     *pu4 = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
     u2 = *(short *)(n1 + 0xac);
@@ -643,7 +643,7 @@ void __fastcall FUN_00452540(int param_1)
     *(short *)(n1 + 0xb8) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
     u2 = *(short *)(n1 + 0xc4);
     *(short *)(n1 + 0xc4) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
-    n6 = param_1 + n6 * 4;
+    n6 = (char *)param_1 + n6 * 4;
     pu5 = (int *)(n6 + 0xd0);
     u2 = *(short *)pu5;
     u3 = *(short *)(n6 + 0xd2);
@@ -1202,7 +1202,7 @@ void __fastcall FUN_00452f90(int *param_1)
   int _arg2;
   char c2;
   
-  if (*(char *)(DAT_004896b0 + 0x27) == '\0') {
+  if (((TimerState *)DAT_004896b0)->flag_27 == '\0') {
     c2 = '\x01';
     u1 = 0xfffffffe;
     FUN_00401050(&_tmp_42,-2);
@@ -1680,7 +1680,7 @@ void __fastcall FUN_00454040(int *param_1)
     FUN_00405cb0(param_1);
     return;
   }
-  if ((*(char *)(DAT_004896b0 + 0x28) == '\0') && (((GameWidget *)param_1)->pause_flag == '\0')) {
+  if ((((TimerState *)DAT_004896b0)->flag_28 == '\0') && (((GameWidget *)param_1)->pause_flag == '\0')) {
     dw1 = GetTickCount();
     n2 = ((int)(((longlong)(int)dw1 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000) -
             ((GameWidget *)param_1)->pair_x_1) / 0x3c;
@@ -2612,12 +2612,12 @@ uint __fastcall FUN_004561a0(int param_1)
 
 /* FUN_004561d0 @ 0x004561d0 */
 
-void __fastcall FUN_004561d0(int param_1)
+void __fastcall FUN_004561d0(char *param_1)
 {
   short s1;
   int *_fs;
   short v18[2];
-  int v14;
+  char *v14;
   int _seh_prev;
   void *_handler;
   int _seh_state;
@@ -2627,7 +2627,7 @@ void __fastcall FUN_004561d0(int param_1)
   _handler = &DAT_004562f8;
   s1 = *(short *)(param_1 + 0x30);
   *_fs = &_seh_prev;
-  v14 = param_1;
+  v14 = (char *)param_1;
   if (s1 != 0x42) {
     if (s1 == 1) {
       DAT_004832c0 = (uint)(*(int *)(param_1 + 0x36) - *(int *)(param_1 + 0x20)) < DAT_004832b8;
@@ -2766,7 +2766,7 @@ void FUN_004564c0(void)
 
 /* FUN_004564f0 @ 0x004564f0 */
 
-void __fastcall FUN_004564f0(int param_1)
+void __fastcall FUN_004564f0(char *param_1)
 {
   if ((DAT_004897c0 != 0) && (*(char *)(param_1 + 0x44) != '\0')) { /* input event struct: active flag at +0x44 */
     FUN_004561a0(param_1);
@@ -4208,7 +4208,7 @@ void __fastcall FUN_004587b0(int *param_1)
 
 /* FUN_004587d0 @ 0x004587d0 */
 
-void __fastcall FUN_004587d0(int param_1)
+void __fastcall FUN_004587d0(char *param_1)
 {
   int n1;
   int *_Dst;
@@ -4235,7 +4235,7 @@ void __fastcall FUN_004587d0(int param_1)
 
 /* FUN_00458830 @ 0x00458830 */
 
-void __fastcall FUN_00458830(int param_1)
+void __fastcall FUN_00458830(char *param_1)
 {
   if (*(uint *)(param_1 + 0x5c) != 0) { /* TextDisplay-like struct: timer handle at +0x5C */
     FUN_00465950(0,0,*(uint *)(param_1 + 0x5c));
@@ -4655,7 +4655,7 @@ void __thiscall FUN_00458fc0(void *this,int *param_1)
 
 /* FUN_00459010 @ 0x00459010 */
 
-void __fastcall FUN_00459010(int param_1)
+void __fastcall FUN_00459010(char *param_1)
 {
   short s1;
   int u2;
@@ -5355,7 +5355,7 @@ void FUN_0045b537(void)
 
 /* FUN_0045b5d0 @ 0x0045b5d0 */
 
-void __fastcall FUN_0045b5d0(int param_1)
+void __fastcall FUN_0045b5d0(char *param_1)
 {
   short s1;
   
@@ -5372,7 +5372,7 @@ void __fastcall FUN_0045b5d0(int param_1)
 
 /* FUN_0045b620 @ 0x0045b620 */
 
-void __fastcall FUN_0045b620(int param_1)
+void __fastcall FUN_0045b620(char *param_1)
 {
   if ((0 < *(short *)(param_1 + 0x198)) && (*(char *)(param_1 + 0x19a) == '\0')) { /* GameWidget._pad160: counter/flag */
     FUN_0041da90(*(void **)(param_1 + 0x19c),0); /* GameWidget._pad160: widget ptr at +0x19C */
@@ -5566,7 +5566,7 @@ void FUN_0045bda8(void) { return; }
 
 /* FUN_0045bdb0 @ 0x0045bdb0 */
 
-void __fastcall FUN_0045bdb0(int param_1)
+void __fastcall FUN_0045bdb0(char *param_1)
 {
   do {
     FUN_004561a0(DAT_004896b0);
@@ -5594,7 +5594,7 @@ void __fastcall FUN_0045be00(int param_1)
 
 /* FUN_0045be30 @ 0x0045be30 */
 
-void __fastcall FUN_0045be30(int param_1)
+void __fastcall FUN_0045be30(char *param_1)
 {
   *(char *)(param_1 + 0xc) = 0;
 }
