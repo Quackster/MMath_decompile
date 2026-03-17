@@ -83,7 +83,7 @@ int __fastcall FUN_00451b90(TextDisplay *param_1)
 int __thiscall FUN_00451ba0(MathProblem *this,int param_1)
 {
   if ((-1 < param_1) && (param_1 < this->slots[2].value)) {
-    return *(int *)(param_1 * 0x12 + 0x238 + (intptr_t)this);
+    return *(int *)((char *)this + param_1 * 0x12 + 0x238);
   }
   return 0xffffffff;
 }
@@ -94,7 +94,7 @@ int __thiscall FUN_00451ba0(MathProblem *this,int param_1)
 char __thiscall FUN_00451bd0(MathProblem *this,int param_1)
 {
   if ((-1 < param_1) && (param_1 < this->slots[2].value)) {
-    return (&DAT_00480848)[(uint)*(byte *)(param_1 * 0x12 + 0x232 + (intptr_t)this) * 4];
+    return (&DAT_00480848)[(uint)*(byte *)((char *)this + param_1 * 0x12 + 0x232) * 4];
   }
   return 0xff;
 }
@@ -106,7 +106,7 @@ uint __thiscall FUN_00451c00(MathProblem *this,int param_1,uint param_2)
 {
   if ((((-1 < (int)param_2) && ((int)param_2 < this->slots[2].value)) && (-1 < param_1)) &&
      (param_1 < this->slots[1].value)) {
-    *(int *)(param_2 * 0x12 + 0x23c + (intptr_t)this) = param_1;
+    *(int *)((char *)this + param_2 * 0x12 + 0x23c) = param_1;
     return CONCAT31(param_2 * 0x12 >> 8,1);
   }
   return param_2 & 0xffffff00;
@@ -118,7 +118,7 @@ uint __thiscall FUN_00451c00(MathProblem *this,int param_1,uint param_2)
 uint __thiscall FUN_00451c40(MathProblem *this,int param_1,uint param_2)
 {
   if ((-1 < (int)param_2) && ((int)param_2 < this->slots[2].value)) {
-    *(int *)(param_2 * 0x12 + 0x23c + (intptr_t)this) = 0xffffffff;
+    *(int *)((char *)this + param_2 * 0x12 + 0x23c) = 0xffffffff;
     return CONCAT31(param_2 * 2 >> 8,1);
   }
   return param_2 & 0xffffff00;
@@ -623,8 +623,8 @@ void __fastcall FUN_00452540(char *param_1)
   short s7;
   short s8;
   
-  u2 = *(short *)(param_1 + 0x40);
-  *(short *)(param_1 + 0x40) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
+  u2 = *(short *)((char *)param_1 + 0x40);
+  *(short *)((char *)param_1 + 0x40) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
   s8 = 0;
   do {
     n6 = (char *)(int)s8;
@@ -639,20 +639,20 @@ void __fastcall FUN_00452540(char *param_1)
     n1 = (char *)param_1 + n6 * 2;
     u2 = *pu4;
     *pu4 = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
-    u2 = *(short *)(n1 + 0xac);
-    *(short *)(n1 + 0xac) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
-    u2 = *(short *)(n1 + 0xb8);
-    *(short *)(n1 + 0xb8) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
-    u2 = *(short *)(n1 + 0xc4);
-    *(short *)(n1 + 0xc4) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
+    u2 = *(short *)((char *)n1 + 0xac);
+    *(short *)((char *)n1 + 0xac) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
+    u2 = *(short *)((char *)n1 + 0xb8);
+    *(short *)((char *)n1 + 0xb8) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
+    u2 = *(short *)((char *)n1 + 0xc4);
+    *(short *)((char *)n1 + 0xc4) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
     n6 = (char *)param_1 + n6 * 4;
     pu5 = (int *)(n6 + 0xd0);
     u2 = *(short *)pu5;
-    u3 = *(short *)(n6 + 0xd2);
+    u3 = *(short *)((char *)n6 + 0xd2);
     *pu5 = CONCAT22(CONCAT11((char)u2,(char)((ushort)u2 >> 8)),
                        CONCAT11((char)u3,(char)((ushort)u3 >> 8)));
-    u2 = *(short *)(n1 + 0x94);
-    *(short *)(n1 + 0x94) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
+    u2 = *(short *)((char *)n1 + 0x94);
+    *(short *)((char *)n1 + 0x94) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
     s8 = s8 + 1;
   } while (s8 < 6);
   s8 = 0;
@@ -666,18 +666,18 @@ void __fastcall FUN_00452540(char *param_1)
     } while (s7 < 6);
     s8 = s8 + 1;
   } while (s8 < 6);
-  u2 = *(short *)(param_1 + 0xe8);
-  *(short *)(param_1 + 0xe8) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
-  u2 = *(short *)(param_1 + 0x92);
-  *(short *)(param_1 + 0x92) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
-  u2 = *(short *)(param_1 + 0xea);
-  *(short *)(param_1 + 0xea) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
-  u2 = *(short *)(param_1 + 0xec);
-  *(short *)(param_1 + 0xec) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
-  u2 = *(short *)(param_1 + 0xf0);
-  *(short *)(param_1 + 0xf0) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
-  u2 = *(short *)(param_1 + 0xee);
-  *(short *)(param_1 + 0xee) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
+  u2 = *(short *)((char *)param_1 + 0xe8);
+  *(short *)((char *)param_1 + 0xe8) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
+  u2 = *(short *)((char *)param_1 + 0x92);
+  *(short *)((char *)param_1 + 0x92) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
+  u2 = *(short *)((char *)param_1 + 0xea);
+  *(short *)((char *)param_1 + 0xea) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
+  u2 = *(short *)((char *)param_1 + 0xec);
+  *(short *)((char *)param_1 + 0xec) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
+  u2 = *(short *)((char *)param_1 + 0xf0);
+  *(short *)((char *)param_1 + 0xf0) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
+  u2 = *(short *)((char *)param_1 + 0xee);
+  *(short *)((char *)param_1 + 0xee) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
 }
 
 
@@ -5074,8 +5074,18 @@ int * __thiscall FUN_0045a350(void *this,byte param_1)
 
 void __fastcall FUN_0045a370(int *param_1)
 {
-    /* Function body (~19 lines). */
-    return;
+  int *_fs;
+  int _seh_prev;
+  void *_handler;
+  int _seh_state;
+
+  _seh_prev = *_fs;
+  _handler = &L_0045a3de;
+  *(void **)param_1 = &PTR_FUN_00477918;
+  *_fs = &_seh_prev;
+  _seh_state = 0xffffffff;
+  FUN_004012a0();
+  *_fs = _seh_prev;
 }
 
 

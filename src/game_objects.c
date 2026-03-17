@@ -1280,7 +1280,7 @@ int * __fastcall FUN_00403370(int *param_1)
     param_1[0x21] = 0;
     param_1[0x22] = 0;
     param_1[0x29] = 0;
-    *(char *)(param_1 + 0x2c) = '\0';
+    *(char *)((char *)param_1 + 0x2c) = '\0';
 
     u1 = 1;
     FUN_00401050(&_tmp_37, 1);
@@ -1829,15 +1829,15 @@ void __fastcall FUN_00404120(void *param_1)
     widget->origin_x = 0x100;
     widget->origin_y = 0x100;
 
-    n2 = *(int *)(n1 + 0x00);
-    n3 = *(int *)(n1 + 0x04);
+    n2 = *(int *)((char *)n1 + 0x00);
+    n3 = *(int *)((char *)n1 + 0x04);
     if (n2 != 0) widget->origin_x = n2;
     if (n3 != 0) widget->origin_y = n3;
 
-    s1 = *(short *)(n1 + 0x0c);
+    s1 = *(short *)((char *)n1 + 0x0c);
     if (s1 > 0) {
         for (s2 = 0; s2 < s1; s2 = s2 + 1) {
-            int v = *(int *)(n1 + 0x10 + s2 * 4);
+            int v = *(int *)((char *)n1 + 0x10 + s2 * 4);
             if (v != 0) {
                 int r = FUN_0046b8f0(DAT_004838c0, v);
                 if (r != 0) widget->sub_widgets_a[s2] = r;
@@ -1845,10 +1845,10 @@ void __fastcall FUN_00404120(void *param_1)
         }
     }
 
-    s1 = *(short *)(n1 + 0x18);
+    s1 = *(short *)((char *)n1 + 0x18);
     if (s1 > 0) {
         for (s2 = 0; s2 < s1; s2 = s2 + 1) {
-            int v = *(int *)(n1 + 0x1c + s2 * 4);
+            int v = *(int *)((char *)n1 + 0x1c + s2 * 4);
             if (v != 0) {
                 int r = FUN_0046b8f0(DAT_004838c0, v);
                 if (r != 0) widget->sub_widgets_b[s2] = r;
@@ -1856,12 +1856,12 @@ void __fastcall FUN_00404120(void *param_1)
         }
     }
 
-    widget->active_anim_id = *(short *)(n1 + 0x30);
+    widget->active_anim_id = *(short *)((char *)n1 + 0x30);
     if (widget->active_anim_id != 0) FUN_004067f0(param_1);
 
-    if (*(char *)(n1 + 0x04) == '\x02') widget->is_interactive = 1;
-    if (*(char *)(n1 + 0x05) != '\0') FUN_00406ca0((GameWidget *)widget, *(char *)(n1 + 0x05), '\0');
-    if (*(char *)(n1 + 0x06) != '\0') FUN_00406d60((GameWidget *)widget, *(char *)(n1 + 0x06));
+    if (*(char *)((char *)n1 + 0x04) == '\x02') widget->is_interactive = 1;
+    if (*(char *)((char *)n1 + 0x05) != '\0') FUN_00406ca0((GameWidget *)widget, *(char *)((char *)n1 + 0x05), '\0');
+    if (*(char *)((char *)n1 + 0x06) != '\0') FUN_00406d60((GameWidget *)widget, *(char *)((char *)n1 + 0x06));
 
     widget->anim_flag_0 = 0;
     widget->anim_flag_1 = 0;
@@ -2071,10 +2071,10 @@ void __fastcall FUN_004048d0(void *param_1)
 
     _seh_state = 0;
     n1 = (int)widget->level_data_ptr;
-    s1 = *(short *)(n1 + 0x18);
+    s1 = *(short *)((char *)n1 + 0x18);
     if (s1 > 0 && s1 <= 16) {
         for (i = 0; i < s1; i = i + 1) {
-            n2 = *(int *)(n1 + 0x1c + i * 4);
+            n2 = *(int *)((char *)n1 + 0x1c + i * 4);
             if (n2 != 0) {
                 widget->sub_widgets_b[i] = FUN_0046b8f0(DAT_004838c0, n2);
             }
@@ -2100,9 +2100,9 @@ void __fastcall FUN_00404a80(char *param_1)
   int *pu1;
   int *pu2;
 
-  if (*(int *)(param_1 + 0x9e) != 0) { /* TODO: unknown struct +0x9E */
+  if (*(int *)((char *)param_1 + 0x9e) != 0) {
     pu1 = (int *)(param_1 + 0x96);
-    FUN_00434490(*(int *)(param_1 + 0x9e)); /* TODO: unknown struct +0x9E */
+    FUN_00434490(*(int *)((char *)param_1 + 0x9e));
     if ((int *)*pu1 != NULL) {
       FUN_00433420((int *)*pu1);
       FUN_00433270(pu1);
@@ -2112,9 +2112,9 @@ void __fastcall FUN_00404a80(char *param_1)
       FUN_00433420((int *)*pu2);
       FUN_00433270(pu2);
     }
-    *(short *)(param_1 + 0x94) = 0; /* TODO: unknown struct +0x94 */
-    *(int *)(param_1 + 0x9e) = 0; /* TODO: unknown struct +0x9E */
-    *(short *)(param_1 + 0x92) = 0; /* TODO: unknown struct +0x92 */
+    *(short *)((char *)param_1 + 0x94) = 0;
+    *(int *)((char *)param_1 + 0x9e) = 0;
+    *(short *)((char *)param_1 + 0x92) = 0;
     *pu1 = 0;
     *pu2 = 0;
   }
@@ -2244,7 +2244,7 @@ void __thiscall FUN_00404db0(UIElement *this,int *param_1)
 /* TODO: param_1 is unknown struct, +0x84 is int field */
 void __fastcall FUN_00404de0(char *param_1)
 {
-  *(int *)(param_1 + 0x84) = 0; /* TODO: unknown struct +0x84 */
+  *(int *)((char *)param_1 + 0x84) = 0;
 }
 
 
@@ -3140,7 +3140,7 @@ void __thiscall FUN_00405d30(UIWidget *this,short param_1)
     s4 = 1;
   }
   else {
-    s4 = *(short *)(this->level_data_ptr + 0x18);
+    s4 = *(short *)((char *)this->level_data_ptr + 0x18);
     if (s2 <= s4) goto L_00405d84;
   }
   *ps1 = s4;
@@ -4656,7 +4656,7 @@ void FUN_00408a60(void *param_1,uint param_2)
       do {
         n2 = (int)s3;
         s3 = s3 + 1;
-        FUN_00408a60(param_1,*(uint *)(pu1 + n2 * 2 + 0x13));
+        FUN_00408a60(param_1,*(uint *)((char *)pu1 + n2 * 2 + 0x13));
       } while (s3 < (short)pu1[0x12]);
     }
     FUN_00461420(param_1,param_2,'\x01');

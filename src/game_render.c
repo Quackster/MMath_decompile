@@ -708,7 +708,7 @@ void __fastcall FUN_00423f80(void *param_1)
   int v4;
   
   FUN_004048d0(param_1);
-  switch(*(short *)(((UIElement *)param_1)->sub_widgets_a[9] + 0xc)) { /* sub-object at sub_widgets_a[9], offset +0x0C */
+  switch(*(short *)((char *)((UIElement *)param_1)->sub_widgets_a[9] + 0xc)) { /* sub-object at sub_widgets_a[9], offset +0x0C */
   case 1:
     v8 = 0x762000d;
     v4 = 0x4d0011;
@@ -926,17 +926,17 @@ void __fastcall FUN_00424820(int param_1)
   short s1;
   short s2;
 
-  hdc = *(HDC *)(param_1 + 0x14);
+  hdc = (HDC)((BoardSubclass_D *)param_1)->gdi_hdc;
   if (hdc == NULL) return;
   SelectPalette(hdc, DAT_004838bc, 0);
   RealizePalette(hdc);
-  s1 = *(short *)(param_1 + 0x448);
-  s2 = *(short *)(param_1 + 0x44a);
-  if (s1 < *(short *)(param_1 + 0x44c) && s2 < *(short *)(param_1 + 0x44e)) {
+  s1 = ((BoardSubclass_D *)param_1)->buf_field_448;
+  s2 = *(short *)((char *)param_1 + 0x44a);
+  if (s1 < ((BoardSubclass_D *)param_1)->buf_field_44c && s2 < *(short *)((char *)param_1 + 0x44e)) {
     WinGBitBlt(hdc, (int)s2, (int)s1,
-               (int)(short)(*(short *)(param_1 + 0x44c) - s2),
-               (int)(short)(*(short *)(param_1 + 0x44e) - s1),
-               *(HDC *)(param_1 + 0x14), (int)s2, (int)s1);
+               (int)(short)(((BoardSubclass_D *)param_1)->buf_field_44c - s2),
+               (int)(short)(*(short *)((char *)param_1 + 0x44e) - s1),
+               (HDC)((BoardSubclass_D *)param_1)->gdi_hdc, (int)s2, (int)s1);
     GdiFlush();
   }
   return;
@@ -3660,8 +3660,8 @@ void __fastcall FUN_00428e60(char *param_1)
   s1 = 0;
   pu2 = NULL;
   do {
-    if (((GameWidget *)*(int *)(param_1 + 0x19a + s1 * 4))->field_118 == 1) { /* TODO: param_1+0x19a = sub-object array */
-      pu2 = FUN_00454520((void *)&((DialogWidget *)*(int *)(param_1 + 0x19a + s1 * 4))->is_registered); /* sub-object + 0x120 */
+    if (((GameWidget *)*(int *)((char *)param_1 + 0x19a + s1 * 4))->field_118 == 1) { /* TODO: param_1+0x19a = sub-object array */
+      pu2 = FUN_00454520((void *)&((DialogWidget *)*(int *)((char *)param_1 + 0x19a + s1 * 4))->is_registered); /* sub-object + 0x120 */
       break;
     }
     s1 = s1 + 1;
@@ -4431,13 +4431,13 @@ void __fastcall FUN_0042b170(char *param_1)
 {
   DWORD dw1;
   
-  if (*(int *)(param_1 + 0xb4) != 0) {
+  if (*(int *)((char *)param_1 + 0xb4) != 0) {
     dw1 = GetTickCount();
     if (700 < dw1 % 1000) {
-      FUN_0041dad0(*(void **)(param_1 + 0xb4),0,'\0');
+      FUN_0041dad0(*(void **)((char *)param_1 + 0xb4),0,'\0');
       return;
     }
-    FUN_0041dad0(*(void **)(param_1 + 0xb4),1,'\0');
+    FUN_0041dad0(*(void **)((char *)param_1 + 0xb4),1,'\0');
   }
   return;
 }
@@ -5488,13 +5488,13 @@ ushort * __cdecl FUN_0042c5b0(short *param_1,int *param_2,ushort *param_3)
     } while (s4 < *(short *)pu1);
   }
   if (*(char *)((char *)pu1 + 3) != '\0') {
-    n3 = *(int *)(pu1 + 0xf);
+    n3 = *(int *)((char *)pu1 + 0xf);
     if (n3 != 0) {
       FUN_00457980((short *)n3, '\0');
     }
   }
   if ((char)pu1[2] != '\0') {
-    n3 = *(int *)(pu1 + 0x13);
+    n3 = *(int *)((char *)pu1 + 0x13);
     if (n3 != 0) {
       FUN_00462720((short *)n3, '\0');
     }
@@ -5556,7 +5556,7 @@ void __cdecl FUN_0042c740(short *param_1,char param_2)
          CONCAT22(CONCAT11((char)s2,(char)((ushort)s2 >> 8)),
                   CONCAT11((char)param_1[8],(char)((ushort)param_1[8] >> 8)));
     s2 = param_1[0xb];
-    *(uint *)(param_1 + 0xb) =
+    *(uint *)((char *)param_1 + 0xb) =
          CONCAT22(CONCAT11((char)s2,(char)((ushort)s2 >> 8)),
                   CONCAT11((char)param_1[0xc],(char)((ushort)param_1[0xc] >> 8)));
     s2 = 0;
@@ -5568,10 +5568,10 @@ void __cdecl FUN_0042c740(short *param_1,char param_2)
       } while (s2 < *param_1);
     }
     if (*(char *)((char *)param_1 + 3) != '\0') { /* byte 3 of short* record - high byte of param_1[1] */
-      FUN_00457980(*(short **)(param_1 + 0xf),param_2);
+      FUN_00457980(*(short **)((char *)param_1 + 0xf),param_2);
     }
     if ((char)param_1[2] != '\0') {
-      FUN_00462720(*(short **)(param_1 + 0x13),param_2);
+      FUN_00462720(*(short **)((char *)param_1 + 0x13),param_2);
     }
     if (param_2 != '\0') {
       *param_1 = CONCAT11((char)*param_1,(char)((ushort)*param_1 >> 8));
@@ -6372,11 +6372,11 @@ void __thiscall FUN_0042dba0(void *this,int param_1)
 
   /* Setup board configuration from param_1 data block */
   board->board_mode = *(short *)(param_1 + 8);
-  board->event_type = *(int *)(param_1 + 0xc);
-  board->board_slot_count = *(int *)(param_1 + 0x10);
-  board->board_layer = *(int *)(param_1 + 0x14);
-  board->board_note = *(short *)(param_1 + 0x18);
-  board->field_26 = *(int *)(param_1 + 0x1c);
+  board->event_type = *(int *)((char *)param_1 + 0xc);
+  board->board_slot_count = *(int *)((char *)param_1 + 0x10);
+  board->board_layer = *(int *)((char *)param_1 + 0x14);
+  board->board_note = *(short *)((char *)param_1 + 0x18);
+  board->field_26 = *(int *)((char *)param_1 + 0x1c);
 
   /* Initialize board slots */
   s5 = 0;
@@ -6387,7 +6387,7 @@ void __thiscall FUN_0042dba0(void *this,int param_1)
       board->board_slots[n4].slot_type = *(char *)(n3);
       board->board_slots[n4].resource_id = *(int *)(n3 + 2);
       board->board_slots[n4].pos_x = *(int *)(n3 + 6);
-      board->board_slots[n4].pos_y = *(int *)(n3 + 0xa);
+      board->board_slots[n4].pos_y = *(int *)((char *)n3 + 0xa);
       n3 = n3 + 0x10;
       s5 = s5 + 1;
     } while (s5 < board->board_slot_count);

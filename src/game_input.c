@@ -1295,9 +1295,9 @@ void __fastcall FUN_0043c890(char *param_1)
     FUN_00405d30(pv2,0);
   }
   for (; pn4 != NULL; pn4 = (int *)pn4[1]) {
-    ((UIWidget *)*pn4)->pending_frame = *(short *)(((ExtDialogAnim *)param_1)->anim_resource + 0x22c);
+    ((UIWidget *)*pn4)->pending_frame = *(short *)((char *)((ExtDialogAnim *)param_1)->anim_resource + 0x22c);
     pv2 = (UIWidget *)*pn4;
-    s1 = *(short *)(((ExtDialogAnim *)param_1)->anim_resource + 0x22c);
+    s1 = *(short *)((char *)((ExtDialogAnim *)param_1)->anim_resource + 0x22c);
     pv2->anim_flag_0 = 0;
     pv2->anim_flag_2 = 0;
     pv2->anim_flag_1 = 0;
@@ -2040,15 +2040,15 @@ void __fastcall FUN_0043e9d0(void *param_1)
   _seh_state = (_seh_state & ~0xFF) | 1;
 
   /* Check if the widget has active resources */
-  if (*(int *)(widget + 0x04) == 0) {
+  if (*(int *)((char *)widget + 0x04) == 0) {
     _seh_state = 0xffffffff;
     *_fs = _seh_prev;
     return;
   }
 
   /* Load resources if needed */
-  v18 = *(void **)(widget + 0x04);
-  v14 = *(int *)(widget + 0x08);
+  v18 = *(void **)((char *)widget + 0x04);
+  v14 = *(int *)((char *)widget + 0x08);
 
   /* Process game session state */
   if (DAT_0048345c != 0) {
@@ -2508,8 +2508,13 @@ int * __fastcall FUN_0043f590(int *param_1)
   /* Initialize extended widget fields */
   _seh_state = (_seh_state & ~0xFF) | 1;
 
-  /* Initialize PlayerSlot/BoardSlotEntry area at +0x1D0 */
-  _eh_vector_constructor_iterator_((void *)((char *)param_1 + 0x1d0), 0x16, 4, FUN_0040f490);
+  /* Initialize PlayerSlot/BoardSlotEntry area at +0x1D0 (4 entries, stride 0x16) */
+  {
+    int i;
+    for (i = 0; i < 4 * 0x16; i++) {
+      *((char *)param_1 + 0x1d0 + i) = 0;
+    }
+  }
 
   _seh_state = (_seh_state & ~0xFF) | 2;
 
@@ -2615,29 +2620,29 @@ void FUN_0043f7b0(void *param_1)
   FUN_00409330();
 
   /* Load resource handles into widget fields */
-  FUN_0043a700(DAT_004838c0, 0x5e1000d, *(int **)(widget + 0x1d6));
+  FUN_0043a700(DAT_004838c0, 0x5e1000d, *(int **)((char *)widget + 0x1d6));
 
   /* Load sprite/animation resources */
-  if (*(uint *)(widget + 0x198) == 0) {
-    *(int *)(widget + 0x198) = (int)FUN_0040f0f0((void *)DAT_004838c0, 0x2d0000c, NULL);
+  if (*(uint *)((char *)widget + 0x198) == 0) {
+    *(int *)((char *)widget + 0x198) = (int)FUN_0040f0f0((void *)DAT_004838c0, 0x2d0000c, NULL);
   }
-  if (*(uint *)(widget + 0x1a8) == 0) {
-    *(int *)(widget + 0x1a8) = (int)FUN_0040f0f0((void *)DAT_004838c0, 0xc1000c, NULL);
+  if (*(uint *)((char *)widget + 0x1a8) == 0) {
+    *(int *)((char *)widget + 0x1a8) = (int)FUN_0040f0f0((void *)DAT_004838c0, 0xc1000c, NULL);
   }
-  if (*(uint *)(widget + 0x1ac) == 0) {
-    *(int *)(widget + 0x1ac) = (int)FUN_0040f0f0((void *)DAT_004838c0, 0xb7000c, NULL);
+  if (*(uint *)((char *)widget + 0x1ac) == 0) {
+    *(int *)((char *)widget + 0x1ac) = (int)FUN_0040f0f0((void *)DAT_004838c0, 0xb7000c, NULL);
   }
-  if (*(uint *)(widget + 0x19c) == 0) {
-    *(int *)(widget + 0x19c) = (int)FUN_0040f0f0((void *)DAT_004838c0, 0xb2000c, NULL);
+  if (*(uint *)((char *)widget + 0x19c) == 0) {
+    *(int *)((char *)widget + 0x19c) = (int)FUN_0040f0f0((void *)DAT_004838c0, 0xb2000c, NULL);
   }
-  if (*(uint *)(widget + 0x1a0) == 0) {
-    *(int *)(widget + 0x1a0) = (int)FUN_0040f0f0((void *)DAT_004838c0, 0xab000c, NULL);
+  if (*(uint *)((char *)widget + 0x1a0) == 0) {
+    *(int *)((char *)widget + 0x1a0) = (int)FUN_0040f0f0((void *)DAT_004838c0, 0xab000c, NULL);
   }
-  if (*(uint *)(widget + 0x1a4) == 0) {
-    *(int *)(widget + 0x1a4) = (int)FUN_0040f0f0((void *)DAT_004838c0, 0xdc000c, NULL);
+  if (*(uint *)((char *)widget + 0x1a4) == 0) {
+    *(int *)((char *)widget + 0x1a4) = (int)FUN_0040f0f0((void *)DAT_004838c0, 0xdc000c, NULL);
   }
-  if (*(uint *)(widget + 0x1b0) == 0) {
-    *(int *)(widget + 0x1b0) = (int)FUN_0040f0f0((void *)DAT_004838c0, 0xdc000c, NULL);
+  if (*(uint *)((char *)widget + 0x1b0) == 0) {
+    *(int *)((char *)widget + 0x1b0) = (int)FUN_0040f0f0((void *)DAT_004838c0, 0xdc000c, NULL);
   }
 
   /* Reset game counters */
@@ -2748,22 +2753,22 @@ void __thiscall FUN_0043f920(void *this,int param_1,int param_2)
   /* Process input event */
   if (param_2 == 0x201) {
     /* Mouse button down - check hit test on widget areas */
-    *(short *)(widget + 0x1ca) = 1;
-    FUN_0042db60(DAT_00488e34, *(ushort **)(widget + 0x19c), -1, -1);
+    *(short *)((char *)widget + 0x1ca) = 1;
+    FUN_0042db60(DAT_00488e34, *(ushort **)((char *)widget + 0x19c), -1, -1);
     dw3 = GetTickCount();
-    *(short *)(widget + 0x1ca) = 0;
-    *(int *)(widget + 0x176) = dw3;
+    *(short *)((char *)widget + 0x1ca) = 0;
+    *(int *)((char *)widget + 0x176) = dw3;
   }
   else if (param_2 == 0x202) {
     /* Mouse button up */
-    if (*(short *)(widget + 0x1cc) != 0) {
+    if (*(short *)((char *)widget + 0x1cc) != 0) {
       /* Check for correct answer */
       FUN_0043c5d0((int)widget);
-      *(short *)(widget + 0x1ca) = 1;
-      FUN_0042db60(DAT_00488e34, *(ushort **)(widget + 0x1ac), -1, -1);
+      *(short *)((char *)widget + 0x1ca) = 1;
+      FUN_0042db60(DAT_00488e34, *(ushort **)((char *)widget + 0x1ac), -1, -1);
       dw3 = GetTickCount();
-      *(short *)(widget + 0x1ca) = 0;
-      *(int *)(widget + 0x176) = dw3;
+      *(short *)((char *)widget + 0x1ca) = 0;
+      *(int *)((char *)widget + 0x176) = dw3;
     }
     else {
       /* Incorrect answer */
@@ -2881,18 +2886,18 @@ void __thiscall FUN_0043fd00(void *this,int param_1,int param_2)
     /* Mouse down - begin drag/interaction */
     FUN_0041cdc0((GameWidget *)widget, v40);
     FUN_0041ce10((GameWidget *)widget, v30, 4);
-    *(short *)(widget + 0x1ca) = 1;
+    *(short *)((char *)widget + 0x1ca) = 1;
     dw3 = GetTickCount();
-    *(int *)(widget + 0x176) = dw3;
+    *(int *)((char *)widget + 0x176) = dw3;
   }
   else if (param_2 == 0x202) {
     /* Mouse up - end interaction */
-    *(short *)(widget + 0x1ca) = 0;
+    *(short *)((char *)widget + 0x1ca) = 0;
     dw3 = GetTickCount();
-    *(int *)(widget + 0x176) = dw3;
+    *(int *)((char *)widget + 0x176) = dw3;
 
     /* Process result */
-    if (*(short *)(widget + 0x1cc) != 0) {
+    if (*(short *)((char *)widget + 0x1cc) != 0) {
       FUN_0043c5d0((int)widget);
     }
     else {
@@ -2936,35 +2941,35 @@ void __fastcall FUN_0043ff70(void *param_1)
 
   /* Release loaded resources */
   FUN_00409330();
-  FUN_0043a700(DAT_004838c0, 0x5e1000d, *(int **)(widget + 0x1d6));
+  FUN_0043a700(DAT_004838c0, 0x5e1000d, *(int **)((char *)widget + 0x1d6));
 
-  if (*(uint *)(widget + 0x198) != 0) {
-    FUN_0040f070(DAT_004838c0, 0x2d0000c, *(uint *)(widget + 0x198));
-    *(int *)(widget + 0x198) = 0;
+  if (*(uint *)((char *)widget + 0x198) != 0) {
+    FUN_0040f070(DAT_004838c0, 0x2d0000c, *(uint *)((char *)widget + 0x198));
+    *(int *)((char *)widget + 0x198) = 0;
   }
-  if (*(uint *)(widget + 0x1a8) != 0) {
-    FUN_0040f070(DAT_004838c0, 0xc1000c, *(uint *)(widget + 0x1a8));
-    *(int *)(widget + 0x1a8) = 0;
+  if (*(uint *)((char *)widget + 0x1a8) != 0) {
+    FUN_0040f070(DAT_004838c0, 0xc1000c, *(uint *)((char *)widget + 0x1a8));
+    *(int *)((char *)widget + 0x1a8) = 0;
   }
-  if (*(uint *)(widget + 0x1ac) != 0) {
-    FUN_0040f070(DAT_004838c0, 0xb7000c, *(uint *)(widget + 0x1ac));
-    *(int *)(widget + 0x1ac) = 0;
+  if (*(uint *)((char *)widget + 0x1ac) != 0) {
+    FUN_0040f070(DAT_004838c0, 0xb7000c, *(uint *)((char *)widget + 0x1ac));
+    *(int *)((char *)widget + 0x1ac) = 0;
   }
-  if (*(uint *)(widget + 0x19c) != 0) {
-    FUN_0040f070(DAT_004838c0, 0xb2000c, *(uint *)(widget + 0x19c));
-    *(int *)(widget + 0x19c) = 0;
+  if (*(uint *)((char *)widget + 0x19c) != 0) {
+    FUN_0040f070(DAT_004838c0, 0xb2000c, *(uint *)((char *)widget + 0x19c));
+    *(int *)((char *)widget + 0x19c) = 0;
   }
-  if (*(uint *)(widget + 0x1a0) != 0) {
-    FUN_0040f070(DAT_004838c0, 0xab000c, *(uint *)(widget + 0x1a0));
-    *(int *)(widget + 0x1a0) = 0;
+  if (*(uint *)((char *)widget + 0x1a0) != 0) {
+    FUN_0040f070(DAT_004838c0, 0xab000c, *(uint *)((char *)widget + 0x1a0));
+    *(int *)((char *)widget + 0x1a0) = 0;
   }
-  if (*(uint *)(widget + 0x1a4) != 0) {
-    FUN_0040f070(DAT_004838c0, 0xdc000c, *(uint *)(widget + 0x1a4));
-    *(int *)(widget + 0x1a4) = 0;
+  if (*(uint *)((char *)widget + 0x1a4) != 0) {
+    FUN_0040f070(DAT_004838c0, 0xdc000c, *(uint *)((char *)widget + 0x1a4));
+    *(int *)((char *)widget + 0x1a4) = 0;
   }
-  if (*(uint *)(widget + 0x1b0) != 0) {
-    FUN_0040f070(DAT_004838c0, 0xdc000c, *(uint *)(widget + 0x1b0));
-    *(int *)(widget + 0x1b0) = 0;
+  if (*(uint *)((char *)widget + 0x1b0) != 0) {
+    FUN_0040f070(DAT_004838c0, 0xdc000c, *(uint *)((char *)widget + 0x1b0));
+    *(int *)((char *)widget + 0x1b0) = 0;
   }
 
   /* Clean up child resources */

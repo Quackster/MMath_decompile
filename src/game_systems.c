@@ -361,11 +361,11 @@ void __fastcall FUN_004105b0(GameWidget *this)
     s10 = s10 + 1;
   } while (s10 < 10);
   n9 = ((UIWidget *)DAT_004897c0)->sub_widgets_a[3]; /* TODO: DAT_004897c0 struct unknown */
-  pv2 = *(void **)(n9 + 0x84);
+  pv2 = *(void **)((char *)n9 + 0x84);
   if (pv2 != NULL) {
     FUN_0041cb70(pv2,'\x01');
   }
-  pv2 = *(void **)(n9 + 0x88);
+  pv2 = *(void **)((char *)n9 + 0x88);
   if (pv2 != NULL) {
     FUN_0041cb70(pv2,'\x01');
   }
@@ -5140,7 +5140,7 @@ char FUN_0041a700(void)
       if (n4 != 0) {
         /* Check dimensions are valid */
         s1 = *(short *)(n1 + 8);
-        s2 = *(short *)(n1 + 0xA);
+        s2 = *(short *)((char *)n1 + 0xA);
         if (s1 > 0 && s2 > 0) {
           result = 1;
         }
@@ -5154,7 +5154,7 @@ char FUN_0041a700(void)
       n4 = *(int *)(n3);
       if (n4 != 0) {
         s1 = *(short *)(n2 + 8);
-        s2 = *(short *)(n2 + 0xA);
+        s2 = *(short *)((char *)n2 + 0xA);
         if (s1 > 0 && s2 > 0) {
           result = 1;
         }
@@ -5411,7 +5411,7 @@ int FUN_0041ace0(void *param_1,int param_2)
 
   /* Iterate entries */
   n3 = 0;
-  n4 = *(int *)(n1 + 0x0E); /* count field */
+  n4 = *(int *)((char *)n1 + 0x0E); /* count field */
   while (n3 < n4) {
     if (*(int *)(n2 + n3 * 4) == param_2) {
       result = n3 + 1;
@@ -6283,8 +6283,8 @@ int __thiscall FUN_0041bb70(void *this,void *param_1,char param_2)
       *(int *)n1 = 0;
       *(int *)(n1 + 4) = 0;
       *(int *)(n1 + 8) = 0;
-      *(int *)(n1 + 0xC) = 0;
-      *(int *)(n1 + 0xE) = 0;
+      *(int *)((char *)n1 + 0xC) = 0;
+      *(int *)((char *)n1 + 0xE) = 0;
     }
     widget->child_list_2 = (void *)n1;
   }
@@ -7020,8 +7020,8 @@ void __thiscall FUN_0041c7b0(void *this,int param_1)
       *(int *)n1 = 0;
       *(int *)(n1 + 4) = 0;
       *(int *)(n1 + 8) = 0;
-      *(int *)(n1 + 0x0C) = 0;
-      *(int *)(n1 + 0x0E) = 0;
+      *(int *)((char *)n1 + 0x0C) = 0;
+      *(int *)((char *)n1 + 0x0E) = 0;
     }
     widget->child_list_1 = (void *)n1;
   }

@@ -2362,22 +2362,22 @@ void __cdecl FUN_0045feb0(char *data,char param_2)
   short s6;
 
   /* swap header short pair at +0x08 and +0x0A */
-  u2 = *(short *)(data + 0x08);
-  *(uint *)(data + 0x08) =
+  u2 = *(short *)((char *)data + 0x08);
+  *(uint *)((char *)data + 0x08) =
        CONCAT22(CONCAT11((char)u2,(char)((ushort)u2 >> 8)),
-                CONCAT11((char)*(short *)(data + 0x0A),
-                         (char)((ushort)*(short *)(data + 0x0A) >> 8)));
+                CONCAT11((char)*(short *)((char *)data + 0x0A),
+                         (char)((ushort)*(short *)((char *)data + 0x0A) >> 8)));
   if (param_2 == '\0') {
     /* swap header shorts at +0x0C, +0x0E, +0x10 */
-    u2 = *(short *)(data + 0x0C);
-    *(short *)(data + 0x0C) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
-    u2 = *(short *)(data + 0x0E);
-    *(short *)(data + 0x0E) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
-    u2 = *(short *)(data + 0x10);
-    *(short *)(data + 0x10) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
+    u2 = *(short *)((char *)data + 0x0C);
+    *(short *)((char *)data + 0x0C) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
+    u2 = *(short *)((char *)data + 0x0E);
+    *(short *)((char *)data + 0x0E) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
+    u2 = *(short *)((char *)data + 0x10);
+    *(short *)((char *)data + 0x10) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
   }
   s6 = 0;
-  u3 = *(ushort *)(data + 0x0E);  /* sub-entry count */
+  u3 = *(ushort *)((char *)data + 0x0E);  /* sub-entry count */
   if (u3 != 0) {
     do {
       /* sub-entry at +0x1C + s6 * 0x0E: swap first 4 bytes (two shorts) */
@@ -2390,7 +2390,7 @@ void __cdecl FUN_0045feb0(char *data,char param_2)
       /* sub-entry bytes at +0x20 and +0x22 relative to data+s6*0x0E */
       pu5 = (int *)(n1 + 0x20);
       u2 = *(short *)pu5;
-      u4 = *(short *)(n1 + 0x22);
+      u4 = *(short *)((char *)n1 + 0x22);
       *pu5 = CONCAT22(CONCAT11((char)u2,(char)((ushort)u2 >> 8)),
                          CONCAT11((char)u4,(char)((ushort)u4 >> 8)));
       s6 = s6 + 1;
@@ -2398,12 +2398,12 @@ void __cdecl FUN_0045feb0(char *data,char param_2)
   }
   if (param_2 != '\0') {
     /* swap header shorts at +0x0C, +0x0E, +0x10 */
-    u2 = *(short *)(data + 0x0C);
-    *(short *)(data + 0x0C) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
-    u2 = *(short *)(data + 0x0E);
-    *(short *)(data + 0x0E) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
-    u2 = *(short *)(data + 0x10);
-    *(short *)(data + 0x10) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
+    u2 = *(short *)((char *)data + 0x0C);
+    *(short *)((char *)data + 0x0C) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
+    u2 = *(short *)((char *)data + 0x0E);
+    *(short *)((char *)data + 0x0E) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
+    u2 = *(short *)((char *)data + 0x10);
+    *(short *)((char *)data + 0x10) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
   }
   return;
 }

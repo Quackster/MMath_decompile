@@ -137,8 +137,8 @@ void __fastcall FUN_00440980(int param_1)
 
   n3 = 0;
   n1 = FUN_0043a6b0(DAT_004838c0, 0x444000d);
-  *(int *)(param_1 + 0x1D8) = n1;
-  pv4 = *(UIWidget **)(param_1 + 0x44);
+  *(int *)((char *)param_1 + 0x1D8) = n1; /* SoundChannelState field */
+  pv4 = *(UIWidget **)((char *)param_1 + 0x44);
   if (pv4 != NULL) {
     c5 = 0x01;
     n1 = 0;
@@ -146,28 +146,28 @@ void __fastcall FUN_00440980(int param_1)
     FUN_004404f0((int *)&_tmp_38);
     FUN_004404f0((int *)&_tmp_37);
     FUN_00406130(pv4, n2, n3, n1, c5);
-    pv4 = *(UIWidget **)(param_1 + 0x44);
+    pv4 = *(UIWidget **)((char *)param_1 + 0x44);
     FUN_0041b5f0(pv4, 0);
     u6 = 7;
     n1 = 0x1e0;
     FUN_00401ba0(&_tmp_39, 0x1e0);
     FUN_00401ba0(&_tmp_38, 0x280);
-    FUN_0041d020(*(void **)(param_1 + 0x44), n1, (int)pv4, u6);
-    FUN_0041dd40(*(void **)(param_1 + 0x44));
-    (*(UIWidget **)(param_1 + 0x44))->field_109 = 0;
-    FUN_0043f8c0(*(void **)(param_1 + 0x44));
+    FUN_0041d020(*(void **)((char *)param_1 + 0x44), n1, (int)pv4, u6);
+    FUN_0041dd40(*(void **)((char *)param_1 + 0x44));
+    (*(UIWidget **)((char *)param_1 + 0x44))->field_109 = 0;
+    FUN_0043f8c0(*(void **)((char *)param_1 + 0x44));
   }
-  if (*(void **)(param_1 + 0x150) != NULL) {
-    FUN_00406ca0(*(void **)(param_1 + 0x150), 0x05, 0x00);
+  if (*(void **)((char *)param_1 + 0x150) != NULL) {
+    FUN_00406ca0(*(void **)((char *)param_1 + 0x150), 0x05, 0x00);
   }
-  if (*(void **)(param_1 + 0x160) != NULL) {
-    FUN_00406ca0(*(void **)(param_1 + 0x160), 0x05, 0x00);
+  if (*(void **)((char *)param_1 + 0x160) != NULL) {
+    FUN_00406ca0(*(void **)((char *)param_1 + 0x160), 0x05, 0x00);
   }
-  n3 = *(int *)(param_1 + 0x1B8);
+  n3 = *(int *)((char *)param_1 + 0x1B8);
   if (n3 != 0) {
     if (3 < ((GameSession *)DAT_0048345c)->field_9e) {
       ((UIWidget *)n3)->pending_frame = 1;
-      pv4 = *(UIWidget **)(param_1 + 0x1B8);
+      pv4 = *(UIWidget **)((char *)param_1 + 0x1B8);
       pv4->anim_flag_0 = 0;
       pv4->anim_flag_2 = 0;
       pv4->anim_flag_1 = 0;
@@ -176,7 +176,7 @@ void __fastcall FUN_00440980(int param_1)
     }
     else {
       ((UIWidget *)n3)->pending_frame = 0;
-      pv4 = *(UIWidget **)(param_1 + 0x1B8);
+      pv4 = *(UIWidget **)((char *)param_1 + 0x1B8);
       pv4->anim_flag_0 = 0;
       pv4->anim_flag_2 = 0;
       pv4->anim_flag_1 = 0;
@@ -207,7 +207,7 @@ void __fastcall FUN_00440ca0(SoundChannelState *param_1)
     s4 = (short)(n1 % 3);
   } while (s4 == s3);
   if (param_1->resource_handle != 0) {
-    switch(*(short *)(param_1->resource_handle + 0xC)) {
+    switch(*(short *)((char *)param_1->resource_handle + 0xC)) {
     case 1:
       FUN_0045d510(0x13d000c,'\0');
       FUN_00404870(param_1,0x10c000c);
@@ -1590,13 +1590,13 @@ void __thiscall FUN_00445b10(void *this,int param_1)
   FUN_00404a80((int)this);
   _seh_state = 0;
   n1 = FUN_0043a6b0(DAT_004838c0, param_1);
-  *(int *)((int)this + 0x1D8) = n1;
+  *(int *)((char *)this + 0x1D8) = n1;
   FUN_004048d0(this);
-  FUN_0040b1e0(*(void **)((int)this + 0x20A),
-               *(int *)(&DAT_00480718 + *(int *)((int)this + 0x1D8) * 8));
+  FUN_0040b1e0(*(void **)((char *)this + 0x20A),
+               *(int *)(&DAT_00480718 + *(int *)((char *)this + 0x1D8) * 8));
   FUN_0040d840(DAT_004897c0, 9);
   FUN_0042d7d0((int)this);
-  FUN_0042da60(this, DAT_00488ef0, (ushort *)*(int *)((int)this + 0x1BC), -1, -1);
+  FUN_0042da60(this, DAT_00488ef0, (ushort *)*(int *)((char *)this + 0x1BC), -1, -1);
   FUN_0042d860((int)this);
   _seh_state = 0xffffffff;
   DAT_00480760 = 0;
@@ -3664,7 +3664,7 @@ int FUN_0044bf50(int *param_1,char param_2)
         n11 = *v50;
         while (n11 != 0) {
           if ((param_2 == '\0') &&
-             (n11 = *(int *)(v18 + 0x48 + (v20 + v1c) * 4), n11 < 0)) {
+             (n11 = ((MusicTrack *)v18)->notes[v20 + v1c], n11 < 0)) {
             _itoa(-n11,vec,10);
             if (v12 == 0) {
               vb0 = &PTR_LAB_00472e04;
@@ -3822,7 +3822,7 @@ L_0044c4d2:
             }
             v1c = v1c + 1;
           }
-          n11 = *(int *)(v18 + 0x48 + (v20 + v1c) * 4);
+          n11 = ((MusicTrack *)v18)->notes[v20 + v1c];
         }
         if ((short)v1ec == v44) {
           n11 = FUN_00417570((int)v2a);
@@ -5125,7 +5125,7 @@ int __fastcall FUN_0044eac0(int *param_1)
   if (n1 == 0) {
     return 0;
   }
-  return *(int *)(n1 + 0x10);
+  return *(int *)((char *)n1 + 0x10);
 }
 
 
@@ -5249,7 +5249,7 @@ uint __thiscall FUN_0044eca0(void *this,int param_1,char param_2,byte param_3)
     return 0;
   }
 
-  n2 = *(int *)(param_1 + 0x10);
+  n2 = *(int *)((char *)param_1 + 0x10);
   if (n2 == 0) {
     *_fs = _seh_prev;
     return 0;

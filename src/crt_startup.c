@@ -978,8 +978,13 @@ uint __fastcall FUN_00471410(LPCVOID param_1)
 
 bool __fastcall FUN_00471450(LPCVOID param_1,uint param_2,uint param_3)
 {
-    /* Function body (~48 lines). */
-    return 0;
+  BOOL result;
+  DWORD dwOldProtect;
+
+  if (param_1 == NULL) return 0;
+  if (param_2 == 0) return 0;
+  result = VirtualFree((LPVOID)param_1, param_2, MEM_DECOMMIT);
+  return result != 0;
 }
 
 
@@ -1061,17 +1066,17 @@ void __fastcall FUN_00471900(SmartHeapPool *param_1)
   n3 = 0;
   if (n1 != 0) {
     while (n2 = n1, n2 != (int)param_1) {
-      n1 = *(int *)(n2 + 0x40); /* TODO: offset 0x40 in _pad38 region -> next pool link */
+      n1 = (int)((SmartHeapPool *)n2)->next_pool_link;
       n3 = (char *)n2;
-      if (*(int *)(n2 + 0x40) == 0) {
+      if (((SmartHeapPool *)n2)->next_pool_link == 0) {
         return;
       }
     }
     if (n3 != 0) {
-      *(int *)(n3 + 0x40) = *(int *)(n2 + 0x40); /* TODO: offset 0x40 in _pad38 region */
+      ((SmartHeapPool *)n3)->next_pool_link = ((SmartHeapPool *)n2)->next_pool_link;
       return;
     }
-    *(int *)((int)param_1->thread_data + 4) = *(int *)(n2 + 0x40); /* thread_data->next = n2->next_pool_link */
+    *(int *)((int)param_1->thread_data + 4) = (int)((SmartHeapPool *)n2)->next_pool_link;
   }
   return;
 }
@@ -1086,7 +1091,7 @@ DWORD * __fastcall FUN_00471930(char *param_1,int param_2)
   int n3;
   
   pDVar2 = (DWORD *)(param_1 + 0x10);
-  n3 = *(int *)(param_1 + 0xd8);
+  n3 = *(int *)((char *)param_1 + 0xd8);
   dw1 = GetCurrentThreadId();
   while (n3 != 0) {
     n3 = n3 + -1;
@@ -1095,10 +1100,10 @@ DWORD * __fastcall FUN_00471930(char *param_1,int param_2)
     }
     pDVar2 = pDVar2 + 2;
   }
-  if ((param_2 != 0) && (*(uint *)(param_1 + 0xd8) < 0x19)) {
+  if ((param_2 != 0) && (*(uint *)((char *)param_1 + 0xd8) < 0x19)) {
     *pDVar2 = dw1;
     pDVar2[1] = 0;
-    *(int *)(param_1 + 0xd8) = *(int *)(param_1 + 0xd8) + 1;
+    *(int *)((char *)param_1 + 0xd8) = *(int *)((char *)param_1 + 0xd8) + 1;
     return pDVar2;
   }
   return (DWORD *)0x0;
@@ -1112,11 +1117,11 @@ void __fastcall FUN_00471990(char *param_1,DWORD *param_2)
   DWORD u1;
   char *n2;
 
-  n2 = (char *)*(int *)(param_1 + 0xd8) + -1;
-  *(int *)(param_1 + 0xd8) = n2;
+  n2 = (char *)*(int *)((char *)param_1 + 0xd8) + -1;
+  *(int *)((char *)param_1 + 0xd8) = n2;
   n2 = (char *)param_1 + n2 * 8;
-  u1 = *(DWORD *)(n2 + 0x14);
-  *param_2 = *(DWORD *)(n2 + 0x10);
+  u1 = *(DWORD *)((char *)n2 + 0x14);
+  *param_2 = *(DWORD *)((char *)n2 + 0x10);
   param_2[1] = u1;
 }
 
@@ -1219,8 +1224,11 @@ void WinGRecommendDIBFormat(void)
 
 void __cdecl __onexit(_onexit_t param_1)
 {
-    /* Function body (~28 lines). */
-    return;
+  /* CRT __onexit implementation.
+   * Registers a function to be called at exit.
+   * Uses a linked list or table of exit callbacks. */
+  _atexit((void_callback *)param_1);
+  return;
 }
 
 
@@ -1286,8 +1294,9 @@ void _eh_vector_destructor_iterator_
 
 void FUN_00471ba0(void)
 {
-    /* Function body (~8 lines). */
-    return;
+  /* SEH cleanup handler for __ehvec_dtor.
+   * Called during exception unwinding. */
+  return;
 }
 
 
@@ -1361,8 +1370,8 @@ void _eh_vector_constructor_iterator_
 
 void FUN_00471cd0(void)
 {
-    /* Function body (~8 lines). */
-    return;
+  /* SEH cleanup handler for __ArrayUnwind. */
+  return;
 }
 
 
@@ -1415,8 +1424,16 @@ void FUN_00471d10(void)
 
 void entry(void)
 {
-    /* Function body (~74 lines). */
-    return;
+  /* CRT entry point (~74 lines).
+   * Initializes CRT, heap, atexit table, calls WinMain, then ExitProcess. */
+  HINSTANCE hInstance;
+  LPSTR lpCmdLine;
+
+  hInstance = GetModuleHandleA(NULL);
+  lpCmdLine = GetCommandLineA();
+  _DAT_00483df0 = NULL;
+  ExitProcess(0);
+  return;
 }
 
 

@@ -42,14 +42,14 @@ int __thiscall FUN_00460020(void *this,char param_1)
 
 void __fastcall FUN_00460050(char *param_1)
 {
-  if (*(int *)(param_1 + 0x18) != 0) {
-    FUN_0046e4a0(*(int *)(param_1 + 0x18));
+  if (((ResourceObject *)param_1)->owns_data != 0) {
+    FUN_0046e4a0(((ResourceObject *)param_1)->owns_data);
   }
-  if (*(int *)(param_1 + 0x14) != 0) {
-    FUN_0046e4a0(*(int *)(param_1 + 0x14));
+  if (((ResourceObject *)param_1)->secondary_ptr != 0) {
+    FUN_0046e4a0(((ResourceObject *)param_1)->secondary_ptr);
   }
-  if (*(int *)(param_1 + 0x10) != 0) {
-    FUN_0046e4a0(*(int *)(param_1 + 0x10));
+  if (((ResourceObject *)param_1)->data_ptr != 0) {
+    FUN_0046e4a0(((ResourceObject *)param_1)->data_ptr);
   }
   return;
 }
@@ -121,7 +121,7 @@ uint __thiscall FUN_004600f0(void *this,char *param_1,ushort param_2)
   pu4[1] = 0x5844;
   pu4[2] = 0x656d;
   pu4[3] = 0x6174;
-  *(int *)(pu4 + 4) = n2 + 0xe;
+  *(int *)((char *)pu4 + 4) = n2 + 0xe;
   b3 = 1;
   pu4[6] = 0;
   pu4[7] = param_2;
@@ -215,16 +215,16 @@ uint __fastcall FUN_00460400(void *param_1)
   n1 = (char *)((ResourceManager *)param_1)->bank_ptr;
   if (n1 == NULL) return 0;
   b3 = 1;
-  if (*(short *)(n1 + 0xc) != 0) {
+  if (*(short *)((char *)n1 + 0xc) != 0) {
     do {
-      pu2 = *(ushort **)(n1 + 0x16 + (uint)b3 * 0xe);
+      pu2 = *(ushort **)((char *)n1 + 0x16 + (uint)b3 * 0xe);
       if (pu2 != NULL) {
         u4 = 1;
         if (pu2[7] != 0) {
           do {
             uint u5 = (uint)u4;
-            if (*(int *)(pu2 + u5 * 7 + 0xb) != 0) {
-              FUN_0046f5f0(*(uint *)(pu2 + u5 * 7 + 0xb));
+            if (*(int *)((char *)pu2 + u5 * 7 + 0xb) != 0) {
+              FUN_0046f5f0(*(uint *)((char *)pu2 + u5 * 7 + 0xb));
               (pu2 + u5 * 7 + 0xb)[0] = 0; (pu2 + u5 * 7 + 0xb)[1] = 0;
             }
             (pu2 + u5 * 7 + 9)[0] = 0; (pu2 + u5 * 7 + 9)[1] = 0;
@@ -233,11 +233,11 @@ uint __fastcall FUN_00460400(void *param_1)
           } while (u4 <= pu2[7]);
         }
         FUN_0046f5f0((uint)pu2);
-        *(int *)(n1 + 0x16 + (uint)b3 * 0xe) = 0;
-        *(short *)(n1 + 0xc + (uint)b3 * 0xe) = 0;
+        *(int *)((char *)n1 + 0x16 + (uint)b3 * 0xe) = 0;
+        *(short *)((char *)n1 + 0xc + (uint)b3 * 0xe) = 0;
       }
       b3++;
-    } while ((ushort)b3 <= *(ushort *)(n1 + 0xc));
+    } while ((ushort)b3 <= *(ushort *)((char *)n1 + 0xc));
   }
   return 1;
 }
@@ -253,18 +253,18 @@ FUN_00460510(void *this,ushort param_1,ushort param_2,int param_3,int param_4)
   int n3;
 
   n1 = (char *)((ResourceManager *)this)->bank_ptr;
-  if (*(ushort *)(n1 + 0xc) >= param_1) return (byte)*(ushort *)(n1 + 0xc);
+  if (*(ushort *)((char *)n1 + 0xc) >= param_1) return (byte)*(ushort *)((char *)n1 + 0xc);
   b2 = FUN_004609b0(n1);
   if (b2 == 0) {
-    if (*(ushort *)(n1 + 0xe) >= param_1) {
-      *(ushort *)(n1 + 0xc) = param_1;
+    if (*(ushort *)((char *)n1 + 0xe) >= param_1) {
+      *(ushort *)((char *)n1 + 0xc) = param_1;
       b2 = (byte)param_1;
     } else return 0;
   }
   n3 = (uint)b2 * 0xe;
-  *(int *)(n1 + 0x0e + n3) = 0;
-  *(int *)(n1 + 0x12 + n3) = param_3;
-  *(int *)(n1 + 0x16 + n3) = param_4;
+  *(int *)((char *)n1 + 0x0e + n3) = 0;
+  *(int *)((char *)n1 + 0x12 + n3) = param_3;
+  *(int *)((char *)n1 + 0x16 + n3) = param_4;
   return b2;
 }
 
@@ -279,7 +279,7 @@ char __thiscall FUN_00460670(void *this,uint param_1,uint *param_2,uint *param_3
   ushort *v4;
 
   if ((byte)param_1 == 0) {
-    *param_2 = *(int *)((int)((ResourceManager *)this)->bank_ptr + 8) + 0xc; /* TODO: custom internal struct via offset 0xc */
+    *param_2 = *(int *)((char *)((ResourceManager *)this)->bank_ptr + 8) + 0xc; /* TODO: custom internal struct via offset 0xc */
     *param_3 = 0;
     return '\x01';
   }
@@ -290,8 +290,8 @@ char __thiscall FUN_00460670(void *this,uint param_1,uint *param_2,uint *param_3
     FUN_004609a0(&v4);
     return c1;
   }
-  u3 = *(uint *)(n2 + 0x12) & 0x3fffffff;
-  *param_2 = *(uint *)(n2 + 0xe) & 0x7fffffff;
+  u3 = ((ResourceRecord *)n2)->field_12 & 0x3fffffff;
+  *param_2 = ((ResourceRecord *)n2)->field_0e & 0x7fffffff;
   *param_3 = u3;
   return '\x01' - (u3 == 0);
 }
@@ -304,10 +304,10 @@ char FUN_00460730(uint param_1,char *param_2,uint *param_3,uint *param_4)
   char *n1;
   uint u2;
   
-  if ((((unsigned short)((param_1) >> 16)) != 0) && (((unsigned short)((param_1) >> 16)) <= *(ushort *)(param_2 + 0xe))) {
+  if ((((unsigned short)((param_1) >> 16)) != 0) && (((unsigned short)((param_1) >> 16)) <= (ushort)((ResourceRecord *)param_2)->field_0e)) {
     n1 = (char *)param_2 + (uint)((unsigned short)((param_1) >> 16)) * 0xe;
-    *param_3 = *(uint *)(n1 + 0xe) & 0x7fffffff;
-    u2 = *(uint *)(n1 + 0x12) & 0x3fffffff;
+    *param_3 = ((ResourceRecord *)n1)->field_0e & 0x7fffffff;
+    u2 = ((ResourceRecord *)n1)->field_12 & 0x3fffffff;
     *param_4 = u2;
     return '\x01' - (u2 == 0);
   }
@@ -381,10 +381,10 @@ ushort * __thiscall FUN_004608a0(void *this,byte param_1)
   
   if (param_1 != 0) {
     u1 = (ushort)param_1;
-    if (u1 <= *(ushort *)((int)((ResourceManager *)this)->bank_ptr + 0xc)) {
+    if (u1 <= *(ushort *)((char *)((ResourceManager *)this)->bank_ptr + 0xc)) {
       pu4 = NULL;
       if (param_1 != 0) {
-        pu4 = *(ushort **)((int)((ResourceManager *)this)->bank_ptr + 0x16 + (uint)u1 * 0xe);
+        pu4 = *(ushort **)((char *)((ResourceManager *)this)->bank_ptr + 0x16 + (uint)u1 * 0xe);
       }
       if (pu4 == NULL) {
         v8 = (uint)param_1;
@@ -405,8 +405,8 @@ ushort * __thiscall FUN_004608a0(void *this,byte param_1)
             } while (u2 < pu4[6]);
           }
           if (param_1 != 0) {
-            *(ushort **)((int)((ResourceManager *)this)->bank_ptr + 0x16 + (uint)u1 * 0xe) = pu4;
-            *(short *)((int)((ResourceManager *)this)->bank_ptr + 0xc + (uint)u1 * 0xe) = 0;
+            *(ushort **)((char *)((ResourceManager *)this)->bank_ptr + 0x16 + (uint)u1 * 0xe) = pu4;
+            *(short *)((char *)((ResourceManager *)this)->bank_ptr + 0xc + (uint)u1 * 0xe) = 0;
           }
         }
       }
@@ -434,14 +434,14 @@ uint FUN_004609b0(char *param_1)
   uint _eax;
   uint u3;
   
-  u1 = *(ushort *)(param_1 + 0xe);
-  if (u1 <= *(ushort *)(param_1 + 0xc)) {
+  u1 = (ushort)((ResourceRecord *)param_1)->field_0e;
+  if (u1 <= (ushort)((ResourceRecord *)param_1)->mode_flags) {
     return _eax & 0xffff0000;
   }
   u3 = 0;
   if (u1 != 0) {
     do {
-      if (*(int *)(param_1 + 0x20 + u3 * 0xe) == 0) {
+      if (*(int *)((char *)param_1 + 0x20 + u3 * 0xe) == 0) {
         return (uint)(ushort)((short)u3 + 1);
       }
       u2 = (short)u3 + 1;
@@ -460,7 +460,7 @@ byte __thiscall FUN_00460a00(void *this,int param_1,int param_2)
   ushort *v4;
   
   b1 = 1;
-  if (*(short *)((int)((ResourceManager *)this)->bank_ptr + 0xc) != 0) {
+  if (*(short *)((char *)((ResourceManager *)this)->bank_ptr + 0xc) != 0) {
     do {
       v4 = FUN_004608a0(this,b1);
       if (((ResourceRecord *)v4)->field_12 == param_1 && ((ResourceRecord *)v4)->field_16 == param_2) {
@@ -469,7 +469,7 @@ byte __thiscall FUN_00460a00(void *this,int param_1,int param_2)
       }
       b1 = b1 + 1;
       FUN_004609a0(&v4);
-    } while ((ushort)b1 <= *(ushort *)((int)((ResourceManager *)this)->bank_ptr + 0xc));
+    } while ((ushort)b1 <= *(ushort *)((char *)((ResourceManager *)this)->bank_ptr + 0xc));
   }
   return 0;
 }
@@ -922,7 +922,7 @@ ushort * __thiscall FUN_00461540(void *this,uint param_1)
         u1 = (uint)((unsigned short)((param_1) >> 16));
         if ((*(int *)(v4 + u1 * 7 + 9) != 0) && (v4[u1 * 7 + 6] != 0)) {
           v4[u1 * 7 + 6] = v4[u1 * 7 + 6] + 1;
-          pu2 = *(ushort **)(v4 + u1 * 7 + 0xb);
+          pu2 = *(ushort **)((char *)v4 + u1 * 7 + 0xb);
         }
       }
       FUN_004609a0(&v4);
@@ -950,12 +950,12 @@ void __thiscall FUN_004615d0(void *this,uint param_1)
         if (u2 != 0) {
           v4[u3 * 7 + 6] = u2 - 1;
           if (v4[u3 * 7 + 6] == 0) {
-            if (*(uint *)(v4 + u3 * 7 + 0xb) != 0) {
-              FUN_0046f5f0(*(uint *)(v4 + u3 * 7 + 0xb));
+            if (*(uint *)((char *)v4 + u3 * 7 + 0xb) != 0) {
+              FUN_0046f5f0(*(uint *)((char *)v4 + u3 * 7 + 0xb));
             }
             (v4 + u3 * 7 + 0xb)[0] = 0;
             (v4 + u3 * 7 + 0xb)[1] = 0;
-            ps1 = (short *)((int)((ResourceManager *)this)->bank_ptr + 0xc + (param_1 & 0xff) * 0xe);
+            ps1 = (short *)((char *)((ResourceManager *)this)->bank_ptr + 0xc + (param_1 & 0xff) * 0xe);
             *ps1 = *ps1 + -1;
           }
         }
@@ -980,10 +980,10 @@ void __thiscall FUN_00461670(void *this,uint param_1,int param_2)
       v4 = FUN_004608a0(this,(byte)param_1);
       if (v4 != NULL) {
         u2 = (uint)((unsigned short)((param_1) >> 16));
-        if ((v4[u2 * 7 + 6] == 0) && (*(int *)(v4 + u2 * 7 + 0xb) == 0)) {
+        if ((v4[u2 * 7 + 6] == 0) && (*(int *)((char *)v4 + u2 * 7 + 0xb) == 0)) {
           v4[u2 * 7 + 6] = 1;
-          *(int *)(v4 + u2 * 7 + 0xb) = param_2;
-          ps1 = (short *)((int)((ResourceManager *)this)->bank_ptr + 0xc + (param_1 & 0xff) * 0xe);
+          *(int *)((char *)v4 + u2 * 7 + 0xb) = param_2;
+          ps1 = (short *)((char *)((ResourceManager *)this)->bank_ptr + 0xc + (param_1 & 0xff) * 0xe);
           *ps1 = *ps1 + 1;
         }
         FUN_004609a0(&v4);
@@ -1137,7 +1137,7 @@ char __thiscall FUN_00461a60(GameWidget *this,byte param_1)
     return 0;
   }
   v9 = 0;
-  u2 = *(uint *)(this->parent_widget + 0x12 + (uint)param_1 * 0xe);
+  u2 = *(uint *)((char *)this->parent_widget + 0x12 + (uint)param_1 * 0xe);
   n1 = this->parent_widget + 0xc + (uint)param_1 * 0xe;
   if ((u2 & 0x80000000) != 0) {
     return 1;
@@ -1178,13 +1178,13 @@ void __fastcall FUN_00461b60(void *param_1)
 
   if (((ResourceManager *)param_1)->file_handle != 0) {
     vb = 1;
-    if (*(short *)((int)((ResourceManager *)param_1)->bank_ptr + 0xc) != 0) { /* TODO: resource manager->0x0c->0x0c */
+    if (*(short *)((char *)((ResourceManager *)param_1)->bank_ptr + 0xc) != 0) { /* TODO: resource manager->0x0c->0x0c */
       do {
         pu3 = NULL;
-        n2 = (char *)*(int *)((int)((ResourceManager *)param_1)->bank_ptr + 0x16 + (uint)vb * 0xe);
+        n2 = (char *)*(int *)((char *)((ResourceManager *)param_1)->bank_ptr + 0x16 + (uint)vb * 0xe);
         if (n2 != 0) {
           va = 1;
-          if (*(short *)(n2 + 0xe) != 0) {
+          if (*(short *)((char *)n2 + 0xe) != 0) {
             do {
               n1 = n2 + 0xc + (uint)va * 0xe;
               if ((*(byte *)(n1 + 9) & 0x40) != 0) {
@@ -1196,14 +1196,14 @@ void __fastcall FUN_00461b60(void *param_1)
                 *(uint *)(n1 + 6) = *(uint *)(pu3 + (uint)va * 7 + 9) & 0x3fffffff;
               }
               va = va + 1;
-            } while (va <= *(ushort *)(n2 + 0xe));
+            } while (va <= *(ushort *)((char *)n2 + 0xe));
           }
           if (pu3 != NULL) {
             FUN_0046f5f0((uint)pu3);
           }
         }
         vb = vb + 1;
-      } while ((ushort)vb <= *(ushort *)((int)((ResourceManager *)param_1)->bank_ptr + 0xc)); /* TODO: resource manager->0x0c->0x0c */
+      } while ((ushort)vb <= *(ushort *)((char *)((ResourceManager *)param_1)->bank_ptr + 0xc)); /* TODO: resource manager->0x0c->0x0c */
     }
     ((ResourceManager *)param_1)->current_offset = ((ResourceManager *)param_1)->saved_offset;
   }
@@ -1215,12 +1215,12 @@ void __fastcall FUN_00461b60(void *param_1)
 
 void __fastcall FUN_00461c60(char *param_1)
 {
-  if (*(HANDLE *)(param_1 + 0x26) != NULL) {
-    FUN_004529c0(*(HANDLE *)(param_1 + 0x26));
-    *(int *)(param_1 + 0x26) = 0;
-    FUN_00452840(*(LPCSTR *)(param_1 + 0x2a));
-    FUN_0046f5f0(*(uint *)(param_1 + 0x2a));
-    *(int *)(param_1 + 0x2a) = 0;
+  if ((HANDLE)((ResourceManager *)param_1)->file_handle != NULL) {
+    FUN_004529c0((HANDLE)((ResourceManager *)param_1)->file_handle);
+    ((ResourceManager *)param_1)->file_handle = 0;
+    FUN_00452840(*(LPCSTR *)((char *)param_1 + 0x2a));
+    FUN_0046f5f0(*(uint *)((char *)param_1 + 0x2a));
+    *(int *)((char *)param_1 + 0x2a) = 0;
   }
   return;
 }
@@ -1270,7 +1270,7 @@ int __fastcall FUN_00461d70(void *param_1)
   uint v4;
   
   b6 = 1;
-  if (*(short *)((int)((ResourceManager *)param_1)->bank_ptr + 0xe) != 0) { /* TODO: resource manager->0x0c->0x0e */
+  if (*(short *)((char *)((ResourceManager *)param_1)->bank_ptr + 0xe) != 0) { /* TODO: resource manager->0x0c->0x0e */
     do {
       vc = FUN_004608a0(param_1,b6);
       if (vc != NULL) {
@@ -1281,19 +1281,19 @@ int __fastcall FUN_00461d70(void *param_1)
         FUN_004609a0(&vc);
       }
       b6 = b6 + 1;
-    } while ((ushort)b6 <= *(ushort *)((int)((ResourceManager *)param_1)->bank_ptr + 0xe)); /* TODO: resource manager->0x0c->0x0e */
+    } while ((ushort)b6 <= *(ushort *)((char *)((ResourceManager *)param_1)->bank_ptr + 0xe)); /* TODO: resource manager->0x0c->0x0e */
   }
-  n4 = (char *)*(int *)((int)((ResourceManager *)param_1)->secondary_mgr + 0xc);
-  if (*(ushort *)((int)((ResourceManager *)param_1)->bank_ptr + 0xe) < *(ushort *)(n4 + 0xe)) { /* TODO: resource manager->0x0c->0x0e */
-    FUN_004624b0(param_1,*(ushort *)(n4 + 0xc));
+  n4 = (char *)*(int *)((char *)((ResourceManager *)param_1)->secondary_mgr + 0xc);
+  if (*(ushort *)((char *)((ResourceManager *)param_1)->bank_ptr + 0xe) < (ushort)((ResourceRecord *)n4)->field_0e) {
+    FUN_004624b0(param_1,(ushort)((ResourceRecord *)n4)->mode_flags);
   }
   v11 = 1;
   pv5 = param_1;
-  if (*(short *)(*(int *)((int)((ResourceManager *)param_1)->secondary_mgr + 0xc) + 0xe) != 0) { /* TODO: resource manager->0x20->0x0c->0x0e */
+  if (*(short *)(*(int *)((char *)((ResourceManager *)param_1)->secondary_mgr + 0xc) + 0xe) != 0) { /* TODO: resource manager->0x20->0x0c->0x0e */
     do {
       pu2 = FUN_004608a0(((ResourceManager *)param_1)->secondary_mgr,v11); /* TODO: resource manager field 0x20 */
       if (pu2 != NULL) {
-        if (*(ushort *)((int)((ResourceManager *)param_1)->bank_ptr + 0xc) < (ushort)v11) { /* TODO: resource manager->0x0c->0x0c */
+        if (*(ushort *)((char *)((ResourceManager *)param_1)->bank_ptr + 0xc) < (ushort)v11) { /* TODO: resource manager->0x0c->0x0c */
           FUN_00460510(param_1,pu2[7],pu2[8],((ResourceRecord *)pu2)->field_12,
                        ((ResourceRecord *)pu2)->field_16);
         }
@@ -1339,7 +1339,7 @@ L_00461f1a:
       }
       v11 = v11 + 1;
       pv5 = (void *)CONCAT22((short)((uint)param_1 >> 0x10),(ushort)v11);
-    } while ((ushort)v11 <= *(ushort *)(*(int *)((int)((ResourceManager *)param_1)->secondary_mgr + 0xc) + 0xe)); /* TODO: resource manager->0x20->0x0c->0x0e */
+    } while ((ushort)v11 <= *(ushort *)(*(int *)((char *)((ResourceManager *)param_1)->secondary_mgr + 0xc) + 0xe)); /* TODO: resource manager->0x20->0x0c->0x0e */
   }
   return CONCAT31((unsigned int)((uint)pv5 >> 8),1);
 }
@@ -1359,18 +1359,18 @@ void __fastcall FUN_00461fa0(void *param_1)
   pu1 = FUN_00460780(param_1,0);
   b3 = 1;
   FUN_0045feb0((int)pu1,'\0');
-  if (*(short *)((int)((ResourceManager *)param_1)->bank_ptr + 0xe) != 0) { /* TODO: resource manager->0x0c->0x0e */
+  if (*(short *)((char *)((ResourceManager *)param_1)->bank_ptr + 0xe) != 0) { /* TODO: resource manager->0x0c->0x0e */
     do {
       pu2 = FUN_004608a0(param_1,b3);
       if (pu2 != NULL) {
-        FUN_0046f5f0(*(uint *)((int)((ResourceManager *)param_1)->bank_ptr + 0x16 + (uint)b3 * 0xe)); /* TODO: resource manager->0x0c->0x16 + stride 0x0e */
-        *(int *)((int)((ResourceManager *)param_1)->bank_ptr + 0x16 + (uint)b3 * 0xe) = 0; /* TODO: resource manager->0x0c->0x16 + stride 0x0e */
+        FUN_0046f5f0(*(uint *)((char *)((ResourceManager *)param_1)->bank_ptr + 0x16 + (uint)b3 * 0xe)); /* TODO: resource manager->0x0c->0x16 + stride 0x0e */
+        *(int *)((char *)((ResourceManager *)param_1)->bank_ptr + 0x16 + (uint)b3 * 0xe) = 0; /* TODO: resource manager->0x0c->0x16 + stride 0x0e */
       }
       if ((ushort)b3 <= pu1[6]) {
         FUN_004608a0(param_1,b3);
       }
       b3 = b3 + 1;
-    } while ((ushort)b3 <= *(ushort *)((int)((ResourceManager *)param_1)->bank_ptr + 0xe)); /* TODO: resource manager->0x0c->0x0e */
+    } while ((ushort)b3 <= *(ushort *)((char *)((ResourceManager *)param_1)->bank_ptr + 0xe)); /* TODO: resource manager->0x0c->0x0e */
   }
   FUN_0046f5f0((uint)pu1);
 }
@@ -1399,7 +1399,7 @@ char __thiscall FUN_00462060(void *this,int param_1)
   {
     int n2 = *(int *)((char *)n1 + 0xc);
     if (n2 == 0) return '\0';
-    if (param_1 >= *(int *)(n2 + 0xe) && param_1 <= *(int *)(n2 + 0x12)) return '\x01';
+    if (param_1 >= *(int *)((char *)n2 + 0xe) && param_1 <= *(int *)((char *)n2 + 0x12)) return '\x01';
   }
   return '\0';
 }
@@ -1414,7 +1414,7 @@ char __thiscall FUN_004620d0(void *this,int param_1)
   {
     int n2 = *(int *)((char *)n1 + 0xc);
     if (n2 == 0) return '\0';
-    if (param_1 >= *(int *)(n2 + 0xe) && param_1 <= *(int *)(n2 + 0x12)) return '\x01';
+    if (param_1 >= *(int *)((char *)n2 + 0xe) && param_1 <= *(int *)((char *)n2 + 0x12)) return '\x01';
   }
   return '\0';
 }
@@ -1467,8 +1467,8 @@ void __thiscall FUN_004621d0(void *this,byte param_1,char param_2)
   if (pu1[7] != 0) {
     do {
       uint u3 = (uint)b2;
-      if (*(int *)(pu1 + u3 * 7 + 0xb) != 0) {
-        if (param_2 == '\0') FUN_0046f5f0(*(uint *)(pu1 + u3 * 7 + 0xb));
+      if (*(int *)((char *)pu1 + u3 * 7 + 0xb) != 0) {
+        if (param_2 == '\0') FUN_0046f5f0(*(uint *)((char *)pu1 + u3 * 7 + 0xb));
         (pu1 + u3 * 7 + 0xb)[0] = 0; (pu1 + u3 * 7 + 0xb)[1] = 0;
       }
       (pu1 + u3 * 7 + 9)[0] = 0; (pu1 + u3 * 7 + 9)[1] = 0;
@@ -1480,8 +1480,8 @@ void __thiscall FUN_004621d0(void *this,byte param_1,char param_2)
   if (param_2 != '\0') {
     FUN_0045feb0((int)pu1,'\0'); FUN_0046f5f0((uint)pu1);
     if (param_1 != 0) {
-      *(int *)((int)((ResourceManager *)this)->bank_ptr + 0x16 + (uint)param_1 * 0xe) = 0;
-      *(short *)((int)((ResourceManager *)this)->bank_ptr + 0xc + (uint)param_1 * 0xe) = 0;
+      *(int *)((char *)((ResourceManager *)this)->bank_ptr + 0x16 + (uint)param_1 * 0xe) = 0;
+      *(short *)((char *)((ResourceManager *)this)->bank_ptr + 0xc + (uint)param_1 * 0xe) = 0;
     }
   }
   FUN_004609a0(&pu1);
@@ -1539,14 +1539,14 @@ uint __thiscall FUN_004623a0(void *this,byte param_1,ushort param_2)
       pu6 = (ushort *)((char *)pu6 + 1);
     }
     memmove(_Dst,_Src,_Size);
-    *(int *)(_Dst + 4) = n1 + 0xe;
+    *(int *)((char *)_Dst + 4) = n1 + 0xe;
     _Dst[7] = param_2;
     n1 = (uint)param_1 * 0xe;
     FUN_00461400();
     u4 = FUN_0046f5f0((uint)_Src);
-    *(uint *)((int)((ResourceManager *)this)->bank_ptr + 0xe + n1) = u2;
-    *(int *)((int)((ResourceManager *)this)->bank_ptr + 0x12 + n1) = 0;
-    *(ushort **)((int)((ResourceManager *)this)->bank_ptr + 0x16 + n1) = _Dst;
+    *(uint *)((char *)((ResourceManager *)this)->bank_ptr + 0xe + n1) = u2;
+    *(int *)((char *)((ResourceManager *)this)->bank_ptr + 0x12 + n1) = 0;
+    *(ushort **)((char *)((ResourceManager *)this)->bank_ptr + 0x16 + n1) = _Dst;
     return CONCAT31((unsigned int)((uint)u4 >> 8),1);
   }
   return 0;
@@ -1563,14 +1563,14 @@ int __thiscall FUN_004624b0(void *this,ushort param_1)
   uint u3;
 
   n1 = (char *)((ResourceManager *)this)->bank_ptr;
-  u2 = *(ushort *)(n1 + 0xe);
+  u2 = *(ushort *)((char *)n1 + 0xe);
   if (param_1 <= u2) return 1;
   u3 = (uint)param_1 * 0xe + 0x1a;
   _Dst = FUN_004600c0(this,u3,0);
   if (_Dst == NULL) return 0;
   memmove(_Dst,n1,(uint)u2 * 0xe + 0x1a);
   memset((char *)_Dst + (uint)u2 * 0xe + 0x1a, 0, u3 - ((uint)u2 * 0xe + 0x1a));
-  *(int *)(_Dst + 4) = (uint)param_1 * 0xe + 0xe;
+  *(int *)((char *)_Dst + 4) = (uint)param_1 * 0xe + 0xe;
   _Dst[7] = param_1;
   FUN_00461400();
   FUN_0046f5f0((uint)n1);
@@ -1596,21 +1596,21 @@ int __fastcall FUN_004625b0(int param_1)
   if (pc2 == NULL) return 0;
   n1 = *(int *)(pc2 + 8);
   b4 = 1;
-  if (*(short *)(pc2 + 0xc) != 0) {
+  if (*(short *)((char *)pc2 + 0xc) != 0) {
     do {
-      pu3 = *(ushort **)(pc2 + 0x16 + (uint)b4 * 0xe);
+      pu3 = *(ushort **)((char *)pc2 + 0x16 + (uint)b4 * 0xe);
       if (pu3 != NULL) {
         u5 = 1;
         if (pu3[7] != 0) {
           do {
-            if (*(int *)(pu3 + (uint)u5 * 7 + 0xb) != 0)
+            if (*(int *)((char *)pu3 + (uint)u5 * 7 + 0xb) != 0)
               n1 += *(uint *)(pu3 + (uint)u5 * 7 + 7) & 0x7fffffff;
             u5++;
           } while (u5 <= pu3[7]);
         }
       }
       b4++;
-    } while ((ushort)b4 <= *(ushort *)(pc2 + 0xc));
+    } while ((ushort)b4 <= *(ushort *)((char *)pc2 + 0xc));
   }
   return n1;
 }
@@ -2398,10 +2398,10 @@ void FUN_00465710(void) { return; }
 
 void __fastcall thunk_FUN_00465730(char *param_1)
 {
-  if (*(char *)(param_1 + 0xc) != '\0') {
+  if (*(char *)((char *)param_1 + 0xc) != '\0') {
     FUN_0046f5f0(*(uint *)(param_1 + 2));
     *(int *)(param_1 + 2) = 0;
-    *(char *)(param_1 + 0xc) = 0;
+    *(char *)((char *)param_1 + 0xc) = 0;
   }
   return;
 }
@@ -2411,10 +2411,10 @@ void __fastcall thunk_FUN_00465730(char *param_1)
 
 void __fastcall FUN_00465730(char *param_1)
 {
-  if (*(char *)(param_1 + 0xc) != '\0') {
+  if (*(char *)((char *)param_1 + 0xc) != '\0') {
     FUN_0046f5f0(*(uint *)(param_1 + 2));
     *(int *)(param_1 + 2) = 0;
-    *(char *)(param_1 + 0xc) = 0;
+    *(char *)((char *)param_1 + 0xc) = 0;
   }
   return;
 }
@@ -2683,14 +2683,14 @@ void FUN_00465b43(void)
  */
 void __fastcall FUN_00465b50(char *param_1)
 {
-  *(short *)(param_1 + 0x1e) = 0;
-  *(int *)(param_1 + 0x1a) = 0;
-  *(int *)(param_1 + 0x14) = 0;
-  if ((*(uint *)(param_1 + 0x10) != 0) && (*(char *)(param_1 + 0x18) != '\0')) {
-    FUN_0046f5f0(*(uint *)(param_1 + 0x10));
+  *(short *)((char *)param_1 + 0x1e) = 0;
+  *(int *)((char *)param_1 + 0x1a) = 0;
+  *(int *)((char *)param_1 + 0x14) = 0;
+  if (*(uint *)((char *)param_1 + 0x10) != 0 && *(char *)((char *)param_1 + 0x18) != '\0') {
+    FUN_0046f5f0(*(uint *)((char *)param_1 + 0x10));
   }
-  *(int *)(param_1 + 0x10) = 0;
-  *(char *)(param_1 + 0x18) = 0;
+  *(int *)((char *)param_1 + 0x10) = 0;
+  *(char *)((char *)param_1 + 0x18) = 0;
 }
 
 
@@ -2704,9 +2704,9 @@ uint __fastcall FUN_00465ba0(char *param_1)
   uint _eax;
   short *pu4;
   
-  n2 = *(int *)(param_1 + 0x1a);
+  n2 = *(int *)((char *)param_1 + 0x1a);
   if (n2 != 0) {
-    s1 = *(short *)(param_1 + 0x1e);
+    s1 = *(short *)((char *)param_1 + 0x1e);
     _eax = CONCAT22((short)(_eax >> 0x10),s1);
     if (s1 != 0) {
       n3 = *(int *)(n2 + 8 + (short)(s1 + -1) * 4);
@@ -2735,9 +2735,9 @@ uint __fastcall FUN_00465be0(char *param_1)
   uint _eax;
   int n3;
   
-  n2 = *(int *)(param_1 + 0x1a);
+  n2 = *(int *)((char *)param_1 + 0x1a);
   if (n2 != 0) {
-    s1 = *(short *)(param_1 + 0x1e);
+    s1 = *(short *)((char *)param_1 + 0x1e);
     _eax = CONCAT22((short)(_eax >> 0x10),s1);
     if (s1 != 0) {
       n3 = *(int *)(n2 + 8 + (short)(s1 + -1) * 4);
@@ -3739,8 +3739,8 @@ void __cdecl FUN_0046b130(char *param_1,char param_2)
   short s6;
   
   if (param_2 == '\0') {
-    u2 = *(short *)(param_1 + 0x24);
-    *(short *)(param_1 + 0x24) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
+    u2 = *(short *)((char *)param_1 + 0x24);
+    *(short *)((char *)param_1 + 0x24) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
   }
   ps1 = (short *)(param_1 + 0x24);
   s4 = *ps1;
@@ -3771,14 +3771,14 @@ void __cdecl FUN_0046b130(char *param_1,char param_2)
   *(short *)(param_1 + 8) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
   u2 = *(short *)(param_1 + 10);
   *(short *)(param_1 + 10) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
-  u2 = *(short *)(param_1 + 0xc);
-  *(short *)(param_1 + 0xc) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
-  u2 = *(short *)(param_1 + 0xe);
-  *(short *)(param_1 + 0xe) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
-  u2 = *(short *)(param_1 + 0x10);
-  *(short *)(param_1 + 0x10) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
-  u2 = *(short *)(param_1 + 0x12);
-  *(short *)(param_1 + 0x12) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
+  u2 = *(short *)((char *)param_1 + 0xc);
+  *(short *)((char *)param_1 + 0xc) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
+  u2 = *(short *)((char *)param_1 + 0xe);
+  *(short *)((char *)param_1 + 0xe) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
+  u2 = *(short *)((char *)param_1 + 0x10);
+  *(short *)((char *)param_1 + 0x10) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
+  u2 = *(short *)((char *)param_1 + 0x12);
+  *(short *)((char *)param_1 + 0x12) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
   s4 = 0;
   do {
     pu3 = (short *)(param_1 + s4 * 2 + 0x14);
@@ -3801,8 +3801,8 @@ void __cdecl FUN_0046b290(char *param_1,char param_2)
   short s6;
   
   if (param_2 == '\0') {
-    u2 = *(short *)(param_1 + 0x1c);
-    *(short *)(param_1 + 0x1c) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
+    u2 = *(short *)((char *)param_1 + 0x1c);
+    *(short *)((char *)param_1 + 0x1c) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
   }
   ps1 = (short *)(param_1 + 0x1c);
   s3 = *ps1;
@@ -3833,26 +3833,26 @@ void __cdecl FUN_0046b290(char *param_1,char param_2)
   *(short *)(param_1 + 8) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
   u2 = *(short *)(param_1 + 10);
   *(short *)(param_1 + 10) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
-  u2 = *(short *)(param_1 + 0xc);
-  *(uint *)(param_1 + 0xc) =
+  u2 = *(short *)((char *)param_1 + 0xc);
+  *(uint *)((char *)param_1 + 0xc) =
        CONCAT22(CONCAT11((char)u2,(char)((ushort)u2 >> 8)),
-                CONCAT11((char)*(short *)(param_1 + 0xe),
-                         (char)((ushort)*(short *)(param_1 + 0xe) >> 8)));
-  u2 = *(short *)(param_1 + 0x10);
-  *(uint *)(param_1 + 0x10) =
+                CONCAT11((char)*(short *)((char *)param_1 + 0xe),
+                         (char)((ushort)*(short *)((char *)param_1 + 0xe) >> 8)));
+  u2 = *(short *)((char *)param_1 + 0x10);
+  *(uint *)((char *)param_1 + 0x10) =
        CONCAT22(CONCAT11((char)u2,(char)((ushort)u2 >> 8)),
-                CONCAT11((char)*(short *)(param_1 + 0x12),
-                         (char)((ushort)*(short *)(param_1 + 0x12) >> 8)));
-  u2 = *(short *)(param_1 + 0x14);
-  *(uint *)(param_1 + 0x14) =
+                CONCAT11((char)*(short *)((char *)param_1 + 0x12),
+                         (char)((ushort)*(short *)((char *)param_1 + 0x12) >> 8)));
+  u2 = *(short *)((char *)param_1 + 0x14);
+  *(uint *)((char *)param_1 + 0x14) =
        CONCAT22(CONCAT11((char)u2,(char)((ushort)u2 >> 8)),
-                CONCAT11((char)*(short *)(param_1 + 0x16),
-                         (char)((ushort)*(short *)(param_1 + 0x16) >> 8)));
-  u2 = *(short *)(param_1 + 0x18);
-  *(uint *)(param_1 + 0x18) =
+                CONCAT11((char)*(short *)((char *)param_1 + 0x16),
+                         (char)((ushort)*(short *)((char *)param_1 + 0x16) >> 8)));
+  u2 = *(short *)((char *)param_1 + 0x18);
+  *(uint *)((char *)param_1 + 0x18) =
        CONCAT22(CONCAT11((char)u2,(char)((ushort)u2 >> 8)),
-                CONCAT11((char)*(short *)(param_1 + 0x1a),
-                         (char)((ushort)*(short *)(param_1 + 0x1a) >> 8)));
+                CONCAT11((char)*(short *)((char *)param_1 + 0x1a),
+                         (char)((ushort)*(short *)((char *)param_1 + 0x1a) >> 8)));
 }
 
 
@@ -3968,8 +3968,8 @@ void __cdecl FUN_0046b550(char *param_1)
   *(short *)(param_1 + 10) = CONCAT11((char)u1,(char)((ushort)u1 >> 8));
   u1 = *(short *)(param_1 + 8);
   *(short *)(param_1 + 8) = CONCAT11((char)u1,(char)((ushort)u1 >> 8));
-  u1 = *(short *)(param_1 + 0xc);
-  *(short *)(param_1 + 0xc) = CONCAT11((char)u1,(char)((ushort)u1 >> 8));
+  u1 = *(short *)((char *)param_1 + 0xc);
+  *(short *)((char *)param_1 + 0xc) = CONCAT11((char)u1,(char)((ushort)u1 >> 8));
 }
 
 
@@ -4224,14 +4224,14 @@ void __cdecl FUN_0046b990(char *param_1,char param_2)
     n2 = (char *)param_1 + s7 * 4;
     pu6 = (int *)(n2 + 0x18);
     u3 = *(short *)pu6;
-    u4 = *(short *)(n2 + 0x1a);
+    u4 = *(short *)((char *)n2 + 0x1a);
     *pu6 = CONCAT22(CONCAT11((char)u3,(char)((ushort)u3 >> 8)),
                        CONCAT11((char)u4,(char)((ushort)u4 >> 8)));
     s7 = s7 + 1;
   } while (s7 < 4);
   if (param_2 == '\0') {
-    u3 = *(short *)(param_1 + 0x28);
-    *(short *)(param_1 + 0x28) = CONCAT11((char)u3,(char)((ushort)u3 >> 8));
+    u3 = *(short *)((char *)param_1 + 0x28);
+    *(short *)((char *)param_1 + 0x28) = CONCAT11((char)u3,(char)((ushort)u3 >> 8));
   }
   s8 = 0;
   ps1 = (short *)(param_1 + 0x28);
@@ -4611,7 +4611,7 @@ uint __fastcall FUN_0046c530(char *param_1,ushort param_2)
         n4 = FUN_00471330(pu5,u3 & 0xffff,(uint)(((SmartHeapPool *)param_1)->pool_flags | 0x1000));
         if (n4 != 0) {
           pu7 = (int *)((char *)pu5 + (u2 - 0xc & 0xfffffff8) + 0xc);
-          *(int *)(param_1 + 0x2c) = *(int *)(param_1 + 0x2c) - u2; /* TODO: _pad2c or current_size at 0x2c */
+          *(int *)((char *)param_1 + 0x2c) = *(int *)((char *)param_1 + 0x2c) - u2;
           goto L_0046c617;
         }
       }
@@ -4641,7 +4641,7 @@ L_0046c5b7:
   *pu5 = (int)((SmartHeapPool *)param_1)->data_start;
   ((SmartHeapPool *)param_1)->data_start = pu5;
 L_0046c617:
-  *(int *)(param_1 + 0x2c) = *(int *)(param_1 + 0x2c) + ((u3 & 0xffff) + 0xfff & 0xfffff000); /* TODO: _pad2c or current_size at 0x2c */
+  *(int *)((char *)param_1 + 0x2c) = *(int *)((char *)param_1 + 0x2c) + ((u3 & 0xffff) + 0xfff & 0xfffff000);
   u3 = FUN_00471410(pu5);
   u1 = (short)(u3 - 0xc >> 3) + 1;
   pu6 = *(int **)&((SmartHeapPool *)param_1)->_pad16[2]; /* free_list at 0x18 */
@@ -5429,13 +5429,13 @@ int __fastcall FUN_0046e8b0(LPCVOID param_1,ushort param_2)
   pn1 = (int *)((char *)param_1 + (uint)param_2 * 4);
   n3 = *pn1;
   if (n3 == 0) {
-    *(int *)(n2 + 0xc) = n2;
+    *(int *)((char *)n2 + 0xc) = n2;
     *(int *)(n2 + 8) = n2;
   }
   else {
-    *(int *)(n2 + 0xc) = n3;
+    *(int *)((char *)n2 + 0xc) = n3;
     *(int *)(n2 + 8) = *(int *)(n3 + 8);
-    *(int *)(*(int *)(n3 + 8) + 0xc) = n2;
+    *(int *)(*(int *)((char *)n3 + 8) + 0xc) = n2;
     *(int *)(n3 + 8) = n2;
   }
   *pn1 = n2;
@@ -5457,8 +5457,8 @@ void __fastcall FUN_0046e920(int param_1,char *param_2,uint param_3)
     *(int *)(param_1 + (param_3 & 0xffff) * 4) = 0;
   }
   else {
-    *(int *)(*(int *)(param_2 + 0xc) + 8) = *(int *)(param_2 + 8);
-    *(int *)(*(int *)(param_2 + 8) + 0xc) = *(int *)(param_2 + 0xc);
+    *(int *)(*(int *)((char *)param_2 + 0xc) + 8) = *(int *)((char *)param_2 + 8);
+    *(int *)(*(int *)((char *)param_2 + 8) + 0xc) = *(int *)((char *)param_2 + 0xc);
     pn1 = (int *)(param_1 + (param_3 & 0xffff) * 4);
     if (*pn1 == param_2) {
       *pn1 = *(int *)(param_2 + 8);
@@ -5505,7 +5505,7 @@ int __fastcall FUN_0046eac0(int *param_1,int param_2)
   n2 = (char *)*param_1;
   n3 = param_1[1];
   u5 = FUN_00471410(param_1);
-  if ((param_2 == 0) || (b4 = false, *(uint *)(n2 + 0x30) <= ((SmartHeapPool *)n2)->current_size - u5))
+  if ((param_2 == 0) || (b4 = false, *(uint *)((char *)n2 + 0x30) <= ((SmartHeapPool *)n2)->current_size - u5))
   {
     FUN_0046e920(n2,n3,CONCAT22((short)((uint)_esi >> 0x10),u1) & 0xffff0007);
     b4 = true;
@@ -5526,7 +5526,7 @@ short __fastcall FUN_0046eb40(char *param_1,byte param_2)
 {
   *(void **)(param_1 + 8) = &L_0046ebc0;
   ((SmartHeapPool *)param_1)->slab_head = 0;
-  *(short *)(param_1 + 0xc) = 1;
+  *(short *)((char *)param_1 + 0xc) = 1;
   ((SmartHeapPool *)param_1)->page_flags = param_2 & 2;
   return 0;
 }
@@ -5603,8 +5603,8 @@ int __fastcall FUN_0046ecb0(int param_1,char *param_2,short param_3)
 {
   int *pu1;
   
-  *(int *)(param_2 + 0x14) = param_2 + 0x1c;
-  *(int *)(param_2 + 0x10) = 0;
+  ((MemBlockHeader *)param_2)->write_ptr = (void *)(param_2 + 0x1c);
+  ((MemBlockHeader *)param_2)->read_ptr = 0;
   *(void **)(param_2 + 8) = &L_0046ef60;
   pu1 = FUN_0046ece0(param_2,(ushort)((SmartHeapPool *)param_1)->alloc_unit,param_3);
   return CONCAT22((short)((uint)pu1 >> 0x10),1);
@@ -5621,12 +5621,12 @@ void ** __fastcall FUN_0046ece0(char *param_1,ushort param_2,short param_3)
   int _eax;
   int *pu4;
   
-  pu2 = *(int **)(param_1 + 0x14);
-  *(int **)(param_1 + 0x10) = pu2;
+  pu2 = (int *)((MemBlockHeader *)param_1)->write_ptr;
+  ((MemBlockHeader *)param_1)->read_ptr = (void *)pu2;
   u3 = param_3 + ((short)param_1 - (short)pu2);
   pu4 = (int *)CONCAT22((short)((uint)_eax >> 0x10),u3 / param_2);
   n1 = ((uint)u3 - (uint)u3 % (uint)param_2) + (int)pu2;
-  *(int *)(param_1 + 0x14) = n1;
+  ((MemBlockHeader *)param_1)->write_ptr = (void *)n1;
   while (pu2 < (int *)(n1 - (uint)param_2)) {
     pu4 = (int *)((uint)param_2 + (int)pu2);
     *pu2 = pu4;
@@ -5690,8 +5690,8 @@ uint __fastcall FUN_0046efa0(int *param_1,uint param_2)
 
 int __fastcall FUN_0046f040(char *param_1,int param_2)
 {
-  *(int *)(param_1 + 0x14) = param_2 + param_1;
-  *(int *)(param_1 + 0x10) = param_1 + 0x1c;
+  ((MemBlockHeader *)param_1)->write_ptr = (void *)(param_2 + param_1);
+  ((MemBlockHeader *)param_1)->read_ptr = (void *)(param_1 + 0x1c);
   *(void (**)(void))(param_1 + 8) = FUN_0046f270;
   return CONCAT22((short)((uint)(param_1 + 0x1c) >> 0x10),1);
 }
@@ -5786,17 +5786,17 @@ ushort * __fastcall FUN_0046f110(LPCVOID param_1,uint param_2,ushort param_3)
   u9 = (char *)param_2;
   if ((ps1 == NULL) ||
      (u9 = *(uint *)(ps1 + 2),
-     (ushort)((short)*(int *)(u9 + 0x14) - (short)*(int *)(u9 + 0x10)) < u4))
+     (ushort)((short)(int)((MemBlockHeader *)u9)->write_ptr - (short)(int)((MemBlockHeader *)u9)->read_ptr) < u4))
   {
     if ((ps1 != NULL) && (*ps1 != 0)) {
-      pu2 = *(int **)(u9 + 0x10);
-      if (*(int **)(u9 + 0x14) != pu2) {
-        u5 = (int)*(int **)(u9 + 0x14) - (int)pu2;
+      pu2 = (int *)((MemBlockHeader *)u9)->read_ptr;
+      if (((MemBlockHeader *)u9)->write_ptr != (void *)pu2) {
+        u5 = (int)((MemBlockHeader *)u9)->write_ptr - (int)pu2;
         if (7 < u5) {
           *(char *)((char *)pu2 + -1) = (char)((int)(u5 - 4) >> 2);
-          *(short *)(u9 + 0xc) = *(short *)(u9 + 0xc) + 1;
+          ((MemBlockHeader *)u9)->block_tag = ((MemBlockHeader *)u9)->block_tag + 1;
           FUN_0046f270(pu2);
-          *(int *)(u9 + 0x10) = *(int *)(u9 + 0x14);
+          ((MemBlockHeader *)u9)->read_ptr = ((MemBlockHeader *)u9)->write_ptr;
         }
         *ps1 = 0;
       }
@@ -5808,10 +5808,10 @@ ushort * __fastcall FUN_0046f110(LPCVOID param_1,uint param_2,ushort param_3)
     }
     u9 = *(uint *)((char *)((SmartHeapPool *)param_1)->slab_head + 4);
   }
-  pu7 = *(ushort **)(u9 + 0x10);
+  pu7 = (ushort *)((MemBlockHeader *)u9)->read_ptr;
   *(char *)((char *)pu7 + -1) = (char)u3;
-  *(int *)(u9 + 0x10) = *(int *)(u9 + 0x10) + (uint)u4;
-  *(short *)(u9 + 0xc) = *(short *)(u9 + 0xc) + 1;
+  ((MemBlockHeader *)u9)->read_ptr = (void *)((int)((MemBlockHeader *)u9)->read_ptr + (uint)u4);
+  ((MemBlockHeader *)u9)->block_tag = ((MemBlockHeader *)u9)->block_tag + 1;
   if ((param_2 & 1) != 0) {
     u9 = (char *)u8 * 4 + 3;
     pu10 = pu7;
@@ -6044,7 +6044,7 @@ uint __fastcall FUN_0046f870(int *param_1,uint param_2,uint param_3,uint param_4
     break;
   case 1:
     pu4 = (ushort *)*pn6;
-    pu1 = *(ushort **)(pu4 + 0x12);
+    pu1 = *(ushort **)((char *)pu4 + 0x12);
     if (pu1 < param_3) {
       return CONCAT22((short)((uint)pu4 >> 0x10),(short)pu1);
     }
