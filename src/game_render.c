@@ -508,11 +508,11 @@ int * __fastcall FUN_00423d80(int *param_1)
   *_fs = &_seh_prev;
   FUN_0042cbd0(param_1);
   _seh_state = 0;
-  FUN_0040ab70((int *)((int)param_1 + 0x1a6)); /* TODO: unknown offset 0x1a6 */
-  *(short *)((int)param_1 + 0x1a0) = 1; /* TODO: unknown offset 0x1a0, param_1+0x68 with int* */
+  FUN_0040ab70((int *)((int)param_1 + 0x1a6)); /* TODO: offset 0x1A6 on GameBoard subclass (PTR_FUN_00473288) */
+  *(short *)((int)param_1 + 0x1a0) = 1; /* TODO: offset 0x1A0 on GameBoard subclass (PTR_FUN_00473288) */
   *param_1 = &PTR_FUN_00473288;
   param_1[0x67] = 0; /* byte offset 0x19c */
-  *(int *)((int)param_1 + 0x1a2) = 0; /* TODO: unknown offset 0x1a2 */
+  *(int *)((int)param_1 + 0x1a2) = 0; /* TODO: offset 0x1A2 on GameBoard subclass (PTR_FUN_00473288) */
   *_fs = _seh_prev;
   return param_1;
 }
@@ -608,7 +608,7 @@ void __fastcall FUN_00423f80(void *param_1)
   int v4;
   
   FUN_004048d0(param_1);
-  switch(*(short *)((int)((UIElement *)param_1)->sub_widgets_a[9] + 0xc)) { /* sub-object at sub_widgets_a[9], UIElement::parent_widget offset */
+  switch(*(short *)(((UIElement *)param_1)->sub_widgets_a[9] + 0xc)) { /* sub-object at sub_widgets_a[9], offset +0x0C */
   case 1:
     v8 = 0x762000d;
     v4 = 0x4d0011;
@@ -640,7 +640,7 @@ void __fastcall FUN_00423f80(void *param_1)
   }
   FUN_0045f100(v8,'\x01');
   FUN_0040b1e0((void *)((int)param_1 + 0x1a6),v4);
-  *(short *)((int)param_1 + 0x1a0) = 2; /* TODO: unknown offset 0x1a0 */
+  *(short *)((int)param_1 + 0x1a0) = 2; /* TODO: offset 0x1A0 on GameBoard subclass (PTR_FUN_00473288) */
   return;
 }
 
@@ -683,7 +683,7 @@ int * __fastcall FUN_00424400(int *param_1)
   param_1[5] = 0;
   *(short *)(param_1 + 0x114) = 0;
   param_1[4] = 0;
-  *(short *)((int)param_1 + 0x452) = 0; /* TODO: unknown offset 0x452 */
+  *(short *)((int)param_1 + 0x452) = 0; /* TODO: offset 0x452 on PTR_LAB_00473418 subclass - beyond known structs */
   param_1[0x111] = 0;
   param_1[6] = 1;
   *_fs = _seh_prev;
@@ -1098,14 +1098,14 @@ int __fastcall FUN_00425200(void *param_1)
   int v8;
   int v4;
   
-  s7 = *(short *)((int)param_1 + 0x254) /* TODO: unknown offset 0x254 on GameBoard */;
-  *(int *)((int)param_1 + 0x1c8) = 0 /* TODO: unknown offset 0x1c8 on GameBoard */;
+  s7 = ((GameBoard *)param_1)->field_254;
+  ((GameBoard *)param_1)->field_1c8 = 0;
   if (0 < s7) {
-    *(short *)((int)param_1 + 0x254) /* TODO: unknown 0x254 */ = 0xffff;
+    ((GameBoard *)param_1)->field_254 = 0xffff;
     ((GameBoard *)param_1)->event_type = (int)s7;
   }
-  if (*(short *)((int)param_1 + 0x254) /* TODO: unknown offset 0x254 on GameBoard */ == 0) {
-    *(short *)((int)param_1 + 0x254) /* TODO: unknown offset 0x254 on GameBoard */ = (short)((GameBoard *)param_1)->event_type;
+  if (((GameBoard *)param_1)->field_254 == 0) {
+    ((GameBoard *)param_1)->field_254 = (short)((GameBoard *)param_1)->event_type;
   }
   switch(((GameBoard *)param_1)->event_type) {
   case 0x11:
@@ -1114,18 +1114,18 @@ int __fastcall FUN_00425200(void *param_1)
   case 0x42:
   case 0x52:
   case 0x62:
-    v18 = (uint)(*(short *)((int)param_1 + 0x254) /* TODO: unknown offset 0x254 on GameBoard */ == -1);
-    FUN_00424f40(param_1,(short)*(int *)((int)param_1 + v18 * 0xe + 0x1de) /* TODO: stride-0xe sub-array */,
-                 (short)*(int *)((int)param_1 + v18 * 0xe + 0x1e2) /* TODO: stride-0xe sub-array */);
+    v18 = (uint)(((GameBoard *)param_1)->field_254 == -1);
+    FUN_00424f40(param_1,(short)((BoardSlotEntry *)((int)param_1 + 0x1D8))[v18].pos_x,
+                 (short)((BoardSlotEntry *)((int)param_1 + 0x1D8))[v18].pos_y);
     FUN_0044c7e0(param_1,*(int *)
                           (&DAT_00480888 +
-                          (uint)*(byte *)((int)param_1 + v18 * 0xe + 0x1d8) /* TODO: stride-0xe sub-array field +0x00 */ * 4),0,'\x01');
+                          (uint)((BoardSlotEntry *)((int)param_1 + 0x1D8))[v18].slot_type * 4),0,'\x01');
     FUN_0044c7e0(param_1,*(int *)
-                          (&DAT_0047f830 + *(int *)((int)param_1 + v18 * 0xe + 0x1da) /* TODO: stride-0xe sub-array field +0x02 */ * 4),0,
+                          (&DAT_0047f830 + ((BoardSlotEntry *)((int)param_1 + 0x1D8))[v18].resource_id * 4),0,
                  '\x01');
     FUN_0044bf50((int *)&DAT_004734c4,'\x01');
-    ((GameBoard *)param_1)->target_x = *(int *)((int)param_1 + v18 * 0xe + 0x1de) /* TODO: stride-0xe sub-array field +0x06 */;
-    ((GameBoard *)param_1)->target_y = *(int *)((int)param_1 + v18 * 0xe + 0x1e2) /* TODO: stride-0xe sub-array field +0x0a */;
+    ((GameBoard *)param_1)->target_x = ((BoardSlotEntry *)((int)param_1 + 0x1D8))[v18].pos_x;
+    ((GameBoard *)param_1)->target_y = ((BoardSlotEntry *)((int)param_1 + 0x1D8))[v18].pos_y;
     break;
   case 0x12:
   case 0x13:
@@ -1221,10 +1221,10 @@ int __fastcall FUN_00425200(void *param_1)
   case 0x4e:
     s7 = 1000;
     n2 = rand();
-    v18 = n2 % *(int *)((int)param_1 + 0x1d4) /* TODO: offset 0x1d4, count for stride-0xe array */;
+    v18 = n2 % *(int *)((int)param_1 + 0x1D4) /* board_slot_count */;
     do {
-      FUN_00426350(param_1,*(int *)((int)param_1 + v18 * 0xe + 0x1de) /* TODO: stride-0xe sub-array field +0x06 */,
-                   *(int *)((int)param_1 + v18 * 0xe + 0x1e2) /* TODO: stride-0xe sub-array field +0x0a */,&v14,&v10,
+      FUN_00426350(param_1,((BoardSlotEntry *)((int)param_1 + 0x1D8))[v18].pos_x,
+                   ((BoardSlotEntry *)((int)param_1 + 0x1D8))[v18].pos_y,&v14,&v10,
                    (int *)&vc,&v8);
       u3 = FUN_00424f40(param_1,(short)v14,(short)v10);
       if ((short)u3 != 0) break;
@@ -1235,10 +1235,10 @@ int __fastcall FUN_00425200(void *param_1)
     if (((GameBoard *)param_1)->event_type != 0x4e) {
       FUN_0044c7e0(param_1,*(int *)
                             (&DAT_00480888 +
-                            (uint)*(byte *)((int)param_1 + v18 * 0xe + 0x1d8) /* TODO: stride-0xe sub-array field +0x00 */ * 4),0,'\x01');
+                            (uint)((BoardSlotEntry *)((int)param_1 + 0x1D8))[v18].slot_type * 4),0,'\x01');
     }
     FUN_0044c7e0(param_1,*(int *)
-                          (&DAT_0047f830 + *(int *)((int)param_1 + v18 * 0xe + 0x1da) /* TODO: stride-0xe sub-array field +0x02 */ * 4),0,
+                          (&DAT_0047f830 + ((BoardSlotEntry *)((int)param_1 + 0x1D8))[v18].resource_id * 4),0,
                  '\x01');
     if (((GameBoard *)param_1)->event_type == 0x4e) {
       b1 = 0;
@@ -1258,10 +1258,10 @@ int __fastcall FUN_00425200(void *param_1)
   case 0x27:
     s7 = 1000;
     n2 = rand();
-    v18 = n2 % *(int *)((int)param_1 + 0x1d4) /* TODO: offset 0x1d4, count for stride-0xe array */;
+    v18 = n2 % *(int *)((int)param_1 + 0x1D4) /* board_slot_count */;
     do {
-      FUN_00426350(param_1,*(int *)((int)param_1 + v18 * 0xe + 0x1de) /* TODO: stride-0xe sub-array field +0x06 */,
-                   *(int *)((int)param_1 + v18 * 0xe + 0x1e2) /* TODO: stride-0xe sub-array field +0x0a */,&v14,&v10,
+      FUN_00426350(param_1,((BoardSlotEntry *)((int)param_1 + 0x1D8))[v18].pos_x,
+                   ((BoardSlotEntry *)((int)param_1 + 0x1D8))[v18].pos_y,&v14,&v10,
                    (int *)&vc,&v8);
       u3 = FUN_00424f40(param_1,(short)v14,(short)v10);
       if ((short)u3 != 0) break;
@@ -1271,9 +1271,9 @@ int __fastcall FUN_00425200(void *param_1)
     FUN_0044c7e0(param_1,*(int *)(&DAT_0047f800 + v8 * 4),0,'\x01');
     FUN_0044c7e0(param_1,*(int *)
                           (&DAT_00480888 +
-                          (uint)*(byte *)((int)param_1 + v18 * 0xe + 0x1d8) /* TODO: stride-0xe sub-array field +0x00 */ * 4),0,'\x01');
+                          (uint)((BoardSlotEntry *)((int)param_1 + 0x1D8))[v18].slot_type * 4),0,'\x01');
     FUN_0044c7e0(param_1,*(int *)
-                          (&DAT_0047f830 + *(int *)((int)param_1 + v18 * 0xe + 0x1da) /* TODO: stride-0xe sub-array field +0x02 */ * 4),0,
+                          (&DAT_0047f830 + ((BoardSlotEntry *)((int)param_1 + 0x1D8))[v18].resource_id * 4),0,
                  '\x01');
     b1 = (byte)((GameBoard *)param_1)->event_type & 1;
     pn8 = (int *)&DAT_004734d8;
@@ -1286,10 +1286,10 @@ int __fastcall FUN_00425200(void *param_1)
   case 0x46:
     s7 = 1000;
     n2 = rand();
-    v18 = n2 % *(int *)((int)param_1 + 0x1d4) /* TODO: offset 0x1d4, count for stride-0xe array */;
+    v18 = n2 % *(int *)((int)param_1 + 0x1D4) /* board_slot_count */;
     do {
-      FUN_00426350(param_1,*(int *)((int)param_1 + v18 * 0xe + 0x1de) /* TODO: stride-0xe sub-array field +0x06 */,
-                   *(int *)((int)param_1 + v18 * 0xe + 0x1e2) /* TODO: stride-0xe sub-array field +0x0a */,&v14,&v10,
+      FUN_00426350(param_1,((BoardSlotEntry *)((int)param_1 + 0x1D8))[v18].pos_x,
+                   ((BoardSlotEntry *)((int)param_1 + 0x1D8))[v18].pos_y,&v14,&v10,
                    (int *)&vc,&v8);
       u3 = FUN_00424f40(param_1,(short)v14,(short)v10);
       if ((short)u3 != 0) break;
@@ -1299,7 +1299,7 @@ int __fastcall FUN_00425200(void *param_1)
       FUN_0044c7e0(param_1,*(int *)(&DAT_0047f800 + v8 * 4),0,'\x01');
       FUN_0044c990(param_1,vc,0,'\x01');
       FUN_0044c7e0(param_1,*(int *)
-                            (&DAT_0047f830 + *(int *)((int)param_1 + v18 * 0xe + 0x1da) /* TODO: stride-0xe sub-array field +0x02 */ * 4),0,
+                            (&DAT_0047f830 + ((BoardSlotEntry *)((int)param_1 + 0x1D8))[v18].resource_id * 4),0,
                    '\x01');
       b1 = (byte)((GameBoard *)param_1)->event_type & 1;
       pn8 = (int *)&DAT_004734e8;
@@ -1308,7 +1308,7 @@ int __fastcall FUN_00425200(void *param_1)
       FUN_0044c7e0(param_1,*(int *)(&DAT_0047f800 + v8 * 4),0,'\x01');
       FUN_0044c990(param_1,vc,0,'\x01');
       FUN_0044c7e0(param_1,*(int *)
-                            (&DAT_0047f830 + *(int *)((int)param_1 + v18 * 0xe + 0x1da) /* TODO: stride-0xe sub-array field +0x02 */ * 4),0,
+                            (&DAT_0047f830 + ((BoardSlotEntry *)((int)param_1 + 0x1D8))[v18].resource_id * 4),0,
                    '\x01');
       b1 = (byte)((GameBoard *)param_1)->event_type & 1;
       pn8 = (int *)&DAT_004734ec;
@@ -1318,9 +1318,9 @@ int __fastcall FUN_00425200(void *param_1)
       FUN_0044c7e0(param_1,*(int *)(&DAT_0047f800 + v8 * 4),0,'\x01');
       FUN_0044c7e0(param_1,*(int *)
                             (&DAT_00480888 +
-                            (uint)*(byte *)((int)param_1 + v18 * 0xe + 0x1d8) /* TODO: stride-0xe sub-array field +0x00 */ * 4),0,'\x01');
+                            (uint)((BoardSlotEntry *)((int)param_1 + 0x1D8))[v18].slot_type * 4),0,'\x01');
       FUN_0044c7e0(param_1,*(int *)
-                            (&DAT_0047f830 + *(int *)((int)param_1 + v18 * 0xe + 0x1da) /* TODO: stride-0xe sub-array field +0x02 */ * 4),0,
+                            (&DAT_0047f830 + ((BoardSlotEntry *)((int)param_1 + 0x1D8))[v18].resource_id * 4),0,
                    '\x01');
       b1 = (byte)((GameBoard *)param_1)->event_type & 1;
       pn8 = (int *)&DAT_004734d8;
@@ -1407,10 +1407,10 @@ int __fastcall FUN_00425200(void *param_1)
   case 100:
     s7 = 1000;
     n2 = rand();
-    v18 = n2 % *(int *)((int)param_1 + 0x1d4) /* TODO: offset 0x1d4, count for stride-0xe array */;
+    v18 = n2 % *(int *)((int)param_1 + 0x1D4) /* board_slot_count */;
     do {
-      FUN_00426350(param_1,*(int *)((int)param_1 + v18 * 0xe + 0x1de) /* TODO: stride-0xe sub-array field +0x06 */,
-                   *(int *)((int)param_1 + v18 * 0xe + 0x1e2) /* TODO: stride-0xe sub-array field +0x0a */,&v14,&v10,
+      FUN_00426350(param_1,((BoardSlotEntry *)((int)param_1 + 0x1D8))[v18].pos_x,
+                   ((BoardSlotEntry *)((int)param_1 + 0x1D8))[v18].pos_y,&v14,&v10,
                    (int *)&vc,&v8);
       u3 = FUN_00424f40(param_1,(short)v14,(short)v10);
       if ((short)u3 != 0) break;
@@ -1421,10 +1421,10 @@ int __fastcall FUN_00425200(void *param_1)
     if ((((GameBoard *)param_1)->event_type == 99) || (((GameBoard *)param_1)->event_type == 100)) {
       FUN_0044c7e0(param_1,*(int *)
                             (&DAT_00480888 +
-                            (uint)*(byte *)((int)param_1 + v18 * 0xe + 0x1d8) /* TODO: stride-0xe sub-array field +0x00 */ * 4),0,'\x01');
+                            (uint)((BoardSlotEntry *)((int)param_1 + 0x1D8))[v18].slot_type * 4),0,'\x01');
     }
     FUN_0044c7e0(param_1,*(int *)
-                          (&DAT_0047f830 + *(int *)((int)param_1 + v18 * 0xe + 0x1da) /* TODO: stride-0xe sub-array field +0x02 */ * 4),0,
+                          (&DAT_0047f830 + ((BoardSlotEntry *)((int)param_1 + 0x1D8))[v18].resource_id * 4),0,
                  '\x01');
     if ((((GameBoard *)param_1)->event_type == 0x53) || (((GameBoard *)param_1)->event_type == 0x54)) {
       pn8 = (int *)&DAT_00473514;
@@ -1496,10 +1496,10 @@ int __fastcall FUN_00425200(void *param_1)
   case 0x69:
     s7 = 1000;
     n2 = rand();
-    v18 = n2 % *(int *)((int)param_1 + 0x1d4) /* TODO: offset 0x1d4, count for stride-0xe array */;
+    v18 = n2 % *(int *)((int)param_1 + 0x1D4) /* board_slot_count */;
     do {
-      FUN_00426350(param_1,*(int *)((int)param_1 + v18 * 0xe + 0x1de) /* TODO: stride-0xe sub-array field +0x06 */,
-                   *(int *)((int)param_1 + v18 * 0xe + 0x1e2) /* TODO: stride-0xe sub-array field +0x0a */,&v14,&v10,
+      FUN_00426350(param_1,((BoardSlotEntry *)((int)param_1 + 0x1D8))[v18].pos_x,
+                   ((BoardSlotEntry *)((int)param_1 + 0x1D8))[v18].pos_y,&v14,&v10,
                    (int *)&vc,&v8);
       u3 = FUN_00424f40(param_1,(short)v14,(short)v10);
       if ((short)u3 != 0) break;
@@ -1510,10 +1510,10 @@ int __fastcall FUN_00425200(void *param_1)
     if (((GameBoard *)param_1)->event_type == 0x69) {
       FUN_0044c7e0(param_1,*(int *)
                             (&DAT_00480888 +
-                            (uint)*(byte *)((int)param_1 + v18 * 0xe + 0x1d8) /* TODO: stride-0xe sub-array field +0x00 */ * 4),0,'\x01');
+                            (uint)((BoardSlotEntry *)((int)param_1 + 0x1D8))[v18].slot_type * 4),0,'\x01');
     }
     FUN_0044c7e0(param_1,*(int *)
-                          (&DAT_0047f830 + *(int *)((int)param_1 + v18 * 0xe + 0x1da) /* TODO: stride-0xe sub-array field +0x02 */ * 4),0,
+                          (&DAT_0047f830 + ((BoardSlotEntry *)((int)param_1 + 0x1D8))[v18].resource_id * 4),0,
                  '\x01');
     if (((GameBoard *)param_1)->event_type == 0x69) {
       pn8 = (int *)&DAT_00473530;
@@ -1549,12 +1549,12 @@ L_004260b1:
   }
   s7 = 1000;
   do {
-    n6 = *(int *)((int)param_1 + 0x26) /* TODO: unknown offset 0x26 on GameBoard */ * 4;
+    n6 = ((GameBoard *)param_1)->field_26 * 4;
     n2 = *(int *)(&DAT_0047f8ec + n6);
     n4 = rand();
     n2 = ((uint)((GameBoard *)param_1)->event_type & 0xf0) +
             n4 % (*(int *)(&DAT_0047f8d4 + n6) - n2) + 1 + n2;
-    u5 = FUN_0044d950(param_1,n2,6,*(int *)((int)param_1 + 0x26) /* TODO: unknown offset 0x26 on GameBoard */);
+    u5 = FUN_0044d950(param_1,n2,6,((GameBoard *)param_1)->field_26);
     if ((char)u5 == '\0') break;
     s7 = s7 + -1;
   } while (s7 != 0);
@@ -1568,7 +1568,7 @@ L_004260b1:
 
 int __fastcall FUN_00426230(int param_1)
 {
-  return *(int *)(param_1 + 0x1d4); /* TODO: count for stride-0xe sub-array, overlaps GameBoard::players[0].color */
+  return *(int *)(param_1 + 0x1d4); /* board_slot_count */
 }
 
 
@@ -1576,7 +1576,7 @@ int __fastcall FUN_00426230(int param_1)
 
 int __thiscall FUN_00426240(GameBoard *this,int param_1)
 {
-  if ((-1 < param_1) && (param_1 < *(int *)((intptr_t)this + 0x1d4))) { /* TODO: offset 0x1d4, stride-0xe array count */
+  if ((-1 < param_1) && (param_1 < *(int *)((intptr_t)this + 0x1D4))) { /* board_slot_count */
     return *(int *)(&DAT_0047f810 + this->players[param_1].total * 4);
   }
   return 0xffffffff;
@@ -1587,8 +1587,8 @@ int __thiscall FUN_00426240(GameBoard *this,int param_1)
 
 char __thiscall FUN_00426280(GameBoard *this,int param_1)
 {
-  if ((-1 < param_1) && (param_1 < *(int *)((intptr_t)this + 0x1d4))) { /* TODO: offset 0x1d4, stride-0xe array count */
-    return (&DAT_00480848)[(uint)*(byte *)((intptr_t)&this->players[param_1].stat + 2) * 4]; /* TODO: offset 0x1d8 within PlayerSlot stride - may be custom sub-field */
+  if ((-1 < param_1) && (param_1 < *(int *)((intptr_t)this + 0x1D4))) { /* board_slot_count */
+    return (&DAT_00480848)[(uint)((BoardSlotEntry *)((intptr_t)this + 0x1D8))[param_1].slot_type * 4];
   }
   return 0xff;
 }
@@ -1598,8 +1598,8 @@ char __thiscall FUN_00426280(GameBoard *this,int param_1)
 
 int __thiscall FUN_004262c0(GameBoard *this,int param_1)
 {
-  if ((-1 < param_1) && (param_1 < *(int *)((intptr_t)this + 0x1d4))) { /* TODO: offset 0x1d4, stride-0xe array count */
-    return *(int *)((intptr_t)&this->players[param_1] + 0x0e); /* TODO: offset 0x1de = players[N]+0x0e, within PlayerSlot::stat area */
+  if ((-1 < param_1) && (param_1 < *(int *)((intptr_t)this + 0x1D4))) { /* board_slot_count */
+    return ((BoardSlotEntry *)((intptr_t)this + 0x1D8))[param_1].pos_x;
   }
   return 0xffffffff;
 }
@@ -1609,8 +1609,8 @@ int __thiscall FUN_004262c0(GameBoard *this,int param_1)
 
 int __thiscall FUN_004262f0(GameBoard *this,int param_1)
 {
-  if ((-1 < param_1) && (param_1 < *(int *)((intptr_t)this + 0x1d4))) { /* TODO: offset 0x1d4, stride-0xe array count */
-    return *(int *)((intptr_t)&this->players[param_1] + 0x12); /* TODO: offset 0x1e2 = players[N]+0x12 */
+  if ((-1 < param_1) && (param_1 < *(int *)((intptr_t)this + 0x1D4))) { /* board_slot_count */
+    return ((BoardSlotEntry *)((intptr_t)this + 0x1D8))[param_1].pos_y;
   }
   return 0xffffffff;
 }
@@ -1755,10 +1755,10 @@ int __thiscall FUN_00426550(GameBoard *this,int param_1,char param_2,char param_
       *pn10 = n6;
       if (param_3 == '\0') {
         v8 = (char)(n3 % 7);
-        *(char *)((int)pn10 + -2) = v8; /* PlayerSlot field at -2 from total = color */
+        *(char *)((int)pn10 - 2) = v8; /* BoardSlotEntry::slot_type (-2 bytes from resource_id) */
       }
       else {
-        *(char *)((int)pn10 + -2) = (char)((n3 % 7 + v14) % 7); /* PlayerSlot::color */
+        *(char *)((int)pn10 - 2) = (char)((n3 % 7 + v14) % 7); /* BoardSlotEntry::slot_type */
       }
       v4 = 1000;
       n6 = v14 + -1;
@@ -1769,7 +1769,7 @@ int __thiscall FUN_00426550(GameBoard *this,int param_1,char param_2,char param_
         n7 = rand();
         pn10[2] = n7 % 6 + 1;
         if (-1 < n6) {
-          pn9 = (int *)((intptr_t)this + n6 * 0xe + 0x1de); /* TODO: stride-0xe sub-array within GameBoard */
+          pn9 = (int *)&((BoardSlotEntry *)((intptr_t)this + 0x1D8))[n6].pos_x;
           n7 = n6;
           do {
             if ((*pn9 == pn10[1]) && (pn9[1] == pn10[2])) {
@@ -2139,32 +2139,32 @@ int __cdecl FUN_00427050(uint param_1,LPCVOID param_2)
   if (DAT_0047fbfc == '\0') {
     FUN_004271c0();
   }
+  /* PoolCacheEntry pool_cache[] = (PoolCacheEntry *)&DAT_00486240; -- 256 entries, stride 0x0E */
   s4 = 0;
-  while (((n1 = s4 * 0xe, (&DAT_0048624c)[n1] != '\0' ||
-          (*(int *)((int)&DAT_00486240 + n1) /* TODO: DAT_00486240 stride-0xe array field +0x00 */ == 0)) ||
-         (*(uint *)((int)&DAT_00486244 + n1) /* TODO: DAT_00486240 stride-0xe array field +0x04 */ < param_1))) {
+  while (((n1 = s4 * 0xe, ((PoolCacheEntry *)&DAT_00486240)[s4].in_use != '\0' ||
+          ((int)((PoolCacheEntry *)&DAT_00486240)[s4].data_ptr == 0)) ||
+         ((uint)((PoolCacheEntry *)&DAT_00486240)[s4].alloc_size < param_1))) {
     s4 = s4 + 1;
     if (0xff < s4) {
       s4 = 0;
-      while (((n1 = s4 * 0xe, (&DAT_0048624c)[s4 * 0xe] != '\0' ||
-              (*(int *)((int)&DAT_00486240 + n1) /* TODO: DAT_00486240 stride-0xe array field +0x00 */ != 0)) ||
-             (*(int *)((int)&DAT_00486244 + n1) /* TODO: DAT_00486240 stride-0xe array field +0x04 */ != 0))) {
+      while (((n1 = s4 * 0xe, ((PoolCacheEntry *)&DAT_00486240)[s4].in_use != '\0' ||
+              ((int)((PoolCacheEntry *)&DAT_00486240)[s4].data_ptr != 0)) ||
+             (((PoolCacheEntry *)&DAT_00486240)[s4].alloc_size != 0))) {
         s4 = s4 + 1;
         if (0xff < s4) {
           return 0;
         }
       }
-      n1 = s4 * 0xe;
-      (&DAT_0048624c)[n1] = 1;
-      *(uint *)((int)&DAT_00486248 + n1) /* TODO: DAT_00486240 stride-0xe array field +0x08 */ = param_1;
-      *(uint *)((int)&DAT_00486244 + n1) /* TODO: DAT_00486240 stride-0xe array field +0x04 */ = param_1;
+      ((PoolCacheEntry *)&DAT_00486240)[s4].in_use = 1;
+      ((PoolCacheEntry *)&DAT_00486240)[s4].used_size = param_1;
+      ((PoolCacheEntry *)&DAT_00486240)[s4].alloc_size = param_1;
       pu2 = FUN_0046f060(param_2,param_1,0);
       _DAT_0047fc00 = _DAT_0047fc00 + 1;
-      *(ushort **)((int)&DAT_00486240 + n1) /* TODO: DAT_00486240 stride-0xe array field +0x00 */ = pu2;
+      ((PoolCacheEntry *)&DAT_00486240)[s4].data_ptr = pu2;
       _DAT_0047fc04 = _DAT_0047fc04 + 1;
-      DAT_0047fc08 = DAT_0047fc08 + *(int *)((int)&DAT_00486244 + n1) /* TODO: DAT_00486240 stride-0xe array field +0x04 */;
-      DAT_0047fc0c = DAT_0047fc0c + *(int *)((int)&DAT_00486248 + n1) /* TODO: DAT_00486240 stride-0xe array field +0x08 */;
-      pu5 = *(int **)((int)&DAT_00486240 + n1) /* TODO: DAT_00486240 stride-0xe array field +0x00 */;
+      DAT_0047fc08 = DAT_0047fc08 + ((PoolCacheEntry *)&DAT_00486240)[s4].alloc_size;
+      DAT_0047fc0c = DAT_0047fc0c + ((PoolCacheEntry *)&DAT_00486240)[s4].used_size;
+      pu5 = (int *)((PoolCacheEntry *)&DAT_00486240)[s4].data_ptr;
       for (u3 = param_1 >> 2; u3 != 0; u3 = u3 - 1) {
         *pu5 = 0;
         pu5 = pu5 + 1;
@@ -2173,16 +2173,15 @@ int __cdecl FUN_00427050(uint param_1,LPCVOID param_2)
         *(char *)pu5 = 0;
         pu5 = (int *)((int)pu5 + 1);
       }
-      return *(int *)((int)&DAT_00486240 + n1) /* TODO: DAT_00486240 stride-0xe array field +0x00 */;
+      return (int)((PoolCacheEntry *)&DAT_00486240)[s4].data_ptr;
     }
   }
   _DAT_0047fc04 = _DAT_0047fc04 + 1;
   DAT_0047fc0c = DAT_0047fc0c + param_1;
   u3 = param_1 >> 2;
-  n1 = s4 * 0xe;
-  (&DAT_0048624c)[n1] = 1;
-  *(uint *)((int)&DAT_00486248 + n1) /* TODO: DAT_00486240 stride-0xe array field +0x08 */ = param_1;
-  pu5 = *(int **)((int)&DAT_00486240 + n1) /* TODO: DAT_00486240 stride-0xe array field +0x00 */;
+  ((PoolCacheEntry *)&DAT_00486240)[s4].in_use = 1;
+  ((PoolCacheEntry *)&DAT_00486240)[s4].used_size = param_1;
+  pu5 = (int *)((PoolCacheEntry *)&DAT_00486240)[s4].data_ptr;
   for (; u3 != 0; u3 = u3 - 1) {
     *pu5 = 0;
     pu5 = pu5 + 1;
@@ -2191,7 +2190,7 @@ int __cdecl FUN_00427050(uint param_1,LPCVOID param_2)
     *(char *)pu5 = 0;
     pu5 = (int *)((int)pu5 + 1);
   }
-  return *(int *)((int)&DAT_00486240 + n1) /* TODO: DAT_00486240 stride-0xe array field +0x00 */;
+  return (int)((PoolCacheEntry *)&DAT_00486240)[s4].data_ptr;
 }
 
 
@@ -2204,15 +2203,15 @@ void FUN_004271c0(void)
   int n1;
   short s2;
   
+  /* Clear all 256 PoolCacheEntry entries */
   s2 = 0;
   do {
     n1 = (int)s2;
     s2 = s2 + 1;
-    n1 = n1 * 0xe;
-    (&DAT_0048624c)[n1] = 0;
-    *(int *)((int)&DAT_00486240 + n1) /* TODO: DAT_00486240 stride-0xe array field +0x00 */ = 0;
-    *(int *)((int)&DAT_00486248 + n1) /* TODO: DAT_00486240 stride-0xe array field +0x08 */ = 0;
-    *(int *)((int)&DAT_00486244 + n1) /* TODO: DAT_00486240 stride-0xe array field +0x04 */ = 0;
+    ((PoolCacheEntry *)&DAT_00486240)[n1].in_use = 0;
+    ((PoolCacheEntry *)&DAT_00486240)[n1].data_ptr = 0;
+    ((PoolCacheEntry *)&DAT_00486240)[n1].used_size = 0;
+    ((PoolCacheEntry *)&DAT_00486240)[n1].alloc_size = 0;
   } while (s2 < 0x100);
   _DAT_0047fc00 = 0;
   DAT_0047fc0c = 0;
@@ -2240,14 +2239,14 @@ uint __cdecl FUN_00427220(int *param_1)
     if (0xff < s3) {
       return u4 & 0xffffff00;
     }
-    if (*(int *)((int)&DAT_00486240 + s3 * 0xe) /* TODO: DAT_00486240 stride-0xe array field +0x00 */ == *param_1) break;
+    if ((int)((PoolCacheEntry *)&DAT_00486240)[s3].data_ptr == *param_1) break;
     u4 = CONCAT22((short)(u4 >> 0x10),s3 + 1);
   }
   _DAT_0047fc04 = _DAT_0047fc04 + -1;
   n2 = s3 * 0xe;
-  n1 = *(int *)((int)&DAT_00486248 + n2) /* TODO: DAT_00486240 stride-0xe array field +0x08 */;
-  *(int *)((int)&DAT_00486248 + n2) /* TODO: DAT_00486240 stride-0xe array field +0x08 */ = 0;
-  (&DAT_0048624c)[n2] = 0;
+  n1 = ((PoolCacheEntry *)&DAT_00486240)[s3].used_size;
+  ((PoolCacheEntry *)&DAT_00486240)[s3].used_size = 0;
+  ((PoolCacheEntry *)&DAT_00486240)[s3].in_use = 0;
   DAT_0047fc0c = DAT_0047fc0c - n1;
   *param_1 = 0;
   return CONCAT31((unsigned int)((uint)n2 >> 8),1);
@@ -2266,26 +2265,26 @@ void FUN_00427290(void)
   int n4;
   short s5;
   
+  /* Free all PoolCacheEntry entries */
   s5 = 0;
   n3 = DAT_0047fc08;
   n4 = DAT_0047fc0c;
   do {
-    n1 = s5 * 0xe;
-    u2 = *(uint *)((int)&DAT_00486240 + s5 * 0xe) /* TODO: DAT_00486240 stride-0xe array field +0x00 */;
+    u2 = (uint)((PoolCacheEntry *)&DAT_00486240)[s5].data_ptr;
     if (u2 != 0) {
       _DAT_0047fc00 = _DAT_0047fc00 + -1;
-      if ((&DAT_0048624c)[n1] != '\0') {
+      if (((PoolCacheEntry *)&DAT_00486240)[s5].in_use != '\0') {
         _DAT_0047fc04 = _DAT_0047fc04 + -1;
       }
-      DAT_0047fc08 = n3 - *(int *)((int)&DAT_00486244 + n1) /* TODO: DAT_00486240 stride-0xe array field +0x04 */;
-      DAT_0047fc0c = n4 - *(int *)((int)&DAT_00486248 + n1) /* TODO: DAT_00486240 stride-0xe array field +0x08 */;
+      DAT_0047fc08 = n3 - ((PoolCacheEntry *)&DAT_00486240)[s5].alloc_size;
+      DAT_0047fc0c = n4 - ((PoolCacheEntry *)&DAT_00486240)[s5].used_size;
       FUN_0046f5f0(u2);
       n4 = DAT_0047fc0c;
       n3 = DAT_0047fc08;
-      *(int *)((int)&DAT_00486240 + n1) /* TODO: DAT_00486240 stride-0xe array field +0x00 */ = 0;
-      *(int *)((int)&DAT_00486244 + n1) /* TODO: DAT_00486240 stride-0xe array field +0x04 */ = 0;
-      *(int *)((int)&DAT_00486248 + n1) /* TODO: DAT_00486240 stride-0xe array field +0x08 */ = 0;
-      (&DAT_0048624c)[n1] = 0;
+      ((PoolCacheEntry *)&DAT_00486240)[s5].data_ptr = 0;
+      ((PoolCacheEntry *)&DAT_00486240)[s5].alloc_size = 0;
+      ((PoolCacheEntry *)&DAT_00486240)[s5].used_size = 0;
+      ((PoolCacheEntry *)&DAT_00486240)[s5].in_use = 0;
     }
     s5 = s5 + 1;
   } while (s5 < 0x100);
@@ -2756,7 +2755,7 @@ int * __fastcall FUN_00427f30(int *param_1)
   _seh_state = 1;
   FUN_00454300(param_1 + 0x48);
   *param_1 = &PTR_FUN_00473898;
-  *(int *)((int)param_1 + 0x23a) = 0; /* TODO: unknown offset 0x23a */
+  *(int *)((int)param_1 + 0x23a) = 0; /* TODO: offset 0x23A on PTR_LAB_004737e8 subclass */
   *param_1 = &PTR_LAB_004737e8;
   *_fs = _seh_prev;
   return param_1;
@@ -2867,9 +2866,9 @@ void __fastcall FUN_004281b0(int *param_1)
   *param_1 = &PTR_LAB_004737e8;
   *_fs = &_seh_prev;
   _seh_state = 0;
-  if (*(void ***)((int)param_1 + 0x23a) != (void **)0x0) { /* TODO: unknown offset 0x23a */
-    ((void (*)(void))**(void ***)((int)param_1 + 0x23a))(); /* TODO: unknown offset 0x23a, obj->vtable[0] */
-    *(int *)((int)param_1 + 0x23a) = 0; /* TODO: unknown offset 0x23a */
+  if (*(void ***)((int)param_1 + 0x23a) != (void **)0x0) { /* TODO: offset 0x23A on PTR_LAB_004737e8 subclass */
+    ((void (*)(void))**(void ***)((int)param_1 + 0x23a))(); /* obj at +0x23A->vtable[0] */
+    *(int *)((int)param_1 + 0x23a) = 0; /* TODO: offset 0x23A on PTR_LAB_004737e8 subclass */
   }
   _seh_state = 0xffffffff;
   FUN_00428219();
@@ -2915,7 +2914,7 @@ void __thiscall FUN_00428550(void *this,short param_1)
   char v28 [40];
   
   _itoa((int)param_1,v28,10);
-  FUN_00458860(*(void **)((intptr_t)this + 0x23a),v28); /* TODO: unknown offset 0x23a */
+  FUN_00458860(*(void **)((intptr_t)this + 0x23a),v28); /* TODO: offset 0x23A on PTR_LAB_004737e8 subclass */
   return;
 }
 
@@ -3014,25 +3013,25 @@ int * __fastcall FUN_00428820(int *param_1)
   _seh_state = 0;
   FUN_004112e0((int *)((int)param_1 + 0x1c2));
   *param_1 = &PTR_FUN_004739f0;
-  *(char *)((int)param_1 + 0x198) = 1; /* TODO: unknown offset 0x198, param_1+0x66 with int* */
+  ((GameBoard *)param_1)->field_198 = 1;
   s1 = 0;
   do {
     n2 = (int)s1;
     s1 = s1 + 1;
-    *(int *)((int)param_1 + n2 * 4 + 0x19a) = 0; /* TODO: unknown offset 0x19a+i*4 */
+    ((GameBoard *)param_1)->slot_handles[n2] = 0;
   } while (s1 < 5);
-  *(short *)((int)param_1 + 0x1b6) = 0; /* TODO: unknown offset 0x1b6 */
-  *(int *)((int)param_1 + 0x1ae) = 0; /* TODO: unknown offset 0x1ae */
-  *(int *)((int)param_1 + 0x1b2) = 0; /* TODO: unknown offset 0x1b2 */
-  *(char *)((int)param_1 + 0x1b8) = 0; /* TODO: unknown offset 0x1b8 */
-  *(char *)((int)param_1 + 0x199) = 0; /* TODO: unknown offset 0x199 */
-  *(int *)((int)param_1 + 0x39e) = 0; /* TODO: unknown offset 0x39e */
+  ((GameBoard *)param_1)->field_1b6 = 0;
+  ((GameBoard *)param_1)->field_1ae = 0;
+  ((GameBoard *)param_1)->field_1b2 = 0;
+  ((GameBoard *)param_1)->field_1b8 = 0;
+  ((GameBoard *)param_1)->field_199 = 0;
+  *(int *)((int)param_1 + 0x39e) = 0; /* TODO: offset 0x39E on GameBoard subclass (PTR_FUN_004739f0), beyond struct */
   ((GameBoard *)param_1)->refresh_counter = 0; /* param_1 + 0x6f = byte offset 0x1BC */
-  *(int *)((int)param_1 + 0x3a2) = 0; /* TODO: unknown offset 0x3a2 */
-  *(int *)((int)param_1 + 0x3a6) = 0; /* TODO: unknown offset 0x3a6 */
-  *(char *)((int)param_1 + 0x1b9) = 0; /* TODO: unknown offset 0x1b9 */
+  *(int *)((int)param_1 + 0x3a2) = 0; /* TODO: offset 0x3A2 on GameBoard subclass (PTR_FUN_004739f0), beyond struct */
+  *(int *)((int)param_1 + 0x3a6) = 0; /* TODO: offset 0x3A6 on GameBoard subclass (PTR_FUN_004739f0), beyond struct */
+  ((GameBoard *)param_1)->field_1b9 = 0;
   ((GameBoard *)param_1)->needs_refresh = 0;
-  *(int *)((int)param_1 + 0x1be) = 0; /* TODO: GameBoard::_pad1be */
+  ((GameBoard *)param_1)->field_1be = 0;
   param_1[0x5c] = &DAT_0047fc38;
   DAT_0047ef40 = 0;
   *_fs = _seh_prev;
@@ -3324,9 +3323,9 @@ void __fastcall FUN_004299d0(void *param_1)
 
 void __fastcall FUN_00429b20(int *param_1)
 {
-  if (*(void ***)((int)param_1 + 0x1b2) != (void **)0x0) { /* TODO: unknown offset 0x1b2 */
-    ((void (*)(void))**(void ***)((int)param_1 + 0x1b2))(); /* TODO: unknown offset 0x1b2, obj->vtable[0] */
-    *(int *)((int)param_1 + 0x1b2) = 0; /* TODO: unknown offset 0x1b2 */
+  if (((GameBoard *)param_1)->field_1b2 != 0) {
+    ((void (*)(void))**(void ***)(int *)&((GameBoard *)param_1)->field_1b2)(); /* obj->vtable[0] */
+    ((GameBoard *)param_1)->field_1b2 = 0;
   }
   FUN_00409330();
   ((void (*)(void))((void **)(*param_1))[0x90 / 4])();
@@ -3336,12 +3335,12 @@ void __fastcall FUN_00429b20(int *param_1)
   }
   FUN_0040f070(DAT_004838c0,0,(uint)((GameBoard *)param_1)->reward_data_a);
   ((GameBoard *)param_1)->reward_data_a = 0;
-  FUN_0040f070(DAT_004838c0,0,*(uint *)((int)param_1 + 0x39e)); /* TODO: unknown offset 0x39e */
-  *(int *)((int)param_1 + 0x39e) = 0; /* TODO: unknown offset 0x39e */
-  FUN_0040f070(DAT_004838c0,0,*(uint *)((int)param_1 + 0x3a2)); /* TODO: unknown offset 0x3a2 */
-  *(int *)((int)param_1 + 0x3a2) = 0; /* TODO: unknown offset 0x3a2 */
-  FUN_0040f070(DAT_004838c0,0,*(uint *)((int)param_1 + 0x3a6)); /* TODO: unknown offset 0x3a6 */
-  *(int *)((int)param_1 + 0x3a6) = 0; /* TODO: unknown offset 0x3a6 */
+  FUN_0040f070(DAT_004838c0,0,*(uint *)((int)param_1 + 0x39e)); /* TODO: offset 0x39E beyond GameBoard struct */
+  *(int *)((int)param_1 + 0x39e) = 0; /* TODO: offset 0x39E beyond GameBoard struct */
+  FUN_0040f070(DAT_004838c0,0,*(uint *)((int)param_1 + 0x3a2)); /* TODO: offset 0x3A2 beyond GameBoard struct */
+  *(int *)((int)param_1 + 0x3a2) = 0; /* TODO: offset 0x3A2 beyond GameBoard struct */
+  FUN_0040f070(DAT_004838c0,0,*(uint *)((int)param_1 + 0x3a6)); /* TODO: offset 0x3A6 beyond GameBoard struct */
+  *(int *)((int)param_1 + 0x3a6) = 0; /* TODO: offset 0x3A6 beyond GameBoard struct */
   FUN_0040f070(DAT_004838c0,0,(uint)((GameBoard *)param_1)->reward_data_b);
   ((GameBoard *)param_1)->reward_data_b = 0;
   FUN_0040f070(DAT_004838c0,0,(uint)((GameBoard *)param_1)->reward_data_c);
@@ -4756,7 +4755,7 @@ void __cdecl FUN_0042c740(short *param_1,char param_2)
         FUN_0044e600((int *)(param_1 + n1 * 0xd + 0x19));
       } while (s2 < *param_1);
     }
-    if (*(char *)((int)param_1 + 3) /* TODO: unknown offset 0x03 on param_1 */ != '\0') {
+    if (*(char *)((int)param_1 + 3) != '\0') { /* byte 3 of short* record - high byte of param_1[1] */
       FUN_00457980(*(short **)(param_1 + 0xf),param_2);
     }
     if ((char)param_1[2] != '\0') {
@@ -4779,8 +4778,8 @@ ushort * __cdecl FUN_0042c860(void *param_1,int param_2)
   pu1 = FUN_004607d0(param_1,param_2,NULL,NULL,0);
   if (pu1 != NULL) {
     FUN_0042c740((short *)pu1,'\0');
-    if (*(char *)((int)pu1 + 3) /* TODO: unknown offset 0x03 */ != '\0') {
-      *(char *)((int)pu1 + 3) /* TODO: unknown offset 0x03 */ = 0;
+    if (*(char *)((int)pu1 + 3) != '\0') { /* byte 3 of short* record - high byte of pu1[1] */
+      *(char *)((int)pu1 + 3) = 0; /* clear high byte of pu1[1] */
     }
     pu1[0xf] = 0;
     pu1[0x10] = 0;
@@ -5068,7 +5067,7 @@ int * __fastcall FUN_0042cbd0(int *param_1)
   param_1[0x5b] = 0;
   param_1[0x5a] = 0;
   ((GameBoard *)param_1)->is_timed = 1; /* param_1 + 0x5d = byte offset 0x174 */
-  *(char *)((int)param_1 + 0x196) = 0; /* TODO: unknown offset 0x196 */
+  ((GameBoard *)param_1)->field_196 = 0;
   pu3 = param_1 + 0x36;
   for (n2 = 0x1e; n2 != 0; n2 = n2 + -1) {
     *pu3 = 0;
@@ -5087,7 +5086,7 @@ int * __fastcall FUN_0042cbd0(int *param_1)
   ((GameBoard *)param_1)->reward_data_b = 0;
   ((GameBoard *)param_1)->reward_data_c = 0;
   ((GameBoard *)param_1)->sound_handle = 0;
-  *(int *)((int)param_1 + 0x192) = 0; /* TODO: GameBoard::_pad192 */
+  ((GameBoard *)param_1)->field_192 = 0;
   *_fs = _seh_prev;
   return param_1;
 }
@@ -5202,8 +5201,8 @@ void __fastcall FUN_0042d3c0(void *param_1)
 {
   DWORD dw1;
   
-  if (*(void ***)((int)param_1 + 0xd4) != (void **)0x0) { /* TODO: unknown offset 0xd4, within UIWidget::scroll_data */
-    ((void (*)(void))**(void ***)((int)param_1 + 0xd4))(); /* TODO: unknown offset 0xd4, obj->vtable[0] */
+  if (*(void ***)((int)param_1 + 0xd4) != (void **)0x0) { /* UIWidget::scroll_data[0x0A] - embedded object pointer */
+    ((void (*)(void))**(void ***)((int)param_1 + 0xd4))(); /* scroll_data embedded obj->vtable[0] */
   }
   FUN_0041cad0(param_1);
   dw1 = GetTickCount();
@@ -5480,7 +5479,7 @@ int __fastcall FUN_0042e020(void *param_1)
   _handler = &L_0042e125;
   *_fs = &_seh_prev;
   v14 = param_1;
-  if (*(int *)((int)param_1 + 0x16c) == 0) { /* TODO: unknown offset 0x16c on GameBoard */
+  if (((GameBoard *)param_1)->field_16c == 0) {
     v2c = &_tmp_31;
     u2 = 0x32;
     FUN_00401050(&_tmp_31,0x32);
@@ -5510,7 +5509,7 @@ int __fastcall FUN_0042e020(void *param_1)
     FUN_0042e12f();
   }
   *_fs = _seh_prev;
-  return *(int *)((int)v14 + 0x16c); /* TODO: unknown offset 0x16c on GameBoard */
+  return (int)((GameBoard *)v14)->field_16c;
 }
 
 
@@ -5528,9 +5527,9 @@ void FUN_0042e12f(void) { return; }
 
 void __fastcall FUN_0042e140(int param_1)
 {
-  if (*(int *)((int)param_1 + 0x16c) != 0) { /* TODO: GameBoard::_pad16c */
-    ((void (*)(void))**(void ***)((int)param_1 + 0x16c))(); /* obj at *(param_1+0x16c)->vtable[0] */
-    *(int *)((int)param_1 + 0x16c) = 0; /* TODO: GameBoard::_pad16c */
+  if (((GameBoard *)param_1)->field_16c != 0) {
+    ((void (*)(void))**(void ***)&((GameBoard *)param_1)->field_16c)(); /* obj->vtable[0] */
+    ((GameBoard *)param_1)->field_16c = 0;
   }
   FUN_00403aa0();
 }
@@ -5567,8 +5566,7 @@ uint __fastcall FUN_0042e190(void *param_1)
   
   if ((DAT_0048345c != 0) && (((GameBoard *)param_1)->is_timed != '\0')) {
     u6 = FUN_0040e580();
-    n7 = *(short *)((int)&((GameSession *)DAT_0048345c)->score_display + (short)u6 * 2) * 10 + ((GameBoard *)param_1)->level_data_offset
-    ;
+    n7 = (&((GameSession *)DAT_0048345c)->score_display)[(short)u6] * 10 + ((GameBoard *)param_1)->level_data_offset;
     s1 = *(short *)(n7 + -6);
     s2 = *(short *)(n7 + -10);
     s3 = *(short *)(n7 + -4);
@@ -5841,8 +5839,8 @@ void __fastcall FUN_0042ea90(void *param_1)
   
   FUN_004048d0(param_1);
   dw1 = GetTickCount();
-  *(short *)((int)param_1 + 0x19c) = 2; /* TODO: unknown offset 0x19c */
-  *(DWORD *)((int)param_1 + 0x1b8) = dw1; /* TODO: unknown offset 0x1b8 */
+  *(short *)((int)param_1 + 0x19c) = 2; /* TODO: offset 0x19C on GameBoard subclass - state machine value */
+  *(DWORD *)((int)param_1 + 0x1b8) = dw1; /* TODO: offset 0x1B8 on GameBoard subclass - tick timestamp */
   return;
 }
 
@@ -5977,15 +5975,15 @@ void __thiscall FUN_0042f180(void *this,short param_1)
   ushort *pu1;
   LPCVOID pv2;
   
-  *(short *)((intptr_t)this + 2) = param_1;
-  *(int *)((intptr_t)this + 4) = 0; /* small resource struct: offset 4 */
+  ((ResourceHandle *)this)->resource_id = param_1;
+  ((ResourceHandle *)this)->data_ptr = 0;
   pv2 = DAT_00483df4;
   if (DAT_004833cc != NULL) {
     pv2 = DAT_004833cc;
   }
   pu1 = FUN_0046f060(pv2,(int)param_1,5);
-  *(ushort **)((intptr_t)this + 4) = pu1;
-  *(char *)this = 1;
+  ((ResourceHandle *)this)->data_ptr = pu1;
+  ((ResourceHandle *)this)->loaded = 1;
 }
 
 
@@ -6029,20 +6027,20 @@ void __thiscall FUN_0042f350(void *this,char param_1)
   short u1;
   int n2;
   
-  n2 = *(int *)((intptr_t)this + 4);
+  n2 = (int)((ResourceHandle *)this)->data_ptr;
   if (n2 != 0) {
     if (param_1 == '\0') {
-      u1 = *(short *)((intptr_t)this + 2);
-      *(short *)((intptr_t)this + 2) = CONCAT11((char)u1,(char)((ushort)u1 >> 8));
-      *(int *)((intptr_t)this + 4) =
+      u1 = ((ResourceHandle *)this)->resource_id;
+      ((ResourceHandle *)this)->resource_id = CONCAT11((char)u1,(char)((ushort)u1 >> 8));
+      ((ResourceHandle *)this)->data_ptr = (void *)(
            CONCAT22(CONCAT11((char)n2,(char)((uint)n2 >> 8)),
-                    CONCAT11((char)((uint)n2 >> 0x10),(char)((uint)n2 >> 0x18))) + (intptr_t)this;
+                    CONCAT11((char)((uint)n2 >> 0x10),(char)((uint)n2 >> 0x18))) + (intptr_t)this);
     }
     else {
-      u1 = *(short *)((intptr_t)this + 2);
-      *(short *)((intptr_t)this + 2) = CONCAT11((char)u1,(char)((ushort)u1 >> 8));
-      n2 = *(int *)((intptr_t)this + 4) - (intptr_t)this;
-      *(uint *)((intptr_t)this + 4) =
+      u1 = ((ResourceHandle *)this)->resource_id;
+      ((ResourceHandle *)this)->resource_id = CONCAT11((char)u1,(char)((ushort)u1 >> 8));
+      n2 = (int)((ResourceHandle *)this)->data_ptr - (intptr_t)this;
+      ((ResourceHandle *)this)->data_ptr = (void *)
            CONCAT22(CONCAT11((char)n2,(char)((uint)n2 >> 8)),
                     CONCAT11((char)((uint)n2 >> 0x10),(char)((uint)n2 >> 0x18)));
     }
@@ -6055,9 +6053,9 @@ void __thiscall FUN_0042f350(void *this,char param_1)
 
 void __thiscall FUN_0042f3f0(void *this,int param_1,short param_2)
 {
-  *(short *)((intptr_t)this + 2) = param_2;
-  *(char *)this = 0;
-  *(int *)((intptr_t)this + 4) = param_1; /* small resource struct: offset 4 */
+  ((ResourceHandle *)this)->resource_id = param_2;
+  ((ResourceHandle *)this)->loaded = 0;
+  ((ResourceHandle *)this)->data_ptr = (void *)param_1;
   return;
 }
 

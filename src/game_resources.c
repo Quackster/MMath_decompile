@@ -875,12 +875,12 @@ int * __fastcall FUN_0045cf10(int *param_1)
   *_fs = &_seh_prev;
   FUN_0042cbd0(param_1);
   _seh_state = 0;
-  FUN_0040ab70(param_1 + 0x67);
-  *(short *)(param_1 + 0xb0) = 1;
-  *param_1 = &PTR_FUN_00477380;
-  param_1[0x66] = 0;
-  *(int *)((int)param_1 + 0x2c2) = 0; /* TODO: unknown offset 0x2c2 on unknown struct */
-  *(int *)((int)param_1 + 0x2c6) = 0; /* TODO: unknown offset 0x2c6 on unknown struct */
+  FUN_0040ab70(param_1 + 0x67);          /* byte offset 0x19C into unknown struct */
+  *(short *)(param_1 + 0xb0) = 1;       /* byte offset 0x2C0 into unknown struct */
+  *param_1 = &PTR_FUN_00477380;         /* vtable */
+  param_1[0x66] = 0;                    /* byte offset 0x198 into unknown struct */
+  *(int *)((int)param_1 + 0x2c2) = 0;   /* TODO: unknown offset 0x2C2 on unknown struct */
+  *(int *)((int)param_1 + 0x2c6) = 0;   /* TODO: unknown offset 0x2C6 on unknown struct */
   *_fs = _seh_prev;
   return param_1;
 }
@@ -926,7 +926,7 @@ void FUN_0045d01a(void)
 {
   int _ebp;
   
-  FUN_0040ac40((int *)(*(int *)(_ebp + -0x10) + 0x19c));
+  FUN_0040ac40((int *)(*(int *)(_ebp + -0x10) + 0x19c)); /* SEH helper: outer param_1 + byte offset 0x19C */
 }
 
 
@@ -950,7 +950,7 @@ void __fastcall FUN_0045d040(int *param_1)
 
   FUN_0041d780(((UIWidget *)DAT_004897c0)->sub_widgets_a[1],param_1);
   FUN_0041dd40(((UIWidget *)DAT_004897c0)->sub_widgets_a[1]);
-  *(int *)(((UIWidget *)DAT_004897c0)->sub_widgets_a[1] + 0x16) = 3;
+  ((UIWidget *)((UIWidget *)DAT_004897c0)->sub_widgets_a[1])->type_or_mode = 3;
   if (*(void **)&((UIWidget *)DAT_004897c0)->field_44 != NULL) {
     n2 = 0x45d085;
     FUN_0041d780(*(void **)&((UIWidget *)DAT_004897c0)->field_44,((UIWidget *)DAT_004897c0)->sub_widgets_a[1]);
@@ -1030,17 +1030,18 @@ void __cdecl FUN_0045d460(uint param_1,char param_2)
 
 void __cdecl FUN_0045d510(uint param_1,char param_2)
 {
+  ResourceRecord *rec;
   ushort *pu1;
   int n2;
   short s3;
-  
-  pu1 = FUN_004608a0(DAT_004838c0,(byte)param_1);
-  if (pu1 != NULL) {
-    if (*(int *)(pu1 + 0xb) == 0x74726170) {
+
+  rec = (ResourceRecord *)FUN_004608a0(DAT_004838c0,(byte)param_1);
+  if (rec != NULL) {
+    if (rec->field_16 == 0x74726170) { /* resource tag == "part" */
       FUN_0045d460(param_1,param_2);
       return;
     }
-    if (*(int *)(pu1 + 0xb) != 0x74736c63) {
+    if (rec->field_16 != 0x74736c63) { /* resource tag != "cls\0" */
       FUN_0045d360(param_1,param_2);
       return;
     }
@@ -1130,36 +1131,35 @@ void FUN_0045d6a0(void) { return; }
 
 /* FUN_0045d6b0 @ 0x0045d6b0 */
 
-void __cdecl FUN_0045d6b0(short *param_1)
+void __cdecl FUN_0045d6b0(ResourceRecord *rec)
 {
-  int *pu1;
   int n2;
   short s3;
 
   s3 = 0;
-  if (param_1 != NULL) {
-    *param_1 = 0;
-    param_1[1] = 0xff;
-    *(int *)(param_1 + 7) = 0;
-    param_1[2] = 0xff;
-    *(int *)(param_1 + 9) = 0;
-    param_1[6] = 0;
-    *(int *)(param_1 + 0xb) = 0;
-    param_1[0x11] = 0;
-    *(int *)(param_1 + 0xd) = 0;
-    *(int *)(param_1 + 0xf) = 0;
-    param_1[5] = 1;
+  if (rec != NULL) {
+    rec->entry_count = 0;
+    rec->field_02 = 0xff;
+    rec->field_0e = 0;
+    rec->field_04 = 0xff;
+    rec->field_12 = 0;
+    rec->mode_flags = 0;
+    rec->field_16 = 0;
+    rec->field_22 = 0;
+    rec->field_1a = 0;
+    rec->data_block_ptr = 0;
+    rec->active_flag = 1;
     do {
       n2 = (int)s3;
       s3 = s3 + 1;
-      pu1 = (int *)(param_1 + n2 * 7 + 0x12);
-      *pu1 = 0;
-      pu1[1] = 0;
-      pu1[2] = 0;
-      *(short *)(pu1 + 3) = 0;
+      rec->entries[n2].field_00 = 0;
+      rec->entries[n2].field_02 = 0;
+      *(int *)&rec->entries[n2].field_04 = 0;
+      *(int *)&rec->entries[n2].field_08 = 0;
+      rec->entries[n2].field_0c = 0;
     } while (s3 < 6);
-    param_1[3] = 0;
-    param_1[4] = 0;
+    rec->field_06 = 0;
+    rec->field_08 = 0;
   }
   return;
 }
@@ -1169,19 +1169,19 @@ void __cdecl FUN_0045d6b0(short *param_1)
 
 /* NOTE: Removing unreachable block (ram,0x0045d746) */
 
-short __cdecl FUN_0045d720(int param_1,ushort param_2)
+short __cdecl FUN_0045d720(ResourceRecord *rec,ushort param_2)
 {
-  if (param_1 != 0) {
-    if (*(ushort *)(param_1 + 0xc) != param_2) {
-      *(short *)(param_1 + 0xc) = 4;
+  if (rec != NULL) {
+    if ((ushort)rec->mode_flags != param_2) {
+      rec->mode_flags = 4;
       if ((param_2 & 0xff) < 5) {
-        *(ushort *)(param_1 + 0xc) = param_2 & 0xff;
+        *(ushort *)&rec->mode_flags = param_2 & 0xff;
       }
-      if ((0 < (short)*(ushort *)(param_1 + 0xc)) && ((param_2 & 0x4000) != 0)) {
-        *(ushort *)(param_1 + 0xc) = *(ushort *)(param_1 + 0xc) | 0x4000;
+      if ((0 < rec->mode_flags) && ((param_2 & 0x4000) != 0)) {
+        *(ushort *)&rec->mode_flags = (ushort)rec->mode_flags | 0x4000;
       }
     }
-    return *(short *)(param_1 + 0xc);
+    return rec->mode_flags;
   }
   return 0xffff;
 }
@@ -1269,51 +1269,51 @@ L_0045d8bd:
 
 /* FUN_0045d8e0 @ 0x0045d8e0 */
 
-uint __cdecl FUN_0045d8e0(int param_1)
+uint __cdecl FUN_0045d8e0(ResourceRecord *rec)
 {
-  int n1;
+  ResourceDataBlock *blk;
   int _eax;
   short u3;
   int n2;
-  
+
   u3 = (short)((uint)_eax >> 0x10);
-  if (param_1 == 0) {
+  if (rec == NULL) {
     return CONCAT22(u3,0xffff);
   }
-  n1 = *(int *)(param_1 + 0x1e);
-  if (n1 == 0) {
+  blk = (ResourceDataBlock *)rec->data_block_ptr;
+  if (blk == NULL) {
     return CONCAT22(u3,0xfffe);
   }
-  if (*(int *)(n1 + 0x10) == 0) {
+  if (blk->byte_data_ptr == NULL) {
     return CONCAT22(u3,0xfffd);
   }
-  n2 = (*(int *)(param_1 + 0x16) - *(int *)(param_1 + 0x1a)) / 0x73e;
-  if (*(int *)(n1 + 0x14) <= n2) {
-    n2 = *(int *)(n1 + 0x14) + -1;
+  n2 = (rec->field_16 - rec->field_1a) / 0x73e;
+  if (blk->data_limit <= n2) {
+    n2 = blk->data_limit + -1;
   }
-  return CONCAT22((short)((uint)n2 >> 0x10),(ushort)*(byte *)(*(int *)(n1 + 0x10) + n2));
+  return CONCAT22((short)((uint)n2 >> 0x10),(ushort)*((byte *)blk->byte_data_ptr + n2));
 }
 
 
 /* FUN_0045d930 @ 0x0045d930 */
 
-bool __cdecl FUN_0045d930(int param_1)
+bool __cdecl FUN_0045d930(ResourceRecord *rec)
 {
-  if (param_1 == 0) {
+  if (rec == NULL) {
     return false;
   }
-  return *(short *)(param_1 + 10) == 0;
+  return rec->active_flag == 0;
 }
 
 
 /* FUN_0045d950 @ 0x0045d950 */
 
-uint __cdecl FUN_0045d950(int param_1)
+uint __cdecl FUN_0045d950(ResourceRecord *rec)
 {
-  if (param_1 == 0) {
+  if (rec == NULL) {
     return 0xffff;
   }
-  return ((*(ushort *)(param_1 + 0xc) & 0x2000) == 0) - 1 & 0xfffffffb;
+  return (((ushort)rec->mode_flags & 0x2000) == 0) - 1 & 0xfffffffb;
 }
 
 
@@ -1743,11 +1743,11 @@ FUN_0045e430(SoundPlayer *this,short param_1,short param_2,short param_3,int par
   this->sequence_data[56] = 1;
   FUN_0040e270(DAT_004897c0,0xe);
   n1 = DAT_004896b0;
-  *(char *)(DAT_004896b0 + 0x28) = 1;
+  ((TimerState *)DAT_004896b0)->flag_28 = 1;
   dw2 = GetTickCount();
-  *(DWORD *)(n1 + 4) = dw2;
-  *(DWORD *)(n1 + 0xc) = dw2;
-  *(char *)(DAT_004896b0 + 0x29) = 1;
+  ((TimerState *)n1)->tick_a = dw2;
+  ((TimerState *)n1)->tick_b = dw2;
+  ((TimerState *)DAT_004896b0)->flag_29 = 1;
   *_fs = _seh_prev;
   return this;
 }
@@ -1787,13 +1787,13 @@ void __fastcall FUN_0045e510(GameWidget *param_1)
   }
   n1 = DAT_004896b0;
   if (*(char *)&param_1->scrollbar_ref != '\0') {
-    *(char *)(DAT_004896b0 + 0x28) = 0;
+    ((TimerState *)DAT_004896b0)->flag_28 = 0;
     dw2 = GetTickCount();
-    *(DWORD *)(n1 + 4) = dw2;
-    *(DWORD *)(n1 + 0xc) = dw2;
+    ((TimerState *)n1)->tick_a = dw2;
+    ((TimerState *)n1)->tick_b = dw2;
   }
   _seh_state = 0xffffffff;
-  *(char *)(DAT_004896b0 + 0x29) = 0;
+  ((TimerState *)DAT_004896b0)->flag_29 = 0;
   FUN_0045e5a8();
   /* SEH epilog */
   *_fs = _seh_prev;
@@ -1840,13 +1840,13 @@ void __fastcall FUN_0045e970(GameWidget *param_1)
   DWORD dw2;
 
   n1 = ((UIWidget *)DAT_004897c0)->sub_widgets_a[3];
-  *(char *)(n1 + 0x174) = 1;
-  FUN_0041dad0(*(void **)(n1 + 0x160),1,'\0');
+  ((GameBoard *)n1)->is_timed = 1;                       /* GameBoard +0x174 */
+  FUN_0041dad0(((GameBoard *)n1)->reward_obj_d,1,'\0');   /* GameBoard +0x160 */
   n1 = DAT_004896b0;
-  *(char *)(DAT_004896b0 + 0x27) = 0;
+  ((TimerState *)DAT_004896b0)->flag_27 = 0;
   dw2 = GetTickCount();
-  *(DWORD *)(n1 + 4) = dw2;
-  *(DWORD *)(n1 + 0xc) = dw2;
+  ((TimerState *)n1)->tick_a = dw2;
+  ((TimerState *)n1)->tick_b = dw2;
   if (param_1->object_ptr != NULL) {
     ((void (*)(void))**(void ***)&param_1->object_ptr)();
     param_1->object_ptr = 0;
@@ -2288,34 +2288,34 @@ void __fastcall FUN_0045fbe0(GameWidget *param_1)
   s4 = 0;
   _seh_state = 0;
   do {
-    /* array access at 0x126 + s4*4: object_ptr, scrollbar_ref, field_12e area, field_130 area, cleanup_fn_ptr */
-    pu1 = *(int **)((int)param_1 + s4 * 4 + 0x126); /* TODO: stride-4 slot array at GameWidget+0x126 */
+    /* stride-4 ptr array at +0x126: [object_ptr, scrollbar_ref, field_12e, field_130+2, cleanup_fn_ptr] */
+    pu1 = *(int **)((char *)&param_1->object_ptr + s4 * 4);
     if (pu1 != NULL) {
-      ((void (*)(void))((void **)*pu1)[0])();
+      ((void (*)(void))((void **)*pu1)[0])();  /* vtable[0] call */
     }
-    /* TODO: stride-4 slot array at GameWidget+0x13A: slot_ptr_0, _pad13e area, name_data_ptr, _pad146 area, group_data_a */
-    pu1 = *(int **)((int)param_1 + s4 * 4 + 0x13a); /* TODO: stride-4 slot array at GameWidget+0x13A */
+    /* stride-4 ptr array at +0x13A: [slot_ptr_0, _pad13e, name_data_ptr, _pad146, groups_a[0].data_ptr] */
+    pu1 = *(int **)((char *)&param_1->slot_ptr_0 + s4 * 4);
     if (pu1 != NULL) {
-      ((void (*)(void))((void **)*pu1)[0])();
+      ((void (*)(void))((void **)*pu1)[0])();  /* vtable[0] call */
     }
     s4 = s4 + 1;
   } while (s4 < 5);
-  /* 0x152 falls in _pad14e+4 area */
-  if (*(int **)((int)param_1 + 0x152) != NULL) { /* TODO: offset 0x152 on GameWidget (_pad14e area) */
-    ((void (*)(void))**(void ***)((int)param_1 + 0x152))(); /* TODO: obj at param_1+0x152->vtable[0], _pad14e area */
-    *(int *)((int)param_1 + 0x152) = 0; /* TODO: unknown offset 0x152 on GameWidget (_pad14e area) */
+  /* 0x152 = groups_a[0]._pad04 + 4 (byte +0x08 within GroupEntry) */
+  if (*(int **)((char *)&param_1->groups_a[0] + 0x08) != NULL) { /* TODO: hidden ptr field in GroupEntry._pad04 */
+    ((void (*)(void))**(void ***)((char *)&param_1->groups_a[0] + 0x08))(); /* vtable[0] call */
+    *(int *)((char *)&param_1->groups_a[0] + 0x08) = 0;
   }
-  /* TODO: offset 0x14E = GameWidget._pad14e */
-  if (*(int **)((int)param_1 + 0x14e) != NULL) { /* TODO: offset 0x14E, GameWidget._pad14e area */
-    ((void (*)(void))**(void ***)((int)param_1 + 0x14e))(); /* TODO: obj at param_1+0x14E->vtable[0], _pad14e area */
+  /* 0x14E = groups_a[0]._pad04 (byte +0x04 within GroupEntry) */
+  if (*(int **)((char *)&param_1->groups_a[0] + 0x04) != NULL) { /* TODO: hidden ptr field in GroupEntry._pad04 */
+    ((void (*)(void))**(void ***)((char *)&param_1->groups_a[0] + 0x04))(); /* vtable[0] call */
   }
   n2 = DAT_004896b0;
-  *(char *)(DAT_004896b0 + 0x28) = 0;
+  ((TimerState *)DAT_004896b0)->flag_28 = 0;
   dw3 = GetTickCount();
-  *(DWORD *)(n2 + 4) = dw3;
-  *(DWORD *)(n2 + 0xc) = dw3;
+  ((TimerState *)n2)->tick_a = dw3;
+  ((TimerState *)n2)->tick_b = dw3;
   _seh_state = 0xffffffff;
-  *(char *)(DAT_004896b0 + 0x2c) = 0;
+  ((TimerState *)DAT_004896b0)->flag_2c = 0;
   FUN_0045fcb1();
   /* SEH epilog */
   *_fs = _seh_prev;
@@ -2347,7 +2347,10 @@ void FUN_0045fe99(void)
 
 /* FUN_0045feb0 @ 0x0045feb0 */
 
-void __cdecl FUN_0045feb0(int param_1,char param_2)
+/* Byte-swaps (endian conversion) for binary resource data.
+ * Header shorts at +0x08..+0x10, then sub-entries at +0x1C with stride 0x0E.
+ */
+void __cdecl FUN_0045feb0(char *data,char param_2)
 {
   int n1;
   short u2;
@@ -2356,29 +2359,33 @@ void __cdecl FUN_0045feb0(int param_1,char param_2)
   int *pu5;
   short s6;
 
-  u2 = *(short *)(param_1 + 8);
-  *(uint *)(param_1 + 8) =
+  /* swap header short pair at +0x08 and +0x0A */
+  u2 = *(short *)(data + 0x08);
+  *(uint *)(data + 0x08) =
        CONCAT22(CONCAT11((char)u2,(char)((ushort)u2 >> 8)),
-                CONCAT11((char)*(short *)(param_1 + 10),
-                         (char)((ushort)*(short *)(param_1 + 10) >> 8)));
+                CONCAT11((char)*(short *)(data + 0x0A),
+                         (char)((ushort)*(short *)(data + 0x0A) >> 8)));
   if (param_2 == '\0') {
-    u2 = *(short *)(param_1 + 0xc);
-    *(short *)(param_1 + 0xc) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
-    u2 = *(short *)(param_1 + 0xe);
-    *(short *)(param_1 + 0xe) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
-    u2 = *(short *)(param_1 + 0x10);
-    *(short *)(param_1 + 0x10) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
+    /* swap header shorts at +0x0C, +0x0E, +0x10 */
+    u2 = *(short *)(data + 0x0C);
+    *(short *)(data + 0x0C) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
+    u2 = *(short *)(data + 0x0E);
+    *(short *)(data + 0x0E) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
+    u2 = *(short *)(data + 0x10);
+    *(short *)(data + 0x10) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
   }
   s6 = 0;
-  u3 = *(ushort *)(param_1 + 0xe);
+  u3 = *(ushort *)(data + 0x0E);  /* sub-entry count */
   if (u3 != 0) {
     do {
-      pu5 = (int *)(param_1 + 0x1c + s6 * 0xe);
-      n1 = param_1 + s6 * 0xe;
+      /* sub-entry at +0x1C + s6 * 0x0E: swap first 4 bytes (two shorts) */
+      pu5 = (int *)(data + 0x1C + s6 * 0x0E);
+      n1 = (int)data + s6 * 0x0E;
       *pu5 = CONCAT22(CONCAT11((char)*(short *)pu5,
                                   (char)((ushort)*(short *)pu5 >> 8)),
-                         CONCAT11((char)*(short *)((int)pu5 + 2), /* TODO: pu5+2 sub-struct byte access */
-                                  (char)((ushort)*(short *)((int)pu5 + 2) >> 8))); /* TODO: pu5+2 sub-struct byte access */
+                         CONCAT11((char)*(short *)((char *)pu5 + 2),
+                                  (char)((ushort)*(short *)((char *)pu5 + 2) >> 8)));
+      /* sub-entry bytes at +0x20 and +0x22 relative to data+s6*0x0E */
       pu5 = (int *)(n1 + 0x20);
       u2 = *(short *)pu5;
       u4 = *(short *)(n1 + 0x22);
@@ -2388,12 +2395,13 @@ void __cdecl FUN_0045feb0(int param_1,char param_2)
     } while ((int)s6 < (int)(uint)u3);
   }
   if (param_2 != '\0') {
-    u2 = *(short *)(param_1 + 0xc);
-    *(short *)(param_1 + 0xc) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
-    u2 = *(short *)(param_1 + 0xe);
-    *(short *)(param_1 + 0xe) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
-    u2 = *(short *)(param_1 + 0x10);
-    *(short *)(param_1 + 0x10) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
+    /* swap header shorts at +0x0C, +0x0E, +0x10 */
+    u2 = *(short *)(data + 0x0C);
+    *(short *)(data + 0x0C) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
+    u2 = *(short *)(data + 0x0E);
+    *(short *)(data + 0x0E) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
+    u2 = *(short *)(data + 0x10);
+    *(short *)(data + 0x10) = CONCAT11((char)u2,(char)((ushort)u2 >> 8));
   }
   return;
 }
@@ -2409,14 +2417,14 @@ int * __fastcall FUN_0045ffc0(int *param_1)
   param_1[2] = 0;
   param_1[3] = 0;
   *(char *)(param_1 + 9) = 0;
-  *(int *)((int)param_1 + 0x2a) = 0; /* TODO: unknown offset 0x2a */
-  *(int *)((int)param_1 + 0x26) = 0; /* TODO: unknown offset 0x26 */
+  ((UIElement *)param_1)->pos_y = 0;  /* UIElement +0x2A */
+  ((UIElement *)param_1)->pos_x = 0;  /* UIElement +0x26 */
   param_1[8] = 0;
   param_1[4] = 0;
   param_1[6] = 0;
   param_1[5] = 0;
   param_1[1] = 0;
-  *(int *)((int)param_1 + 0x3a) = 0; /* TODO: unknown offset 0x3a */
+  ((UIElement *)param_1)->parent_ptr = 0;  /* UIElement +0x3A */
   return param_1;
 }
 

@@ -283,6 +283,21 @@ typedef struct PlayerSlot {
 /* static_assert(sizeof(PlayerSlot) == 0x12, "PlayerSlot size mismatch"); */
 
 /* ========================================================================
+ * BoardSlotEntry - Sub-struct used by GameBoard subclass (stride = 0x0E = 14 bytes)
+ *
+ * Alternative layout of the players[] region used by board game logic.
+ * Count stored at GameBoard +0x1D4, array starts at +0x1D8.
+ * ======================================================================== */
+typedef struct BoardSlotEntry {
+    unsigned char  slot_type;       /* +0x00  type/color index */
+    unsigned char  _pad01;          /* +0x01 */
+    int            resource_id;     /* +0x02  resource/sound index */
+    int            pos_x;           /* +0x06  x position */
+    int            pos_y;           /* +0x0A  y position */
+} BoardSlotEntry;
+/* static_assert(sizeof(BoardSlotEntry) == 0x0E, "BoardSlotEntry size mismatch"); */
+
+/* ========================================================================
  * GameBoard - Board state with player data (~0x280 bytes)
  *
  * event_type: compared against 0x101, 0x201, etc.
@@ -293,7 +308,7 @@ typedef struct GameBoard {
     int            field_14;        /* +0x14 */
     unsigned char  _pad18[0x0A];    /* +0x18 */
     int            is_match;        /* +0x22 */
-    unsigned char  _pad26[4];       /* +0x26 */
+    int            field_26;        /* +0x26  board dimension/size */
     int            event_type;      /* +0x2A */
     int            board_mode;      /* +0x2E */
     unsigned char  _pad32[0x11E];   /* +0x32  (0x150 - 0x32 = 0x11E) */
@@ -304,7 +319,7 @@ typedef struct GameBoard {
     void          *reward_obj_d;    /* +0x160 */
     void          *reward_obj_e;    /* +0x164 */
     void          *reward_obj_f;    /* +0x168 */
-    unsigned char  _pad16c[4];      /* +0x16C */
+    void          *field_16c;       /* +0x16C  object pointer with vtable */
     int            level_data_offset; /* +0x170 */
     char           is_timed;        /* +0x174 */
     unsigned char  _pad175;         /* +0x175 */
@@ -317,12 +332,30 @@ typedef struct GameBoard {
     void          *reward_data_b;   /* +0x186 */
     void          *reward_data_c;   /* +0x18A */
     int            sound_handle;    /* +0x18E */
-    unsigned char  _pad192[0x28];   /* +0x192 */
+    int            field_192;       /* +0x192 */
+    unsigned char  field_196;       /* +0x196 */
+    unsigned char  _pad197;         /* +0x197 */
+    char           field_198;       /* +0x198  init flag */
+    char           field_199;       /* +0x199 */
+    int            slot_handles[5]; /* +0x19A  5 slot handle ints (0x19A-0x1AD) */
+    int            field_1ae;       /* +0x1AE  pointer/object */
+    int            field_1b2;       /* +0x1B2  pointer/object with vtable */
+    short          field_1b6;       /* +0x1B6 */
+    char           field_1b8;       /* +0x1B8 */
+    char           field_1b9;       /* +0x1B9 */
     unsigned char  needs_refresh;   /* +0x1BA */
     unsigned char  _pad1bb;         /* +0x1BB */
     short          refresh_counter; /* +0x1BC */
-    unsigned char  _pad1be[0x12];   /* +0x1BE */
-    PlayerSlot     players[4];      /* +0x1D0  stride 0x12, 4 players to 0x217 */
+    int            field_1be;       /* +0x1BE */
+    unsigned char  _pad1c2[6];      /* +0x1C2 */
+    int            field_1c8;       /* +0x1C8 */
+    unsigned char  _pad1cc[4];      /* +0x1CC */
+    PlayerSlot     players[4];      /* +0x1D0  stride 0x12, 4 players to 0x217
+                                     * NOTE: Some subclasses use an alternative layout in this region:
+                                     *   +0x1D4: int board_slot_count
+                                     *   +0x1D8: BoardSlotEntry board_slots[N]  (stride 0x0E)
+                                     * Access via: ((BoardSlotEntry *)((int)board + 0x1D8))[i]
+                                     */
     unsigned char  _pad218[0x12];   /* +0x218  (0x22A - 0x218 = 0x12) */
     int            match_player;    /* +0x22A */
     unsigned char  _pad22e[6];      /* +0x22E */
@@ -331,7 +364,8 @@ typedef struct GameBoard {
     unsigned char  _pad23c[0x10];   /* +0x23C */
     int            target_x;        /* +0x24C */
     int            target_y;        /* +0x250 */
-    unsigned char  _pad254[0x18];   /* +0x254 */
+    short          field_254;       /* +0x254  timer/state field */
+    unsigned char  _pad256[0x16];   /* +0x256 */
     short          board_layer;     /* +0x26C */
     short          board_note;      /* +0x26E */
     short          field_270;       /* +0x270 */
@@ -595,6 +629,103 @@ typedef struct GameSession {
     char           field_f4;        /* +0xF4 */
     char           field_f5;        /* +0xF5 */
 } GameSession;
+
+/* ========================================================================
+ * ResourceRecord - Binary resource/sprite record (~variable size)
+ *
+ * Used by resource loading functions (FUN_0045d6b0, FUN_0045d720,
+ * FUN_0045d8e0, FUN_0045d930, FUN_0045d950, FUN_0045feb0).
+ * Layout reverse-engineered from initialization and access patterns.
+ * The record has a header followed by sub-entries at stride 0x0E.
+ * ======================================================================== */
+typedef struct ResourceSubEntry {
+    short          field_00;        /* +0x00 */
+    short          field_02;        /* +0x02 */
+    short          field_04;        /* +0x04 */
+    short          field_06;        /* +0x06 */
+    short          field_08;        /* +0x08 */
+    short          field_0a;        /* +0x0A */
+    short          field_0c;        /* +0x0C */
+} ResourceSubEntry;
+/* static_assert(sizeof(ResourceSubEntry) == 0x0E, "ResourceSubEntry size mismatch"); */
+
+typedef struct ResourceDataBlock {
+    unsigned char  _base[0x10];     /* +0x00 */
+    void          *byte_data_ptr;   /* +0x10  pointer to byte data array */
+    int            data_limit;      /* +0x14  max valid index */
+} ResourceDataBlock;
+
+typedef struct ResourceRecord {
+    short          entry_count;     /* +0x00  number of entries */
+    short          field_02;        /* +0x02  init 0xFF */
+    short          field_04;        /* +0x04  init 0xFF */
+    short          field_06;        /* +0x06 */
+    short          field_08;        /* +0x08 */
+    short          active_flag;     /* +0x0A  init 1, 0=inactive */
+    short          mode_flags;      /* +0x0C  mode/type with bit flags (0x2000, 0x4000) */
+    int            field_0e;        /* +0x0E */
+    int            field_12;        /* +0x12 */
+    int            field_16;        /* +0x16  computation operand */
+    int            field_1a;        /* +0x1A  computation operand */
+    int            data_block_ptr;  /* +0x1E  pointer to ResourceDataBlock */
+    short          field_22;        /* +0x22 */
+    ResourceSubEntry entries[6];    /* +0x24  sub-entries (stride 0x0E, 6 max) */
+} ResourceRecord;
+/* static_assert(sizeof(ResourceRecord) == 0x76, "ResourceRecord size mismatch"); */
+
+/* ========================================================================
+ * TimerState - Game timer/input state (pointed to by DAT_004896b0)
+ *
+ * Used extensively in game_resources.c and game_ui.c.
+ * Offsets reverse-engineered from access patterns.
+ * ======================================================================== */
+typedef struct TimerState {
+    unsigned char  _base[4];        /* +0x00 */
+    unsigned int   tick_a;          /* +0x04  GetTickCount timestamp */
+    unsigned char  _pad08[4];       /* +0x08 */
+    unsigned int   tick_b;          /* +0x0C  GetTickCount timestamp */
+    unsigned char  _pad10[0x17];    /* +0x10 */
+    char           flag_27;         /* +0x27  animation/playback flag */
+    char           flag_28;         /* +0x28  active flag */
+    char           flag_29;         /* +0x29  secondary flag */
+    unsigned char  _pad2a[2];       /* +0x2A */
+    char           flag_2c;         /* +0x2C */
+    unsigned char  _pad2d[3];       /* +0x2D */
+    short          state_30;        /* +0x30  state machine value */
+    unsigned char  _pad32[0x0C];    /* +0x32 */
+    char           field_3e;        /* +0x3E */
+    unsigned char  _pad3f;          /* +0x3F */
+    void          *active_ptr;      /* +0x40  active object pointer */
+} TimerState;
+
+/* ========================================================================
+ * ResourceHandle - Small resource reference (~8 bytes)
+ *
+ * Used by FUN_0042f180/FUN_0042f1c0/FUN_0042f350/FUN_0042f3f0.
+ * Holds a loaded flag, resource ID, and pointer to loaded data.
+ * ======================================================================== */
+typedef struct ResourceHandle {
+    char           loaded;          /* +0x00  1=loaded, 0=not loaded */
+    unsigned char  _pad01;          /* +0x01 */
+    short          resource_id;     /* +0x02  resource identifier */
+    void          *data_ptr;        /* +0x04  pointer to loaded resource data */
+} ResourceHandle;
+/* static_assert(sizeof(ResourceHandle) == 0x08, "ResourceHandle size mismatch"); */
+
+/* ========================================================================
+ * PoolCacheEntry - Memory pool cache entry (stride = 0x0E = 14 bytes)
+ *
+ * Global array at DAT_00486240, 256 entries.
+ * Used by FUN_00427030 (alloc), FUN_00427220 (free), FUN_00427290 (cleanup).
+ * ======================================================================== */
+typedef struct PoolCacheEntry {
+    void          *data_ptr;        /* +0x00  allocated data pointer */
+    int            alloc_size;      /* +0x04  allocated size */
+    int            used_size;       /* +0x08  currently used size */
+    char           in_use;          /* +0x0C  1=in-use, 0=free */
+    unsigned char  _pad0d;          /* +0x0D */
+} PoolCacheEntry;
+/* static_assert(sizeof(PoolCacheEntry) == 0x0E, "PoolCacheEntry size mismatch"); */
 
 #pragma pack(pop)
 
