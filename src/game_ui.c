@@ -2505,21 +2505,22 @@ float10 __thiscall FUN_00432b90(int param_1,double param_2,double param_3)
 
 /* Function: FUN_00432bb0 @ 0x00432bb0 */
 
-void __thiscall FUN_00432bb0(GameWidget *this,double param_1)
+void __thiscall FUN_00432bb0(void *this,double param_1)
 
 {
+  double *pthis = (double *)this;
   double dVar1;
   float10 fVar2;
   float10 fVar3;
-  
+
   fVar2 = (float10)fcos((float10)param_1);
   fVar3 = (float10)fsin((float10)param_1);
-  dVar1 = this->field_04;
-  this->field_04 =
-       (double)(fVar2 * (float10)this->field_04 -
-               (float10)this->parent_widget * fVar3);
-  this->parent_widget =
-       (double)((float10)this->parent_widget * fVar2 + (float10)dVar1 * fVar3);
+  dVar1 = *(double *)((char *)this + 0x04);
+  *(double *)((char *)this + 0x04) =
+       (double)(fVar2 * (float10)*(double *)((char *)this + 0x04) -
+               (float10)*(double *)((char *)this + 0x0C) * fVar3);
+  *(double *)((char *)this + 0x0C) =
+       (double)((float10)*(double *)((char *)this + 0x0C) * fVar2 + (float10)dVar1 * fVar3);
   return;
 }
 

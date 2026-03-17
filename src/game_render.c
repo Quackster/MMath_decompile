@@ -7734,34 +7734,43 @@ void __fastcall FUN_0042f7f0(int param_1)
 
 
 
-/* Function: FUN_0042f800 @ 0x0042f800 */
+/* Function: FUN_0042f800 @ 0x0042f800
+ * Struct types: GameScreen (this)
+ * Blits draw_context to screen DC at the given rect.
+ */
 
-void __thiscall FUN_0042f800(void *this,short *param_1)
+void __thiscall FUN_0042f800(GameScreen *this,short *param_1)
 
 {
-  FUN_004247b0((void *)((intptr_t)this + 0x2a),*(HDC *)((intptr_t)this + 0x486),param_1);
+  FUN_004247b0(&this->draw_context,this->hdc_screen,param_1);
   return;
 }
 
 
 
-/* Function: FUN_0042f820 @ 0x0042f820 */
+/* Function: FUN_0042f820 @ 0x0042f820
+ * Struct types: GameScreen (this)
+ * Sets active DC to the back buffer DC.
+ */
 
-void __fastcall FUN_0042f820(int param_1)
+void __fastcall FUN_0042f820(GameScreen *this)
 
 {
-  *(undefined4 *)(param_1 + 0x47e) = *(undefined4 *)(param_1 + 0x482);
+  this->hdc_active = this->hdc_buffer;
   return;
 }
 
 
 
-/* Function: FUN_0042f830 @ 0x0042f830 */
+/* Function: FUN_0042f830 @ 0x0042f830
+ * Struct types: GameScreen (this)
+ * Sets active DC to the screen DC.
+ */
 
-void __fastcall FUN_0042f830(int param_1)
+void __fastcall FUN_0042f830(GameScreen *this)
 
 {
-  *(undefined4 *)(param_1 + 0x47e) = *(undefined4 *)(param_1 + 0x486);
+  this->hdc_active = this->hdc_screen;
   return;
 }
 
@@ -7847,31 +7856,37 @@ void __thiscall FUN_0042fa50(void *this,short *param_1,int param_2)
 
 
 
-/* Function: FUN_0042fc70 @ 0x0042fc70 */
+/* Function: FUN_0042fc70 @ 0x0042fc70
+ * Struct types: GameScreen (this)
+ * Destroys the GameScreen — releases screen DC, destroys window.
+ */
 
-void __fastcall FUN_0042fc70(int param_1)
+void __fastcall FUN_0042fc70(GameScreen *this)
 
 {
-  FUN_0042f7f0(param_1);
-  if (*(HDC *)(param_1 + 0x486) != (HDC)0x0) {
-    ReleaseDC(*(HWND *)(param_1 + 0xe),*(HDC *)(param_1 + 0x486));
-    *(undefined4 *)(param_1 + 0x486) = 0;
+  FUN_0042f7f0(this);
+  if (this->hdc_screen != NULL) {
+    ReleaseDC(this->hwnd,this->hdc_screen);
+    this->hdc_screen = NULL;
   }
-  if (*(HWND *)(param_1 + 0xe) != (HWND)0x0) {
-    DestroyWindow(*(HWND *)(param_1 + 0xe));
-    *(undefined4 *)(param_1 + 0xe) = 0;
+  if (this->hwnd != NULL) {
+    DestroyWindow(this->hwnd);
+    this->hwnd = NULL;
   }
   return;
 }
 
 
 
-/* Function: FUN_0042fcb0 @ 0x0042fcb0 */
+/* Function: FUN_0042fcb0 @ 0x0042fcb0
+ * Struct types: GameScreen (this)
+ * Updates draw_context visibility, then refreshes screen.
+ */
 
-void __thiscall FUN_0042fcb0(void *this,undefined1 param_1)
+void __thiscall FUN_0042fcb0(GameScreen *this,undefined1 param_1)
 
 {
-  FUN_0041b150((void *)((intptr_t)this + 0x2a),param_1);
+  FUN_0041b150(&this->draw_context,param_1);
   FUN_00430690(this);
   return;
 }

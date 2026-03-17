@@ -74,15 +74,18 @@ void __fastcall FUN_0043b090(void *param_1)
 
 
 
-/* Function: thunk_FUN_004058a0 @ 0x0043b0c0 */
+/* Function: thunk_FUN_004058a0 @ 0x0043b0c0
+ * Struct types: UIWidget (this)
+ * Thunk for FUN_004058a0 — returns tile_data_ptr value if non-null.
+ */
 
-undefined4 __fastcall thunk_FUN_004058a0(int param_1)
+undefined4 __fastcall thunk_FUN_004058a0(UIWidget *this)
 
 {
-  undefined2 *puVar1;
-  
-  puVar1 = *(undefined2 **)(param_1 + 0xf2);
-  if (puVar1 == (undefined2 *)0x0) {
+  short *puVar1;
+
+  puVar1 = this->tile_data_ptr;
+  if (puVar1 == NULL) {
     return 0;
   }
   return CONCAT22((short)((uint)puVar1 >> 0x10),*puVar1);

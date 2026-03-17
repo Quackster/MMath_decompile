@@ -5238,8 +5238,6 @@ undefined1 FUN_0041c1e5(void)
 void __thiscall FUN_0041c200(GameWidget *this,int param_1,int param_2,undefined4 param_3)
 
 {
-  GameWidget *self_this_00 = (GameWidget *)this_00;
-
   void *this_00;
   int iVar1;
   uint uVar2;
@@ -5252,13 +5250,13 @@ void __thiscall FUN_0041c200(GameWidget *this,int param_1,int param_2,undefined4
       if ((char)param_3 != '\0') {
         FUN_0041cb70(this_00,'\x01');
       }
-      this_00->pos_y = this_00->pos_y + param_1;
-      this_00->pos_h = this_00->pos_h + param_1;
-      this_00->pos_x = this_00->pos_x + param_2;
-      this_00->pos_w = this_00->pos_w + param_2;
+      ((GameWidget *)this_00)->pos_y = ((GameWidget *)this_00)->pos_y + param_1;
+      ((GameWidget *)this_00)->pos_h = ((GameWidget *)this_00)->pos_h + param_1;
+      ((GameWidget *)this_00)->pos_x = ((GameWidget *)this_00)->pos_x + param_2;
+      ((GameWidget *)this_00)->pos_w = ((GameWidget *)this_00)->pos_w + param_2;
       FUN_0041d490((intptr_t)this_00);
-      if (this_00->child_list_2 != 0) {
-        FUN_0041c200(this_00,param_1,param_2,param_3);
+      if (((GameWidget *)this_00)->child_list_2 != 0) {
+        FUN_0041c200((GameWidget *)this_00,param_1,param_2,param_3);
       }
       if ((char)param_3 != '\0') {
         FUN_0041cb70(this_00,'\x01');

@@ -571,43 +571,52 @@ void __fastcall FUN_00441eb0(int *param_1)
 
 
 
-/* Function: FUN_00441f10 @ 0x00441f10 */
+/* Function: FUN_00441f10 @ 0x00441f10
+ * Struct types: UIWidget (this)
+ * Stops animation — resets pending_frame, clears anim flags, calls vtable[0x30].
+ * param_1[0x45] = byte offset 0x114 = anim_flag_0
+ */
 
-void __fastcall FUN_00441f10(int *param_1)
+void __fastcall FUN_00441f10(UIWidget *this)
 
 {
-  *(undefined2 *)((int)param_1 + 0x112) = 0;
-  (**(void (**)(void))(*param_1 + 0xc0))();
-  *(undefined1 *)(param_1 + 0x45) = 0;
-  *(undefined1 *)((int)param_1 + 0x116) = 0;
-  *(undefined1 *)((int)param_1 + 0x115) = 0;
-  *(undefined1 *)((int)param_1 + 0x117) = 0;
-  FUN_00405d30(param_1,0);
-  *(undefined2 *)((int)param_1 + 0x112) = 0;
+  this->pending_frame = 0;
+  /* vtable[0x30] call (offset 0xc0 / 4 = 0x30) */
+  (**(void (**)(void))((int)this->vtable + 0xc0))();
+  this->anim_flag_0 = 0;
+  this->anim_flag_2 = 0;
+  this->anim_flag_1 = 0;
+  this->anim_flag_3 = 0;
+  FUN_00405d30(this,0);
+  this->pending_frame = 0;
   DAT_00480748 = 0;
   return;
 }
 
 
 
-/* Function: FUN_00441f60 @ 0x00441f60 */
+/* Function: FUN_00441f60 @ 0x00441f60
+ * Struct types: UIWidget (this)
+ * Starts animation at frame 2 — sets pending_frame, clears anim flags,
+ * then sets direction frame to 2.
+ */
 
-void __fastcall FUN_00441f60(void *param_1)
+void __fastcall FUN_00441f60(UIWidget *this)
 
 {
-  *(undefined2 *)((int)param_1 + 0x112) = 2;
-  *(undefined1 *)((int)param_1 + 0x114) = 0;
-  *(undefined1 *)((int)param_1 + 0x116) = 0;
-  *(undefined1 *)((int)param_1 + 0x115) = 0;
-  *(undefined1 *)((int)param_1 + 0x117) = 0;
-  FUN_00405e10(param_1,1,'\0');
-  *(undefined1 *)((int)param_1 + 0x114) = 0;
-  *(undefined1 *)((int)param_1 + 0x116) = 0;
-  *(undefined1 *)((int)param_1 + 0x115) = 0;
-  *(undefined1 *)((int)param_1 + 0x117) = 0;
-  *(undefined2 *)((int)param_1 + 0x112) = 2;
-  FUN_00405d30(param_1,2);
-  DAT_00480748 = param_1;
+  this->pending_frame = 2;
+  this->anim_flag_0 = 0;
+  this->anim_flag_2 = 0;
+  this->anim_flag_1 = 0;
+  this->anim_flag_3 = 0;
+  FUN_00405e10(this,1,'\0');
+  this->anim_flag_0 = 0;
+  this->anim_flag_2 = 0;
+  this->anim_flag_1 = 0;
+  this->anim_flag_3 = 0;
+  this->pending_frame = 2;
+  FUN_00405d30(this,2);
+  DAT_00480748 = this;
   return;
 }
 
@@ -4538,27 +4547,30 @@ void FUN_0044e3e0(void)
 
 
 
-/* Function: FUN_0044e3f0 @ 0x0044e3f0 */
+/* Function: FUN_0044e3f0 @ 0x0044e3f0
+ * Struct types: UIWidget (this)
+ * Constructor — calls UIWidget base ctor, sets is_interactive, vtable.
+ */
 
-undefined4 * __fastcall FUN_0044e3f0(undefined4 *param_1)
+UIWidget * __fastcall FUN_0044e3f0(UIWidget *this)
 
 {
   undefined4 *unaff_FS_OFFSET;
   undefined4 local_10;
   undefined1 *puStack_c;
   undefined4 local_8;
-  
+
   local_10 = *unaff_FS_OFFSET;
   local_8 = 0xffffffff;
   puStack_c = &LAB_0044e44b;
   *unaff_FS_OFFSET = &local_10;
-  FUN_004052b0(param_1);
+  FUN_004052b0(this);
   local_8 = 0;
-  *(undefined1 *)((int)param_1 + 0x10a) = 1;
-  *param_1 = &PTR_FUN_00476038;
-  FUN_0041da90(param_1,1);
+  this->is_interactive = 1;
+  this->vtable = (void **)&PTR_FUN_00476038;
+  FUN_0041da90(this,1);
   *unaff_FS_OFFSET = local_10;
-  return param_1;
+  return this;
 }
 
 

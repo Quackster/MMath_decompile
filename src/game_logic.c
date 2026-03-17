@@ -553,23 +553,26 @@ undefined4 * __thiscall FUN_00409a10(void *this,byte param_1)
 
 
 
-/* Function: FUN_00409a30 @ 0x00409a30 */
+/* Function: FUN_00409a30 @ 0x00409a30
+ * Struct types: GameWidget (this)
+ * Destructor — sets vtable, releases object_ptr and scrollbar_ref.
+ */
 
-void __fastcall FUN_00409a30(undefined4 *param_1)
+void __fastcall FUN_00409a30(GameWidget *this)
 
 {
   undefined4 *unaff_FS_OFFSET;
   undefined4 local_10;
   undefined1 *puStack_c;
   undefined4 local_8;
-  
+
   local_10 = *unaff_FS_OFFSET;
   puStack_c = &LAB_00409aa2;
-  *param_1 = &PTR_FUN_004724e8;
+  this->vtable = (void **)&PTR_FUN_004724e8;
   *unaff_FS_OFFSET = &local_10;
   local_8 = 0;
-  FUN_00434490(*(int *)((int)param_1 + 0x126));
-  FUN_0043a700(DAT_004838c0,0,*(int **)((int)param_1 + 0x12a));
+  FUN_00434490((int)this->object_ptr);
+  FUN_0043a700(DAT_004838c0,0,(int *)this->scrollbar_ref);
   local_8 = 0xffffffff;
   FUN_00409aac();
   *unaff_FS_OFFSET = local_10;
@@ -1539,24 +1542,27 @@ void FUN_0040bc68(void)
 
 
 
-/* Function: FUN_0040bc70 @ 0x0040bc70 */
+/* Function: FUN_0040bc70 @ 0x0040bc70
+ * Struct types: UIWidget (param_1)
+ * Recursively sets visibility on this widget and all children via child_list_2.
+ */
 
-void FUN_0040bc70(void *param_1,undefined2 param_2)
+void FUN_0040bc70(UIWidget *this,undefined2 param_2)
 
 {
   uint uVar1;
   int iVar2;
-  
-  FUN_0041dad0(param_1,(byte)param_2,'\0');
-  if (((*(int *)((int)param_1 + 0x36) != 0) &&
-      (iVar2 = *(int *)(*(int *)((int)param_1 + 0x36) + 0xe), iVar2 != 0)) &&
+
+  FUN_0041dad0(this,(byte)param_2,'\0');
+  if (((this->child_list_2 != NULL) &&
+      (iVar2 = *(int *)((int)this->child_list_2 + 0xe), iVar2 != 0)) &&
      (uVar1 = 1, iVar2 != 0)) {
     iVar2 = 4;
     do {
       iVar2 = iVar2 + 4;
       uVar1 = uVar1 + 1;
-      FUN_0040bc70(*(void **)(**(int **)(*(int *)((int)param_1 + 0x36) + 4) + -8 + iVar2),param_2);
-    } while (uVar1 <= *(uint *)(*(int *)((int)param_1 + 0x36) + 0xe));
+      FUN_0040bc70(*(UIWidget **)(**(int **)((int)this->child_list_2 + 4) + -8 + iVar2),param_2);
+    } while (uVar1 <= *(uint *)((int)this->child_list_2 + 0xe));
   }
   return;
 }
@@ -1610,7 +1616,7 @@ void FUN_0040bce0(void *param_1)
   FUN_0041dd40(*(void **)(DAT_004897c0 + 0x44));
   FUN_0041dad0(param_1,1,'\0');
   iVar2 = 1;
-  FUN_00407340(*(int *)((int)local_14 + 0x120),'\x01','\0',4,'\0');
+  FUN_00407340(((DialogWidget *)local_14)->is_registered,'\x01','\0',4,'\0');  /* TODO: verify offset 0x120 = is_registered */
   iVar3 = 0x40bded;
   FUN_0040bc70(*(void **)(DAT_004897c0 + 0x44),0);
   FUN_0041bd00(*(void **)(DAT_004897c0 + 0x44),(int)param_1);
@@ -1623,7 +1629,7 @@ void FUN_0040bce0(void *param_1)
   FUN_0041d780(*(void **)(DAT_004897c0 + 0x44),(void *)0x0);
   FUN_0041d780(local_14,(void *)0x0);
   local_8 = (uint)(((local_8) >> 8) & 0xFFFFFF) << 8;
-  *(undefined2 *)((int)local_14 + 0x11c) = 1;
+  ((DialogWidget *)local_14)->child_list = (void *)1;  /* TODO: verify offset 0x11C = child_list */
   FUN_0040be89();
   local_8 = 0xffffffff;
   FUN_0040be9b();
@@ -2267,31 +2273,31 @@ void __thiscall FUN_0040d840(void *this,uint param_1)
         psVar5 = FUN_0045ef70(*(int **)((intptr_t)this + sVar6 * 4 + 100));
         pvVar1 = *(void **)((intptr_t)this + 0x44);
         *(short **)((intptr_t)this + 100) = psVar5;
-        *(undefined1 *)((int)pvVar1 + 0x114) = 0;
-        *(undefined1 *)((int)pvVar1 + 0x116) = 0;
-        *(undefined1 *)((int)pvVar1 + 0x115) = 0;
-        *(undefined1 *)((int)pvVar1 + 0x117) = 0;
+        ((UIWidget *)pvVar1)->anim_flag_0 = 0;
+        ((UIWidget *)pvVar1)->anim_flag_2 = 0;
+        ((UIWidget *)pvVar1)->anim_flag_1 = 0;
+        ((UIWidget *)pvVar1)->anim_flag_3 = 0;
         FUN_00405e10(pvVar1,sVar6,'\0');
         local_8 = 0xffffffff;
         FUN_0040dc4a();
       }
       else {
         pvVar1 = *(void **)((intptr_t)this + 0x44);
-        *(undefined1 *)((int)pvVar1 + 0x114) = 0;
-        *(undefined1 *)((int)pvVar1 + 0x116) = 0;
-        *(undefined1 *)((int)pvVar1 + 0x115) = 0;
-        *(undefined1 *)((int)pvVar1 + 0x117) = 0;
+        ((UIWidget *)pvVar1)->anim_flag_0 = 0;
+        ((UIWidget *)pvVar1)->anim_flag_2 = 0;
+        ((UIWidget *)pvVar1)->anim_flag_1 = 0;
+        ((UIWidget *)pvVar1)->anim_flag_3 = 0;
         FUN_00405d30(pvVar1,sVar6);
         if (local_18 == (void *)0x0) {
           FUN_00407b10(*(void **)((intptr_t)this + 0x44),7,puVar7);
         }
         else {
-          uVar2 = *(uint *)((int)local_18 + 0x12);
-          *(uint *)((int)local_18 + 0x12) = uVar2 & 0xffffffef;
+          uVar2 = ((UIWidget *)local_18)->flags;
+          ((UIWidget *)local_18)->flags = uVar2 & 0xffffffef;
           FUN_00407b10(local_18,7,puVar7);
-          *(uint *)((int)local_18 + 0x12) =
-               ((uint)((byte)(uVar2 >> 4) & 1) << 4 ^ *(uint *)((int)local_18 + 0x12)) & 0x10 ^
-               *(uint *)((int)local_18 + 0x12);
+          ((UIWidget *)local_18)->flags =
+               ((uint)((byte)(uVar2 >> 4) & 1) << 4 ^ ((UIWidget *)local_18)->flags) & 0x10 ^
+               ((UIWidget *)local_18)->flags;
         }
       }
     }

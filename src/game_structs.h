@@ -149,7 +149,7 @@ typedef struct UIWidget {
     unsigned char  scroll_data[32]; /* +0xCA  sub-struct for scroll state */
     int            origin_x;        /* +0xEA  scroll/viewport origin */
     int            origin_y;        /* +0xEE */
-    void          *tile_data_ptr;   /* +0xF2 */
+    short         *tile_data_ptr;   /* +0xF2 */
     void          *level_data_ptr;  /* +0xF6 */
     void          *cell_info_ptr;   /* +0xFA */
     unsigned int   timestamp;       /* +0xFE  GetTickCount() */
@@ -175,8 +175,60 @@ typedef struct UIWidget {
  * GameWidget - Extends UIWidget (total ~0x19C bytes)
  * ======================================================================== */
 typedef struct GameWidget {
-    /* --- UIWidget base (0x00 - 0x117) --- */
-    unsigned char  _uiwidget_base[0x118]; /* +0x00  UIWidget fields */
+    /* --- UIElement base (0x00 - 0xC5) --- */
+    void         **vtable;          /* +0x00 */
+    unsigned char  field_04;        /* +0x04 */
+    unsigned char  _pad05;          /* +0x05 */
+    int            field_06;        /* +0x06 */
+    unsigned char  is_visible;      /* +0x0A */
+    unsigned char  _pad0b;          /* +0x0B */
+    void          *parent_widget;   /* +0x0C */
+    unsigned char  field_10;        /* +0x10 */
+    unsigned char  _pad11;          /* +0x11 */
+    unsigned int   flags;           /* +0x12 */
+    int            type_or_mode;    /* +0x16 */
+    void          *child_list_1;    /* +0x1A */
+    short          rect_top;        /* +0x1E */
+    short          rect_left;       /* +0x20 */
+    short          rect_bottom;     /* +0x22 */
+    short          rect_right;      /* +0x24 */
+    int            pos_x;           /* +0x26 */
+    int            pos_y;           /* +0x2A */
+    int            pos_w;           /* +0x2E */
+    int            pos_h;           /* +0x32 */
+    void          *child_list_2;    /* +0x36 */
+    void          *parent_ptr;      /* +0x3A */
+    int            field_3e;        /* +0x3E */
+    unsigned char  _pad42[4];       /* +0x42 */
+    int            sub_widgets_a[16]; /* +0x46 */
+    int            sub_widgets_b[16]; /* +0x86 */
+    /* --- UIWidget extensions (0xC6 - 0x117) --- */
+    char           scrollable_flag; /* +0xC6 */
+    char           field_c7;        /* +0xC7 */
+    char           cursor_style_a;  /* +0xC8 */
+    char           cursor_style_b;  /* +0xC9 */
+    unsigned char  scroll_data[32]; /* +0xCA */
+    int            origin_x;        /* +0xEA */
+    int            origin_y;        /* +0xEE */
+    short         *tile_data_ptr;   /* +0xF2 */
+    void          *level_data_ptr;  /* +0xF6 */
+    void          *cell_info_ptr;   /* +0xFA */
+    unsigned int   timestamp;       /* +0xFE */
+    char           mirror_flag;     /* +0x102 */
+    unsigned char  _pad103;         /* +0x103 */
+    int            animation_timer; /* +0x104 */
+    char           field_108;       /* +0x108 */
+    char           field_109;       /* +0x109 */
+    char           is_interactive;  /* +0x10A */
+    char           auto_focus;      /* +0x10B */
+    short          active_anim_id;  /* +0x10C */
+    short          current_frame;   /* +0x10E */
+    short          cell_count;      /* +0x110 */
+    short          pending_frame;   /* +0x112 */
+    unsigned char  anim_flag_0;     /* +0x114 */
+    unsigned char  anim_flag_1;     /* +0x115 */
+    unsigned char  anim_flag_2;     /* +0x116 */
+    unsigned char  anim_flag_3;     /* +0x117 */
     /* --- GameWidget extensions (0x118 - 0x19B) --- */
     short          field_118;       /* +0x118 */
     int            pair_x_1;        /* +0x11A */
@@ -316,7 +368,61 @@ typedef struct CString {
  * DialogWidget - Dialog/popup, extends UIWidget (total ~0x1DA bytes)
  * ======================================================================== */
 typedef struct DialogWidget {
-    unsigned char  _uiwidget_base[0x118]; /* +0x00  UIWidget fields */
+    /* --- UIElement base (0x00 - 0xC5) --- */
+    void         **vtable;          /* +0x00 */
+    unsigned char  field_04;        /* +0x04 */
+    unsigned char  _pad05_d;        /* +0x05 */
+    int            field_06;        /* +0x06 */
+    unsigned char  is_visible;      /* +0x0A */
+    unsigned char  _pad0b_d;        /* +0x0B */
+    void          *parent_widget;   /* +0x0C */
+    unsigned char  field_10;        /* +0x10 */
+    unsigned char  _pad11_d;        /* +0x11 */
+    unsigned int   flags;           /* +0x12 */
+    int            type_or_mode;    /* +0x16 */
+    void          *child_list_1;    /* +0x1A */
+    short          rect_top;        /* +0x1E */
+    short          rect_left;       /* +0x20 */
+    short          rect_bottom;     /* +0x22 */
+    short          rect_right;      /* +0x24 */
+    int            pos_x;           /* +0x26 */
+    int            pos_y;           /* +0x2A */
+    int            pos_w;           /* +0x2E */
+    int            pos_h;           /* +0x32 */
+    void          *child_list_2;    /* +0x36 */
+    void          *parent_ptr;      /* +0x3A */
+    int            field_3e;        /* +0x3E */
+    unsigned char  _pad42_d[4];     /* +0x42 */
+    int            sub_widgets_a[16]; /* +0x46 */
+    int            sub_widgets_b[16]; /* +0x86 */
+    /* --- UIWidget extensions (0xC6 - 0x117) --- */
+    char           scrollable_flag; /* +0xC6 */
+    char           field_c7;        /* +0xC7 */
+    char           cursor_style_a;  /* +0xC8 */
+    char           cursor_style_b;  /* +0xC9 */
+    unsigned char  scroll_data[32]; /* +0xCA */
+    int            origin_x;        /* +0xEA */
+    int            origin_y;        /* +0xEE */
+    short         *tile_data_ptr;   /* +0xF2 */
+    void          *level_data_ptr;  /* +0xF6 */
+    void          *cell_info_ptr;   /* +0xFA */
+    unsigned int   timestamp;       /* +0xFE */
+    char           mirror_flag;     /* +0x102 */
+    unsigned char  _pad103_d;       /* +0x103 */
+    int            animation_timer; /* +0x104 */
+    char           field_108;       /* +0x108 */
+    char           field_109;       /* +0x109 */
+    char           is_interactive;  /* +0x10A */
+    char           auto_focus;      /* +0x10B */
+    short          active_anim_id;  /* +0x10C */
+    short          current_frame;   /* +0x10E */
+    short          cell_count;      /* +0x110 */
+    short          pending_frame;   /* +0x112 */
+    unsigned char  anim_flag_0;     /* +0x114 */
+    unsigned char  anim_flag_1;     /* +0x115 */
+    unsigned char  anim_flag_2;     /* +0x116 */
+    unsigned char  anim_flag_3;     /* +0x117 */
+    /* --- DialogWidget extensions (0x118 - 0x1D9) --- */
     void          *prev_dialog;     /* +0x118 */
     void          *child_list;      /* +0x11C */
     unsigned char  is_registered;   /* +0x120 */

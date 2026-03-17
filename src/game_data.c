@@ -133,7 +133,7 @@ uint __thiscall FUN_00451c00(MathProblem *this,int param_1,uint param_2)
 
 {
   if ((((-1 < (int)param_2) && ((int)param_2 < this->slots[2].value)) && (-1 < param_1)) &&
-     (param_1 < this->slots[1])) {
+     (param_1 < this->slots[1].value)) {
     *(int *)(param_2 * 0x12 + 0x23c + (intptr_t)this) = param_1;
     return CONCAT31(param_2 * 0x12 >> 8,1);
   }
