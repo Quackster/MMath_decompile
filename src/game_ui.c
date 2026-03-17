@@ -5568,10 +5568,10 @@ uint __fastcall FUN_00436ef0(int *param_1)
         n5 = v30[1];
         /* check bounds against mouse/input position */
         if (((TimerState *)DAT_004896b0)->state_30 != 0) {
-          if (s11 <= *(short *)(DAT_004896b0 + 0x10) &&
-              *(short *)(DAT_004896b0 + 0x10) <= (short)n4 &&
-              s12 <= *(short *)(DAT_004896b0 + 0x12) &&
-              *(short *)(DAT_004896b0 + 0x12) <= (short)n5) {
+          if (s11 <= ((TimerState *)DAT_004896b0)->cursor_x &&
+              ((TimerState *)DAT_004896b0)->cursor_x <= (short)n4 &&
+              s12 <= ((TimerState *)DAT_004896b0)->cursor_y &&
+              ((TimerState *)DAT_004896b0)->cursor_y <= (short)n5) {
             v14 = pv8;
             u6 = (uint)pv8;
           }
