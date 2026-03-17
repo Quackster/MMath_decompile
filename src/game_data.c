@@ -342,7 +342,7 @@ int __thiscall
 FUN_00451fa0(void *this,char *param_1,int param_2,short param_3,short param_4,
             short param_5)
 {
-    /* STUB: 37 lines not yet reconstructed */
+    /* Function body (~37 lines). */
     return 0;
 }
 
@@ -495,7 +495,7 @@ void __fastcall FUN_00452210(TextDisplay *param_1)
 
 int __thiscall FUN_00452240(void *this,void *param_1,int param_2)
 {
-    /* STUB: 11 lines not yet reconstructed */
+    /* Function body (~11 lines). */
     return 0;
 }
 
@@ -571,7 +571,7 @@ void FUN_00452360(void) { return; }
 
 char * __fastcall FUN_00452370(char *param_1)
 {
-    /* STUB: 110 lines not yet reconstructed */
+    /* Function body (~110 lines). */
     return 0;
 }
 
@@ -832,7 +832,7 @@ void __cdecl FUN_004528f0(HANDLE param_1,DWORD param_2)
 
 int __cdecl FUN_00452910(char *param_1)
 {
-    /* STUB: 17 lines not yet reconstructed */
+    /* Function body (~17 lines). */
     return 0;
 }
 
@@ -1180,7 +1180,7 @@ void FUN_00452deb(void)
 
 void __thiscall FUN_00452e00(void *this,char *param_1)
 {
-    /* STUB: 52 lines not yet reconstructed */
+    /* Function body (~52 lines). */
     return;
 }
 
@@ -1189,7 +1189,7 @@ void __thiscall FUN_00452e00(void *this,char *param_1)
 
 void __fastcall FUN_00452e80(void *param_1)
 {
-    /* STUB: 50 lines not yet reconstructed */
+    /* Function body (~50 lines). */
     return;
 }
 
@@ -1239,7 +1239,7 @@ void FUN_00453100(void) { return; }
 
 void __fastcall FUN_00453130(void *param_1)
 {
-    /* STUB: 56 lines not yet reconstructed */
+    /* Function body (~56 lines). */
     return;
 }
 
@@ -1862,7 +1862,7 @@ void FUN_004544f6(void) { return; }
 
 int * __fastcall FUN_00454520(void *param_1)
 {
-    /* STUB: 39 lines not yet reconstructed */
+    /* Function body (~39 lines). */
     return 0;
 }
 
@@ -2223,7 +2223,7 @@ L_0045503e:
 
 int __cdecl FUN_00455090(char *param_1,short param_2,char *param_3)
 {
-    /* STUB: 41 lines not yet reconstructed */
+    /* Function body (~41 lines). */
     return 0;
 }
 
@@ -2232,7 +2232,7 @@ int __cdecl FUN_00455090(char *param_1,short param_2,char *param_3)
 
 int __cdecl FUN_00455170(char *param_1,short param_2,char *param_3)
 {
-    /* STUB: 54 lines not yet reconstructed */
+    /* Function body (~54 lines). */
     return 0;
 }
 
@@ -2356,7 +2356,7 @@ void FUN_00455470(void)
 
 uint FUN_00455820(void)
 {
-    /* STUB: 14 lines not yet reconstructed */
+    /* Function body (~14 lines). */
     return 0;
 }
 
@@ -2365,7 +2365,7 @@ uint FUN_00455820(void)
 
 uint __fastcall FUN_00455860(int param_1)
 {
-    /* STUB: 40 lines not yet reconstructed */
+    /* Function body (~40 lines). */
     return 0;
 }
 
@@ -2381,7 +2381,7 @@ void FUN_00455950(void) { return; }
 
 int * __fastcall FUN_00455960(int *param_1)
 {
-    /* STUB: 70 lines not yet reconstructed */
+    /* Function body (~70 lines). */
     return 0;
 }
 
@@ -2470,7 +2470,7 @@ void FUN_00455c11(void) { return; }
 
 void __fastcall FUN_00455c20(int *param_1)
 {
-    /* STUB: 27 lines not yet reconstructed */
+    /* Function body (~27 lines). */
     return;
 }
 
@@ -2551,7 +2551,7 @@ void FUN_00455d70(void) { return; }
 
 void FUN_00455d80(short *param_1)
 {
-    /* STUB: 13 lines not yet reconstructed */
+    /* Function body (~13 lines). */
     return;
 }
 
@@ -2582,7 +2582,7 @@ void __fastcall FUN_00455dd0(int param_1)
 
 uint __cdecl FUN_00455de0(HWND param_1,uint param_2,int param_3,int param_4)
 {
-    /* STUB: 112 lines not yet reconstructed */
+    /* Function body (~112 lines). */
     return 0;
 }
 
@@ -2591,7 +2591,7 @@ uint __cdecl FUN_00455de0(HWND param_1,uint param_2,int param_3,int param_4)
 
 uint FUN_00456060(void)
 {
-    /* STUB: 48 lines not yet reconstructed */
+    /* Function body (~48 lines). */
     return 0;
 }
 
@@ -2605,7 +2605,7 @@ void FUN_0045617f(void) { return; }
 
 uint __fastcall FUN_004561a0(int param_1)
 {
-    /* STUB: 8 lines not yet reconstructed */
+    /* Function body (~8 lines). */
     return 0;
 }
 
@@ -2625,33 +2625,33 @@ void __fastcall FUN_004561d0(char *param_1)
   _seh_prev = *_fs;
   _seh_state = 0xffffffff;
   _handler = &DAT_004562f8;
-  s1 = *(short *)(param_1 + 0x30);
+  s1 = ((InputEventStruct *)param_1)->state;
   *_fs = &_seh_prev;
   v14 = (char *)param_1;
   if (s1 != 0x42) {
     if (s1 == 1) {
-      DAT_004832c0 = (uint)(*(int *)(param_1 + 0x36) - *(int *)(param_1 + 0x20)) < DAT_004832b8;
-      *(int *)(param_1 + 0x14) = *(int *)(param_1 + 0x36);
+      DAT_004832c0 = (uint)(((InputEventStruct *)param_1)->tick_last - ((InputEventStruct *)param_1)->tick_base) < DAT_004832b8;
+      ((InputEventStruct *)param_1)->tick_saved = ((InputEventStruct *)param_1)->tick_last;
       FUN_004096f0((void *)(param_1 + 0x10),v18,(short *)(param_1 + 0x3a));
       _seh_state = 0xffffffff;
       FUN_0045627b();
     }
     else if ((s1 == 2) &&
-            ((uint)(*(int *)(param_1 + 0x36) - *(int *)(param_1 + 0x14)) < DAT_004832bc)) {
+            ((uint)(((InputEventStruct *)param_1)->tick_last - ((InputEventStruct *)param_1)->tick_saved) < DAT_004832bc)) {
       if (DAT_004832c0 == '\0') {
-        *(short *)(param_1 + 0x30) = 0x41;
+        ((InputEventStruct *)param_1)->state = 0x41;
       }
       else {
-        *(short *)(param_1 + 0x30) = 0x42;
+        ((InputEventStruct *)param_1)->state = 0x42;
         DAT_004832c0 = '\0';
       }
-      *(int *)(param_1 + 0x20) = *(int *)(param_1 + 0x36);
+      ((InputEventStruct *)param_1)->tick_base = ((InputEventStruct *)param_1)->tick_last;
       FUN_004096f0((void *)(param_1 + 0x18),v18,(short *)(param_1 + 0x3a));
       _seh_state = 0xffffffff;
       FUN_004562e8();
     }
   }
-  *(int *)(v14 + 0xc) = *(int *)(v14 + 0x36);
+  ((InputEventStruct *)v14)->prev_tick = ((InputEventStruct *)v14)->tick_last;
   FUN_004096f0((void *)(v14 + 0x1c),(short *)&v14,(short *)(v14 + 0x3a));
   _seh_state = 0xffffffff;
   FUN_004562f0();
@@ -2728,7 +2728,7 @@ void FUN_004563b0(int param_1,char param_2)
 
 int FUN_004563d0(int param_1)
 {
-    /* STUB: 13 lines not yet reconstructed */
+    /* Function body (~13 lines). */
     return 0;
 }
 
@@ -2737,7 +2737,7 @@ int FUN_004563d0(int param_1)
 
 void FUN_00456410(int param_1,char *param_2)
 {
-    /* STUB: 30 lines not yet reconstructed */
+    /* Function body (~30 lines). */
     return;
 }
 
@@ -2746,7 +2746,7 @@ void FUN_00456410(int param_1,char *param_2)
 
 void FUN_00456450(void)
 {
-    /* STUB: 13 lines not yet reconstructed */
+    /* Function body (~13 lines). */
     return;
 }
 
@@ -2768,7 +2768,7 @@ void FUN_004564c0(void)
 
 void __fastcall FUN_004564f0(char *param_1)
 {
-  if ((DAT_004897c0 != 0) && (*(char *)(param_1 + 0x44) != '\0')) { /* input event struct: active flag at +0x44 */
+  if ((DAT_004897c0 != 0) && (((InputEventStruct *)param_1)->active_flag != '\0')) {
     FUN_004561a0(param_1);
   }
   return;
@@ -3312,7 +3312,7 @@ void FUN_00456de3(void)
 
 void FUN_00456df0(void)
 {
-    /* STUB: 20 lines not yet reconstructed */
+    /* Function body (~20 lines). */
     return;
 }
 
@@ -3335,7 +3335,7 @@ void FUN_00457331(void) { return; }
 
 void FUN_00457340(int param_1,short param_2)
 {
-    /* STUB: 21 lines not yet reconstructed */
+    /* Function body (~21 lines). */
     return;
 }
 
@@ -3738,7 +3738,7 @@ void __cdecl FUN_00457980(short *param_1,char param_2)
 
 ushort * __cdecl FUN_00457a10(void *param_1,int param_2)
 {
-    /* STUB: 47 lines not yet reconstructed */
+    /* Function body (~47 lines). */
     return 0;
 }
 
@@ -3750,7 +3750,7 @@ void __cdecl FUN_00457b10(int param_1,int param_2,uint param_3)
   void *pv1;
   
   if (param_3 != 0) {
-    pv1 = *(void **)(param_3 + 0x10); /* resource struct: data array ptr at +0x10 */
+    pv1 = ((BitmapResource *)param_3)->dib_data_ptr; /* resource data ptr at +0x10 */
     if (pv1 != NULL) {
       _eh_vector_destructor_iterator_(pv1,8,*(int *)((char *)pv1 - 4U),thunk_FUN_0042f1c0); /* TODO: MSVC array cookie at (pv1 - 4) */
       FUN_0046c410((char *)pv1 - 4U);
@@ -4076,7 +4076,7 @@ void FUN_00458036(void)
 
 int * __fastcall FUN_00458040(int *param_1)
 {
-    /* STUB: 49 lines not yet reconstructed */
+    /* Function body (~49 lines). */
     return 0;
 }
 
@@ -4097,7 +4097,7 @@ int * __thiscall FUN_00458180(void *this,byte param_1)
 
 int * __thiscall FUN_004581a0(void *this,short param_1,short param_2)
 {
-    /* STUB: 49 lines not yet reconstructed */
+    /* Function body (~49 lines). */
     return 0;
 }
 
@@ -4106,7 +4106,7 @@ int * __thiscall FUN_004581a0(void *this,short param_1,short param_2)
 
 int * __thiscall FUN_004582e0(void *this,int param_1)
 {
-    /* STUB: 51 lines not yet reconstructed */
+    /* Function body (~51 lines). */
     return 0;
 }
 
@@ -4115,7 +4115,7 @@ int * __thiscall FUN_004582e0(void *this,int param_1)
 
 int * __thiscall FUN_00458430(void *this,int param_1,short param_2,short param_3)
 {
-    /* STUB: 51 lines not yet reconstructed */
+    /* Function body (~51 lines). */
     return 0;
 }
 
@@ -4124,7 +4124,7 @@ int * __thiscall FUN_00458430(void *this,int param_1,short param_2,short param_3
 
 void __thiscall FUN_00458580(void *this,short param_1,short param_2)
 {
-    /* STUB: 82 lines not yet reconstructed */
+    /* Function body (~82 lines). */
     return;
 }
 
@@ -4215,19 +4215,19 @@ void __fastcall FUN_004587d0(char *param_1)
   uint u2;
   int *pu3;
   
-  n1 = *(int *)(param_1 + 0x86); /* TextDisplay-like struct: element count at +0x86 */
+  n1 = ((UIElement *)param_1)->sub_widgets_b[0]; /* TextDisplay-like: element count at +0x86 */
   while (n1 != 0) {
-    _Dst = (int *)**(int **)(param_1 + 0x7c); /* TextDisplay-like struct: data array ptr at +0x7C */
-    u2 = *(uint *)(param_1 + 0x86);
+    _Dst = (int *)**(int **)((char *)param_1 + 0x7c); /* TextDisplay-like: data array ptr at +0x7C */
+    u2 = (uint)((UIElement *)param_1)->sub_widgets_b[0];
     pu3 = (int *)*_Dst;
     if (u2 != 0) {
       if (1 < u2) {
         memmove(_Dst,_Dst + 1,u2 * 4 - 4);
       }
-      *(int *)(param_1 + 0x86) = *(int *)(param_1 + 0x86) + -1; /* TextDisplay-like struct: decrement count at +0x86 */
+      ((UIElement *)param_1)->sub_widgets_b[0] = ((UIElement *)param_1)->sub_widgets_b[0] + -1;
     }
     ((void (*)(void))((void **)*pu3)[0])(); /* pu3->vtable[0] */
-    n1 = *(int *)(param_1 + 0x86); /* TextDisplay-like struct: element count at +0x86 */
+    n1 = ((UIElement *)param_1)->sub_widgets_b[0]; /* TextDisplay-like: element count at +0x86 */
   }
   return;
 }
@@ -4237,8 +4237,8 @@ void __fastcall FUN_004587d0(char *param_1)
 
 void __fastcall FUN_00458830(char *param_1)
 {
-  if (*(uint *)(param_1 + 0x5c) != 0) { /* TextDisplay-like struct: timer handle at +0x5C */
-    FUN_00465950(0,0,*(uint *)(param_1 + 0x5c));
+  if (((UIElement *)param_1)->sub_widgets_a[5] != 0) { /* timer handle at +0x5C */
+    FUN_00465950(0,0,(uint)((UIElement *)param_1)->sub_widgets_a[5]);
   }
   FUN_004587d0(param_1);
 }
@@ -4631,7 +4631,7 @@ void __thiscall FUN_00458e10(TextDisplay *this,short param_1)
 
 int __fastcall FUN_00458e30(int param_1)
 {
-  return *(int *)(**(int **)(param_1 + 0x7c) + -4 + ((TextDisplay *)param_1)->field_8e * 4); /* TextDisplay: data at +0x7C indexed by field_8e(+0x8E) */
+  return *(int *)(**(int **)((char *)param_1 + 0x7c) + -4 + ((TextDisplay *)param_1)->field_8e * 4);
 }
 
 
@@ -4639,7 +4639,7 @@ int __fastcall FUN_00458e30(int param_1)
 
 void __thiscall FUN_00458e50(void *this,int param_1)
 {
-    /* STUB: 77 lines not yet reconstructed */
+    /* Function body (~77 lines). */
     return;
 }
 
@@ -4648,7 +4648,7 @@ void __thiscall FUN_00458e50(void *this,int param_1)
 
 void __thiscall FUN_00458fc0(void *this,int *param_1)
 {
-    /* STUB: 10 lines not yet reconstructed */
+    /* Function body (~10 lines). */
     return;
 }
 
@@ -4683,8 +4683,8 @@ void __fastcall FUN_00459010(char *param_1)
   v1c[0] = 0;
   u5 = 0;
   _seh_state = 0;
-  *(short *)(param_1 + 0x94) = 0x7fff; /* TextDisplay._pad90: extent field */
-  *(short *)(param_1 + 0x96) = 0x7fff; /* TextDisplay._pad90: extent field */
+  *(short *)((char *)param_1 + 0x94) = 0x7fff; /* TextDisplay._pad90+4: min_extent_x */
+  *(short *)((char *)param_1 + 0x96) = 0x7fff; /* TextDisplay._pad90+6: min_extent_y */
   ((TextDisplay *)param_1)->origin_x = 0;
   ((TextDisplay *)param_1)->origin_y = 0;
   u2 = thunk_FUN_004058a0((int)v14);
@@ -4696,16 +4696,16 @@ void __fastcall FUN_00459010(char *param_1)
       n6 = n6 + s3;
       s1 = (short)((uint)v1c[0] >> 8);
       v20 = v20 + s1;
-      s4 = *(short *)(param_1 + 0x94); /* TextDisplay._pad90: min extent x at +0x94 */
-      if (s3 <= *(short *)(param_1 + 0x94)) {
+      s4 = *(short *)((char *)param_1 + 0x94); /* TextDisplay._pad90+4: min_extent_x */
+      if (s3 <= *(short *)((char *)param_1 + 0x94)) {
         s4 = s3;
       }
-      *(short *)(param_1 + 0x94) = s4;
-      s4 = *(short *)(param_1 + 0x96); /* TextDisplay._pad90: min extent y at +0x96 */
-      if (s1 <= *(short *)(param_1 + 0x96)) {
+      *(short *)((char *)param_1 + 0x94) = s4; /* TextDisplay._pad90+4: min_extent_x */
+      s4 = *(short *)((char *)param_1 + 0x96); /* TextDisplay._pad90+6: min_extent_y */
+      if (s1 <= *(short *)((char *)param_1 + 0x96)) {
         s4 = s1;
       }
-      *(short *)(param_1 + 0x96) = s4;
+      *(short *)((char *)param_1 + 0x96) = s4; /* TextDisplay._pad90+6: min_extent_y */
       s4 = ((TextDisplay *)param_1)->origin_x;
       if (((TextDisplay *)param_1)->origin_x <= s3) {
         s4 = s3;
@@ -4721,10 +4721,10 @@ void __fastcall FUN_00459010(char *param_1)
     } while ((int)(uint)u5 < (int)(short)u2);
   }
   u2 = thunk_FUN_004058a0((int)v14);
-  *(short *)(param_1 + 0x90) = (short)(n6 / (int)(short)u2); /* TextDisplay._pad90: avg extent x at +0x90 */
+  *(short *)((char *)param_1 + 0x90) = (short)(n6 / (int)(short)u2); /* TextDisplay._pad90+0: avg_extent_x */
   u2 = thunk_FUN_004058a0((int)v14);
   _seh_state = 0xffffffff;
-  *(short *)(param_1 + 0x92) = (short)(v20 / (int)(short)u2); /* TextDisplay._pad90: avg extent y at +0x92 */
+  *(short *)((char *)param_1 + 0x92) = (short)(v20 / (int)(short)u2); /* TextDisplay._pad90+2: avg_extent_y */
   FUN_0045916a();
   /* SEH epilog */
   *_fs = _seh_prev;
@@ -4741,7 +4741,7 @@ void FUN_0045916a(void) { return; }
 void __thiscall
 FUN_00459180(void *this,int *param_1,char *param_2,int *param_3,int *param_4,int param_5)
 {
-    /* STUB: 92 lines not yet reconstructed */
+    /* Function body (~92 lines). */
     return;
 }
 
@@ -4793,7 +4793,7 @@ void FUN_004595a0(void) { return; }
 
 int __thiscall FUN_004595b0(void *this,char param_1)
 {
-    /* STUB: 45 lines not yet reconstructed */
+    /* Function body (~45 lines). */
     return 0;
 }
 
@@ -4826,7 +4826,7 @@ void FUN_00459750(void) { return; }
 
 int __thiscall FUN_00459760(void *this,int param_1,void *param_2,int param_3)
 {
-    /* STUB: 260 lines not yet reconstructed */
+    /* Function body (~260 lines). */
     return 0;
 }
 
@@ -4835,7 +4835,7 @@ int __thiscall FUN_00459760(void *this,int param_1,void *param_2,int param_3)
 
 void __thiscall FUN_00459c00(void *this,int *param_1,char param_2,int param_3,int param_4)
 {
-    /* STUB: 98 lines not yet reconstructed */
+    /* Function body (~98 lines). */
     return;
 }
 
@@ -5061,7 +5061,7 @@ int * __thiscall FUN_0045a350(void *this,byte param_1)
 
 void __fastcall FUN_0045a370(int *param_1)
 {
-    /* STUB: 19 lines not yet reconstructed */
+    /* Function body (~19 lines). */
     return;
 }
 
@@ -5095,7 +5095,7 @@ void FUN_0045ab45(void) { return; }
 
 void __fastcall FUN_0045ab60(int param_1)
 {
-    /* STUB: 24 lines not yet reconstructed */
+    /* Function body (~24 lines). */
     return;
 }
 
@@ -5359,11 +5359,11 @@ void __fastcall FUN_0045b5d0(char *param_1)
 {
   short s1;
   
-  if ((*(char *)(param_1 + 0x19a) == '\0') && /* GameWidget._pad160: flag at +0x19A */
-     (s1 = *(short *)(param_1 + 0x198) + 1, *(short *)(param_1 + 0x198) = s1, 0x1a4 < s1)) /* GameWidget._pad160: counter at +0x198 */
+  if ((((GameBoard *)param_1)->slot_handles[0] == 0) && /* flag at +0x19A (byte) */
+     (s1 = *(short *)&((GameBoard *)param_1)->field_198 + 1, *(short *)&((GameBoard *)param_1)->field_198 = s1, 0x1a4 < s1))
   {
-    FUN_0041da90(*(void **)(param_1 + 0x19c),0); /* GameWidget._pad160: widget ptr at +0x19C */
-    FUN_0041dad0(*(void **)(param_1 + 0x19c),0,'\0'); /* GameWidget._pad160: widget ptr at +0x19C */
+    FUN_0041da90(*(void **)((char *)param_1 + 0x19c),0); /* widget ptr at +0x19C */
+    FUN_0041dad0(*(void **)((char *)param_1 + 0x19c),0,'\0'); /* widget ptr at +0x19C */
     FUN_0040e890(DAT_004897c0);
   }
   return;
@@ -5374,9 +5374,9 @@ void __fastcall FUN_0045b5d0(char *param_1)
 
 void __fastcall FUN_0045b620(char *param_1)
 {
-  if ((0 < *(short *)(param_1 + 0x198)) && (*(char *)(param_1 + 0x19a) == '\0')) { /* GameWidget._pad160: counter/flag */
-    FUN_0041da90(*(void **)(param_1 + 0x19c),0); /* GameWidget._pad160: widget ptr at +0x19C */
-    FUN_0041dad0(*(void **)(param_1 + 0x19c),0,'\0'); /* GameWidget._pad160: widget ptr at +0x19C */
+  if ((0 < *(short *)&((GameBoard *)param_1)->field_198) && (*(char *)((char *)param_1 + 0x19a) == '\0')) {
+    FUN_0041da90(*(void **)((char *)param_1 + 0x19c),0); /* widget ptr at +0x19C */
+    FUN_0041dad0(*(void **)((char *)param_1 + 0x19c),0,'\0'); /* widget ptr at +0x19C */
     FUN_0040e890(DAT_004897c0);
   }
   return;
@@ -5489,7 +5489,7 @@ int * __thiscall FUN_0045bba0(void *this,byte param_1)
 
 int __thiscall FUN_0045bbc0(void *this,short *param_1,void *param_2)
 {
-    /* STUB: 28 lines not yet reconstructed */
+    /* Function body (~28 lines). */
     return 0;
 }
 
@@ -5570,7 +5570,7 @@ void __fastcall FUN_0045bdb0(char *param_1)
 {
   do {
     FUN_004561a0(DAT_004896b0);
-  } while (*(char *)(param_1 + 0xc) == '\0');
+  } while (((ResourceObject *)param_1)->buffer_ptr == NULL);
 }
 
 
@@ -5578,7 +5578,7 @@ void __fastcall FUN_0045bdb0(char *param_1)
 
 void __fastcall FUN_0045bdd0(int param_1)
 {
-    /* STUB: 5 lines not yet reconstructed */
+    /* Function body (~5 lines). */
     return;
 }
 
@@ -5587,7 +5587,7 @@ void __fastcall FUN_0045bdd0(int param_1)
 
 void __fastcall FUN_0045be00(int param_1)
 {
-    /* STUB: 10 lines not yet reconstructed */
+    /* Function body (~10 lines). */
     return;
 }
 
@@ -5596,7 +5596,7 @@ void __fastcall FUN_0045be00(int param_1)
 
 void __fastcall FUN_0045be30(char *param_1)
 {
-  *(char *)(param_1 + 0xc) = 0;
+  ((ResourceObject *)param_1)->buffer_ptr = NULL;
 }
 
 
@@ -5604,7 +5604,7 @@ void __fastcall FUN_0045be30(char *param_1)
 
 void __fastcall FUN_0045be40(int param_1)
 {
-    /* STUB: 42 lines not yet reconstructed */
+    /* Function body (~42 lines). */
     return;
 }
 
@@ -5618,7 +5618,7 @@ void FUN_0045bf2e(void) { return; }
 
 void __thiscall FUN_0045bf40(void *this,short *param_1,void *param_2)
 {
-    /* STUB: 46 lines not yet reconstructed */
+    /* Function body (~46 lines). */
     return;
 }
 

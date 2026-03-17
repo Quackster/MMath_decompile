@@ -2034,7 +2034,7 @@ int __thiscall FUN_00449500(void *this,int param_1,char param_2)
   int n2;
   int *self = (int *)this;
 
-  if (param_2 != ' ') {
+  if (param_2 != '\0') {
     n1 = *(int *)((char *)self + 4);
     if (n1 != 0) {
       n2 = *(int *)n1;
@@ -2135,7 +2135,7 @@ uint __thiscall FUN_00449660(void *this,char *param_1)
 
   n1 = 0;
   c1 = *param_1;
-  while (c1 != ' ') {
+  while (c1 != '\0') {
     if (c1 == '/') {
       n1 = n1 + 1;
     }
@@ -2928,7 +2928,7 @@ int __thiscall FUN_0044add0(void *this,int param_1,char param_2)
   int n2;
   int *self = (int *)this;
 
-  if (param_2 != ' ') {
+  if (param_2 != '\0') {
     n1 = *(int *)((char *)self + 4);
     if (n1 != 0) {
       n2 = *(int *)n1;
@@ -3584,7 +3584,7 @@ int FUN_0044bf50(int *param_1,char param_2)
   _Seed = GetTickCount();
   srand(_Seed);
   v40 = &PTR_LAB_00472e04;
-  *(int *)(v18 + 0x40) = 0;
+  ((MusicTrack *)v18)->playback_param = 0;
   v3c = NULL;
   v38 = 0;
   v34 = 0;
@@ -3602,7 +3602,7 @@ int FUN_0044bf50(int *param_1,char param_2)
       c1 = *pc8;
     }
   }
-  if (*(int *)(v18 + 0xc) + -1 < (int)u10) {
+  if (((MusicTrack *)v18)->capacity + -1 < (int)u10) {
     n3 = FUN_00417570(v18 + 4);
     n11 = u10 + 1;
     if ((int)(u10 + 1) <= n3 + 1) {
@@ -3610,8 +3610,8 @@ int FUN_0044bf50(int *param_1,char param_2)
     }
     n11 = (((int)(n11 + (n11 >> 0x1f & 0x1fU)) >> 5) + 1) * 0x20;
     if (*(uint **)(v18 + 8) == NULL) {
-      pv4 = *(LPCVOID *)(v18 + 0x10);
-      if (*(LPCVOID *)(v18 + 0x10) == NULL) {
+      pv4 = (LPCVOID)((MusicTrack *)v18)->allocator;
+      if (((MusicTrack *)v18)->allocator == NULL) {
         pv4 = DAT_00483df4;
       }
       pu5 = FUN_0046ccb0(pv4,7,n11);
@@ -3620,7 +3620,7 @@ int FUN_0044bf50(int *param_1,char param_2)
       pu5 = FUN_0046cdc0(*(uint **)(v18 + 8),n11,7);
     }
     *(uint **)(v18 + 8) = pu5;
-    *(int *)(v18 + 0xc) = n11;
+    ((MusicTrack *)v18)->capacity = n11;
   }
   pu12 = (int *)*v3c;
   pu14 = (int *)**(int **)(v18 + 8);
@@ -3749,7 +3749,7 @@ int FUN_0044bf50(int *param_1,char param_2)
                  ((0x7fa < n11 && (n11 < 0x80d)))) || ((0x56a < n11 && (n11 < 0x571))));
                 pn15 = pn15 + 1) {
               v5c = n11;
-              FUN_00417720((void *)(v18 + 0x32),&v5c,*(uint *)(v18 + 0x40));
+              FUN_00417720((void *)((MusicTrack *)v18)->render_data,&v5c,((MusicTrack *)v18)->playback_param);
               v1c = v1c + 1;
             }
           }
@@ -3818,7 +3818,7 @@ L_0044c4d2:
                 }
               }
               v58 = *v48;
-              FUN_00417720((void *)(v18 + 0x32),&v58,*(uint *)(v18 + 0x40));
+              FUN_00417720((void *)((MusicTrack *)v18)->render_data,&v58,((MusicTrack *)v18)->playback_param);
             }
             v1c = v1c + 1;
           }
@@ -3905,7 +3905,7 @@ L_0044c4d2:
           }
         }
         v54 = (int)*v24;
-        FUN_00417720((void *)(v18 + 0x32),&v54,*(uint *)(v18 + 0x40));
+        FUN_00417720((void *)((MusicTrack *)v18)->render_data,&v54,((MusicTrack *)v18)->playback_param);
       }
       v24 = v24 + 1;
       v44 = v44 + 1;
@@ -4004,7 +4004,7 @@ int __thiscall FUN_0044c820(void *this,uint param_1,int param_2,char param_3)
   n1 = (int)param_1;
   player->sequence_data[idx * 0x10 + param_2] = n1;
   player->sequence_data[idx * 0x10 + param_2 + 1] = 0;
-  if (param_3 != ' ') {
+  if (param_3 != '\0') {
     player->write_index = player->write_index + 1;
     if (player->write_index >= 6) {
       player->write_index = 0;
@@ -4029,7 +4029,7 @@ int __thiscall FUN_0044c990(void *this,uint param_1,int param_2,char param_3)
   n1 = (int)param_1;
   player->sequence_data[idx * 0x10 + param_2] = n1;
   player->sequence_data[idx * 0x10 + param_2 + 1] = 1;
-  if (param_3 != ' ') {
+  if (param_3 != '\0') {
     player->write_index = player->write_index + 1;
     if (player->write_index >= 6) {
       player->write_index = 0;
@@ -4048,7 +4048,7 @@ void __thiscall FUN_0044cb00(void *this,int param_1,int param_2,char param_3)
   player->sequence_data[player->write_index * 0x10 + param_2] = param_1;
   player->sequence_data[player->write_index * 0x10 + param_2 + 1] = 0;
   player->sequence_data[player->write_index * 0x10 + param_2 + 2] = 0;
-  if (param_3 != ' ') {
+  if (param_3 != '\0') {
     player->write_index = player->write_index + 1;
     if (player->write_index >= 6) {
       player->write_index = 0;
@@ -4087,7 +4087,7 @@ FUN_0044cb70(void *this,uint param_1,uint param_2,char param_3,int param_4,char 
   player->sequence_data[n1 * 0x10 + 2] = param_4;
   player->sequence_data[n1 * 0x10 + 3] = (int)param_3;
 
-  if (param_5 != ' ') {
+  if (param_5 != '\0') {
     player->write_index = player->write_index + 1;
     if (player->write_index >= 6) {
       player->write_index = 0;
@@ -4110,7 +4110,7 @@ int __thiscall FUN_0044d170(void *this,int param_1,int param_2,int param_3,char 
   }
   player->sequence_data[player->write_index * 0x10 + param_3] = param_1;
   player->sequence_data[player->write_index * 0x10 + param_3 + 1] = param_2;
-  if (param_4 != ' ') {
+  if (param_4 != '\0') {
     player->write_index = player->write_index + 1;
     if (player->write_index >= 6) {
       player->write_index = 0;
@@ -4131,14 +4131,14 @@ FUN_0044d200(void *this,int param_1,int param_2,int param_3,int param_4,int para
   if (player == NULL) {
     return 0;
   }
-  FUN_0044c7e0(player, param_1, 0, ' ');
-  FUN_0044c7e0(player, param_2, 1, ' ');
-  FUN_0044c7e0(player, param_3, 2, ' ');
-  FUN_0044c7e0(player, param_4, 3, ' ');
-  FUN_0044c7e0(player, param_5, 4, ' ');
-  FUN_0044c7e0(player, param_6, 5, ' ');
-  FUN_0044c7e0(player, param_7, 6, ' ');
-  FUN_0044c7e0(player, param_8, 7, '');
+  FUN_0044c7e0(player, param_1, 0, '\0');
+  FUN_0044c7e0(player, param_2, 1, '\0');
+  FUN_0044c7e0(player, param_3, 2, '\0');
+  FUN_0044c7e0(player, param_4, 3, '\0');
+  FUN_0044c7e0(player, param_5, 4, '\0');
+  FUN_0044c7e0(player, param_6, 5, '\0');
+  FUN_0044c7e0(player, param_7, 6, '\0');
+  FUN_0044c7e0(player, param_8, 7, '\x01');
   return 1;
 }
 
@@ -5058,31 +5058,31 @@ int __thiscall FUN_0044e8a0(void *this,short param_1,short param_2)
 
 /* FUN_0044e990 @ 0x0044e990 */
 
-void __fastcall FUN_0044e990(char *param_1)
+void __fastcall FUN_0044e990(BitmapResource *param_1)
 {
   HGLOBAL pv1;
-  
-  if (*(LPCVOID *)(param_1 + 0x10) != NULL) { /* bitmap struct: DIB data ptr at +0x10 */
-    pv1 = GlobalHandle(*(LPCVOID *)(param_1 + 0x10));
+
+  if (param_1->dib_data_ptr != NULL) {
+    pv1 = GlobalHandle((LPCVOID)param_1->dib_data_ptr);
     GlobalUnlock(pv1);
-    pv1 = GlobalHandle(*(LPCVOID *)(param_1 + 0x10));
+    pv1 = GlobalHandle((LPCVOID)param_1->dib_data_ptr);
     GlobalFree(pv1);
   }
-  *(int *)(param_1 + 0x10) = 0;   /* bitmap struct: DIB data ptr at +0x10 */
-  if (*(HGDIOBJ *)(param_1 + 0x14) != NULL) { /* bitmap struct: palette handle at +0x14 */
-    DeleteObject(*(HGDIOBJ *)(param_1 + 0x14));
+  param_1->dib_data_ptr = 0;
+  if (param_1->palette_handle != NULL) {
+    DeleteObject((HGDIOBJ)param_1->palette_handle);
   }
-  *(int *)(param_1 + 0x14) = 0;   /* bitmap struct: palette handle at +0x14 */
+  param_1->palette_handle = 0;
 }
 
 
 /* FUN_0044ea40 @ 0x0044ea40 */
 
-int __fastcall FUN_0044ea40(char *param_1)
+int __fastcall FUN_0044ea40(BitmapResource *param_1)
 {
   int n1;
 
-  n1 = *(int *)(param_1 + 0x10); /* bitmap struct: DIB data ptr at +0x10 */
+  n1 = (int)param_1->dib_data_ptr;
   if (n1 != 0) {
     return CONCAT22((short)((uint)n1 >> 0x10),*(short *)(n1 + 4));
   }
@@ -5092,14 +5092,14 @@ int __fastcall FUN_0044ea40(char *param_1)
 
 /* FUN_0044ea70 @ 0x0044ea70 */
 
-int __fastcall FUN_0044ea70(char *param_1)
+int __fastcall FUN_0044ea70(BitmapResource *param_1)
 {
   short s1;
   int n2;
   short u4;
   int u3;
 
-  n2 = *(int *)(param_1 + 0x10); /* bitmap struct: DIB data ptr at +0x10 */
+  n2 = (int)param_1->dib_data_ptr;
   u4 = (short)((uint)n2 >> 0x10);
   if (n2 == 0) {
     u3 = 0;
@@ -5177,7 +5177,7 @@ void __thiscall FUN_0044eb30(void *this,int param_1)
 
 /* FUN_0044ebe0 @ 0x0044ebe0 */
 
-char __fastcall FUN_0044ebe0(char *param_1)
+char __fastcall FUN_0044ebe0(BitmapResource *param_1)
 {
   ushort u1;
   ushort *pu2;
@@ -5188,15 +5188,15 @@ char __fastcall FUN_0044ebe0(char *param_1)
   int n5;
   BYTE *pBVar6;
   
-  if (*(int **)(param_1 + 0x10) == NULL) { /* bitmap struct: DIB data ptr at +0x10 */
+  if (param_1->dib_data_ptr == NULL) {
     return '\0';
   }
-  if (**(int **)(param_1 + 0x10) == 0x28) { /* BITMAPINFOHEADER size check */
-    if (*(HGDIOBJ *)(param_1 + 0x14) != NULL) { /* bitmap struct: palette handle at +0x14 */
-      DeleteObject(*(HGDIOBJ *)(param_1 + 0x14));
+  if (*param_1->dib_data_ptr == 0x28) { /* BITMAPINFOHEADER size check */
+    if (param_1->palette_handle != NULL) {
+      DeleteObject((HGDIOBJ)param_1->palette_handle);
     }
-    pu2 = *(ushort **)(param_1 + 0x10); /* bitmap struct: DIB data ptr at +0x10 */
-    *(int *)(param_1 + 0x14) = 0; /* bitmap struct: palette handle at +0x14 */
+    pu2 = (ushort *)param_1->dib_data_ptr;
+    param_1->palette_handle = 0;
     u1 = *pu2;
     hMem = LocalAlloc(0x40,0x408);
     if (hMem != (HLOCAL)0x0) {
@@ -5216,10 +5216,10 @@ char __fastcall FUN_0044ebe0(char *param_1)
         pLVar3 = (LOGPALETTE *)pLVar3->palPalEntry;
       } while (n5 != 0);
       pHVar4 = CreatePalette(plpal);
-      *(HPALETTE *)(param_1 + 0x14) = pHVar4; /* bitmap struct: palette handle at +0x14 */
+      param_1->palette_handle = (void *)pHVar4;
       LocalUnlock(hMem);
       LocalFree(hMem);
-      return '\x01' - (*(int *)(param_1 + 0x14) == 0); /* bitmap struct: palette handle at +0x14 */
+      return '\x01' - ((int)param_1->palette_handle == 0);
     }
     return '\0';
   }
@@ -5428,15 +5428,15 @@ char __cdecl FUN_0044f310(int *param_1)
   *_fs = (int)&_seh_prev;
   _seh_state = 0xffffffff;
 
-  result = ' ';
+  result = '\0';
   if (param_1 == NULL) {
     *_fs = _seh_prev;
-    return ' ';
+    return '\0';
   }
 
   v10 = *param_1;
   if (v10 != 0) {
-    result = '';
+    result = '\x01';
   }
 
   *_fs = _seh_prev;
@@ -5483,7 +5483,7 @@ int * __fastcall FUN_0044f740(int *param_1)
   *_fs = (int)&_seh_prev;
   FUN_004534e0(param_1);
   _seh_state = 0;
-  *param_1 = (int)&PTR_FUN_004761d8;
+  *param_1 = (int)&PTR_FUN_00476218;
   param_1[0x66] = 0;
   param_1[0x67] = 0;
   param_1[0x68] = 0;

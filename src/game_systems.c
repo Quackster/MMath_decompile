@@ -6370,8 +6370,68 @@ L_0041bd28:
 
 void __thiscall FUN_0041bd70(void *this,int param_1)
 {
-    /* STUB: 69 lines not yet reconstructed */
+  UIWidget *widget = (UIWidget *)this;
+  int *_fs;
+  int _seh_prev;
+  char *_handler;
+  int _seh_state;
+  uint *pu1;
+  void *_Src;
+  int n2;
+  uint u3;
+  int *pn4;
+  uint u5;
+
+  /* SEH prolog */
+  _seh_prev = *_fs;
+  _handler = &L_0041bea0;
+  *_fs = &_seh_prev;
+  _seh_state = 0;
+
+  if (param_1 == 0) {
+    _seh_state = 0xffffffff;
+    *_fs = _seh_prev;
     return;
+  }
+
+  /* Check if param_1 is in child_list_1 and remove it */
+  if (widget->child_list_1 != 0) {
+    u5 = 0;
+    n2 = (int)widget->child_list_1;
+    pu1 = &((CVector *)n2)->count;
+    u3 = *pu1;
+    if (u3 != 0) {
+      pn4 = (int *)*(int *)((CVector *)n2)->data;
+      do {
+        if (*pn4 == param_1) {
+          u5 = u5 + 1;
+          goto found_in_list1;
+        }
+        pn4 = pn4 + 1;
+        u5 = u5 + 1;
+      } while (u5 < u3);
+    }
+    u5 = 0;
+found_in_list1:
+    if (u5 != 0) {
+      if (u5 <= u3) {
+        if (u5 < u3) {
+          _Src = (void *)(*(int *)((CVector *)n2)->data + u5 * 4);
+          memmove((void *)((char *)_Src + -4), _Src, (u3 - u5) * 4);
+        }
+        *pu1 = *pu1 - 1;
+      }
+      ((UIElement *)param_1)->parent_ptr = 0;
+    }
+  }
+
+  /* Also check child_list_2 */
+  if (widget->child_list_2 != 0) {
+    FUN_0041bd00(widget, param_1);
+  }
+
+  _seh_state = 0xffffffff;
+  *_fs = _seh_prev;
 }
 
 
@@ -6533,8 +6593,87 @@ int __fastcall FUN_0041c0f0(UIElement *this)
 
 char __thiscall FUN_0041c110(void *this,void *param_1)
 {
-    /* STUB: 66 lines not yet reconstructed */
+  UIWidget *widget = (UIWidget *)this;
+  int *_fs;
+  int _seh_prev;
+  char *_handler;
+  int _seh_state;
+  int n1, n2;
+  uint u1, u2;
+  void *pv1;
+  char result;
+
+  /* SEH prolog */
+  _seh_prev = *_fs;
+  _handler = &L_0041c1dd;
+  *_fs = &_seh_prev;
+  _seh_state = 0;
+  result = 0;
+
+  if (param_1 == NULL) {
+    *_fs = _seh_prev;
     return 0;
+  }
+
+  /* Check if param_1 is this widget */
+  if (param_1 == this) {
+    *_fs = _seh_prev;
+    return 1;
+  }
+
+  /* Search child_list_2 recursively */
+  if (widget->child_list_2 != 0) {
+    u1 = 1;
+    n1 = ((CVector *)widget->child_list_2)->count;
+    if (n1 != 0) {
+      n2 = 4;
+      do {
+        pv1 = *(void **)(*(int *)((CVector *)widget->child_list_2)->data[0] + -4 + n2);
+        if (pv1 != NULL) {
+          if (pv1 == param_1) {
+            result = 1;
+            goto done;
+          }
+          /* Recurse into children */
+          if (FUN_0041c110(pv1, param_1) != '\0') {
+            result = 1;
+            goto done;
+          }
+        }
+        n2 = n2 + 4;
+        u1 = u1 + 1;
+      } while (u1 <= ((CVector *)widget->child_list_2)->count);
+    }
+  }
+
+  /* Search child_list_1 recursively */
+  if (widget->child_list_1 != 0) {
+    u1 = 1;
+    n1 = ((CVector *)widget->child_list_1)->count;
+    if (n1 != 0) {
+      n2 = 4;
+      do {
+        pv1 = *(void **)(*(int *)((CVector *)widget->child_list_1)->data[0] + -4 + n2);
+        if (pv1 != NULL) {
+          if (pv1 == param_1) {
+            result = 1;
+            goto done;
+          }
+          if (FUN_0041c110(pv1, param_1) != '\0') {
+            result = 1;
+            goto done;
+          }
+        }
+        n2 = n2 + 4;
+        u1 = u1 + 1;
+      } while (u1 <= ((CVector *)widget->child_list_1)->count);
+    }
+  }
+
+done:
+  _seh_state = 0xffffffff;
+  *_fs = _seh_prev;
+  return result;
 }
 
 
@@ -6621,8 +6760,46 @@ void __thiscall FUN_0041c2a0(GameWidget *this,int param_1)
 
 int * __thiscall FUN_0041c2f0(void *this,short *param_1)
 {
-    /* STUB: 31 lines not yet reconstructed */
+  UIWidget *widget = (UIWidget *)this;
+  int *result;
+  int n1;
+  uint u1;
+  void *pv1;
+  short x, y;
+
+  /* Hit test - find child widget at point param_1 */
+  result = 0;
+  x = param_1[0];
+  y = param_1[1];
+
+  /* Check if point is within this widget's rect */
+  if (x < widget->rect_top || x > widget->rect_bottom) {
     return 0;
+  }
+  if (y < widget->rect_left || y > widget->rect_right) {
+    return 0;
+  }
+
+  /* Search children in reverse order (top-most first) */
+  if (widget->child_list_2 != 0) {
+    n1 = ((CVector *)widget->child_list_2)->count;
+    if (n1 > 0) {
+      u1 = n1;
+      while (u1 >= 1) {
+        pv1 = *(void **)(*(int *)((CVector *)widget->child_list_2)->data[0] + (u1 - 1) * 4);
+        if (pv1 != NULL) {
+          result = FUN_0041c2f0(pv1, param_1);
+          if (result != 0) {
+            return result;
+          }
+        }
+        u1 = u1 - 1;
+      }
+    }
+  }
+
+  /* No child hit, return this widget */
+  return (int *)this;
 }
 
 
@@ -6645,8 +6822,70 @@ void __fastcall FUN_0041c420(UIElement *this)
 
 void __fastcall FUN_0041c4a0(int *param_1)
 {
-    /* STUB: 80 lines not yet reconstructed */
-    return;
+  UIWidget *widget = (UIWidget *)param_1;
+  int *_fs;
+  int _seh_prev;
+  char *_handler;
+  int _seh_state;
+  int n1, n2, n3;
+  uint u1;
+  void *pv1;
+
+  /* SEH prolog */
+  _seh_prev = *_fs;
+  _handler = &L_0041c61e;
+  *_fs = &_seh_prev;
+  _seh_state = 0;
+
+  /* UIWidget initialization/setup */
+  /* Set scrollable_flag and related fields */
+  widget->scrollable_flag = 0;
+  widget->field_c7 = 0;
+  widget->cursor_style_a = 0;
+  widget->cursor_style_b = 0;
+
+  /* Clear scroll data */
+  for (n1 = 0; n1 < 32; n1++) {
+    widget->scroll_data[n1] = 0;
+  }
+
+  /* Initialize viewport origin */
+  widget->origin_x = 0;
+  widget->origin_y = 0;
+
+  /* Clear data pointers */
+  widget->tile_data_ptr = 0;
+  widget->level_data_ptr = 0;
+  widget->cell_info_ptr = 0;
+
+  /* Initialize timestamp */
+  widget->timestamp = 0;
+
+  /* Clear flags */
+  widget->mirror_flag = 0;
+  widget->_pad103 = 0;
+  widget->animation_timer = 0;
+  widget->field_108 = 0;
+  widget->field_109 = 0;
+  widget->is_interactive = 0;
+  widget->auto_focus = 0;
+
+  /* Initialize animation state */
+  widget->active_anim_id = -1;
+  widget->current_frame = -1;
+  widget->cell_count = 0;
+  widget->pending_frame = -1;
+
+  /* Clear anim flags */
+  widget->anim_flag_0 = 0;
+  widget->anim_flag_1 = 0;
+  widget->anim_flag_2 = 0;
+  widget->anim_flag_3 = 0;
+
+  _seh_state = 0xffffffff;
+  FUN_0041c62e();
+  /* SEH epilog */
+  *_fs = _seh_prev;
 }
 
 
@@ -6674,8 +6913,18 @@ void FUN_0041c640(void) { return; }
 
 void __thiscall FUN_0041c6b0(void *this,char param_1)
 {
-    /* STUB: 13 lines not yet reconstructed */
-    return;
+  UIWidget *widget = (UIWidget *)this;
+
+  /* Set or clear the visibility flag */
+  if (param_1 != '\0') {
+    widget->is_visible = 1;
+  } else {
+    widget->is_visible = 0;
+  }
+
+  /* Update the display */
+  FUN_0041cb70((DialogWidget *)this, '\x01');
+  FUN_0041dad0((DialogWidget *)this, (byte)widget->is_visible, '\x01');
 }
 
 
@@ -6734,8 +6983,74 @@ L_0041c759:
 
 void __thiscall FUN_0041c7b0(void *this,int param_1)
 {
-    /* STUB: 82 lines not yet reconstructed */
+  UIWidget *widget = (UIWidget *)this;
+  int *_fs;
+  int _seh_prev;
+  char *_handler;
+  int _seh_state;
+  int n1, n2;
+  uint u1;
+  void *pv1;
+
+  /* SEH prolog */
+  _seh_prev = *_fs;
+  _handler = &L_0041c8e0;
+  *_fs = &_seh_prev;
+  _seh_state = 0;
+
+  /* Add widget to child_list_1 (focus/tab order list) */
+  if (param_1 == 0) {
+    _seh_state = 0xffffffff;
+    *_fs = _seh_prev;
     return;
+  }
+
+  /* Check if already in the list */
+  n1 = FUN_0041b9c0(widget, param_1);
+  if ((char)n1 != '\0') {
+    _seh_state = 0xffffffff;
+    *_fs = _seh_prev;
+    return;
+  }
+
+  /* Create child_list_1 if needed */
+  if (widget->child_list_1 == 0) {
+    n1 = FUN_0046ccb0(DAT_00483df4, 7, 0x14);
+    if (n1 != 0) {
+      *(int *)n1 = 0;
+      *(int *)(n1 + 4) = 0;
+      *(int *)(n1 + 8) = 0;
+      *(int *)(n1 + 0x0C) = 0;
+      *(int *)(n1 + 0x0E) = 0;
+    }
+    widget->child_list_1 = (void *)n1;
+  }
+
+  /* Add to child_list_1 */
+  n1 = (int)widget->child_list_1;
+  if (n1 != 0) {
+    n2 = ((CVector *)n1)->count;
+    if ((int)n2 >= ((CVector *)n1)->capacity) {
+      int new_cap = ((CVector *)n1)->capacity + 4;
+      if (*(int *)(n1 + 4) == 0) {
+        *(int *)(n1 + 4) = (int)FUN_0046ccb0(DAT_00483df4, 7, new_cap * 4);
+      } else {
+        *(int *)(n1 + 4) = (int)FUN_0046cdc0(*(uint **)(n1 + 4), new_cap * 4, 7);
+      }
+      ((CVector *)n1)->capacity = new_cap;
+    }
+    *(int *)(*(int *)(n1 + 4) + n2 * 4) = param_1;
+    ((CVector *)n1)->count = n2 + 1;
+  }
+
+  /* Set parent widget on the added child */
+  ((UIElement *)param_1)->parent_widget = this;
+
+  /* Update focus flags */
+  *(int *)((char *)param_1 + 0x12) = *(int *)((char *)param_1 + 0x12) | 1;
+
+  _seh_state = 0xffffffff;
+  *_fs = _seh_prev;
 }
 
 
@@ -6743,8 +7058,62 @@ void __thiscall FUN_0041c7b0(void *this,int param_1)
 
 void __thiscall FUN_0041c8e0(void *this,int param_1)
 {
-    /* STUB: 45 lines not yet reconstructed */
+  UIWidget *widget = (UIWidget *)this;
+  int *_fs;
+  int _seh_prev;
+  char *_handler;
+  int _seh_state;
+  int n1;
+  uint *pu1;
+  void *_Src;
+  uint u2, u3;
+  int *pn4;
+
+  /* SEH prolog */
+  _seh_prev = *_fs;
+  _handler = &L_0041ca50;
+  *_fs = &_seh_prev;
+  _seh_state = 0;
+
+  /* Remove widget from child_list_1 */
+  if (param_1 == 0 || widget->child_list_1 == 0) {
+    _seh_state = 0xffffffff;
+    *_fs = _seh_prev;
     return;
+  }
+
+  u3 = 0;
+  n1 = (int)widget->child_list_1;
+  pu1 = &((CVector *)n1)->count;
+  u2 = *pu1;
+  if (u2 != 0) {
+    pn4 = (int *)*(int *)((CVector *)n1)->data;
+    do {
+      if (*pn4 == param_1) {
+        u3 = u3 + 1;
+        goto found;
+      }
+      pn4 = pn4 + 1;
+      u3 = u3 + 1;
+    } while (u3 < u2);
+  }
+  u3 = 0;
+found:
+  if (u3 != 0 && u3 <= u2) {
+    if (u3 < u2) {
+      _Src = (void *)(*(int *)((CVector *)n1)->data + u3 * 4);
+      memmove((void *)((char *)_Src + -4), _Src, (u2 - u3) * 4);
+    }
+    *pu1 = *pu1 - 1;
+  }
+
+  /* Clear the parent_widget reference */
+  ((UIElement *)param_1)->parent_widget = 0;
+  /* Clear the focus flag */
+  *(int *)((char *)param_1 + 0x12) = *(int *)((char *)param_1 + 0x12) & ~1;
+
+  _seh_state = 0xffffffff;
+  *_fs = _seh_prev;
 }
 
 
@@ -7352,8 +7721,21 @@ void FUN_0041d400(void) { return; }
 
 void * __fastcall FUN_0041d410(int param_1)
 {
-    /* STUB: 15 lines not yet reconstructed */
-    return 0;
+  UIElement *elem = (UIElement *)param_1;
+  int n1;
+
+  /* Walk up parent chain to find the root widget's origin offset */
+  _DAT_004842a0 = 0;
+  _DAT_004842a2 = 0;
+
+  n1 = (int)elem->parent_ptr;
+  while (n1 != 0) {
+    _DAT_004842a0 = _DAT_004842a0 + ((UIElement *)n1)->rect_top;
+    _DAT_004842a2 = _DAT_004842a2 + ((UIElement *)n1)->rect_left;
+    n1 = (int)((UIElement *)n1)->parent_ptr;
+  }
+
+  return (void *)&_DAT_004842a0;
 }
 
 
@@ -7419,8 +7801,40 @@ void FUN_0041d585(void) { return; }
 
 short * __thiscall FUN_0041d590(void *this,short *param_1)
 {
-    /* STUB: 51 lines not yet reconstructed */
-    return 0;
+  UIElement *elem = (UIElement *)this;
+  int *_fs;
+  int _seh_prev;
+  char *_handler;
+  int _seh_state;
+  short *ps1;
+  short s2, s3;
+
+  /* SEH prolog */
+  _seh_prev = *_fs;
+  _handler = &L_0041d65f;
+  *_fs = &_seh_prev;
+  _seh_state = 0;
+
+  /* Convert screen coordinates to local widget coordinates */
+  ps1 = (short *)FUN_0041d410((int)this);
+  s2 = ps1[0]; /* parent x offset */
+  s3 = ps1[1]; /* parent y offset */
+
+  if (param_1 != NULL) {
+    /* Subtract parent offset to get local coords */
+    param_1[0] = param_1[0] - s2;
+    param_1[1] = param_1[1] - s3;
+
+    /* Also subtract this widget's rect origin */
+    param_1[0] = param_1[0] - elem->rect_top;
+    param_1[1] = param_1[1] - elem->rect_left;
+  }
+
+  _seh_state = 0xffffffff;
+  FUN_0041d67e();
+  /* SEH epilog */
+  *_fs = _seh_prev;
+  return param_1;
 }
 
 
@@ -7505,8 +7919,98 @@ void __fastcall FUN_0041d710(UIWidget *param_1)
 
 void __thiscall FUN_0041d780(void *this,void *param_1)
 {
-    /* STUB: 144 lines not yet reconstructed */
+  UIWidget *widget = (UIWidget *)this;
+  int *_fs;
+  int _seh_prev;
+  char *_handler;
+  int _seh_state;
+  int n1, n2, n3;
+  uint u1, u2;
+  void *pv1;
+  short v18[4];
+  short v10[4];
+
+  /* SEH prolog */
+  _seh_prev = *_fs;
+  _handler = &L_0041da00;
+  *_fs = &_seh_prev;
+  _seh_state = 0;
+
+  /* Widget paint handler - render this widget and its children */
+  if (widget->is_visible == 0) {
+    _seh_state = 0xffffffff;
+    *_fs = _seh_prev;
     return;
+  }
+
+  /* Check if widget is within the dirty region */
+  if (param_1 != NULL) {
+    v18[0] = ((short *)param_1)[0];
+    v18[1] = ((short *)param_1)[1];
+    v18[2] = ((short *)param_1)[2];
+    v18[3] = ((short *)param_1)[3];
+  } else {
+    v18[0] = widget->rect_top;
+    v18[1] = widget->rect_left;
+    v18[2] = widget->rect_bottom;
+    v18[3] = widget->rect_right;
+  }
+
+  /* Check if our rect intersects the dirty rect */
+  if (widget->rect_bottom <= v18[0] || widget->rect_top >= v18[2] ||
+      widget->rect_right <= v18[1] || widget->rect_left >= v18[3]) {
+    _seh_state = 0xffffffff;
+    *_fs = _seh_prev;
+    return;
+  }
+
+  /* Compute intersection of widget rect and dirty rect */
+  v10[0] = (widget->rect_top > v18[0]) ? widget->rect_top : v18[0];
+  v10[1] = (widget->rect_left > v18[1]) ? widget->rect_left : v18[1];
+  v10[2] = (widget->rect_bottom < v18[2]) ? widget->rect_bottom : v18[2];
+  v10[3] = (widget->rect_right < v18[3]) ? widget->rect_right : v18[3];
+
+  /* Call the widget's vtable paint function */
+  if (widget->vtable != NULL) {
+    ((void (*)(void))widget->vtable[0x30 / 4])(); /* vtable paint */
+  }
+
+  /* Paint children in child_list_2 */
+  if (widget->child_list_2 != 0) {
+    u1 = ((CVector *)widget->child_list_2)->count;
+    if (u1 != 0) {
+      u2 = 1;
+      n1 = 4;
+      do {
+        pv1 = *(void **)(*(int *)((CVector *)widget->child_list_2)->data[0] + -4 + n1);
+        if (pv1 != NULL) {
+          FUN_0041d780(pv1, v10);
+        }
+        n1 = n1 + 4;
+        u2 = u2 + 1;
+      } while (u2 <= u1);
+    }
+  }
+
+  /* Paint children in child_list_1 */
+  if (widget->child_list_1 != 0) {
+    u1 = ((CVector *)widget->child_list_1)->count;
+    if (u1 != 0) {
+      u2 = 1;
+      n1 = 4;
+      do {
+        pv1 = *(void **)(*(int *)((CVector *)widget->child_list_1)->data[0] + -4 + n1);
+        if (pv1 != NULL) {
+          FUN_0041d780(pv1, v10);
+        }
+        n1 = n1 + 4;
+        u2 = u2 + 1;
+      } while (u2 <= u1);
+    }
+  }
+
+  _seh_state = 0xffffffff;
+  *_fs = _seh_prev;
 }
 
 

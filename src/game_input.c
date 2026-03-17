@@ -2284,8 +2284,23 @@ void __fastcall FUN_0043ef10(DialogWidget *param_1)
 
 void __fastcall FUN_0043ef30(int param_1)
 {
-    /* STUB: 22 lines not yet reconstructed */
-    return;
+  int *self;
+  int *pu1;
+
+  self = (int *)param_1;
+
+  /* Clean up allocated child at offset [0x47] */
+  if (self[0x47] != 0) {
+    /* Walk the child list and release each entry */
+    for (pu1 = (int *)((DialogWidget *)param_1)->child_list; pu1 != NULL;
+        pu1 = *(int **)((char *)pu1 + 10)) {
+      FUN_0041dd40((void *)*pu1);
+    }
+    FUN_0041dd40((void *)self[0x47]);
+    self[0x47] = 0;
+  }
+
+  return;
 }
 
 
@@ -2293,8 +2308,113 @@ void __fastcall FUN_0043ef30(int param_1)
 
 void FUN_0043ef90(void)
 {
-    /* STUB: 105 lines not yet reconstructed */
+  int *_fs;
+  int _seh_prev;
+  char *_handler;
+  int _seh_state;
+  int v50[4];
+  int v40[4];
+  int v30;
+  int v2c;
+  int v28;
+  int v24;
+  int v20;
+  int v1c;
+  int v18;
+  void *v14;
+  int *pn1;
+  UIWidget *pv2;
+  int n3;
+  int i;
+  DWORD dw4;
+
+  /* SEH prolog */
+  _seh_prev = *_fs;
+  _handler = &L_0043f200;
+  *_fs = &_seh_prev;
+  _seh_state = 0xffffffff;
+
+  v30 = 0;
+  v2c = 0;
+  v28 = 0;
+  v24 = 0;
+  v20 = 0;
+  v1c = 0;
+  v18 = 0;
+  v14 = NULL;
+
+  for (i = 0; i < 4; i++) {
+    v50[i] = 0;
+    v40[i] = 0;
+  }
+
+  _seh_state = (_seh_state & ~0xFF) | 1;
+
+  /* Check if we have a valid session */
+  if (DAT_00488e64 == 0) {
+    _seh_state = 0xffffffff;
+    *_fs = _seh_prev;
     return;
+  }
+
+  v14 = (void *)DAT_00488e64;
+
+  /* Check if the object has an active child */
+  if (((int *)v14)[0x47] == 0) {
+    _seh_state = 0xffffffff;
+    *_fs = _seh_prev;
+    return;
+  }
+
+  /* Get current tick for timing */
+  dw4 = GetTickCount();
+  v30 = dw4;
+
+  /* Process the child list */
+  pn1 = (int *)((DialogWidget *)v14)->child_list;
+  while (pn1 != NULL) {
+    pv2 = (UIWidget *)*pn1;
+    if (pv2 != NULL) {
+      /* Update animation state */
+      if (pv2->is_interactive != 0) {
+        pv2->anim_flag_0 = 0;
+        pv2->anim_flag_2 = 0;
+        pv2->anim_flag_1 = 0;
+        pv2->anim_flag_3 = 0;
+        FUN_00405d30(pv2, pv2->pending_frame);
+      }
+      /* Check for field_109 refresh */
+      if (pv2->field_109 != 0) {
+        FUN_0041ba40((GameWidget *)pv2, 0, 1, 0);
+        pv2->field_109 = 0;
+      }
+    }
+    pn1 = *(int **)((char *)pn1 + 10);
+  }
+
+  /* Process game session score updates */
+  if (DAT_0048345c != 0) {
+    GameSession *session = (GameSession *)DAT_0048345c;
+    v24 = (int)session->score_display;
+    v20 = (int)session->correct_count;
+    v1c = (int)session->wrong_count;
+    v18 = (int)session->total_count;
+  }
+
+  _seh_state = (_seh_state & ~0xFF) | 2;
+  _seh_state = (_seh_state & ~0xFF) | 1;
+  _seh_state &= ~0xFF;
+  _seh_state = 0xffffffff;
+
+  FUN_0043f219();
+  FUN_0043f221();
+  FUN_0043f229();
+  FUN_0043f231();
+  FUN_0043f243();
+
+  /* SEH epilog */
+  *_fs = _seh_prev;
+  return;
 }
 
 
@@ -2367,8 +2487,57 @@ void FUN_0043f56e(void) { return; }
 
 int * __fastcall FUN_0043f590(int *param_1)
 {
-    /* STUB: 50 lines not yet reconstructed */
-    return 0;
+  int *_fs;
+  int _seh_prev;
+  char *_handler;
+  int _seh_state;
+  int i;
+
+  /* SEH prolog */
+  _seh_prev = *_fs;
+  _seh_state = 0xffffffff;
+  _handler = &L_0043f720;
+  *_fs = &_seh_prev;
+
+  /* Call parent constructor (DialogWidget base) */
+  FUN_0042cbd0(param_1);
+
+  /* Set vtable */
+  *param_1 = &PTR_FUN_00475040;
+
+  /* Initialize extended widget fields */
+  _seh_state = (_seh_state & ~0xFF) | 1;
+
+  /* Initialize PlayerSlot/BoardSlotEntry area at +0x1D0 */
+  _eh_vector_constructor_iterator_((void *)((char *)param_1 + 0x1d0), 0x16, 4, FUN_0040f490);
+
+  _seh_state = (_seh_state & ~0xFF) | 2;
+
+  /* Initialize widget state fields */
+  *(short *)((char *)param_1 + 0x198) = 0;
+  *(int *)((char *)param_1 + 0x19c) = 0;
+  *(int *)((char *)param_1 + 0x1a0) = 0;
+  *(int *)((char *)param_1 + 0x1a4) = 0;
+  *(int *)((char *)param_1 + 0x1a8) = 0;
+  *(int *)((char *)param_1 + 0x1ac) = 0;
+  *(int *)((char *)param_1 + 0x1b0) = 0;
+  *(int *)((char *)param_1 + 0x1b4) = 0;
+  *(int *)((char *)param_1 + 0x1b8) = 0;
+  *(short *)((char *)param_1 + 0x1bc) = 0;
+  *(short *)((char *)param_1 + 0x1be) = 0;
+  *(int *)((char *)param_1 + 0x1c0) = 0;
+  *(int *)((char *)param_1 + 0x1c4) = 0;
+  *(short *)((char *)param_1 + 0x1c8) = 0;
+  *(short *)((char *)param_1 + 0x1ca) = 0;
+  *(short *)((char *)param_1 + 0x1cc) = 0;
+  *(int *)((char *)param_1 + 0x1d6) = 0;
+
+  /* Initialize global state */
+  DAT_00488e24 = 0;
+  DAT_00488e04 = 0;
+
+  *_fs = _seh_prev;
+  return param_1;
 }
 
 
@@ -2418,8 +2587,73 @@ void FUN_0043f7a7(void)
 
 void FUN_0043f7b0(void *param_1)
 {
-    /* STUB: 71 lines not yet reconstructed */
-    return;
+  int *_fs;
+  int _seh_prev;
+  char *_handler;
+  int _seh_state;
+  char *widget;
+  int v24;
+  int v20;
+  int v1c;
+  void *v18;
+
+  /* SEH prolog */
+  _seh_prev = *_fs;
+  _handler = &L_0043f890;
+  *_fs = &_seh_prev;
+  _seh_state = 0xffffffff;
+
+  widget = (char *)param_1;
+  v24 = 0;
+  v20 = 0;
+  v1c = 0;
+  v18 = NULL;
+
+  _seh_state = (_seh_state & ~0xFF) | 1;
+
+  /* Initialize resources via FUN_00409330 (game state setup) */
+  FUN_00409330();
+
+  /* Load resource handles into widget fields */
+  FUN_0043a700(DAT_004838c0, 0x5e1000d, *(int **)(widget + 0x1d6));
+
+  /* Load sprite/animation resources */
+  if (*(uint *)(widget + 0x198) == 0) {
+    *(int *)(widget + 0x198) = FUN_0040f070(DAT_004838c0, 0x2d0000c, 0);
+  }
+  if (*(uint *)(widget + 0x1a8) == 0) {
+    *(int *)(widget + 0x1a8) = FUN_0040f070(DAT_004838c0, 0xc1000c, 0);
+  }
+  if (*(uint *)(widget + 0x1ac) == 0) {
+    *(int *)(widget + 0x1ac) = FUN_0040f070(DAT_004838c0, 0xb7000c, 0);
+  }
+  if (*(uint *)(widget + 0x19c) == 0) {
+    *(int *)(widget + 0x19c) = FUN_0040f070(DAT_004838c0, 0xb2000c, 0);
+  }
+  if (*(uint *)(widget + 0x1a0) == 0) {
+    *(int *)(widget + 0x1a0) = FUN_0040f070(DAT_004838c0, 0xab000c, 0);
+  }
+  if (*(uint *)(widget + 0x1a4) == 0) {
+    *(int *)(widget + 0x1a4) = FUN_0040f070(DAT_004838c0, 0xdc000c, 0);
+  }
+  if (*(uint *)(widget + 0x1b0) == 0) {
+    *(int *)(widget + 0x1b0) = FUN_0040f070(DAT_004838c0, 0xdc000c, 0);
+  }
+
+  /* Reset game counters */
+  DAT_00488e24 = 0;
+  DAT_00488e04 = 0;
+
+  /* Initialize widget tree field_109 flags */
+  FUN_0043f8c0((UIWidget *)param_1);
+
+  _seh_state = 0xffffffff;
+  FUN_0043f8a3();
+  FUN_0043f8b5();
+
+  /* SEH epilog */
+  *_fs = _seh_prev;
+  return;
 }
 
 
@@ -2458,8 +2692,129 @@ void FUN_0043f8c0(UIWidget *param_1)
 
 void __thiscall FUN_0043f920(void *this,int param_1,int param_2)
 {
-    /* STUB: 128 lines not yet reconstructed */
+  int *_fs;
+  int _seh_prev;
+  char *_handler;
+  int _seh_state;
+  char *widget;
+  int v50[4];
+  int v40[4];
+  int v30;
+  int v2c;
+  int v28;
+  int v24;
+  int v20;
+  int v1c;
+  void *v18;
+  int v14;
+  UIWidget *pv1;
+  int *pn2;
+  DWORD dw3;
+  short s4;
+
+  /* SEH prolog */
+  _seh_prev = *_fs;
+  _handler = &L_0043fcb0;
+  *_fs = &_seh_prev;
+  _seh_state = 0xffffffff;
+
+  widget = (char *)this;
+  v30 = 0;
+  v2c = 0;
+  v28 = 0;
+  v24 = 0;
+  v20 = 0;
+  v1c = 0;
+  v18 = NULL;
+  v14 = 0;
+
+  v50[0] = 0; v50[1] = 0; v50[2] = 0; v50[3] = 0;
+  v40[0] = 0; v40[1] = 0; v40[2] = 0; v40[3] = 0;
+
+  _seh_state = (_seh_state & ~0xFF) | 1;
+
+  if (param_1 == 0) {
+    _seh_state = 0xffffffff;
+    *_fs = _seh_prev;
     return;
+  }
+
+  v18 = (void *)param_1;
+  v14 = param_2;
+
+  /* Get current tick */
+  dw3 = GetTickCount();
+
+  /* Process input event */
+  if (param_2 == 0x201) {
+    /* Mouse button down - check hit test on widget areas */
+    *(short *)(widget + 0x1ca) = 1;
+    FUN_0042db60(DAT_00488e34, *(ushort **)(widget + 0x19c), -1, -1);
+    dw3 = GetTickCount();
+    *(short *)(widget + 0x1ca) = 0;
+    *(int *)(widget + 0x176) = dw3;
+  }
+  else if (param_2 == 0x202) {
+    /* Mouse button up */
+    if (*(short *)(widget + 0x1cc) != 0) {
+      /* Check for correct answer */
+      FUN_0043c5d0((int)widget);
+      *(short *)(widget + 0x1ca) = 1;
+      FUN_0042db60(DAT_00488e34, *(ushort **)(widget + 0x1ac), -1, -1);
+      dw3 = GetTickCount();
+      *(short *)(widget + 0x1ca) = 0;
+      *(int *)(widget + 0x176) = dw3;
+    }
+    else {
+      /* Incorrect answer */
+      FUN_0043c660(widget);
+    }
+  }
+  else if (param_2 == 0x200) {
+    /* Mouse move - update highlight state */
+    FUN_0041cdc0((GameWidget *)widget, v50);
+    FUN_0041ce10((GameWidget *)widget, v40, 4);
+  }
+  else if (param_2 == 0x101) {
+    /* Key down */
+    s4 = (short)param_1;
+    if (s4 != 0) {
+      /* Process key input */
+      FUN_0043c7f0();
+    }
+  }
+
+  /* Update widget tree */
+  for (pn2 = DAT_00480550; pn2 != NULL; pn2 = (int *)pn2[1]) {
+    pv1 = (UIWidget *)*pn2;
+    if (pv1 != NULL) {
+      if (pv1->field_109 != 0) {
+        FUN_0043f8c0(pv1);
+      }
+    }
+  }
+
+  /* Update secondary widget list */
+  for (pn2 = DAT_0048055c; pn2 != NULL; pn2 = (int *)pn2[1]) {
+    pv1 = (UIWidget *)*pn2;
+    if (pv1 != NULL) {
+      if ((pv1->flags >> 6 & 1) != 0) {
+        FUN_0043cb90(pv1, pv1);
+      }
+    }
+  }
+
+  _seh_state = (_seh_state & ~0xFF) | 2;
+  _seh_state = (_seh_state & ~0xFF) | 1;
+  _seh_state &= ~0xFF;
+  _seh_state = 0xffffffff;
+
+  FUN_0043fcd1();
+  FUN_0043fcf0();
+
+  /* SEH epilog */
+  *_fs = _seh_prev;
+  return;
 }
 
 

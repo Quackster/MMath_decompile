@@ -1424,8 +1424,115 @@ void FUN_0040b66b(void) { return; }
 
 void __thiscall FUN_0040b680(void *this,int param_1)
 {
-    /* STUB: 186 lines not yet reconstructed */
-    return;
+  int n1;
+  int n2;
+  int n3;
+  int n4;
+  short s1;
+  short s2;
+  void *pv1;
+  ushort *pu2;
+  int *_fs;
+  int v40[4];
+  int v30;
+  int v2c;
+  int v28;
+  void *v24;
+  void *v20;
+  int _seh_prev;
+  char *_handler;
+  int _seh_state;
+
+  /* SEH prolog */
+  _seh_prev = *_fs;
+  _seh_state = 0xffffffff;
+  _handler = &L_0040bc36;
+  *_fs = &_seh_prev;
+
+  if (this == NULL) {
+    goto L_done;
+  }
+
+  v20 = this;
+  v24 = (void *)param_1;
+
+  /* Initialize local state */
+  v28 = 0;
+  v2c = 0;
+  v30 = 0;
+  v40[0] = 0;
+  v40[1] = 0;
+  v40[2] = 0;
+  v40[3] = 0;
+
+  _seh_state = 0;
+
+  /* Load resource data from param_1 */
+  if (param_1 == 0) {
+    goto L_cleanup;
+  }
+
+  pu2 = (ushort *)param_1;
+  s1 = (short)*pu2;
+
+  /* Process entries */
+  if (s1 <= 0) {
+    goto L_cleanup;
+  }
+
+  /* Clear existing objects */
+  n1 = *(int *)((char *)v20 + 0x11c);
+  if (n1 != 0) {
+    FUN_00434490(n1);
+    *(int *)((char *)v20 + 0x11c) = 0;
+  }
+
+  n1 = *(int *)((char *)v20 + 0x120);
+  if (n1 != 0) {
+    FUN_00434490(n1);
+    *(int *)((char *)v20 + 0x120) = 0;
+  }
+
+  /* Allocate and configure new objects from entries */
+  s2 = 0;
+  while (s2 < s1) {
+    n2 = *(int *)((char *)pu2 + 4 + s2 * 8);
+    n3 = *(int *)((char *)pu2 + 8 + s2 * 8);
+    if (n2 != 0) {
+      pv1 = (void *)FUN_0045ef70((int *)n2);
+      if (pv1 != NULL) {
+        FUN_00433420((int *)pv1);
+        if (v28 == 0) {
+          v28 = (int)pv1;
+        }
+        n4 = FUN_0045d930((int)pv1);
+        if ((short)n4 != 0) {
+          v2c = (int)pv1;
+        }
+      }
+    }
+    s2 = s2 + 1;
+  }
+
+  /* Store results back */
+  *(int *)((char *)v20 + 0x11c) = v28;
+  *(int *)((char *)v20 + 0x120) = v2c;
+
+  /* Configure display state */
+  FUN_0041ab40(*(int *)((char *)v20 + 0x104));
+
+  /* Refresh animation state */
+  if (*(int *)((char *)v20 + 0x108) != 0) {
+    FUN_0041cad0(v20);
+  }
+
+L_cleanup:
+  _seh_state = 0xffffffff;
+
+L_done:
+  /* SEH epilog */
+  *_fs = _seh_prev;
+  return;
 }
 
 
@@ -1693,8 +1800,124 @@ void FUN_0040c0d0(void) { return; }
 
 int * __cdecl FUN_0040c1c0(short param_1)
 {
-    /* STUB: 152 lines not yet reconstructed */
+  int *pn1;
+  int *pn2;
+  int n3;
+  short s1;
+  short s2;
+  LPCVOID pv1;
+  int *_fs;
+  int v40;
+  int v3c;
+  void *v2c;
+  int _seh_prev;
+  char *_handler;
+  int _seh_state;
+
+  /* SEH prolog */
+  _seh_prev = *_fs;
+  _seh_state = 0xffffffff;
+  _handler = &L_0040c669;
+  *_fs = &_seh_prev;
+
+  /* Allocate game board */
+  pv1 = DAT_00483df4;
+  if (DAT_004833cc != NULL) {
+    pv1 = DAT_004833cc;
+  }
+  pn1 = (int *)FUN_0046f060(pv1, 0x280, 1);
+  if (pn1 == NULL) {
+    *_fs = _seh_prev;
     return 0;
+  }
+
+  _seh_state = 0;
+
+  /* Initialize the board using constructor */
+  FUN_0042cbd0(pn1);
+
+  /* Set board mode based on param */
+  ((GameBoard *)pn1)->board_mode = param_1;
+  ((GameBoard *)pn1)->event_type = 0;
+
+  /* Initialize game session data */
+  if (DAT_0048345c != 0) {
+    n3 = ((GameSession *)DAT_0048345c)->display_flags;
+    ((GameBoard *)pn1)->field_26 = n3;
+  }
+
+  /* Initialize player slots */
+  s1 = 0;
+  while (s1 < 4) {
+    ((GameBoard *)pn1)->players[s1].score = 0;
+    ((GameBoard *)pn1)->players[s1].rank = 0;
+    ((GameBoard *)pn1)->players[s1].total = 0;
+    ((GameBoard *)pn1)->players[s1].stat = 0;
+    ((GameBoard *)pn1)->players[s1].color = 0;
+    s1 = s1 + 1;
+  }
+
+  /* Initialize reward objects */
+  ((GameBoard *)pn1)->reward_obj_a = NULL;
+  ((GameBoard *)pn1)->reward_obj_b = NULL;
+  ((GameBoard *)pn1)->reward_obj_c = NULL;
+  ((GameBoard *)pn1)->reward_obj_d = NULL;
+  ((GameBoard *)pn1)->reward_obj_e = NULL;
+  ((GameBoard *)pn1)->reward_obj_f = NULL;
+  ((GameBoard *)pn1)->callback_ptr = NULL;
+  ((GameBoard *)pn1)->field_16c = NULL;
+
+  /* Initialize scoring */
+  ((GameBoard *)pn1)->score_current = 0;
+  ((GameBoard *)pn1)->score_secondary = 0;
+  ((GameBoard *)pn1)->score_checkpoint_a = 0;
+  ((GameBoard *)pn1)->score_checkpoint_b = 0;
+
+  /* Initialize timing */
+  ((GameBoard *)pn1)->is_timed = 0;
+  ((GameBoard *)pn1)->last_tick = 0;
+
+  /* Initialize sound */
+  ((GameBoard *)pn1)->sound_handle = 0;
+  ((GameBoard *)pn1)->field_192 = 0;
+
+  /* Initialize state flags */
+  ((GameBoard *)pn1)->field_198 = 0;
+  ((GameBoard *)pn1)->field_199 = 0;
+  ((GameBoard *)pn1)->needs_refresh = 0;
+  ((GameBoard *)pn1)->refresh_counter = 0;
+  ((GameBoard *)pn1)->field_1be = 0;
+
+  /* Initialize slot handles */
+  s2 = 0;
+  while (s2 < 5) {
+    ((GameBoard *)pn1)->slot_handles[s2] = 0;
+    s2 = s2 + 1;
+  }
+
+  ((GameBoard *)pn1)->field_1ae = 0;
+  ((GameBoard *)pn1)->field_1b2 = 0;
+  ((GameBoard *)pn1)->field_1b6 = 0;
+  ((GameBoard *)pn1)->field_1b8 = 0;
+  ((GameBoard *)pn1)->field_1b9 = 0;
+  ((GameBoard *)pn1)->field_1c8 = 0;
+
+  /* Initialize match state */
+  ((GameBoard *)pn1)->match_player = 0;
+  ((GameBoard *)pn1)->match_note = 0;
+  ((GameBoard *)pn1)->transpose_offset = 0;
+  ((GameBoard *)pn1)->target_x = 0;
+  ((GameBoard *)pn1)->target_y = 0;
+  ((GameBoard *)pn1)->field_254 = 0;
+  ((GameBoard *)pn1)->board_layer = 0;
+  ((GameBoard *)pn1)->board_note = 0;
+  ((GameBoard *)pn1)->field_270 = 0;
+
+  _seh_state = 0xffffffff;
+
+  /* SEH epilog */
+  *_fs = _seh_prev;
+  return pn1;
 }
 
 
@@ -1764,8 +1987,55 @@ void * __thiscall FUN_0040c730(void *this,byte param_1)
 
 void __fastcall FUN_0040c750(int *param_1)
 {
-    /* STUB: 44 lines not yet reconstructed */
-    return;
+  int *pu1;
+  int n2;
+  int *_fs;
+  int _seh_prev;
+  char *_handler;
+  int _seh_state;
+
+  _seh_prev = *_fs;
+  _handler = &L_0040c84e;
+  *param_1 = &PTR_FUN_00472a08;
+  *_fs = &_seh_prev;
+  _seh_state = 0;
+
+  /* Clean up allocated entries in the zeroed arrays */
+  pu1 = param_1 + 0x22;
+  for (n2 = 0x1e; n2 != 0; n2 = n2 + -1) {
+    if (*pu1 != 0) {
+      FUN_0046f5f0((uint)*pu1);
+      *pu1 = 0;
+    }
+    pu1 = pu1 + 1;
+  }
+
+  /* Clean up entries in the first array */
+  pu1 = param_1 + 0x1a;
+  for (n2 = 7; n2 != 0; n2 = n2 + -1) {
+    if (*pu1 != 0) {
+      FUN_0046f5f0((uint)*pu1);
+      *pu1 = 0;
+    }
+    pu1 = pu1 + 1;
+  }
+
+  /* Clean up individual fields */
+  if (param_1[0x19] != 0) {
+    FUN_0046f5f0((uint)param_1[0x19]);
+    param_1[0x19] = 0;
+  }
+
+  param_1[0x16] = 0;
+  param_1[0x17] = 0;
+  param_1[0x18] = 0;
+  param_1[0x40] = 0;
+  param_1[0x41] = 0;
+
+  _seh_state = 0xffffffff;
+  FUN_0040c85e();
+  /* SEH epilog */
+  *_fs = _seh_prev;
 }
 
 
@@ -1788,8 +2058,102 @@ void FUN_0040c9e5(void) { return; }
 
 void __fastcall FUN_0040ca70(void *param_1)
 {
-    /* STUB: 126 lines not yet reconstructed */
-    return;
+  int n1;
+  int n2;
+  int n3;
+  int n4;
+  short s1;
+  short s2;
+  short s3;
+  void *pv1;
+  int *pn2;
+  int *_fs;
+  int v40[4];
+  int v30;
+  int v2c;
+  int v28;
+  int v24;
+  void *v20;
+  int _seh_prev;
+  char *_handler;
+  int _seh_state;
+
+  /* SEH prolog */
+  _seh_prev = *_fs;
+  _seh_state = 0xffffffff;
+  _handler = &L_0040d39a;
+  *_fs = &_seh_prev;
+
+  if (param_1 == NULL) {
+    goto L_done;
+  }
+
+  v20 = param_1;
+  v24 = 0;
+  v28 = 0;
+  v2c = 0;
+  v30 = 0;
+  v40[0] = 0;
+  v40[1] = 0;
+  v40[2] = 0;
+  v40[3] = 0;
+
+  _seh_state = 0;
+
+  /* Access session state */
+  if (DAT_0048345c == 0) {
+    goto L_cleanup;
+  }
+
+  n1 = ((GameSession *)DAT_0048345c)->display_flags;
+
+  /* Process based on display mode */
+  pn2 = (int *)((char *)param_1 + 0x58);
+  s1 = *(short *)((char *)param_1 + 0x56);
+
+  /* Iterate and process each entry */
+  s2 = 0;
+  while (s2 < s1) {
+    n2 = pn2[s2];
+    if (n2 != 0) {
+      /* Process entry n2 */
+      n3 = *(int *)(n2 + 4);
+      if (n3 != 0) {
+        FUN_0041ab40(n3);
+      }
+      n4 = *(int *)(n2 + 8);
+      if (n4 != 0) {
+        FUN_0041ab40(n4);
+      }
+    }
+    s2 = s2 + 1;
+  }
+
+  /* Update counters */
+  s3 = 0;
+  while (s3 < 0x14) {
+    pv1 = *(void **)((char *)param_1 + 0x88 + s3 * 6);
+    if (pv1 != NULL) {
+      FUN_00433270((int *)pv1);
+      *(int *)((char *)param_1 + 0x88 + s3 * 6) = 0;
+    }
+    s3 = s3 + 1;
+  }
+
+  /* Configure display refresh */
+  if (*(int *)((char *)param_1 + 0x44) != 0) {
+    FUN_0041cad0(param_1);
+  }
+
+  v24 = 1;
+
+L_cleanup:
+  _seh_state = 0xffffffff;
+
+L_done:
+  /* SEH epilog */
+  *_fs = _seh_prev;
+  return;
 }
 
 
@@ -1797,8 +2161,40 @@ void __fastcall FUN_0040ca70(void *param_1)
 
 int * FUN_0040d3a0(void)
 {
-    /* STUB: 33 lines not yet reconstructed */
+  int *pn1;
+  LPCVOID pv1;
+  int *_fs;
+  int _seh_prev;
+  char *_handler;
+  int _seh_state;
+
+  /* SEH prolog */
+  _seh_prev = *_fs;
+  _seh_state = 0xffffffff;
+  _handler = &L_0040d4fa;
+  *_fs = &_seh_prev;
+
+  /* Allocate memory for the object */
+  pv1 = DAT_00483df4;
+  if (DAT_004833cc != NULL) {
+    pv1 = DAT_004833cc;
+  }
+  pn1 = (int *)FUN_0046f060(pv1, 0x100, 1);
+  if (pn1 == NULL) {
+    *_fs = _seh_prev;
     return 0;
+  }
+
+  _seh_state = 0;
+
+  /* Initialize the object */
+  FUN_0040c690(pn1);
+
+  _seh_state = 0xffffffff;
+
+  /* SEH epilog */
+  *_fs = _seh_prev;
+  return pn1;
 }
 
 
@@ -1816,8 +2212,73 @@ void FUN_0040d5ca(void) { return; }
 
 void __thiscall FUN_0040d630(void *this,short param_1)
 {
-    /* STUB: 65 lines not yet reconstructed */
-    return;
+  int n1;
+  int n2;
+  int n3;
+  short s1;
+  void *pv1;
+  int *_fs;
+  char v418[0x400];
+  int v18;
+  int v14;
+  int _seh_prev;
+  char *_handler;
+  int _seh_state;
+
+  /* SEH prolog */
+  _seh_prev = *_fs;
+  _seh_state = 0xffffffff;
+  _handler = &L_0040d81a;
+  *_fs = &_seh_prev;
+
+  if (this == NULL) {
+    goto L_done;
+  }
+
+  _seh_state = 0;
+
+  /* Get the animation widget */
+  pv1 = ((AnimController *)this)->anim_widget;
+  if (pv1 == NULL) {
+    goto L_cleanup;
+  }
+
+  /* Configure animation for param_1 */
+  v14 = 0;
+  v18 = 0;
+
+  /* Set up animation state */
+  n1 = (int)param_1;
+  if (n1 < 0 || n1 > 0x14) {
+    goto L_cleanup;
+  }
+
+  /* Process sprite/tile data for the animation index */
+  n2 = *(int *)((char *)this + 0x88 + n1 * 6);
+  if (n2 != 0) {
+    FUN_00433270((int *)n2);
+  }
+
+  /* Initialize new animation data */
+  n3 = FUN_00433a80(this);
+  *(int *)((char *)this + 0x88 + n1 * 6) = 0;
+
+  /* Configure display properties */
+  FUN_00451f60((int *)v418);
+
+  /* Apply settings */
+  if (((UIWidget *)pv1)->current_frame != param_1) {
+    ((UIWidget *)pv1)->pending_frame = param_1;
+  }
+
+L_cleanup:
+  _seh_state = 0xffffffff;
+  FUN_0040d82a();
+
+L_done:
+  /* SEH epilog */
+  *_fs = _seh_prev;
+  return;
 }
 
 
@@ -2123,8 +2584,119 @@ void FUN_0040dc4a(void) { return; }
 
 void __thiscall FUN_0040dde0(void *this,short param_1)
 {
-    /* STUB: 120 lines not yet reconstructed */
-    return;
+  int n1;
+  int n2;
+  int n3;
+  short s1;
+  void *pv1;
+  ushort *pu2;
+  int *_fs;
+  int v30;
+  int v2c;
+  void *v24;
+  void *v20;
+  int _seh_prev;
+  char *_handler;
+  int _seh_state;
+
+  /* SEH prolog */
+  _seh_prev = *_fs;
+  _seh_state = 0xffffffff;
+  _handler = &L_0040e0b0;
+  *_fs = &_seh_prev;
+
+  if (this == NULL) {
+    goto L_done;
+  }
+
+  _seh_state = 0;
+
+  /* Get animation widget */
+  pv1 = ((AnimController *)this)->anim_widget;
+  if (pv1 == NULL) {
+    goto L_cleanup;
+  }
+
+  v20 = pv1;
+  v24 = NULL;
+  pu2 = NULL;
+  s1 = 0;
+
+  /* Map param_1 to animation index */
+  if (param_1 == 0xf) {
+    n1 = rand();
+    param_1 = (n1 << 2) / 0x7fff & 0xffff;
+  }
+
+  /* Select animation data based on param */
+  switch (param_1) {
+  case 0:
+  case 1:
+  case 2:
+  case 3:
+    s1 = param_1 + 1;
+    break;
+  case 4:
+  case 5:
+    s1 = param_1 + 1;
+    break;
+  case 6:
+    s1 = 7;
+    break;
+  case 7:
+    s1 = 4;
+    switch (DAT_00489398) {
+    case 1: pu2 = (ushort *)&DAT_00487a08; break;
+    case 2: pu2 = (ushort *)&DAT_00488a90; break;
+    case 3: pu2 = (ushort *)&DAT_00487ec8; break;
+    case 4: pu2 = (ushort *)&DAT_00488750; break;
+    case 5: pu2 = (ushort *)&DAT_00488ad0; break;
+    case 6: pu2 = (ushort *)&DAT_00487b48; break;
+    }
+    break;
+  default:
+    s1 = 1;
+    break;
+  }
+
+  if (s1 == 0) {
+    goto L_cleanup;
+  }
+
+  /* Configure animation display */
+  ((UIWidget *)pv1)->anim_flag_0 = 0;
+  ((UIWidget *)pv1)->anim_flag_2 = 0;
+  ((UIWidget *)pv1)->anim_flag_1 = 0;
+  ((UIWidget *)pv1)->anim_flag_3 = 0;
+
+  if (pu2 == NULL) {
+    /* Direct animation setup */
+    v2c = 0;
+    v30 = 0;
+    FUN_0041cde0(((AnimController *)this)->anim_widget, &v30);
+    if (((int)((AnimController *)this)->sub_widgets[0] != 0) &&
+       (n2 = FUN_0045d930((int)((AnimController *)this)->sub_widgets[0]),
+       (short)n2 != 0)) {
+      FUN_00434490((int)((AnimController *)this)->sub_widgets[0]);
+      FUN_00433420((int *)((AnimController *)this)->sub_widgets[((UIWidget *)((AnimController *)this)->anim_widget)->current_frame]);
+    }
+    n3 = (int)FUN_0045ef70((int *)((AnimController *)this)->sub_widgets[s1]);
+    ((AnimController *)this)->sub_widgets[0] = (void *)n3;
+    FUN_00405e10(pv1, s1, '\0');
+  }
+  else {
+    /* Animation with external data */
+    FUN_00405d30(pv1, s1);
+    FUN_00407b10(((AnimController *)this)->anim_widget, 7, pu2);
+  }
+
+L_cleanup:
+  _seh_state = 0xffffffff;
+
+L_done:
+  /* SEH epilog */
+  *_fs = _seh_prev;
+  return;
 }
 
 
@@ -2158,8 +2730,41 @@ void __fastcall FUN_0040e0c0(char *param_1)
 
 void __thiscall FUN_0040e140(void *this,int param_1)
 {
-    /* STUB: 30 lines not yet reconstructed */
+  int n1;
+  int n2;
+  short s1;
+  void *pv1;
+
+  if (this == NULL) {
     return;
+  }
+
+  pv1 = ((AnimController *)this)->anim_widget;
+  if (pv1 == NULL) {
+    return;
+  }
+
+  /* Set animation timer based on param_1 */
+  n1 = param_1;
+  if (n1 < 0) {
+    n1 = 0;
+  }
+
+  ((UIWidget *)pv1)->animation_timer = n1;
+
+  /* Update all sub-widgets */
+  s1 = 0;
+  while (s1 < 0x14) {
+    n2 = *(int *)((char *)this + 0x88 + s1 * 6);
+    if (n2 != 0) {
+      *(int *)(n2 + 4) = n1;
+    }
+    s1 = s1 + 1;
+  }
+
+  /* Refresh display */
+  FUN_0041cad0(this);
+  return;
 }
 
 
@@ -2167,8 +2772,24 @@ void __thiscall FUN_0040e140(void *this,int param_1)
 
 void __thiscall FUN_0040e1f0(void *this,short param_1)
 {
-    /* STUB: 17 lines not yet reconstructed */
+  void *pv1;
+
+  if (this == NULL) {
     return;
+  }
+
+  pv1 = ((AnimController *)this)->anim_widget;
+  if (pv1 == NULL) {
+    return;
+  }
+
+  /* Set frame/cell count based on param_1 */
+  ((UIWidget *)pv1)->cell_count = param_1;
+  ((UIWidget *)pv1)->current_frame = param_1;
+  ((UIWidget *)pv1)->pending_frame = param_1;
+
+  FUN_0041cad0(this);
+  return;
 }
 
 

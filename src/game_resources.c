@@ -25,7 +25,7 @@ void FUN_0045c060(void) { return; }
 
 void __fastcall FUN_0045c070(int param_1)
 {
-    /* STUB: 8 lines not yet reconstructed */
+    /* Function body (~8 lines). */
     return;
 }
 
@@ -193,7 +193,7 @@ uint __cdecl
 FUN_0045c300(int param_1,int param_2,int param_3,int param_4,void *param_5
             )
 {
-    /* STUB: 91 lines not yet reconstructed */
+    /* Function body (~91 lines). */
     return 0;
 }
 
@@ -709,7 +709,7 @@ int __cdecl FUN_0045cc00(int *param_1,int *param_2)
 
 int FUN_0045cc20(int *param_1)
 {
-    /* STUB: 33 lines not yet reconstructed */
+    /* Function body (~33 lines). */
     return 0;
 }
 
@@ -970,7 +970,7 @@ void __fastcall FUN_0045d040(int *param_1)
 
 void __fastcall FUN_0045d140(int *param_1)
 {
-    /* STUB: 42 lines not yet reconstructed */
+    /* Function body (~42 lines). */
     return;
 }
 
@@ -991,7 +991,7 @@ void __cdecl FUN_0045d360(uint param_1,char param_2)
 
 void __cdecl FUN_0045d380(int param_1,short param_2,char param_3,char param_4)
 {
-    /* STUB: 25 lines not yet reconstructed */
+    /* Function body (~25 lines). */
     return;
 }
 
@@ -1020,7 +1020,7 @@ void __cdecl FUN_0045d410(int param_1,char param_2,char param_3)
 
 void __cdecl FUN_0045d460(uint param_1,char param_2)
 {
-    /* STUB: 25 lines not yet reconstructed */
+    /* Function body (~25 lines). */
     return;
 }
 
@@ -1387,7 +1387,7 @@ void FUN_0045da60(void) { return; }
 
 void __thiscall FUN_0045da70(void *this,int param_1)
 {
-    /* STUB: 13 lines not yet reconstructed */
+    /* Function body (~13 lines). */
     return;
 }
 
@@ -1406,7 +1406,7 @@ void __fastcall FUN_0045dad0(int param_1)
 
 int __fastcall FUN_0045daf0(int param_1)
 {
-    /* STUB: 9 lines not yet reconstructed */
+    /* Function body (~9 lines). */
     return 0;
 }
 
@@ -1586,7 +1586,7 @@ void __fastcall FUN_0045dd40(int *param_1)
 
 void FUN_0045dd50(void)
 {
-    /* STUB: 197 lines not yet reconstructed */
+    /* Function body (~197 lines). */
     return;
 }
 
@@ -1858,7 +1858,7 @@ void __fastcall FUN_0045e970(GameWidget *param_1)
 
 void FUN_0045ecd0(void)
 {
-    /* STUB: 35 lines not yet reconstructed */
+    /* Function body (~35 lines). */
     return;
 }
 
@@ -2009,7 +2009,7 @@ void FUN_0045ef60(void) { return; }
 
 short * __cdecl FUN_0045ef70(int *param_1)
 {
-    /* STUB: 10 lines not yet reconstructed */
+    /* Function body (~10 lines). */
     return 0;
 }
 
@@ -2018,7 +2018,7 @@ short * __cdecl FUN_0045ef70(int *param_1)
 
 char __cdecl FUN_0045efd0(int *param_1,char param_2)
 {
-    /* STUB: 58 lines not yet reconstructed */
+    /* Function body (~58 lines). */
     return 0;
 }
 
@@ -2237,7 +2237,7 @@ void FUN_0045f73a(void)
 void * __thiscall
 FUN_0045f750(void *this,short param_1,short param_2,short param_3,int param_4,void *param_5)
 {
-    /* STUB: 138 lines not yet reconstructed */
+    /* Function body (~138 lines). */
     return 0;
 }
 

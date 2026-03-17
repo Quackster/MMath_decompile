@@ -737,29 +737,29 @@ void FUN_00424503(void)
 
 /* FUN_004246b0 @ 0x004246b0 */
 
-void __fastcall FUN_004246b0(char *param_1)
+void __fastcall FUN_004246b0(BoardSubclass_D *param_1)
 {
   HGDIOBJ ho;
-  
-  ho = SelectObject(*(HDC *)(param_1 + 0x14),*(HGDIOBJ *)(param_1 + 0x10));
+
+  ho = SelectObject((HDC)param_1->gdi_hdc, (HGDIOBJ)param_1->gdi_bitmap);
   DeleteObject(ho);
-  DeleteDC(*(HDC *)(param_1 + 0x14));
-  *(int *)(param_1 + 0x18) = 1;
-  *(int *)(param_1 + 0x448) = 0;
-  *(int *)(param_1 + 0x44c) = 0;
-  *(short *)(param_1 + 0x450) = 0;
-  *(int *)(param_1 + 0x14) = 0;
-  *(short *)(param_1 + 0x452) = 0;
-  *(int *)(param_1 + 0x10) = 0;
-  *(int *)(param_1 + 0x444) = 0;
+  DeleteDC((HDC)param_1->gdi_hdc);
+  param_1->gdi_active = 1;
+  param_1->buf_field_448 = 0;
+  param_1->buf_field_44c = 0;
+  param_1->buf_field_450 = 0;
+  param_1->gdi_hdc = 0;
+  param_1->extra_state = 0;
+  param_1->gdi_bitmap = 0;
+  param_1->buf_field_444 = 0;
 }
 
 
 /* FUN_004247a0 @ 0x004247a0 */
 
-int __fastcall FUN_004247a0(char *param_1)
+int __fastcall FUN_004247a0(BoardSubclass_D *param_1)
 {
-  return *(int *)(param_1 + 0x14);
+  return (int)param_1->gdi_hdc;
 }
 
 
@@ -1568,7 +1568,7 @@ L_004260b1:
 
 int __fastcall FUN_00426230(char *param_1)
 {
-  return *(int *)(param_1 + 0x1d4); /* board_slot_count */
+  return ((GameBoard *)param_1)->board_slot_count;
 }
 
 
@@ -3157,17 +3157,17 @@ int __fastcall FUN_00428d80(char *param_1)
   u2 = (short)((uint)n1 >> 0x10);
   switch(n1) {
   case 0:
-    return CONCAT22(u2,*(short *)(param_1 + 0x1b6) + 0xc);
+    return CONCAT22(u2,((GameBoard *)param_1)->field_1b6 + 0xc);
   case 1:
-    return CONCAT22(u2,*(short *)(param_1 + 0x1b6) + 0xc);
+    return CONCAT22(u2,((GameBoard *)param_1)->field_1b6 + 0xc);
   case 2:
-    return CONCAT22(u2,*(short *)(param_1 + 0x1b6) + 0x31);
+    return CONCAT22(u2,((GameBoard *)param_1)->field_1b6 + 0x31);
   case 3:
-    return CONCAT22(u2,*(short *)(param_1 + 0x1b6) + 0x31);
+    return CONCAT22(u2,((GameBoard *)param_1)->field_1b6 + 0x31);
   case 4:
-    return CONCAT22(u2,*(short *)(param_1 + 0x1b6) + 0x111);
+    return CONCAT22(u2,((GameBoard *)param_1)->field_1b6 + 0x111);
   case 5:
-    return CONCAT22(u2,*(short *)(param_1 + 0x1b6) + 0x111);
+    return CONCAT22(u2,((GameBoard *)param_1)->field_1b6 + 0x111);
   default:
     return CONCAT22(u2,0xffff);
   }
@@ -3450,8 +3450,8 @@ void __fastcall FUN_0042a6e0(char *param_1)
   param_1[9] = 0;
   param_1[10] = 0;
   param_1[0xb] = 0;
-  *(int *)(param_1 + 0xe) = 0;
-  *(short *)(param_1 + 0xc) = 2;
+  ((ResourceRecord *)param_1)->field_0e = 0;
+  ((ResourceRecord *)param_1)->mode_flags = 2;
 }
 
 
@@ -3499,29 +3499,29 @@ void __cdecl FUN_0042a770(int param_1,char *param_2)
   if (((param_1 != 0) && (param_2 != NULL)) && (n1 = (int)((UIWidget *)param_1)->level_data_ptr, n1 != 0)
      ) {
     if (*param_2 == '\0') {
-      if (*(int *)(param_2 + 2) != 0) {
-        c2 = FUN_0042a710(*(short *)(param_2 + 0xc),'\0',param_1 == *(int *)(param_2 + 2),
+      if (((ResourceRecord *)param_2)->field_02 != 0) {
+        c2 = FUN_0042a710(((ResourceRecord *)param_2)->mode_flags,'\0',param_1 == ((ResourceRecord *)param_2)->field_02,
                              &v1);
       }
       if (*(ushort *)(param_2 + 6) != 0) {
-        c2 = FUN_0042a710(*(short *)(param_2 + 0xc),c2,
+        c2 = FUN_0042a710(((ResourceRecord *)param_2)->mode_flags,c2,
                              (int)((UIWidget *)param_1)->active_anim_id == (uint)*(ushort *)(param_2 + 6),
                              &v1);
       }
       if (param_2[8] != '\0') {
-        c2 = FUN_0042a710(*(short *)(param_2 + 0xc),c2,*(char *)(n1 + 4) == param_2[8],
+        c2 = FUN_0042a710(((ResourceRecord *)param_2)->mode_flags,c2,*(char *)(n1 + 4) == param_2[8],
                              &v1);
       }
       if (param_2[9] != '\0') {
-        c2 = FUN_0042a710(*(short *)(param_2 + 0xc),c2,*(char *)(n1 + 7) == param_2[9],
+        c2 = FUN_0042a710(((ResourceRecord *)param_2)->mode_flags,c2,*(char *)(n1 + 7) == param_2[9],
                              &v1);
       }
       if (param_2[10] != '\0') {
-        c2 = FUN_0042a710(*(short *)(param_2 + 0xc),c2,*(char *)(n1 + 5) == param_2[10],
+        c2 = FUN_0042a710(((ResourceRecord *)param_2)->mode_flags,c2,*(char *)(n1 + 5) == param_2[10],
                              &v1);
       }
       if (param_2[0xb] != '\0') {
-        c2 = FUN_0042a710(*(short *)(param_2 + 0xc),c2,*(char *)(n1 + 6) == param_2[0xb],
+        c2 = FUN_0042a710(((ResourceRecord *)param_2)->mode_flags,c2,*(char *)(n1 + 6) == param_2[0xb],
                              &v1);
       }
     }
@@ -3530,7 +3530,7 @@ void __cdecl FUN_0042a770(int param_1,char *param_2)
     }
   }
   if (c2 != '\0') {
-    *(int *)(param_2 + 0xe) = *(int *)(param_2 + 0xe) + 1;
+    ((ResourceRecord *)param_2)->field_0e = ((ResourceRecord *)param_2)->field_0e + 1;
   }
   return;
 }
@@ -4808,10 +4808,10 @@ void __cdecl FUN_0042c8d0(int param_1,int param_2,char *param_3)
 {
   if (param_3 != 0) {
     if (*(char *)(param_3 + 3) != '\0') {
-      FUN_0046f5f0(*(uint *)(param_3 + 0x1e));
+      FUN_0046f5f0(*(uint *)((char *)param_3 + 0x1e)); /* UIElement->rect_top region */
     }
     if (*(char *)(param_3 + 4) != '\0') {
-      FUN_0046f5f0(*(uint *)(param_3 + 0x26));
+      FUN_0046f5f0(*(uint *)((char *)param_3 + 0x26)); /* UIElement->pos_x */
     }
     FUN_0046f5f0(param_3);
   }
@@ -5268,7 +5268,7 @@ void __fastcall FUN_0042d7d0(char *param_1)
 {
   void *this;
   
-  if (((GameBoard *)param_1)->reward_obj_b != 0 && (*(char *)(param_1 + 0x196) == '\0')) { /* TODO: unknown offset 0x196 */
+  if (((GameBoard *)param_1)->reward_obj_b != 0 && (((GameBoard *)param_1)->field_196 == '\0')) {
     FUN_0040e270(DAT_004897c0,0xb);
     FUN_0041dad0(((GameBoard *)param_1)->reward_obj_b,1,'\0');
     FUN_0041da90(((GameBoard *)param_1)->reward_obj_b,1);
@@ -5280,7 +5280,7 @@ void __fastcall FUN_0042d7d0(char *param_1)
     ((UIWidget *)this)->anim_flag_1 = 0;
     ((UIWidget *)this)->anim_flag_3 = 0;
     FUN_00405e10(this,0,'\0');
-    *(char *)(param_1 + 0x196) = 1; /* TODO: unknown offset 0x196 */
+    ((GameBoard *)param_1)->field_196 = 1;
   }
   return;
 }
@@ -5292,7 +5292,7 @@ void __fastcall FUN_0042d860(char *param_1)
 {
   void *this;
   
-  if (((GameBoard *)param_1)->reward_obj_b != 0 && (*(char *)(param_1 + 0x196) != '\0')) { /* TODO: unknown offset 0x196 */
+  if (((GameBoard *)param_1)->reward_obj_b != 0 && (((GameBoard *)param_1)->field_196 != '\0')) {
     FUN_0040e270(DAT_004897c0,0xc);
     FUN_0041da90(((GameBoard *)param_1)->reward_obj_b,1);
     ((UIWidget *)((GameBoard *)param_1)->reward_obj_b)->pending_frame = 0;
@@ -5304,7 +5304,7 @@ void __fastcall FUN_0042d860(char *param_1)
     FUN_00405e10(this,2,'\0');
     FUN_0041dad0(((GameBoard *)param_1)->reward_obj_b,0,'\0');
     FUN_0041da90(((GameBoard *)param_1)->reward_obj_b,0);
-    *(char *)(param_1 + 0x196) = 0; /* TODO: unknown offset 0x196 */
+    ((GameBoard *)param_1)->field_196 = 0;
   }
   return;
 }
@@ -5854,21 +5854,21 @@ void __fastcall FUN_0042eab0(char *param_1)
   
   FUN_00404b00(param_1);
   if (((TimerState *)DAT_004896b0)->flag_27 == '\0') {
-    s1 = *(short *)(param_1 + 0x19c);
+    s1 = ((BoardSubclass_A *)param_1)->init_state;
     if (s1 == 2) {
       dw2 = GetTickCount();
-      if (*(int *)(param_1 + 0x1b8) + 5000U < dw2) {
-        *(short *)(param_1 + 0x19c) = 3;
-        FUN_00407df0(*(void **)(param_1 + 0x19e),7,0x758000d);
+      if (*(DWORD *)&((GameBoard *)param_1)->field_1b8 + 5000U < dw2) {
+        ((BoardSubclass_A *)param_1)->init_state = 3;
+        FUN_00407df0((void *)((GameBoard *)param_1)->slot_handles[1],7,0x758000d);
         dw2 = GetTickCount();
-        *(DWORD *)(param_1 + 0x1b8) = dw2;
+        *(DWORD *)&((GameBoard *)param_1)->field_1b8 = dw2;
         return;
       }
     }
     else if (s1 == 3) {
       dw2 = GetTickCount();
-      if (*(int *)(param_1 + 0x1b8) + 15000U < dw2) {
-        *(short *)(param_1 + 0x19c) = 4;
+      if (*(DWORD *)&((GameBoard *)param_1)->field_1b8 + 15000U < dw2) {
+        ((BoardSubclass_A *)param_1)->init_state = 4;
         return;
       }
     }
@@ -5876,8 +5876,8 @@ void __fastcall FUN_0042eab0(char *param_1)
       if (s1 != 4) {
         return;
       }
-      *(short *)(param_1 + 0x19c) = 5;
-      FUN_0042e660(*(void **)(param_1 + 0x19e));
+      ((BoardSubclass_A *)param_1)->init_state = 5;
+      FUN_0042e660((void *)((GameBoard *)param_1)->slot_handles[1]);
     }
   }
   return;

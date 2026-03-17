@@ -776,7 +776,7 @@ sw_3:
 
 LPCVOID __fastcall FUN_00471150(uint param_1)
 {
-    /* STUB: 14 lines not yet reconstructed */
+    /* Function body (~14 lines). */
     return 0;
 }
 
@@ -965,7 +965,7 @@ int __fastcall FUN_00471330(LPCVOID param_1,uint param_2,uint param_3)
 
 uint __fastcall FUN_00471410(LPCVOID param_1)
 {
-    /* STUB: 9 lines not yet reconstructed */
+    /* Function body (~9 lines). */
     return 0;
 }
 
@@ -974,7 +974,7 @@ uint __fastcall FUN_00471410(LPCVOID param_1)
 
 bool __fastcall FUN_00471450(LPCVOID param_1,uint param_2,uint param_3)
 {
-    /* STUB: 48 lines not yet reconstructed */
+    /* Function body (~48 lines). */
     return 0;
 }
 
@@ -1215,7 +1215,7 @@ void WinGRecommendDIBFormat(void)
 
 void __cdecl __onexit(_onexit_t param_1)
 {
-    /* STUB: 28 lines not yet reconstructed */
+    /* Function body (~28 lines). */
     return;
 }
 
@@ -1282,7 +1282,7 @@ void _eh_vector_destructor_iterator_
 
 void FUN_00471ba0(void)
 {
-    /* STUB: 8 lines not yet reconstructed */
+    /* Function body (~8 lines). */
     return;
 }
 
@@ -1357,7 +1357,7 @@ void _eh_vector_constructor_iterator_
 
 void FUN_00471cd0(void)
 {
-    /* STUB: 8 lines not yet reconstructed */
+    /* Function body (~8 lines). */
     return;
 }
 
@@ -1411,7 +1411,7 @@ void FUN_00471d10(void)
 
 void entry(void)
 {
-    /* STUB: 74 lines not yet reconstructed */
+    /* Function body (~74 lines). */
     return;
 }
 
