@@ -1003,7 +1003,7 @@ void __fastcall FUN_0043c5d0(int param_1)
 void __fastcall FUN_0043c660(int param_1)
 {
   ushort u1;
-  DWORD DVar2;
+  DWORD dw2;
   
   DAT_00488e24 = DAT_00488e24 + 1;
   if ((int)*(short *)(DAT_0048345c + 0xb6) + (int)*(short *)(DAT_0048345c + 0xc2) !=
@@ -1013,16 +1013,16 @@ void __fastcall FUN_0043c660(int param_1)
   DAT_00488e04 = DAT_00488e04 + 1;
   *(short *)(param_1 + 0x1ca) = 1;
   FUN_0042db60(DAT_00488e34,*(ushort **)(param_1 + 0x19c),-1,-1);
-  DVar2 = GetTickCount();
+  dw2 = GetTickCount();
   *(short *)(param_1 + 0x1ca) = 0;
-  *(DWORD *)(param_1 + 0x176) = DVar2;
+  *(DWORD *)(param_1 + 0x176) = dw2;
   u1 = (short)DAT_00488e04 >> 0xf;
   if (((DAT_00488e04 ^ u1) - u1 & 1 ^ u1) == u1) {
     *(short *)(param_1 + 0x1ca) = 1;
     FUN_0042db60(DAT_00488e34,*(ushort **)(param_1 + 0x1a4),-1,-1);
-    DVar2 = GetTickCount();
+    dw2 = GetTickCount();
     *(short *)(param_1 + 0x1ca) = 0;
-    *(DWORD *)(param_1 + 0x176) = DVar2;
+    *(DWORD *)(param_1 + 0x176) = dw2;
   }
   return;
 }

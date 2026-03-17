@@ -14,14 +14,14 @@
 
 void FUN_00470000(void)
 {
-  DWORD DVar1;
+  DWORD dw1;
   int n2;
   DWORD *pDVar3;
   
   n2 = FUN_00471650((LPCRITICAL_SECTION)&DAT_00489c80,(int *)&DAT_00484034);
   if (n2 != 0) {
     pDVar3 = FUN_00471930(0x484048,0);
-    if ((pDVar3 != NULL) && (DVar1 = pDVar3[1], pDVar3[1] = DVar1 - 1, DVar1 - 1 == 0)) {
+    if ((pDVar3 != NULL) && (dw1 = pDVar3[1], pDVar3[1] = dw1 - 1, dw1 - 1 == 0)) {
       FUN_00471990(0x484048,pDVar3);
     }
     LeaveCriticalSection((LPCRITICAL_SECTION)&DAT_00489c80);
@@ -1071,22 +1071,22 @@ void __fastcall FUN_00471900(int param_1)
 
 DWORD * __fastcall FUN_00471930(int param_1,int param_2)
 {
-  DWORD DVar1;
+  DWORD dw1;
   DWORD *pDVar2;
   int n3;
   
   pDVar2 = (DWORD *)(param_1 + 0x10);
   n3 = *(int *)(param_1 + 0xd8);
-  DVar1 = GetCurrentThreadId();
+  dw1 = GetCurrentThreadId();
   while (n3 != 0) {
     n3 = n3 + -1;
-    if (*pDVar2 == DVar1) {
+    if (*pDVar2 == dw1) {
       return pDVar2;
     }
     pDVar2 = pDVar2 + 2;
   }
   if ((param_2 != 0) && (*(uint *)(param_1 + 0xd8) < 0x19)) {
-    *pDVar2 = DVar1;
+    *pDVar2 = dw1;
     pDVar2[1] = 0;
     *(int *)(param_1 + 0xd8) = *(int *)(param_1 + 0xd8) + 1;
     return pDVar2;
@@ -1121,7 +1121,7 @@ int __fastcall FUN_004719b0(LPCSTR param_1,int param_2)
   uType = 2 - (param_2 == 0) | 0x2110;
   MessageBeep(0);
   while( true ) {
-    n1 = MessageBoxA((HWND)0x0,param_1,"SmartHeap Library",uType);
+    n1 = MessageBoxA(NULL,param_1,"SmartHeap Library",uType);
     switch(n1) {
     case 1:
     case 5:

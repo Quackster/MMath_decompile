@@ -1879,7 +1879,7 @@ void __cdecl FUN_00426860(int param_1)
   
   hWnd = *(HWND *)(*(int *)(DAT_00489ac8 + 4) + 0xe);
   hdc = GetDC(hWnd);
-  if (DAT_004838bc != (HGDIOBJ)0x0) {
+  if (DAT_004838bc != NULL) {
     FUN_004268c0(DAT_004838bc);
   }
   DAT_004838bc = (HPALETTE)FUN_00426740(param_1);
@@ -3279,13 +3279,13 @@ void __cdecl FUN_00428f90(void *param_1)
 
 void __fastcall FUN_004292b0(void *param_1)
 {
-  DWORD DVar1;
+  DWORD dw1;
   
-  DVar1 = GetTickCount();
-  ((GameBoard *)param_1)->last_tick = DVar1;
+  dw1 = GetTickCount();
+  ((GameBoard *)param_1)->last_tick = dw1;
   FUN_0042dba0(param_1,(int)param_1 + 500);
-  DVar1 = GetTickCount();
-  ((GameBoard *)param_1)->last_tick = DVar1;
+  dw1 = GetTickCount();
+  ((GameBoard *)param_1)->last_tick = dw1;
 }
 
 
@@ -3304,11 +3304,11 @@ void __fastcall FUN_004292e0(int *param_1)
 
 void __fastcall FUN_004299b0(int param_1)
 {
-  DWORD DVar1;
+  DWORD dw1;
   
   FUN_0042db40(param_1);
-  DVar1 = GetTickCount();
-  *(DWORD *)(param_1 + 0x176) = DVar1;
+  dw1 = GetTickCount();
+  *(DWORD *)(param_1 + 0x176) = dw1;
 }
 
 
@@ -3839,11 +3839,11 @@ void __thiscall FUN_0042af00(void *this,char param_1)
 
 void __fastcall FUN_0042b170(int param_1)
 {
-  DWORD DVar1;
+  DWORD dw1;
   
   if (*(int *)(param_1 + 0xb4) != 0) {
-    DVar1 = GetTickCount();
-    if (700 < DVar1 % 1000) {
+    dw1 = GetTickCount();
+    if (700 < dw1 % 1000) {
       FUN_0041dad0(*(void **)(param_1 + 0xb4),0,'\0');
       return;
     }
@@ -5042,7 +5042,7 @@ void FUN_0042cbc0(void) { return; }
 
 int * __fastcall FUN_0042cbd0(int *param_1)
 {
-  DWORD DVar1;
+  DWORD dw1;
   int n2;
   int *pu3;
   int *_fs;
@@ -5077,9 +5077,9 @@ int * __fastcall FUN_0042cbd0(int *param_1)
   }
   ((GameBoard *)param_1)->score_current = 0;
   *(short *)(param_1 + 0x5f) = 0;
-  DVar1 = GetTickCount();
+  dw1 = GetTickCount();
   ((GameBoard *)param_1)->score_current = 0;
-  ((GameBoard *)param_1)->last_tick = DVar1;
+  ((GameBoard *)param_1)->last_tick = dw1;
   *(short *)(param_1 + 0x5f) = 0;
   param_1[0x5c] = 0;
   ((GameBoard *)param_1)->score_checkpoint_a = 0;
@@ -5201,14 +5201,14 @@ void __thiscall FUN_0042d1c0(void *this,int param_1)
 
 void __fastcall FUN_0042d3c0(void *param_1)
 {
-  DWORD DVar1;
+  DWORD dw1;
   
   if (*(void ***)((int)param_1 + 0xd4) != (void **)0x0) { /* TODO: unknown offset 0xd4, within UIWidget::scroll_data */
     ((void (*)(void))**(void ***)((int)param_1 + 0xd4))(); /* TODO: unknown offset 0xd4, obj->vtable[0] */
   }
   FUN_0041cad0(param_1);
-  DVar1 = GetTickCount();
-  ((GameBoard *)param_1)->last_tick = DVar1;
+  dw1 = GetTickCount();
+  ((GameBoard *)param_1)->last_tick = dw1;
 }
 
 
@@ -5542,11 +5542,11 @@ void __fastcall FUN_0042e140(int param_1)
 bool __thiscall FUN_0042e170(void *this,int param_1)
 {
   int n1;
-  DWORD DVar2;
+  DWORD dw2;
   
   n1 = ((GameBoard *)this)->last_tick;
-  DVar2 = GetTickCount();
-  return (uint)(n1 + param_1) < DVar2;
+  dw2 = GetTickCount();
+  return (uint)(n1 + param_1) < dw2;
 }
 
 
@@ -5563,7 +5563,7 @@ uint __fastcall FUN_0042e190(void *param_1)
   int u6;
   int n7;
   int _extra;
-  DWORD DVar8;
+  DWORD dw8;
   int _extra;
   
   if ((DAT_0048345c != 0) && (((GameBoard *)param_1)->is_timed != '\0')) {
@@ -5577,9 +5577,9 @@ uint __fastcall FUN_0042e190(void *param_1)
     b5 = FUN_0045d930(((GameBoard *)param_1)->sound_handle);
     _eax = CONCAT31(_extra,b5);
     if ((short)_eax != 0) {
-      DVar8 = GetTickCount();
-      ((GameBoard *)param_1)->last_tick = DVar8;
-      return DVar8 & 0xffffff00;
+      dw8 = GetTickCount();
+      ((GameBoard *)param_1)->last_tick = dw8;
+      return dw8 & 0xffffff00;
     }
     if ((s2 != -1) &&
        (_eax = (int)((GameBoard *)param_1)->score_current - (int)((GameBoard *)param_1)->score_checkpoint_a,
@@ -5587,10 +5587,10 @@ uint __fastcall FUN_0042e190(void *param_1)
       if (((GameBoard *)param_1)->reward_data_c != NULL) {
         FUN_0042d9f0(param_1,0,(ushort *)((GameBoard *)param_1)->reward_data_c,-1,-1);
       }
-      DVar8 = GetTickCount();
+      dw8 = GetTickCount();
       ((GameBoard *)param_1)->score_checkpoint_a = ((GameBoard *)param_1)->score_current;
-      ((GameBoard *)param_1)->last_tick = DVar8;
-      return CONCAT31(DVar8 >> 8,1);
+      ((GameBoard *)param_1)->last_tick = dw8;
+      return CONCAT31(dw8 >> 8,1);
     }
     if ((s3 != -1) &&
        (_eax = (int)((GameBoard *)param_1)->score_secondary - (int)((GameBoard *)param_1)->score_checkpoint_b,
@@ -5598,10 +5598,10 @@ uint __fastcall FUN_0042e190(void *param_1)
       if (((GameBoard *)param_1)->reward_data_b != NULL) {
         FUN_0042d9f0(param_1,0,(ushort *)((GameBoard *)param_1)->reward_data_b,-1,-1);
       }
-      DVar8 = GetTickCount();
+      dw8 = GetTickCount();
       ((GameBoard *)param_1)->score_checkpoint_b = ((GameBoard *)param_1)->score_secondary;
-      ((GameBoard *)param_1)->last_tick = DVar8;
-      return CONCAT31(DVar8 >> 8,1);
+      ((GameBoard *)param_1)->last_tick = dw8;
+      return CONCAT31(dw8 >> 8,1);
     }
     if ((s4 != -1) &&
        (_eax = (int)((GameBoard *)param_1)->score_current - (int)((GameBoard *)param_1)->score_checkpoint_a,
@@ -5609,10 +5609,10 @@ uint __fastcall FUN_0042e190(void *param_1)
       if (((GameBoard *)param_1)->reward_data_a != NULL) {
         FUN_0042d9f0(param_1,0,(ushort *)((GameBoard *)param_1)->reward_data_a,-1,-1);
       }
-      DVar8 = GetTickCount();
+      dw8 = GetTickCount();
       ((GameBoard *)param_1)->score_checkpoint_a = ((GameBoard *)param_1)->score_current;
-      ((GameBoard *)param_1)->last_tick = DVar8;
-      return CONCAT31(DVar8 >> 8,1);
+      ((GameBoard *)param_1)->last_tick = dw8;
+      return CONCAT31(dw8 >> 8,1);
     }
     if (s1 != -1) {
       b5 = FUN_0042e170(param_1,s1 * 1000);
@@ -5621,9 +5621,9 @@ uint __fastcall FUN_0042e190(void *param_1)
         if (((GameBoard *)param_1)->reward_data_a != NULL) {
           FUN_0042d9f0(param_1,0,(ushort *)((GameBoard *)param_1)->reward_data_a,-1,-1);
         }
-        DVar8 = GetTickCount();
-        ((GameBoard *)param_1)->last_tick = DVar8;
-        return CONCAT31(DVar8 >> 8,1);
+        dw8 = GetTickCount();
+        ((GameBoard *)param_1)->last_tick = dw8;
+        return CONCAT31(dw8 >> 8,1);
       }
     }
   }
@@ -5838,12 +5838,12 @@ void FUN_0042e9b1(void)
 
 void __fastcall FUN_0042ea90(void *param_1)
 {
-  DWORD DVar1;
+  DWORD dw1;
   
   FUN_004048d0(param_1);
-  DVar1 = GetTickCount();
+  dw1 = GetTickCount();
   *(short *)((int)param_1 + 0x19c) = 2; /* TODO: unknown offset 0x19c */
-  *(DWORD *)((int)param_1 + 0x1b8) = DVar1; /* TODO: unknown offset 0x1b8 */
+  *(DWORD *)((int)param_1 + 0x1b8) = dw1; /* TODO: unknown offset 0x1b8 */
   return;
 }
 
@@ -5853,24 +5853,24 @@ void __fastcall FUN_0042ea90(void *param_1)
 void __fastcall FUN_0042eab0(int param_1)
 {
   short s1;
-  DWORD DVar2;
+  DWORD dw2;
   
   FUN_00404b00(param_1);
   if (*(char *)(DAT_004896b0 + 0x27) == '\0') {
     s1 = *(short *)(param_1 + 0x19c);
     if (s1 == 2) {
-      DVar2 = GetTickCount();
-      if (*(int *)(param_1 + 0x1b8) + 5000U < DVar2) {
+      dw2 = GetTickCount();
+      if (*(int *)(param_1 + 0x1b8) + 5000U < dw2) {
         *(short *)(param_1 + 0x19c) = 3;
         FUN_00407df0(*(void **)(param_1 + 0x19e),7,0x758000d);
-        DVar2 = GetTickCount();
-        *(DWORD *)(param_1 + 0x1b8) = DVar2;
+        dw2 = GetTickCount();
+        *(DWORD *)(param_1 + 0x1b8) = dw2;
         return;
       }
     }
     else if (s1 == 3) {
-      DVar2 = GetTickCount();
-      if (*(int *)(param_1 + 0x1b8) + 15000U < DVar2) {
+      dw2 = GetTickCount();
+      if (*(int *)(param_1 + 0x1b8) + 15000U < dw2) {
         *(short *)(param_1 + 0x19c) = 4;
         return;
       }

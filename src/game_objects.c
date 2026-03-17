@@ -1106,8 +1106,6 @@ void __thiscall FUN_00403790(void *this,void *param_1,uint param_2)
 }
 
 
-/* FUN_004037e0 @ 0x004037e0 */
-
 /* FUN_004037e0 @ 0x004037e0
  * Struct types: UIWidget-derived (param_1)
  * Initializes palette/tile data, iterates child widgets via vtable calls,
@@ -1973,8 +1971,6 @@ int * __thiscall FUN_00405660(UIWidget *this,short *param_1)
 }
 
 
-/* FUN_00405730 @ 0x00405730 */
-
 /* FUN_00405730 @ 0x00405730
  * Struct types: UIWidget (this)
  * Loads animation cell info from level_data_ptr, sets cell_info_ptr,
@@ -2156,8 +2152,6 @@ void FUN_00405a80(void)
 void FUN_00405ad0(void) { return; }
 
 
-/* FUN_00405ae0 @ 0x00405ae0 */
-
 /* FUN_00405ae0 @ 0x00405ae0
  * Struct types: UIWidget (param_1)
  * Processes animation ticks — advances frames, handles loop/stop/bounce modes,
@@ -2291,17 +2285,17 @@ void FUN_00405ca0(void) { return; }
 
 void __fastcall FUN_00405cb0(UIWidget *this)
 {
-  DWORD DVar1;
+  DWORD dw1;
   short s2;
 
   if ((this->parent_ptr == NULL) && (this->level_data_ptr != NULL)) {
-    DVar1 = GetTickCount();
+    dw1 = GetTickCount();
     if (this->timestamp == 0) {
       this->cell_count = 0;
       s2 = 1;
     }
     else {
-      s2 = (short)((ulonglong)(DAT_004890a4 * DVar1) / 1000) -
+      s2 = (short)((ulonglong)(DAT_004890a4 * dw1) / 1000) -
               (short)((ulonglong)(uint)(DAT_004890a4 * this->timestamp) / 1000);
     }
     FUN_00405ae0(this,s2,'\x01');
@@ -2317,7 +2311,7 @@ void __thiscall FUN_00405d30(UIWidget *this,short param_1)
   short *ps1;
   short s2;
   void *self;
-  DWORD DVar3;
+  DWORD dw3;
   short s4;
   uint u5;
   int n6;
@@ -2354,8 +2348,8 @@ L_00405d84:
       u5 = u5 + 1;
     } while (u5 <= *(uint *)(this->child_list_2 + 0xe));
   }
-  DVar3 = GetTickCount();
-  this->timestamp = DVar3;
+  dw3 = GetTickCount();
+  this->timestamp = dw3;
 }
 
 
@@ -2794,11 +2788,11 @@ void __thiscall FUN_004070e0(GameWidget *this,char param_1,short param_2)
 void __thiscall FUN_004071c0(DialogWidget *this,int param_1,int param_2,ushort param_3)
 {
   int u1;
-  longlong lVar2;
+  longlong l2;
   int n3;
   int n4;
-  DWORD DVar5;
-  DWORD DVar6;
+  DWORD dw5;
+  DWORD dw6;
   int n7;
   uint u8;
   int *_fs;
@@ -2829,14 +2823,14 @@ void __thiscall FUN_004071c0(DialogWidget *this,int param_1,int param_2,ushort p
       v1c = v1c + n3 / (int)u8;
       v20 = v20 + n4 / (int)u8;
       FUN_0041d3a0(this,v1c,v20,'\0');
-      DVar5 = GetTickCount();
-      lVar2 = (longlong)DAT_004890a4;
-      DVar6 = GetTickCount();
-      n7 = (int)(((longlong)(int)DVar6 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000);
-      while (n7 == (int)(((int)DVar5 * lVar2 & 0xffffffffU) / 1000)) {
+      dw5 = GetTickCount();
+      l2 = (longlong)DAT_004890a4;
+      dw6 = GetTickCount();
+      n7 = (int)(((longlong)(int)dw6 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000);
+      while (n7 == (int)(((int)dw5 * l2 & 0xffffffffU) / 1000)) {
         FUN_00431160(this->field_06,'\0');
-        DVar6 = GetTickCount();
-        n7 = (int)(((longlong)(int)DVar6 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000);
+        dw6 = GetTickCount();
+        n7 = (int)(((longlong)(int)dw6 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000);
       }
       FUN_00431160(this->field_06,'\0');
       v16 = v16 + 1;
@@ -2890,10 +2884,10 @@ char FUN_00407340(int param_1,char param_2,char param_3,int param_4,char param_5
 
 char FUN_004073a0(short *param_1,char param_2,char param_3,int param_4,char param_5)
 {
-  SHORT SVar1;
-  SHORT SVar2;
-  SHORT SVar3;
-  DWORD DVar4;
+  SHORT sz1;
+  SHORT sz2;
+  SHORT sz3;
+  DWORD dw4;
   uint u5;
   ushort *pu6;
   short s7;
@@ -2916,15 +2910,15 @@ char FUN_004073a0(short *param_1,char param_2,char param_3,int param_4,char para
   _handler = &L_00407617;
   *_fs = &_seh_prev;
   v12 = 0;
-  SVar1 = GetAsyncKeyState(2);
-  SVar2 = GetAsyncKeyState(4);
-  SVar3 = GetAsyncKeyState(1);
+  sz1 = GetAsyncKeyState(2);
+  sz2 = GetAsyncKeyState(4);
+  sz3 = GetAsyncKeyState(1);
   v28 = 0;
   v2c = 0;
   _seh_state = 0;
-  v11 = (-1 < SVar1 && -1 < SVar2) && -1 < SVar3;
-  DVar4 = GetTickCount();
-  v1c = (int)(((longlong)(int)DVar4 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000);
+  v11 = (-1 < sz1 && -1 < sz2) && -1 < sz3;
+  dw4 = GetTickCount();
+  v1c = (int)(((longlong)(int)dw4 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000);
   if (param_3 == '\0') {
     FUN_00403030(&v2c,&v24,&DAT_004841e8);
     _seh_state = _seh_state & 0xffffff00;
@@ -2943,23 +2937,23 @@ char FUN_004073a0(short *param_1,char param_2,char param_3,int param_4,char para
             FUN_00431160((void *)((UIElement *)v18)->field_06,'\0');  /* field_06 on UIElement */
           }
           else {
-            DVar4 = GetTickCount();
-            u5 = (int)(((longlong)(int)DVar4 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000) -
+            dw4 = GetTickCount();
+            u5 = (int)(((longlong)(int)dw4 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000) -
                     v1c;
             while (u5 < 5) {
               FUN_00431160((void *)((UIElement *)v18)->field_06,'\0');  /* field_06 on UIElement */
-              DVar4 = GetTickCount();
-              u5 = (int)(((longlong)(int)DVar4 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000) -
+              dw4 = GetTickCount();
+              u5 = (int)(((longlong)(int)dw4 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000) -
                       v1c;
             }
-            DVar4 = GetTickCount();
-            v1c = (int)(((longlong)(int)DVar4 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000);
+            dw4 = GetTickCount();
+            v1c = (int)(((longlong)(int)dw4 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000);
           }
         }
-        SVar1 = GetAsyncKeyState(2);
-        SVar2 = GetAsyncKeyState(4);
-        SVar3 = GetAsyncKeyState(1);
-        if ((SVar1 < 0 || SVar2 < 0) || SVar3 < 0) {
+        sz1 = GetAsyncKeyState(2);
+        sz2 = GetAsyncKeyState(4);
+        sz3 = GetAsyncKeyState(1);
+        if ((sz1 < 0 || sz2 < 0) || sz3 < 0) {
           if (v11 != '\0') {
             v12 = 1;
             if (s7 < *param_1) {
@@ -3034,13 +3028,13 @@ char __thiscall FUN_00407df0(UIWidget *this,short param_1,int param_2)
   uint u3;
   bool b4;
   bool b5;
-  SHORT SVar6;
-  SHORT SVar7;
-  SHORT SVar8;
+  SHORT sz6;
+  SHORT sz7;
+  SHORT sz8;
   short s9;
   int n10;
   short *ps11;
-  DWORD DVar12;
+  DWORD dw12;
   int _extra;
   uint u13;
   int _extra;
@@ -3053,10 +3047,10 @@ char __thiscall FUN_00407df0(UIWidget *this,short param_1,int param_2)
   u1 = this->pending_frame;
   s2 = this->current_frame;
   uStack_12 = 0;
-  SVar6 = GetAsyncKeyState(2);
-  SVar7 = GetAsyncKeyState(4);
-  SVar8 = GetAsyncKeyState(1);
-  b4 = (-1 < SVar6 && -1 < SVar7) && -1 < SVar8;
+  sz6 = GetAsyncKeyState(2);
+  sz7 = GetAsyncKeyState(4);
+  sz8 = GetAsyncKeyState(1);
+  b4 = (-1 < sz6 && -1 < sz7) && -1 < sz8;
   u3 = this->flags;
   FUN_0041da90(this,0);
   this->anim_flag_0 = 0;
@@ -3079,8 +3073,8 @@ char __thiscall FUN_00407df0(UIWidget *this,short param_1,int param_2)
   FUN_0045d780(ps11,s9);
   FUN_0045d720((int)ps11,3);
   FUN_004564c0();
-  DVar12 = GetTickCount();
-  v8 = (int)(((longlong)(int)DVar12 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000);
+  dw12 = GetTickCount();
+  v8 = (int)(((longlong)(int)dw12 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000);
   v4 = v8 + 1000;
   b5 = FUN_0045d930((int)ps11);
   s9 = (short)CONCAT31(_extra,b5);
@@ -3092,12 +3086,12 @@ char __thiscall FUN_00407df0(UIWidget *this,short param_1,int param_2)
     FUN_004058c0(this,(short)((int)((uint)(ushort)((short)u13 >> 0xf) << 0x10 | u13 & 0xffff)
                              % 5) + 1);
     FUN_00430860();
-    DVar12 = GetTickCount();
-    v8 = (int)(((longlong)(int)DVar12 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000);
-    SVar6 = GetAsyncKeyState(2);
-    SVar7 = GetAsyncKeyState(4);
-    SVar8 = GetAsyncKeyState(1);
-    if ((SVar6 < 0 || SVar7 < 0) || SVar8 < 0) {
+    dw12 = GetTickCount();
+    v8 = (int)(((longlong)(int)dw12 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000);
+    sz6 = GetAsyncKeyState(2);
+    sz7 = GetAsyncKeyState(4);
+    sz8 = GetAsyncKeyState(1);
+    if ((sz6 < 0 || sz7 < 0) || sz8 < 0) {
       if (b4) {
         uStack_12 = 1;
 L_00407fdc:

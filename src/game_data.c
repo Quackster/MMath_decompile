@@ -59,8 +59,6 @@ void FUN_00451810(void)
 void FUN_00451820(void) { return; }
 
 
-/* FUN_00451b80 @ 0x00451b80 */
-
 /* FUN_00451b80 @ 0x00451b80
  * Struct types: TextDisplay (param_1)
  * TODO: offset 0x228 in _pad region of TextDisplay, needs investigation
@@ -70,8 +68,6 @@ int __fastcall FUN_00451b80(TextDisplay *param_1)
   return *(int *)((int)param_1 + 0x228); /* TODO: unknown offset 0x228 on TextDisplay */
 }
 
-
-/* FUN_00451b90 @ 0x00451b90 */
 
 /* FUN_00451b90 @ 0x00451b90
  * Struct types: TextDisplay (param_1)
@@ -162,8 +158,6 @@ void FUN_00451cb0(int param_1,int param_2,int param_3)
   } while ((n2 == param_2) || (n2 == param_3));
 }
 
-
-/* FUN_00451cf0 @ 0x00451cf0 */
 
 /* FUN_00451cf0 @ 0x00451cf0
  * TODO: unknown struct type with stride-0x16 array at offsets 0x1D4, 0x1DE
@@ -270,8 +264,6 @@ int __thiscall FUN_00451df0(MathProblem *this,int param_1,int param_2)
   return n1;
 }
 
-
-/* FUN_00451ee0 @ 0x00451ee0 */
 
 /* FUN_00451ee0 @ 0x00451ee0
  * Struct types: TextDisplay (param_1) - based on offset 0x406 = field_406
@@ -482,8 +474,6 @@ int __thiscall FUN_00452160(void *this,void *param_1,int param_2,char *param_3)
   return CONCAT31((unsigned int)((uint)u2 >> 8),1);
 }
 
-
-/* FUN_00452210 @ 0x00452210 */
 
 /* FUN_00452210 @ 0x00452210
  * Struct types: TextDisplay (param_1) - offset 0x406 = field_406
@@ -766,7 +756,7 @@ int __cdecl FUN_004527f0(char *param_1)
   if (*param_1 == '?') {
     FUN_00455170(param_1,0xff,NULL);
   }
-  hObject = CreateFileA(param_1,0x40000000,0,(LPSECURITY_ATTRIBUTES)0x0,2,0x10000000,(HANDLE)0x0);
+  hObject = CreateFileA(param_1,0x40000000,0,(LPSECURITY_ATTRIBUTES)0x0,2,0x10000000,NULL);
   if (hObject == (HANDLE)0xffffffff) {
     return 0xffffff00;
   }
@@ -793,10 +783,10 @@ HANDLE __cdecl FUN_00452850(char *param_1,int param_2,int param_3)
     FUN_00455090(param_1,0xff,NULL);
   }
   pv1 = CreateFileA(param_1,(-(uint)(param_3 == 1) & 0xc0000000) + 0xc0000000,1,
-                       (LPSECURITY_ATTRIBUTES)0x0,3,0x10000000,(HANDLE)0x0);
+                       (LPSECURITY_ATTRIBUTES)0x0,3,0x10000000,NULL);
   if (pv1 == (HANDLE)0xffffffff) {
     GetLastError();
-    pv1 = (HANDLE)0x0;
+    pv1 = NULL;
   }
   return pv1;
 }
@@ -814,13 +804,13 @@ void __cdecl FUN_004528b0(HANDLE param_1)
 
 DWORD __cdecl FUN_004528c0(HANDLE param_1)
 {
-  DWORD DVar1;
-  DWORD DVar2;
+  DWORD dw1;
+  DWORD dw2;
   
-  DVar1 = FUN_00417890(param_1);
-  DVar2 = GetFileSize(param_1,(LPDWORD)0x0);
-  FUN_004178e0(param_1,DVar1);
-  return DVar2;
+  dw1 = FUN_00417890(param_1);
+  dw2 = GetFileSize(param_1,(LPDWORD)0x0);
+  FUN_004178e0(param_1,dw1);
+  return dw2;
 }
 
 
@@ -868,13 +858,13 @@ int __cdecl FUN_00452970(HANDLE param_1,DWORD param_2,LPCVOID param_3)
 uint __cdecl FUN_004529c0(HANDLE param_1)
 {
   BOOL flag1;
-  DWORD DVar2;
+  DWORD dw2;
   
   FlushFileBuffers(param_1);
   flag1 = CloseHandle(param_1);
   if (flag1 == 0) {
-    DVar2 = GetLastError();
-    return DVar2 & 0xffffff00;
+    dw2 = GetLastError();
+    return dw2 & 0xffffff00;
   }
   return CONCAT31((unsigned int)((uint)flag1 >> 8),1);
 }
@@ -888,7 +878,7 @@ int __cdecl FUN_004529f0(char *param_1,int param_2)
   int u2;
   
   pv1 = FUN_00452850(param_1,0,param_2);
-  if (pv1 == (HANDLE)0x0) {
+  if (pv1 == NULL) {
     return 0;
   }
   u2 = FUN_004529c0(pv1);
@@ -1683,7 +1673,7 @@ void FUN_00454029(void)
 
 void __fastcall FUN_00454040(int *param_1)
 {
-  DWORD DVar1;
+  DWORD dw1;
   int n2;
   
   if ((char)((GameWidget *)param_1)->field_118 == '\0') {
@@ -1691,8 +1681,8 @@ void __fastcall FUN_00454040(int *param_1)
     return;
   }
   if ((*(char *)(DAT_004896b0 + 0x28) == '\0') && (*(char *)((int)param_1 + 0x12c) == '\0')) { /* TODO: offset 0x12C on GameWidget */
-    DVar1 = GetTickCount();
-    n2 = ((int)(((longlong)(int)DVar1 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000) -
+    dw1 = GetTickCount();
+    n2 = ((int)(((longlong)(int)dw1 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000) -
             ((GameWidget *)param_1)->pair_x_1) / 0x3c;
     if (n2 != ((GameWidget *)param_1)->pair_y_1) {
       ((GameWidget *)param_1)->pair_y_1 = n2;
@@ -1791,13 +1781,13 @@ void FUN_00454269(void)
 
 void __fastcall FUN_00454280(void *param_1)
 {
-  DWORD DVar1;
+  DWORD dw1;
   int n2;
   
   n2 = (DAT_004890a4 >> 1) * DAT_00489084;
-  DVar1 = GetTickCount();
-  if ((uint)(*(int *)((int)param_1 + 0x6a) + n2) < DVar1) { /* TODO: offset 0x6A, custom struct timestamp */
-    *(DWORD *)((int)param_1 + 0x6a) = DVar1; /* TODO: offset 0x6A */
+  dw1 = GetTickCount();
+  if ((uint)(*(int *)((int)param_1 + 0x6a) + n2) < dw1) { /* TODO: offset 0x6A, custom struct timestamp */
+    *(DWORD *)((int)param_1 + 0x6a) = dw1; /* TODO: offset 0x6A */
     FUN_0041dad0(param_1,~(byte)(((UIWidget *)param_1)->flags >> 6) & 1,'\0');
   }
   return;
@@ -2258,7 +2248,7 @@ void __cdecl FUN_00455280(LPCSTR param_1,LPCSTR param_2)
     FUN_0041da90(DAT_004897c0,1);
     return;
   }
-  MessageBoxA((HWND)0x0,param_1,param_2,0x1010);
+  MessageBoxA(NULL,param_1,param_2,0x1010);
 }
 
 
@@ -2267,22 +2257,22 @@ void __cdecl FUN_00455280(LPCSTR param_1,LPCSTR param_2)
 void FUN_00455300(void)
 {
   HDC hdc;
-  DWORD DVar1;
+  DWORD dw1;
   short s2;
   short s3;
   
   if (DAT_004832a4 == '\0') {
-    hdc = GetDC((HWND)0x0);
+    hdc = GetDC(NULL);
     s2 = 0;
     do {
       s3 = s2 + 1;
-      DVar1 = GetSysColor((&DAT_00483208)[s2]);
-      (&DAT_004890b0)[s2] = DVar1;
+      dw1 = GetSysColor((&DAT_00483208)[s2]);
+      (&DAT_004890b0)[s2] = dw1;
       s2 = s3;
     } while (s3 < 0x13);
     SetSystemPaletteUse(hdc,2);
     SetSysColors(0x13,&DAT_00483208,(COLORREF *)&DAT_00483258);
-    ReleaseDC((HWND)0x0,hdc);
+    ReleaseDC(NULL,hdc);
     DAT_004832a4 = '\x01';
   }
   return;
@@ -2296,10 +2286,10 @@ void FUN_00455380(void)
   HDC hdc;
   
   if (DAT_004832a4 != '\0') {
-    hdc = GetDC((HWND)0x0);
+    hdc = GetDC(NULL);
     SetSystemPaletteUse(hdc,1);
     SetSysColors(0x13,&DAT_00483208,&DAT_004890b0);
-    ReleaseDC((HWND)0x0,hdc);
+    ReleaseDC(NULL,hdc);
     DAT_004832a4 = '\0';
   }
   return;
@@ -2337,7 +2327,7 @@ void FUN_004553d0(void)
     v404[0].palPalEntry[s3].peFlags = '\x04';
     s3 = s4;
   } while (s4 < 0x100);
-  hdc = GetDC((HWND)0x0);
+  hdc = GetDC(NULL);
   pHVar1 = CreatePalette(v404);
   if (pHVar1 != (HPALETTE)0x0) {
     pHVar1 = SelectPalette(hdc,pHVar1,0);
@@ -2345,7 +2335,7 @@ void FUN_004553d0(void)
     pHVar1 = SelectPalette(hdc,pHVar1,0);
     DeleteObject(pHVar1);
   }
-  ReleaseDC((HWND)0x0,hdc);
+  ReleaseDC(NULL,hdc);
 }
 
 
@@ -2518,13 +2508,13 @@ int FUN_00455ce0(void)
   int n3;
   
   n3 = 0;
-  hdc = GetDC((HWND)0x0);
-  if (hdc != (HDC)0x0) {
+  hdc = GetDC(NULL);
+  if (hdc != NULL) {
     u1 = GetDeviceCaps(hdc,0x26);
     n2 = GetDeviceCaps(hdc,0xc);
     n3 = GetDeviceCaps(hdc,0xe);
     n3 = n3 * n2;
-    ReleaseDC((HWND)0x0,hdc);
+    ReleaseDC(NULL,hdc);
     if ((n3 == 8) && ((u1 & 0x100) == 0)) {
       n3 = -1;
     }
@@ -2690,29 +2680,29 @@ void FUN_004562f0(void) { return; }
 char FUN_00456310(int param_1,char param_2,char param_3)
 {
   bool b1;
-  SHORT SVar2;
-  SHORT SVar3;
-  SHORT SVar4;
-  DWORD DVar5;
+  SHORT sz2;
+  SHORT sz3;
+  SHORT sz4;
+  DWORD dw5;
   uint u6;
   int n7;
   
   b1 = false;
-  DVar5 = GetTickCount();
+  dw5 = GetTickCount();
   n7 = DAT_00489084 * param_1;
   u6 = GetTickCount();
   do {
-    if (n7 + DVar5 <= u6) {
+    if (n7 + dw5 <= u6) {
       return 0;
     }
     if (param_3 != '\0') {
       FUN_004564c0();
     }
     if (param_2 != '\0') {
-      SVar2 = GetAsyncKeyState(2);
-      SVar3 = GetAsyncKeyState(4);
-      SVar4 = GetAsyncKeyState(1);
-      if ((SVar2 < 0 || SVar3 < 0) || SVar4 < 0) {
+      sz2 = GetAsyncKeyState(2);
+      sz3 = GetAsyncKeyState(4);
+      sz4 = GetAsyncKeyState(1);
+      if ((sz2 < 0 || sz3 < 0) || sz4 < 0) {
         if (b1) {
           return 1;
         }
@@ -2806,10 +2796,10 @@ void FUN_00456510(uint param_1,uint param_2,uint param_3)
 
 bool __fastcall FUN_00456580(int param_1)
 {
-  DWORD DVar1;
+  DWORD dw1;
   
-  DVar1 = GetTickCount();
-  return DAT_0048908c < DVar1 - *(int *)(param_1 + 8);
+  dw1 = GetTickCount();
+  return DAT_0048908c < dw1 - *(int *)(param_1 + 8);
 }
 
 
@@ -3242,8 +3232,6 @@ void FUN_00456c47(void)
   FUN_00454b00(*(int **)(_ebp + -0x10));
 }
 
-
-/* FUN_00456ce0 @ 0x00456ce0 */
 
 /* FUN_00456ce0 @ 0x00456ce0
  * Struct types: TextDisplay (this) - offset 0x11c = field_11c
@@ -4608,8 +4596,6 @@ void __fastcall FUN_00458d40(void *param_1)
 void FUN_00458db2(void) { return; }
 
 
-/* FUN_00458dd0 @ 0x00458dd0 */
-
 /* FUN_00458dd0 @ 0x00458dd0
  * Struct types: TextDisplay (this) - offset 0x9e = field_9e
  */
@@ -4630,8 +4616,6 @@ void __thiscall FUN_00458de0(void *this,char param_1)
   ((void (*)(void))this->vtable[0x90 / 4])();
 }
 
-
-/* FUN_00458e10 @ 0x00458e10 */
 
 /* FUN_00458e10 @ 0x00458e10
  * Struct types: TextDisplay (this) - offset 0x8e = field_8e
@@ -5533,7 +5517,7 @@ void __fastcall FUN_0045bc70(int *param_1)
   if ((*(char *)((int)v14 + 0xd) != '\0') && (DAT_004896b0 != 0)) { /* TODO: offset 0x0D on v14, unknown struct */
     FUN_00455dc0(DAT_004896b0);
   }
-  if (DAT_004838bc != (HGDIOBJ)0x0) {
+  if (DAT_004838bc != NULL) {
     FUN_00451ee0(v420);
     _seh_state = 0;
     FUN_004268d0(v420,1);
@@ -5553,9 +5537,9 @@ void __fastcall FUN_0045bc70(int *param_1)
   }
   FUN_0045c070((int)v14);
   FUN_00455380();
-  if (DAT_004838bc != (HGDIOBJ)0x0) {
+  if (DAT_004838bc != NULL) {
     FUN_004268c0(DAT_004838bc);
-    DAT_004838bc = (HGDIOBJ)0x0;
+    DAT_004838bc = NULL;
   }
   FUN_0045c090();
   FUN_0045c0a0();

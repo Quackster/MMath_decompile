@@ -416,7 +416,7 @@ int * __thiscall
 FUN_00409950(SoundPlayer *this,short param_1,short param_2,short param_3,int param_4,void *param_5)
 {
   int n1;
-  DWORD DVar2;
+  DWORD dw2;
   int *_fs;
   int _seh_prev;
   char *_handler;
@@ -432,9 +432,9 @@ FUN_00409950(SoundPlayer *this,short param_1,short param_2,short param_3,int par
   *(void ***)this = &PTR_FUN_004724e8;
   n1 = DAT_004896b0;
   *(char *)(DAT_004896b0 + 0x28) = 1;
-  DVar2 = GetTickCount();
-  *(DWORD *)(n1 + 4) = DVar2;
-  *(DWORD *)(n1 + 0xc) = DVar2;
+  dw2 = GetTickCount();
+  *(DWORD *)(n1 + 4) = dw2;
+  *(DWORD *)(n1 + 0xc) = dw2;
   this->sequence_data[55] = 0;
   this->sequence_data[56] = 0;
   FUN_0042c0e0(this);
@@ -1856,14 +1856,14 @@ void __thiscall FUN_0040dde0(void *this,short param_1)
 void __fastcall FUN_0040e0c0(int param_1)
 {
   int n1;
-  DWORD DVar2;
+  DWORD dw2;
   
   if (*(int *)(param_1 + 0x5c) != 0) {
-    DVar2 = GetTickCount();
-    if (DVar2 < *(int *)(param_1 + 0x60) + 5000U) {
+    dw2 = GetTickCount();
+    if (dw2 < *(int *)(param_1 + 0x60) + 5000U) {
       n1 = *(int *)(param_1 + 0x60);
-      DVar2 = GetTickCount();
-      FUN_00456310((int)(((longlong)(int)((n1 - DVar2) + 5000) * (longlong)DAT_004890a4 &
+      dw2 = GetTickCount();
+      FUN_00456310((int)(((longlong)(int)((n1 - dw2) + 5000) * (longlong)DAT_004890a4 &
                          0xffffffffU) / 1000),'\x01','\0');
     }
     FUN_004268d0(*(int **)(param_1 + 0x58),10);

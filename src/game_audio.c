@@ -122,8 +122,6 @@ void __fastcall FUN_00440980(int param_1)
 }
 
 
-/* FUN_00440ca0 @ 0x00440ca0 */
-
 /* FUN_00440ca0 @ 0x00440ca0
  * TODO: param_1 struct unknown - offsets 0x6a, 0x1d0, 0x1d6 don't match known structs cleanly
  */
@@ -652,8 +650,6 @@ int * __thiscall FUN_00442550(void *this,byte param_1)
 }
 
 
-/* FUN_00442570 @ 0x00442570 */
-
 /* FUN_00442570 @ 0x00442570
  * Struct types: GameWidget (param_1)
  * Destructor - cleans up slot/group pointers and calls destructors
@@ -704,8 +700,6 @@ void FUN_00442647(void)
 }
 
 
-/* FUN_00442650 @ 0x00442650 */
-
 /* FUN_00442650 @ 0x00442650
  * Struct types: GameWidget (param_1)
  * Cleanup - destroys slot/group pointers and stops animation
@@ -750,8 +744,6 @@ void FUN_00442d6c(void) { return; }
 
 void FUN_00442ef0(void) { return; }
 
-
-/* FUN_00443010 @ 0x00443010 */
 
 /* FUN_00443010 @ 0x00443010
  * Struct types: GameWidget (this)
@@ -809,8 +801,6 @@ void FUN_004431d9(void)
 void FUN_004432d7(void) { return; }
 
 
-/* FUN_004432f0 @ 0x004432f0 */
-
 /* FUN_004432f0 @ 0x004432f0
  * Struct types: GameBoard (via DAT_00480758)
  * Records tick count in GameBoard->last_tick, then calls vtable[0x25]
@@ -818,11 +808,11 @@ void FUN_004432d7(void) { return; }
 void __fastcall FUN_004432f0(int *param_1)
 {
   GameBoard *board;
-  DWORD DVar2;
+  DWORD dw2;
 
   board = (GameBoard *)DAT_00480758;
-  DVar2 = GetTickCount();
-  board->last_tick = DVar2;
+  dw2 = GetTickCount();
+  board->last_tick = dw2;
   /* vtable[0x25] call (offset 0x94 / 4 = 0x25) */
   ((void (*)(void))((void **)(*param_1))[0x25])();
 }
@@ -843,8 +833,6 @@ void FUN_004434e4(void) { return; }
 void FUN_004434f6(void) { return; }
 
 
-/* FUN_00443500 @ 0x00443500 */
-
 /* FUN_00443500 @ 0x00443500
  * Struct types: GameBoard (via DAT_00480758)
  * Records tick count in GameBoard->last_tick, then calls vtable[0x25]
@@ -852,11 +840,11 @@ void FUN_004434f6(void) { return; }
 void __fastcall FUN_00443500(int *param_1)
 {
   GameBoard *board;
-  DWORD DVar2;
+  DWORD dw2;
 
   board = (GameBoard *)DAT_00480758;
-  DVar2 = GetTickCount();
-  board->last_tick = DVar2;
+  dw2 = GetTickCount();
+  board->last_tick = dw2;
   /* vtable[0x25] call (offset 0x94 / 4 = 0x25) */
   ((void (*)(void))((void **)(*param_1))[0x25])();
 }
@@ -949,8 +937,6 @@ int * __thiscall FUN_00443f10(void *this,byte param_1)
 }
 
 
-/* FUN_00443f30 @ 0x00443f30 */
-
 /* FUN_00443f30 @ 0x00443f30
  * Struct types: GameWidget (param_1)
  * Destructor - cleans up slot/group pointers
@@ -993,8 +979,6 @@ void FUN_00443fd5(void)
   FUN_00442430();
 }
 
-
-/* FUN_00443fe0 @ 0x00443fe0 */
 
 /* FUN_00443fe0 @ 0x00443fe0
  * Struct types: GameWidget (param_1)
@@ -1152,10 +1136,10 @@ FUN_00445470(void *this,int param_1,int param_2,char param_3,char param_4,int pa
             char param_6)
 {
   char c1;
-  SHORT SVar2;
-  SHORT SVar3;
-  SHORT SVar4;
-  DWORD DVar5;
+  SHORT sz2;
+  SHORT sz3;
+  SHORT sz4;
+  DWORD dw5;
   uint u6;
   short s7;
   ushort *pu8;
@@ -1186,15 +1170,15 @@ FUN_00445470(void *this,int param_1,int param_2,char param_3,char param_4,int pa
   FUN_0041dbb0(v18);
   v1c = FUN_0042c860(DAT_004838c0,param_2);
   if (v1c != NULL) {
-    SVar2 = GetAsyncKeyState(2);
-    SVar3 = GetAsyncKeyState(4);
-    SVar4 = GetAsyncKeyState(1);
+    sz2 = GetAsyncKeyState(2);
+    sz3 = GetAsyncKeyState(4);
+    sz4 = GetAsyncKeyState(1);
     v2c = 0;
     v30 = 0;
     v8 = 0;
-    v11 = (-1 < SVar2 && -1 < SVar3) && -1 < SVar4;
-    DVar5 = GetTickCount();
-    v20 = (int)(((longlong)(int)DVar5 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000);
+    v11 = (-1 < sz2 && -1 < sz3) && -1 < sz4;
+    dw5 = GetTickCount();
+    v20 = (int)(((longlong)(int)dw5 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000);
     if (param_4 == '\0') {
       FUN_00403030(&v30,&v28,(int *)&DAT_00488ed0);
       v8 = v8 & 0xffffff00;
@@ -1213,24 +1197,24 @@ FUN_00445470(void *this,int param_1,int param_2,char param_3,char param_4,int pa
               FUN_00431160(*(void **)((int)v18 + 6),'\0'); /* TODO: unknown offset 0x06 on v18 struct */
             }
             else {
-              DVar5 = GetTickCount();
-              u6 = (int)(((longlong)(int)DVar5 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000) -
+              dw5 = GetTickCount();
+              u6 = (int)(((longlong)(int)dw5 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000) -
                       v20;
               while (u6 < 5) {
                 FUN_00431160(*(void **)((int)v18 + 6),'\0'); /* TODO: unknown offset 0x06 on v18 struct */
-                DVar5 = GetTickCount();
-                u6 = (int)(((longlong)(int)DVar5 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000)
+                dw5 = GetTickCount();
+                u6 = (int)(((longlong)(int)dw5 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000)
                         - v20;
               }
-              DVar5 = GetTickCount();
-              v20 = (int)(((longlong)(int)DVar5 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000)
+              dw5 = GetTickCount();
+              v20 = (int)(((longlong)(int)dw5 * (longlong)DAT_004890a4 & 0xffffffffU) / 1000)
               ;
             }
           }
-          SVar2 = GetAsyncKeyState(2);
-          SVar3 = GetAsyncKeyState(4);
-          SVar4 = GetAsyncKeyState(1);
-          if ((SVar2 < 0 || SVar3 < 0) || SVar4 < 0) {
+          sz2 = GetAsyncKeyState(2);
+          sz3 = GetAsyncKeyState(4);
+          sz4 = GetAsyncKeyState(1);
+          if ((sz2 < 0 || sz3 < 0) || sz4 < 0) {
             if (v11 != '\0') {
               v12 = 1;
               if (s7 < (short)*v1c) {
@@ -1335,8 +1319,6 @@ void FUN_004459c5(void) { return; }
 
 void FUN_004459d7(void) { return; }
 
-
-/* FUN_004459f0 @ 0x004459f0 */
 
 /* FUN_004459f0 @ 0x004459f0
  * TODO: param_1 offsets 0x1bc, 0x1d0, 0x1d4, 0x1d8, 0x20a don't fully match known structs
@@ -1509,8 +1491,6 @@ void FUN_00447f1d(void)
 }
 
 
-/* FUN_00447fb0 @ 0x00447fb0 */
-
 /* FUN_00447fb0 @ 0x00447fb0
  * Struct types: GameWidget (this)
  * Setter for field_118
@@ -1520,8 +1500,6 @@ void __thiscall FUN_00447fb0(GameWidget *this,short param_1)
   this->field_118 = param_1;
 }
 
-
-/* FUN_00447fd0 @ 0x00447fd0 */
 
 /* FUN_00447fd0 @ 0x00447fd0
  * Struct types: GameWidget (this)
@@ -1533,8 +1511,6 @@ void __thiscall FUN_00447fd0(GameWidget *this,int param_1)
 }
 
 
-/* FUN_00447ff0 @ 0x00447ff0 */
-
 /* FUN_00447ff0 @ 0x00447ff0
  * Struct types: GameWidget (this)
  * Setter for pair_y_1
@@ -1544,8 +1520,6 @@ void __thiscall FUN_00447ff0(GameWidget *this,int param_1)
   this->pair_y_1 = param_1;
 }
 
-
-/* FUN_00448010 @ 0x00448010 */
 
 /* FUN_00448010 @ 0x00448010
  * Struct types: GameWidget (this)
@@ -1558,8 +1532,6 @@ void __thiscall FUN_00448010(GameWidget *this,int param_1)
 }
 
 
-/* FUN_00448030 @ 0x00448030 */
-
 /* FUN_00448030 @ 0x00448030
  * Struct types: GameWidget (this)
  * Setter for object_ptr
@@ -1569,8 +1541,6 @@ void __thiscall FUN_00448030(GameWidget *this,void *param_1)
   this->object_ptr = param_1;
 }
 
-
-/* FUN_00448050 @ 0x00448050 */
 
 /* FUN_00448050 @ 0x00448050
  * Struct types: GameWidget (this)
@@ -1633,8 +1603,6 @@ int * FUN_00448ad0(short param_1,short param_2,int param_3,int param_4,int param
     return 0;
 }
 
-
-/* FUN_00448cb0 @ 0x00448cb0 */
 
 /* FUN_00448cb0 @ 0x00448cb0
  * Struct types: GameWidget (this)
@@ -1785,8 +1753,6 @@ void __cdecl FUN_004495a0(short *param_1)
   } while (s3 < 7);
 }
 
-
-/* FUN_00449610 @ 0x00449610 */
 
 /* FUN_00449610 @ 0x00449610
  * Initializes a small struct (14 bytes) - zeroes all fields
@@ -2041,8 +2007,6 @@ void __fastcall FUN_0044a330(int *param_1)
     return;
 }
 
-
-/* FUN_0044a3a0 @ 0x0044a3a0 */
 
 /* FUN_0044a3a0 @ 0x0044a3a0
  * TODO: struct type unknown - offset 0x08
@@ -3126,8 +3090,6 @@ void FUN_0044c7d7(void)
 }
 
 
-/* FUN_0044c7e0 @ 0x0044c7e0 */
-
 /* FUN_0044c7e0 @ 0x0044c7e0
  * Struct types: SoundPlayer (this)
  * Writes to sequence_data ring buffer using write_index
@@ -3414,7 +3376,7 @@ void __cdecl FUN_0044da80(int param_1,int param_2,int param_3)
                     (LPCSTR)((uint)pu1[2] + (int)pu1),(DEVMODEA *)0x0);
     GlobalUnlock(*(HGLOBAL *)(param_1 + 4));
     *(HDC *)(param_3 + 4) = hdc;
-    if (hdc != (HDC)0x0) {
+    if (hdc != NULL) {
       v14.cbSize = 0x14;
       v14.lpszDocName = s_A_MONSTER_004828a0;
       v14.lpszOutput = (LPCSTR)0x0;
@@ -3433,7 +3395,7 @@ void __cdecl FUN_0044da80(int param_1,int param_2,int param_3)
 
 void __cdecl FUN_0044db20(int param_1)
 {
-  if (*(HDC *)(param_1 + 4) != (HDC)0x0) {
+  if (*(HDC *)(param_1 + 4) != NULL) {
     EndDoc(*(HDC *)(param_1 + 4));
     DeleteDC(*(HDC *)(param_1 + 4));
     *(int *)(param_1 + 4) = 0;
@@ -3448,7 +3410,7 @@ void __cdecl FUN_0044db50(int param_1)
 {
   HGDIOBJ pv1;
   
-  if (*(HDC *)(param_1 + 4) != (HDC)0x0) {
+  if (*(HDC *)(param_1 + 4) != NULL) {
     StartPage(*(HDC *)(param_1 + 4));
     pv1 = GetStockObject(5);
     SelectObject(*(HDC *)(param_1 + 4),pv1);
@@ -3463,7 +3425,7 @@ void __cdecl FUN_0044db50(int param_1)
 
 void __cdecl FUN_0044db90(int param_1)
 {
-  if (*(HDC *)(param_1 + 4) != (HDC)0x0) {
+  if (*(HDC *)(param_1 + 4) != NULL) {
     EndPage(*(HDC *)(param_1 + 4));
   }
   return;
@@ -3786,8 +3748,6 @@ void FUN_0044e5e0(void)
 void FUN_0044e5f0(void) { return; }
 
 
-/* FUN_0044e600 @ 0x0044e600 */
-
 /* FUN_0044e600 @ 0x0044e600
  * Byte-swaps (endian conversion) on a series of 16-bit values in a data structure.
  * Uses CONCAT11 to swap high/low bytes of each short.
@@ -3981,7 +3941,7 @@ void __fastcall FUN_0044e990(int param_1)
     GlobalFree(pv1);
   }
   *(int *)(param_1 + 0x10) = 0;
-  if (*(HGDIOBJ *)(param_1 + 0x14) != (HGDIOBJ)0x0) {
+  if (*(HGDIOBJ *)(param_1 + 0x14) != NULL) {
     DeleteObject(*(HGDIOBJ *)(param_1 + 0x14));
   }
   *(int *)(param_1 + 0x14) = 0;
@@ -4053,8 +4013,6 @@ void __thiscall FUN_0044eb10(void *this,void *param_1,char param_2)
 }
 
 
-/* FUN_0044eb30 @ 0x0044eb30 */
-
 /* FUN_0044eb30 @ 0x0044eb30
  * TODO: 'this' struct unknown - has pointer at +0x10 (palette/bitmap data)
  */
@@ -4101,7 +4059,7 @@ char __fastcall FUN_0044ebe0(int param_1)
     return '\0';
   }
   if (**(int **)(param_1 + 0x10) == 0x28) {
-    if (*(HGDIOBJ *)(param_1 + 0x14) != (HGDIOBJ)0x0) {
+    if (*(HGDIOBJ *)(param_1 + 0x14) != NULL) {
       DeleteObject(*(HGDIOBJ *)(param_1 + 0x14));
     }
     pu2 = *(ushort **)(param_1 + 0x10);

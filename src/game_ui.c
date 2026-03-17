@@ -17,21 +17,21 @@ void __thiscall FUN_00430020(GameScreen *this,LPCSTR param_1,short param_2,short
 {
   char c1;
   int n2;
-  LPCSTR pCVar3;
+  LPCSTR str3;
 
   FUN_00430680();
   if (param_4 == 0) {
     n2 = -1;
-    pCVar3 = param_1;
+    str3 = param_1;
     do {
       if (n2 == 0) break;
       n2 = n2 + -1;
-      c1 = *pCVar3;
-      pCVar3 = pCVar3 + 1;
+      c1 = *str3;
+      str3 = str3 + 1;
     } while (c1 != '\0');
     param_4 = ~(ushort)n2 - 1;
   }
-  if ((HDC)this->hdc_active != (HDC)0x0) {
+  if ((HDC)this->hdc_active != NULL) {
     SetBkMode((HDC)this->hdc_active,1);
     MoveToEx((HDC)this->hdc_active,(int)param_2,(int)param_3,NULL);
     SetTextAlign((HDC)this->hdc_active,0x19);
@@ -63,7 +63,7 @@ int __fastcall FUN_004300b0(GameScreen *this)
   h = CreateFontA(-(int)(short)((int)((uint)u1 * n3) / 0x48),0,0,0,
                   (int)(short)((-(ushort)((u2 & 1) == 0) & 0xfed4) + 700),
                   this->font_style & 2,this->font_style & 4,0,0,0,0,0,0,v40);
-  if (h != (HFONT)0x0) {
+  if (h != NULL) {
     SelectObject((HDC)this->hdc_active,h);
     flag5 = DeleteObject(pv4);
     return CONCAT31((unsigned int)((uint)flag5 >> 8),1);
@@ -554,8 +554,6 @@ void __fastcall FUN_00430ab0(GameScreen *this)
 }
 
 
-/* FUN_00430ac0 @ 0x00430ac0 */
-
 /* FUN_00430ac0 @ 0x00430ac0
  * Struct types: UIElement (this)
  * Note: offset 0x12 is flags field, but used here as a pointer - likely reinterpreted
@@ -876,24 +874,24 @@ void __thiscall FUN_00431160(void *this,char param_1)
 {
   int n1;
   bool b2;
-  DWORD DVar3;
+  DWORD dw3;
   uint u4;
   
   FUN_00403230();
   u4 = *(int *)(DAT_004896b0 + 4) + _DAT_00489098;
-  DVar3 = GetTickCount();
+  dw3 = GetTickCount();
   n1 = DAT_004896b0;
-  if ((u4 < DVar3) || (param_1 != '\0')) {
-    DVar3 = GetTickCount();
-    *(DWORD *)(n1 + 4) = DVar3;
+  if ((u4 < dw3) || (param_1 != '\0')) {
+    dw3 = GetTickCount();
+    *(DWORD *)(n1 + 4) = dw3;
     b2 = FUN_00456580(DAT_004896b0);
     n1 = DAT_004896b0;
     if ((!b2) && (param_1 == '\0')) {
       FUN_00430f50(this,'\0');
       return;
     }
-    DVar3 = GetTickCount();
-    *(DWORD *)(n1 + 8) = DVar3;
+    dw3 = GetTickCount();
+    *(DWORD *)(n1 + 8) = dw3;
     FUN_00430f50(this,'\x01');
   }
   return;
@@ -910,7 +908,7 @@ void __fastcall FUN_004311e0(void *param_1)
   short *pu2;
   int *pn3;
   short *ps4;
-  DWORD DVar5;
+  DWORD dw5;
   int n6;
   int n7;
   int *_fs;
@@ -961,20 +959,20 @@ void __fastcall FUN_004311e0(void *param_1)
   n6 = (int)*(short *)(DAT_004896b0 + 0x30);
   switch(n6) {
   case 1:
-    DVar5 = GetTickCount();
-    *(DWORD *)(n7 + 0xc) = DVar5;
+    dw5 = GetTickCount();
+    *(DWORD *)(n7 + 0xc) = dw5;
     if (pn3 != NULL) {
       ((void (*)(void))((void **)(*pn3))[0x2c / 4])(); /* pn3->vtable[11] */
     }
     n7 = DAT_004896b0;
-    DVar5 = GetTickCount();
+    dw5 = GetTickCount();
     break;
   case 2:
     if (pn3 != NULL) {
       ((void (*)(void))((void **)(*pn3))[0x30 / 4])(); /* pn3->vtable[12] */
     }
     n7 = DAT_004896b0;
-    DVar5 = GetTickCount();
+    dw5 = GetTickCount();
     break;
   case 3:
   case 4:
@@ -985,7 +983,7 @@ void __fastcall FUN_004311e0(void *param_1)
       ((void (*)(void))((void **)(**(int **)((int)param_1 + 0x12)))[0x40 / 4])(); /* obj at param_1+0x12->vtable[16] */ /* TODO: offset 0x12 used as pointer */
     }
     n7 = DAT_004896b0;
-    DVar5 = GetTickCount();
+    dw5 = GetTickCount();
     break;
   case 6:
   case 8:
@@ -1010,14 +1008,14 @@ void __fastcall FUN_004311e0(void *param_1)
       ((void (*)(void))((void **)(**(int **)((int)param_1 + 0x12)))[0x3c / 4])(); /* obj at param_1+0x12->vtable[15] */ /* TODO: offset 0x12 used as pointer */
     }
     n7 = DAT_004896b0;
-    DVar5 = GetTickCount();
+    dw5 = GetTickCount();
     break;
   case 0x41:
     if (pn3 != NULL) {
       ((void (*)(void))((void **)(*pn3))[0x34 / 4])();
     }
     n7 = DAT_004896b0;
-    DVar5 = GetTickCount();
+    dw5 = GetTickCount();
     break;
   case 0x42:
     if (pn3 != NULL) {
@@ -1029,7 +1027,7 @@ void __fastcall FUN_004311e0(void *param_1)
       }
     }
     n7 = DAT_004896b0;
-    DVar5 = GetTickCount();
+    dw5 = GetTickCount();
     break;
   case 0x46:
     FUN_00430d30(param_1);
@@ -1038,7 +1036,7 @@ void __fastcall FUN_004311e0(void *param_1)
     FUN_0045be00(DAT_00489ac8);
     goto sw_7;
   }
-  *(DWORD *)(n7 + 0xc) = DVar5;
+  *(DWORD *)(n7 + 0xc) = dw5;
 sw_7:
   /* SEH epilog */
   *_fs = _seh_prev;
@@ -1137,7 +1135,7 @@ void FUN_004315d0(void) { return; }
 int * __thiscall
 FUN_004315e0(void *this,short param_1,short param_2,short param_3,int param_4,void *param_5)
 {
-  DWORD DVar1;
+  DWORD dw1;
   int *self;
   int *_fs;
   int n2;
@@ -1190,9 +1188,9 @@ FUN_004315e0(void *this,short param_1,short param_2,short param_3,int param_4,vo
   n2 = DAT_004896b0;
   if (*(char *)(DAT_004896b0 + 0x28) == '\0') {
     *(char *)(DAT_004896b0 + 0x28) = '\x01';
-    DVar1 = GetTickCount();
-    *(DWORD *)(n2 + 4) = DVar1;
-    *(DWORD *)(n2 + 0xc) = DVar1;
+    dw1 = GetTickCount();
+    *(DWORD *)(n2 + 4) = dw1;
+    *(DWORD *)(n2 + 0xc) = dw1;
   }
   _seh_state = (_seh_state & ~0xFF) | 2;
   *(char *)(DAT_004896b0 + 0x2a) = 1;
@@ -1231,7 +1229,7 @@ int * __thiscall FUN_00431790(void *this,byte param_1)
 void __fastcall FUN_004317b0(int *param_1)
 {
   int n1;
-  DWORD DVar2;
+  DWORD dw2;
   int *_fs;
   int _seh_prev;
   char *_handler;
@@ -1245,9 +1243,9 @@ void __fastcall FUN_004317b0(int *param_1)
   _seh_state = 1;
   if ((*(char *)(DAT_004896b0 + 0x28) != '\0') && (*(char *)(DAT_004896b0 + 0x29) == '\0')) {
     *(char *)(DAT_004896b0 + 0x28) = '\0';
-    DVar2 = GetTickCount();
-    *(DWORD *)(n1 + 4) = DVar2;
-    *(DWORD *)(n1 + 0xc) = DVar2;
+    dw2 = GetTickCount();
+    *(DWORD *)(n1 + 4) = dw2;
+    *(DWORD *)(n1 + 0xc) = dw2;
   }
   _seh_state = _seh_state & 0xffffff00;
   *(char *)(DAT_004896b0 + 0x2a) = 0;
@@ -4691,8 +4689,8 @@ void FUN_0043813c(void) { return; }
 void __fastcall FUN_00438150(int param_1)
 {
   void *this;
-  SHORT SVar1;
-  DWORD DVar2;
+  SHORT sz1;
+  DWORD dw2;
   int *_fs;
   char *pu3;
   int n4;
@@ -4714,27 +4712,27 @@ void __fastcall FUN_00438150(int param_1)
   if (this != NULL) {
     FUN_0041cde0(this,v1c);
     n4 = 0x4381b8;
-    SVar1 = GetAsyncKeyState(0x25);
-    if (SVar1 < 0) {
+    sz1 = GetAsyncKeyState(0x25);
+    if (sz1 < 0) {
       if ((int)(short)((uint)v1c[1] >> 8) - (int)*(short *)(param_1 + 0x32c) <=
           (int)*(short *)(param_1 + 0x330)) goto L_00438187;
-      DVar2 = GetTickCount();
+      dw2 = GetTickCount();
       c5 = '\x01';
-      *(DWORD *)(param_1 + 0x176) = DVar2;
+      *(DWORD *)(param_1 + 0x176) = dw2;
       v14 = (char *)-(int)DAT_00488d2c;
       FUN_00401050(&_tmp_34,0);
       pu3 = v14;
     }
     else {
       n4 = 0x4381c1;
-      SVar1 = GetAsyncKeyState(0x27);
-      if ((-1 < SVar1) ||
+      sz1 = GetAsyncKeyState(0x27);
+      if ((-1 < sz1) ||
          ((int)*(short *)(param_1 + 0x332) <=
           (int)*(short *)(param_1 + 0x32e) + (int)(short)((uint)v1c[1] >> 8)))
       goto L_00438187;
-      DVar2 = GetTickCount();
+      dw2 = GetTickCount();
       c5 = '\x01';
-      *(DWORD *)(param_1 + 0x176) = DVar2;
+      *(DWORD *)(param_1 + 0x176) = dw2;
       v14 = &_tmp_34;
       FUN_00401050(&_tmp_34,0);
       pu3 = DAT_00488d2c;
@@ -5055,7 +5053,7 @@ int * __thiscall
 FUN_0043a250(void *this,short param_1,short param_2,short param_3,int param_4,void *param_5)
 {
   int n1;
-  DWORD DVar2;
+  DWORD dw2;
   int *_fs;
   int _seh_prev;
   char *_handler;
@@ -5072,10 +5070,10 @@ FUN_0043a250(void *this,short param_1,short param_2,short param_3,int param_4,vo
   *(char *)(DAT_004896b0 + 0x2b) = 1;
   n1 = DAT_004896b0;
   *(char *)(DAT_004896b0 + 0x28) = 1;
-  DVar2 = GetTickCount();
-  *(DWORD *)(n1 + 4) = DVar2;
+  dw2 = GetTickCount();
+  *(DWORD *)(n1 + 4) = dw2;
   *_fs = _seh_prev;
-  *(DWORD *)(n1 + 0xc) = DVar2;
+  *(DWORD *)(n1 + 0xc) = dw2;
   return this;
 }
 
@@ -5097,7 +5095,7 @@ int * __thiscall FUN_0043a2f0(void *this,byte param_1)
 void __fastcall FUN_0043a310(int *param_1)
 {
   int n1;
-  DWORD DVar2;
+  DWORD dw2;
   int *_fs;
   int _seh_prev;
   char *_handler;
@@ -5111,10 +5109,10 @@ void __fastcall FUN_0043a310(int *param_1)
   *(char *)(DAT_004896b0 + 0x2b) = 0;
   n1 = DAT_004896b0;
   *(char *)(DAT_004896b0 + 0x28) = 0;
-  DVar2 = GetTickCount();
+  dw2 = GetTickCount();
   _seh_state = 0xffffffff;
-  *(DWORD *)(n1 + 4) = DVar2;
-  *(DWORD *)(n1 + 0xc) = DVar2;
+  *(DWORD *)(n1 + 4) = dw2;
+  *(DWORD *)(n1 + 0xc) = dw2;
   FUN_0043a37d();
   /* SEH epilog */
   *_fs = _seh_prev;

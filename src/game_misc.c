@@ -108,7 +108,7 @@ uint __thiscall FUN_004600f0(void *this,char *param_1,ushort param_2)
     return u5 & 0xffffff00;
   }
   pv6 = FUN_00452850(param_1,0,2);
-  if (pv6 == (HANDLE)0x0) {
+  if (pv6 == NULL) {
     return 0;
   }
   pu4[0] = 0x4e49;
@@ -1010,7 +1010,7 @@ void __fastcall FUN_00461b60(void *param_1)
 
 void __fastcall FUN_00461c60(int param_1)
 {
-  if (*(HANDLE *)(param_1 + 0x26) != (HANDLE)0x0) {
+  if (*(HANDLE *)(param_1 + 0x26) != NULL) {
     FUN_004529c0(*(HANDLE *)(param_1 + 0x26));
     *(int *)(param_1 + 0x26) = 0;
     FUN_00452840(*(LPCSTR *)(param_1 + 0x2a));
@@ -5638,7 +5638,7 @@ int __fastcall FUN_0046fd70(LPCVOID param_1,int param_2)
 
 bool __thiscall FUN_0046ff60(void *this,int param_1)
 {
-  DWORD DVar1;
+  DWORD dw1;
   int n2;
   DWORD *pDVar3;
   
@@ -5652,13 +5652,13 @@ bool __thiscall FUN_0046ff60(void *this,int param_1)
     FUN_004719b0(s_Memory_errors_in_too_many_thread_00483f88,0);
     return true;
   }
-  DVar1 = pDVar3[1];
-  pDVar3[1] = DVar1 + 1;
+  dw1 = pDVar3[1];
+  pDVar3[1] = dw1 + 1;
   LeaveCriticalSection((LPCRITICAL_SECTION)&DAT_00489c80);
-  if (param_1 - DVar1 == -1) {
+  if (param_1 - dw1 == -1) {
     FUN_004719b0(s_SmartHeap_error_handler_recursiv_00483fbc,0);
   }
-  return param_1 < (int)DVar1;
+  return param_1 < (int)dw1;
 }
 
 

@@ -688,7 +688,7 @@ void FUN_0045cbb0(void)
   dwLanguageId = 0x400;
   dwMessageId = GetLastError();
   FormatMessageA(0x1100,NULL,dwMessageId,dwLanguageId,(LPSTR)lpBuffer,nSize,Arguments);
-  MessageBoxA((HWND)0x0,v4,s_GetLastError_0048386c,0x40);
+  MessageBoxA(NULL,v4,s_GetLastError_0048386c,0x40);
   LocalFree(v4);
 }
 
@@ -856,8 +856,6 @@ void FUN_0045ceb0(void)
 
 void FUN_0045cec0(void) { return; }
 
-
-/* FUN_0045cf10 @ 0x0045cf10 */
 
 /* FUN_0045cf10 @ 0x0045cf10
  * Struct types: unknown struct >0x2CA bytes (param_1)
@@ -1727,7 +1725,7 @@ void * __thiscall
 FUN_0045e430(SoundPlayer *this,short param_1,short param_2,short param_3,int param_4,void *param_5)
 {
   int n1;
-  DWORD DVar2;
+  DWORD dw2;
   int *_fs;
   int _seh_prev;
   char *_handler;
@@ -1746,9 +1744,9 @@ FUN_0045e430(SoundPlayer *this,short param_1,short param_2,short param_3,int par
   FUN_0040e270(DAT_004897c0,0xe);
   n1 = DAT_004896b0;
   *(char *)(DAT_004896b0 + 0x28) = 1;
-  DVar2 = GetTickCount();
-  *(DWORD *)(n1 + 4) = DVar2;
-  *(DWORD *)(n1 + 0xc) = DVar2;
+  dw2 = GetTickCount();
+  *(DWORD *)(n1 + 4) = dw2;
+  *(DWORD *)(n1 + 0xc) = dw2;
   *(char *)(DAT_004896b0 + 0x29) = 1;
   *_fs = _seh_prev;
   return this;
@@ -1772,7 +1770,7 @@ void * __thiscall FUN_0045e4f0(void *this,byte param_1)
 void __fastcall FUN_0045e510(GameWidget *param_1)
 {
   int n1;
-  DWORD DVar2;
+  DWORD dw2;
   int *_fs;
   int _seh_prev;
   char *_handler;
@@ -1790,9 +1788,9 @@ void __fastcall FUN_0045e510(GameWidget *param_1)
   n1 = DAT_004896b0;
   if (*(char *)&param_1->scrollbar_ref != '\0') {
     *(char *)(DAT_004896b0 + 0x28) = 0;
-    DVar2 = GetTickCount();
-    *(DWORD *)(n1 + 4) = DVar2;
-    *(DWORD *)(n1 + 0xc) = DVar2;
+    dw2 = GetTickCount();
+    *(DWORD *)(n1 + 4) = dw2;
+    *(DWORD *)(n1 + 0xc) = dw2;
   }
   _seh_state = 0xffffffff;
   *(char *)(DAT_004896b0 + 0x29) = 0;
@@ -1839,16 +1837,16 @@ void FUN_0045e91f(void) { return; }
 void __fastcall FUN_0045e970(GameWidget *param_1)
 {
   int n1;
-  DWORD DVar2;
+  DWORD dw2;
 
   n1 = *(int *)(DAT_004897c0 + 0x52);
   *(char *)(n1 + 0x174) = 1;
   FUN_0041dad0(*(void **)(n1 + 0x160),1,'\0');
   n1 = DAT_004896b0;
   *(char *)(DAT_004896b0 + 0x27) = 0;
-  DVar2 = GetTickCount();
-  *(DWORD *)(n1 + 4) = DVar2;
-  *(DWORD *)(n1 + 0xc) = DVar2;
+  dw2 = GetTickCount();
+  *(DWORD *)(n1 + 4) = dw2;
+  *(DWORD *)(n1 + 0xc) = dw2;
   if (param_1->object_ptr != NULL) {
     ((void (*)(void))**(void ***)&param_1->object_ptr)();
     param_1->object_ptr = 0;
@@ -2267,8 +2265,6 @@ void * __thiscall FUN_0045fbc0(void *this,byte param_1)
 }
 
 
-/* FUN_0045fbe0 @ 0x0045fbe0 */
-
 /* FUN_0045fbe0 @ 0x0045fbe0
  * Struct types: GameWidget-like (param_1) - treats fields at 0x126 and 0x13A as arrays of 5 pointers
  * TODO: This may be a subclass of GameWidget with different layout at 0x126-0x155
@@ -2277,7 +2273,7 @@ void __fastcall FUN_0045fbe0(GameWidget *param_1)
 {
   int *pu1;
   int n2;
-  DWORD DVar3;
+  DWORD dw3;
   short s4;
   int *_fs;
   int _seh_prev;
@@ -2315,9 +2311,9 @@ void __fastcall FUN_0045fbe0(GameWidget *param_1)
   }
   n2 = DAT_004896b0;
   *(char *)(DAT_004896b0 + 0x28) = 0;
-  DVar3 = GetTickCount();
-  *(DWORD *)(n2 + 4) = DVar3;
-  *(DWORD *)(n2 + 0xc) = DVar3;
+  dw3 = GetTickCount();
+  *(DWORD *)(n2 + 4) = dw3;
+  *(DWORD *)(n2 + 0xc) = dw3;
   _seh_state = 0xffffffff;
   *(char *)(DAT_004896b0 + 0x2c) = 0;
   FUN_0045fcb1();
@@ -2402,8 +2398,6 @@ void __cdecl FUN_0045feb0(int param_1,char param_2)
   return;
 }
 
-
-/* FUN_0045ffc0 @ 0x0045ffc0 */
 
 /* FUN_0045ffc0 @ 0x0045ffc0
  * Struct types: unknown struct ~0x3E bytes (param_1)

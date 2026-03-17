@@ -2862,13 +2862,13 @@ int __thiscall FUN_004177f0(void *this,int param_1,char param_2)
 
 DWORD __cdecl FUN_00417890(HANDLE param_1)
 {
-  DWORD DVar1;
+  DWORD dw1;
   
-  DVar1 = SetFilePointer(param_1,0,(PLONG)0x0,1);
-  if (DVar1 == 0xffffffff) {
-    DVar1 = 0;
+  dw1 = SetFilePointer(param_1,0,(PLONG)0x0,1);
+  if (dw1 == 0xffffffff) {
+    dw1 = 0;
   }
-  return DVar1;
+  return dw1;
 }
 
 
@@ -2885,7 +2885,7 @@ int __cdecl FUN_004178b0(HANDLE param_1,DWORD param_2)
 
 int __cdecl FUN_004178e0(HANDLE param_1,uint param_2)
 {
-  DWORD DVar1;
+  DWORD dw1;
   int n2;
   uint u3;
   int u4;
@@ -2895,11 +2895,11 @@ int __cdecl FUN_004178e0(HANDLE param_1,uint param_2)
     u4 = FUN_004178b0(param_1,param_2);
     return u4;
   }
-  DVar1 = FUN_00417890(param_1);
-  n5 = (-(uint)(DVar1 < param_2) & 0xa00000) - 0x500000;
-  n2 = (int)(param_2 - DVar1) / n5;
+  dw1 = FUN_00417890(param_1);
+  n5 = (-(uint)(dw1 < param_2) & 0xa00000) - 0x500000;
+  n2 = (int)(param_2 - dw1) / n5;
   if (n2 < 1) {
-    n2 = (int)(DVar1 - param_2) / n5;
+    n2 = (int)(dw1 - param_2) / n5;
   }
   while( true ) {
     if (n2 == 0) {
@@ -2907,9 +2907,9 @@ int __cdecl FUN_004178e0(HANDLE param_1,uint param_2)
       return u4;
     }
     n2 = n2 + -1;
-    u3 = FUN_004178b0(param_1,DVar1);
+    u3 = FUN_004178b0(param_1,dw1);
     if ((char)u3 == '\0') break;
-    DVar1 = DVar1 + n5;
+    dw1 = dw1 + n5;
     if (DAT_0047f1fc == '\0') {
       FUN_00403230();
     }
@@ -4713,7 +4713,7 @@ void __thiscall FUN_0041c6b0(void *this,char param_1)
 /* Function cleaned: param_1 is UIElement; accesses flags(0x12), parent_widget(0x0C), field_3e(0x3E), field_06(0x06) */
 void __fastcall FUN_0041c720(UIElement *this)
 {
-  SHORT SVar1;
+  SHORT sz1;
   int *pn2;
   uint u3;
   int n4;
@@ -4737,8 +4737,8 @@ void __fastcall FUN_0041c720(UIElement *this)
     n4 = 0;
 L_0041c759:
     if (n4 != 0) {
-      SVar1 = GetAsyncKeyState(0x10);
-      if (SVar1 < 0) {
+      sz1 = GetAsyncKeyState(0x10);
+      if (sz1 < 0) {
         u5 = n4 - 1;
       }
       else {
