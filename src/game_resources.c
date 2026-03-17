@@ -1254,7 +1254,7 @@ void __fastcall FUN_0045d040(int *param_1)
     FUN_0041dd40(*(void **)(DAT_004897c0 + 0x44));
     FUN_0041c2a0(*(void **)(DAT_004897c0 + 0x44),0);
   }
-  (**(void (**)(void))(*param_1 + 0xdc))();
+  ((void (*)(void))((void **)(*param_1))[0xdc / 4])(); /* param_1->vtable[55] */
   FUN_0041dd40((void *)param_1[0x66]);
   return;
 }
@@ -2325,7 +2325,7 @@ void __fastcall FUN_0045e510(GameWidget *param_1)
   *unaff_FS_OFFSET = &local_10;
   local_8 = 0;
   if (param_1->object_ptr != (void *)0x0) {
-    (**(void (**)(void))param_1->object_ptr)();
+    ((void (*)(void))**(void ***)&param_1->object_ptr)();
     param_1->object_ptr = 0;
   }
   iVar1 = DAT_004896b0;
@@ -2363,7 +2363,7 @@ void __fastcall FUN_0045e5b0(GameWidget *param_1)
 
 {
   if (param_1->object_ptr != (void *)0x0) {
-    (**(void (**)(void))param_1->object_ptr)();
+    ((void (*)(void))**(void ***)&param_1->object_ptr)();
     param_1->object_ptr = 0;
   }
   FUN_0042bec0(param_1);
@@ -2409,7 +2409,7 @@ void __fastcall FUN_0045e970(GameWidget *param_1)
   *(DWORD *)(iVar1 + 4) = DVar2;
   *(DWORD *)(iVar1 + 0xc) = DVar2;
   if (param_1->object_ptr != (void *)0x0) {
-    (**(void (**)(void))param_1->object_ptr)();
+    ((void (*)(void))**(void ***)&param_1->object_ptr)();
     param_1->object_ptr = 0;
   }
   FUN_0042c3f0(param_1);
@@ -3033,23 +3033,23 @@ void __fastcall FUN_0045fbe0(GameWidget *param_1)
     /* array access at 0x126 + sVar4*4: object_ptr, scrollbar_ref, field_12e area, field_130 area, cleanup_fn_ptr */
     puVar1 = *(int **)((int)param_1 + sVar4 * 4 + 0x126);
     if (puVar1 != (int *)0x0) {
-      (**(void (**)(void))*puVar1)();
+      ((void (*)(void))((void **)*puVar1)[0])();
     }
     /* array access at 0x13A + sVar4*4: slot_ptr_0, _pad13e area, name_data_ptr, _pad146 area, group_data_a */
     puVar1 = *(int **)((int)param_1 + sVar4 * 4 + 0x13a);
     if (puVar1 != (int *)0x0) {
-      (**(void (**)(void))*puVar1)();
+      ((void (*)(void))((void **)*puVar1)[0])();
     }
     sVar4 = sVar4 + 1;
   } while (sVar4 < 5);
   /* 0x152 falls in _pad14e+4 area */
   if (*(int **)((int)param_1 + 0x152) != (int *)0x0) {
-    (**(void (**)(void))*(int **)((int)param_1 + 0x152))();
+    ((void (*)(void))**(void ***)((int)param_1 + 0x152))(); /* obj at param_1+0x152->vtable[0] */
     *(int *)((int)param_1 + 0x152) = 0; /* TODO: unknown offset 0x152 on GameWidget (_pad14e area) */
   }
   /* 0x14e = _pad14e */
   if (*(int **)((int)param_1 + 0x14e) != (int *)0x0) {
-    (**(void (**)(void))*(int **)((int)param_1 + 0x14e))();
+    ((void (*)(void))**(void ***)((int)param_1 + 0x14e))(); /* obj at param_1+0x14e->vtable[0] */
   }
   iVar2 = DAT_004896b0;
   *(char *)(DAT_004896b0 + 0x28) = 0;

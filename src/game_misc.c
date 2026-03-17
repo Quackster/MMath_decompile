@@ -2870,7 +2870,7 @@ void __thiscall FUN_00465cb0(MathProblem *this,int *param_1)
   if (DAT_00483dc8 != 0) {
     *(int *)(DAT_00483dc8 + 10) = this->field_10;
   }
-  (**(void (**)(void))(*(int *)this + 0x80))();
+  ((void (*)(void))this->vtable[0x80 / 4])(); /* vtable[32] */
   return;
 }
 
@@ -5349,7 +5349,7 @@ int __fastcall FUN_0046e500(int param_1)
     uVar7 = (uint)(ushort)(sVar6 + 1U);
   } while ((ushort)(sVar6 + 1U) < 5);
   if (*(void (**)(void))(param_1 + 0x38) != (code *)0x0) {
-    (**(void (**)(void))(param_1 + 0x38))();
+    ((void (*)(void))**(void ***)(param_1 + 0x38))(); /* obj at param_1+0x38->vtable[0] */
   }
 LAB_0046e57a:
   return iVar1 - *(int *)(param_1 + 0x2c);

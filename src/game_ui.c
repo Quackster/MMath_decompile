@@ -481,7 +481,7 @@ void FUN_00430770(UIElement *param_1)
         sVar4 = param_1->rect_left;
       }
       if (sVar4 <= sVar3) {
-        (**(void (**)(void))(*(int *)param_1->vtable + 0x14))();
+        ((void (*)(void))param_1->vtable[0x14 / 4])(); /* vtable[5] */
         if (param_1->child_list_1 == 0) {
           return;
         }
@@ -676,11 +676,11 @@ void __thiscall FUN_00430ac0(void *this,int *param_1)
   piVar1 = *(int **)((intptr_t)this + 0x12); /* TODO: offset 0x12 used as pointer, possibly different struct */
   if (param_1 != piVar1) {
     if (piVar1 != (int *)0x0) {
-      (**(void (**)(void))(*piVar1 + 0x50))();
+      ((void (*)(void))((void **)(*piVar1))[0x50 / 4])(); /* piVar1->vtable[20] */
     }
     *(int **)((intptr_t)this + 0x12) = param_1; /* TODO: offset 0x12 used as pointer, possibly different struct */
     if (param_1 != (int *)0x0) {
-      (**(void (**)(void))(*param_1 + 0x4c))();
+      ((void (*)(void))((void **)(*param_1))[0x4c / 4])(); /* param_1->vtable[19] */
     }
   }
   return;
@@ -695,10 +695,10 @@ void __fastcall FUN_00430af0(int param_1)
 {
   FUN_00430680();
   if (*(int **)(param_1 + 0x1a) != (int *)0x0) {
-    (**(void (**)(void))(**(int **)(param_1 + 0x1a) + 0x44))();
+    ((void (*)(void))((void **)(**(int **)(param_1 + 0x1a)))[0x44 / 4])(); /* child_list_1->vtable[17] */
   }
   if (*(int **)(param_1 + 0x12) != (int *)0x0) {
-    (**(void (**)(void))(**(int **)(param_1 + 0x12) + 0x4c))();
+    ((void (*)(void))((void **)(**(int **)(param_1 + 0x12)))[0x4c / 4])(); /* obj at param_1+0x12->vtable[19] */
   }
   return;
 }
@@ -711,10 +711,10 @@ void __fastcall FUN_00430b20(int param_1)
 
 {
   if (*(int **)(param_1 + 0x12) != (int *)0x0) {
-    (**(void (**)(void))(**(int **)(param_1 + 0x12) + 0x50))();
+    ((void (*)(void))((void **)(**(int **)(param_1 + 0x12)))[0x50 / 4])(); /* obj at param_1+0x12->vtable[20] */
   }
   if (*(int **)(param_1 + 0x1a) != (int *)0x0) {
-    (**(void (**)(void))(**(int **)(param_1 + 0x1a) + 0x48))();
+    ((void (*)(void))((void **)(**(int **)(param_1 + 0x1a)))[0x48 / 4])(); /* child_list_1->vtable[18] */
   }
   return;
 }
@@ -936,7 +936,7 @@ void __thiscall FUN_00430f50(GameWidget *this,char param_1)
   
   if (*(char *)(DAT_004896b0 + 0x27) != '\0') {
     if ((DAT_004897c0 != 0) && (*(int **)(DAT_004897c0 + 0x52) != (int *)0x0)) {
-      (**(void (**)(void))(**(int **)(DAT_004897c0 + 0x52) + 0xc0))();
+      ((void (*)(void))((void **)(**(int **)(DAT_004897c0 + 0x52)))[0xc0 / 4])(); /* obj at *(DAT_004897c0+0x52)->vtable[48] */
     }
     FUN_004564f0(DAT_004896b0);
     return;
@@ -949,7 +949,7 @@ void __thiscall FUN_00430f50(GameWidget *this,char param_1)
     do {
       iVar2 = iVar2 + 4;
       uVar3 = uVar3 + 1;
-      (**(void (**)(void))(**(int **)(**(int **)(this->type_or_mode + 4) + -8 + iVar2) + 0x1c))();
+      ((void (*)(void))((void **)(**(int **)(**(int **)(this->type_or_mode + 4) + -8 + iVar2)))[0x1c / 4])(); /* child obj->vtable[7] */
     } while (uVar3 <= *(uint *)(this->type_or_mode + 0xe));
   }
   if ((DAT_004800c0 != 0) && (param_1 != '\0')) {
@@ -1084,15 +1084,15 @@ void __fastcall FUN_004311e0(void *param_1)
   if (piVar3 == piVar1) {
     if (((piVar3 != (int *)0x0) && (*(short *)(DAT_004896b0 + 0x30) == 0)) &&
        ((((UIElement *)piVar3)->flags >> 5 & 1) != 0)) {
-      (**(void (**)(void))(*piVar3 + 0x20))();
+      ((void (*)(void))((void **)(*piVar3))[0x20 / 4])(); /* piVar3->vtable[8] */
     }
   }
   else {
     if (piVar1 != (int *)0x0) {
-      (**(void (**)(void))(*piVar1 + 0x28))();
+      ((void (*)(void))((void **)(*piVar1))[0x28 / 4])(); /* piVar1->vtable[10] */
     }
     if (piVar3 != (int *)0x0) {
-      (**(void (**)(void))(*piVar3 + 0x24))();
+      ((void (*)(void))((void **)(*piVar3))[0x24 / 4])(); /* piVar3->vtable[9] */
     }
     *(int **)(DAT_004896b0 + 0x40) = piVar3;
   }
@@ -1116,14 +1116,14 @@ void __fastcall FUN_004311e0(void *param_1)
     DVar5 = GetTickCount();
     *(DWORD *)(iVar7 + 0xc) = DVar5;
     if (piVar3 != (int *)0x0) {
-      (**(void (**)(void))(*piVar3 + 0x2c))();
+      ((void (*)(void))((void **)(*piVar3))[0x2c / 4])(); /* piVar3->vtable[11] */
     }
     iVar7 = DAT_004896b0;
     DVar5 = GetTickCount();
     break;
   case 2:
     if (piVar3 != (int *)0x0) {
-      (**(void (**)(void))(*piVar3 + 0x30))();
+      ((void (*)(void))((void **)(*piVar3))[0x30 / 4])(); /* piVar3->vtable[12] */
     }
     iVar7 = DAT_004896b0;
     DVar5 = GetTickCount();
@@ -1134,7 +1134,7 @@ void __fastcall FUN_004311e0(void *param_1)
     if ((*(char *)(DAT_004896b0 + 0x3e) == '\x10') || (*(int **)((int)param_1 + 0x12) == (int *)0x0) /* TODO: offset 0x12 used as pointer, not UIElement.flags */
        ) goto switchD_004312ee_caseD_7;
     if (*(short *)(DAT_004896b0 + 0x30) == 4) {
-      (**(void (**)(void))(**(int **)((int)param_1 + 0x12) + 0x40))(); /* TODO: offset 0x12 used as pointer */
+      ((void (*)(void))((void **)(**(int **)((int)param_1 + 0x12)))[0x40 / 4])(); /* obj at param_1+0x12->vtable[16] */ /* TODO: offset 0x12 used as pointer */
     }
     iVar7 = DAT_004896b0;
     DVar5 = GetTickCount();
@@ -1159,14 +1159,14 @@ void __fastcall FUN_004311e0(void *param_1)
     goto switchD_004312ee_caseD_7;
   case 9:
     if (*(int **)((int)param_1 + 0x12) != (int *)0x0) { /* TODO: offset 0x12 used as pointer */
-      (**(void (**)(void))(**(int **)((int)param_1 + 0x12) + 0x3c))(); /* TODO: offset 0x12 used as pointer */
+      ((void (*)(void))((void **)(**(int **)((int)param_1 + 0x12)))[0x3c / 4])(); /* obj at param_1+0x12->vtable[15] */ /* TODO: offset 0x12 used as pointer */
     }
     iVar7 = DAT_004896b0;
     DVar5 = GetTickCount();
     break;
   case 0x41:
     if (piVar3 != (int *)0x0) {
-      (**(void (**)(void))(*piVar3 + 0x34))();
+      ((void (*)(void))((void **)(*piVar3))[0x34 / 4])();
     }
     iVar7 = DAT_004896b0;
     DVar5 = GetTickCount();
@@ -1174,10 +1174,10 @@ void __fastcall FUN_004311e0(void *param_1)
   case 0x42:
     if (piVar3 != (int *)0x0) {
       if ((((UIElement *)piVar3)->flags >> 0xc & 1) == 0) {
-        (**(void (**)(void))(*piVar3 + 0x34))();
+        ((void (*)(void))((void **)(*piVar3))[0x34 / 4])();
       }
       else {
-        (**(void (**)(void))(*piVar3 + 0x38))();
+        ((void (*)(void))((void **)(*piVar3))[0x38 / 4])(); /* piVar3->vtable[14] */
       }
     }
     iVar7 = DAT_004896b0;
@@ -1372,7 +1372,7 @@ FUN_004315e0(void *this,short param_1,short param_2,short param_3,int param_4,vo
   FUN_0041dd40(this_00);
   FUN_00458de0(this_00,'\b');
   FUN_00458dd0(this_00,1);
-  (**(void (**)(void))(*this_00 + 0x90))();
+  ((void (*)(void))((void **)(*this_00))[0x90 / 4])(); /* this_00->vtable[36] */
   ((UIWidget *)local_14)->field_109 = 1;
   FUN_00431860((int)local_14);
   iVar2 = DAT_004896b0;
@@ -1752,7 +1752,7 @@ void __fastcall FUN_00431be0(int param_1)
   if (10 < iVar6) {
     FUN_00458860(this,s_Overflow_00480104);
   }
-  (**(void (**)(void))(*this + 0x90))();
+  ((void (*)(void))((void **)(*this))[0x90 / 4])(); /* this->vtable[36] */
   return;
 }
 
@@ -1980,7 +1980,7 @@ void __fastcall FUN_00432610(int *param_1)
   int *piVar1;
   
   piVar1 = *(int **)(DAT_004897c0 + 0x52);
-  (**(void (**)(void))(*piVar1 + 200))();
+  ((void (*)(void))((void **)(*piVar1))[200 / 4])(); /* piVar1->vtable[50] */
   *(char *)(piVar1 + 0x5d) = 1;
   FUN_0042c3f0(param_1);
   return;
@@ -4388,7 +4388,7 @@ void __fastcall FUN_00435b00(int *param_1)
      )) {
     iVar1 = (short)param_1[0x44] + -1;
     if (iVar1 < 1) {
-      (**(void (**)(void))(**(int **)(DAT_004897c0 + 0x52) + 0xac))();
+      ((void (*)(void))((void **)(**(int **)(DAT_004897c0 + 0x52)))[0xac / 4])(); /* obj at *(DAT_004897c0+0x52)->vtable[43] */
     }
     else {
       FUN_004058c0(param_1,(short)iVar1);
@@ -4519,7 +4519,7 @@ void __fastcall FUN_00435d70(DialogWidget *param_1)
 {
   if (param_1->prev_dialog != (void *)0x0) {
     FUN_00436100(param_1);
-    (**(void (**)(void))*(int **)param_1->prev_dialog)();
+    ((void (*)(void))**(void ***)&param_1->prev_dialog)(); /* prev_dialog->vtable[0] */
     param_1->prev_dialog = (void *)0x0;
   }
   return;
@@ -4918,7 +4918,7 @@ void __fastcall FUN_00436690(GameWidget *param_1)
 
 {
   if (param_1->slot_ptr_0 != (void *)0x0) {
-    (**(void (**)(void))*(int **)param_1->slot_ptr_0)();
+    ((void (*)(void))**(void ***)&param_1->slot_ptr_0)(); /* slot_ptr_0->vtable[0] */
     param_1->slot_ptr_0 = (void *)0x0;
   }
   FUN_00435c90(param_1);
@@ -4933,7 +4933,7 @@ void __fastcall FUN_004366c0(GameWidget *this)
 
 {
   if (this->slot_ptr_0 != (void *)0x0) {
-    (**(void (**)(void))*(int **)this->slot_ptr_0)();
+    ((void (*)(void))**(void ***)&this->slot_ptr_0)(); /* slot_ptr_0->vtable[0] */
     this->slot_ptr_0 = (void *)0x0;
   }
   return;
@@ -5518,7 +5518,7 @@ void __fastcall FUN_00437b30(int param_1)
     piVar1 = (int *)(param_1 + 0x5e4 + sVar4 * 4);
     puVar3 = (int *)*piVar1;
     if (puVar3 != (int *)0x0) {
-      (**(void (**)(void))*puVar3)();
+      ((void (*)(void))((void **)*puVar3)[0])(); /* puVar3->vtable[0] */
       *piVar1 = 0;
       FUN_004564c0();
     }

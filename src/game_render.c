@@ -674,7 +674,7 @@ void __fastcall FUN_00423eb0(int *param_1)
   FUN_0041d780(*(void **)(DAT_004897c0 + 0x4a),param_1);
   FUN_0041dd40(*(void **)(DAT_004897c0 + 0x4a));
   *(int *)(*(int *)(DAT_004897c0 + 0x4a) + 0x16) = 3;
-  (**(void (**)(void))(*param_1 + 0xdc))();
+  ((void (*)(void))((void **)(*param_1))[0xdc / 4])();
   if (*(void **)(DAT_004897c0 + 0x44) != (void *)0x0) {
     iVar2 = 0x423f05;
     FUN_0041d780(*(void **)(DAT_004897c0 + 0x44),*(void **)(DAT_004897c0 + 0x4a));
@@ -3396,7 +3396,7 @@ void __fastcall FUN_004281b0(int *param_1)
   *unaff_FS_OFFSET = &local_10;
   local_8 = 0;
   if (*(void ***)((int)param_1 + 0x23a) != (void **)0x0) { /* TODO: unknown offset 0x23a */
-    (**(void (**)(void))*(void ***)((int)param_1 + 0x23a))();
+    ((void (*)(void))**(void ***)((int)param_1 + 0x23a))(); /* obj at param_1+0x23a->vtable[0] */
     *(int *)((int)param_1 + 0x23a) = 0;
   }
   local_8 = 0xffffffff;
@@ -3808,7 +3808,7 @@ void __fastcall FUN_00428e60(int param_1)
   puVar2 = *(int **)(DAT_004897c0 + 0x44);
   if (puVar2 != (int *)0x0) {
     *(int *)(DAT_004897c0 + 0x44) = 0;
-    (**(void (**)(void))*puVar2)();
+    ((void (*)(void))((void **)*puVar2)[0])(); /* puVar2->vtable[0] */
   }
   sVar1 = 0;
   puVar2 = (int *)0x0;
@@ -3946,11 +3946,11 @@ void __fastcall FUN_00429b20(int *param_1)
 
 {
   if (*(void ***)((int)param_1 + 0x1b2) != (void **)0x0) { /* TODO: unknown offset 0x1b2 */
-    (**(void (**)(void))*(void ***)((int)param_1 + 0x1b2))();
+    ((void (*)(void))**(void ***)((int)param_1 + 0x1b2))(); /* obj at param_1+0x1b2->vtable[0] */
     *(int *)((int)param_1 + 0x1b2) = 0;
   }
   FUN_00409330();
-  (**(void (**)(void))(*param_1 + 0x90))();
+  ((void (*)(void))((void **)(*param_1))[0x90 / 4])();
   if (param_1[0x34] != 0) {
     FUN_0046f5f0(param_1[0x34]);
     param_1[0x34] = 0;
@@ -4511,7 +4511,7 @@ void __thiscall FUN_0042ab70(TextDisplay *this,int param_1)
     }
   }
   this->text_length = iVar7;
-  (**(void (**)(void))(*(int *)this + 0x90))();
+  ((void (*)(void))this->vtable[0x90 / 4])();
   return;
 }
 
@@ -6298,7 +6298,7 @@ void __fastcall FUN_0042d3c0(void *param_1)
   DWORD DVar1;
   
   if (*(void ***)((int)param_1 + 0xd4) != (void **)0x0) { /* TODO: unknown offset 0xd4, within UIWidget::scroll_data */
-    (**(void (**)(void))*(void ***)((int)param_1 + 0xd4))();
+    ((void (*)(void))**(void ***)((int)param_1 + 0xd4))(); /* obj at param_1+0xd4->vtable[0] */
   }
   FUN_0041cad0(param_1);
   DVar1 = GetTickCount();
@@ -6325,7 +6325,7 @@ void __fastcall FUN_0042d590(int param_1)
 
 {
   if (*(int **)(param_1 + 0x158) != (int *)0x0) {
-    (**(void (**)(void))**(int **)(param_1 + 0x158))();
+    ((void (*)(void))**(void ***)(param_1 + 0x158))();
     *(int *)(param_1 + 0x158) = 0;
   }
   if (*(int *)(param_1 + 0x160) != 0) {
@@ -6345,7 +6345,7 @@ void __fastcall FUN_0042d5d0(int param_1)
 
 {
   if (*(int **)(param_1 + 0x158) != (int *)0x0) {
-    (**(void (**)(void))**(int **)(param_1 + 0x158))();
+    ((void (*)(void))**(void ***)(param_1 + 0x158))();
     *(int *)(param_1 + 0x158) = 0;
   }
   return;
@@ -6691,7 +6691,7 @@ void __fastcall FUN_0042e140(int param_1)
 
 {
   if (*(int **)(param_1 + 0x16c) != (int *)0x0) {
-    (**(void (**)(void))**(int **)(param_1 + 0x16c))();
+    ((void (*)(void))**(void ***)(param_1 + 0x16c))(); /* obj at *(param_1+0x16c)->vtable[0] */
     *(int *)(param_1 + 0x16c) = 0;
   }
   FUN_00403aa0();
@@ -6805,25 +6805,25 @@ void __fastcall FUN_0042e3a0(int param_1)
 {
   FUN_0042db40(param_1);
   if (*(int **)(param_1 + 0x158) != (int *)0x0) {
-    (**(void (**)(void))**(int **)(param_1 + 0x158))();
+    ((void (*)(void))**(void ***)(param_1 + 0x158))();
   }
   if (*(int **)(param_1 + 0x150) != (int *)0x0) {
-    (**(void (**)(void))(**(int **)(param_1 + 0x150) + 0x8c))();
+    ((void (*)(void))((void **)(**(int **)(param_1 + 0x150)))[0x8c / 4])();
   }
   if (*(int **)(param_1 + 0x154) != (int *)0x0) {
-    (**(void (**)(void))(**(int **)(param_1 + 0x154) + 0x8c))();
+    ((void (*)(void))((void **)(**(int **)(param_1 + 0x154)))[0x8c / 4])();
   }
   if (*(int **)(param_1 + 0x15c) != (int *)0x0) {
-    (**(void (**)(void))(**(int **)(param_1 + 0x15c) + 0x8c))();
+    ((void (*)(void))((void **)(**(int **)(param_1 + 0x15c)))[0x8c / 4])();
   }
   if (*(int **)(param_1 + 0x160) != (int *)0x0) {
-    (**(void (**)(void))(**(int **)(param_1 + 0x160) + 0x8c))();
+    ((void (*)(void))((void **)(**(int **)(param_1 + 0x160)))[0x8c / 4])();
   }
   if (*(int **)(param_1 + 0x164) != (int *)0x0) {
-    (**(void (**)(void))(**(int **)(param_1 + 0x164) + 0x8c))();
+    ((void (*)(void))((void **)(**(int **)(param_1 + 0x164)))[0x8c / 4])();
   }
   if (*(int **)(param_1 + 0x168) != (int *)0x0) {
-    (**(void (**)(void))(**(int **)(param_1 + 0x168) + 0x8c))();
+    ((void (*)(void))((void **)(**(int **)(param_1 + 0x168)))[0x8c / 4])();
   }
   FUN_0041e0e0(param_1);
   return;
@@ -7726,7 +7726,7 @@ void __fastcall FUN_0042f7f0(int param_1)
 {
                     /* WARNING: Could not recover jumptable at 0x0042f7f6. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-  (**(void (**)(void))(*(int *)(param_1 + 0x2a) + 0x58))();
+  ((void (*)(void))((void **)(*(int *)(param_1 + 0x2a)))[0x58 / 4])(); /* obj at param_1+0x2a->vtable[22] */
   return;
 }
 

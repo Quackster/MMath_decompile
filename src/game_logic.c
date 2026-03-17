@@ -2347,7 +2347,7 @@ void __fastcall FUN_0040e0c0(int param_1)
                          0xffffffffU) / 1000),'\x01','\0');
     }
     FUN_004268d0(*(int **)(param_1 + 0x58),10);
-    (**(void (**)(void))**(int **)(param_1 + 0x5c))();
+    ((void (*)(void))*(void **)**(int **)(param_1 + 0x5c))(); /* obj at *(param_1+0x5c)->vtable[0] */
     *(int *)(param_1 + 0x5c) = 0;
     FUN_0046f5f0(*(uint *)(param_1 + 0x58));
     *(int *)(param_1 + 0x58) = 0;

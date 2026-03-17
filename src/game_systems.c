@@ -116,7 +116,7 @@ void __fastcall FUN_00410300(GameWidget *this)
   short sVar3;
 
   if ((int *)this->object_ptr != (int *)0x0) {
-    (**(void (**)(void))*(int **)this->object_ptr)();
+    ((void (*)(void))*(void **)this->object_ptr)(); /* call through object_ptr->vtable[0] */
     this->object_ptr = 0;
   }
   sVar3 = 0;
@@ -124,7 +124,7 @@ void __fastcall FUN_00410300(GameWidget *this)
     piVar1 = (int *)((int)this + 0x132 + sVar3 * 4); /* TODO: offset 0x132+ is in _pad134 region, array of 10 pointers */
     puVar2 = (int *)*piVar1;
     if (puVar2 != (int *)0x0) {
-      (**(void (**)(void))*puVar2)();
+      ((void (*)(void))((void **)*puVar2)[0])(); /* puVar2->vtable[0] */
     }
     sVar3 = sVar3 + 1;
     *piVar1 = 0;
@@ -5303,7 +5303,7 @@ void __fastcall FUN_0041c420(UIElement *this)
   if (this->parent_widget != (void *)0x0) {
                     /* WARNING: Could not recover jumptable at 0x0041c429. Too many branches */
                     /* WARNING: Treating indirect jump as call */
-    (**(void (**)(void))(*(int *)this->parent_widget + 0x28))();
+    ((void (*)(void))((void **)(*(int *)this->parent_widget))[0x28 / 4])(); /* parent_widget->vtable[10] */
     return;
   }
   return;
@@ -5614,10 +5614,10 @@ void __thiscall FUN_0041cc40(GameWidget *this,int *param_1,char param_2)
   FUN_0041d6a0((intptr_t)this);
   FUN_0041cb70(this,'\x01');
   if (param_2 != '\0') {
-    (**(void (**)(void))(*(int *)this + 0x60))();
+    ((void (*)(void))this->vtable[0x60 / 4])();
     return;
   }
-  (**(void (**)(void))(*(int *)this + 0x5c))();
+  ((void (*)(void))this->vtable[0x5c / 4])();
   return;
 }
 
@@ -5646,10 +5646,10 @@ FUN_0041cca0(GameWidget *this,int param_1,int param_2,int param_3,int param_4,ch
   FUN_0041d6a0((intptr_t)this);
   FUN_0041cb70(this,'\x01');
   if (param_6 != '\0') {
-    (**(void (**)(void))(*(int *)this + 0x60))();
+    ((void (*)(void))this->vtable[0x60 / 4])();
     return;
   }
-  (**(void (**)(void))(*(int *)this + 0x5c))();
+  ((void (*)(void))this->vtable[0x5c / 4])();
   return;
 }
 
@@ -6350,7 +6350,7 @@ void __fastcall FUN_0041d710(UIWidget *param_1)
         }
         *(int *)(iVar1 + 0xe) = *(int *)(iVar1 + 0xe) + -1;
       }
-      (**(void (**)(void))*puVar3)();
+      ((void (*)(void))((void **)*puVar3)[0])(); /* puVar3->vtable[0] */
       iVar1 = *(int *)((int)param_1->child_list_1 + 0xe);
     }
   }
@@ -6838,7 +6838,7 @@ void __thiscall FUN_0041e5c0(MathProblem *this,int param_1)
   this->field_1cc =
        (int)*(short *)(DAT_0048345c + 0x42 + (short)((short)param_1 + 1) * 0xc);
   this->problem_type = (param_1 + 1) * 0x100;
-  (**(void (**)(void))(*(int *)this + 4))();
+  ((void (*)(void))this->vtable[1])(); /* vtable[1] */
   return;
 }
 

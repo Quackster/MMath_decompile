@@ -812,21 +812,21 @@ void __fastcall FUN_00442570(GameWidget *param_1)
   local_8 = 0;
   /* offset 0x152 falls in _pad160 region */
   if (*(void **)((int)param_1 + 0x152) != (void *)0x0) { /* TODO: unknown offset 0x152 in _pad160 */
-    (**(void (**)(void))*(void **)((int)param_1 + 0x152))();
+    ((void (*)(void))**(void ***)((int)param_1 + 0x152))();
     *(void **)((int)param_1 + 0x152) = 0;
   }
   *(void **)&param_1->_pad14e = 0;  /* GameWidget->_pad14e */
   param_1->group_data_a = 0;        /* GameWidget->group_data_a +0x14A */
   if (*(void **)&param_1->_pad146 != (void *)0x0) { /* GameWidget->_pad146 */
-    (**(void (**)(void))*(void **)&param_1->_pad146)();
+    ((void (*)(void))**(void ***)&param_1->_pad146)();
     *(void **)&param_1->_pad146 = 0;
   }
   if (param_1->name_data_ptr != (void *)0x0) { /* GameWidget->name_data_ptr +0x142 */
-    (**(void (**)(void))param_1->name_data_ptr)();
+    ((void (*)(void))**(void ***)&param_1->name_data_ptr)();
     param_1->name_data_ptr = 0;
   }
   if (*(void **)&param_1->_pad13e != (void *)0x0) { /* GameWidget->_pad13e */
-    (**(void (**)(void))*(void **)&param_1->_pad13e)();
+    ((void (*)(void))**(void ***)&param_1->_pad13e)();
     *(void **)&param_1->_pad13e = 0;
   }
   local_8 = 0xffffffff;
@@ -859,27 +859,27 @@ void __fastcall FUN_00442650(GameWidget *param_1)
 {
   /* offset 0x152 in _pad160 region */
   if (*(void **)((int)param_1 + 0x152) != (void *)0x0) { /* TODO: unknown offset 0x152 */
-    (**(void (**)(void))*(void **)((int)param_1 + 0x152))();
+    ((void (*)(void))**(void ***)((int)param_1 + 0x152))();
     *(void **)((int)param_1 + 0x152) = 0;
   }
   if (param_1->group_data_a != 0) { /* GameWidget->group_data_a +0x14A */
-    (**(void (**)(void))param_1->group_data_a)();
+    ((void (*)(void))**(void ***)&param_1->group_data_a)();
     param_1->group_data_a = 0;
   }
   if (*(void **)&param_1->_pad14e != (void *)0x0) { /* GameWidget->_pad14e */
-    (**(void (**)(void))*(void **)&param_1->_pad14e)();
+    ((void (*)(void))**(void ***)&param_1->_pad14e)();
     *(void **)&param_1->_pad14e = 0;
   }
   if (*(void **)&param_1->_pad146 != (void *)0x0) { /* GameWidget->_pad146 */
-    (**(void (**)(void))*(void **)&param_1->_pad146)();
+    ((void (*)(void))**(void ***)&param_1->_pad146)();
     *(void **)&param_1->_pad146 = 0;
   }
   if (param_1->name_data_ptr != (void *)0x0) { /* GameWidget->name_data_ptr +0x142 */
-    (**(void (**)(void))param_1->name_data_ptr)();
+    ((void (*)(void))**(void ***)&param_1->name_data_ptr)();
     param_1->name_data_ptr = 0;
   }
   if (*(void **)&param_1->_pad13e != (void *)0x0) { /* GameWidget->_pad13e */
-    (**(void (**)(void))*(void **)&param_1->_pad13e)();
+    ((void (*)(void))**(void ***)&param_1->_pad13e)();
     *(void **)&param_1->_pad13e = 0;
   }
   FUN_00441f10((UIWidget *)param_1);
@@ -1212,15 +1212,15 @@ void __fastcall FUN_00443f30(GameWidget *param_1)
   *unaff_FS_OFFSET = &local_10;
   local_8 = 0;
   if (*(void **)&param_1->_pad14e != (void *)0x0) { /* GameWidget->_pad14e */
-    (**(void (**)(void))*(void **)&param_1->_pad14e)();
+    ((void (*)(void))**(void ***)&param_1->_pad14e)();
     *(void **)&param_1->_pad14e = 0;
   }
   if (param_1->group_data_a != 0) { /* GameWidget->group_data_a +0x14A */
-    (**(void (**)(void))param_1->group_data_a)();
+    ((void (*)(void))**(void ***)&param_1->group_data_a)();
     param_1->group_data_a = 0;
   }
   if (*(void **)&param_1->_pad146 != (void *)0x0) { /* GameWidget->_pad146 */
-    (**(void (**)(void))*(void **)&param_1->_pad146)();
+    ((void (*)(void))**(void ***)&param_1->_pad146)();
     *(void **)&param_1->_pad146 = 0;
   }
   local_8 = 0xffffffff;
@@ -1252,15 +1252,15 @@ void __fastcall FUN_00443fe0(GameWidget *param_1)
 
 {
   if (*(void **)&param_1->_pad14e != (void *)0x0) { /* GameWidget->_pad14e */
-    (**(void (**)(void))*(void **)&param_1->_pad14e)();
+    ((void (*)(void))**(void ***)&param_1->_pad14e)();
     *(void **)&param_1->_pad14e = 0;
   }
   if (param_1->group_data_a != 0) { /* GameWidget->group_data_a +0x14A */
-    (**(void (**)(void))param_1->group_data_a)();
+    ((void (*)(void))**(void ***)&param_1->group_data_a)();
     param_1->group_data_a = 0;
   }
   if (*(void **)&param_1->_pad146 != (void *)0x0) { /* GameWidget->_pad146 */
-    (**(void (**)(void))*(void **)&param_1->_pad146)();
+    ((void (*)(void))**(void ***)&param_1->_pad146)();
     *(void **)&param_1->_pad146 = 0;
   }
   FUN_00441f10((UIWidget *)param_1);
@@ -5486,7 +5486,7 @@ void __thiscall FUN_0044f840(MathProblem *this,int param_1)
   this->difficulty = param_1;
   this->field_1cc = (int)*(short *)(DAT_0048345c + 0x44 + (short)param_1 * 0xc);
   this->problem_type = param_1 << 4;
-  (**(void (**)(void))(*(int *)this + 4))();
+  ((void (*)(void))this->vtable[1])();
   return;
 }
 

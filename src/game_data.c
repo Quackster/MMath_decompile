@@ -1502,7 +1502,7 @@ void __fastcall FUN_00452f90(int *param_1)
     FUN_00401050(&ghidra_stack_ffffffe8,0);
     FUN_0041d3a0(param_1,uVar1,in_stack_ffffffec,cVar2);
     if ((*(short *)((int)param_1 + 0x22) < 0) && (param_1 != (int *)0x0)) { /* UIElement->rect_bottom */
-      (**(void (**)(void))(*param_1 + 4))();
+      ((void (*)(void))((void **)(*param_1))[1])(); /* param_1->vtable[1] */
     }
   }
   return;
@@ -2113,7 +2113,7 @@ void __fastcall FUN_00454040(int *param_1)
     if (((((GameWidget *)param_1)->pair_x_2 != 0) &&
         (((GameWidget *)param_1)->pair_x_2 <= ((GameWidget *)param_1)->pair_y_1)) &&
        (*(char *)((int)param_1 + 0x12b) == '\0')) { /* TODO: unknown offset 0x12B on GameWidget */
-      (**(void (**)(void))(**(int **)(DAT_004897c0 + 0x52) + 0xac))();
+      ((void (*)(void))((void **)(**(int **)(DAT_004897c0 + 0x52)))[0xac / 4])(); /* obj at *(DAT_004897c0+0x52)->vtable[43] */
     }
   }
   return;
@@ -5327,7 +5327,7 @@ void __fastcall FUN_004587d0(int param_1)
       }
       *(int *)(param_1 + 0x86) = *(int *)(param_1 + 0x86) + -1;
     }
-    (**(void (**)(void))*puVar3)();
+    ((void (*)(void))((void **)*puVar3)[0])(); /* puVar3->vtable[0] */
     iVar1 = *(int *)(param_1 + 0x86);
   }
   return;
@@ -5413,7 +5413,7 @@ void __thiscall FUN_00458860(TextDisplay *this,char *param_1)
     }
     *(char *)(*this->text_buffer_ptr + uVar7) = 0;
   }
-  (**(void (**)(void))(*(int *)this + 0x90))();
+  ((void (*)(void))this->vtable[0x90 / 4])();
   return;
 }
 
@@ -5488,7 +5488,7 @@ void __thiscall FUN_00458920(TextDisplay *this,int param_1)
     puVar10 = (int *)((int)puVar10 + 1);
   }
   *(char *)(*this->text_buffer_ptr + uVar8) = 0;
-  (**(void (**)(void))(*(int *)this + 0x90))();
+  ((void (*)(void))this->vtable[0x90 / 4])();
   return;
 }
 
@@ -5644,7 +5644,7 @@ void __thiscall FUN_00458c00(void *this,int *param_1,char param_2)
   FUN_0041d0a0(this,param_1,param_2);
   FUN_0041cb70(this,'\x01');
   FUN_0041cdc0(this,local_18);
-  (**(void (**)(void))(*(int *)this + 0x90))();
+  ((void (*)(void))this->vtable[0x90 / 4])();
   local_8 = 0xffffffff;
   FUN_00458c93();
   *unaff_FS_OFFSET = local_18[2];
@@ -5685,7 +5685,7 @@ void __thiscall FUN_00458ca0(void *this,int param_1,int param_2,char param_3)
   FUN_0041d0a0(this,&local_18,param_3);
   FUN_0041cb70(this,'\x01');
   FUN_0041cdc0(this,&local_18);
-  (**(void (**)(void))(*(int *)this + 0x90))();
+  ((void (*)(void))this->vtable[0x90 / 4])();
   local_8 = 0xffffffff;
   FUN_00458d31();
   *unaff_FS_OFFSET = local_10;
@@ -5772,7 +5772,7 @@ void __thiscall FUN_00458de0(void *this,char param_1)
   
   this_00 = (void *)FUN_00458e30((int)this);
   FUN_0043b180(this_00,param_1);
-  (**(void (**)(void))(*(int *)this + 0x90))();
+  ((void (*)(void))this->vtable[0x90 / 4])();
   return;
 }
 
