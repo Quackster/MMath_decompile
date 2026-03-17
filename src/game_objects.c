@@ -3,7 +3,7 @@
  * Address range: 0x401000 - 0x408FFF
  * Functions: 223
  *
- * Auto-generated from decompilation of MMath.exe
+ * Reconstructed source for MMath.exe
  */
 
 #include "types.h"
@@ -11,7 +11,7 @@
 #include "globals.h"
 #include "game_structs.h"
 
-/* Function: FUN_00401010 @ 0x00401010 */
+/* FUN_00401010 @ 0x00401010 */
 
 void FUN_00401010(void)
 
@@ -27,8 +27,7 @@ void FUN_00401010(void)
 }
 
 
-
-/* Function: FUN_00401050 @ 0x00401050 */
+/* FUN_00401050 @ 0x00401050 */
 
 int * __thiscall FUN_00401050(void *this,int param_1)
 
@@ -38,8 +37,7 @@ int * __thiscall FUN_00401050(void *this,int param_1)
 }
 
 
-
-/* Function: FUN_00401060 @ 0x00401060
+/* FUN_00401060 @ 0x00401060
  * Sets a pair of 4-byte values at this+0x00 and this+0x04.
  */
 
@@ -54,10 +52,9 @@ int * __thiscall FUN_00401060(void *this,int param_1,int param_2)
 }
 
 
+/* FUN_004010b0 @ 0x004010b0 */
 
-/* Function: FUN_004010b0 @ 0x004010b0 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void FUN_004010b0(void)
 
@@ -68,8 +65,7 @@ void FUN_004010b0(void)
 }
 
 
-
-/* Function: FUN_004010c0 @ 0x004010c0 */
+/* FUN_004010c0 @ 0x004010c0 */
 
 void FUN_004010c0(void)
 
@@ -79,8 +75,7 @@ void FUN_004010c0(void)
 }
 
 
-
-/* Function: FUN_004010d0 @ 0x004010d0 */
+/* FUN_004010d0 @ 0x004010d0 */
 
 void FUN_004010d0(void)
 
@@ -89,10 +84,9 @@ void FUN_004010d0(void)
 }
 
 
+/* FUN_004010f0 @ 0x004010f0 */
 
-/* Function: FUN_004010f0 @ 0x004010f0 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void FUN_004010f0(void)
 
@@ -103,8 +97,7 @@ void FUN_004010f0(void)
 }
 
 
-
-/* Function: FUN_00401100 @ 0x00401100 */
+/* FUN_00401100 @ 0x00401100 */
 
 void FUN_00401100(void)
 
@@ -114,8 +107,7 @@ void FUN_00401100(void)
 }
 
 
-
-/* Function: FUN_00401110 @ 0x00401110 */
+/* FUN_00401110 @ 0x00401110 */
 
 void FUN_00401110(void)
 
@@ -124,8 +116,7 @@ void FUN_00401110(void)
 }
 
 
-
-/* Function: FUN_00401140 @ 0x00401140
+/* FUN_00401140 @ 0x00401140
  * Struct types: GameWidget (this)
  * GameWidget constructor — initializes extension fields, sets vtable.
  */
@@ -173,8 +164,7 @@ GameWidget * __fastcall FUN_00401140(GameWidget *this)
 }
 
 
-
-/* Function: FUN_00401270 @ 0x00401270
+/* FUN_00401270 @ 0x00401270
  * Sets a pair of 4-byte values at this+0x00 and this+0x04.
  */
 
@@ -187,8 +177,7 @@ void __thiscall FUN_00401270(void *this,int param_1,int param_2)
 }
 
 
-
-/* Function: FUN_00401280 @ 0x00401280 */
+/* FUN_00401280 @ 0x00401280 */
 
 int * __thiscall FUN_00401280(void *this,byte param_1)
 
@@ -201,8 +190,7 @@ int * __thiscall FUN_00401280(void *this,byte param_1)
 }
 
 
-
-/* Function: FUN_004012a0 @ 0x004012a0 */
+/* FUN_004012a0 @ 0x004012a0 */
 
 void FUN_004012a0(void)
 
@@ -222,8 +210,7 @@ void FUN_004012a0(void)
 }
 
 
-
-/* Function: FUN_004012e1 @ 0x004012e1 */
+/* FUN_004012e1 @ 0x004012e1 */
 
 void FUN_004012e1(void)
 
@@ -235,8 +222,7 @@ void FUN_004012e1(void)
 }
 
 
-
-/* Function: FUN_004012f0 @ 0x004012f0 */
+/* FUN_004012f0 @ 0x004012f0 */
 
 void __fastcall FUN_004012f0(int *param_1)
 
@@ -262,8 +248,7 @@ void __fastcall FUN_004012f0(int *param_1)
 }
 
 
-
-/* Function: FUN_0040134a @ 0x0040134a */
+/* FUN_0040134a @ 0x0040134a */
 
 void FUN_0040134a(void)
 
@@ -272,8 +257,7 @@ void FUN_0040134a(void)
 }
 
 
-
-/* Function: FUN_00401358 @ 0x00401358 */
+/* FUN_00401358 @ 0x00401358 */
 
 void FUN_00401358(void)
 
@@ -282,8 +266,7 @@ void FUN_00401358(void)
 }
 
 
-
-/* Function: FUN_00401370 @ 0x00401370 */
+/* FUN_00401370 @ 0x00401370 */
 
 void FUN_00401370(void)
 
@@ -293,8 +276,7 @@ void FUN_00401370(void)
 }
 
 
-
-/* Function: FUN_00401592 @ 0x00401592 */
+/* FUN_00401592 @ 0x00401592 */
 
 void FUN_00401592(void)
 
@@ -303,8 +285,7 @@ void FUN_00401592(void)
 }
 
 
-
-/* Function: FUN_0040159a @ 0x0040159a */
+/* FUN_0040159a @ 0x0040159a */
 
 void FUN_0040159a(void)
 
@@ -313,8 +294,7 @@ void FUN_0040159a(void)
 }
 
 
-
-/* Function: FUN_004015a2 @ 0x004015a2 */
+/* FUN_004015a2 @ 0x004015a2 */
 
 void FUN_004015a2(void)
 
@@ -323,8 +303,7 @@ void FUN_004015a2(void)
 }
 
 
-
-/* Function: FUN_004015b4 @ 0x004015b4 */
+/* FUN_004015b4 @ 0x004015b4 */
 
 void FUN_004015b4(void)
 
@@ -333,20 +312,18 @@ void FUN_004015b4(void)
 }
 
 
-
-/* Function: FUN_004015c0 @ 0x004015c0 */
+/* FUN_004015c0 @ 0x004015c0 */
 
 int * __thiscall
 FUN_004015c0(void *this,short param_1,short param_2,short param_3,int param_4,void *param_5)
 
 {
-    /* TODO: 45 lines - has decompiler artifacts */
+    /* STUB: 45 lines not yet reconstructed */
     return 0;
 }
 
 
-
-/* Function: FUN_00401730 @ 0x00401730
+/* FUN_00401730 @ 0x00401730
  * Struct types: GameWidget (this)
  * GameWidget destructor entry — calls FUN_00401750, optionally frees memory.
  */
@@ -362,8 +339,7 @@ GameWidget * __thiscall FUN_00401730(GameWidget *this,byte param_1)
 }
 
 
-
-/* Function: FUN_00401750 @ 0x00401750
+/* FUN_00401750 @ 0x00401750
  * Struct types: GameWidget (this)
  * GameWidget destructor — sets vtable, conditionally calls cleanup FUN_00401d20.
  */
@@ -395,30 +371,27 @@ void __fastcall FUN_00401750(GameWidget *this)
 }
 
 
-
-/* Function: FUN_004017b4 @ 0x004017b4 */
+/* FUN_004017b4 @ 0x004017b4 */
 
 void FUN_004017b4(void)
 
 {
-    /* TODO: 7 lines - has decompiler artifacts */
+    /* STUB: 7 lines not yet reconstructed */
     return;
 }
 
 
-
-/* Function: FUN_004017cc @ 0x004017cc */
+/* FUN_004017cc @ 0x004017cc */
 
 void FUN_004017cc(void)
 
 {
-    /* TODO: 7 lines - has decompiler artifacts */
+    /* STUB: 7 lines not yet reconstructed */
     return;
 }
 
 
-
-/* Function: FUN_004017ee @ 0x004017ee */
+/* FUN_004017ee @ 0x004017ee */
 
 void FUN_004017ee(void)
 
@@ -430,20 +403,18 @@ void FUN_004017ee(void)
 }
 
 
-
-/* Function: FUN_00401930 @ 0x00401930 */
+/* FUN_00401930 @ 0x00401930 */
 
 void FUN_00401930(int param_1,short param_2,int param_3,int param_4,int param_5,char param_6,
                  char param_7)
 
 {
-    /* TODO: 133 lines - has decompiler artifacts */
+    /* STUB: 133 lines not yet reconstructed */
     return;
 }
 
 
-
-/* Function: FUN_00401ba0 @ 0x00401ba0 */
+/* FUN_00401ba0 @ 0x00401ba0 */
 
 int * __thiscall FUN_00401ba0(void *this,short param_1)
 
@@ -453,8 +424,7 @@ int * __thiscall FUN_00401ba0(void *this,short param_1)
 }
 
 
-
-/* Function: FUN_00401d20 @ 0x00401d20
+/* FUN_00401d20 @ 0x00401d20
  * Struct types: GameWidget (this), GameBoard (via DAT_004897c0+0x52)
  * GameWidget cleanup — calls cleanup_fn, destroys slot objects in 3 groups,
  * then updates the GameBoard refresh state.
@@ -523,19 +493,17 @@ void __fastcall FUN_00401d20(GameWidget *this)
 }
 
 
-
-/* Function: FUN_00401e70 @ 0x00401e70 */
+/* FUN_00401e70 @ 0x00401e70 */
 
 void __fastcall FUN_00401e70(void *param_1)
 
 {
-    /* TODO: 41 lines - has decompiler artifacts */
+    /* STUB: 41 lines not yet reconstructed */
     return;
 }
 
 
-
-/* Function: FUN_00401f80 @ 0x00401f80
+/* FUN_00401f80 @ 0x00401f80
  * Struct types: GameWidget (this), GameWidget (n1 — slot items)
  * Searches group_data_a[param_1] for an available slot.
  * Returns first slot where field_12f==0 (and field_12e==0 if param_2 is set).
@@ -566,8 +534,7 @@ int __thiscall FUN_00401f80(GameWidget *this,short param_1,char param_2)
 }
 
 
-
-/* Function: FUN_00401fe0 @ 0x00401fe0
+/* FUN_00401fe0 @ 0x00401fe0
  * Struct types: GameWidget (this)
  * Searches group_data_b[param_1] (stride 0x16, base 0x18C/0x196) for first
  * non-null slot where byte at offset 0x118 == 0.
@@ -593,8 +560,7 @@ int __thiscall FUN_00401fe0(GameWidget *this,short param_1)
 }
 
 
-
-/* Function: FUN_00402030 @ 0x00402030
+/* FUN_00402030 @ 0x00402030
  * Struct types: GameWidget (this)
  * Searches all 3 group slots for an available widget. If none found,
  * sets object_ptr to 3 (sentinel value).
@@ -619,19 +585,17 @@ void __fastcall FUN_00402030(GameWidget *this)
 }
 
 
-
-/* Function: FUN_00402070 @ 0x00402070 */
+/* FUN_00402070 @ 0x00402070 */
 
 uint FUN_00402070(void *param_1)
 
 {
-    /* TODO: 159 lines - has decompiler artifacts */
+    /* STUB: 159 lines not yet reconstructed */
     return 0;
 }
 
 
-
-/* Function: FUN_0040227d @ 0x0040227d */
+/* FUN_0040227d @ 0x0040227d */
 
 void FUN_0040227d(void)
 
@@ -640,8 +604,7 @@ void FUN_0040227d(void)
 }
 
 
-
-/* Function: FUN_00402499 @ 0x00402499 */
+/* FUN_00402499 @ 0x00402499 */
 
 void FUN_00402499(void)
 
@@ -650,8 +613,7 @@ void FUN_00402499(void)
 }
 
 
-
-/* Function: FUN_004024a1 @ 0x004024a1 */
+/* FUN_004024a1 @ 0x004024a1 */
 
 void FUN_004024a1(void)
 
@@ -660,8 +622,7 @@ void FUN_004024a1(void)
 }
 
 
-
-/* Function: FUN_004024a9 @ 0x004024a9 */
+/* FUN_004024a9 @ 0x004024a9 */
 
 void FUN_004024a9(void)
 
@@ -670,8 +631,7 @@ void FUN_004024a9(void)
 }
 
 
-
-/* Function: FUN_004024b1 @ 0x004024b1 */
+/* FUN_004024b1 @ 0x004024b1 */
 
 void FUN_004024b1(void)
 
@@ -680,8 +640,7 @@ void FUN_004024b1(void)
 }
 
 
-
-/* Function: FUN_004024b9 @ 0x004024b9 */
+/* FUN_004024b9 @ 0x004024b9 */
 
 void FUN_004024b9(void)
 
@@ -690,8 +649,7 @@ void FUN_004024b9(void)
 }
 
 
-
-/* Function: FUN_004024cb @ 0x004024cb */
+/* FUN_004024cb @ 0x004024cb */
 
 void FUN_004024cb(void)
 
@@ -700,19 +658,17 @@ void FUN_004024cb(void)
 }
 
 
-
-/* Function: FUN_004024e0 @ 0x004024e0 */
+/* FUN_004024e0 @ 0x004024e0 */
 
 void FUN_004024e0(int *param_1)
 
 {
-    /* TODO: 203 lines - has decompiler artifacts */
+    /* STUB: 203 lines not yet reconstructed */
     return;
 }
 
 
-
-/* Function: FUN_00402a37 @ 0x00402a37 */
+/* FUN_00402a37 @ 0x00402a37 */
 
 void FUN_00402a37(void)
 
@@ -721,8 +677,7 @@ void FUN_00402a37(void)
 }
 
 
-
-/* Function: FUN_00402a3f @ 0x00402a3f */
+/* FUN_00402a3f @ 0x00402a3f */
 
 void FUN_00402a3f(void)
 
@@ -731,8 +686,7 @@ void FUN_00402a3f(void)
 }
 
 
-
-/* Function: FUN_00402a47 @ 0x00402a47 */
+/* FUN_00402a47 @ 0x00402a47 */
 
 void FUN_00402a47(void)
 
@@ -741,8 +695,7 @@ void FUN_00402a47(void)
 }
 
 
-
-/* Function: FUN_00402a4f @ 0x00402a4f */
+/* FUN_00402a4f @ 0x00402a4f */
 
 void FUN_00402a4f(void)
 
@@ -751,8 +704,7 @@ void FUN_00402a4f(void)
 }
 
 
-
-/* Function: FUN_00402a64 @ 0x00402a64 */
+/* FUN_00402a64 @ 0x00402a64 */
 
 void FUN_00402a64(void)
 
@@ -761,8 +713,7 @@ void FUN_00402a64(void)
 }
 
 
-
-/* Function: FUN_00402a6c @ 0x00402a6c */
+/* FUN_00402a6c @ 0x00402a6c */
 
 void FUN_00402a6c(void)
 
@@ -771,8 +722,7 @@ void FUN_00402a6c(void)
 }
 
 
-
-/* Function: FUN_00402a7e @ 0x00402a7e */
+/* FUN_00402a7e @ 0x00402a7e */
 
 void FUN_00402a7e(void)
 
@@ -781,8 +731,7 @@ void FUN_00402a7e(void)
 }
 
 
-
-/* Function: FUN_00402a90 @ 0x00402a90
+/* FUN_00402a90 @ 0x00402a90
  * Struct types: GameWidget (this), GameWidget (n2 — slot items)
  * Searches group_data_a for first slot with both field_12e and field_12f == 0.
  * Group index comes from param_1's level_data_ptr byte at offset +7.
@@ -812,8 +761,7 @@ int __thiscall FUN_00402a90(GameWidget *this,int param_1)
 }
 
 
-
-/* Function: FUN_00402af0 @ 0x00402af0 */
+/* FUN_00402af0 @ 0x00402af0 */
 
 int * __thiscall FUN_00402af0(SoundPlayer *this,int *param_1,int param_2,char param_3)
 
@@ -906,8 +854,7 @@ __label_00402c7b:
 }
 
 
-
-/* Function: FUN_00402cf7 @ 0x00402cf7 */
+/* FUN_00402cf7 @ 0x00402cf7 */
 
 void FUN_00402cf7(void)
 
@@ -916,8 +863,7 @@ void FUN_00402cf7(void)
 }
 
 
-
-/* Function: FUN_00402d00 @ 0x00402d00 */
+/* FUN_00402d00 @ 0x00402d00 */
 
 int * __thiscall FUN_00402d00(void *this,int param_1)
 
@@ -927,19 +873,17 @@ int * __thiscall FUN_00402d00(void *this,int param_1)
 }
 
 
-
-/* Function: FUN_00402d10 @ 0x00402d10 */
+/* FUN_00402d10 @ 0x00402d10 */
 
 void __fastcall FUN_00402d10(void *param_1)
 
 {
-    /* TODO: 92 lines - has decompiler artifacts */
+    /* STUB: 92 lines not yet reconstructed */
     return;
 }
 
 
-
-/* Function: FUN_00402e39 @ 0x00402e39 */
+/* FUN_00402e39 @ 0x00402e39 */
 
 void FUN_00402e39(void)
 
@@ -948,8 +892,7 @@ void FUN_00402e39(void)
 }
 
 
-
-/* Function: FUN_00402f0b @ 0x00402f0b */
+/* FUN_00402f0b @ 0x00402f0b */
 
 void FUN_00402f0b(void)
 
@@ -958,8 +901,7 @@ void FUN_00402f0b(void)
 }
 
 
-
-/* Function: FUN_00402f2d @ 0x00402f2d */
+/* FUN_00402f2d @ 0x00402f2d */
 
 void FUN_00402f2d(void)
 
@@ -968,8 +910,7 @@ void FUN_00402f2d(void)
 }
 
 
-
-/* Function: FUN_00402f3f @ 0x00402f3f */
+/* FUN_00402f3f @ 0x00402f3f */
 
 void FUN_00402f3f(void)
 
@@ -978,8 +919,7 @@ void FUN_00402f3f(void)
 }
 
 
-
-/* Function: FUN_00402f50 @ 0x00402f50
+/* FUN_00402f50 @ 0x00402f50
  * Adds to a pair of 4-byte values at this+0x00 and this+0x04.
  */
 
@@ -992,8 +932,7 @@ void __thiscall FUN_00402f50(void *this,int param_1,int param_2)
 }
 
 
-
-/* Function: FUN_00402f60 @ 0x00402f60
+/* FUN_00402f60 @ 0x00402f60
  * Destroys two sub-objects at offsets 0x1CA and 0x1CE via vtable[0] calls.
  * TODO: offsets 0x1CA/0x1CE beyond GameWidget (0x19C). May be a larger
  *       derived struct or these are accessed via embedded sub-objects.
@@ -1014,8 +953,7 @@ void __fastcall FUN_00402f60(int param_1)
 }
 
 
-
-/* Function: FUN_00402fa0 @ 0x00402fa0
+/* FUN_00402fa0 @ 0x00402fa0
  * Struct types: GameWidget (param_1) — but also accesses 0x1CA/0x1CE beyond GameWidget
  * Converts field_130 and field_12e to strings and passes them to display objects.
  * TODO: offsets 0x1CA/0x1CE beyond GameWidget (0x19C), likely a derived struct.
@@ -1038,8 +976,7 @@ void __fastcall FUN_00402fa0(GameWidget *this)
 }
 
 
-
-/* Function: FUN_00403030 @ 0x00403030
+/* FUN_00403030 @ 0x00403030
  * Copies a pair of 4-byte values from param_2 through this into param_1.
  */
 
@@ -1063,30 +1000,27 @@ int * __thiscall FUN_00403030(void *this,int *param_1,int *param_2)
 }
 
 
-
-/* Function: FUN_00403160 @ 0x00403160 */
+/* FUN_00403160 @ 0x00403160 */
 
 void __thiscall FUN_00403160(void *this,int *param_1,uint param_2)
 
 {
-    /* TODO: 51 lines - has decompiler artifacts */
+    /* STUB: 51 lines not yet reconstructed */
     return;
 }
 
 
-
-/* Function: FUN_00403230 @ 0x00403230 */
+/* FUN_00403230 @ 0x00403230 */
 
 void FUN_00403230(void)
 
 {
-    /* TODO: 10 lines - has decompiler artifacts */
+    /* STUB: 10 lines not yet reconstructed */
     return;
 }
 
 
-
-/* Function: FUN_00403290 @ 0x00403290 */
+/* FUN_00403290 @ 0x00403290 */
 
 void FUN_00403290(void)
 
@@ -1102,8 +1036,7 @@ void FUN_00403290(void)
 }
 
 
-
-/* Function: FUN_004032e0 @ 0x004032e0 */
+/* FUN_004032e0 @ 0x004032e0 */
 
 void FUN_004032e0(void)
 
@@ -1112,10 +1045,9 @@ void FUN_004032e0(void)
 }
 
 
+/* FUN_00403300 @ 0x00403300 */
 
-/* Function: FUN_00403300 @ 0x00403300 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void FUN_00403300(void)
 
@@ -1126,8 +1058,7 @@ void FUN_00403300(void)
 }
 
 
-
-/* Function: FUN_00403310 @ 0x00403310 */
+/* FUN_00403310 @ 0x00403310 */
 
 void FUN_00403310(void)
 
@@ -1137,8 +1068,7 @@ void FUN_00403310(void)
 }
 
 
-
-/* Function: FUN_00403320 @ 0x00403320 */
+/* FUN_00403320 @ 0x00403320 */
 
 void FUN_00403320(void)
 
@@ -1147,10 +1077,9 @@ void FUN_00403320(void)
 }
 
 
+/* FUN_00403340 @ 0x00403340 */
 
-/* Function: FUN_00403340 @ 0x00403340 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void FUN_00403340(void)
 
@@ -1161,8 +1090,7 @@ void FUN_00403340(void)
 }
 
 
-
-/* Function: FUN_00403350 @ 0x00403350 */
+/* FUN_00403350 @ 0x00403350 */
 
 void FUN_00403350(void)
 
@@ -1172,8 +1100,7 @@ void FUN_00403350(void)
 }
 
 
-
-/* Function: FUN_00403360 @ 0x00403360 */
+/* FUN_00403360 @ 0x00403360 */
 
 void FUN_00403360(void)
 
@@ -1182,19 +1109,17 @@ void FUN_00403360(void)
 }
 
 
-
-/* Function: FUN_00403370 @ 0x00403370 */
+/* FUN_00403370 @ 0x00403370 */
 
 int * __fastcall FUN_00403370(int *param_1)
 
 {
-    /* TODO: 58 lines - has decompiler artifacts */
+    /* STUB: 58 lines not yet reconstructed */
     return 0;
 }
 
 
-
-/* Function: FUN_004034e0 @ 0x004034e0 */
+/* FUN_004034e0 @ 0x004034e0 */
 
 int * __thiscall FUN_004034e0(void *this,byte param_1)
 
@@ -1207,8 +1132,7 @@ int * __thiscall FUN_004034e0(void *this,byte param_1)
 }
 
 
-
-/* Function: FUN_00403500 @ 0x00403500 */
+/* FUN_00403500 @ 0x00403500 */
 
 void FUN_00403500(void)
 
@@ -1233,8 +1157,7 @@ void FUN_00403500(void)
 }
 
 
-
-/* Function: FUN_00403554 @ 0x00403554 */
+/* FUN_00403554 @ 0x00403554 */
 
 void FUN_00403554(void)
 
@@ -1243,8 +1166,7 @@ void FUN_00403554(void)
 }
 
 
-
-/* Function: FUN_0040355f @ 0x0040355f */
+/* FUN_0040355f @ 0x0040355f */
 
 void FUN_0040355f(void)
 
@@ -1256,8 +1178,7 @@ void FUN_0040355f(void)
 }
 
 
-
-/* Function: FUN_00403574 @ 0x00403574 */
+/* FUN_00403574 @ 0x00403574 */
 
 void FUN_00403574(void)
 
@@ -1269,8 +1190,7 @@ void FUN_00403574(void)
 }
 
 
-
-/* Function: FUN_00403580 @ 0x00403580
+/* FUN_00403580 @ 0x00403580
  * Struct types: UIWidget (this) — offsets 0x6a-0xca fall within UIElement/UIWidget range.
  * Destructor: sets vtable, frees resources at 0x6a and 0xca (within sub_widgets/scroll_data),
  * destroys child objects, frees palette data.
@@ -1328,8 +1248,7 @@ void __fastcall FUN_00403580(UIWidget *this)
 }
 
 
-
-/* Function: FUN_00403679 @ 0x00403679 */
+/* FUN_00403679 @ 0x00403679 */
 
 void FUN_00403679(void)
 
@@ -1341,8 +1260,7 @@ void FUN_00403679(void)
 }
 
 
-
-/* Function: FUN_0040368e @ 0x0040368e */
+/* FUN_0040368e @ 0x0040368e */
 
 void FUN_0040368e(void)
 
@@ -1352,19 +1270,17 @@ void FUN_0040368e(void)
 }
 
 
-
-/* Function: FUN_004036a0 @ 0x004036a0 */
+/* FUN_004036a0 @ 0x004036a0 */
 
 void __thiscall FUN_004036a0(void *this,int *param_1)
 
 {
-    /* TODO: 33 lines - has decompiler artifacts */
+    /* STUB: 33 lines not yet reconstructed */
     return;
 }
 
 
-
-/* Function: FUN_00403755 @ 0x00403755 */
+/* FUN_00403755 @ 0x00403755 */
 
 void FUN_00403755(void)
 
@@ -1376,21 +1292,19 @@ void FUN_00403755(void)
 }
 
 
-
-/* Function: FUN_00403790 @ 0x00403790 */
+/* FUN_00403790 @ 0x00403790 */
 
 void __thiscall FUN_00403790(void *this,void *param_1,uint param_2)
 
 {
-    /* TODO: 13 lines - has decompiler artifacts */
+    /* STUB: 13 lines not yet reconstructed */
     return;
 }
 
 
+/* FUN_004037e0 @ 0x004037e0 */
 
-/* Function: FUN_004037e0 @ 0x004037e0 */
-
-/* Function: FUN_004037e0 @ 0x004037e0
+/* FUN_004037e0 @ 0x004037e0
  * Struct types: UIWidget-derived (param_1)
  * Initializes palette/tile data, iterates child widgets via vtable calls,
  * sets up viewport coordinates and optionally renders an image.
@@ -1514,8 +1428,7 @@ void __fastcall FUN_004037e0(void *param_1)
 }
 
 
-
-/* Function: FUN_00403a1f @ 0x00403a1f */
+/* FUN_00403a1f @ 0x00403a1f */
 
 void FUN_00403a1f(void)
 
@@ -1524,8 +1437,7 @@ void FUN_00403a1f(void)
 }
 
 
-
-/* Function: FUN_00403a27 @ 0x00403a27 */
+/* FUN_00403a27 @ 0x00403a27 */
 
 void FUN_00403a27(void)
 
@@ -1534,8 +1446,7 @@ void FUN_00403a27(void)
 }
 
 
-
-/* Function: FUN_00403a39 @ 0x00403a39 */
+/* FUN_00403a39 @ 0x00403a39 */
 
 void FUN_00403a39(void)
 
@@ -1547,8 +1458,7 @@ void FUN_00403a39(void)
 }
 
 
-
-/* Function: FUN_00403a50 @ 0x00403a50
+/* FUN_00403a50 @ 0x00403a50
  * Clears palette data and calls vtable[0x29] (offset 0xa4/4) on each child widget.
  * Offsets: 0x7c (child count), 0x72 (child list ptr)
  */
@@ -1574,8 +1484,7 @@ void __fastcall FUN_00403a50(void *param_1)
 }
 
 
-
-/* Function: FUN_00403aa0 @ 0x00403aa0 */
+/* FUN_00403aa0 @ 0x00403aa0 */
 
 void FUN_00403aa0(void)
 
@@ -1584,19 +1493,17 @@ void FUN_00403aa0(void)
 }
 
 
-
-/* Function: FUN_00403ae0 @ 0x00403ae0 */
+/* FUN_00403ae0 @ 0x00403ae0 */
 
 int * FUN_00403ae0(int param_1)
 
 {
-    /* TODO: 113 lines - has decompiler artifacts */
+    /* STUB: 113 lines not yet reconstructed */
     return 0;
 }
 
 
-
-/* Function: FUN_00403eb9 @ 0x00403eb9 */
+/* FUN_00403eb9 @ 0x00403eb9 */
 
 void FUN_00403eb9(void)
 
@@ -1606,8 +1513,7 @@ void FUN_00403eb9(void)
 }
 
 
-
-/* Function: FUN_00403f29 @ 0x00403f29 */
+/* FUN_00403f29 @ 0x00403f29 */
 
 void FUN_00403f29(void)
 
@@ -1617,30 +1523,27 @@ void FUN_00403f29(void)
 }
 
 
-
-/* Function: FUN_00403f40 @ 0x00403f40 */
+/* FUN_00403f40 @ 0x00403f40 */
 
 void __thiscall FUN_00403f40(void *this,void *param_1)
 
 {
-    /* TODO: 89 lines - has decompiler artifacts */
+    /* STUB: 89 lines not yet reconstructed */
     return;
 }
 
 
-
-/* Function: FUN_00404120 @ 0x00404120 */
+/* FUN_00404120 @ 0x00404120 */
 
 void __fastcall FUN_00404120(void *param_1)
 
 {
-    /* TODO: 183 lines - has decompiler artifacts */
+    /* STUB: 183 lines not yet reconstructed */
     return;
 }
 
 
-
-/* Function: FUN_0040450f @ 0x0040450f */
+/* FUN_0040450f @ 0x0040450f */
 
 void FUN_0040450f(void)
 
@@ -1649,8 +1552,7 @@ void FUN_0040450f(void)
 }
 
 
-
-/* Function: FUN_00404517 @ 0x00404517 */
+/* FUN_00404517 @ 0x00404517 */
 
 void FUN_00404517(void)
 
@@ -1659,8 +1561,7 @@ void FUN_00404517(void)
 }
 
 
-
-/* Function: FUN_00404529 @ 0x00404529 */
+/* FUN_00404529 @ 0x00404529 */
 
 void FUN_00404529(void)
 
@@ -1669,8 +1570,7 @@ void FUN_00404529(void)
 }
 
 
-
-/* Function: FUN_00404580 @ 0x00404580 */
+/* FUN_00404580 @ 0x00404580 */
 
 void FUN_00404580(void)
 
@@ -1686,8 +1586,7 @@ void FUN_00404580(void)
 }
 
 
-
-/* Function: FUN_004045d0 @ 0x004045d0 */
+/* FUN_004045d0 @ 0x004045d0 */
 
 void FUN_004045d0(void)
 
@@ -1696,10 +1595,9 @@ void FUN_004045d0(void)
 }
 
 
+/* FUN_00404610 @ 0x00404610 */
 
-/* Function: FUN_00404610 @ 0x00404610 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void FUN_00404610(void)
 
@@ -1710,8 +1608,7 @@ void FUN_00404610(void)
 }
 
 
-
-/* Function: FUN_00404620 @ 0x00404620 */
+/* FUN_00404620 @ 0x00404620 */
 
 void FUN_00404620(void)
 
@@ -1721,8 +1618,7 @@ void FUN_00404620(void)
 }
 
 
-
-/* Function: FUN_00404630 @ 0x00404630 */
+/* FUN_00404630 @ 0x00404630 */
 
 void FUN_00404630(void)
 
@@ -1731,21 +1627,19 @@ void FUN_00404630(void)
 }
 
 
-
-/* Function: FUN_004046c0 @ 0x004046c0 */
+/* FUN_004046c0 @ 0x004046c0 */
 
 void __fastcall FUN_004046c0(int param_1)
 
 {
-    /* TODO: 55 lines - has decompiler artifacts */
+    /* STUB: 55 lines not yet reconstructed */
     return;
 }
 
 
+/* FUN_004047d0 @ 0x004047d0 */
 
-/* Function: FUN_004047d0 @ 0x004047d0 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void FUN_004047d0(void)
 
@@ -1756,8 +1650,7 @@ void FUN_004047d0(void)
 }
 
 
-
-/* Function: FUN_004047e0 @ 0x004047e0 */
+/* FUN_004047e0 @ 0x004047e0 */
 
 void FUN_004047e0(void)
 
@@ -1767,8 +1660,7 @@ void FUN_004047e0(void)
 }
 
 
-
-/* Function: FUN_004047f0 @ 0x004047f0 */
+/* FUN_004047f0 @ 0x004047f0 */
 
 void FUN_004047f0(void)
 
@@ -1777,8 +1669,7 @@ void FUN_004047f0(void)
 }
 
 
-
-/* Function: FUN_00404830 @ 0x00404830 */
+/* FUN_00404830 @ 0x00404830 */
 
 void __thiscall FUN_00404830(SoundPlayer *this,int param_1)
 
@@ -1792,30 +1683,27 @@ void __thiscall FUN_00404830(SoundPlayer *this,int param_1)
 }
 
 
-
-/* Function: FUN_00404870 @ 0x00404870 */
+/* FUN_00404870 @ 0x00404870 */
 
 void __thiscall FUN_00404870(void *this,int param_1)
 
 {
-    /* TODO: 15 lines - has decompiler artifacts */
+    /* STUB: 15 lines not yet reconstructed */
     return;
 }
 
 
-
-/* Function: FUN_004048d0 @ 0x004048d0 */
+/* FUN_004048d0 @ 0x004048d0 */
 
 void __fastcall FUN_004048d0(void *param_1)
 
 {
-    /* TODO: 54 lines - has decompiler artifacts */
+    /* STUB: 54 lines not yet reconstructed */
     return;
 }
 
 
-
-/* Function: FUN_00404a80 @ 0x00404a80 */
+/* FUN_00404a80 @ 0x00404a80 */
 
 void __fastcall FUN_00404a80(int param_1)
 
@@ -1845,19 +1733,17 @@ void __fastcall FUN_00404a80(int param_1)
 }
 
 
-
-/* Function: FUN_00404b00 @ 0x00404b00 */
+/* FUN_00404b00 @ 0x00404b00 */
 
 void __fastcall FUN_00404b00(int param_1)
 
 {
-    /* TODO: 71 lines - has decompiler artifacts */
+    /* STUB: 71 lines not yet reconstructed */
     return;
 }
 
 
-
-/* Function: FUN_00404d00 @ 0x00404d00
+/* FUN_00404d00 @ 0x00404d00
  * Struct types: UIElement-derived (this)
  * Shows a modal dialog (param_1) — stores in sub_widgets_b[0] (+0x88),
  * calls vtable[0x27] on the dialog, then pumps messages until dismissed.
@@ -1891,8 +1777,7 @@ short __thiscall FUN_00404d00(UIElement *this,int *param_1)
 }
 
 
-
-/* Function: FUN_00404d80 @ 0x00404d80
+/* FUN_00404d80 @ 0x00404d80
  * Struct types: UIElement-derived (this)
  * Shows a non-modal child widget. Stores in sub_widgets_a[15] (+0x84).
  * Offset 0x84 = UIElement.sub_widgets_a[15]
@@ -1912,8 +1797,7 @@ void __thiscall FUN_00404d80(UIElement *this,int *param_1)
 }
 
 
-
-/* Function: FUN_00404db0 @ 0x00404db0
+/* FUN_00404db0 @ 0x00404db0
  * Struct types: UIElement-derived (this)
  * Replaces the child widget at sub_widgets_a[15] (+0x84).
  * Destroys the existing one, then shows the new param_1.
@@ -1933,8 +1817,7 @@ void __thiscall FUN_00404db0(UIElement *this,int *param_1)
 }
 
 
-
-/* Function: FUN_00404de0 @ 0x00404de0 */
+/* FUN_00404de0 @ 0x00404de0 */
 
 void __fastcall FUN_00404de0(int param_1)
 
@@ -1944,8 +1827,7 @@ void __fastcall FUN_00404de0(int param_1)
 }
 
 
-
-/* Function: FUN_00404e10 @ 0x00404e10 */
+/* FUN_00404e10 @ 0x00404e10 */
 
 void __fastcall FUN_00404e10(int *param_1)
 
@@ -1960,8 +1842,7 @@ void __fastcall FUN_00404e10(int *param_1)
 }
 
 
-
-/* Function: FUN_00404e90 @ 0x00404e90 */
+/* FUN_00404e90 @ 0x00404e90 */
 
 void FUN_00404e90(void)
 
@@ -1977,8 +1858,7 @@ void FUN_00404e90(void)
 }
 
 
-
-/* Function: FUN_00404ee0 @ 0x00404ee0 */
+/* FUN_00404ee0 @ 0x00404ee0 */
 
 void FUN_00404ee0(void)
 
@@ -1987,10 +1867,9 @@ void FUN_00404ee0(void)
 }
 
 
+/* FUN_00404f00 @ 0x00404f00 */
 
-/* Function: FUN_00404f00 @ 0x00404f00 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void FUN_00404f00(void)
 
@@ -2001,8 +1880,7 @@ void FUN_00404f00(void)
 }
 
 
-
-/* Function: FUN_00404f10 @ 0x00404f10 */
+/* FUN_00404f10 @ 0x00404f10 */
 
 void FUN_00404f10(void)
 
@@ -2012,8 +1890,7 @@ void FUN_00404f10(void)
 }
 
 
-
-/* Function: FUN_00404f20 @ 0x00404f20 */
+/* FUN_00404f20 @ 0x00404f20 */
 
 void FUN_00404f20(void)
 
@@ -2022,10 +1899,9 @@ void FUN_00404f20(void)
 }
 
 
+/* FUN_00404f40 @ 0x00404f40 */
 
-/* Function: FUN_00404f40 @ 0x00404f40 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void FUN_00404f40(void)
 
@@ -2036,8 +1912,7 @@ void FUN_00404f40(void)
 }
 
 
-
-/* Function: FUN_00404f50 @ 0x00404f50 */
+/* FUN_00404f50 @ 0x00404f50 */
 
 void FUN_00404f50(void)
 
@@ -2047,8 +1922,7 @@ void FUN_00404f50(void)
 }
 
 
-
-/* Function: FUN_00404f60 @ 0x00404f60 */
+/* FUN_00404f60 @ 0x00404f60 */
 
 void FUN_00404f60(void)
 
@@ -2057,8 +1931,7 @@ void FUN_00404f60(void)
 }
 
 
-
-/* Function: FUN_00404f80 @ 0x00404f80 */
+/* FUN_00404f80 @ 0x00404f80 */
 
 void FUN_00404f80(void)
 
@@ -2074,8 +1947,7 @@ void FUN_00404f80(void)
 }
 
 
-
-/* Function: FUN_00404fc0 @ 0x00404fc0 */
+/* FUN_00404fc0 @ 0x00404fc0 */
 
 void FUN_00404fc0(void)
 
@@ -2085,8 +1957,7 @@ void FUN_00404fc0(void)
 }
 
 
-
-/* Function: FUN_00404fd0 @ 0x00404fd0 */
+/* FUN_00404fd0 @ 0x00404fd0 */
 
 void FUN_00404fd0(void)
 
@@ -2095,10 +1966,9 @@ void FUN_00404fd0(void)
 }
 
 
+/* FUN_00404ff0 @ 0x00404ff0 */
 
-/* Function: FUN_00404ff0 @ 0x00404ff0 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void FUN_00404ff0(void)
 
@@ -2109,8 +1979,7 @@ void FUN_00404ff0(void)
 }
 
 
-
-/* Function: FUN_00405000 @ 0x00405000 */
+/* FUN_00405000 @ 0x00405000 */
 
 void FUN_00405000(void)
 
@@ -2120,8 +1989,7 @@ void FUN_00405000(void)
 }
 
 
-
-/* Function: FUN_00405010 @ 0x00405010 */
+/* FUN_00405010 @ 0x00405010 */
 
 void FUN_00405010(void)
 
@@ -2130,10 +1998,9 @@ void FUN_00405010(void)
 }
 
 
+/* FUN_00405030 @ 0x00405030 */
 
-/* Function: FUN_00405030 @ 0x00405030 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void FUN_00405030(void)
 
@@ -2144,8 +2011,7 @@ void FUN_00405030(void)
 }
 
 
-
-/* Function: FUN_00405040 @ 0x00405040 */
+/* FUN_00405040 @ 0x00405040 */
 
 void FUN_00405040(void)
 
@@ -2155,8 +2021,7 @@ void FUN_00405040(void)
 }
 
 
-
-/* Function: FUN_00405050 @ 0x00405050 */
+/* FUN_00405050 @ 0x00405050 */
 
 void FUN_00405050(void)
 
@@ -2165,8 +2030,7 @@ void FUN_00405050(void)
 }
 
 
-
-/* Function: FUN_00405060 @ 0x00405060
+/* FUN_00405060 @ 0x00405060
  * Struct types: UIWidget (this — returned from FUN_0041c0f0)
  * Resets the active focus widget on the global DAT_004897c0 object.
  * Offset 0x108 on UIWidget = field_108.
@@ -2194,19 +2058,17 @@ void FUN_00405060(void)
 }
 
 
-
-/* Function: FUN_004050d0 @ 0x004050d0 */
+/* FUN_004050d0 @ 0x004050d0 */
 
 int __cdecl FUN_004050d0(int param_1)
 
 {
-    /* TODO: 41 lines - has decompiler artifacts */
+    /* STUB: 41 lines not yet reconstructed */
     return 0;
 }
 
 
-
-/* Function: FUN_00405187 @ 0x00405187 */
+/* FUN_00405187 @ 0x00405187 */
 
 void FUN_00405187(void)
 
@@ -2218,19 +2080,17 @@ void FUN_00405187(void)
 }
 
 
-
-/* Function: FUN_00405190 @ 0x00405190 */
+/* FUN_00405190 @ 0x00405190 */
 
 void __cdecl FUN_00405190(int param_1,int param_2,int param_3)
 
 {
-    /* TODO: 66 lines - has decompiler artifacts */
+    /* STUB: 66 lines not yet reconstructed */
     return;
 }
 
 
-
-/* Function: FUN_004052b0 @ 0x004052b0
+/* FUN_004052b0 @ 0x004052b0
  * Struct types: UIWidget (this)
  * UIWidget constructor — initializes all extension fields, sets vtable.
  * NOTE: some accesses use param_1 as int* (stride 4), others as byte offsets.
@@ -2300,19 +2160,17 @@ UIWidget * __fastcall FUN_004052b0(UIWidget *this)
 }
 
 
-
-/* Function: FUN_00405420 @ 0x00405420 */
+/* FUN_00405420 @ 0x00405420 */
 
 void __fastcall FUN_00405420(int *param_1)
 
 {
-    /* TODO: 52 lines - has decompiler artifacts */
+    /* STUB: 52 lines not yet reconstructed */
     return;
 }
 
 
-
-/* Function: FUN_0040553e @ 0x0040553e */
+/* FUN_0040553e @ 0x0040553e */
 
 void FUN_0040553e(void)
 
@@ -2321,8 +2179,7 @@ void FUN_0040553e(void)
 }
 
 
-
-/* Function: FUN_0040554c @ 0x0040554c */
+/* FUN_0040554c @ 0x0040554c */
 
 void FUN_0040554c(void)
 
@@ -2334,8 +2191,7 @@ void FUN_0040554c(void)
 }
 
 
-
-/* Function: FUN_00405564 @ 0x00405564 */
+/* FUN_00405564 @ 0x00405564 */
 
 void FUN_00405564(void)
 
@@ -2347,8 +2203,7 @@ void FUN_00405564(void)
 }
 
 
-
-/* Function: FUN_00405570 @ 0x00405570
+/* FUN_00405570 @ 0x00405570
  * Struct types: UIWidget (this)
  * Cleans up a UIWidget — resets current_frame, detaches from parent,
  * destroys child widgets, clears sub_widgets arrays, re-focuses if needed.
@@ -2396,8 +2251,7 @@ void __fastcall FUN_00405570(UIWidget *this)
 }
 
 
-
-/* Function: FUN_00405630 @ 0x00405630 */
+/* FUN_00405630 @ 0x00405630 */
 
 void __thiscall FUN_00405630(SoundPlayer *this,char param_1)
 
@@ -2414,8 +2268,7 @@ void __thiscall FUN_00405630(SoundPlayer *this,char param_1)
 }
 
 
-
-/* Function: FUN_00405660 @ 0x00405660 */
+/* FUN_00405660 @ 0x00405660 */
 
 int * __thiscall FUN_00405660(UIWidget *this,short *param_1)
 
@@ -2451,10 +2304,9 @@ int * __thiscall FUN_00405660(UIWidget *this,short *param_1)
 }
 
 
+/* FUN_00405730 @ 0x00405730 */
 
-/* Function: FUN_00405730 @ 0x00405730 */
-
-/* Function: FUN_00405730 @ 0x00405730
+/* FUN_00405730 @ 0x00405730
  * Struct types: UIWidget (this)
  * Loads animation cell info from level_data_ptr, sets cell_info_ptr,
  * calculates bounding box from cell dimensions and origin scale.
@@ -2526,8 +2378,7 @@ void __fastcall FUN_00405730(UIWidget *this)
 }
 
 
-
-/* Function: FUN_0040588f @ 0x0040588f */
+/* FUN_0040588f @ 0x0040588f */
 
 void FUN_0040588f(void)
 
@@ -2536,8 +2387,7 @@ void FUN_0040588f(void)
 }
 
 
-
-/* Function: FUN_004058a0 @ 0x004058a0
+/* FUN_004058a0 @ 0x004058a0
  * Struct types: UIWidget (this)
  * Returns tile_data_ptr value if non-null, otherwise 0.
  */
@@ -2555,8 +2405,7 @@ int __fastcall FUN_004058a0(UIWidget *this)
 }
 
 
-
-/* Function: FUN_004058c0 @ 0x004058c0 */
+/* FUN_004058c0 @ 0x004058c0 */
 
 void __thiscall FUN_004058c0(GameWidget *this,short param_1)
 
@@ -2625,8 +2474,7 @@ void __thiscall FUN_004058c0(GameWidget *this,short param_1)
 }
 
 
-
-/* Function: FUN_00405a80 @ 0x00405a80 */
+/* FUN_00405a80 @ 0x00405a80 */
 
 void FUN_00405a80(void)
 
@@ -2642,8 +2490,7 @@ void FUN_00405a80(void)
 }
 
 
-
-/* Function: FUN_00405ad0 @ 0x00405ad0 */
+/* FUN_00405ad0 @ 0x00405ad0 */
 
 void FUN_00405ad0(void)
 
@@ -2652,10 +2499,9 @@ void FUN_00405ad0(void)
 }
 
 
+/* FUN_00405ae0 @ 0x00405ae0 */
 
-/* Function: FUN_00405ae0 @ 0x00405ae0 */
-
-/* Function: FUN_00405ae0 @ 0x00405ae0
+/* FUN_00405ae0 @ 0x00405ae0
  * Struct types: UIWidget (param_1)
  * Processes animation ticks — advances frames, handles loop/stop/bounce modes,
  * recursively processes child widgets.
@@ -2732,10 +2578,9 @@ __label_00405bc2:
 }
 
 
+/* FUN_00405c40 @ 0x00405c40 */
 
-/* Function: FUN_00405c40 @ 0x00405c40 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void FUN_00405c40(void)
 
@@ -2746,8 +2591,7 @@ void FUN_00405c40(void)
 }
 
 
-
-/* Function: FUN_00405c50 @ 0x00405c50 */
+/* FUN_00405c50 @ 0x00405c50 */
 
 void FUN_00405c50(void)
 
@@ -2757,8 +2601,7 @@ void FUN_00405c50(void)
 }
 
 
-
-/* Function: FUN_00405c60 @ 0x00405c60 */
+/* FUN_00405c60 @ 0x00405c60 */
 
 void FUN_00405c60(void)
 
@@ -2767,10 +2610,9 @@ void FUN_00405c60(void)
 }
 
 
+/* FUN_00405c80 @ 0x00405c80 */
 
-/* Function: FUN_00405c80 @ 0x00405c80 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void FUN_00405c80(void)
 
@@ -2781,8 +2623,7 @@ void FUN_00405c80(void)
 }
 
 
-
-/* Function: FUN_00405c90 @ 0x00405c90 */
+/* FUN_00405c90 @ 0x00405c90 */
 
 void FUN_00405c90(void)
 
@@ -2792,8 +2633,7 @@ void FUN_00405c90(void)
 }
 
 
-
-/* Function: FUN_00405ca0 @ 0x00405ca0 */
+/* FUN_00405ca0 @ 0x00405ca0 */
 
 void FUN_00405ca0(void)
 
@@ -2802,8 +2642,7 @@ void FUN_00405ca0(void)
 }
 
 
-
-/* Function: FUN_00405cb0 @ 0x00405cb0
+/* FUN_00405cb0 @ 0x00405cb0
  * Struct types: UIWidget (this)
  * Animation timer tick — calculates elapsed frames since last timestamp,
  * then calls FUN_00405ae0 to advance animation.
@@ -2832,8 +2671,7 @@ void __fastcall FUN_00405cb0(UIWidget *this)
 }
 
 
-
-/* Function: FUN_00405d30 @ 0x00405d30 */
+/* FUN_00405d30 @ 0x00405d30 */
 
 void __thiscall FUN_00405d30(UIWidget *this,short param_1)
 
@@ -2884,19 +2722,17 @@ __label_00405d84:
 }
 
 
-
-/* Function: FUN_00405e10 @ 0x00405e10 */
+/* FUN_00405e10 @ 0x00405e10 */
 
 char __thiscall FUN_00405e10(void *this,short param_1,char param_2)
 
 {
-    /* TODO: 105 lines - has decompiler artifacts */
+    /* STUB: 105 lines not yet reconstructed */
     return 0;
 }
 
 
-
-/* Function: FUN_004060c0 @ 0x004060c0 */
+/* FUN_004060c0 @ 0x004060c0 */
 
 void __thiscall FUN_004060c0(void *this,int param_1,int param_2,int param_3,char param_4)
 
@@ -2918,8 +2754,7 @@ void __thiscall FUN_004060c0(void *this,int param_1,int param_2,int param_3,char
 }
 
 
-
-/* Function: FUN_0040610f @ 0x0040610f */
+/* FUN_0040610f @ 0x0040610f */
 
 void FUN_0040610f(void)
 
@@ -2928,19 +2763,17 @@ void FUN_0040610f(void)
 }
 
 
-
-/* Function: FUN_00406130 @ 0x00406130 */
+/* FUN_00406130 @ 0x00406130 */
 
 void __thiscall FUN_00406130(void *this,int param_1,int param_2,int param_3,char param_4)
 
 {
-    /* TODO: 101 lines - has decompiler artifacts */
+    /* STUB: 101 lines not yet reconstructed */
     return;
 }
 
 
-
-/* Function: FUN_004063a8 @ 0x004063a8 */
+/* FUN_004063a8 @ 0x004063a8 */
 
 void FUN_004063a8(void)
 
@@ -2949,8 +2782,7 @@ void FUN_004063a8(void)
 }
 
 
-
-/* Function: FUN_004063b0 @ 0x004063b0 */
+/* FUN_004063b0 @ 0x004063b0 */
 
 void FUN_004063b0(void)
 
@@ -2959,8 +2791,7 @@ void FUN_004063b0(void)
 }
 
 
-
-/* Function: FUN_004063b8 @ 0x004063b8 */
+/* FUN_004063b8 @ 0x004063b8 */
 
 void FUN_004063b8(void)
 
@@ -2969,8 +2800,7 @@ void FUN_004063b8(void)
 }
 
 
-
-/* Function: FUN_004063c0 @ 0x004063c0 */
+/* FUN_004063c0 @ 0x004063c0 */
 
 void FUN_004063c0(void)
 
@@ -2979,8 +2809,7 @@ void FUN_004063c0(void)
 }
 
 
-
-/* Function: FUN_004063c8 @ 0x004063c8 */
+/* FUN_004063c8 @ 0x004063c8 */
 
 void FUN_004063c8(void)
 
@@ -2989,8 +2818,7 @@ void FUN_004063c8(void)
 }
 
 
-
-/* Function: FUN_004063d0 @ 0x004063d0 */
+/* FUN_004063d0 @ 0x004063d0 */
 
 void FUN_004063d0(void)
 
@@ -2999,8 +2827,7 @@ void FUN_004063d0(void)
 }
 
 
-
-/* Function: FUN_004063d8 @ 0x004063d8 */
+/* FUN_004063d8 @ 0x004063d8 */
 
 void FUN_004063d8(void)
 
@@ -3009,8 +2836,7 @@ void FUN_004063d8(void)
 }
 
 
-
-/* Function: FUN_004063e0 @ 0x004063e0 */
+/* FUN_004063e0 @ 0x004063e0 */
 
 void FUN_004063e0(void)
 
@@ -3019,8 +2845,7 @@ void FUN_004063e0(void)
 }
 
 
-
-/* Function: FUN_004063f2 @ 0x004063f2 */
+/* FUN_004063f2 @ 0x004063f2 */
 
 void FUN_004063f2(void)
 
@@ -3029,8 +2854,7 @@ void FUN_004063f2(void)
 }
 
 
-
-/* Function: FUN_00406400 @ 0x00406400 */
+/* FUN_00406400 @ 0x00406400 */
 
 void __cdecl FUN_00406400(int *param_1,int param_2,int param_3)
 
@@ -3040,19 +2864,17 @@ void __cdecl FUN_00406400(int *param_1,int param_2,int param_3)
 }
 
 
-
-/* Function: FUN_00406420 @ 0x00406420 */
+/* FUN_00406420 @ 0x00406420 */
 
 void __fastcall FUN_00406420(int param_1)
 
 {
-    /* TODO: 135 lines - has decompiler artifacts */
+    /* STUB: 135 lines not yet reconstructed */
     return;
 }
 
 
-
-/* Function: FUN_004066fc @ 0x004066fc */
+/* FUN_004066fc @ 0x004066fc */
 
 void FUN_004066fc(void)
 
@@ -3061,8 +2883,7 @@ void FUN_004066fc(void)
 }
 
 
-
-/* Function: FUN_00406704 @ 0x00406704 */
+/* FUN_00406704 @ 0x00406704 */
 
 void FUN_00406704(void)
 
@@ -3071,8 +2892,7 @@ void FUN_00406704(void)
 }
 
 
-
-/* Function: FUN_00406716 @ 0x00406716 */
+/* FUN_00406716 @ 0x00406716 */
 
 void FUN_00406716(void)
 
@@ -3081,8 +2901,7 @@ void FUN_00406716(void)
 }
 
 
-
-/* Function: FUN_00406720 @ 0x00406720 */
+/* FUN_00406720 @ 0x00406720 */
 
 void __thiscall FUN_00406720(UIWidget *this,short param_1)
 
@@ -3120,41 +2939,37 @@ void __thiscall FUN_00406720(UIWidget *this,short param_1)
 }
 
 
-
-/* Function: FUN_004067f0 @ 0x004067f0 */
+/* FUN_004067f0 @ 0x004067f0 */
 
 void * __fastcall FUN_004067f0(void *param_1)
 
 {
-    /* TODO: 3 lines - has decompiler artifacts */
+    /* STUB: 3 lines not yet reconstructed */
     return;
 }
 
 
-
-/* Function: FUN_004068f0 @ 0x004068f0 */
+/* FUN_004068f0 @ 0x004068f0 */
 
 void __fastcall FUN_004068f0(void *param_1)
 
 {
-    /* TODO: 23 lines - has decompiler artifacts */
+    /* STUB: 23 lines not yet reconstructed */
     return;
 }
 
 
-
-/* Function: FUN_00406980 @ 0x00406980 */
+/* FUN_00406980 @ 0x00406980 */
 
 void __thiscall FUN_00406980(void *this,short param_1)
 
 {
-    /* TODO: 67 lines - has decompiler artifacts */
+    /* STUB: 67 lines not yet reconstructed */
     return;
 }
 
 
-
-/* Function: FUN_00406b20 @ 0x00406b20 */
+/* FUN_00406b20 @ 0x00406b20 */
 
 void __thiscall FUN_00406b20(SoundPlayer *this,short param_1)
 
@@ -3204,8 +3019,7 @@ void __thiscall FUN_00406b20(SoundPlayer *this,short param_1)
 }
 
 
-
-/* Function: FUN_00406ca0 @ 0x00406ca0 */
+/* FUN_00406ca0 @ 0x00406ca0 */
 
 void __thiscall FUN_00406ca0(GameWidget *this,char param_1,char param_2)
 
@@ -3246,8 +3060,7 @@ void __thiscall FUN_00406ca0(GameWidget *this,char param_1,char param_2)
 }
 
 
-
-/* Function: FUN_00406d60 @ 0x00406d60 */
+/* FUN_00406d60 @ 0x00406d60 */
 
 void __thiscall FUN_00406d60(GameWidget *this,char param_1)
 
@@ -3268,19 +3081,17 @@ void __thiscall FUN_00406d60(GameWidget *this,char param_1)
 }
 
 
-
-/* Function: FUN_00406db0 @ 0x00406db0 */
+/* FUN_00406db0 @ 0x00406db0 */
 
 void __fastcall FUN_00406db0(void *param_1)
 
 {
-    /* TODO: 78 lines - has decompiler artifacts */
+    /* STUB: 78 lines not yet reconstructed */
     return;
 }
 
 
-
-/* Function: FUN_00406fc0 @ 0x00406fc0
+/* FUN_00406fc0 @ 0x00406fc0
  * Struct types: UIWidget (param_1, param_2)
  * Tests intersection of two UIWidgets' bounding rectangles, then performs
  * pixel-level collision check via scroll_data if rects overlap.
@@ -3328,8 +3139,7 @@ char __cdecl FUN_00406fc0(UIWidget *param_1,UIWidget *param_2)
 }
 
 
-
-/* Function: FUN_00407070 @ 0x00407070
+/* FUN_00407070 @ 0x00407070
  * Struct types: UIWidget (param_1), UIElement (siblings via parent_widget->child_list_1)
  * Searches sibling widgets (after this one in parent's child list) for
  * one that overlaps this widget's bounding rect.
@@ -3365,8 +3175,7 @@ int __fastcall FUN_00407070(UIWidget *this)
 }
 
 
-
-/* Function: FUN_004070e0 @ 0x004070e0 */
+/* FUN_004070e0 @ 0x004070e0 */
 
 void __thiscall FUN_004070e0(GameWidget *this,char param_1,short param_2)
 
@@ -3413,8 +3222,7 @@ void __thiscall FUN_004070e0(GameWidget *this,char param_1,short param_2)
 }
 
 
-
-/* Function: FUN_004071c0 @ 0x004071c0 */
+/* FUN_004071c0 @ 0x004071c0 */
 
 void __thiscall FUN_004071c0(DialogWidget *this,int param_1,int param_2,ushort param_3)
 
@@ -3481,8 +3289,7 @@ void __thiscall FUN_004071c0(DialogWidget *this,int param_1,int param_2,ushort p
 }
 
 
-
-/* Function: FUN_00407319 @ 0x00407319 */
+/* FUN_00407319 @ 0x00407319 */
 
 void FUN_00407319(void)
 
@@ -3491,8 +3298,7 @@ void FUN_00407319(void)
 }
 
 
-
-/* Function: FUN_00407321 @ 0x00407321 */
+/* FUN_00407321 @ 0x00407321 */
 
 void FUN_00407321(void)
 
@@ -3501,8 +3307,7 @@ void FUN_00407321(void)
 }
 
 
-
-/* Function: FUN_00407333 @ 0x00407333 */
+/* FUN_00407333 @ 0x00407333 */
 
 void FUN_00407333(void)
 
@@ -3511,8 +3316,7 @@ void FUN_00407333(void)
 }
 
 
-
-/* Function: FUN_00407340 @ 0x00407340 */
+/* FUN_00407340 @ 0x00407340 */
 
 char FUN_00407340(int param_1,char param_2,char param_3,int param_4,char param_5)
 
@@ -3530,8 +3334,7 @@ char FUN_00407340(int param_1,char param_2,char param_3,int param_4,char param_5
 }
 
 
-
-/* Function: FUN_004073a0 @ 0x004073a0 */
+/* FUN_004073a0 @ 0x004073a0 */
 
 char FUN_004073a0(short *param_1,char param_2,char param_3,int param_4,char param_5)
 
@@ -3640,8 +3443,7 @@ char FUN_004073a0(short *param_1,char param_2,char param_3,int param_4,char para
 }
 
 
-
-/* Function: FUN_0040760f @ 0x0040760f */
+/* FUN_0040760f @ 0x0040760f */
 
 void FUN_0040760f(void)
 
@@ -3650,8 +3452,7 @@ void FUN_0040760f(void)
 }
 
 
-
-/* Function: FUN_00407621 @ 0x00407621 */
+/* FUN_00407621 @ 0x00407621 */
 
 void FUN_00407621(void)
 
@@ -3660,32 +3461,29 @@ void FUN_00407621(void)
 }
 
 
-
-/* Function: FUN_00407630 @ 0x00407630 */
+/* FUN_00407630 @ 0x00407630 */
 
 char __thiscall
 FUN_00407630(void *this,short param_1,ushort *param_2,ushort *param_3,ushort *param_4,
             ushort *param_5)
 
 {
-    /* TODO: 172 lines - has decompiler artifacts */
+    /* STUB: 172 lines not yet reconstructed */
     return 0;
 }
 
 
-
-/* Function: FUN_00407b10 @ 0x00407b10 */
+/* FUN_00407b10 @ 0x00407b10 */
 
 char __thiscall FUN_00407b10(void *this,short param_1,ushort *param_2)
 
 {
-    /* TODO: 96 lines - has decompiler artifacts */
+    /* STUB: 96 lines not yet reconstructed */
     return 0;
 }
 
 
-
-/* Function: FUN_00407df0 @ 0x00407df0 */
+/* FUN_00407df0 @ 0x00407df0 */
 
 char __thiscall FUN_00407df0(UIWidget *this,short param_1,int param_2)
 
@@ -3784,8 +3582,7 @@ __label_00407fdc:
 }
 
 
-
-/* Function: FUN_00408070 @ 0x00408070 */
+/* FUN_00408070 @ 0x00408070 */
 
 void * __cdecl FUN_00408070(int param_1)
 
@@ -3835,8 +3632,7 @@ __label_00408126:
 }
 
 
-
-/* Function: FUN_00408152 @ 0x00408152 */
+/* FUN_00408152 @ 0x00408152 */
 
 void FUN_00408152(void)
 
@@ -3845,8 +3641,7 @@ void FUN_00408152(void)
 }
 
 
-
-/* Function: FUN_00408160 @ 0x00408160 */
+/* FUN_00408160 @ 0x00408160 */
 
 void __thiscall FUN_00408160(GameWidget *this,char param_1)
 
@@ -3869,19 +3664,17 @@ void __thiscall FUN_00408160(GameWidget *this,char param_1)
 }
 
 
-
-/* Function: FUN_004081f0 @ 0x004081f0 */
+/* FUN_004081f0 @ 0x004081f0 */
 
 char __thiscall FUN_004081f0(void *this,char param_1)
 
 {
-    /* TODO: 291 lines - has decompiler artifacts */
+    /* STUB: 291 lines not yet reconstructed */
     return 0;
 }
 
 
-
-/* Function: FUN_00408760 @ 0x00408760 */
+/* FUN_00408760 @ 0x00408760 */
 
 void FUN_00408760(void)
 
@@ -3890,8 +3683,7 @@ void FUN_00408760(void)
 }
 
 
-
-/* Function: FUN_00408768 @ 0x00408768 */
+/* FUN_00408768 @ 0x00408768 */
 
 void FUN_00408768(void)
 
@@ -3900,8 +3692,7 @@ void FUN_00408768(void)
 }
 
 
-
-/* Function: FUN_004087fa @ 0x004087fa */
+/* FUN_004087fa @ 0x004087fa */
 
 void FUN_004087fa(void)
 
@@ -3910,8 +3701,7 @@ void FUN_004087fa(void)
 }
 
 
-
-/* Function: FUN_00408802 @ 0x00408802 */
+/* FUN_00408802 @ 0x00408802 */
 
 void FUN_00408802(void)
 
@@ -3920,8 +3710,7 @@ void FUN_00408802(void)
 }
 
 
-
-/* Function: FUN_0040880a @ 0x0040880a */
+/* FUN_0040880a @ 0x0040880a */
 
 void FUN_0040880a(void)
 
@@ -3930,8 +3719,7 @@ void FUN_0040880a(void)
 }
 
 
-
-/* Function: FUN_0040881c @ 0x0040881c */
+/* FUN_0040881c @ 0x0040881c */
 
 void FUN_0040881c(void)
 
@@ -3940,8 +3728,7 @@ void FUN_0040881c(void)
 }
 
 
-
-/* Function: FUN_00408830 @ 0x00408830
+/* FUN_00408830 @ 0x00408830
  * Copies a pair of 2-byte values from param_1 into this.
  */
 
@@ -3954,8 +3741,7 @@ short * __thiscall FUN_00408830(void *this,short *param_1)
 }
 
 
-
-/* Function: FUN_00408850 @ 0x00408850 */
+/* FUN_00408850 @ 0x00408850 */
 
 int __fastcall FUN_00408850(int param_1)
 
@@ -3964,19 +3750,17 @@ int __fastcall FUN_00408850(int param_1)
 }
 
 
-
-/* Function: FUN_00408870 @ 0x00408870 */
+/* FUN_00408870 @ 0x00408870 */
 
 char __thiscall FUN_00408870(void *this,void *param_1,int param_2)
 
 {
-    /* TODO: 86 lines - has decompiler artifacts */
+    /* STUB: 86 lines not yet reconstructed */
     return 0;
 }
 
 
-
-/* Function: FUN_00408a60 @ 0x00408a60 */
+/* FUN_00408a60 @ 0x00408a60 */
 
 void FUN_00408a60(void *param_1,uint param_2)
 
@@ -4002,19 +3786,17 @@ void FUN_00408a60(void *param_1,uint param_2)
 }
 
 
-
-/* Function: FUN_00408ac0 @ 0x00408ac0 */
+/* FUN_00408ac0 @ 0x00408ac0 */
 
 uint * __thiscall FUN_00408ac0(void *this,uint *param_1,void *param_2,byte param_3,short param_4)
 
 {
-    /* TODO: 105 lines - has decompiler artifacts */
+    /* STUB: 105 lines not yet reconstructed */
     return 0;
 }
 
 
-
-/* Function: FUN_00408d29 @ 0x00408d29 */
+/* FUN_00408d29 @ 0x00408d29 */
 
 void FUN_00408d29(void)
 
@@ -4023,8 +3805,7 @@ void FUN_00408d29(void)
 }
 
 
-
-/* Function: FUN_00408d40 @ 0x00408d40 */
+/* FUN_00408d40 @ 0x00408d40 */
 
 short __cdecl FUN_00408d40(int param_1,int param_2,int param_3)
 
@@ -4114,8 +3895,7 @@ short __cdecl FUN_00408d40(int param_1,int param_2,int param_3)
 }
 
 
-
-/* Function: FUN_00408e8b @ 0x00408e8b */
+/* FUN_00408e8b @ 0x00408e8b */
 
 void FUN_00408e8b(void)
 
@@ -4124,8 +3904,7 @@ void FUN_00408e8b(void)
 }
 
 
-
-/* Function: FUN_00408e9d @ 0x00408e9d */
+/* FUN_00408e9d @ 0x00408e9d */
 
 void FUN_00408e9d(void)
 
@@ -4134,8 +3913,7 @@ void FUN_00408e9d(void)
 }
 
 
-
-/* Function: FUN_00408eb0 @ 0x00408eb0
+/* FUN_00408eb0 @ 0x00408eb0
  * Struct types: UIWidget (param_1)
  */
 
@@ -4232,6 +4010,5 @@ void __cdecl FUN_00408eb0(UIWidget *param_1,void *param_2,char param_3)
   *__seh_chain = loc_10;
   return;
 }
-
 
 

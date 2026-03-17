@@ -3,7 +3,7 @@
  * Address range: 0x45C000 - 0x45FFFF
  * Functions: 218
  *
- * Auto-generated from decompilation of MMath.exe
+ * Reconstructed source for MMath.exe
  */
 
 #include "types.h"
@@ -11,7 +11,7 @@
 #include "globals.h"
 #include "game_structs.h"
 
-/* Function: FUN_0045c050 @ 0x0045c050 */
+/* FUN_0045c050 @ 0x0045c050 */
 
 void FUN_0045c050(void)
 
@@ -20,8 +20,7 @@ void FUN_0045c050(void)
 }
 
 
-
-/* Function: FUN_0045c060 @ 0x0045c060 */
+/* FUN_0045c060 @ 0x0045c060 */
 
 void FUN_0045c060(void)
 
@@ -30,19 +29,17 @@ void FUN_0045c060(void)
 }
 
 
-
-/* Function: FUN_0045c070 @ 0x0045c070 */
+/* FUN_0045c070 @ 0x0045c070 */
 
 void __fastcall FUN_0045c070(int param_1)
 
 {
-    /* TODO: 8 lines - has decompiler artifacts */
+    /* STUB: 8 lines not yet reconstructed */
     return;
 }
 
 
-
-/* Function: FUN_0045c090 @ 0x0045c090 */
+/* FUN_0045c090 @ 0x0045c090 */
 
 void FUN_0045c090(void)
 
@@ -51,8 +48,7 @@ void FUN_0045c090(void)
 }
 
 
-
-/* Function: FUN_0045c0a0 @ 0x0045c0a0 */
+/* FUN_0045c0a0 @ 0x0045c0a0 */
 
 void FUN_0045c0a0(void)
 
@@ -61,8 +57,7 @@ void FUN_0045c0a0(void)
 }
 
 
-
-/* Function: FUN_0045c0b0 @ 0x0045c0b0 */
+/* FUN_0045c0b0 @ 0x0045c0b0 */
 
 void FUN_0045c0b0(void)
 
@@ -71,8 +66,7 @@ void FUN_0045c0b0(void)
 }
 
 
-
-/* Function: FUN_0045c0c0 @ 0x0045c0c0 */
+/* FUN_0045c0c0 @ 0x0045c0c0 */
 
 void FUN_0045c0c0(void)
 
@@ -81,8 +75,7 @@ void FUN_0045c0c0(void)
 }
 
 
-
-/* Function: FUN_0045c0e0 @ 0x0045c0e0 */
+/* FUN_0045c0e0 @ 0x0045c0e0 */
 
 void FUN_0045c0e0(void)
 
@@ -98,8 +91,7 @@ void FUN_0045c0e0(void)
 }
 
 
-
-/* Function: FUN_0045c130 @ 0x0045c130 */
+/* FUN_0045c130 @ 0x0045c130 */
 
 void FUN_0045c130(void)
 
@@ -108,10 +100,9 @@ void FUN_0045c130(void)
 }
 
 
+/* FUN_0045c150 @ 0x0045c150 */
 
-/* Function: FUN_0045c150 @ 0x0045c150 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void FUN_0045c150(void)
 
@@ -122,8 +113,7 @@ void FUN_0045c150(void)
 }
 
 
-
-/* Function: FUN_0045c160 @ 0x0045c160 */
+/* FUN_0045c160 @ 0x0045c160 */
 
 void FUN_0045c160(void)
 
@@ -133,8 +123,7 @@ void FUN_0045c160(void)
 }
 
 
-
-/* Function: FUN_0045c170 @ 0x0045c170 */
+/* FUN_0045c170 @ 0x0045c170 */
 
 void FUN_0045c170(void)
 
@@ -143,10 +132,9 @@ void FUN_0045c170(void)
 }
 
 
+/* FUN_0045c190 @ 0x0045c190 */
 
-/* Function: FUN_0045c190 @ 0x0045c190 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void FUN_0045c190(void)
 
@@ -157,8 +145,7 @@ void FUN_0045c190(void)
 }
 
 
-
-/* Function: FUN_0045c1a0 @ 0x0045c1a0 */
+/* FUN_0045c1a0 @ 0x0045c1a0 */
 
 void FUN_0045c1a0(void)
 
@@ -168,8 +155,7 @@ void FUN_0045c1a0(void)
 }
 
 
-
-/* Function: FUN_0045c1b0 @ 0x0045c1b0 */
+/* FUN_0045c1b0 @ 0x0045c1b0 */
 
 void FUN_0045c1b0(void)
 
@@ -178,8 +164,7 @@ void FUN_0045c1b0(void)
 }
 
 
-
-/* Function: FUN_0045c1c0 @ 0x0045c1c0 */
+/* FUN_0045c1c0 @ 0x0045c1c0 */
 
 ushort * __cdecl FUN_0045c1c0(int *param_1,short param_2,short param_3,ushort *param_4)
 
@@ -229,8 +214,7 @@ ushort * __cdecl FUN_0045c1c0(int *param_1,short param_2,short param_3,ushort *p
 }
 
 
-
-/* Function: FUN_0045c2a0 @ 0x0045c2a0 */
+/* FUN_0045c2a0 @ 0x0045c2a0 */
 
 void __cdecl FUN_0045c2a0(char param_1,char param_2,int param_3)
 
@@ -252,21 +236,19 @@ void __cdecl FUN_0045c2a0(char param_1,char param_2,int param_3)
 }
 
 
-
-/* Function: FUN_0045c300 @ 0x0045c300 */
+/* FUN_0045c300 @ 0x0045c300 */
 
 uint __cdecl
 FUN_0045c300(int param_1,int param_2,int param_3,int param_4,void *param_5
             )
 
 {
-    /* TODO: 91 lines - has decompiler artifacts */
+    /* STUB: 91 lines not yet reconstructed */
     return 0;
 }
 
 
-
-/* Function: FUN_0045c470 @ 0x0045c470 */
+/* FUN_0045c470 @ 0x0045c470 */
 
 int __cdecl FUN_0045c470(byte *param_1,int param_2,int param_3,short *param_4)
 
@@ -434,8 +416,7 @@ int __cdecl FUN_0045c470(byte *param_1,int param_2,int param_3,short *param_4)
 }
 
 
-
-/* Function: FUN_0045c7a0 @ 0x0045c7a0 */
+/* FUN_0045c7a0 @ 0x0045c7a0 */
 
 int __cdecl
 FUN_0045c7a0(int param_1,int param_2,int param_3,int param_4)
@@ -448,8 +429,7 @@ FUN_0045c7a0(int param_1,int param_2,int param_3,int param_4)
 }
 
 
-
-/* Function: FUN_0045c7e0 @ 0x0045c7e0 */
+/* FUN_0045c7e0 @ 0x0045c7e0 */
 
 void FUN_0045c7e0(void)
 
@@ -465,8 +445,7 @@ void FUN_0045c7e0(void)
 }
 
 
-
-/* Function: FUN_0045c830 @ 0x0045c830 */
+/* FUN_0045c830 @ 0x0045c830 */
 
 void FUN_0045c830(void)
 
@@ -475,10 +454,9 @@ void FUN_0045c830(void)
 }
 
 
+/* FUN_0045c850 @ 0x0045c850 */
 
-/* Function: FUN_0045c850 @ 0x0045c850 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void FUN_0045c850(void)
 
@@ -489,8 +467,7 @@ void FUN_0045c850(void)
 }
 
 
-
-/* Function: FUN_0045c860 @ 0x0045c860 */
+/* FUN_0045c860 @ 0x0045c860 */
 
 void FUN_0045c860(void)
 
@@ -500,8 +477,7 @@ void FUN_0045c860(void)
 }
 
 
-
-/* Function: FUN_0045c870 @ 0x0045c870 */
+/* FUN_0045c870 @ 0x0045c870 */
 
 void FUN_0045c870(void)
 
@@ -510,10 +486,9 @@ void FUN_0045c870(void)
 }
 
 
+/* FUN_0045c890 @ 0x0045c890 */
 
-/* Function: FUN_0045c890 @ 0x0045c890 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void FUN_0045c890(void)
 
@@ -524,8 +499,7 @@ void FUN_0045c890(void)
 }
 
 
-
-/* Function: FUN_0045c8a0 @ 0x0045c8a0 */
+/* FUN_0045c8a0 @ 0x0045c8a0 */
 
 void FUN_0045c8a0(void)
 
@@ -535,8 +509,7 @@ void FUN_0045c8a0(void)
 }
 
 
-
-/* Function: FUN_0045c8b0 @ 0x0045c8b0 */
+/* FUN_0045c8b0 @ 0x0045c8b0 */
 
 void FUN_0045c8b0(void)
 
@@ -545,8 +518,7 @@ void FUN_0045c8b0(void)
 }
 
 
-
-/* Function: FUN_0045c8c0 @ 0x0045c8c0 */
+/* FUN_0045c8c0 @ 0x0045c8c0 */
 
 void FUN_0045c8c0(void)
 
@@ -555,8 +527,7 @@ void FUN_0045c8c0(void)
 }
 
 
-
-/* Function: FUN_0045c8d0 @ 0x0045c8d0 */
+/* FUN_0045c8d0 @ 0x0045c8d0 */
 
 void FUN_0045c8d0(void)
 
@@ -565,8 +536,7 @@ void FUN_0045c8d0(void)
 }
 
 
-
-/* Function: FUN_0045c8f0 @ 0x0045c8f0 */
+/* FUN_0045c8f0 @ 0x0045c8f0 */
 
 void FUN_0045c8f0(void)
 
@@ -582,8 +552,7 @@ void FUN_0045c8f0(void)
 }
 
 
-
-/* Function: FUN_0045c940 @ 0x0045c940 */
+/* FUN_0045c940 @ 0x0045c940 */
 
 void FUN_0045c940(void)
 
@@ -592,10 +561,9 @@ void FUN_0045c940(void)
 }
 
 
+/* FUN_0045c960 @ 0x0045c960 */
 
-/* Function: FUN_0045c960 @ 0x0045c960 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void FUN_0045c960(void)
 
@@ -606,8 +574,7 @@ void FUN_0045c960(void)
 }
 
 
-
-/* Function: FUN_0045c970 @ 0x0045c970 */
+/* FUN_0045c970 @ 0x0045c970 */
 
 void FUN_0045c970(void)
 
@@ -617,8 +584,7 @@ void FUN_0045c970(void)
 }
 
 
-
-/* Function: FUN_0045c980 @ 0x0045c980 */
+/* FUN_0045c980 @ 0x0045c980 */
 
 void FUN_0045c980(void)
 
@@ -627,10 +593,9 @@ void FUN_0045c980(void)
 }
 
 
+/* FUN_0045c9a0 @ 0x0045c9a0 */
 
-/* Function: FUN_0045c9a0 @ 0x0045c9a0 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void FUN_0045c9a0(void)
 
@@ -641,8 +606,7 @@ void FUN_0045c9a0(void)
 }
 
 
-
-/* Function: FUN_0045c9b0 @ 0x0045c9b0 */
+/* FUN_0045c9b0 @ 0x0045c9b0 */
 
 void FUN_0045c9b0(void)
 
@@ -652,8 +616,7 @@ void FUN_0045c9b0(void)
 }
 
 
-
-/* Function: FUN_0045c9c0 @ 0x0045c9c0 */
+/* FUN_0045c9c0 @ 0x0045c9c0 */
 
 void FUN_0045c9c0(void)
 
@@ -662,8 +625,7 @@ void FUN_0045c9c0(void)
 }
 
 
-
-/* Function: FUN_0045c9e0 @ 0x0045c9e0 */
+/* FUN_0045c9e0 @ 0x0045c9e0 */
 
 void FUN_0045c9e0(void)
 
@@ -679,8 +641,7 @@ void FUN_0045c9e0(void)
 }
 
 
-
-/* Function: FUN_0045ca20 @ 0x0045ca20 */
+/* FUN_0045ca20 @ 0x0045ca20 */
 
 void FUN_0045ca20(void)
 
@@ -690,8 +651,7 @@ void FUN_0045ca20(void)
 }
 
 
-
-/* Function: FUN_0045ca30 @ 0x0045ca30 */
+/* FUN_0045ca30 @ 0x0045ca30 */
 
 void FUN_0045ca30(void)
 
@@ -700,10 +660,9 @@ void FUN_0045ca30(void)
 }
 
 
+/* FUN_0045ca50 @ 0x0045ca50 */
 
-/* Function: FUN_0045ca50 @ 0x0045ca50 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void FUN_0045ca50(void)
 
@@ -714,8 +673,7 @@ void FUN_0045ca50(void)
 }
 
 
-
-/* Function: FUN_0045ca60 @ 0x0045ca60 */
+/* FUN_0045ca60 @ 0x0045ca60 */
 
 void FUN_0045ca60(void)
 
@@ -725,8 +683,7 @@ void FUN_0045ca60(void)
 }
 
 
-
-/* Function: FUN_0045ca70 @ 0x0045ca70 */
+/* FUN_0045ca70 @ 0x0045ca70 */
 
 void FUN_0045ca70(void)
 
@@ -735,10 +692,9 @@ void FUN_0045ca70(void)
 }
 
 
+/* FUN_0045ca90 @ 0x0045ca90 */
 
-/* Function: FUN_0045ca90 @ 0x0045ca90 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void FUN_0045ca90(void)
 
@@ -749,8 +705,7 @@ void FUN_0045ca90(void)
 }
 
 
-
-/* Function: FUN_0045caa0 @ 0x0045caa0 */
+/* FUN_0045caa0 @ 0x0045caa0 */
 
 void FUN_0045caa0(void)
 
@@ -760,8 +715,7 @@ void FUN_0045caa0(void)
 }
 
 
-
-/* Function: FUN_0045cab0 @ 0x0045cab0 */
+/* FUN_0045cab0 @ 0x0045cab0 */
 
 void FUN_0045cab0(void)
 
@@ -770,8 +724,7 @@ void FUN_0045cab0(void)
 }
 
 
-
-/* Function: FUN_0045cad0 @ 0x0045cad0 */
+/* FUN_0045cad0 @ 0x0045cad0 */
 
 void FUN_0045cad0(void)
 
@@ -787,8 +740,7 @@ void FUN_0045cad0(void)
 }
 
 
-
-/* Function: FUN_0045cb10 @ 0x0045cb10 */
+/* FUN_0045cb10 @ 0x0045cb10 */
 
 void FUN_0045cb10(void)
 
@@ -798,8 +750,7 @@ void FUN_0045cb10(void)
 }
 
 
-
-/* Function: FUN_0045cb20 @ 0x0045cb20 */
+/* FUN_0045cb20 @ 0x0045cb20 */
 
 void FUN_0045cb20(void)
 
@@ -808,10 +759,9 @@ void FUN_0045cb20(void)
 }
 
 
+/* FUN_0045cb40 @ 0x0045cb40 */
 
-/* Function: FUN_0045cb40 @ 0x0045cb40 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void FUN_0045cb40(void)
 
@@ -822,8 +772,7 @@ void FUN_0045cb40(void)
 }
 
 
-
-/* Function: FUN_0045cb50 @ 0x0045cb50 */
+/* FUN_0045cb50 @ 0x0045cb50 */
 
 void FUN_0045cb50(void)
 
@@ -833,8 +782,7 @@ void FUN_0045cb50(void)
 }
 
 
-
-/* Function: FUN_0045cb60 @ 0x0045cb60 */
+/* FUN_0045cb60 @ 0x0045cb60 */
 
 void FUN_0045cb60(void)
 
@@ -843,10 +791,9 @@ void FUN_0045cb60(void)
 }
 
 
+/* FUN_0045cb80 @ 0x0045cb80 */
 
-/* Function: FUN_0045cb80 @ 0x0045cb80 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void FUN_0045cb80(void)
 
@@ -857,8 +804,7 @@ void FUN_0045cb80(void)
 }
 
 
-
-/* Function: FUN_0045cb90 @ 0x0045cb90 */
+/* FUN_0045cb90 @ 0x0045cb90 */
 
 void FUN_0045cb90(void)
 
@@ -868,8 +814,7 @@ void FUN_0045cb90(void)
 }
 
 
-
-/* Function: FUN_0045cba0 @ 0x0045cba0 */
+/* FUN_0045cba0 @ 0x0045cba0 */
 
 void FUN_0045cba0(void)
 
@@ -878,8 +823,7 @@ void FUN_0045cba0(void)
 }
 
 
-
-/* Function: FUN_0045cbb0 @ 0x0045cbb0 */
+/* FUN_0045cbb0 @ 0x0045cbb0 */
 
 void FUN_0045cbb0(void)
 
@@ -903,8 +847,7 @@ void FUN_0045cbb0(void)
 }
 
 
-
-/* Function: FUN_0045cc00 @ 0x0045cc00 */
+/* FUN_0045cc00 @ 0x0045cc00 */
 
 int __cdecl FUN_0045cc00(int *param_1,int *param_2)
 
@@ -916,21 +859,19 @@ int __cdecl FUN_0045cc00(int *param_1,int *param_2)
 }
 
 
+/* FUN_0045cc20 @ 0x0045cc20 */
 
-/* Function: FUN_0045cc20 @ 0x0045cc20 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 int FUN_0045cc20(int *param_1)
 
 {
-    /* TODO: 33 lines - has decompiler artifacts */
+    /* STUB: 33 lines not yet reconstructed */
     return 0;
 }
 
 
-
-/* Function: FUN_0045cd00 @ 0x0045cd00 */
+/* FUN_0045cd00 @ 0x0045cd00 */
 
 void FUN_0045cd00(void)
 
@@ -946,8 +887,7 @@ void FUN_0045cd00(void)
 }
 
 
-
-/* Function: FUN_0045cd50 @ 0x0045cd50 */
+/* FUN_0045cd50 @ 0x0045cd50 */
 
 void FUN_0045cd50(void)
 
@@ -956,10 +896,9 @@ void FUN_0045cd50(void)
 }
 
 
+/* FUN_0045cd70 @ 0x0045cd70 */
 
-/* Function: FUN_0045cd70 @ 0x0045cd70 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void FUN_0045cd70(void)
 
@@ -970,8 +909,7 @@ void FUN_0045cd70(void)
 }
 
 
-
-/* Function: FUN_0045cd80 @ 0x0045cd80 */
+/* FUN_0045cd80 @ 0x0045cd80 */
 
 void FUN_0045cd80(void)
 
@@ -981,8 +919,7 @@ void FUN_0045cd80(void)
 }
 
 
-
-/* Function: FUN_0045cd90 @ 0x0045cd90 */
+/* FUN_0045cd90 @ 0x0045cd90 */
 
 void FUN_0045cd90(void)
 
@@ -991,10 +928,9 @@ void FUN_0045cd90(void)
 }
 
 
+/* FUN_0045cdb0 @ 0x0045cdb0 */
 
-/* Function: FUN_0045cdb0 @ 0x0045cdb0 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void FUN_0045cdb0(void)
 
@@ -1005,8 +941,7 @@ void FUN_0045cdb0(void)
 }
 
 
-
-/* Function: FUN_0045cdc0 @ 0x0045cdc0 */
+/* FUN_0045cdc0 @ 0x0045cdc0 */
 
 void FUN_0045cdc0(void)
 
@@ -1016,8 +951,7 @@ void FUN_0045cdc0(void)
 }
 
 
-
-/* Function: FUN_0045cdd0 @ 0x0045cdd0 */
+/* FUN_0045cdd0 @ 0x0045cdd0 */
 
 void FUN_0045cdd0(void)
 
@@ -1026,8 +960,7 @@ void FUN_0045cdd0(void)
 }
 
 
-
-/* Function: FUN_0045cdf0 @ 0x0045cdf0 */
+/* FUN_0045cdf0 @ 0x0045cdf0 */
 
 void FUN_0045cdf0(void)
 
@@ -1043,8 +976,7 @@ void FUN_0045cdf0(void)
 }
 
 
-
-/* Function: FUN_0045ce30 @ 0x0045ce30 */
+/* FUN_0045ce30 @ 0x0045ce30 */
 
 void FUN_0045ce30(void)
 
@@ -1054,8 +986,7 @@ void FUN_0045ce30(void)
 }
 
 
-
-/* Function: FUN_0045ce40 @ 0x0045ce40 */
+/* FUN_0045ce40 @ 0x0045ce40 */
 
 void FUN_0045ce40(void)
 
@@ -1064,10 +995,9 @@ void FUN_0045ce40(void)
 }
 
 
+/* FUN_0045ce60 @ 0x0045ce60 */
 
-/* Function: FUN_0045ce60 @ 0x0045ce60 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void FUN_0045ce60(void)
 
@@ -1078,8 +1008,7 @@ void FUN_0045ce60(void)
 }
 
 
-
-/* Function: FUN_0045ce70 @ 0x0045ce70 */
+/* FUN_0045ce70 @ 0x0045ce70 */
 
 void FUN_0045ce70(void)
 
@@ -1089,8 +1018,7 @@ void FUN_0045ce70(void)
 }
 
 
-
-/* Function: FUN_0045ce80 @ 0x0045ce80 */
+/* FUN_0045ce80 @ 0x0045ce80 */
 
 void FUN_0045ce80(void)
 
@@ -1099,10 +1027,9 @@ void FUN_0045ce80(void)
 }
 
 
+/* FUN_0045cea0 @ 0x0045cea0 */
 
-/* Function: FUN_0045cea0 @ 0x0045cea0 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void FUN_0045cea0(void)
 
@@ -1113,8 +1040,7 @@ void FUN_0045cea0(void)
 }
 
 
-
-/* Function: FUN_0045ceb0 @ 0x0045ceb0 */
+/* FUN_0045ceb0 @ 0x0045ceb0 */
 
 void FUN_0045ceb0(void)
 
@@ -1124,8 +1050,7 @@ void FUN_0045ceb0(void)
 }
 
 
-
-/* Function: FUN_0045cec0 @ 0x0045cec0 */
+/* FUN_0045cec0 @ 0x0045cec0 */
 
 void FUN_0045cec0(void)
 
@@ -1134,10 +1059,9 @@ void FUN_0045cec0(void)
 }
 
 
+/* FUN_0045cf10 @ 0x0045cf10 */
 
-/* Function: FUN_0045cf10 @ 0x0045cf10 */
-
-/* Function: FUN_0045cf10 @ 0x0045cf10
+/* FUN_0045cf10 @ 0x0045cf10
  * Struct types: unknown struct >0x2CA bytes (param_1)
  * TODO: offsets 0x2c2 and 0x2c6 don't match any known struct
  */
@@ -1166,8 +1090,7 @@ int * __fastcall FUN_0045cf10(int *param_1)
 }
 
 
-
-/* Function: FUN_0045cfb0 @ 0x0045cfb0 */
+/* FUN_0045cfb0 @ 0x0045cfb0 */
 
 void * __thiscall FUN_0045cfb0(void *this,byte param_1)
 
@@ -1180,8 +1103,7 @@ void * __thiscall FUN_0045cfb0(void *this,byte param_1)
 }
 
 
-
-/* Function: FUN_0045cfd0 @ 0x0045cfd0 */
+/* FUN_0045cfd0 @ 0x0045cfd0 */
 
 void __fastcall FUN_0045cfd0(int *param_1)
 
@@ -1204,8 +1126,7 @@ void __fastcall FUN_0045cfd0(int *param_1)
 }
 
 
-
-/* Function: FUN_0045d01a @ 0x0045d01a */
+/* FUN_0045d01a @ 0x0045d01a */
 
 void FUN_0045d01a(void)
 
@@ -1217,8 +1138,7 @@ void FUN_0045d01a(void)
 }
 
 
-
-/* Function: FUN_0045d032 @ 0x0045d032 */
+/* FUN_0045d032 @ 0x0045d032 */
 
 void FUN_0045d032(void)
 
@@ -1230,8 +1150,7 @@ void FUN_0045d032(void)
 }
 
 
-
-/* Function: FUN_0045d040 @ 0x0045d040 */
+/* FUN_0045d040 @ 0x0045d040 */
 
 void __fastcall FUN_0045d040(int *param_1)
 
@@ -1260,19 +1179,17 @@ void __fastcall FUN_0045d040(int *param_1)
 }
 
 
-
-/* Function: FUN_0045d140 @ 0x0045d140 */
+/* FUN_0045d140 @ 0x0045d140 */
 
 void __fastcall FUN_0045d140(int *param_1)
 
 {
-    /* TODO: 42 lines - has decompiler artifacts */
+    /* STUB: 42 lines not yet reconstructed */
     return;
 }
 
 
-
-/* Function: FUN_0045d360 @ 0x0045d360 */
+/* FUN_0045d360 @ 0x0045d360 */
 
 void __cdecl FUN_0045d360(uint param_1,char param_2)
 
@@ -1286,19 +1203,17 @@ void __cdecl FUN_0045d360(uint param_1,char param_2)
 }
 
 
-
-/* Function: FUN_0045d380 @ 0x0045d380 */
+/* FUN_0045d380 @ 0x0045d380 */
 
 void __cdecl FUN_0045d380(int param_1,short param_2,char param_3,char param_4)
 
 {
-    /* TODO: 25 lines - has decompiler artifacts */
+    /* STUB: 25 lines not yet reconstructed */
     return;
 }
 
 
-
-/* Function: FUN_0045d410 @ 0x0045d410 */
+/* FUN_0045d410 @ 0x0045d410 */
 
 void __cdecl FUN_0045d410(int param_1,char param_2,char param_3)
 
@@ -1319,19 +1234,17 @@ void __cdecl FUN_0045d410(int param_1,char param_2,char param_3)
 }
 
 
-
-/* Function: FUN_0045d460 @ 0x0045d460 */
+/* FUN_0045d460 @ 0x0045d460 */
 
 void __cdecl FUN_0045d460(uint param_1,char param_2)
 
 {
-    /* TODO: 25 lines - has decompiler artifacts */
+    /* STUB: 25 lines not yet reconstructed */
     return;
 }
 
 
-
-/* Function: FUN_0045d510 @ 0x0045d510 */
+/* FUN_0045d510 @ 0x0045d510 */
 
 void __cdecl FUN_0045d510(uint param_1,char param_2)
 
@@ -1367,8 +1280,7 @@ void __cdecl FUN_0045d510(uint param_1,char param_2)
 }
 
 
-
-/* Function: FUN_0045d5d0 @ 0x0045d5d0 */
+/* FUN_0045d5d0 @ 0x0045d5d0 */
 
 void FUN_0045d5d0(void)
 
@@ -1384,8 +1296,7 @@ void FUN_0045d5d0(void)
 }
 
 
-
-/* Function: FUN_0045d620 @ 0x0045d620 */
+/* FUN_0045d620 @ 0x0045d620 */
 
 void FUN_0045d620(void)
 
@@ -1394,10 +1305,9 @@ void FUN_0045d620(void)
 }
 
 
+/* FUN_0045d640 @ 0x0045d640 */
 
-/* Function: FUN_0045d640 @ 0x0045d640 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void FUN_0045d640(void)
 
@@ -1408,8 +1318,7 @@ void FUN_0045d640(void)
 }
 
 
-
-/* Function: FUN_0045d650 @ 0x0045d650 */
+/* FUN_0045d650 @ 0x0045d650 */
 
 void FUN_0045d650(void)
 
@@ -1419,8 +1328,7 @@ void FUN_0045d650(void)
 }
 
 
-
-/* Function: FUN_0045d660 @ 0x0045d660 */
+/* FUN_0045d660 @ 0x0045d660 */
 
 void FUN_0045d660(void)
 
@@ -1429,10 +1337,9 @@ void FUN_0045d660(void)
 }
 
 
+/* FUN_0045d680 @ 0x0045d680 */
 
-/* Function: FUN_0045d680 @ 0x0045d680 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void FUN_0045d680(void)
 
@@ -1443,8 +1350,7 @@ void FUN_0045d680(void)
 }
 
 
-
-/* Function: FUN_0045d690 @ 0x0045d690 */
+/* FUN_0045d690 @ 0x0045d690 */
 
 void FUN_0045d690(void)
 
@@ -1454,8 +1360,7 @@ void FUN_0045d690(void)
 }
 
 
-
-/* Function: FUN_0045d6a0 @ 0x0045d6a0 */
+/* FUN_0045d6a0 @ 0x0045d6a0 */
 
 void FUN_0045d6a0(void)
 
@@ -1464,8 +1369,7 @@ void FUN_0045d6a0(void)
 }
 
 
-
-/* Function: FUN_0045d6b0 @ 0x0045d6b0 */
+/* FUN_0045d6b0 @ 0x0045d6b0 */
 
 void __cdecl FUN_0045d6b0(short *param_1)
 
@@ -1503,10 +1407,9 @@ void __cdecl FUN_0045d6b0(short *param_1)
 }
 
 
+/* FUN_0045d720 @ 0x0045d720 */
 
-/* Function: FUN_0045d720 @ 0x0045d720 */
-
-/* WARNING: Removing unreachable block (ram,0x0045d746) */
+/* NOTE: Removing unreachable block (ram,0x0045d746) */
 
 short __cdecl FUN_0045d720(int param_1,ushort param_2)
 
@@ -1527,8 +1430,7 @@ short __cdecl FUN_0045d720(int param_1,ushort param_2)
 }
 
 
-
-/* Function: FUN_0045d780 @ 0x0045d780 */
+/* FUN_0045d780 @ 0x0045d780 */
 
 short __cdecl FUN_0045d780(short *param_1,short param_2)
 
@@ -1552,8 +1454,7 @@ short __cdecl FUN_0045d780(short *param_1,short param_2)
 }
 
 
-
-/* Function: FUN_0045d7d0 @ 0x0045d7d0 */
+/* FUN_0045d7d0 @ 0x0045d7d0 */
 
 void __cdecl FUN_0045d7d0(short *param_1)
 
@@ -1572,8 +1473,7 @@ void __cdecl FUN_0045d7d0(short *param_1)
 }
 
 
-
-/* Function: FUN_0045d830 @ 0x0045d830 */
+/* FUN_0045d830 @ 0x0045d830 */
 
 int __cdecl FUN_0045d830(short *param_1,short param_2,short param_3)
 
@@ -1614,8 +1514,7 @@ __label_0045d8bd:
 }
 
 
-
-/* Function: FUN_0045d8e0 @ 0x0045d8e0 */
+/* FUN_0045d8e0 @ 0x0045d8e0 */
 
 uint __cdecl FUN_0045d8e0(int param_1)
 
@@ -1644,8 +1543,7 @@ uint __cdecl FUN_0045d8e0(int param_1)
 }
 
 
-
-/* Function: FUN_0045d930 @ 0x0045d930 */
+/* FUN_0045d930 @ 0x0045d930 */
 
 bool __cdecl FUN_0045d930(int param_1)
 
@@ -1657,8 +1555,7 @@ bool __cdecl FUN_0045d930(int param_1)
 }
 
 
-
-/* Function: FUN_0045d950 @ 0x0045d950 */
+/* FUN_0045d950 @ 0x0045d950 */
 
 uint __cdecl FUN_0045d950(int param_1)
 
@@ -1670,8 +1567,7 @@ uint __cdecl FUN_0045d950(int param_1)
 }
 
 
-
-/* Function: FUN_0045d990 @ 0x0045d990 */
+/* FUN_0045d990 @ 0x0045d990 */
 
 void FUN_0045d990(void)
 
@@ -1687,8 +1583,7 @@ void FUN_0045d990(void)
 }
 
 
-
-/* Function: FUN_0045d9e0 @ 0x0045d9e0 */
+/* FUN_0045d9e0 @ 0x0045d9e0 */
 
 void FUN_0045d9e0(void)
 
@@ -1697,10 +1592,9 @@ void FUN_0045d9e0(void)
 }
 
 
+/* FUN_0045da00 @ 0x0045da00 */
 
-/* Function: FUN_0045da00 @ 0x0045da00 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void FUN_0045da00(void)
 
@@ -1711,8 +1605,7 @@ void FUN_0045da00(void)
 }
 
 
-
-/* Function: FUN_0045da10 @ 0x0045da10 */
+/* FUN_0045da10 @ 0x0045da10 */
 
 void FUN_0045da10(void)
 
@@ -1722,8 +1615,7 @@ void FUN_0045da10(void)
 }
 
 
-
-/* Function: FUN_0045da20 @ 0x0045da20 */
+/* FUN_0045da20 @ 0x0045da20 */
 
 void FUN_0045da20(void)
 
@@ -1732,10 +1624,9 @@ void FUN_0045da20(void)
 }
 
 
+/* FUN_0045da40 @ 0x0045da40 */
 
-/* Function: FUN_0045da40 @ 0x0045da40 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void FUN_0045da40(void)
 
@@ -1746,8 +1637,7 @@ void FUN_0045da40(void)
 }
 
 
-
-/* Function: FUN_0045da50 @ 0x0045da50 */
+/* FUN_0045da50 @ 0x0045da50 */
 
 void FUN_0045da50(void)
 
@@ -1757,8 +1647,7 @@ void FUN_0045da50(void)
 }
 
 
-
-/* Function: FUN_0045da60 @ 0x0045da60 */
+/* FUN_0045da60 @ 0x0045da60 */
 
 void FUN_0045da60(void)
 
@@ -1767,19 +1656,17 @@ void FUN_0045da60(void)
 }
 
 
-
-/* Function: FUN_0045da70 @ 0x0045da70 */
+/* FUN_0045da70 @ 0x0045da70 */
 
 void __thiscall FUN_0045da70(void *this,int param_1)
 
 {
-    /* TODO: 13 lines - has decompiler artifacts */
+    /* STUB: 13 lines not yet reconstructed */
     return;
 }
 
 
-
-/* Function: FUN_0045dad0 @ 0x0045dad0 */
+/* FUN_0045dad0 @ 0x0045dad0 */
 
 void __fastcall FUN_0045dad0(int param_1)
 
@@ -1791,19 +1678,17 @@ void __fastcall FUN_0045dad0(int param_1)
 }
 
 
-
-/* Function: FUN_0045daf0 @ 0x0045daf0 */
+/* FUN_0045daf0 @ 0x0045daf0 */
 
 int __fastcall FUN_0045daf0(int param_1)
 
 {
-    /* TODO: 9 lines - has decompiler artifacts */
+    /* STUB: 9 lines not yet reconstructed */
     return 0;
 }
 
 
-
-/* Function: FUN_0045db40 @ 0x0045db40 */
+/* FUN_0045db40 @ 0x0045db40 */
 
 void FUN_0045db40(void)
 
@@ -1819,8 +1704,7 @@ void FUN_0045db40(void)
 }
 
 
-
-/* Function: FUN_0045db90 @ 0x0045db90 */
+/* FUN_0045db90 @ 0x0045db90 */
 
 void FUN_0045db90(void)
 
@@ -1829,10 +1713,9 @@ void FUN_0045db90(void)
 }
 
 
+/* FUN_0045dbb0 @ 0x0045dbb0 */
 
-/* Function: FUN_0045dbb0 @ 0x0045dbb0 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void FUN_0045dbb0(void)
 
@@ -1843,8 +1726,7 @@ void FUN_0045dbb0(void)
 }
 
 
-
-/* Function: FUN_0045dbc0 @ 0x0045dbc0 */
+/* FUN_0045dbc0 @ 0x0045dbc0 */
 
 void FUN_0045dbc0(void)
 
@@ -1854,8 +1736,7 @@ void FUN_0045dbc0(void)
 }
 
 
-
-/* Function: FUN_0045dbd0 @ 0x0045dbd0 */
+/* FUN_0045dbd0 @ 0x0045dbd0 */
 
 void FUN_0045dbd0(void)
 
@@ -1864,10 +1745,9 @@ void FUN_0045dbd0(void)
 }
 
 
+/* FUN_0045dbf0 @ 0x0045dbf0 */
 
-/* Function: FUN_0045dbf0 @ 0x0045dbf0 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void FUN_0045dbf0(void)
 
@@ -1878,8 +1758,7 @@ void FUN_0045dbf0(void)
 }
 
 
-
-/* Function: FUN_0045dc00 @ 0x0045dc00 */
+/* FUN_0045dc00 @ 0x0045dc00 */
 
 void FUN_0045dc00(void)
 
@@ -1889,8 +1768,7 @@ void FUN_0045dc00(void)
 }
 
 
-
-/* Function: FUN_0045dc10 @ 0x0045dc10 */
+/* FUN_0045dc10 @ 0x0045dc10 */
 
 void FUN_0045dc10(void)
 
@@ -1899,8 +1777,7 @@ void FUN_0045dc10(void)
 }
 
 
-
-/* Function: FUN_0045dc30 @ 0x0045dc30 */
+/* FUN_0045dc30 @ 0x0045dc30 */
 
 void FUN_0045dc30(void)
 
@@ -1916,8 +1793,7 @@ void FUN_0045dc30(void)
 }
 
 
-
-/* Function: FUN_0045dc70 @ 0x0045dc70 */
+/* FUN_0045dc70 @ 0x0045dc70 */
 
 void FUN_0045dc70(void)
 
@@ -1927,8 +1803,7 @@ void FUN_0045dc70(void)
 }
 
 
-
-/* Function: FUN_0045dc80 @ 0x0045dc80 */
+/* FUN_0045dc80 @ 0x0045dc80 */
 
 void FUN_0045dc80(void)
 
@@ -1937,10 +1812,9 @@ void FUN_0045dc80(void)
 }
 
 
+/* FUN_0045dca0 @ 0x0045dca0 */
 
-/* Function: FUN_0045dca0 @ 0x0045dca0 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void FUN_0045dca0(void)
 
@@ -1951,8 +1825,7 @@ void FUN_0045dca0(void)
 }
 
 
-
-/* Function: FUN_0045dcb0 @ 0x0045dcb0 */
+/* FUN_0045dcb0 @ 0x0045dcb0 */
 
 void FUN_0045dcb0(void)
 
@@ -1962,8 +1835,7 @@ void FUN_0045dcb0(void)
 }
 
 
-
-/* Function: FUN_0045dcc0 @ 0x0045dcc0 */
+/* FUN_0045dcc0 @ 0x0045dcc0 */
 
 void FUN_0045dcc0(void)
 
@@ -1972,10 +1844,9 @@ void FUN_0045dcc0(void)
 }
 
 
+/* FUN_0045dce0 @ 0x0045dce0 */
 
-/* Function: FUN_0045dce0 @ 0x0045dce0 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void FUN_0045dce0(void)
 
@@ -1986,8 +1857,7 @@ void FUN_0045dce0(void)
 }
 
 
-
-/* Function: FUN_0045dcf0 @ 0x0045dcf0 */
+/* FUN_0045dcf0 @ 0x0045dcf0 */
 
 void FUN_0045dcf0(void)
 
@@ -1997,8 +1867,7 @@ void FUN_0045dcf0(void)
 }
 
 
-
-/* Function: FUN_0045dd00 @ 0x0045dd00 */
+/* FUN_0045dd00 @ 0x0045dd00 */
 
 void FUN_0045dd00(void)
 
@@ -2007,8 +1876,7 @@ void FUN_0045dd00(void)
 }
 
 
-
-/* Function: FUN_0045dd10 @ 0x0045dd10 */
+/* FUN_0045dd10 @ 0x0045dd10 */
 
 int * __fastcall FUN_0045dd10(int *param_1)
 
@@ -2018,8 +1886,7 @@ int * __fastcall FUN_0045dd10(int *param_1)
 }
 
 
-
-/* Function: FUN_0045dd20 @ 0x0045dd20 */
+/* FUN_0045dd20 @ 0x0045dd20 */
 
 void * __thiscall FUN_0045dd20(void *this,byte param_1)
 
@@ -2032,8 +1899,7 @@ void * __thiscall FUN_0045dd20(void *this,byte param_1)
 }
 
 
-
-/* Function: FUN_0045dd40 @ 0x0045dd40 */
+/* FUN_0045dd40 @ 0x0045dd40 */
 
 void __fastcall FUN_0045dd40(int *param_1)
 
@@ -2043,19 +1909,17 @@ void __fastcall FUN_0045dd40(int *param_1)
 }
 
 
-
-/* Function: FUN_0045dd50 @ 0x0045dd50 */
+/* FUN_0045dd50 @ 0x0045dd50 */
 
 void FUN_0045dd50(void)
 
 {
-    /* TODO: 197 lines - has decompiler artifacts */
+    /* STUB: 197 lines not yet reconstructed */
     return;
 }
 
 
-
-/* Function: FUN_0045e2c4 @ 0x0045e2c4 */
+/* FUN_0045e2c4 @ 0x0045e2c4 */
 
 void FUN_0045e2c4(void)
 
@@ -2064,8 +1928,7 @@ void FUN_0045e2c4(void)
 }
 
 
-
-/* Function: FUN_0045e2cc @ 0x0045e2cc */
+/* FUN_0045e2cc @ 0x0045e2cc */
 
 void FUN_0045e2cc(void)
 
@@ -2074,8 +1937,7 @@ void FUN_0045e2cc(void)
 }
 
 
-
-/* Function: FUN_0045e2dc @ 0x0045e2dc */
+/* FUN_0045e2dc @ 0x0045e2dc */
 
 void FUN_0045e2dc(void)
 
@@ -2084,8 +1946,7 @@ void FUN_0045e2dc(void)
 }
 
 
-
-/* Function: FUN_0045e2e4 @ 0x0045e2e4 */
+/* FUN_0045e2e4 @ 0x0045e2e4 */
 
 void FUN_0045e2e4(void)
 
@@ -2094,8 +1955,7 @@ void FUN_0045e2e4(void)
 }
 
 
-
-/* Function: FUN_0045e2ec @ 0x0045e2ec */
+/* FUN_0045e2ec @ 0x0045e2ec */
 
 void FUN_0045e2ec(void)
 
@@ -2104,8 +1964,7 @@ void FUN_0045e2ec(void)
 }
 
 
-
-/* Function: FUN_0045e2f4 @ 0x0045e2f4 */
+/* FUN_0045e2f4 @ 0x0045e2f4 */
 
 void FUN_0045e2f4(void)
 
@@ -2114,8 +1973,7 @@ void FUN_0045e2f4(void)
 }
 
 
-
-/* Function: FUN_0045e311 @ 0x0045e311 */
+/* FUN_0045e311 @ 0x0045e311 */
 
 void FUN_0045e311(void)
 
@@ -2124,8 +1982,7 @@ void FUN_0045e311(void)
 }
 
 
-
-/* Function: FUN_0045e319 @ 0x0045e319 */
+/* FUN_0045e319 @ 0x0045e319 */
 
 void FUN_0045e319(void)
 
@@ -2134,8 +1991,7 @@ void FUN_0045e319(void)
 }
 
 
-
-/* Function: FUN_0045e321 @ 0x0045e321 */
+/* FUN_0045e321 @ 0x0045e321 */
 
 void FUN_0045e321(void)
 
@@ -2147,8 +2003,7 @@ void FUN_0045e321(void)
 }
 
 
-
-/* Function: FUN_0045e336 @ 0x0045e336 */
+/* FUN_0045e336 @ 0x0045e336 */
 
 void FUN_0045e336(void)
 
@@ -2160,8 +2015,7 @@ void FUN_0045e336(void)
 }
 
 
-
-/* Function: FUN_0045e350 @ 0x0045e350 */
+/* FUN_0045e350 @ 0x0045e350 */
 
 void FUN_0045e350(void)
 
@@ -2177,8 +2031,7 @@ void FUN_0045e350(void)
 }
 
 
-
-/* Function: FUN_0045e3a0 @ 0x0045e3a0 */
+/* FUN_0045e3a0 @ 0x0045e3a0 */
 
 void FUN_0045e3a0(void)
 
@@ -2187,10 +2040,9 @@ void FUN_0045e3a0(void)
 }
 
 
+/* FUN_0045e3c0 @ 0x0045e3c0 */
 
-/* Function: FUN_0045e3c0 @ 0x0045e3c0 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void FUN_0045e3c0(void)
 
@@ -2201,8 +2053,7 @@ void FUN_0045e3c0(void)
 }
 
 
-
-/* Function: FUN_0045e3d0 @ 0x0045e3d0 */
+/* FUN_0045e3d0 @ 0x0045e3d0 */
 
 void FUN_0045e3d0(void)
 
@@ -2212,8 +2063,7 @@ void FUN_0045e3d0(void)
 }
 
 
-
-/* Function: FUN_0045e3e0 @ 0x0045e3e0 */
+/* FUN_0045e3e0 @ 0x0045e3e0 */
 
 void FUN_0045e3e0(void)
 
@@ -2222,10 +2072,9 @@ void FUN_0045e3e0(void)
 }
 
 
+/* FUN_0045e400 @ 0x0045e400 */
 
-/* Function: FUN_0045e400 @ 0x0045e400 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void FUN_0045e400(void)
 
@@ -2236,8 +2085,7 @@ void FUN_0045e400(void)
 }
 
 
-
-/* Function: FUN_0045e410 @ 0x0045e410 */
+/* FUN_0045e410 @ 0x0045e410 */
 
 void FUN_0045e410(void)
 
@@ -2247,8 +2095,7 @@ void FUN_0045e410(void)
 }
 
 
-
-/* Function: FUN_0045e420 @ 0x0045e420 */
+/* FUN_0045e420 @ 0x0045e420 */
 
 void FUN_0045e420(void)
 
@@ -2257,8 +2104,7 @@ void FUN_0045e420(void)
 }
 
 
-
-/* Function: FUN_0045e430 @ 0x0045e430 */
+/* FUN_0045e430 @ 0x0045e430 */
 
 void * __thiscall
 FUN_0045e430(SoundPlayer *this,short param_1,short param_2,short param_3,int param_4,void *param_5)
@@ -2292,8 +2138,7 @@ FUN_0045e430(SoundPlayer *this,short param_1,short param_2,short param_3,int par
 }
 
 
-
-/* Function: FUN_0045e4f0 @ 0x0045e4f0 */
+/* FUN_0045e4f0 @ 0x0045e4f0 */
 
 void * __thiscall FUN_0045e4f0(void *this,byte param_1)
 
@@ -2306,8 +2151,7 @@ void * __thiscall FUN_0045e4f0(void *this,byte param_1)
 }
 
 
-
-/* Function: FUN_0045e510 @ 0x0045e510 */
+/* FUN_0045e510 @ 0x0045e510 */
 
 void __fastcall FUN_0045e510(GameWidget *param_1)
 
@@ -2343,8 +2187,7 @@ void __fastcall FUN_0045e510(GameWidget *param_1)
 }
 
 
-
-/* Function: FUN_0045e5a8 @ 0x0045e5a8 */
+/* FUN_0045e5a8 @ 0x0045e5a8 */
 
 void FUN_0045e5a8(void)
 
@@ -2356,8 +2199,7 @@ void FUN_0045e5a8(void)
 }
 
 
-
-/* Function: FUN_0045e5b0 @ 0x0045e5b0 */
+/* FUN_0045e5b0 @ 0x0045e5b0 */
 
 void __fastcall FUN_0045e5b0(GameWidget *param_1)
 
@@ -2371,8 +2213,7 @@ void __fastcall FUN_0045e5b0(GameWidget *param_1)
 }
 
 
-
-/* Function: FUN_0045e7cc @ 0x0045e7cc */
+/* FUN_0045e7cc @ 0x0045e7cc */
 
 void FUN_0045e7cc(void)
 
@@ -2381,8 +2222,7 @@ void FUN_0045e7cc(void)
 }
 
 
-
-/* Function: FUN_0045e91f @ 0x0045e91f */
+/* FUN_0045e91f @ 0x0045e91f */
 
 void FUN_0045e91f(void)
 
@@ -2391,8 +2231,7 @@ void FUN_0045e91f(void)
 }
 
 
-
-/* Function: FUN_0045e970 @ 0x0045e970 */
+/* FUN_0045e970 @ 0x0045e970 */
 
 void __fastcall FUN_0045e970(GameWidget *param_1)
 
@@ -2417,19 +2256,17 @@ void __fastcall FUN_0045e970(GameWidget *param_1)
 }
 
 
-
-/* Function: FUN_0045ecd0 @ 0x0045ecd0 */
+/* FUN_0045ecd0 @ 0x0045ecd0 */
 
 void FUN_0045ecd0(void)
 
 {
-    /* TODO: 35 lines - has decompiler artifacts */
+    /* STUB: 35 lines not yet reconstructed */
     return;
 }
 
 
-
-/* Function: FUN_0045eda0 @ 0x0045eda0 */
+/* FUN_0045eda0 @ 0x0045eda0 */
 
 void FUN_0045eda0(void)
 
@@ -2445,8 +2282,7 @@ void FUN_0045eda0(void)
 }
 
 
-
-/* Function: FUN_0045edf0 @ 0x0045edf0 */
+/* FUN_0045edf0 @ 0x0045edf0 */
 
 void FUN_0045edf0(void)
 
@@ -2455,10 +2291,9 @@ void FUN_0045edf0(void)
 }
 
 
+/* FUN_0045ee10 @ 0x0045ee10 */
 
-/* Function: FUN_0045ee10 @ 0x0045ee10 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void FUN_0045ee10(void)
 
@@ -2469,8 +2304,7 @@ void FUN_0045ee10(void)
 }
 
 
-
-/* Function: FUN_0045ee20 @ 0x0045ee20 */
+/* FUN_0045ee20 @ 0x0045ee20 */
 
 void FUN_0045ee20(void)
 
@@ -2480,8 +2314,7 @@ void FUN_0045ee20(void)
 }
 
 
-
-/* Function: FUN_0045ee30 @ 0x0045ee30 */
+/* FUN_0045ee30 @ 0x0045ee30 */
 
 void FUN_0045ee30(void)
 
@@ -2490,10 +2323,9 @@ void FUN_0045ee30(void)
 }
 
 
+/* FUN_0045ee50 @ 0x0045ee50 */
 
-/* Function: FUN_0045ee50 @ 0x0045ee50 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void FUN_0045ee50(void)
 
@@ -2504,8 +2336,7 @@ void FUN_0045ee50(void)
 }
 
 
-
-/* Function: FUN_0045ee60 @ 0x0045ee60 */
+/* FUN_0045ee60 @ 0x0045ee60 */
 
 void FUN_0045ee60(void)
 
@@ -2515,8 +2346,7 @@ void FUN_0045ee60(void)
 }
 
 
-
-/* Function: FUN_0045ee70 @ 0x0045ee70 */
+/* FUN_0045ee70 @ 0x0045ee70 */
 
 void FUN_0045ee70(void)
 
@@ -2525,8 +2355,7 @@ void FUN_0045ee70(void)
 }
 
 
-
-/* Function: FUN_0045ee90 @ 0x0045ee90 */
+/* FUN_0045ee90 @ 0x0045ee90 */
 
 void FUN_0045ee90(void)
 
@@ -2542,8 +2371,7 @@ void FUN_0045ee90(void)
 }
 
 
-
-/* Function: FUN_0045eed0 @ 0x0045eed0 */
+/* FUN_0045eed0 @ 0x0045eed0 */
 
 void FUN_0045eed0(void)
 
@@ -2553,8 +2381,7 @@ void FUN_0045eed0(void)
 }
 
 
-
-/* Function: FUN_0045eee0 @ 0x0045eee0 */
+/* FUN_0045eee0 @ 0x0045eee0 */
 
 void FUN_0045eee0(void)
 
@@ -2563,10 +2390,9 @@ void FUN_0045eee0(void)
 }
 
 
+/* FUN_0045ef00 @ 0x0045ef00 */
 
-/* Function: FUN_0045ef00 @ 0x0045ef00 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void FUN_0045ef00(void)
 
@@ -2577,8 +2403,7 @@ void FUN_0045ef00(void)
 }
 
 
-
-/* Function: FUN_0045ef10 @ 0x0045ef10 */
+/* FUN_0045ef10 @ 0x0045ef10 */
 
 void FUN_0045ef10(void)
 
@@ -2588,8 +2413,7 @@ void FUN_0045ef10(void)
 }
 
 
-
-/* Function: FUN_0045ef20 @ 0x0045ef20 */
+/* FUN_0045ef20 @ 0x0045ef20 */
 
 void FUN_0045ef20(void)
 
@@ -2598,10 +2422,9 @@ void FUN_0045ef20(void)
 }
 
 
+/* FUN_0045ef40 @ 0x0045ef40 */
 
-/* Function: FUN_0045ef40 @ 0x0045ef40 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void FUN_0045ef40(void)
 
@@ -2612,8 +2435,7 @@ void FUN_0045ef40(void)
 }
 
 
-
-/* Function: FUN_0045ef50 @ 0x0045ef50 */
+/* FUN_0045ef50 @ 0x0045ef50 */
 
 void FUN_0045ef50(void)
 
@@ -2623,8 +2445,7 @@ void FUN_0045ef50(void)
 }
 
 
-
-/* Function: FUN_0045ef60 @ 0x0045ef60 */
+/* FUN_0045ef60 @ 0x0045ef60 */
 
 void FUN_0045ef60(void)
 
@@ -2633,30 +2454,27 @@ void FUN_0045ef60(void)
 }
 
 
-
-/* Function: FUN_0045ef70 @ 0x0045ef70 */
+/* FUN_0045ef70 @ 0x0045ef70 */
 
 short * __cdecl FUN_0045ef70(int *param_1)
 
 {
-    /* TODO: 10 lines - has decompiler artifacts */
+    /* STUB: 10 lines not yet reconstructed */
     return 0;
 }
 
 
-
-/* Function: FUN_0045efd0 @ 0x0045efd0 */
+/* FUN_0045efd0 @ 0x0045efd0 */
 
 char __cdecl FUN_0045efd0(int *param_1,char param_2)
 
 {
-    /* TODO: 58 lines - has decompiler artifacts */
+    /* STUB: 58 lines not yet reconstructed */
     return 0;
 }
 
 
-
-/* Function: FUN_0045f100 @ 0x0045f100 */
+/* FUN_0045f100 @ 0x0045f100 */
 
 char __cdecl FUN_0045f100(int param_1,char param_2)
 
@@ -2674,8 +2492,7 @@ char __cdecl FUN_0045f100(int param_1,char param_2)
 }
 
 
-
-/* Function: FUN_0045f160 @ 0x0045f160 */
+/* FUN_0045f160 @ 0x0045f160 */
 
 void FUN_0045f160(void)
 
@@ -2691,8 +2508,7 @@ void FUN_0045f160(void)
 }
 
 
-
-/* Function: FUN_0045f1b0 @ 0x0045f1b0 */
+/* FUN_0045f1b0 @ 0x0045f1b0 */
 
 void FUN_0045f1b0(void)
 
@@ -2701,10 +2517,9 @@ void FUN_0045f1b0(void)
 }
 
 
+/* FUN_0045f1d0 @ 0x0045f1d0 */
 
-/* Function: FUN_0045f1d0 @ 0x0045f1d0 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void FUN_0045f1d0(void)
 
@@ -2715,8 +2530,7 @@ void FUN_0045f1d0(void)
 }
 
 
-
-/* Function: FUN_0045f1e0 @ 0x0045f1e0 */
+/* FUN_0045f1e0 @ 0x0045f1e0 */
 
 void FUN_0045f1e0(void)
 
@@ -2726,8 +2540,7 @@ void FUN_0045f1e0(void)
 }
 
 
-
-/* Function: FUN_0045f1f0 @ 0x0045f1f0 */
+/* FUN_0045f1f0 @ 0x0045f1f0 */
 
 void FUN_0045f1f0(void)
 
@@ -2736,10 +2549,9 @@ void FUN_0045f1f0(void)
 }
 
 
+/* FUN_0045f210 @ 0x0045f210 */
 
-/* Function: FUN_0045f210 @ 0x0045f210 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void FUN_0045f210(void)
 
@@ -2750,8 +2562,7 @@ void FUN_0045f210(void)
 }
 
 
-
-/* Function: FUN_0045f220 @ 0x0045f220 */
+/* FUN_0045f220 @ 0x0045f220 */
 
 void FUN_0045f220(void)
 
@@ -2761,8 +2572,7 @@ void FUN_0045f220(void)
 }
 
 
-
-/* Function: FUN_0045f230 @ 0x0045f230 */
+/* FUN_0045f230 @ 0x0045f230 */
 
 void FUN_0045f230(void)
 
@@ -2771,8 +2581,7 @@ void FUN_0045f230(void)
 }
 
 
-
-/* Function: FUN_0045f250 @ 0x0045f250 */
+/* FUN_0045f250 @ 0x0045f250 */
 
 void FUN_0045f250(void)
 
@@ -2788,8 +2597,7 @@ void FUN_0045f250(void)
 }
 
 
-
-/* Function: FUN_0045f290 @ 0x0045f290 */
+/* FUN_0045f290 @ 0x0045f290 */
 
 void FUN_0045f290(void)
 
@@ -2799,8 +2607,7 @@ void FUN_0045f290(void)
 }
 
 
-
-/* Function: FUN_0045f2a0 @ 0x0045f2a0 */
+/* FUN_0045f2a0 @ 0x0045f2a0 */
 
 void FUN_0045f2a0(void)
 
@@ -2809,10 +2616,9 @@ void FUN_0045f2a0(void)
 }
 
 
+/* FUN_0045f2c0 @ 0x0045f2c0 */
 
-/* Function: FUN_0045f2c0 @ 0x0045f2c0 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void FUN_0045f2c0(void)
 
@@ -2823,8 +2629,7 @@ void FUN_0045f2c0(void)
 }
 
 
-
-/* Function: FUN_0045f2d0 @ 0x0045f2d0 */
+/* FUN_0045f2d0 @ 0x0045f2d0 */
 
 void FUN_0045f2d0(void)
 
@@ -2834,8 +2639,7 @@ void FUN_0045f2d0(void)
 }
 
 
-
-/* Function: FUN_0045f2e0 @ 0x0045f2e0 */
+/* FUN_0045f2e0 @ 0x0045f2e0 */
 
 void FUN_0045f2e0(void)
 
@@ -2844,10 +2648,9 @@ void FUN_0045f2e0(void)
 }
 
 
+/* FUN_0045f300 @ 0x0045f300 */
 
-/* Function: FUN_0045f300 @ 0x0045f300 */
-
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void FUN_0045f300(void)
 
@@ -2858,8 +2661,7 @@ void FUN_0045f300(void)
 }
 
 
-
-/* Function: FUN_0045f310 @ 0x0045f310 */
+/* FUN_0045f310 @ 0x0045f310 */
 
 void FUN_0045f310(void)
 
@@ -2869,8 +2671,7 @@ void FUN_0045f310(void)
 }
 
 
-
-/* Function: FUN_0045f320 @ 0x0045f320 */
+/* FUN_0045f320 @ 0x0045f320 */
 
 void FUN_0045f320(void)
 
@@ -2879,8 +2680,7 @@ void FUN_0045f320(void)
 }
 
 
-
-/* Function: FUN_0045f6fa @ 0x0045f6fa */
+/* FUN_0045f6fa @ 0x0045f6fa */
 
 void FUN_0045f6fa(void)
 
@@ -2889,8 +2689,7 @@ void FUN_0045f6fa(void)
 }
 
 
-
-/* Function: FUN_0045f702 @ 0x0045f702 */
+/* FUN_0045f702 @ 0x0045f702 */
 
 void FUN_0045f702(void)
 
@@ -2899,8 +2698,7 @@ void FUN_0045f702(void)
 }
 
 
-
-/* Function: FUN_0045f70a @ 0x0045f70a */
+/* FUN_0045f70a @ 0x0045f70a */
 
 void FUN_0045f70a(void)
 
@@ -2909,8 +2707,7 @@ void FUN_0045f70a(void)
 }
 
 
-
-/* Function: FUN_0045f712 @ 0x0045f712 */
+/* FUN_0045f712 @ 0x0045f712 */
 
 void FUN_0045f712(void)
 
@@ -2919,8 +2716,7 @@ void FUN_0045f712(void)
 }
 
 
-
-/* Function: FUN_0045f71a @ 0x0045f71a */
+/* FUN_0045f71a @ 0x0045f71a */
 
 void FUN_0045f71a(void)
 
@@ -2932,8 +2728,7 @@ void FUN_0045f71a(void)
 }
 
 
-
-/* Function: FUN_0045f725 @ 0x0045f725 */
+/* FUN_0045f725 @ 0x0045f725 */
 
 void FUN_0045f725(void)
 
@@ -2945,8 +2740,7 @@ void FUN_0045f725(void)
 }
 
 
-
-/* Function: FUN_0045f73a @ 0x0045f73a */
+/* FUN_0045f73a @ 0x0045f73a */
 
 void FUN_0045f73a(void)
 
@@ -2958,20 +2752,18 @@ void FUN_0045f73a(void)
 }
 
 
-
-/* Function: FUN_0045f750 @ 0x0045f750 */
+/* FUN_0045f750 @ 0x0045f750 */
 
 void * __thiscall
 FUN_0045f750(void *this,short param_1,short param_2,short param_3,int param_4,void *param_5)
 
 {
-    /* TODO: 138 lines - has decompiler artifacts */
+    /* STUB: 138 lines not yet reconstructed */
     return 0;
 }
 
 
-
-/* Function: FUN_0045fb91 @ 0x0045fb91 */
+/* FUN_0045fb91 @ 0x0045fb91 */
 
 void FUN_0045fb91(void)
 
@@ -2980,8 +2772,7 @@ void FUN_0045fb91(void)
 }
 
 
-
-/* Function: FUN_0045fb99 @ 0x0045fb99 */
+/* FUN_0045fb99 @ 0x0045fb99 */
 
 void FUN_0045fb99(void)
 
@@ -2990,8 +2781,7 @@ void FUN_0045fb99(void)
 }
 
 
-
-/* Function: FUN_0045fbc0 @ 0x0045fbc0 */
+/* FUN_0045fbc0 @ 0x0045fbc0 */
 
 void * __thiscall FUN_0045fbc0(void *this,byte param_1)
 
@@ -3004,10 +2794,9 @@ void * __thiscall FUN_0045fbc0(void *this,byte param_1)
 }
 
 
+/* FUN_0045fbe0 @ 0x0045fbe0 */
 
-/* Function: FUN_0045fbe0 @ 0x0045fbe0 */
-
-/* Function: FUN_0045fbe0 @ 0x0045fbe0
+/* FUN_0045fbe0 @ 0x0045fbe0
  * Struct types: GameWidget-like (param_1) - treats fields at 0x126 and 0x13A as arrays of 5 pointers
  * TODO: This may be a subclass of GameWidget with different layout at 0x126-0x155
  */
@@ -3064,8 +2853,7 @@ void __fastcall FUN_0045fbe0(GameWidget *param_1)
 }
 
 
-
-/* Function: FUN_0045fcb1 @ 0x0045fcb1 */
+/* FUN_0045fcb1 @ 0x0045fcb1 */
 
 void FUN_0045fcb1(void)
 
@@ -3077,8 +2865,7 @@ void FUN_0045fcb1(void)
 }
 
 
-
-/* Function: FUN_0045fe2d @ 0x0045fe2d */
+/* FUN_0045fe2d @ 0x0045fe2d */
 
 void FUN_0045fe2d(void)
 
@@ -3087,8 +2874,7 @@ void FUN_0045fe2d(void)
 }
 
 
-
-/* Function: FUN_0045fe99 @ 0x0045fe99 */
+/* FUN_0045fe99 @ 0x0045fe99 */
 
 void FUN_0045fe99(void)
 
@@ -3098,8 +2884,7 @@ void FUN_0045fe99(void)
 }
 
 
-
-/* Function: FUN_0045feb0 @ 0x0045feb0 */
+/* FUN_0045feb0 @ 0x0045feb0 */
 
 void __cdecl FUN_0045feb0(int param_1,char param_2)
 
@@ -3154,10 +2939,9 @@ void __cdecl FUN_0045feb0(int param_1,char param_2)
 }
 
 
+/* FUN_0045ffc0 @ 0x0045ffc0 */
 
-/* Function: FUN_0045ffc0 @ 0x0045ffc0 */
-
-/* Function: FUN_0045ffc0 @ 0x0045ffc0
+/* FUN_0045ffc0 @ 0x0045ffc0
  * Struct types: unknown struct ~0x3E bytes (param_1)
  * TODO: byte offsets 0x26, 0x2a, 0x3a suggest UIElement-like but int-array indexing doesn't match
  */
@@ -3180,8 +2964,7 @@ int * __fastcall FUN_0045ffc0(int *param_1)
 }
 
 
-
-/* Function: FUN_0045fff0 @ 0x0045fff0 */
+/* FUN_0045fff0 @ 0x0045fff0 */
 
 void * __thiscall FUN_0045fff0(void *this,byte param_1)
 
@@ -3192,6 +2975,5 @@ void * __thiscall FUN_0045fff0(void *this,byte param_1)
   }
   return this;
 }
-
 
 

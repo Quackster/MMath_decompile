@@ -3,14 +3,14 @@
  * Address range: 0x470000 - 0x47FFFF
  * Functions: 65
  *
- * Auto-generated from decompilation of MMath.exe
+ * Reconstructed source for MMath.exe
  */
 
 #include "types.h"
 #include "funcs.h"
 #include "globals.h"
 
-/* Function: FUN_00470000 @ 0x00470000 */
+/* FUN_00470000 @ 0x00470000 */
 
 void FUN_00470000(void)
 
@@ -31,10 +31,9 @@ void FUN_00470000(void)
 }
 
 
+/* FUN_00470050 @ 0x00470050 */
 
-/* Function: FUN_00470050 @ 0x00470050 */
-
-/* WARNING: Removing unreachable block (ram,0x00470061) */
+/* NOTE: Removing unreachable block (ram,0x00470061) */
 
 int FUN_00470050(int *param_1)
 
@@ -61,8 +60,7 @@ int FUN_00470050(int *param_1)
 }
 
 
-
-/* Function: FUN_004700b0 @ 0x004700b0 */
+/* FUN_004700b0 @ 0x004700b0 */
 
 char * __fastcall FUN_004700b0(int param_1)
 
@@ -74,8 +72,7 @@ char * __fastcall FUN_004700b0(int param_1)
 }
 
 
-
-/* Function: FUN_004700d0 @ 0x004700d0 */
+/* FUN_004700d0 @ 0x004700d0 */
 
 FARPROC FUN_004700d0(FARPROC param_1)
 
@@ -102,8 +99,7 @@ FARPROC FUN_004700d0(FARPROC param_1)
 }
 
 
-
-/* Function: FUN_00470140 @ 0x00470140 */
+/* FUN_00470140 @ 0x00470140 */
 
 unsigned int FUN_00470140(int param_1)
 
@@ -127,8 +123,7 @@ unsigned int FUN_00470140(int param_1)
 }
 
 
-
-/* Function: FUN_00470240 @ 0x00470240
+/* FUN_00470240 @ 0x00470240
  * NOTE: SmartHeap pool walk/iterate entry point. param_1 is a SmartHeap pool descriptor.
  * Offset 0x22 = pool flags (bit 1 = threadsafe), 0x48 = critical_section, 0x60 = lock_count.
  * NOT a game struct.
@@ -156,8 +151,7 @@ int FUN_00470240(int *param_1,int *param_2)
 }
 
 
-
-/* Function: FUN_004702b0 @ 0x004702b0 */
+/* FUN_004702b0 @ 0x004702b0 */
 
 int __fastcall FUN_004702b0(int *param_1,int *param_2,int param_3,int param_4)
 
@@ -216,8 +210,7 @@ int __fastcall FUN_004702b0(int *param_1,int *param_2,int param_3,int param_4)
 }
 
 
-
-/* Function: FUN_004703f0 @ 0x004703f0
+/* FUN_004703f0 @ 0x004703f0
  * NOTE: SmartHeap large-block walk. param_1 is a SmartHeap page descriptor.
  * Offsets 0x10, 0x14, 0x15 are page descriptor fields. NOT a game struct.
  */
@@ -258,8 +251,7 @@ int __fastcall FUN_004703f0(LPCVOID param_1,int *param_2)
 }
 
 
-
-/* Function: FUN_00470490 @ 0x00470490
+/* FUN_00470490 @ 0x00470490
  * NOTE: SmartHeap slab walk. param_1 is a SmartHeap page descriptor.
  * Offsets 0x10, 0x14, 0x1c are page descriptor fields. NOT a game struct.
  */
@@ -324,8 +316,7 @@ __label_0047050b:
 }
 
 
-
-/* Function: FUN_00470580 @ 0x00470580 */
+/* FUN_00470580 @ 0x00470580 */
 
 int __fastcall FUN_00470580(int param_1,int *param_2)
 
@@ -353,8 +344,7 @@ int __fastcall FUN_00470580(int param_1,int *param_2)
 }
 
 
-
-/* Function: FUN_004705d0 @ 0x004705d0
+/* FUN_004705d0 @ 0x004705d0
  * NOTE: SmartHeap free-list block walk. param_1 is a SmartHeap page descriptor.
  * Offsets 0x0e, 0x14 are page descriptor fields. NOT a game struct.
  */
@@ -430,8 +420,7 @@ __label_0047065b:
 }
 
 
-
-/* Function: FUN_00470750 @ 0x00470750
+/* FUN_00470750 @ 0x00470750
  * NOTE: SmartHeap fixed-block walk. param_1 is a SmartHeap page descriptor.
  * Offsets 0x10, 0x14, 0x1c are page descriptor fields. NOT a game struct.
  */
@@ -491,8 +480,7 @@ __label_004707d9:
 }
 
 
-
-/* Function: FUN_00470840 @ 0x00470840 */
+/* FUN_00470840 @ 0x00470840 */
 
 int __fastcall FUN_00470840(int param_1,int param_2,int *param_3)
 
@@ -522,8 +510,7 @@ int __fastcall FUN_00470840(int param_1,int param_2,int *param_3)
 }
 
 
-
-/* Function: FUN_00470ce0 @ 0x00470ce0
+/* FUN_00470ce0 @ 0x00470ce0
  * NOTE: SmartHeap pool validation. param_1 is a SmartHeap pool descriptor.
  * Offset 0x22 = pool flags (bit 1 = threadsafe). NOT a game struct.
  */
@@ -570,8 +557,7 @@ __label_00470d68:
 }
 
 
-
-/* Function: FUN_00470e50 @ 0x00470e50 */
+/* FUN_00470e50 @ 0x00470e50 */
 
 int __fastcall FUN_00470e50(int param_1)
 
@@ -608,8 +594,7 @@ __label_00470e91:
 }
 
 
-
-/* Function: FUN_00470ec0 @ 0x00470ec0 */
+/* FUN_00470ec0 @ 0x00470ec0 */
 
 int __fastcall FUN_00470ec0(int *param_1,unsigned short param_2)
 
@@ -634,8 +619,7 @@ int __fastcall FUN_00470ec0(int *param_1,unsigned short param_2)
 }
 
 
-
-/* Function: FUN_00470f00 @ 0x00470f00 */
+/* FUN_00470f00 @ 0x00470f00 */
 
 int __fastcall FUN_00470f00(int param_1)
 
@@ -667,8 +651,7 @@ int __fastcall FUN_00470f00(int param_1)
 }
 
 
-
-/* Function: FUN_00470f40 @ 0x00470f40 */
+/* FUN_00470f40 @ 0x00470f40 */
 
 int __fastcall FUN_00470f40(int *param_1)
 
@@ -717,8 +700,7 @@ __label_00470f72:
 }
 
 
-
-/* Function: FUN_00470fd0 @ 0x00470fd0 */
+/* FUN_00470fd0 @ 0x00470fd0 */
 
 int __fastcall FUN_00470fd0(int *param_1)
 
@@ -738,8 +720,7 @@ int __fastcall FUN_00470fd0(int *param_1)
 }
 
 
-
-/* Function: FUN_00471010 @ 0x00471010
+/* FUN_00471010 @ 0x00471010
  * NOTE: SmartHeap block ownership check. pn4 is a SmartHeap page descriptor.
  * Offset 0x0e = page magic/type tag, 0x22 = pool flags, 0x48 = critical_section,
  * 0x60 = lock_count. NOT a game struct.
@@ -782,13 +763,13 @@ int FUN_00471010(int param_1,int *param_2)
   switch(*(ushort *)((int)pn4 + 0xe) & 7) { /* TODO: SmartHeap page type field */
   case 0:
   case 2:
-    if ((*(byte *)((int)param_2 + -2) & 1) != 0) goto switchD_004710d7_caseD_3;
+    if ((*(byte *)((int)param_2 + -2) & 1) != 0) goto sw_3;
     goto __label_00471103;
   case 1:
     n3 = FUN_00470840((int)pn4,n1,param_2);
     break;
   default:
-    goto switchD_004710d7_caseD_3;
+    goto sw_3;
   case 4:
     n3 = FUN_00470580(n1,param_2);
   }
@@ -796,7 +777,7 @@ int FUN_00471010(int param_1,int *param_2)
 __label_00471103:
     u5 = 0xffffffff;
   }
-switchD_004710d7_caseD_3:
+sw_3:
   if ((*(byte *)(n1 + 0x22) & 2) != 0) {
     *(int *)(n1 + 0x60) = *(int *)(n1 + 0x60) + -1;
     LeaveCriticalSection((LPCRITICAL_SECTION)(n1 + 0x48));
@@ -805,19 +786,17 @@ switchD_004710d7_caseD_3:
 }
 
 
-
-/* Function: FUN_00471150 @ 0x00471150 */
+/* FUN_00471150 @ 0x00471150 */
 
 LPCVOID __fastcall FUN_00471150(uint param_1)
 
 {
-    /* TODO: 14 lines - has decompiler artifacts */
+    /* STUB: 14 lines not yet reconstructed */
     return 0;
 }
 
 
-
-/* Function: FUN_00471190 @ 0x00471190 */
+/* FUN_00471190 @ 0x00471190 */
 
 void * __fastcall FUN_00471190(uint param_1,uint param_2)
 
@@ -864,8 +843,7 @@ void * __fastcall FUN_00471190(uint param_1,uint param_2)
 }
 
 
-
-/* Function: FUN_00471220 @ 0x00471220 */
+/* FUN_00471220 @ 0x00471220 */
 
 int __fastcall FUN_00471220(LPCVOID param_1)
 
@@ -888,8 +866,7 @@ int __fastcall FUN_00471220(LPCVOID param_1)
 }
 
 
-
-/* Function: FUN_00471280 @ 0x00471280 */
+/* FUN_00471280 @ 0x00471280 */
 
 void * __fastcall FUN_00471280(void *param_1,uint param_2,uint param_3)
 
@@ -942,8 +919,7 @@ void * __fastcall FUN_00471280(void *param_1,uint param_2,uint param_3)
 }
 
 
-
-/* Function: FUN_00471330 @ 0x00471330 */
+/* FUN_00471330 @ 0x00471330 */
 
 int __fastcall FUN_00471330(LPCVOID param_1,uint param_2,uint param_3)
 
@@ -1004,30 +980,27 @@ int __fastcall FUN_00471330(LPCVOID param_1,uint param_2,uint param_3)
 }
 
 
-
-/* Function: FUN_00471410 @ 0x00471410 */
+/* FUN_00471410 @ 0x00471410 */
 
 uint __fastcall FUN_00471410(LPCVOID param_1)
 
 {
-    /* TODO: 9 lines - has decompiler artifacts */
+    /* STUB: 9 lines not yet reconstructed */
     return 0;
 }
 
 
-
-/* Function: FUN_00471450 @ 0x00471450 */
+/* FUN_00471450 @ 0x00471450 */
 
 bool __fastcall FUN_00471450(LPCVOID param_1,uint param_2,uint param_3)
 
 {
-    /* TODO: 48 lines - has decompiler artifacts */
+    /* STUB: 48 lines not yet reconstructed */
     return 0;
 }
 
 
-
-/* Function: FUN_00471550 @ 0x00471550 */
+/* FUN_00471550 @ 0x00471550 */
 
 bool __fastcall FUN_00471550(FARPROC param_1)
 
@@ -1042,8 +1015,7 @@ bool __fastcall FUN_00471550(FARPROC param_1)
 }
 
 
-
-/* Function: FUN_00471570 @ 0x00471570 */
+/* FUN_00471570 @ 0x00471570 */
 
 int FUN_00471570(void)
 
@@ -1054,8 +1026,7 @@ int FUN_00471570(void)
 }
 
 
-
-/* Function: FUN_00471590 @ 0x00471590 */
+/* FUN_00471590 @ 0x00471590 */
 
 void FUN_00471590(void)
 
@@ -1066,8 +1037,7 @@ void FUN_00471590(void)
 }
 
 
-
-/* Function: FUN_00471650 @ 0x00471650 */
+/* FUN_00471650 @ 0x00471650 */
 
 int __cdecl FUN_00471650(LPCRITICAL_SECTION param_1,int *param_2)
 
@@ -1081,14 +1051,12 @@ int __cdecl FUN_00471650(LPCRITICAL_SECTION param_1,int *param_2)
 }
 
 
-
 /* Function: GetCurrentThreadId @ 0x00471750 */
 
 /* Removed: reimplementation of system function */
 
 
-
-/* Function: FUN_004718d0 @ 0x004718d0 */
+/* FUN_004718d0 @ 0x004718d0 */
 
 int __fastcall FUN_004718d0(LPCVOID param_1)
 
@@ -1104,8 +1072,7 @@ int __fastcall FUN_004718d0(LPCVOID param_1)
 }
 
 
-
-/* Function: FUN_00471900 @ 0x00471900 */
+/* FUN_00471900 @ 0x00471900 */
 
 void __fastcall FUN_00471900(int param_1)
 
@@ -1134,8 +1101,7 @@ void __fastcall FUN_00471900(int param_1)
 }
 
 
-
-/* Function: FUN_00471930 @ 0x00471930 */
+/* FUN_00471930 @ 0x00471930 */
 
 DWORD * __fastcall FUN_00471930(int param_1,int param_2)
 
@@ -1164,8 +1130,7 @@ DWORD * __fastcall FUN_00471930(int param_1,int param_2)
 }
 
 
-
-/* Function: FUN_00471990 @ 0x00471990 */
+/* FUN_00471990 @ 0x00471990 */
 
 void __fastcall FUN_00471990(int param_1,DWORD *param_2)
 
@@ -1183,8 +1148,7 @@ void __fastcall FUN_00471990(int param_1,DWORD *param_2)
 }
 
 
-
-/* Function: FUN_004719b0 @ 0x004719b0 */
+/* FUN_004719b0 @ 0x004719b0 */
 
 int __fastcall FUN_004719b0(LPCSTR param_1,int param_2)
 
@@ -1202,7 +1166,7 @@ int __fastcall FUN_004719b0(LPCSTR param_1,int param_2)
       return 0;
     case 2:
     case 3:
-                    /* WARNING: Subroutine does not return */
+                    /* NOTE: Subroutine does not return */
       abort();
     case 4:
       return 1;
@@ -1214,18 +1178,16 @@ int __fastcall FUN_004719b0(LPCSTR param_1,int param_2)
 }
 
 
-
 /* Function: WinGCreateBitmap @ 0x00471a30 */
 
 void WinGCreateBitmap(void)
 
 {
-                    /* WARNING: Could not recover jumptable at 0x00471a30. Too many branches */
-                    /* WARNING: Treating indirect jump as call */
+                    /* NOTE: Could not recover jumptable at 0x00471a30. Too many branches */
+                    /* NOTE: Treating indirect jump as call */
   WinGCreateBitmap();
   return;
 }
-
 
 
 /* Function: WinGCreateDC @ 0x00471a36 */
@@ -1233,12 +1195,11 @@ void WinGCreateBitmap(void)
 void WinGCreateDC(void)
 
 {
-                    /* WARNING: Could not recover jumptable at 0x00471a36. Too many branches */
-                    /* WARNING: Treating indirect jump as call */
+                    /* NOTE: Could not recover jumptable at 0x00471a36. Too many branches */
+                    /* NOTE: Treating indirect jump as call */
   WinGCreateDC();
   return;
 }
-
 
 
 /* Function: WinGRecommendDIBFormat @ 0x00471a3c */
@@ -1246,12 +1207,11 @@ void WinGCreateDC(void)
 void WinGRecommendDIBFormat(void)
 
 {
-                    /* WARNING: Could not recover jumptable at 0x00471a3c. Too many branches */
-                    /* WARNING: Treating indirect jump as call */
+                    /* NOTE: Could not recover jumptable at 0x00471a3c. Too many branches */
+                    /* NOTE: Treating indirect jump as call */
   WinGRecommendDIBFormat();
   return;
 }
-
 
 
 /* Function: WinGBitBlt @ 0x00471a42 */
@@ -1259,11 +1219,9 @@ void WinGRecommendDIBFormat(void)
 /* Removed: reimplementation of system function */
 
 
-
 /* Function: WinGSetDIBColorTable @ 0x00471a48 */
 
 /* Removed: reimplementation of system function */
-
 
 
 /* Function: PrintDlgA @ 0x00471a4e */
@@ -1271,11 +1229,9 @@ void WinGRecommendDIBFormat(void)
 /* Removed: reimplementation of system function */
 
 
-
 /* Function: CommDlgExtendedError @ 0x00471a54 */
 
 /* Removed: reimplementation of system function */
-
 
 
 /* Function: GetOpenFileNameA @ 0x00471a5a */
@@ -1283,11 +1239,9 @@ void WinGRecommendDIBFormat(void)
 /* Removed: reimplementation of system function */
 
 
-
 /* Function: GetSaveFileNameA @ 0x00471a60 */
 
 /* Removed: reimplementation of system function */
-
 
 
 /* Function: __onexit @ 0x00471a70 */
@@ -1300,10 +1254,9 @@ void WinGRecommendDIBFormat(void)
 void __cdecl __onexit(_onexit_t param_1)
 
 {
-    /* TODO: 28 lines - has decompiler artifacts */
+    /* STUB: 28 lines not yet reconstructed */
     return;
 }
-
 
 
 /* Function: _atexit @ 0x00471b10 */
@@ -1323,18 +1276,16 @@ int __cdecl _atexit(void_callback *param_1)
 }
 
 
-
 /* Function: __CxxFrameHandler @ 0x00471b24 */
 
 void __CxxFrameHandler(void)
 
 {
-                    /* WARNING: Could not recover jumptable at 0x00471b24. Too many branches */
-                    /* WARNING: Treating indirect jump as call */
+                    /* NOTE: Could not recover jumptable at 0x00471b24. Too many branches */
+                    /* NOTE: Treating indirect jump as call */
   __CxxFrameHandler();
   return;
 }
-
 
 
 /* Function: __eh_vector_destructor_iterator @ 0x00471b30 */
@@ -1371,16 +1322,14 @@ void _eh_vector_destructor_iterator_
 }
 
 
-
-/* Function: FUN_00471ba0 @ 0x00471ba0 */
+/* FUN_00471ba0 @ 0x00471ba0 */
 
 void FUN_00471ba0(void)
 
 {
-    /* TODO: 8 lines - has decompiler artifacts */
+    /* STUB: 8 lines not yet reconstructed */
     return;
 }
-
 
 
 /* Function: __ArrayUnwind @ 0x00471bc0 */
@@ -1411,7 +1360,6 @@ void __ArrayUnwind(void *param_1,uint param_2,int param_3,callback_ptr *param_4)
   *__seh_chain = loc_14;
   return;
 }
-
 
 
 /* Function: __eh_vector_constructor_iterator @ 0x00471c60 */
@@ -1454,16 +1402,14 @@ void _eh_vector_constructor_iterator_
 }
 
 
-
-/* Function: FUN_00471cd0 @ 0x00471cd0 */
+/* FUN_00471cd0 @ 0x00471cd0 */
 
 void FUN_00471cd0(void)
 
 {
-    /* TODO: 8 lines - has decompiler artifacts */
+    /* STUB: 8 lines not yet reconstructed */
     return;
 }
-
 
 
 /* Function: memmove @ 0x00471cec */
@@ -1471,18 +1417,16 @@ void FUN_00471cd0(void)
 /* Removed: reimplementation of system function */
 
 
-
 /* Function: ftol @ 0x00471cf2 */
 
 void __cdecl ftol(void)
 
 {
-                    /* WARNING: Could not recover jumptable at 0x00471cf2. Too many branches */
-                    /* WARNING: Treating indirect jump as call */
+                    /* NOTE: Could not recover jumptable at 0x00471cf2. Too many branches */
+                    /* NOTE: Treating indirect jump as call */
   ftol();
   return;
 }
-
 
 
 /* Function: _CIacos @ 0x00471cfe */
@@ -1490,17 +1434,16 @@ void __cdecl ftol(void)
 void _CIacos(void)
 
 {
-                    /* WARNING: Could not recover jumptable at 0x00471cfe. Too many branches */
-                    /* WARNING: Treating indirect jump as call */
+                    /* NOTE: Could not recover jumptable at 0x00471cfe. Too many branches */
+                    /* NOTE: Treating indirect jump as call */
   _CIacos();
   return;
 }
 
 
+/* FUN_00471d10 @ 0x00471d10 */
 
-/* Function: FUN_00471d10 @ 0x00471d10 */
-
-/* WARNING: Unable to track spacebase fully for stack */
+/* NOTE: Unable to track spacebase fully for stack */
 
 void FUN_00471d10(void)
 
@@ -1518,18 +1461,16 @@ void FUN_00471d10(void)
 }
 
 
-
 /* Function: entry @ 0x00471d40 */
 
-/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* NOTE: overlapping globals */
 
 void entry(void)
 
 {
-    /* TODO: 74 lines - has decompiler artifacts */
+    /* STUB: 74 lines not yet reconstructed */
     return;
 }
-
 
 
 /* Function: abort @ 0x00471ee8 */
@@ -1537,13 +1478,12 @@ void entry(void)
 void __cdecl abort(void)
 
 {
-                    /* WARNING: Could not recover jumptable at 0x00471ee8. Too many branches */
-                    /* WARNING: Subroutine does not return */
-                    /* WARNING: Treating indirect jump as call */
+                    /* NOTE: Could not recover jumptable at 0x00471ee8. Too many branches */
+                    /* NOTE: Subroutine does not return */
+                    /* NOTE: Treating indirect jump as call */
   abort();
   return;
 }
-
 
 
 /* Function: __dllonexit @ 0x00471eee */
@@ -1551,12 +1491,11 @@ void __cdecl abort(void)
 void __dllonexit(void)
 
 {
-                    /* WARNING: Could not recover jumptable at 0x00471eee. Too many branches */
-                    /* WARNING: Treating indirect jump as call */
+                    /* NOTE: Could not recover jumptable at 0x00471eee. Too many branches */
+                    /* NOTE: Treating indirect jump as call */
   __dllonexit();
   return;
 }
-
 
 
 /* Function: _initterm @ 0x00471f00 */
@@ -1564,12 +1503,11 @@ void __dllonexit(void)
 void __cdecl _initterm(void)
 
 {
-                    /* WARNING: Could not recover jumptable at 0x00471f00. Too many branches */
-                    /* WARNING: Treating indirect jump as call */
+                    /* NOTE: Could not recover jumptable at 0x00471f00. Too many branches */
+                    /* NOTE: Treating indirect jump as call */
   _initterm();
   return;
 }
-
 
 
 /* Function: __setdefaultprecision @ 0x00471f10 */
@@ -1587,15 +1525,13 @@ void __setdefaultprecision(void)
 }
 
 
-
-/* Function: FUN_00471f40 @ 0x00471f40 */
+/* FUN_00471f40 @ 0x00471f40 */
 
 void FUN_00471f40(void)
 
 {
   return;
 }
-
 
 
 /* Function: _controlfp @ 0x00471f42 */
@@ -1605,11 +1541,10 @@ uint __cdecl _controlfp(uint _NewValue,uint _Mask)
 {
   uint u1;
   
-                    /* WARNING: Could not recover jumptable at 0x00471f42. Too many branches */
-                    /* WARNING: Treating indirect jump as call */
+                    /* NOTE: Could not recover jumptable at 0x00471f42. Too many branches */
+                    /* NOTE: Treating indirect jump as call */
   u1 = _controlfp(_NewValue,_Mask);
   return u1;
 }
-
 
 
