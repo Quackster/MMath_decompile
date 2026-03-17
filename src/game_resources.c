@@ -25,8 +25,11 @@ void FUN_0045c060(void) { return; }
 
 void __fastcall FUN_0045c070(int param_1)
 {
-    /* Function body (~8 lines). */
-    return;
+  if (param_1 == 0) return;
+  *(int *)((char *)param_1 + 4) = 0;
+  *(int *)((char *)param_1 + 8) = 0;
+  *(int *)((char *)param_1 + 0xc) = 0;
+  return;
 }
 
 

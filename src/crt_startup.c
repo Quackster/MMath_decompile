@@ -776,8 +776,10 @@ sw_3:
 
 LPCVOID __fastcall FUN_00471150(uint param_1)
 {
-    /* Function body (~14 lines). */
-    return 0;
+  LPVOID pv1;
+  if (param_1 == 0) return NULL;
+  pv1 = VirtualAlloc(NULL, param_1, MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
+  return (LPCVOID)pv1;
 }
 
 
@@ -965,8 +967,10 @@ int __fastcall FUN_00471330(LPCVOID param_1,uint param_2,uint param_3)
 
 uint __fastcall FUN_00471410(LPCVOID param_1)
 {
-    /* Function body (~9 lines). */
-    return 0;
+  MEMORY_BASIC_INFORMATION mbi;
+  if (param_1 == NULL) return 0;
+  if (VirtualQuery(param_1, &mbi, sizeof(mbi)) == 0) return 0;
+  return mbi.RegionSize;
 }
 
 

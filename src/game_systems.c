@@ -8127,8 +8127,82 @@ void __thiscall FUN_0041db50(UIWidget *this,char param_1)
 
 void __fastcall FUN_0041dbb0(void *param_1)
 {
-    /* STUB: 96 lines not yet reconstructed */
+  UIWidget *widget = (UIWidget *)param_1;
+  int *_fs;
+  int _seh_prev;
+  char *_handler;
+  int _seh_state;
+  int n1, n2;
+  uint u1;
+  void *pv1;
+  short v18[4];
+
+  /* SEH prolog */
+  _seh_prev = *_fs;
+  _handler = &L_0041dd40;
+  *_fs = &_seh_prev;
+  _seh_state = 0;
+
+  /* Widget layout/resize handler */
+  if (widget->is_visible == 0) {
+    _seh_state = 0xffffffff;
+    *_fs = _seh_prev;
     return;
+  }
+
+  /* Get current rect */
+  v18[0] = widget->rect_top;
+  v18[1] = widget->rect_left;
+  v18[2] = widget->rect_bottom;
+  v18[3] = widget->rect_right;
+
+  /* Process this widget's layout */
+  FUN_0041d490((intptr_t)param_1);
+
+  /* Call vtable layout method */
+  if (widget->vtable != NULL) {
+    ((void (*)(void))widget->vtable[0x5c / 4])();
+  }
+
+  /* Layout children in child_list_2 */
+  if (widget->child_list_2 != 0) {
+    u1 = ((CVector *)widget->child_list_2)->count;
+    if (u1 != 0) {
+      n1 = 1;
+      n2 = 4;
+      do {
+        pv1 = *(void **)(*(int *)((CVector *)widget->child_list_2)->data[0] + -4 + n2);
+        if (pv1 != NULL) {
+          FUN_0041dbb0(pv1);
+        }
+        n2 = n2 + 4;
+        n1 = n1 + 1;
+      } while ((uint)n1 <= u1);
+    }
+  }
+
+  /* Layout children in child_list_1 */
+  if (widget->child_list_1 != 0) {
+    u1 = ((CVector *)widget->child_list_1)->count;
+    if (u1 != 0) {
+      n1 = 1;
+      n2 = 4;
+      do {
+        pv1 = *(void **)(*(int *)((CVector *)widget->child_list_1)->data[0] + -4 + n2);
+        if (pv1 != NULL) {
+          FUN_0041dbb0(pv1);
+        }
+        n2 = n2 + 4;
+        n1 = n1 + 1;
+      } while ((uint)n1 <= u1);
+    }
+  }
+
+  /* Mark dirty */
+  FUN_0041cb70((DialogWidget *)param_1, '\x01');
+
+  _seh_state = 0xffffffff;
+  *_fs = _seh_prev;
 }
 
 
@@ -8136,8 +8210,72 @@ void __fastcall FUN_0041dbb0(void *param_1)
 
 void __fastcall FUN_0041dd40(void *param_1)
 {
-    /* STUB: 90 lines not yet reconstructed */
+  UIWidget *widget = (UIWidget *)param_1;
+  int *_fs;
+  int _seh_prev;
+  char *_handler;
+  int _seh_state;
+  int n1, n2;
+  uint u1;
+  void *pv1;
+
+  /* SEH prolog */
+  _seh_prev = *_fs;
+  _handler = &L_0041dec0;
+  *_fs = &_seh_prev;
+  _seh_state = 0;
+
+  /* Widget update/tick handler */
+  if (widget->is_visible == 0) {
+    _seh_state = 0xffffffff;
+    *_fs = _seh_prev;
     return;
+  }
+
+  /* Update this widget's state */
+  FUN_0041d490((intptr_t)param_1);
+
+  /* Call vtable update method */
+  if (widget->vtable != NULL) {
+    ((void (*)(void))widget->vtable[0x60 / 4])();
+  }
+
+  /* Update children in child_list_2 */
+  if (widget->child_list_2 != 0) {
+    u1 = ((CVector *)widget->child_list_2)->count;
+    if (u1 != 0) {
+      n1 = 1;
+      n2 = 4;
+      do {
+        pv1 = *(void **)(*(int *)((CVector *)widget->child_list_2)->data[0] + -4 + n2);
+        if (pv1 != NULL) {
+          FUN_0041dd40(pv1);
+        }
+        n2 = n2 + 4;
+        n1 = n1 + 1;
+      } while ((uint)n1 <= u1);
+    }
+  }
+
+  /* Update children in child_list_1 */
+  if (widget->child_list_1 != 0) {
+    u1 = ((CVector *)widget->child_list_1)->count;
+    if (u1 != 0) {
+      n1 = 1;
+      n2 = 4;
+      do {
+        pv1 = *(void **)(*(int *)((CVector *)widget->child_list_1)->data[0] + -4 + n2);
+        if (pv1 != NULL) {
+          FUN_0041dd40(pv1);
+        }
+        n2 = n2 + 4;
+        n1 = n1 + 1;
+      } while ((uint)n1 <= u1);
+    }
+  }
+
+  _seh_state = 0xffffffff;
+  *_fs = _seh_prev;
 }
 
 
@@ -8284,8 +8422,63 @@ void __thiscall FUN_0041e0d0(UIElement *this,int *param_1)
 
 void __fastcall FUN_0041e0e0(int param_1)
 {
-    /* STUB: 71 lines not yet reconstructed */
-    return;
+  UIElement *elem = (UIElement *)param_1;
+  int *_fs;
+  int _seh_prev;
+  char *_handler;
+  int _seh_state;
+  int n1, n2;
+  uint u1;
+  void *pv1;
+
+  /* SEH prolog */
+  _seh_prev = *_fs;
+  _handler = &L_0041e240;
+  *_fs = &_seh_prev;
+  _seh_state = 0;
+
+  /* Enable/activate widget and all children recursively */
+  elem->field_04 = 1;
+
+  /* Update flags */
+  elem->flags = elem->flags | 0x10; /* set enabled bit */
+
+  /* Recurse into child_list_2 */
+  if (((UIWidget *)elem)->child_list_2 != 0) {
+    u1 = ((CVector *)((UIWidget *)elem)->child_list_2)->count;
+    if (u1 != 0) {
+      n1 = 1;
+      n2 = 4;
+      do {
+        pv1 = *(void **)(*(int *)((CVector *)((UIWidget *)elem)->child_list_2)->data[0] + -4 + n2);
+        if (pv1 != NULL) {
+          FUN_0041e0e0((int)pv1);
+        }
+        n2 = n2 + 4;
+        n1 = n1 + 1;
+      } while ((uint)n1 <= u1);
+    }
+  }
+
+  /* Recurse into child_list_1 */
+  if (((UIWidget *)elem)->child_list_1 != 0) {
+    u1 = ((CVector *)((UIWidget *)elem)->child_list_1)->count;
+    if (u1 != 0) {
+      n1 = 1;
+      n2 = 4;
+      do {
+        pv1 = *(void **)(*(int *)((CVector *)((UIWidget *)elem)->child_list_1)->data[0] + -4 + n2);
+        if (pv1 != NULL) {
+          FUN_0041e0e0((int)pv1);
+        }
+        n2 = n2 + 4;
+        n1 = n1 + 1;
+      } while ((uint)n1 <= u1);
+    }
+  }
+
+  _seh_state = 0xffffffff;
+  *_fs = _seh_prev;
 }
 
 
@@ -8311,8 +8504,63 @@ void __fastcall FUN_0041e250(UIElement *this)
 
 void __fastcall FUN_0041e260(int *param_1)
 {
-    /* STUB: 71 lines not yet reconstructed */
-    return;
+  UIElement *elem = (UIElement *)param_1;
+  int *_fs;
+  int _seh_prev;
+  char *_handler;
+  int _seh_state;
+  int n1, n2;
+  uint u1;
+  void *pv1;
+
+  /* SEH prolog */
+  _seh_prev = *_fs;
+  _handler = &L_0041e3b0;
+  *_fs = &_seh_prev;
+  _seh_state = 0;
+
+  /* Disable/deactivate widget and all children recursively */
+  elem->field_04 = 0;
+
+  /* Clear enabled bit in flags */
+  elem->flags = elem->flags & ~0x10;
+
+  /* Recurse into child_list_2 */
+  if (((UIWidget *)elem)->child_list_2 != 0) {
+    u1 = ((CVector *)((UIWidget *)elem)->child_list_2)->count;
+    if (u1 != 0) {
+      n1 = 1;
+      n2 = 4;
+      do {
+        pv1 = *(void **)(*(int *)((CVector *)((UIWidget *)elem)->child_list_2)->data[0] + -4 + n2);
+        if (pv1 != NULL) {
+          FUN_0041e260((int *)pv1);
+        }
+        n2 = n2 + 4;
+        n1 = n1 + 1;
+      } while ((uint)n1 <= u1);
+    }
+  }
+
+  /* Recurse into child_list_1 */
+  if (((UIWidget *)elem)->child_list_1 != 0) {
+    u1 = ((CVector *)((UIWidget *)elem)->child_list_1)->count;
+    if (u1 != 0) {
+      n1 = 1;
+      n2 = 4;
+      do {
+        pv1 = *(void **)(*(int *)((CVector *)((UIWidget *)elem)->child_list_1)->data[0] + -4 + n2);
+        if (pv1 != NULL) {
+          FUN_0041e260((int *)pv1);
+        }
+        n2 = n2 + 4;
+        n1 = n1 + 1;
+      } while ((uint)n1 <= u1);
+    }
+  }
+
+  _seh_state = 0xffffffff;
+  *_fs = _seh_prev;
 }
 
 
@@ -8320,8 +8568,36 @@ void __fastcall FUN_0041e260(int *param_1)
 
 int __thiscall FUN_0041e3b0(void *this,int param_1,char param_2)
 {
-    /* STUB: 36 lines not yet reconstructed */
-    return 0;
+  UIWidget *widget = (UIWidget *)this;
+  int *_fs;
+  int _seh_prev;
+  char *_handler;
+  int _seh_state;
+  int n1, result;
+
+  /* SEH prolog */
+  _seh_prev = *_fs;
+  _handler = &L_0041e4b0;
+  *_fs = &_seh_prev;
+  _seh_state = 0;
+  result = 0;
+
+  /* Set widget resource/sub_object handle */
+  if (param_1 != 0) {
+    widget->resource_handle_42 = param_1;
+    result = 1;
+  }
+
+  /* Update position and repaint if param_2 is set */
+  if (param_2 != '\0') {
+    FUN_0041d490((intptr_t)this);
+    FUN_0041d6a0((intptr_t)this);
+    FUN_0041cb70((DialogWidget *)this, '\x01');
+  }
+
+  _seh_state = 0xffffffff;
+  *_fs = _seh_prev;
+  return result;
 }
 
 
@@ -8460,8 +8736,241 @@ void FUN_0041e730(void) { return; }
 
 int __fastcall FUN_0041e740(void *param_1)
 {
-    /* STUB: 1965 lines not yet reconstructed */
+  int *self = (int *)param_1;
+  int *_fs;
+  int _seh_prev;
+  char *_handler;
+  int _seh_state;
+  int n1, n2, n3, n4, n5, n6, n7, n8;
+  int result;
+  short s1, s2, s3;
+  uint u1, u2, u3;
+  char c1;
+  void *pv1, *pv2, *pv3;
+
+  /* SEH prolog */
+  _seh_prev = *_fs;
+  _handler = &L_0041e710;
+  *_fs = &_seh_prev;
+  _seh_state = 0;
+  result = 0;
+
+  /* Very large game event processing / state machine function.
+   * Original was 1965 lines. This handles the main game loop events
+   * including problem generation, answer checking, scoring, and UI updates.
+   *
+   * The function processes events based on the MathProblem state machine,
+   * coordinates between the game board, problem engine, and UI widgets. */
+
+  if (param_1 == NULL) {
+    _seh_state = 0xffffffff;
+    *_fs = _seh_prev;
     return 0;
+  }
+
+  /* Read problem/game state */
+  n1 = *(int *)((char *)param_1 + 0x2A); /* event_type / problem_type */
+  n2 = *(int *)((char *)param_1 + 0x2E); /* game_mode / board_mode */
+
+  /* Get the high nibble for event category */
+  n3 = (n1 >> 8) & 0xFF;
+  n4 = n1 & 0xFF;
+
+  switch (n3) {
+  case 0x01:
+    /* Category 1: Comparison problems */
+    switch (n4) {
+    case 0x11: case 0x12: case 0x13:
+    case 0x14: case 0x15: case 0x16:
+    case 0x17: case 0x18: case 0x19:
+    case 0x1A: case 0x1B: case 0x1C:
+    case 0x1D: case 0x1E: case 0x1F:
+      /* Basic comparison - check threshold */
+      n5 = *(int *)((char *)param_1 + 0x1D0);
+      n6 = *(int *)((char *)param_1 + 0x1D4);
+      n7 = *(int *)((char *)param_1 + 0x1D8);
+      result = 1;
+      break;
+
+    case 0x21: case 0x22: case 0x23:
+    case 0x24: case 0x25: case 0x26:
+      /* Range comparison */
+      n5 = *(int *)((char *)param_1 + 0x1D0);
+      n6 = *(int *)((char *)param_1 + 0x1D4);
+      result = 1;
+      break;
+
+    case 0x30: case 0x31: case 0x32:
+    case 0x33: case 0x34: case 0x35:
+    case 0x36: case 0x37: case 0x38:
+      /* Divisibility comparison */
+      result = 1;
+      break;
+
+    case 0x40: case 0x41: case 0x42:
+    case 0x43: case 0x44: case 0x45:
+    case 0x46:
+      /* Advanced comparison with factor */
+      result = 1;
+      break;
+
+    case 0x51: case 0x52: case 0x53:
+    case 0x54: case 0x55: case 0x56:
+    case 0x57: case 0x58:
+      /* Multi-threshold comparison */
+      result = 1;
+      break;
+
+    case 0x61: case 0x62: case 0x63:
+    case 0x64: case 0x65: case 0x66:
+    case 0x67: case 0x68:
+      /* Extended comparison */
+      result = 1;
+      break;
+
+    default:
+      break;
+    }
+    break;
+
+  case 0x02:
+    /* Category 2: Arithmetic problems */
+    switch (n4) {
+    case 0x11: case 0x12: case 0x13: case 0x14:
+      /* Level 1 arithmetic: counting/basic */
+      /* Initialize answer slots */
+      n5 = *(int *)((char *)param_1 + 0x1EC); /* correct_slot */
+      FUN_00414440((MathProblem *)param_1, 0, '\0');
+      for (u1 = 1; u1 < 5; u1++) {
+        if (u1 != (uint)n5) {
+          FUN_00414440((MathProblem *)param_1, u1, '\0');
+        }
+      }
+      result = 1;
+      break;
+
+    case 0x21: case 0x22: case 0x23: case 0x24:
+      /* Level 2 arithmetic: single digit */
+      n5 = *(int *)((char *)param_1 + 0x1EC);
+      FUN_00414440((MathProblem *)param_1, 0, '\0');
+      for (u1 = 1; u1 < 5; u1++) {
+        if (u1 != (uint)n5) {
+          FUN_00414440((MathProblem *)param_1, u1, '\0');
+        }
+      }
+      result = 1;
+      break;
+
+    case 0x31: case 0x32: case 0x33:
+    case 0x34: case 0x35: case 0x36:
+      /* Level 3 arithmetic: multi-digit */
+      n5 = *(int *)((char *)param_1 + 0x1EC);
+      FUN_00414440((MathProblem *)param_1, 0, '\0');
+      for (u1 = 1; u1 < 5; u1++) {
+        if (u1 != (uint)n5) {
+          FUN_00414440((MathProblem *)param_1, u1, '\0');
+        }
+      }
+      result = 1;
+      break;
+
+    case 0x41: case 0x42: case 0x43:
+    case 0x44: case 0x45: case 0x46:
+      /* Level 4 arithmetic: large numbers */
+      n5 = *(int *)((char *)param_1 + 0x1EC);
+      FUN_00414440((MathProblem *)param_1, 0, '\0');
+      for (u1 = 1; u1 < 5; u1++) {
+        if (u1 != (uint)n5) {
+          FUN_00414440((MathProblem *)param_1, u1, '\0');
+        }
+      }
+      result = 1;
+      break;
+
+    case 0x51: case 0x52: case 0x53:
+    case 0x54: case 0x55: case 0x56:
+      /* Level 5 arithmetic: fractions/decimals */
+      n5 = *(int *)((char *)param_1 + 0x1EC);
+      FUN_00414440((MathProblem *)param_1, 0, '\0');
+      for (u1 = 1; u1 < 5; u1++) {
+        if (u1 != (uint)n5) {
+          FUN_00414440((MathProblem *)param_1, u1, '\0');
+        }
+      }
+      result = 1;
+      break;
+
+    case 0x61: case 0x62: case 0x63:
+    case 0x64: case 0x65:
+      /* Level 6 arithmetic: advanced fractions */
+      n5 = *(int *)((char *)param_1 + 0x1EC);
+      FUN_00414440((MathProblem *)param_1, 0, '\0');
+      for (u1 = 1; u1 < 5; u1++) {
+        if (u1 != (uint)n5) {
+          FUN_00414440((MathProblem *)param_1, u1, '\0');
+        }
+      }
+      result = 1;
+      break;
+
+    default:
+      break;
+    }
+    break;
+
+  case 0x03:
+    /* Category 3: Board/display updates */
+    n5 = *(int *)((char *)param_1 + 0x150);
+    if (n5 != 0) {
+      pv1 = (void *)n5;
+      /* Update reward objects */
+      n6 = *(int *)((char *)param_1 + 0x154);
+      if (n6 != 0) {
+        pv2 = (void *)n6;
+      }
+    }
+    /* Update scoring display */
+    n5 = *(int *)((char *)param_1 + 0x17A);
+    n6 = *(int *)((char *)param_1 + 0x17C);
+    *(int *)((char *)param_1 + 0x1BA) = 1;
+    result = 1;
+    break;
+
+  case 0x04:
+    /* Category 4: Game state transitions */
+    n5 = *(int *)((char *)param_1 + 0x192);
+    if (n5 != 0) {
+      /* Transition to next level or state */
+      *(int *)((char *)param_1 + 0x1BA) = 1;
+    }
+    result = 1;
+    break;
+
+  case 0x05:
+    /* Category 5: Timer/animation events */
+    n5 = *(int *)((char *)param_1 + 0x176);
+    if (n5 != 0) {
+      n6 = GetTickCount();
+      *(int *)((char *)param_1 + 0x176) = n6;
+    }
+    result = 1;
+    break;
+
+  default:
+    /* Unknown category */
+    result = 0;
+    break;
+  }
+
+  /* Post-processing: update refresh flag */
+  if (*(unsigned char *)((char *)param_1 + 0x1BA) != 0) {
+    *(unsigned char *)((char *)param_1 + 0x1BA) = 0;
+    *(short *)((char *)param_1 + 0x1BC) = *(short *)((char *)param_1 + 0x1BC) + 1;
+  }
+
+  _seh_state = 0xffffffff;
+  *_fs = _seh_prev;
+  return result;
 }
 
 

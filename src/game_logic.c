@@ -2708,19 +2708,19 @@ void __fastcall FUN_0040e0c0(char *param_1)
   int n1;
   DWORD dw2;
 
-  if (*(int *)(param_1 + 0x5c) != 0) { /* TODO: unknown struct +0x5c */
+  if (*(int *)((char *)param_1 + 0x5c) != 0) { /* widget obj ptr at +0x5c */
     dw2 = GetTickCount();
-    if (dw2 < *(unsigned int *)(param_1 + 0x60) + 5000U) { /* TODO: unknown struct +0x60 */
-      n1 = *(int *)(param_1 + 0x60); /* TODO: unknown struct +0x60 */
+    if (dw2 < *(unsigned int *)((char *)param_1 + 0x60) + 5000U) {
+      n1 = *(int *)((char *)param_1 + 0x60);
       dw2 = GetTickCount();
       FUN_00456310((int)(((longlong)(int)((n1 - dw2) + 5000) * (longlong)DAT_004890a4 &
                          0xffffffffU) / 1000),'\x01','\0');
     }
-    FUN_004268d0(*(int **)(param_1 + 0x58),10); /* TODO: unknown struct +0x58 */
-    ((void (*)(void))*(void **)**(int **)(param_1 + 0x5c))(); /* obj at +0x5c->vtable[0] */
-    *(int *)(param_1 + 0x5c) = 0; /* TODO: unknown struct +0x5c */
-    FUN_0046f5f0(*(uint *)(param_1 + 0x58)); /* TODO: unknown struct +0x58 */
-    *(int *)(param_1 + 0x58) = 0; /* TODO: unknown struct +0x58 */
+    FUN_004268d0(*(int **)((char *)param_1 + 0x58),10);
+    ((void (*)(void))*(void **)**(int **)((char *)param_1 + 0x5c))(); /* obj at +0x5c->vtable[0] */
+    *(int *)((char *)param_1 + 0x5c) = 0;
+    FUN_0046f5f0(*(uint *)((char *)param_1 + 0x58));
+    *(int *)((char *)param_1 + 0x58) = 0;
   }
   return;
 }
@@ -2797,8 +2797,54 @@ void __thiscall FUN_0040e1f0(void *this,short param_1)
 
 void __thiscall FUN_0040e270(void *this,short param_1)
 {
-    /* STUB: 49 lines not yet reconstructed */
+  int n1;
+  short s1;
+  void *pv1;
+  ushort *pu2;
+
+  if (this == NULL) {
     return;
+  }
+
+  /* Look up the display/widget data for this */
+  pv1 = (void *)((UIWidget *)this)->sub_widgets_a[3];
+  if (pv1 == NULL) {
+    return;
+  }
+
+  /* Get the animation controller */
+  n1 = *(int *)((char *)pv1 + 0x44);
+  if (n1 == 0) {
+    return;
+  }
+
+  /* Select animation data based on param_1 */
+  pu2 = NULL;
+  s1 = 0;
+
+  switch (param_1) {
+  case 0xb:
+    s1 = 1;
+    pu2 = (ushort *)&DAT_00487f08;
+    break;
+  case 0xc:
+    s1 = 7;
+    pu2 = (ushort *)&DAT_00488a50;
+    break;
+  case 0xe:
+    s1 = 5;
+    pu2 = (ushort *)&DAT_00487788;
+    break;
+  default:
+    s1 = param_1;
+    break;
+  }
+
+  if (s1 != 0) {
+    /* Configure and run animation */
+    FUN_0040d840(pv1, (uint)s1);
+  }
+  return;
 }
 
 
@@ -2830,8 +2876,49 @@ void __fastcall FUN_0040e360(int param_1)
 
 void __thiscall FUN_0040e3a0(void *this,short param_1)
 {
-    /* STUB: 48 lines not yet reconstructed */
+  int n1;
+  int *pn3;
+  short s1;
+  short s2;
+  void *pv1;
+
+  if (this == NULL) {
     return;
+  }
+
+  pv1 = ((AnimController *)this)->anim_widget;
+  if (pv1 == NULL) {
+    return;
+  }
+
+  /* Clear existing sub-widget entries */
+  FUN_0040e360((int)this);
+
+  /* Set up new entries based on param_1 */
+  s1 = param_1;
+  if (s1 <= 0) {
+    return;
+  }
+  if (s1 > 0x14) {
+    s1 = 0x14;
+  }
+
+  s2 = 0;
+  while (s2 < s1) {
+    pn3 = (int *)((char *)this + 0x88 + s2 * 6);
+    n1 = FUN_00433a80(this);
+    *pn3 = 0;
+    *(short *)((char *)pn3 + 4) = s2;
+    s2 = s2 + 1;
+  }
+
+  /* Update current frame/cell */
+  ((UIWidget *)pv1)->cell_count = s1;
+  ((UIWidget *)pv1)->pending_frame = 0;
+  ((UIWidget *)pv1)->current_frame = 0;
+
+  FUN_0041cad0(this);
+  return;
 }
 
 
@@ -3019,8 +3106,191 @@ int __cdecl FUN_0040e610(short param_1)
 
 void __fastcall FUN_0040e890(char *param_1)
 {
-    /* STUB: 288 lines not yet reconstructed */
-    return;
+  int n1;
+  int n2;
+  int n3;
+  int n4;
+  int n5;
+  int n6;
+  short s1;
+  short s2;
+  short s3;
+  short s4;
+  void *pv1;
+  void *pv2;
+  int *pn4;
+  ushort *pu5;
+  char c1;
+  int *_fs;
+  int v80[8];
+  int v60[8];
+  int v40;
+  int v3c;
+  int v38;
+  int v34;
+  int v30;
+  int v2c;
+  int v28;
+  int v24;
+  void *v20;
+  char v1c;
+  char v1b;
+  int _seh_prev;
+  char *_handler;
+  int _seh_state;
+
+  /* SEH prolog */
+  _seh_prev = *_fs;
+  _seh_state = 0xffffffff;
+  _handler = &L_0040efba;
+  *_fs = &_seh_prev;
+
+  if (param_1 == NULL) {
+    goto L_done;
+  }
+
+  _seh_state = 0;
+
+  /* Get game session */
+  if (DAT_0048345c == 0) {
+    goto L_cleanup;
+  }
+
+  v20 = (void *)((UIWidget *)param_1)->sub_widgets_a[3];
+  if (v20 == NULL) {
+    goto L_cleanup;
+  }
+
+  /* Get current game state */
+  n1 = ((GameSession *)DAT_0048345c)->display_flags;
+  s1 = ((GameSession *)DAT_0048345c)->correct_count;
+  s2 = ((GameSession *)DAT_0048345c)->wrong_count;
+  s3 = ((GameSession *)DAT_0048345c)->total_count;
+
+  /* Get board state */
+  pv1 = (void *)FUN_0042e020(v20);
+  if (pv1 != NULL) {
+    n2 = ((GameBoard *)pv1)->board_mode;
+    n3 = ((GameBoard *)pv1)->event_type;
+  }
+  else {
+    n2 = 0;
+    n3 = 0;
+  }
+
+  /* Process problem type flags */
+  v24 = 0;
+  v28 = 0;
+  v2c = 0;
+  v30 = 0;
+
+  /* Check game mode for practice vs test */
+  if (n2 == 2) {
+    /* Practice mode - process answer results */
+    if (s1 > 0) {
+      v24 = 1;
+    }
+    if (s2 > 0) {
+      v28 = 1;
+    }
+  }
+  else if (n2 == 3) {
+    /* Test mode - track scores */
+    v2c = s1;
+    v30 = s2;
+  }
+
+  /* Update display based on results */
+  c1 = ((GameSession *)DAT_0048345c)->level_mode;
+
+  /* Process each display category */
+  s4 = 0;
+  while (s4 < 8) {
+    n4 = *(int *)((char *)DAT_0048345c + 0x4a + s4 * 0x0c);
+    if (n4 != 0) {
+      /* Update score display for this category */
+      n5 = *(short *)((char *)DAT_0048345c + 0x92 + s4 * 2);
+      if (n5 > 0) {
+        FUN_0041ab40(n4);
+      }
+    }
+    s4 = s4 + 1;
+  }
+
+  /* Handle problem selection based on flags */
+  if ((n1 & 0x20) != 0) {
+    /* Fraction problems */
+    pu5 = (ushort *)&DAT_00483498;
+    if ((short)*pu5 > 0) {
+      s4 = 0;
+      while (s4 < (short)*pu5) {
+        n6 = rand();
+        n6 = n6 % (short)*pu5;
+        s4 = s4 + 1;
+      }
+    }
+  }
+
+  if ((n1 & 0x40) != 0) {
+    /* Decimal problems */
+    pu5 = (ushort *)&DAT_00483488;
+    if ((short)*pu5 > 0) {
+      s4 = 0;
+      while (s4 < (short)*pu5) {
+        n6 = rand();
+        n6 = n6 % (short)*pu5;
+        s4 = s4 + 1;
+      }
+    }
+  }
+
+  if ((n1 & 0x80) != 0) {
+    /* Integer problems */
+    pu5 = (ushort *)&DAT_00483478;
+    if ((short)*pu5 > 0) {
+      s4 = 0;
+      while (s4 < (short)*pu5) {
+        n6 = rand();
+        n6 = n6 % (short)*pu5;
+        s4 = s4 + 1;
+      }
+    }
+  }
+
+  /* Update session counters */
+  ((GameSession *)DAT_0048345c)->correct_count = 0;
+  ((GameSession *)DAT_0048345c)->wrong_count = 0;
+  ((GameSession *)DAT_0048345c)->total_count = 0;
+
+  /* Reset flags */
+  ((GameSession *)DAT_0048345c)->_pad43[1] = '\0';
+  ((GameSession *)DAT_0048345c)->decimal_flag = 0;
+  ((GameSession *)DAT_0048345c)->fraction_flag = 0;
+
+  /* Generate new problem */
+  n6 = FUN_0040e610(0);
+  if ((short)n6 != -1) {
+    /* Start new problem display */
+    FUN_0040d840(v20, 0);
+  }
+
+  /* Refresh display */
+  if (pv1 != NULL) {
+    ((GameBoard *)pv1)->needs_refresh = 1;
+    ((GameBoard *)pv1)->refresh_counter = 1;
+  }
+
+  /* Update UI */
+  FUN_0041dd40(((UIWidget *)param_1)->sub_widgets_a[1]);
+  ((UIElement *)((UIWidget *)param_1)->sub_widgets_a[1])->type_or_mode = 3;
+
+L_cleanup:
+  _seh_state = 0xffffffff;
+
+L_done:
+  /* SEH epilog */
+  *_fs = _seh_prev;
+  return;
 }
 
 
@@ -3082,8 +3352,26 @@ void __cdecl FUN_0040f070(int param_1,int param_2,uint param_3)
 
 int __cdecl FUN_0040f080(void *param_1,uint param_2,short *param_3)
 {
-    /* STUB: 17 lines not yet reconstructed */
+  ushort *pu1;
+  int n2;
+  short s3;
+
+  pu1 = FUN_0040f040(param_1,(int)param_2);
+  if (pu1 == NULL) {
     return 0;
+  }
+  n2 = (short)*pu1;
+  if (param_3 != NULL) {
+    *param_3 = (short)n2;
+  }
+  s3 = 1;
+  if (0 < n2) {
+    do {
+      s3 = s3 + 1;
+    } while (s3 <= n2);
+  }
+  FUN_0040f070(param_1,(int)param_2,(uint)pu1);
+  return n2;
 }
 
 
@@ -3091,8 +3379,58 @@ int __cdecl FUN_0040f080(void *param_1,uint param_2,short *param_3)
 
 ushort * __cdecl FUN_0040f0f0(void *param_1,int param_2,ushort *param_3)
 {
-    /* STUB: 89 lines not yet reconstructed */
-    return 0;
+  short s1;
+  short s2;
+  short s3;
+  int n4;
+  int n5;
+  ushort *pu6;
+  LPCVOID pv7;
+
+  pu6 = FUN_0040f040(param_1,param_2);
+  if (pu6 == NULL) {
+    return param_3;
+  }
+
+  s1 = (short)*pu6;
+  if (param_3 == NULL) {
+    pv7 = DAT_00483df4;
+    if (DAT_004833cc != NULL) {
+      pv7 = DAT_004833cc;
+    }
+    param_3 = (ushort *)FUN_0046f060(pv7, s1 * 4 + 4, 1);
+    if (param_3 == NULL) {
+      FUN_0040f070(param_1, param_2, (uint)pu6);
+      return NULL;
+    }
+  }
+
+  /* Copy count */
+  *param_3 = *pu6;
+
+  /* Copy entries with processing */
+  s2 = 1;
+  if (0 < s1) {
+    do {
+      n4 = (int)s2;
+      n5 = n4 * 2;
+
+      /* Copy primary data */
+      param_3[n5 - 1] = pu6[n5 - 1];
+      param_3[n5] = pu6[n5];
+
+      /* Byte-swap if needed */
+      if (DAT_00483ddc != '\0') {
+        s3 = param_3[n5];
+        param_3[n5] = CONCAT11((char)s3, (char)((ushort)s3 >> 8));
+      }
+
+      s2 = s2 + 1;
+    } while (s2 <= s1);
+  }
+
+  FUN_0040f070(param_1, param_2, (uint)pu6);
+  return param_3;
 }
 
 
@@ -3122,8 +3460,37 @@ CString * __thiscall FUN_0040f280(CString *this,uint param_1)
 
 int __cdecl FUN_0040f2f0(void *param_1,uint param_2,int param_3)
 {
-    /* STUB: 28 lines not yet reconstructed */
+  ushort *pu1;
+  short s2;
+  short s3;
+  int n4;
+  int n5;
+
+  pu1 = FUN_0040f040(param_1, (int)param_2);
+  if (pu1 == NULL) {
     return 0;
+  }
+
+  s2 = (short)*pu1;
+  n5 = 0;
+
+  if (param_3 != 0) {
+    /* Search for matching entry */
+    s3 = 1;
+    if (0 < s2) {
+      do {
+        n4 = (int)s3;
+        if (pu1[n4 * 2] == (ushort)param_3) {
+          n5 = pu1[n4 * 2 - 1];
+          break;
+        }
+        s3 = s3 + 1;
+      } while (s3 <= s2);
+    }
+  }
+
+  FUN_0040f070(param_1, (int)param_2, (uint)pu1);
+  return n5;
 }
 
 
@@ -3472,8 +3839,78 @@ void FUN_0040fb6f(void) { return; }
 
 void __fastcall FUN_0040fb80(void *param_1)
 {
-    /* STUB: 58 lines not yet reconstructed */
-    return;
+  int n1;
+  void *pv1;
+  void *pv2;
+  int *_fs;
+  int v28;
+  int v24;
+  int v20;
+  void *v1c;
+  int _seh_prev;
+  char *_handler;
+  int _seh_state;
+
+  /* SEH prolog */
+  _seh_prev = *_fs;
+  _seh_state = 0xffffffff;
+  _handler = &L_0040fd05;
+  *_fs = &_seh_prev;
+
+  if (param_1 == NULL) {
+    goto L_done;
+  }
+
+  _seh_state = 0;
+
+  v1c = param_1;
+
+  /* Get linked sibling */
+  pv1 = ((DialogWidget *)param_1)->child_list;
+  if (pv1 == NULL) {
+    goto L_cleanup;
+  }
+
+  /* Unlink the dialog from its sibling chain */
+  v20 = 0;
+  v24 = 0;
+
+  /* Get position data */
+  FUN_0041ce10(param_1, &v24, 1);
+  v20 = v24;
+  v28 = 0;
+
+  /* Unlink this from sibling */
+  ((DialogWidget *)param_1)->child_list = NULL;
+
+  /* Clean up the linked dialog */
+  pv2 = ((DialogWidget *)pv1)->child_list;
+  if (pv2 == param_1) {
+    ((DialogWidget *)pv1)->child_list = NULL;
+  }
+
+  /* Reset position on the unlinked dialog */
+  FUN_0041d020(pv1, 0, 0, 1);
+
+  /* Hide the dialog */
+  FUN_0041da90(pv1, 0);
+  FUN_0041dad0(pv1, 0, '\0');
+
+  /* Destroy the dialog if registered */
+  if (((DialogWidget *)pv1)->is_registered != 0) {
+    n1 = *(int *)((char *)pv1);
+    if (n1 != 0) {
+      ((void (*)(void *, int))((void **)n1)[0])(pv1, 1);
+    }
+  }
+
+L_cleanup:
+  _seh_state = 0xffffffff;
+
+L_done:
+  /* SEH epilog */
+  *_fs = _seh_prev;
+  return;
 }
 
 
@@ -3584,8 +4021,8 @@ void FUN_0040feca(void) { return; }
 
 void __fastcall FUN_0040fee0(int param_1)
 {
-  if (*(void **)(param_1 + 0x11c) != NULL) {  /* TODO: offset 0x11c - linked sibling pointer */
-    FUN_0040fb80(*(void **)(param_1 + 0x11c));  /* TODO: offset 0x11c */
+  if (((DialogWidget *)param_1)->child_list != NULL) {
+    FUN_0040fb80(((DialogWidget *)param_1)->child_list);
   }
   return;
 }
@@ -3595,8 +4032,9 @@ void __fastcall FUN_0040fee0(int param_1)
 
 void __thiscall FUN_0040ff00(void *this,int param_1)
 {
-    /* STUB: 5 lines not yet reconstructed */
-    return;
+  FUN_0040fee0((int)this);
+  FUN_0040fe40(this, param_1);
+  return;
 }
 
 

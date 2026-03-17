@@ -372,17 +372,17 @@ int FUN_0043b460(int param_1,int param_2)
   /* Process input event based on param_2 type */
   if (param_2 == 0x101) {
     /* Key down event */
-    v48 = *(int *)(param_1 + 0x26);
-    v44 = *(int *)(param_1 + 0x2A);
-    v40 = *(int *)(param_1 + 0x2E);
-    v3c = *(int *)(param_1 + 0x32);
+    v48 = ((UIElement *)param_1)->pos_x;
+    v44 = ((UIElement *)param_1)->pos_y;
+    v40 = ((UIElement *)param_1)->pos_w;
+    v3c = ((UIElement *)param_1)->pos_h;
     result = 1;
   }
   else if (param_2 == 0x201) {
     /* Mouse button down */
-    v48 = *(int *)(param_1 + 0x26);
-    v44 = *(int *)(param_1 + 0x2A);
-    v28 = *(int *)(param_1 + 0x12);
+    v48 = ((UIElement *)param_1)->pos_x;
+    v44 = ((UIElement *)param_1)->pos_y;
+    v28 = ((UIElement *)param_1)->flags;
     if ((v28 & 1) != 0) {
       v30 = 1;
     }
@@ -390,23 +390,23 @@ int FUN_0043b460(int param_1,int param_2)
   }
   else if (param_2 == 0x202) {
     /* Mouse button up */
-    v48 = *(int *)(param_1 + 0x26);
-    v44 = *(int *)(param_1 + 0x2A);
+    v48 = ((UIElement *)param_1)->pos_x;
+    v44 = ((UIElement *)param_1)->pos_y;
     result = 1;
   }
   else if (param_2 == 0x200) {
     /* Mouse move */
-    v48 = *(int *)(param_1 + 0x26);
-    v44 = *(int *)(param_1 + 0x2A);
-    v40 = *(int *)(param_1 + 0x2E);
-    v3c = *(int *)(param_1 + 0x32);
-    v24 = *(int *)(param_1 + 0x3E);
+    v48 = ((UIElement *)param_1)->pos_x;
+    v44 = ((UIElement *)param_1)->pos_y;
+    v40 = ((UIElement *)param_1)->pos_w;
+    v3c = ((UIElement *)param_1)->pos_h;
+    v24 = ((UIElement *)param_1)->field_3e;
     result = 1;
   }
   else if (param_2 == 0x100) {
     /* Key event processing */
-    v20 = *(int *)(param_1 + 0x16);
-    v1c = *(int *)(param_1 + 0x06);
+    v20 = ((UIElement *)param_1)->type_or_mode;
+    v1c = ((UIElement *)param_1)->field_06;
     if (v20 != 0) {
       v34 = v20;
       v38 = v1c;
@@ -622,12 +622,12 @@ char __thiscall FUN_0043b880(void *this,short param_1,short param_2)
 
 void __fastcall FUN_0043b910(char *param_1)
 {
-  if (*(uint **)(param_1 + 0x14) != NULL) { /* CVector-like: data at +0x14 */
-    FUN_0046d110(*(uint **)(param_1 + 0x14));
+  if (((CVectorSmall *)param_1)->data != NULL) {
+    FUN_0046d110((uint *)((CVectorSmall *)param_1)->data);
   }
-  *(short *)(param_1 + 0x12) = 0; /* CVector-like: capacity at +0x12 */
-  *(int *)(param_1 + 0x14) = 0;   /* CVector-like: data at +0x14 */
-  *(short *)(param_1 + 0x10) = 0; /* CVector-like: count at +0x10 */
+  ((CVectorSmall *)param_1)->capacity = 0;
+  ((CVectorSmall *)param_1)->data = 0;
+  ((CVectorSmall *)param_1)->count = 0;
 }
 
 
@@ -635,7 +635,7 @@ void __fastcall FUN_0043b910(char *param_1)
 
 short __fastcall FUN_0043b940(char *param_1)
 {
-  return *(short *)(param_1 + 0x12); /* CVector-like: capacity at +0x12 */
+  return ((CVectorSmall *)param_1)->capacity;
 }
 
 
@@ -643,7 +643,7 @@ short __fastcall FUN_0043b940(char *param_1)
 
 short __fastcall FUN_0043b970(char *param_1)
 {
-  return *(short *)(param_1 + 0x10); /* CVector-like: count at +0x10 */
+  return ((CVectorSmall *)param_1)->count;
 }
 
 
@@ -1175,7 +1175,7 @@ void __fastcall FUN_0043c5d0(int param_1)
   else {
     ((GameSession *)DAT_0048345c)->score_display = ((GameSession *)DAT_0048345c)->score_display + (5 - DAT_00488e24) * 100;
   }
-  FUN_0042db60(DAT_00488e34,*(ushort **)(param_1 + 0x1ac),-1,-1); /* extended widget field +0x1AC */
+  FUN_0042db60(DAT_00488e34,*(ushort **)((char *)param_1 + 0x1ac),-1,-1);
   if ((int)((GameSession *)DAT_0048345c)->wrong_count + (int)((GameSession *)DAT_0048345c)->correct_count !=
       (int)((GameSession *)DAT_0048345c)->total_count) {
     ((GameSession *)DAT_0048345c)->correct_count = ((GameSession *)DAT_0048345c)->correct_count + 1;
@@ -1199,17 +1199,17 @@ void __fastcall FUN_0043c660(char *param_1)
     ((GameSession *)DAT_0048345c)->wrong_count = ((GameSession *)DAT_0048345c)->wrong_count + 1;
   }
   DAT_00488e04 = DAT_00488e04 + 1;
-  *(short *)(param_1 + 0x1ca) = 1;  /* extended widget: animation state at +0x1CA */
-  FUN_0042db60(DAT_00488e34,*(ushort **)(param_1 + 0x19c),-1,-1); /* extended widget field +0x19C */
+  ((ExtDialogAnim *)param_1)->anim_state = 1;
+  FUN_0042db60(DAT_00488e34,*(ushort **)((char *)param_1 + 0x19c),-1,-1);
   dw2 = GetTickCount();
-  *(short *)(param_1 + 0x1ca) = 0;  /* extended widget: animation state at +0x1CA */
+  ((ExtDialogAnim *)param_1)->anim_state = 0;
   ((GameBoard *)param_1)->last_tick = dw2; /* GameBoard->last_tick at +0x176 */
   u1 = (short)DAT_00488e04 >> 0xf;
   if (((DAT_00488e04 ^ u1) - u1 & 1 ^ u1) == u1) {
-    *(short *)(param_1 + 0x1ca) = 1;  /* extended widget: animation state at +0x1CA */
-    FUN_0042db60(DAT_00488e34,*(ushort **)(param_1 + 0x1a4),-1,-1); /* extended widget field +0x1A4 */
+    ((ExtDialogAnim *)param_1)->anim_state = 1;
+    FUN_0042db60(DAT_00488e34,*(ushort **)((char *)param_1 + 0x1a4),-1,-1);
     dw2 = GetTickCount();
-    *(short *)(param_1 + 0x1ca) = 0;  /* extended widget: animation state at +0x1CA */
+    ((ExtDialogAnim *)param_1)->anim_state = 0;
     ((GameBoard *)param_1)->last_tick = dw2; /* GameBoard->last_tick at +0x176 */
   }
   return;
@@ -1226,13 +1226,13 @@ void __fastcall FUN_0043c760(int param_1)
   
   for (pn1 = DAT_00480550; pu2 = DAT_0048055c, pn1 != NULL; pn1 = (int *)pn1[1]
       ) {
-    FUN_00451c40(*(void **)(param_1 + 0x1bc),0,(int)(short)pn1[2]); /* extended widget: MathProblem ptr at +0x1BC */
+    FUN_00451c40((void *)((ExtDialogAnim *)param_1)->anim_resource,0,(int)(short)pn1[2]);
   }
   for (; pn1 = DAT_00480550, pu2 != NULL; pu2 = (int *)pu2[1]) {
     for (; pn1 != NULL; pn1 = (int *)pn1[1]) {
       u3 = FUN_0041ba00((void *)*pu2,*pn1);
       if ((char)u3 == '\x01') {
-        FUN_00451c00(*(void **)(param_1 + 0x1bc),(int)*(short *)(pu2 + 2),(int)(short)pn1[2]); /* extended widget: MathProblem ptr at +0x1BC */
+        FUN_00451c00((void *)((ExtDialogAnim *)param_1)->anim_resource,(int)*(short *)(pu2 + 2),(int)(short)pn1[2]);
       }
     }
   }
@@ -1295,9 +1295,9 @@ void __fastcall FUN_0043c890(char *param_1)
     FUN_00405d30(pv2,0);
   }
   for (; pn4 != NULL; pn4 = (int *)pn4[1]) {
-    ((UIWidget *)*pn4)->pending_frame = *(short *)(*(int *)(param_1 + 0x1bc) + 0x22c); /* MathProblem at +0x1BC, field at +0x22C */
+    ((UIWidget *)*pn4)->pending_frame = *(short *)(((ExtDialogAnim *)param_1)->anim_resource + 0x22c);
     pv2 = (UIWidget *)*pn4;
-    s1 = *(short *)(*(int *)(param_1 + 0x1bc) + 0x22c); /* MathProblem at +0x1BC, field at +0x22C */
+    s1 = *(short *)(((ExtDialogAnim *)param_1)->anim_resource + 0x22c);
     pv2->anim_flag_0 = 0;
     pv2->anim_flag_2 = 0;
     pv2->anim_flag_1 = 0;
@@ -1697,7 +1697,7 @@ void __fastcall FUN_0043d250(char *param_1)
   for (pn3 = DAT_00480550; pn5 = DAT_0048055c, pn3 != NULL; pn3 = (int *)pn3[1]
       ) {
     b4 = false;
-    if (*(short *)(param_1 + 0x1cc) == 0) { /* extended widget: field at +0x1CC */
+    if (((ExtDialogAnim *)param_1)->anim_complete == 0) {
       for (; pn5 != NULL; pn5 = (int *)pn5[1]) {
         if (((((((UIWidget *)*pn5)->flags >> 6 & 1) != 0) &&
              (n2 = (int)((UIWidget *)*pn5)->child_list_2, n2 != 0)) &&
@@ -1785,34 +1785,34 @@ void FUN_0043dc4a(void)
 void __fastcall FUN_0043dc60(char *param_1)
 {
   FUN_00409330();
-  FUN_0043a700(DAT_004838c0,0x5e1000d,*(int **)(param_1 + 0x1d6)); /* extended widget: resource handle at +0x1D6 */
-  if (*(uint *)(param_1 + 0x198) != 0) { /* extended widget: resource at +0x198 */
-    FUN_0040f070(DAT_004838c0,0x2d0000c,*(uint *)(param_1 + 0x198));
-    *(int *)(param_1 + 0x198) = 0;
+  FUN_0043a700(DAT_004838c0,0x5e1000d,*(int **)((char *)param_1 + 0x1d6));
+  if (*(uint *)((char *)param_1 + 0x198) != 0) { /* extended widget: resource at +0x198 */
+    FUN_0040f070(DAT_004838c0,0x2d0000c,*(uint *)((char *)param_1 + 0x198));
+    *(int *)((char *)param_1 + 0x198) = 0;
   }
-  if (*(uint *)(param_1 + 0x1a8) != 0) { /* extended widget: resource at +0x1A8 */
-    FUN_0040f070(DAT_004838c0,0xc1000c,*(uint *)(param_1 + 0x1a8));
-    *(int *)(param_1 + 0x1a8) = 0;
+  if (*(uint *)((char *)param_1 + 0x1a8) != 0) { /* extended widget: resource at +0x1A8 */
+    FUN_0040f070(DAT_004838c0,0xc1000c,*(uint *)((char *)param_1 + 0x1a8));
+    *(int *)((char *)param_1 + 0x1a8) = 0;
   }
-  if (*(uint *)(param_1 + 0x1ac) != 0) { /* extended widget: resource at +0x1AC */
-    FUN_0040f070(DAT_004838c0,0xb7000c,*(uint *)(param_1 + 0x1ac));
-    *(int *)(param_1 + 0x1ac) = 0;
+  if (*(uint *)((char *)param_1 + 0x1ac) != 0) { /* extended widget: resource at +0x1AC */
+    FUN_0040f070(DAT_004838c0,0xb7000c,*(uint *)((char *)param_1 + 0x1ac));
+    *(int *)((char *)param_1 + 0x1ac) = 0;
   }
-  if (*(uint *)(param_1 + 0x19c) != 0) { /* extended widget: resource at +0x19C */
-    FUN_0040f070(DAT_004838c0,0xb2000c,*(uint *)(param_1 + 0x19c));
-    *(int *)(param_1 + 0x19c) = 0;
+  if (*(uint *)((char *)param_1 + 0x19c) != 0) { /* extended widget: resource at +0x19C */
+    FUN_0040f070(DAT_004838c0,0xb2000c,*(uint *)((char *)param_1 + 0x19c));
+    *(int *)((char *)param_1 + 0x19c) = 0;
   }
-  if (*(uint *)(param_1 + 0x1a0) != 0) { /* extended widget: resource at +0x1A0 */
-    FUN_0040f070(DAT_004838c0,0xab000c,*(uint *)(param_1 + 0x1a0));
-    *(int *)(param_1 + 0x1a0) = 0;
+  if (*(uint *)((char *)param_1 + 0x1a0) != 0) { /* extended widget: resource at +0x1A0 */
+    FUN_0040f070(DAT_004838c0,0xab000c,*(uint *)((char *)param_1 + 0x1a0));
+    *(int *)((char *)param_1 + 0x1a0) = 0;
   }
-  if (*(uint *)(param_1 + 0x1a4) != 0) { /* extended widget: resource at +0x1A4 */
-    FUN_0040f070(DAT_004838c0,0xdc000c,*(uint *)(param_1 + 0x1a4));
-    *(int *)(param_1 + 0x1a4) = 0;
+  if (*(uint *)((char *)param_1 + 0x1a4) != 0) { /* extended widget: resource at +0x1A4 */
+    FUN_0040f070(DAT_004838c0,0xdc000c,*(uint *)((char *)param_1 + 0x1a4));
+    *(int *)((char *)param_1 + 0x1a4) = 0;
   }
-  if (*(uint *)(param_1 + 0x1b0) != 0) { /* extended widget: resource at +0x1B0 */
-    FUN_0040f070(DAT_004838c0,0xdc000c,*(uint *)(param_1 + 0x1b0));
-    *(int *)(param_1 + 0x1b0) = 0;
+  if (*(uint *)((char *)param_1 + 0x1b0) != 0) { /* extended widget: resource at +0x1B0 */
+    FUN_0040f070(DAT_004838c0,0xdc000c,*(uint *)((char *)param_1 + 0x1b0));
+    *(int *)((char *)param_1 + 0x1b0) = 0;
   }
   FUN_0043e530();
 }
@@ -2619,25 +2619,25 @@ void FUN_0043f7b0(void *param_1)
 
   /* Load sprite/animation resources */
   if (*(uint *)(widget + 0x198) == 0) {
-    *(int *)(widget + 0x198) = FUN_0040f070(DAT_004838c0, 0x2d0000c, 0);
+    *(int *)(widget + 0x198) = (int)FUN_0040f0f0((void *)DAT_004838c0, 0x2d0000c, NULL);
   }
   if (*(uint *)(widget + 0x1a8) == 0) {
-    *(int *)(widget + 0x1a8) = FUN_0040f070(DAT_004838c0, 0xc1000c, 0);
+    *(int *)(widget + 0x1a8) = (int)FUN_0040f0f0((void *)DAT_004838c0, 0xc1000c, NULL);
   }
   if (*(uint *)(widget + 0x1ac) == 0) {
-    *(int *)(widget + 0x1ac) = FUN_0040f070(DAT_004838c0, 0xb7000c, 0);
+    *(int *)(widget + 0x1ac) = (int)FUN_0040f0f0((void *)DAT_004838c0, 0xb7000c, NULL);
   }
   if (*(uint *)(widget + 0x19c) == 0) {
-    *(int *)(widget + 0x19c) = FUN_0040f070(DAT_004838c0, 0xb2000c, 0);
+    *(int *)(widget + 0x19c) = (int)FUN_0040f0f0((void *)DAT_004838c0, 0xb2000c, NULL);
   }
   if (*(uint *)(widget + 0x1a0) == 0) {
-    *(int *)(widget + 0x1a0) = FUN_0040f070(DAT_004838c0, 0xab000c, 0);
+    *(int *)(widget + 0x1a0) = (int)FUN_0040f0f0((void *)DAT_004838c0, 0xab000c, NULL);
   }
   if (*(uint *)(widget + 0x1a4) == 0) {
-    *(int *)(widget + 0x1a4) = FUN_0040f070(DAT_004838c0, 0xdc000c, 0);
+    *(int *)(widget + 0x1a4) = (int)FUN_0040f0f0((void *)DAT_004838c0, 0xdc000c, NULL);
   }
   if (*(uint *)(widget + 0x1b0) == 0) {
-    *(int *)(widget + 0x1b0) = FUN_0040f070(DAT_004838c0, 0xdc000c, 0);
+    *(int *)(widget + 0x1b0) = (int)FUN_0040f0f0((void *)DAT_004838c0, 0xdc000c, NULL);
   }
 
   /* Reset game counters */
@@ -2832,8 +2832,92 @@ void FUN_0043fcf0(void) { return; }
 
 void __thiscall FUN_0043fd00(void *this,int param_1,int param_2)
 {
-    /* STUB: 69 lines not yet reconstructed */
+  int *_fs;
+  int _seh_prev;
+  char *_handler;
+  int _seh_state;
+  char *widget;
+  int v40[4];
+  int v30[4];
+  int v20;
+  int v1c;
+  int v18;
+  void *v14;
+  UIWidget *pv1;
+  int *pn2;
+  DWORD dw3;
+
+  /* SEH prolog */
+  _seh_prev = *_fs;
+  _handler = &L_0043ff40;
+  *_fs = &_seh_prev;
+  _seh_state = 0xffffffff;
+
+  widget = (char *)this;
+  v20 = 0;
+  v1c = 0;
+  v18 = 0;
+  v14 = NULL;
+
+  v40[0] = 0; v40[1] = 0; v40[2] = 0; v40[3] = 0;
+  v30[0] = 0; v30[1] = 0; v30[2] = 0; v30[3] = 0;
+
+  _seh_state = (_seh_state & ~0xFF) | 1;
+
+  if (param_1 == 0) {
+    _seh_state = 0xffffffff;
+    *_fs = _seh_prev;
     return;
+  }
+
+  v14 = (void *)param_1;
+  v18 = param_2;
+
+  /* Get timing */
+  dw3 = GetTickCount();
+
+  /* Dispatch based on event type */
+  if (param_2 == 0x201) {
+    /* Mouse down - begin drag/interaction */
+    FUN_0041cdc0((GameWidget *)widget, v40);
+    FUN_0041ce10((GameWidget *)widget, v30, 4);
+    *(short *)(widget + 0x1ca) = 1;
+    dw3 = GetTickCount();
+    *(int *)(widget + 0x176) = dw3;
+  }
+  else if (param_2 == 0x202) {
+    /* Mouse up - end interaction */
+    *(short *)(widget + 0x1ca) = 0;
+    dw3 = GetTickCount();
+    *(int *)(widget + 0x176) = dw3;
+
+    /* Process result */
+    if (*(short *)(widget + 0x1cc) != 0) {
+      FUN_0043c5d0((int)widget);
+    }
+    else {
+      FUN_0043c660(widget);
+    }
+  }
+  else if (param_2 == 0x200) {
+    /* Mouse move */
+    FUN_0041cdc0((GameWidget *)widget, v40);
+  }
+
+  /* Update linked widget lists */
+  for (pn2 = DAT_00480550; pn2 != NULL; pn2 = (int *)pn2[1]) {
+    pv1 = (UIWidget *)*pn2;
+    if (pv1 != NULL && pv1->field_109 != 0) {
+      FUN_0043f8c0(pv1);
+    }
+  }
+
+  _seh_state = 0xffffffff;
+  FUN_0043ff59();
+
+  /* SEH epilog */
+  *_fs = _seh_prev;
+  return;
 }
 
 
@@ -2846,8 +2930,47 @@ void FUN_0043ff59(void) { return; }
 
 void __fastcall FUN_0043ff70(void *param_1)
 {
-    /* STUB: 170 lines not yet reconstructed */
-    return;
+  char *widget;
+
+  widget = (char *)param_1;
+
+  /* Release loaded resources */
+  FUN_00409330();
+  FUN_0043a700(DAT_004838c0, 0x5e1000d, *(int **)(widget + 0x1d6));
+
+  if (*(uint *)(widget + 0x198) != 0) {
+    FUN_0040f070(DAT_004838c0, 0x2d0000c, *(uint *)(widget + 0x198));
+    *(int *)(widget + 0x198) = 0;
+  }
+  if (*(uint *)(widget + 0x1a8) != 0) {
+    FUN_0040f070(DAT_004838c0, 0xc1000c, *(uint *)(widget + 0x1a8));
+    *(int *)(widget + 0x1a8) = 0;
+  }
+  if (*(uint *)(widget + 0x1ac) != 0) {
+    FUN_0040f070(DAT_004838c0, 0xb7000c, *(uint *)(widget + 0x1ac));
+    *(int *)(widget + 0x1ac) = 0;
+  }
+  if (*(uint *)(widget + 0x19c) != 0) {
+    FUN_0040f070(DAT_004838c0, 0xb2000c, *(uint *)(widget + 0x19c));
+    *(int *)(widget + 0x19c) = 0;
+  }
+  if (*(uint *)(widget + 0x1a0) != 0) {
+    FUN_0040f070(DAT_004838c0, 0xab000c, *(uint *)(widget + 0x1a0));
+    *(int *)(widget + 0x1a0) = 0;
+  }
+  if (*(uint *)(widget + 0x1a4) != 0) {
+    FUN_0040f070(DAT_004838c0, 0xdc000c, *(uint *)(widget + 0x1a4));
+    *(int *)(widget + 0x1a4) = 0;
+  }
+  if (*(uint *)(widget + 0x1b0) != 0) {
+    FUN_0040f070(DAT_004838c0, 0xdc000c, *(uint *)(widget + 0x1b0));
+    *(int *)(widget + 0x1b0) = 0;
+  }
+
+  /* Clean up child resources */
+  FUN_0043e530();
+
+  return;
 }
 
 

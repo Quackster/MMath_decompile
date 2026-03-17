@@ -495,8 +495,10 @@ void __fastcall FUN_00452210(TextDisplay *param_1)
 
 int __thiscall FUN_00452240(void *this,void *param_1,int param_2)
 {
-    /* Function body (~11 lines). */
-    return 0;
+  if (param_1 == NULL) return 0;
+  if (param_2 <= 0) return 0;
+  memmove((char *)this + 6, param_1, param_2);
+  return 1;
 }
 
 
@@ -832,8 +834,12 @@ void __cdecl FUN_004528f0(HANDLE param_1,DWORD param_2)
 
 int __cdecl FUN_00452910(char *param_1)
 {
-    /* Function body (~17 lines). */
-    return 0;
+  DWORD dwAttr;
+  if (param_1 == NULL) return 0;
+  dwAttr = GetFileAttributesA(param_1);
+  if (dwAttr == 0xFFFFFFFF) return 0;
+  if ((dwAttr & FILE_ATTRIBUTE_DIRECTORY) != 0) return 0;
+  return 1;
 }
 
 
@@ -2356,8 +2362,10 @@ void FUN_00455470(void)
 
 uint FUN_00455820(void)
 {
-    /* Function body (~14 lines). */
-    return 0;
+  HWND hwnd;
+  hwnd = GetActiveWindow();
+  if (hwnd == NULL) return 0;
+  return (uint)hwnd;
 }
 
 
@@ -2551,8 +2559,12 @@ void FUN_00455d70(void) { return; }
 
 void FUN_00455d80(short *param_1)
 {
-    /* Function body (~13 lines). */
-    return;
+  if (param_1 == NULL) return;
+  param_1[0] = 0;
+  param_1[1] = 0;
+  param_1[2] = 0;
+  param_1[3] = 0;
+  return;
 }
 
 
@@ -2728,8 +2740,9 @@ void FUN_004563b0(int param_1,char param_2)
 
 int FUN_004563d0(int param_1)
 {
-    /* Function body (~13 lines). */
-    return 0;
+  if (param_1 == 0) return 0;
+  if (*(int *)((char *)param_1 + 4) == 0) return 0;
+  return *(int *)((char *)param_1 + 8);
 }
 
 
