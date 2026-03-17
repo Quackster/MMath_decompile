@@ -1,0 +1,31 @@
+# Binaries
+*.exe
+*.dll
+*.o
+*.obj
+*.lib
+*.a
+*.so
+*.exp
+*.pdb
+*.ilk
+
+# Build output
+build/
+
+# Ghidra project files
+ghidra_project/
+*.gpr
+*.rep/
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Intermediate / temp files
+*.txt
+*.json
+*.log
