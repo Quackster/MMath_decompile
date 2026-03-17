@@ -3,7 +3,7 @@
  * Address range: 0x470000 - 0x47FFFF
  * Functions: 65
  *
- * Auto-generated from Ghidra decompilation of MMath.exe
+ * Auto-generated from decompilation of MMath.exe
  */
 
 #include "ghidra_types.h"
@@ -82,13 +82,13 @@ FARPROC FUN_004700d0(FARPROC param_1)
 {
   bool bVar1;
   int iVar2;
-  int extraout_var;
+  int __extra_ret;
   FARPROC puVar3;
   
   iVar2 = FUN_00471650((LPCRITICAL_SECTION)&DAT_00489c80,(int *)&DAT_00484034);
   if (iVar2 != 0) {
     if ((param_1 == (FARPROC)0x0) ||
-       (bVar1 = FUN_00471550(param_1), CONCAT31(extraout_var,bVar1) != 0)) {
+       (bVar1 = FUN_00471550(param_1), CONCAT31(__extra_ret,bVar1) != 0)) {
       puVar3 = (FARPROC)PTR_FUN_00484048;
       PTR_FUN_00484048 = param_1;
     }
@@ -268,7 +268,7 @@ int __fastcall FUN_00470490(LPCVOID param_1,int *param_2,int param_3)
 
 {
   char cVar1;
-  int extraout_var;
+  int __extra_ret;
   uint uVar2;
   int iVar3;
   int *piVar4;
@@ -283,7 +283,7 @@ int __fastcall FUN_00470490(LPCVOID param_1,int *param_2,int param_3)
     {
       return 0xfffffffe;
     }
-LAB_0047050b:
+__label_0047050b:
     if (bVar6) {
       return 0;
     }
@@ -308,14 +308,14 @@ LAB_0047050b:
   uVar5 = (uint)(ushort)(((short)*(int *)((int)param_1 + 0x14) - (short)param_1) - 1); /* TODO: SmartHeap page end_ptr at 0x14 */
   if (uVar5 < 0x10000) {
     bVar6 = FUN_00471450(param_1,uVar5,0x1002);
-    if (CONCAT31(extraout_var,bVar6) != 0) {
+    if (CONCAT31(__extra_ret,bVar6) != 0) {
       uVar2 = FUN_00471410(param_1);
       if (uVar5 <= uVar2 - 1) {
         piVar4 = (int *)((int)param_1 + 0x1c); /* TODO: SmartHeap page data_start at 0x1c */
         if ((piVar4 <= *(int **)((int)param_1 + 0x10)) && /* TODO: SmartHeap page free_ptr at 0x10 */
            (*(int **)((int)param_1 + 0x10) <= *(int **)((int)param_1 + 0x14))) { /* TODO: SmartHeap page end_ptr at 0x14 */
           bVar6 = *(int **)((int)param_1 + 0x10) == piVar4; /* TODO: SmartHeap page free_ptr at 0x10 */
-          goto LAB_0047050b;
+          goto __label_0047050b;
         }
       }
     }
@@ -364,7 +364,7 @@ int __fastcall FUN_004705d0(LPCVOID param_1,int *param_2)
 {
   ushort uVar1;
   int iVar2;
-  int extraout_var;
+  int __extra_ret;
   uint uVar3;
   ushort *puVar4;
   uint uVar5;
@@ -385,7 +385,7 @@ int __fastcall FUN_004705d0(LPCVOID param_1,int *param_2)
        *(ushort **)((int)param_1 + 0x14) < puVar4)) { /* TODO: SmartHeap page end_ptr at 0x14 */
       return 0xfffffffe;
     }
-LAB_0047065b:
+__label_0047065b:
     if (bVar6) {
       return 0;
     }
@@ -417,12 +417,12 @@ LAB_0047065b:
   uVar5 = (uint)(ushort)(((short)*(int *)((int)param_1 + 0x14) - (short)param_1) + 9); /* TODO: SmartHeap page end_ptr at 0x14 */
   if (uVar5 < 0x10000) {
     bVar6 = FUN_00471450(param_1,uVar5,0x1002);
-    if (CONCAT31(extraout_var,bVar6) != 0) {
+    if (CONCAT31(__extra_ret,bVar6) != 0) {
       uVar3 = FUN_00471410(param_1);
       if (uVar5 <= uVar3 - 1) {
         puVar4 = (ushort *)((int)param_1 + 0x1a);
         bVar6 = *(ushort **)((int)param_1 + 0x14) == puVar4; /* TODO: SmartHeap page end_ptr at 0x14 */
-        goto LAB_0047065b;
+        goto __label_0047065b;
       }
     }
   }
@@ -441,7 +441,7 @@ int __fastcall FUN_00470750(LPCVOID param_1,int *param_2,int param_3)
 {
   ushort uVar1;
   bool bVar2;
-  int extraout_var;
+  int __extra_ret;
   uint uVar3;
   int iVar4;
   int *puVar5;
@@ -455,7 +455,7 @@ int __fastcall FUN_00470750(LPCVOID param_1,int *param_2,int param_3)
         (*(int **)((int)param_1 + 0x14) < puVar5)))) { /* TODO: SmartHeap page end_ptr at 0x14 */
       return 0xfffffffe;
     }
-LAB_004707d9:
+__label_004707d9:
     if (*(int **)((int)param_1 + 0x14) == puVar5) { /* TODO: SmartHeap page end_ptr at 0x14 */
       return 0;
     }
@@ -476,14 +476,14 @@ LAB_004707d9:
   uVar6 = (uint)(ushort)(((short)*(int *)((int)param_1 + 0x14) - (short)param_1) - 1); /* TODO: SmartHeap page end_ptr at 0x14 */
   if (uVar6 < 0x10000) {
     bVar2 = FUN_00471450(param_1,uVar6,0x1002);
-    if (CONCAT31(extraout_var,bVar2) != 0) {
+    if (CONCAT31(__extra_ret,bVar2) != 0) {
       uVar3 = FUN_00471410(param_1);
       if ((uVar6 <= uVar3 - 1) &&
          ((uVar6 = *(uint *)((int)param_1 + 0x10), uVar6 == 0 || /* TODO: SmartHeap page free_ptr at 0x10 */
           (((int)param_1 + 0x1cU <= uVar6 && (uVar6 <= *(int *)((int)param_1 + 0x14) - (uint)uVar1)) /* TODO: SmartHeap page data_start at 0x1c, end_ptr at 0x14 */
           )))) {
         puVar5 = (int *)((int)param_1 + 0x1c);
-        goto LAB_004707d9;
+        goto __label_004707d9;
       }
     }
   }
@@ -558,10 +558,10 @@ bool FUN_00470ce0(int *param_1)
     if (iVar3 == 0) {
       iVar2 = -2;
     }
-    if (iVar2 == 0) goto LAB_00470d68;
+    if (iVar2 == 0) goto __label_00470d68;
   }
   bVar1 = true;
-LAB_00470d68:
+__label_00470d68:
   if ((*(byte *)((int)param_1 + 0x22) & 2) != 0) { /* TODO: SmartHeap pool threadsafe flag at 0x22 */
     param_1[0x18] = param_1[0x18] + -1;
     LeaveCriticalSection((LPCRITICAL_SECTION)(param_1 + 0x12));
@@ -590,7 +590,7 @@ int __fastcall FUN_00470e50(int param_1)
       if (iVar4 != 0) {
         do {
           iVar2 = FUN_00470ec0(*(int **)(iVar4 + 4),uVar3);
-          if (iVar2 == 0) goto LAB_00470e91;
+          if (iVar2 == 0) goto __label_00470e91;
           iVar4 = *(int *)(iVar4 + 8);
         } while (*piVar1 != iVar4);
         if (iVar2 == 0) {
@@ -600,7 +600,7 @@ int __fastcall FUN_00470e50(int param_1)
     }
     uVar3 = uVar3 + 1;
   } while (uVar3 < 5);
-LAB_00470e91:
+__label_00470e91:
   if ((iVar2 != 0) && (iVar2 = FUN_00470f00(param_1), iVar2 != 0)) {
     return 1;
   }
@@ -687,21 +687,21 @@ int __fastcall FUN_00470f40(int *param_1)
   puVar6 = puVar2;
   do {
     if ((*(ushort **)(*(int *)(puVar5 + 1) + 6) != puVar5) ||
-       (*(ushort **)(*(int *)(puVar5 + 3) + 2) != puVar5)) goto LAB_00470f72;
+       (*(ushort **)(*(int *)(puVar5 + 3) + 2) != puVar5)) goto __label_00470f72;
     uVar1 = *puVar5;
     if (puVar5 == puVar2) {
-      if ((uVar1 & 0xfffc) != 0) goto LAB_00470f72;
+      if ((uVar1 & 0xfffc) != 0) goto __label_00470f72;
       uVar1 = uVar1 & 1;
     }
     else {
-      if (((uVar1 & 1) != 0) || ((uVar1 & 2) == 0)) goto LAB_00470f72;
+      if (((uVar1 & 1) != 0) || ((uVar1 & 2) == 0)) goto __label_00470f72;
       uVar1 = uVar1 & 0xfffc;
     }
-    if (uVar1 == 0) goto LAB_00470f72;
+    if (uVar1 == 0) goto __label_00470f72;
     if ((puVar6 != puVar2) && (puVar6 = *(ushort **)(puVar6 + 1), puVar6 != puVar2)) {
       puVar6 = *(ushort **)(puVar6 + 1);
       puVar4 = *(ushort **)(puVar4 + 1);
-      if (puVar6 == puVar4) goto LAB_00470f72;
+      if (puVar6 == puVar4) goto __label_00470f72;
     }
     if ((ushort *)param_1[4] == puVar5) {
       bVar3 = true;
@@ -711,7 +711,7 @@ int __fastcall FUN_00470f40(int *param_1)
   if (bVar3) {
     return 1;
   }
-LAB_00470f72:
+__label_00470f72:
   FUN_0046fd70(*param_1,0xc);
   return 0;
 }
@@ -750,7 +750,7 @@ int FUN_00471010(int param_1,int *param_2)
 {
   int iVar1;
   bool bVar2;
-  int extraout_var;
+  int __extra_ret;
   int extraout_var_00;
   int iVar3;
   int *piVar4;
@@ -758,7 +758,7 @@ int FUN_00471010(int param_1,int *param_2)
   
   uVar5 = 1;
   bVar2 = FUN_00471450(param_2,4,0x202);
-  if (CONCAT31(extraout_var,bVar2) == 0) {
+  if (CONCAT31(__extra_ret,bVar2) == 0) {
     FUN_0046fd70(0,0xe);
     return 0;
   }
@@ -783,7 +783,7 @@ int FUN_00471010(int param_1,int *param_2)
   case 0:
   case 2:
     if ((*(byte *)((int)param_2 + -2) & 1) != 0) goto switchD_004710d7_caseD_3;
-    goto LAB_00471103;
+    goto __label_00471103;
   case 1:
     iVar3 = FUN_00470840((int)piVar4,iVar1,param_2);
     break;
@@ -793,7 +793,7 @@ int FUN_00471010(int param_1,int *param_2)
     iVar3 = FUN_00470580(iVar1,param_2);
   }
   if (iVar3 == 0) {
-LAB_00471103:
+__label_00471103:
     uVar5 = 0xffffffff;
   }
 switchD_004710d7_caseD_3:
@@ -811,7 +811,7 @@ switchD_004710d7_caseD_3:
 LPCVOID __fastcall FUN_00471150(uint param_1)
 
 {
-    /* TODO: 14 lines - has decompilation artifacts */
+    /* TODO: 14 lines - has decompiler artifacts */
     return 0;
 }
 
@@ -1010,7 +1010,7 @@ int __fastcall FUN_00471330(LPCVOID param_1,uint param_2,uint param_3)
 uint __fastcall FUN_00471410(LPCVOID param_1)
 
 {
-    /* TODO: 9 lines - has decompilation artifacts */
+    /* TODO: 9 lines - has decompiler artifacts */
     return 0;
 }
 
@@ -1021,7 +1021,7 @@ uint __fastcall FUN_00471410(LPCVOID param_1)
 bool __fastcall FUN_00471450(LPCVOID param_1,uint param_2,uint param_3)
 
 {
-    /* TODO: 48 lines - has decompilation artifacts */
+    /* TODO: 48 lines - has decompiler artifacts */
     return 0;
 }
 
@@ -1094,10 +1094,10 @@ int __fastcall FUN_004718d0(LPCVOID param_1)
 
 {
   bool bVar1;
-  int extraout_var;
+  int __extra_ret;
   
   bVar1 = FUN_00471450(param_1,0x178,0x102);
-  if ((CONCAT31(extraout_var,bVar1) != 0) && (*(short *)((int)param_1 + 0x20) == -0x4153)) { /* TODO: SmartHeap pool signature at 0x20 */
+  if ((CONCAT31(__extra_ret,bVar1) != 0) && (*(short *)((int)param_1 + 0x20) == -0x4153)) { /* TODO: SmartHeap pool signature at 0x20 */
     return 1;
   }
   return 0;
@@ -1300,7 +1300,7 @@ void WinGRecommendDIBFormat(void)
 void __cdecl __onexit(_onexit_t param_1)
 
 {
-    /* TODO: 28 lines - has decompilation artifacts */
+    /* TODO: 28 lines - has decompiler artifacts */
     return;
 }
 
@@ -1349,24 +1349,24 @@ void _eh_vector_destructor_iterator_
                (void *param_1,uint param_2,int param_3,ghidra_func_ptr *param_4)
 
 {
-  void *unaff_EDI;
-  int *unaff_FS_OFFSET;
+  void *__saved_edi;
+  int *__seh_chain;
   int local_14;
   void *puStack_10;
-  void *puStack_c;
+  void *__seh_handler;
   int local_8;
 
-  local_14 = *unaff_FS_OFFSET;
-  puStack_c = &DAT_00477d18;
+  local_14 = *__seh_chain;
+  __seh_handler = &DAT_00477d18;
   puStack_10 = &DAT_00471ee2;
-  *unaff_FS_OFFSET = (int)&local_14;
+  *__seh_chain = (int)&local_14;
   local_8 = 0;
   while (param_3 = param_3 + -1, -1 < param_3) {
-    (*param_4)(unaff_EDI);
+    (*param_4)(__saved_edi);
   }
   local_8 = 0xffffffff;
   FUN_00471ba0();
-  *unaff_FS_OFFSET = local_14;
+  *__seh_chain = local_14;
   return;
 }
 
@@ -1377,7 +1377,7 @@ void _eh_vector_destructor_iterator_
 void FUN_00471ba0(void)
 
 {
-    /* TODO: 8 lines - has decompilation artifacts */
+    /* TODO: 8 lines - has decompiler artifacts */
     return;
 }
 
@@ -1393,22 +1393,22 @@ void FUN_00471ba0(void)
 void __ArrayUnwind(void *param_1,uint param_2,int param_3,ghidra_func_ptr *param_4)
 
 {
-  void *unaff_EDI;
-  int *unaff_FS_OFFSET;
+  void *__saved_edi;
+  int *__seh_chain;
   int local_14;
   void *puStack_10;
-  void *puStack_c;
+  void *__seh_handler;
   int local_8;
 
-  local_14 = *unaff_FS_OFFSET;
-  puStack_c = &DAT_00477d28;
+  local_14 = *__seh_chain;
+  __seh_handler = &DAT_00477d28;
   puStack_10 = &DAT_00471ee2;
-  *unaff_FS_OFFSET = (int)&local_14;
+  *__seh_chain = (int)&local_14;
   local_8 = 0;
   while (param_3 = param_3 + -1, -1 < param_3) {
-    (*param_4)(unaff_EDI);
+    (*param_4)(__saved_edi);
   }
-  *unaff_FS_OFFSET = local_14;
+  *__seh_chain = local_14;
   return;
 }
 
@@ -1427,29 +1427,29 @@ void _eh_vector_constructor_iterator_
                ghidra_func_ptr *param_5)
 
 {
-  void *unaff_EDI;
-  int *unaff_FS_OFFSET;
+  void *__saved_edi;
+  int *__seh_chain;
   int local_20;
   int local_14;
   void *puStack_10;
-  void *puStack_c;
+  void *__seh_handler;
   int local_8;
 
-  local_14 = *unaff_FS_OFFSET;
-  puStack_c = &DAT_00477d38;
+  local_14 = *__seh_chain;
+  __seh_handler = &DAT_00477d38;
   puStack_10 = &DAT_00471ee2;
-  *unaff_FS_OFFSET = (int)&local_14;
+  *__seh_chain = (int)&local_14;
   local_8 = 0;
   local_20 = 0;
   if (0 < param_3) {
     do {
-      (*param_4)(unaff_EDI);
+      (*param_4)(__saved_edi);
       local_20 = local_20 + 1;
     } while (local_20 < param_3);
   }
   local_8 = 0xffffffff;
   FUN_00471cd0();
-  *unaff_FS_OFFSET = local_14;
+  *__seh_chain = local_14;
   return;
 }
 
@@ -1460,7 +1460,7 @@ void _eh_vector_constructor_iterator_
 void FUN_00471cd0(void)
 
 {
-    /* TODO: 8 lines - has decompilation artifacts */
+    /* TODO: 8 lines - has decompiler artifacts */
     return;
 }
 
@@ -1505,15 +1505,15 @@ void _CIacos(void)
 void FUN_00471d10(void)
 
 {
-  uint in_EAX;
+  uint __reg_eax;
   char *puVar1;
-  unsigned int unaff_retaddr;
+  unsigned int __return_addr;
 
-  puVar1 = &ghidra_stack_00000004;
-  for (; 0xfff < in_EAX; in_EAX = in_EAX - 0x1000) {
+  puVar1 = &__stk_0;
+  for (; 0xfff < __reg_eax; __reg_eax = __reg_eax - 0x1000) {
     puVar1 = puVar1 + -0x1000;
   }
-  *(unsigned int *)(puVar1 + (-4 - in_EAX)) = unaff_retaddr;
+  *(unsigned int *)(puVar1 + (-4 - __reg_eax)) = __return_addr;
   return;
 }
 
@@ -1526,7 +1526,7 @@ void FUN_00471d10(void)
 void entry(void)
 
 {
-    /* TODO: 74 lines - has decompilation artifacts */
+    /* TODO: 74 lines - has decompiler artifacts */
     return;
 }
 

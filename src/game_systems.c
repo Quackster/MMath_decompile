@@ -3,7 +3,7 @@
  * Address range: 0x410000 - 0x41FFFF
  * Functions: 309
  *
- * Auto-generated from Ghidra decompilation of MMath.exe
+ * Auto-generated from decompilation of MMath.exe
  */
 
 #include "ghidra_types.h"
@@ -37,7 +37,7 @@ int * __thiscall
 FUN_00410070(void *this,short param_1,short param_2,short param_3,int param_4,void *param_5)
 
 {
-    /* TODO: 59 lines - has decompilation artifacts */
+    /* TODO: 59 lines - has decompiler artifacts */
     return 0;
 }
 
@@ -72,21 +72,21 @@ int * __thiscall FUN_00410250(void *this,byte param_1)
 void __fastcall FUN_00410270(int *param_1)
 
 {
-  int *unaff_FS_OFFSET;
+  int *__seh_chain;
   int local_10;
-  char *puStack_c;
+  char *__seh_handler;
   int local_8;
   
-  local_10 = *unaff_FS_OFFSET;
-  puStack_c = &LAB_004102c1;
+  local_10 = *__seh_chain;
+  __seh_handler = &__label_004102c1;
   *param_1 = (int)&PTR_LAB_00472c58;
-  *unaff_FS_OFFSET = &local_10;
+  *__seh_chain = &local_10;
   local_8 = 0;
   FUN_00410300((int)param_1);
   FUN_0042c3f0(param_1);
   local_8 = 0xffffffff;
   FUN_004102cb();
-  *unaff_FS_OFFSET = local_10;
+  *__seh_chain = local_10;
   return;
 }
 
@@ -97,9 +97,9 @@ void __fastcall FUN_00410270(int *param_1)
 void FUN_004102cb(void)
 
 {
-  int unaff_EBP;
+  int __saved_ebp;
   
-  FUN_0042be10(*(int **)(unaff_EBP + -0x10));
+  FUN_0042be10(*(int **)(__saved_ebp + -0x10));
   return;
 }
 
@@ -139,7 +139,7 @@ void __fastcall FUN_00410300(GameWidget *this)
 void __fastcall FUN_00410350(int *param_1)
 
 {
-    /* TODO: 9 lines - has decompilation artifacts */
+    /* TODO: 9 lines - has decompiler artifacts */
     return;
 }
 
@@ -150,7 +150,7 @@ void __fastcall FUN_00410350(int *param_1)
 void __fastcall FUN_004103a0(void *param_1)
 
 {
-    /* TODO: 82 lines - has decompilation artifacts */
+    /* TODO: 82 lines - has decompiler artifacts */
     return;
 }
 
@@ -192,21 +192,21 @@ void __fastcall FUN_004105b0(GameWidget *this)
   int iVar8;
   int iVar9;
   short sVar10;
-  int *unaff_FS_OFFSET;
+  int *__seh_chain;
   int uVar11;
   int uVar12;
   int uVar13;
-  int in_stack_ffffffb8;
+  int __param_ffffffb8;
   int local_30 [6];
   char *local_18;
   char *local_14;
   int local_10;
-  char *puStack_c;
+  char *__seh_handler;
   uint local_8;
 
-  local_10 = *unaff_FS_OFFSET;
-  puStack_c = &LAB_00410803;
-  *unaff_FS_OFFSET = &local_10;
+  local_10 = *__seh_chain;
+  __seh_handler = &__label_00410803;
+  *__seh_chain = &local_10;
   local_30[5] = 0;
   local_30[4] = 0;
   local_8 = 0;
@@ -215,15 +215,15 @@ void __fastcall FUN_004105b0(GameWidget *this)
   local_30[2] = 0;
   local_30[3] = 0;
   uVar13 = 0;
-  FUN_00401050(&ghidra_stack_ffffffb8,0);
+  FUN_00401050(&__stk_29,0);
   uVar12 = 0;
-  FUN_00401050(&ghidra_stack_ffffffb4,0);
-  local_18 = &ghidra_stack_ffffffb0;
+  FUN_00401050(&__stk_28,0);
+  local_18 = &__stk_27;
   uVar11 = 0;
-  FUN_00401050(&ghidra_stack_ffffffb0,0);
-  local_14 = &ghidra_stack_ffffffac;
-  FUN_00401050(&ghidra_stack_ffffffac,0);
-  FUN_0040bfd0(local_30,uVar11,uVar12,uVar13,in_stack_ffffffb8);
+  FUN_00401050(&__stk_27,0);
+  local_14 = &__stk_26;
+  FUN_00401050(&__stk_26,0);
+  FUN_0040bfd0(local_30,uVar11,uVar12,uVar13,__param_ffffffb8);
   local_8 = CONCAT31((((local_8) >> 8) & 0xFFFFFF),1);
   FUN_0041ce10(this,local_30 + 4,0);
   FUN_0044a3c0(DAT_00483458,this->page_offset);
@@ -284,7 +284,7 @@ void __fastcall FUN_004105b0(GameWidget *this)
   FUN_004107fb();
   local_8 = 0xffffffff;
   FUN_0041080d();
-  *unaff_FS_OFFSET = local_10;
+  *__seh_chain = local_10;
   return;
 }
 
@@ -390,7 +390,7 @@ void FUN_00410aba(void)
 void __fastcall FUN_00410af0(void *param_1)
 
 {
-    /* TODO: 19 lines - has decompilation artifacts */
+    /* TODO: 19 lines - has decompiler artifacts */
     return;
 }
 
@@ -435,7 +435,7 @@ void __fastcall FUN_00410bf0(GameWidget *this)
   uVar2 = FUN_0044a260(DAT_00483458);
   if ((int)(short)uVar2 < this->page_offset + 10) {
     sVar4 = this->selected_slot;
-    if ((sVar4 < 0) || (this->visible_slot_count + -1 <= (int)sVar4)) goto LAB_00410c97;
+    if ((sVar4 < 0) || (this->visible_slot_count + -1 <= (int)sVar4)) goto __label_00410c97;
   }
   else {
     FUN_0044a3c0(DAT_00483458,this->page_offset);
@@ -443,15 +443,15 @@ void __fastcall FUN_00410bf0(GameWidget *this)
     uVar3 = FUN_0044a770(DAT_00483458);
     this->page_offset = uVar3;
     sVar4 = this->selected_slot;
-    if (sVar4 == -1) goto LAB_00410c97;
+    if (sVar4 == -1) goto __label_00410c97;
     if (0 < sVar4) {
       this->selected_slot = sVar4 + -1;
     }
     sVar4 = this->selected_slot;
-    if (this->page_offset + -1 <= (int)sVar4) goto LAB_00410c97;
+    if (this->page_offset + -1 <= (int)sVar4) goto __label_00410c97;
   }
   this->selected_slot = sVar4 + 1;
-LAB_00410c97:
+__label_00410c97:
   FUN_004105b0(this);
   FUN_00410820(this);
   iVar1 = this->scrollbar_ref;
@@ -476,7 +476,7 @@ void __fastcall FUN_00410cd0(GameWidget *this)
 
   if (this->page_offset < 2) {
     sVar3 = this->selected_slot;
-    if (sVar3 < 1) goto LAB_00410d5b;
+    if (sVar3 < 1) goto __label_00410d5b;
   }
   else {
     FUN_0044a3c0(DAT_00483458,this->page_offset);
@@ -484,15 +484,15 @@ void __fastcall FUN_00410cd0(GameWidget *this)
     uVar2 = FUN_0044a770(DAT_00483458);
     this->page_offset = uVar2;
     sVar3 = this->selected_slot;
-    if (sVar3 == -1) goto LAB_00410d5b;
+    if (sVar3 == -1) goto __label_00410d5b;
     if ((-1 < sVar3) && ((int)sVar3 < this->visible_slot_count + -1)) {
       this->selected_slot = sVar3 + 1;
     }
     sVar3 = this->selected_slot;
-    if (sVar3 < this->visible_slot_count) goto LAB_00410d5b;
+    if (sVar3 < this->visible_slot_count) goto __label_00410d5b;
   }
   this->selected_slot = sVar3 + -1;
-LAB_00410d5b:
+__label_00410d5b:
   FUN_004105b0(this);
   FUN_00410820(this);
   iVar1 = this->scrollbar_ref;
@@ -510,7 +510,7 @@ LAB_00410d5b:
 int __fastcall FUN_00410f70(int *param_1)
 
 {
-    /* TODO: 17 lines - has decompilation artifacts */
+    /* TODO: 17 lines - has decompiler artifacts */
     return 0;
 }
 
@@ -521,7 +521,7 @@ int __fastcall FUN_00410f70(int *param_1)
 short FUN_00410fc0(void)
 
 {
-    /* TODO: 82 lines - has decompilation artifacts */
+    /* TODO: 82 lines - has decompiler artifacts */
     return 0;
 }
 
@@ -532,18 +532,18 @@ short FUN_00410fc0(void)
 int * __fastcall FUN_004112e0(int *param_1)
 
 {
-  int *unaff_FS_OFFSET;
+  int *__seh_chain;
   int local_10;
-  char *puStack_c;
+  char *__seh_handler;
   int local_8;
   
-  local_10 = *unaff_FS_OFFSET;
+  local_10 = *__seh_chain;
   local_8 = 0xffffffff;
-  puStack_c = &LAB_0041132b;
-  *unaff_FS_OFFSET = &local_10;
+  __seh_handler = &__label_0041132b;
+  *__seh_chain = &local_10;
   FUN_0044bc50(param_1);
   *param_1 = &PTR_FUN_00472df0;
-  *unaff_FS_OFFSET = local_10;
+  *__seh_chain = local_10;
   return param_1;
 }
 
@@ -554,19 +554,19 @@ int * __fastcall FUN_004112e0(int *param_1)
 void FUN_00411360(void)
 
 {
-  int *unaff_FS_OFFSET;
+  int *__seh_chain;
   int local_10;
-  char *puStack_c;
+  char *__seh_handler;
   int local_8;
   
-  local_10 = *unaff_FS_OFFSET;
-  puStack_c = &LAB_004113af;
-  *unaff_FS_OFFSET = &local_10;
+  local_10 = *__seh_chain;
+  __seh_handler = &__label_004113af;
+  *__seh_chain = &local_10;
   local_8 = 0;
   FUN_004113a4();
   local_8 = 0xffffffff;
   FUN_004113b9();
-  *unaff_FS_OFFSET = local_10;
+  *__seh_chain = local_10;
   return;
 }
 
@@ -577,9 +577,9 @@ void FUN_00411360(void)
 void FUN_004113a4(void)
 
 {
-  int unaff_EBP;
+  int __saved_ebp;
   
-  FUN_00413840((int *)(*(int *)(unaff_EBP + -0x10) + 0x32));
+  FUN_00413840((int *)(*(int *)(__saved_ebp + -0x10) + 0x32));
   return;
 }
 
@@ -590,9 +590,9 @@ void FUN_004113a4(void)
 void FUN_004113b9(void)
 
 {
-  int unaff_EBP;
+  int __saved_ebp;
   
-  FUN_004113d0((int *)(*(int *)(unaff_EBP + -0x10) + 4));
+  FUN_004113d0((int *)(*(int *)(__saved_ebp + -0x10) + 4));
   return;
 }
 
@@ -603,18 +603,18 @@ void FUN_004113b9(void)
 void __fastcall FUN_004113d0(int *param_1)
 
 {
-  int *unaff_FS_OFFSET;
+  int *__seh_chain;
   int local_10;
-  char *puStack_c;
+  char *__seh_handler;
   int local_8;
   
-  local_10 = *unaff_FS_OFFSET;
-  puStack_c = &LAB_0041140d;
+  local_10 = *__seh_chain;
+  __seh_handler = &__label_0041140d;
   *param_1 = &PTR_LAB_00472e00;
-  *unaff_FS_OFFSET = &local_10;
+  *__seh_chain = &local_10;
   local_8 = 0xffffffff;
   FUN_00411417();
-  *unaff_FS_OFFSET = local_10;
+  *__seh_chain = local_10;
   return;
 }
 
@@ -625,9 +625,9 @@ void __fastcall FUN_004113d0(int *param_1)
 void FUN_00411417(void)
 
 {
-  int unaff_EBP;
+  int __saved_ebp;
   
-  FUN_00413810(*(int **)(unaff_EBP + -0x10));
+  FUN_00413810(*(int **)(__saved_ebp + -0x10));
   return;
 }
 
@@ -638,9 +638,9 @@ void FUN_00411417(void)
 void FUN_0041147f(void)
 
 {
-  int unaff_EBP;
+  int __saved_ebp;
   
-  FUN_00413810(*(int **)(unaff_EBP + -0x10));
+  FUN_00413810(*(int **)(__saved_ebp + -0x10));
   return;
 }
 
@@ -651,7 +651,7 @@ void FUN_0041147f(void)
 void __thiscall FUN_00411490(void *this,int param_1)
 
 {
-    /* TODO: 25 lines - has decompilation artifacts */
+    /* TODO: 25 lines - has decompiler artifacts */
     return;
 }
 
@@ -663,12 +663,12 @@ void FUN_00411520(void)
 
 {
   int uVar1;
-  int in_stack_fffffff4;
+  int __param_fffffff4;
   
   uVar1 = 0;
-  FUN_00401050(&ghidra_stack_fffffff4,0);
-  FUN_00401050(&ghidra_stack_fffffff0,0);
-  FUN_00401060(&DAT_00484298,uVar1,in_stack_fffffff4);
+  FUN_00401050(&__stk_44,0);
+  FUN_00401050(&__stk_43,0);
+  FUN_00401060(&DAT_00484298,uVar1,__param_fffffff4);
   return;
 }
 
@@ -689,7 +689,7 @@ void FUN_00411570(void)
 int __fastcall FUN_00411580(void *param_1)
 
 {
-    /* TODO: 721 lines - has decompilation artifacts */
+    /* TODO: 721 lines - has decompiler artifacts */
     return 0;
 }
 
@@ -1033,7 +1033,7 @@ int FUN_00413790(int param_1)
 int FUN_004137b0(int param_1,int param_2,int param_3,int param_4,int param_5,int param_6)
 
 {
-    /* TODO: 13 lines - has decompilation artifacts */
+    /* TODO: 13 lines - has decompiler artifacts */
     return 0;
 }
 
@@ -1083,15 +1083,15 @@ void __fastcall FUN_00413840(int *param_1)
 int * __fastcall FUN_00413900(int *param_1)
 
 {
-  int *unaff_FS_OFFSET;
+  int *__seh_chain;
   int local_10;
-  char *puStack_c;
+  char *__seh_handler;
   int local_8;
 
-  local_10 = *unaff_FS_OFFSET;
+  local_10 = *__seh_chain;
   local_8 = 0xffffffff;
-  puStack_c = &LAB_004139b9;
-  *unaff_FS_OFFSET = &local_10;
+  __seh_handler = &__label_004139b9;
+  *__seh_chain = &local_10;
   FUN_0044bc50(param_1);
   *(int *)((int)param_1 + 0x1d6) = 0;            /* TODO: unknown offset 0x1D6 */
   *(int *)((int)param_1 + 0x1da) = 0;             /* TODO: unknown offset 0x1DA */
@@ -1105,7 +1105,7 @@ int * __fastcall FUN_00413900(int *param_1)
   *param_1 = &PTR_LAB_00472e40;
   *(int *)((int)param_1 + 0x2e) = 0;              /* TODO: unknown offset 0x2E on this struct */
   *(unsigned char *)(param_1 + 0x74) = 0;          /* offset 0x1D0 */
-  *unaff_FS_OFFSET = local_10;
+  *__seh_chain = local_10;
   return param_1;
 }
 
@@ -1116,9 +1116,9 @@ int * __fastcall FUN_00413900(int *param_1)
 void FUN_00413c66(void)
 
 {
-  int unaff_EBP;
+  int __saved_ebp;
   
-  FUN_004113d0((int *)(unaff_EBP + -0x2c));
+  FUN_004113d0((int *)(__saved_ebp + -0x2c));
   return;
 }
 
@@ -1129,9 +1129,9 @@ void FUN_00413c66(void)
 void FUN_00413d4e(void)
 
 {
-  int unaff_EBP;
+  int __saved_ebp;
   
-  FUN_004113d0((int *)(unaff_EBP + -0x2c));
+  FUN_004113d0((int *)(__saved_ebp + -0x2c));
   return;
 }
 
@@ -1142,9 +1142,9 @@ void FUN_00413d4e(void)
 void FUN_00413e03(void)
 
 {
-  int unaff_EBP;
+  int __saved_ebp;
   
-  FUN_004113d0((int *)(unaff_EBP + -0x2c));
+  FUN_004113d0((int *)(__saved_ebp + -0x2c));
   return;
 }
 
@@ -1155,9 +1155,9 @@ void FUN_00413e03(void)
 void FUN_00413e99(void)
 
 {
-  int unaff_EBP;
+  int __saved_ebp;
   
-  FUN_004113d0((int *)(unaff_EBP + -0x2c));
+  FUN_004113d0((int *)(__saved_ebp + -0x2c));
   return;
 }
 
@@ -1168,9 +1168,9 @@ void FUN_00413e99(void)
 void FUN_00413f4e(void)
 
 {
-  int unaff_EBP;
+  int __saved_ebp;
   
-  FUN_004113d0((int *)(unaff_EBP + -0x2c));
+  FUN_004113d0((int *)(__saved_ebp + -0x2c));
   return;
 }
 
@@ -1181,9 +1181,9 @@ void FUN_00413f4e(void)
 void FUN_00413fe4(void)
 
 {
-  int unaff_EBP;
+  int __saved_ebp;
   
-  FUN_004113d0((int *)(unaff_EBP + -0x2c));
+  FUN_004113d0((int *)(__saved_ebp + -0x2c));
   return;
 }
 
@@ -1194,9 +1194,9 @@ void FUN_00413fe4(void)
 void FUN_00414099(void)
 
 {
-  int unaff_EBP;
+  int __saved_ebp;
   
-  FUN_004113d0((int *)(unaff_EBP + -0x2c));
+  FUN_004113d0((int *)(__saved_ebp + -0x2c));
   return;
 }
 
@@ -1207,9 +1207,9 @@ void FUN_00414099(void)
 void FUN_0041414e(void)
 
 {
-  int unaff_EBP;
+  int __saved_ebp;
   
-  FUN_004113d0((int *)(unaff_EBP + -0x2c));
+  FUN_004113d0((int *)(__saved_ebp + -0x2c));
   return;
 }
 
@@ -1220,9 +1220,9 @@ void FUN_0041414e(void)
 void FUN_004141e4(void)
 
 {
-  int unaff_EBP;
+  int __saved_ebp;
   
-  FUN_004113d0((int *)(unaff_EBP + -0x2c));
+  FUN_004113d0((int *)(__saved_ebp + -0x2c));
   return;
 }
 
@@ -1233,9 +1233,9 @@ void FUN_004141e4(void)
 void FUN_004142a3(void)
 
 {
-  int unaff_EBP;
+  int __saved_ebp;
   
-  FUN_004113d0((int *)(unaff_EBP + -0x2c));
+  FUN_004113d0((int *)(__saved_ebp + -0x2c));
   return;
 }
 
@@ -1247,12 +1247,12 @@ void FUN_00414370(void)
 
 {
   int uVar1;
-  int in_stack_fffffff4;
+  int __param_fffffff4;
   
   uVar1 = 0;
-  FUN_00401050(&ghidra_stack_fffffff4,0);
-  FUN_00401050(&ghidra_stack_fffffff0,0);
-  FUN_00401060(&DAT_004842a8,uVar1,in_stack_fffffff4);
+  FUN_00401050(&__stk_44,0);
+  FUN_00401050(&__stk_43,0);
+  FUN_00401060(&DAT_004842a8,uVar1,__param_fffffff4);
   return;
 }
 
@@ -2163,7 +2163,7 @@ int __thiscall FUN_00414440(MathProblem *this,uint param_1,char param_2)
       if (param_1 == 3) {
         if (1000 < this->slots[3].result) {
           this->slots[3].result = this->slots[uVar3].result + -1000;
-          goto LAB_00415df9;
+          goto __label_00415df9;
         }
       }
       do {
@@ -2172,7 +2172,7 @@ int __thiscall FUN_00414440(MathProblem *this,uint param_1,char param_2)
       } while (this->slots[this->correct_slot].result ==
                this->slots[param_1].result);
     }
-LAB_00415df9:
+__label_00415df9:
     this->slots[param_1].flags = 0x50;
     this->slots[param_1].denom = 100;
     break;
@@ -2334,7 +2334,7 @@ void FUN_00416700(void)
 void * FUN_00416710(int param_1,int param_2,uint param_3,int param_4)
 
 {
-    /* TODO: 3 lines - has decompilation artifacts */
+    /* TODO: 3 lines - has decompiler artifacts */
     return;
 }
 
@@ -2345,9 +2345,9 @@ void * FUN_00416710(int param_1,int param_2,uint param_3,int param_4)
 void FUN_0041680d(void)
 
 {
-  int unaff_EBP;
+  int __saved_ebp;
   
-  FUN_00413810((int *)(unaff_EBP + -0x28));
+  FUN_00413810((int *)(__saved_ebp + -0x28));
   return;
 }
 
@@ -2358,9 +2358,9 @@ void FUN_0041680d(void)
 void FUN_00416861(void)
 
 {
-  int unaff_EBP;
+  int __saved_ebp;
   
-  FUN_00413810((int *)(unaff_EBP + -0x28));
+  FUN_00413810((int *)(__saved_ebp + -0x28));
   return;
 }
 
@@ -2371,9 +2371,9 @@ void FUN_00416861(void)
 void FUN_004168b8(void)
 
 {
-  int unaff_EBP;
+  int __saved_ebp;
   
-  FUN_00413810((int *)(unaff_EBP + -0x28));
+  FUN_00413810((int *)(__saved_ebp + -0x28));
   return;
 }
 
@@ -2384,9 +2384,9 @@ void FUN_004168b8(void)
 void FUN_0041690f(void)
 
 {
-  int unaff_EBP;
+  int __saved_ebp;
   
-  FUN_00413810((int *)(unaff_EBP + -0x28));
+  FUN_00413810((int *)(__saved_ebp + -0x28));
   return;
 }
 
@@ -2397,9 +2397,9 @@ void FUN_0041690f(void)
 void FUN_00416970(void)
 
 {
-  int unaff_EBP;
+  int __saved_ebp;
   
-  FUN_00413810((int *)(unaff_EBP + -0x28));
+  FUN_00413810((int *)(__saved_ebp + -0x28));
   return;
 }
 
@@ -2410,7 +2410,7 @@ void FUN_00416970(void)
 int switchD_00416806_caseD_0(void)
 
 {
-    /* TODO: 36 lines - has decompilation artifacts */
+    /* TODO: 36 lines - has decompiler artifacts */
     return 0;
 }
 
@@ -2421,9 +2421,9 @@ int switchD_00416806_caseD_0(void)
 void FUN_00416a4a(void)
 
 {
-  int unaff_EBP;
+  int __saved_ebp;
   
-  FUN_00413810((int *)(unaff_EBP + -0x28));
+  FUN_00413810((int *)(__saved_ebp + -0x28));
   return;
 }
 
@@ -2434,9 +2434,9 @@ void FUN_00416a4a(void)
 void FUN_00416c79(void)
 
 {
-  int unaff_EBP;
+  int __saved_ebp;
   
-  FUN_00413810((int *)(unaff_EBP + -0x28));
+  FUN_00413810((int *)(__saved_ebp + -0x28));
   return;
 }
 
@@ -2447,9 +2447,9 @@ void FUN_00416c79(void)
 void FUN_00416c81(void)
 
 {
-  int unaff_EBP;
+  int __saved_ebp;
   
-  FUN_00413810((int *)(unaff_EBP + -0x28));
+  FUN_00413810((int *)(__saved_ebp + -0x28));
   return;
 }
 
@@ -2460,9 +2460,9 @@ void FUN_00416c81(void)
 void FUN_00416d2b(void)
 
 {
-  int unaff_EBP;
+  int __saved_ebp;
   
-  FUN_00413810((int *)(unaff_EBP + -0x28));
+  FUN_00413810((int *)(__saved_ebp + -0x28));
   return;
 }
 
@@ -2473,9 +2473,9 @@ void FUN_00416d2b(void)
 void FUN_00416d33(void)
 
 {
-  int unaff_EBP;
+  int __saved_ebp;
   
-  FUN_00413810((int *)(unaff_EBP + -0x28));
+  FUN_00413810((int *)(__saved_ebp + -0x28));
   return;
 }
 
@@ -2486,9 +2486,9 @@ void FUN_00416d33(void)
 void FUN_00416dab(void)
 
 {
-  int unaff_EBP;
+  int __saved_ebp;
   
-  FUN_00413810((int *)(unaff_EBP + -0x28));
+  FUN_00413810((int *)(__saved_ebp + -0x28));
   return;
 }
 
@@ -2499,7 +2499,7 @@ void FUN_00416dab(void)
 int FUN_00416dc7(void)
 
 {
-    /* TODO: 29 lines - has decompilation artifacts */
+    /* TODO: 29 lines - has decompiler artifacts */
     return 0;
 }
 
@@ -2510,9 +2510,9 @@ int FUN_00416dc7(void)
 void FUN_00416e22(void)
 
 {
-  int unaff_EBP;
+  int __saved_ebp;
   
-  FUN_00413810((int *)(unaff_EBP + -0x28));
+  FUN_00413810((int *)(__saved_ebp + -0x28));
   return;
 }
 
@@ -2523,9 +2523,9 @@ void FUN_00416e22(void)
 void FUN_00416e2a(void)
 
 {
-  int unaff_EBP;
+  int __saved_ebp;
   
-  FUN_00413810((int *)(unaff_EBP + -0x28));
+  FUN_00413810((int *)(__saved_ebp + -0x28));
   return;
 }
 
@@ -2536,9 +2536,9 @@ void FUN_00416e2a(void)
 void FUN_00416e32(void)
 
 {
-  int unaff_EBP;
+  int __saved_ebp;
   
-  FUN_00413810((int *)(unaff_EBP + -0x28));
+  FUN_00413810((int *)(__saved_ebp + -0x28));
   return;
 }
 
@@ -2549,9 +2549,9 @@ void FUN_00416e32(void)
 void FUN_00416e3a(void)
 
 {
-  int unaff_EBP;
+  int __saved_ebp;
   
-  FUN_00413810((int *)(unaff_EBP + -0x28));
+  FUN_00413810((int *)(__saved_ebp + -0x28));
   return;
 }
 
@@ -2562,9 +2562,9 @@ void FUN_00416e3a(void)
 void FUN_00416e4a(void)
 
 {
-  int unaff_EBP;
+  int __saved_ebp;
   
-  FUN_004113d0((int *)(unaff_EBP + -0x6c));
+  FUN_004113d0((int *)(__saved_ebp + -0x6c));
   return;
 }
 
@@ -2575,9 +2575,9 @@ void FUN_00416e4a(void)
 void FUN_00416e64(void)
 
 {
-  int unaff_EBP;
+  int __saved_ebp;
   
-  FUN_004113d0((int *)(unaff_EBP + -0x28));
+  FUN_004113d0((int *)(__saved_ebp + -0x28));
   return;
 }
 
@@ -2623,7 +2623,7 @@ char __thiscall FUN_00416f40(MathProblem *this,uint param_1)
   else {
     *puVar1 = 0;
   }
-  if (this->threshold != '\0') goto LAB_00416ff3;
+  if (this->threshold != '\0') goto __label_00416ff3;
   switch(this->slots[param_1].flags) {
   case 1:
     this->operand_a = this->operand_a + this->slots[param_1].result;
@@ -2633,10 +2633,10 @@ char __thiscall FUN_00416f40(MathProblem *this,uint param_1)
     break;
   case 3:
     iVar2 = this->slots[param_1].result * this->operand_a;
-    goto LAB_00416fc6;
+    goto __label_00416fc6;
   case 4:
     iVar2 = this->operand_a / this->slots[param_1].result;
-LAB_00416fc6:
+__label_00416fc6:
     this->operand_a = iVar2;
   }
   if (this->operand_a < 0) {
@@ -2646,7 +2646,7 @@ LAB_00416fc6:
   if (this->active_flag != 0) {
     FUN_00414440(this,param_1,'\x01');
   }
-LAB_00416ff3:
+__label_00416ff3:
   return *(char *)puVar1;
 }
 
@@ -2688,7 +2688,7 @@ int __thiscall FUN_00417010(MathProblem *this,int param_1,int param_2,int param_
 int __thiscall FUN_004170a0(void *this,int param_1,int param_2,int param_3)
 
 {
-    /* TODO: 18 lines - has decompilation artifacts */
+    /* TODO: 18 lines - has decompiler artifacts */
     return 0;
 }
 
@@ -3169,7 +3169,7 @@ void __thiscall FUN_004176a0(CString *this,int param_1)
 void __thiscall FUN_00417720(void *this,int *param_1,uint param_2)
 
 {
-    /* TODO: 51 lines - has decompilation artifacts */
+    /* TODO: 51 lines - has decompiler artifacts */
     return;
 }
 
@@ -3180,7 +3180,7 @@ void __thiscall FUN_00417720(void *this,int *param_1,uint param_2)
 int __thiscall FUN_004177f0(void *this,int param_1,char param_2)
 
 {
-    /* TODO: 36 lines - has decompilation artifacts */
+    /* TODO: 36 lines - has decompiler artifacts */
     return 0;
 }
 
@@ -3207,7 +3207,7 @@ DWORD __cdecl FUN_00417890(HANDLE param_1)
 int __cdecl FUN_004178b0(HANDLE param_1,DWORD param_2)
 
 {
-    /* TODO: 10 lines - has decompilation artifacts */
+    /* TODO: 10 lines - has decompiler artifacts */
     return 0;
 }
 
@@ -3313,12 +3313,12 @@ void FUN_00417af0(void)
 
 {
   int uVar1;
-  int in_stack_fffffff4;
+  int __param_fffffff4;
   
   uVar1 = 0;
-  FUN_00401050(&ghidra_stack_fffffff4,0);
-  FUN_00401050(&ghidra_stack_fffffff0,0);
-  FUN_00401060(&DAT_004842b8,uVar1,in_stack_fffffff4);
+  FUN_00401050(&__stk_44,0);
+  FUN_00401050(&__stk_43,0);
+  FUN_00401060(&DAT_004842b8,uVar1,__param_fffffff4);
   return;
 }
 
@@ -3531,7 +3531,7 @@ void __fastcall FUN_00417cc0(int *param_1)
 void FUN_00417d80(void)
 
 {
-    /* TODO: 104 lines - has decompilation artifacts */
+    /* TODO: 104 lines - has decompiler artifacts */
     return;
 }
 
@@ -3631,7 +3631,7 @@ void FUN_00417ec0(void)
 void FUN_00418290(void)
 
 {
-    /* TODO: 112 lines - has decompilation artifacts */
+    /* TODO: 112 lines - has decompiler artifacts */
     return;
 }
 
@@ -3809,12 +3809,12 @@ void FUN_00418970(void)
 
 {
   int uVar1;
-  int in_stack_fffffff4;
+  int __param_fffffff4;
   
   uVar1 = 0;
-  FUN_00401050(&ghidra_stack_fffffff4,0);
-  FUN_00401050(&ghidra_stack_fffffff0,0);
-  FUN_00401060(&DAT_00485318,uVar1,in_stack_fffffff4);
+  FUN_00401050(&__stk_44,0);
+  FUN_00401050(&__stk_43,0);
+  FUN_00401060(&DAT_00485318,uVar1,__param_fffffff4);
   return;
 }
 
@@ -3991,7 +3991,7 @@ void __thiscall
 FUN_00419020(void *this,short *param_1,int *param_2,short *param_3,int *param_4,short *param_5)
 
 {
-    /* TODO: 31 lines - has decompilation artifacts */
+    /* TODO: 31 lines - has decompiler artifacts */
     return;
 }
 
@@ -4003,7 +4003,7 @@ void __thiscall
 FUN_00419180(void *this,int param_1,int *param_2,short *param_3,int *param_4,short *param_5)
 
 {
-    /* TODO: 30 lines - has decompilation artifacts */
+    /* TODO: 30 lines - has decompiler artifacts */
     return;
 }
 
@@ -4015,7 +4015,7 @@ void __thiscall
 FUN_00419400(void *this,int param_1,int *param_2,short *param_3,int *param_4,short *param_5)
 
 {
-    /* TODO: 30 lines - has decompilation artifacts */
+    /* TODO: 30 lines - has decompiler artifacts */
     return;
 }
 
@@ -4028,7 +4028,7 @@ FUN_004194d0(void *this,int *param_1,short *param_2,int param_3,int param_4,
             int param_5)
 
 {
-    /* TODO: 26 lines - has decompilation artifacts */
+    /* TODO: 26 lines - has decompiler artifacts */
     return;
 }
 
@@ -4051,18 +4051,18 @@ FUN_00419570(void *this,short *param_1,int *param_2,short *param_3,int param_4,
             int param_5,int param_6)
 
 {
-  int *unaff_FS_OFFSET;
+  int *__seh_chain;
   short local_18;
   short local_16;
   short local_14;
   short local_12;
   int local_10;
-  char *puStack_c;
+  char *__seh_handler;
   int local_8;
   
-  local_10 = *unaff_FS_OFFSET;
-  puStack_c = &LAB_004195fd;
-  *unaff_FS_OFFSET = &local_10;
+  local_10 = *__seh_chain;
+  __seh_handler = &__label_004195fd;
+  *__seh_chain = &local_10;
   local_8 = 0;
   local_18 = *param_3;
   local_16 = param_3[1];
@@ -4071,7 +4071,7 @@ FUN_00419570(void *this,short *param_1,int *param_2,short *param_3,int param_4,
   FUN_00419610(this,(int *)param_1,param_2,(int *)&local_18,param_4,param_5,param_6);
   local_8 = 0xffffffff;
   FUN_00419607();
-  *unaff_FS_OFFSET = local_10;
+  *__seh_chain = local_10;
   return;
 }
 
@@ -4096,7 +4096,7 @@ FUN_00419610(void *this,int *param_1,int *param_2,int *param_3,int param_4,
             int param_5,int param_6)
 
 {
-    /* TODO: 164 lines - has decompilation artifacts */
+    /* TODO: 164 lines - has decompiler artifacts */
     return;
 }
 
@@ -4117,16 +4117,16 @@ void FUN_004199c8(void)
 void switchD_004199f4_default(void)
 
 {
-  int unaff_EBP;
-  int *unaff_FS_OFFSET;
+  int __saved_ebp;
+  int *__seh_chain;
   
-  *(char *)(unaff_EBP + -4) = 1;
+  *(char *)(__saved_ebp + -4) = 1;
   FUN_00419a8b();
-  *(char *)(unaff_EBP + -4) = 0;
+  *(char *)(__saved_ebp + -4) = 0;
   FUN_00419a93();
-  *(int *)(unaff_EBP + -4) = 0xffffffff;
+  *(int *)(__saved_ebp + -4) = 0xffffffff;
   FUN_00419aa5();
-  *unaff_FS_OFFSET = *(int *)(unaff_EBP + -0xc);
+  *__seh_chain = *(int *)(__saved_ebp + -0xc);
   return;
 }
 
@@ -4171,7 +4171,7 @@ FUN_00419ae0(void *this,int *param_1,int *param_2,int *param_3,int param_4,
             int param_5,int param_6)
 
 {
-    /* TODO: 164 lines - has decompilation artifacts */
+    /* TODO: 164 lines - has decompiler artifacts */
     return;
 }
 
@@ -4192,16 +4192,16 @@ void FUN_00419ea1(void)
 void switchD_00419ecd_default(void)
 
 {
-  int unaff_EBP;
-  int *unaff_FS_OFFSET;
+  int __saved_ebp;
+  int *__seh_chain;
   
-  *(char *)(unaff_EBP + -4) = 1;
+  *(char *)(__saved_ebp + -4) = 1;
   FUN_00419f64();
-  *(char *)(unaff_EBP + -4) = 0;
+  *(char *)(__saved_ebp + -4) = 0;
   FUN_00419f6c();
-  *(int *)(unaff_EBP + -4) = 0xffffffff;
+  *(int *)(__saved_ebp + -4) = 0xffffffff;
   FUN_00419f7e();
-  *unaff_FS_OFFSET = *(int *)(unaff_EBP + -0xc);
+  *__seh_chain = *(int *)(__saved_ebp + -0xc);
   return;
 }
 
@@ -4256,7 +4256,7 @@ int FUN_00419fc0(int param_1)
 int __thiscall FUN_00419fe0(void *this,short param_1,short param_2)
 
 {
-    /* TODO: 12 lines - has decompilation artifacts */
+    /* TODO: 12 lines - has decompiler artifacts */
     return 0;
 }
 
@@ -4278,7 +4278,7 @@ void __thiscall FUN_0041a020(void *this,short *param_1)
 void __thiscall FUN_0041a040(void *this,short *param_1,int *param_2,short *param_3)
 
 {
-    /* TODO: 19 lines - has decompilation artifacts */
+    /* TODO: 19 lines - has decompiler artifacts */
     return;
 }
 
@@ -4289,7 +4289,7 @@ void __thiscall FUN_0041a040(void *this,short *param_1,int *param_2,short *param
 void __thiscall FUN_0041a0b0(void *this,int param_1,int *param_2,short *param_3)
 
 {
-    /* TODO: 27 lines - has decompilation artifacts */
+    /* TODO: 27 lines - has decompiler artifacts */
     return;
 }
 
@@ -4301,7 +4301,7 @@ char __thiscall
 FUN_0041a150(void *this,short *param_1,char param_2,int *param_3,short *param_4,char param_5)
 
 {
-    /* TODO: 228 lines - has decompilation artifacts */
+    /* TODO: 228 lines - has decompiler artifacts */
     return 0;
 }
 
@@ -4322,7 +4322,7 @@ void FUN_0041a55c(void)
 char FUN_0041a580(void)
 
 {
-    /* TODO: 29 lines - has decompilation artifacts */
+    /* TODO: 29 lines - has decompiler artifacts */
     return 0;
 }
 
@@ -4333,7 +4333,7 @@ char FUN_0041a580(void)
 char FUN_0041a630(void)
 
 {
-    /* TODO: 32 lines - has decompilation artifacts */
+    /* TODO: 32 lines - has decompiler artifacts */
     return 0;
 }
 
@@ -4344,7 +4344,7 @@ char FUN_0041a630(void)
 char FUN_0041a700(void)
 
 {
-    /* TODO: 42 lines - has decompilation artifacts */
+    /* TODO: 42 lines - has decompiler artifacts */
     return 0;
 }
 
@@ -4355,7 +4355,7 @@ char FUN_0041a700(void)
 int * __thiscall FUN_0041a940(void *this,short param_1,int *param_2)
 
 {
-    /* TODO: 24 lines - has decompilation artifacts */
+    /* TODO: 24 lines - has decompiler artifacts */
     return 0;
 }
 
@@ -4366,7 +4366,7 @@ int * __thiscall FUN_0041a940(void *this,short param_1,int *param_2)
 uint __thiscall FUN_0041a9a0(void *this,short *param_1,short *param_2,char param_3)
 
 {
-    /* TODO: 62 lines - has decompilation artifacts */
+    /* TODO: 62 lines - has decompiler artifacts */
     return 0;
 }
 
@@ -4391,7 +4391,7 @@ int FUN_0041ab40(int param_1)
 void __thiscall FUN_0041ab60(void *this,int param_1)
 
 {
-    /* TODO: 23 lines - has decompilation artifacts */
+    /* TODO: 23 lines - has decompiler artifacts */
     return;
 }
 
@@ -4407,20 +4407,20 @@ void __thiscall FUN_0041abd0(void *this,void *param_1,char param_2)
   int uVar1;
   int *puVar2;
   int *puVar3;
-  int *unaff_FS_OFFSET;
+  int *__seh_chain;
   char local_18 [8];
   int local_10;
-  char *puStack_c;
+  char *__seh_handler;
   int local_8;
   
-  local_10 = *unaff_FS_OFFSET;
+  local_10 = *__seh_chain;
   local_8 = 0xffffffff;
-  puStack_c = &LAB_0041ac81;
-  *unaff_FS_OFFSET = &local_10;
+  __seh_handler = &__label_0041ac81;
+  *__seh_chain = &local_10;
   if (param_2 != '\0') {
     FUN_0042f120(local_18,*(short *)((int)param_1 + 4)); /* TODO: param_1 struct unknown, offset +0x04 */
     local_8 = 0;
-    FUN_00452160(&DAT_00485328,param_1,(int)local_18,&LAB_00451e80);
+    FUN_00452160(&DAT_00485328,param_1,(int)local_18,&__label_00451e80);
     FUN_0041ab60(this,local_18);
     local_8 = 0xffffffff;
     FUN_0041ac8b();
@@ -4435,7 +4435,7 @@ void __thiscall FUN_0041abd0(void *this,void *param_1,char param_2)
     puVar2 = puVar2 + 1;
   } while (puVar2 < &DAT_0048572e);
   _DAT_0048572e = *(int *)((int)param_1 + 0x406);       /* TODO: param_1 struct unknown, offset +0x406, could be TextDisplay.field_406 */
-  *unaff_FS_OFFSET = local_10;
+  *__seh_chain = local_10;
   return;
 }
 
@@ -4446,9 +4446,9 @@ void __thiscall FUN_0041abd0(void *this,void *param_1,char param_2)
 void FUN_0041ac8b(void)
 
 {
-  int unaff_EBP;
+  int __saved_ebp;
   
-  thunk_FUN_0042f1c0((char *)(unaff_EBP + -0x14));
+  thunk_FUN_0042f1c0((char *)(__saved_ebp + -0x14));
   return;
 }
 
@@ -4461,7 +4461,7 @@ void FUN_0041ac8b(void)
 int FUN_0041ace0(void *param_1,int param_2)
 
 {
-    /* TODO: 60 lines - has decompilation artifacts */
+    /* TODO: 60 lines - has decompiler artifacts */
     return 0;
 }
 
@@ -4472,7 +4472,7 @@ int FUN_0041ace0(void *param_1,int param_2)
 int __thiscall FUN_0041ae60(void *this,short *param_1,char param_2)
 
 {
-    /* TODO: 70 lines - has decompilation artifacts */
+    /* TODO: 70 lines - has decompiler artifacts */
     return 0;
 }
 
@@ -4483,7 +4483,7 @@ int __thiscall FUN_0041ae60(void *this,short *param_1,char param_2)
 uint __thiscall FUN_0041af60(void *this,short *param_1)
 
 {
-    /* TODO: 58 lines - has decompilation artifacts */
+    /* TODO: 58 lines - has decompiler artifacts */
     return 0;
 }
 
@@ -4504,9 +4504,9 @@ void FUN_0041b056(void)
 void FUN_0041b068(void)
 
 {
-  int unaff_EBP;
+  int __saved_ebp;
   
-  FUN_0043b810((int *)(unaff_EBP + -0x34));
+  FUN_0043b810((int *)(__saved_ebp + -0x34));
   return;
 }
 
@@ -4529,7 +4529,7 @@ void __thiscall FUN_0041b0a0(void *this,short *param_1,char param_2)
 void __thiscall FUN_0041b0c0(void *this,short *param_1,char param_2)
 
 {
-    /* TODO: 32 lines - has decompilation artifacts */
+    /* TODO: 32 lines - has decompiler artifacts */
     return;
 }
 
@@ -4540,7 +4540,7 @@ void __thiscall FUN_0041b0c0(void *this,short *param_1,char param_2)
 void __thiscall FUN_0041b150(void *this,char param_1)
 
 {
-    /* TODO: 30 lines - has decompilation artifacts */
+    /* TODO: 30 lines - has decompiler artifacts */
     return;
 }
 
@@ -4551,7 +4551,7 @@ void __thiscall FUN_0041b150(void *this,char param_1)
 void __thiscall FUN_0041b1d0(void *this,char param_1,char param_2)
 
 {
-    /* TODO: 28 lines - has decompilation artifacts */
+    /* TODO: 28 lines - has decompiler artifacts */
     return;
 }
 
@@ -4562,7 +4562,7 @@ void __thiscall FUN_0041b1d0(void *this,char param_1,char param_2)
 void __thiscall FUN_0041b240(void *this,char param_1,char param_2)
 
 {
-    /* TODO: 29 lines - has decompilation artifacts */
+    /* TODO: 29 lines - has decompiler artifacts */
     return;
 }
 
@@ -4573,7 +4573,7 @@ void __thiscall FUN_0041b240(void *this,char param_1,char param_2)
 void __thiscall FUN_0041b2f0(void *this,int *param_1,byte param_2,byte param_3)
 
 {
-    /* TODO: 84 lines - has decompilation artifacts */
+    /* TODO: 84 lines - has decompiler artifacts */
     return;
 }
 
@@ -4584,7 +4584,7 @@ void __thiscall FUN_0041b2f0(void *this,int *param_1,byte param_2,byte param_3)
 void __thiscall FUN_0041b4b0(void *this,char param_1,char param_2)
 
 {
-    /* TODO: 28 lines - has decompilation artifacts */
+    /* TODO: 28 lines - has decompiler artifacts */
     return;
 }
 
@@ -4595,7 +4595,7 @@ void __thiscall FUN_0041b4b0(void *this,char param_1,char param_2)
 void __thiscall FUN_0041b520(void *this,byte param_1,byte param_2)
 
 {
-    /* TODO: 28 lines - has decompilation artifacts */
+    /* TODO: 28 lines - has decompiler artifacts */
     return;
 }
 
@@ -4606,9 +4606,9 @@ void __thiscall FUN_0041b520(void *this,byte param_1,byte param_2)
 void FUN_0041b5be(void)
 
 {
-  int unaff_EBP;
+  int __saved_ebp;
   
-  FUN_0043b810((int *)(unaff_EBP + -0x24));
+  FUN_0043b810((int *)(__saved_ebp + -0x24));
   return;
 }
 
@@ -4683,7 +4683,7 @@ int * __fastcall FUN_0041b6c0(int *param_1)
 {
   uint uVar1;
   uint uVar2;
-  int *unaff_FS_OFFSET;
+  int *__seh_chain;
   int iVar3;
   int iVar4;
   int uVar5;
@@ -4692,14 +4692,14 @@ int * __fastcall FUN_0041b6c0(int *param_1)
   char cVar8;
   int uVar9;
   char cVar10;
-  int in_stack_ffffffbc;
+  int __param_ffffffbc;
   int local_10;
-  char *puStack_c;
+  char *__seh_handler;
   int local_8;
   
-  local_10 = *unaff_FS_OFFSET;
-  puStack_c = &LAB_0041b850;
-  *unaff_FS_OFFSET = &local_10;
+  local_10 = *__seh_chain;
+  __seh_handler = &__label_0041b850;
+  *__seh_chain = &local_10;
   /* param_1 is UIElement being initialized */
   UIElement *elem = (UIElement *)param_1;
   elem->rect_left = 0;     /* param_1 + 8 = offset 0x20 */
@@ -4712,13 +4712,13 @@ int * __fastcall FUN_0041b6c0(int *param_1)
   elem->pos_w = 0;
   elem->pos_h = 0;
   uVar9 = 0;
-  FUN_00401050(&ghidra_stack_ffffffbc,0);
+  FUN_00401050(&__stk_30,0);
   iVar7 = 0;
-  FUN_00401050(&ghidra_stack_ffffffb8,0);
+  FUN_00401050(&__stk_29,0);
   uVar5 = 0;
-  FUN_00401050(&ghidra_stack_ffffffb4,0);
-  FUN_00401050(&ghidra_stack_ffffffb0,0);
-  FUN_0040bfd0((int *)&elem->pos_x,uVar5,iVar7,uVar9,in_stack_ffffffbc);
+  FUN_00401050(&__stk_28,0);
+  FUN_00401050(&__stk_27,0);
+  FUN_0040bfd0((int *)&elem->pos_x,uVar5,iVar7,uVar9,__param_ffffffbc);
   local_8 = CONCAT31((((local_8) >> 8) & 0xFFFFFF),1);
   uVar1 = elem->flags;
   *param_1 = &PTR_FUN_00472f28;
@@ -4749,15 +4749,15 @@ int * __fastcall FUN_0041b6c0(int *param_1)
   elem->type_or_mode = 1;
   elem->is_visible = 1;
   iVar6 = 300;
-  FUN_00401050(&ghidra_stack_ffffffb4,300);
+  FUN_00401050(&__stk_28,300);
   iVar4 = 400;
-  FUN_00401050(&ghidra_stack_ffffffb0,400);
+  FUN_00401050(&__stk_27,400);
   iVar3 = 100;
-  FUN_00401050(&ghidra_stack_ffffffac,100);
-  FUN_00401050(&ghidra_stack_ffffffa8,100);
+  FUN_00401050(&__stk_26,100);
+  FUN_00401050(&__stk_25,100);
   FUN_0041cca0(param_1,iVar3,iVar4,iVar6,iVar7,cVar8,cVar10);
   elem->field_10 = 1;      /* param_1 + 4 = offset 0x10 */
-  *unaff_FS_OFFSET = local_10;
+  *__seh_chain = local_10;
   return param_1;
 }
 
@@ -4782,7 +4782,7 @@ int * __thiscall FUN_0041b870(void *this,byte param_1)
 void __fastcall FUN_0041b890(int *param_1)
 
 {
-    /* TODO: 45 lines - has decompilation artifacts */
+    /* TODO: 45 lines - has decompiler artifacts */
     return;
 }
 
@@ -4948,7 +4948,7 @@ void __thiscall FUN_0041baf0(DialogWidget *this,byte param_1)
 int __thiscall FUN_0041bb70(void *this,void *param_1,char param_2)
 
 {
-    /* TODO: 104 lines - has decompilation artifacts */
+    /* TODO: 104 lines - has decompiler artifacts */
     return 0;
 }
 
@@ -4976,14 +4976,14 @@ void __thiscall FUN_0041bd00(UIWidget *this,int param_1)
     do {
       if (*piVar4 == param_1) {
         uVar5 = uVar5 + 1;
-        goto LAB_0041bd28;
+        goto __label_0041bd28;
       }
       piVar4 = piVar4 + 1;
       uVar5 = uVar5 + 1;
     } while (uVar5 < uVar3);
   }
   uVar5 = 0;
-LAB_0041bd28:
+__label_0041bd28:
   if (uVar5 != 0) {
     if (uVar5 <= uVar3) {
       if (uVar5 < uVar3) {
@@ -5004,7 +5004,7 @@ LAB_0041bd28:
 void __thiscall FUN_0041bd70(void *this,int param_1)
 
 {
-    /* TODO: 69 lines - has decompilation artifacts */
+    /* TODO: 69 lines - has decompiler artifacts */
     return;
 }
 
@@ -5017,7 +5017,7 @@ void __thiscall FUN_0041bea0(GameWidget *this,short *param_1)
 {
   uint uVar1;
   int iVar2;
-  int *unaff_FS_OFFSET;
+  int *__seh_chain;
   short local_20;
   short local_1e;
   short local_1c;
@@ -5025,12 +5025,12 @@ void __thiscall FUN_0041bea0(GameWidget *this,short *param_1)
   int local_18;
   int local_14;
   int local_10;
-  char *puStack_c;
+  char *__seh_handler;
   int local_8;
   
-  local_10 = *unaff_FS_OFFSET;
-  puStack_c = &LAB_0041c01d;
-  *unaff_FS_OFFSET = &local_10;
+  local_10 = *__seh_chain;
+  __seh_handler = &__label_0041c01d;
+  *__seh_chain = &local_10;
   local_18 = this->rect_top;
   local_14 = this->rect_bottom;
   if ((this->child_list_2 != 0) && (*(int *)(this->child_list_2 + 0xe) != 0)) {
@@ -5039,12 +5039,12 @@ void __thiscall FUN_0041bea0(GameWidget *this,short *param_1)
     local_20 = 0;
     iVar2 = 4;
     local_1a = 0;
-    local_8 = (local_8 & ~0xFF) | ((unsigned char)(1));
-    local_8 = (local_8 & ~(0xFFFFFF << 8)) | (((unsigned int)(0) & 0xFFFFFF) << 8);
+    local_8 = (local_8 & ~0xFF) | 1;
+    local_8 = (local_8 & 0xFF) | (0 << 8);
     local_1c = 0;
-LAB_0041bf04:
+__label_0041bf04:
     do {
-      if (*(uint *)(this->child_list_2 + 0xe) < uVar1) goto LAB_0041bfcc;
+      if (*(uint *)(this->child_list_2 + 0xe) < uVar1) goto __label_0041bfcc;
       FUN_0041bea0(*(void **)(**(int **)(this->child_list_2 + 4) + -4 + iVar2),&local_20);
       if ((local_1e < local_1a) && (local_20 < local_1c)) {
         if ((((unsigned short)((local_18) >> 16)) < ((unsigned short)((local_14) >> 16))) && ((short)local_18 < (short)local_14)) {
@@ -5061,7 +5061,7 @@ LAB_0041bf04:
             iVar2 = iVar2 + 4;
             local_14 = CONCAT22(((unsigned short)((local_14) >> 16)),local_1c);
             uVar1 = uVar1 + 1;
-            goto LAB_0041bf04;
+            goto __label_0041bf04;
           }
         }
         else {
@@ -5073,19 +5073,19 @@ LAB_0041bf04:
       uVar1 = uVar1 + 1;
     } while( true );
   }
-LAB_0041bfd5:
+__label_0041bfd5:
   local_8 = 0xffffffff;
   param_1[1] = ((unsigned short)((local_18) >> 16));
   param_1[3] = ((unsigned short)((local_14) >> 16));
   *param_1 = (short)local_18;
   param_1[2] = (short)local_14;
   FUN_0041c027();
-  *unaff_FS_OFFSET = local_10;
+  *__seh_chain = local_10;
   return;
-LAB_0041bfcc:
-  local_8 = (uint)(((local_8) >> 8) & 0xFFFFFF) << 8;
+__label_0041bfcc:
+  local_8 &= ~0xFF;
   FUN_0041c015();
-  goto LAB_0041bfd5;
+  goto __label_0041bfd5;
 }
 
 
@@ -5115,7 +5115,7 @@ void FUN_0041c027(void)
 void __thiscall FUN_0041c030(void *this,void *param_1)
 
 {
-  int *unaff_FS_OFFSET;
+  int *__seh_chain;
   int uVar1;
   int uVar2;
   int uVar3;
@@ -5126,13 +5126,13 @@ void __thiscall FUN_0041c030(void *this,void *param_1)
   short sStack_12;
   short local_10;
   short uStack_e;
-  char *puStack_c;
+  char *__seh_handler;
   int local_8;
   
-  puStack_c = &LAB_0041c0d4;
-  local_10 = (short)*unaff_FS_OFFSET;
-  uStack_e = (short)((uint)*unaff_FS_OFFSET >> 0x10);
-  *unaff_FS_OFFSET = &local_10;
+  __seh_handler = &__label_0041c0d4;
+  local_10 = (short)*__seh_chain;
+  uStack_e = (short)((uint)*__seh_chain >> 0x10);
+  *__seh_chain = &local_10;
   local_8 = 0;
   sStack_16 = 0;
   local_18 = 0;
@@ -5141,16 +5141,16 @@ void __thiscall FUN_0041c030(void *this,void *param_1)
   psVar4 = &local_18;
   FUN_0041bea0(this,psVar4);
   uVar3 = CONCAT22(sStack_12,local_14);
-  FUN_00401ba0(&ghidra_stack_ffffffd4,local_14);
+  FUN_00401ba0(&__stk_36,local_14);
   uVar2 = CONCAT22(local_10,sStack_12);
-  FUN_00401ba0(&ghidra_stack_ffffffd0,sStack_12);
+  FUN_00401ba0(&__stk_35,sStack_12);
   uVar1 = CONCAT22(sStack_16,local_18);
-  FUN_00401ba0(&ghidra_stack_ffffffcc,local_18);
-  FUN_00401ba0(&ghidra_stack_ffffffc8,sStack_16);
+  FUN_00401ba0(&__stk_34,local_18);
+  FUN_00401ba0(&__stk_33,sStack_16);
   FUN_0040bfd0(param_1,uVar1,uVar2,uVar3,psVar4);
   local_8 = 0xffffffff;
   FUN_0041c0de();
-  *unaff_FS_OFFSET = CONCAT22(uStack_e,local_10);
+  *__seh_chain = CONCAT22(uStack_e,local_10);
   return;
 }
 
@@ -5189,7 +5189,7 @@ int __fastcall FUN_0041c0f0(UIElement *this)
 char __thiscall FUN_0041c110(void *this,void *param_1)
 
 {
-    /* TODO: 66 lines - has decompilation artifacts */
+    /* TODO: 66 lines - has decompiler artifacts */
     return 0;
 }
 
@@ -5200,9 +5200,9 @@ char __thiscall FUN_0041c110(void *this,void *param_1)
 void FUN_0041c1dd(void)
 
 {
-  int unaff_EBP;
+  int __saved_ebp;
   
-  FUN_004097c0((int *)(unaff_EBP + -0x24));
+  FUN_004097c0((int *)(__saved_ebp + -0x24));
   return;
 }
 
@@ -5213,10 +5213,10 @@ void FUN_0041c1dd(void)
 char FUN_0041c1e5(void)
 
 {
-  int unaff_EBP;
-  int *unaff_FS_OFFSET;
+  int __saved_ebp;
+  int *__seh_chain;
   
-  *unaff_FS_OFFSET = *(int *)(unaff_EBP + -0xc);
+  *__seh_chain = *(int *)(__saved_ebp + -0xc);
   return 1;
 }
 
@@ -5288,7 +5288,7 @@ void __thiscall FUN_0041c2a0(GameWidget *this,int param_1)
 int * __thiscall FUN_0041c2f0(void *this,short *param_1)
 
 {
-    /* TODO: 31 lines - has decompilation artifacts */
+    /* TODO: 31 lines - has decompiler artifacts */
     return 0;
 }
 
@@ -5316,7 +5316,7 @@ void __fastcall FUN_0041c420(UIElement *this)
 void __fastcall FUN_0041c4a0(int *param_1)
 
 {
-    /* TODO: 80 lines - has decompilation artifacts */
+    /* TODO: 80 lines - has decompiler artifacts */
     return;
 }
 
@@ -5367,7 +5367,7 @@ void FUN_0041c640(void)
 void __thiscall FUN_0041c6b0(void *this,char param_1)
 
 {
-    /* TODO: 13 lines - has decompilation artifacts */
+    /* TODO: 13 lines - has decompiler artifacts */
     return;
 }
 
@@ -5394,14 +5394,14 @@ void __fastcall FUN_0041c720(UIElement *this)
       do {
         if (*piVar2 == (int)this) {
           iVar4 = uVar3 + 1;
-          goto LAB_0041c759;
+          goto __label_0041c759;
         }
         piVar2 = piVar2 + 1;
         uVar3 = uVar3 + 1;
       } while (uVar3 < uVar5);
     }
     iVar4 = 0;
-LAB_0041c759:
+__label_0041c759:
     if (iVar4 != 0) {
       SVar1 = GetAsyncKeyState(0x10);
       if (SVar1 < 0) {
@@ -5431,7 +5431,7 @@ LAB_0041c759:
 void __thiscall FUN_0041c7b0(void *this,int param_1)
 
 {
-    /* TODO: 82 lines - has decompilation artifacts */
+    /* TODO: 82 lines - has decompiler artifacts */
     return;
 }
 
@@ -5442,7 +5442,7 @@ void __thiscall FUN_0041c7b0(void *this,int param_1)
 void __thiscall FUN_0041c8e0(void *this,int param_1)
 
 {
-    /* TODO: 45 lines - has decompilation artifacts */
+    /* TODO: 45 lines - has decompiler artifacts */
     return;
 }
 
@@ -5454,12 +5454,12 @@ void FUN_0041ca50(void)
 
 {
   int uVar1;
-  int in_stack_fffffff4;
+  int __param_fffffff4;
   
   uVar1 = 0;
-  FUN_00401050(&ghidra_stack_fffffff4,0);
-  FUN_00401050(&ghidra_stack_fffffff0,0);
-  FUN_00401060(&DAT_00486168,uVar1,in_stack_fffffff4);
+  FUN_00401050(&__stk_44,0);
+  FUN_00401050(&__stk_43,0);
+  FUN_00401060(&DAT_00486168,uVar1,__param_fffffff4);
   return;
 }
 
@@ -5528,15 +5528,15 @@ void __fastcall FUN_0041cb20(UIWidget *param_1)
 void __thiscall FUN_0041cb70(DialogWidget *this,char param_1)
 
 {
-  int *unaff_FS_OFFSET;
+  int *__seh_chain;
   short local_18 [4];
   int local_10;
-  char *puStack_c;
+  char *__seh_handler;
   int local_8;
   
-  local_10 = *unaff_FS_OFFSET;
-  puStack_c = &LAB_0041cbec;
-  *unaff_FS_OFFSET = &local_10;
+  local_10 = *__seh_chain;
+  __seh_handler = &__label_0041cbec;
+  *__seh_chain = &local_10;
   this->flags = this->flags | 4;
   if ((param_1 != '\0') && (this->field_06 != 0)) {
     local_18[1] = 0;
@@ -5549,7 +5549,7 @@ void __thiscall FUN_0041cb70(DialogWidget *this,char param_1)
     local_8 = 0xffffffff;
     FUN_0041cbf6();
   }
-  *unaff_FS_OFFSET = local_10;
+  *__seh_chain = local_10;
   return;
 }
 
@@ -5796,24 +5796,24 @@ void __thiscall FUN_0041ce10(GameWidget *this,int *param_1,int param_2)
 void __thiscall FUN_0041cef0(void *this,int *param_1,int param_2)
 
 {
-  int *unaff_FS_OFFSET;
+  int *__seh_chain;
   int local_20;
   int local_1c;
   int local_18;
   int local_14;
   int local_10;
-  char *puStack_c;
+  char *__seh_handler;
   int local_8;
   
-  local_10 = *unaff_FS_OFFSET;
-  puStack_c = &LAB_0041cfc7;
-  *unaff_FS_OFFSET = &local_10;
+  local_10 = *__seh_chain;
+  __seh_handler = &__label_0041cfc7;
+  *__seh_chain = &local_10;
   local_18 = *param_1;
   local_14 = param_1[1];
   local_1c = 0;
   local_20 = 0;
-  local_8 = (local_8 & ~0xFF) | ((unsigned char)(1));
-  local_8 = (local_8 & ~(0xFFFFFF << 8)) | (((unsigned int)(0) & 0xFFFFFF) << 8);
+  local_8 = (local_8 & ~0xFF) | 1;
+  local_8 = (local_8 & 0xFF) | (0 << 8);
   FUN_0041cdc0(this,&local_20);
   switch(param_2) {
   case 0:
@@ -5846,11 +5846,11 @@ void __thiscall FUN_0041cef0(void *this,int *param_1,int param_2)
   }
 switchD_0041cf3e_default:
   FUN_0041d2d0(this,&local_18,'\0');
-  local_8 = (uint)(((local_8) >> 8) & 0xFFFFFF) << 8;
+  local_8 &= ~0xFF;
   FUN_0041cfbf();
   local_8 = 0xffffffff;
   FUN_0041cfd1();
-  *unaff_FS_OFFSET = local_10;
+  *__seh_chain = local_10;
   return;
 }
 
@@ -5881,23 +5881,23 @@ void FUN_0041cfd1(void)
 void __thiscall FUN_0041d020(void *this,int param_1,int param_2,int param_3)
 
 {
-  int *unaff_FS_OFFSET;
+  int *__seh_chain;
   int local_18;
   int local_14;
   int local_10;
-  char *puStack_c;
+  char *__seh_handler;
   int local_8;
   
-  local_10 = *unaff_FS_OFFSET;
-  puStack_c = &LAB_0041d076;
-  *unaff_FS_OFFSET = &local_10;
+  local_10 = *__seh_chain;
+  __seh_handler = &__label_0041d076;
+  *__seh_chain = &local_10;
   local_8 = 0;
   local_14 = param_1;
   local_18 = param_2;
   FUN_0041cef0(this,&local_18,param_3);
   local_8 = 0xffffffff;
   FUN_0041d080();
-  *unaff_FS_OFFSET = local_10;
+  *__seh_chain = local_10;
   return;
 }
 
@@ -5919,7 +5919,7 @@ void __thiscall FUN_0041d0a0(void *this,int *param_1,char param_2)
 
 {
   int iVar1;
-  int *unaff_FS_OFFSET;
+  int *__seh_chain;
   int local_2c;
   int local_28;
   int local_24;
@@ -5928,23 +5928,23 @@ void __thiscall FUN_0041d0a0(void *this,int *param_1,char param_2)
   int local_18;
   int local_14;
   int local_10;
-  char *puStack_c;
+  char *__seh_handler;
   int local_8;
   
-  local_10 = *unaff_FS_OFFSET;
-  puStack_c = &LAB_0041d1b1;
-  *unaff_FS_OFFSET = &local_10;
+  local_10 = *__seh_chain;
+  __seh_handler = &__label_0041d1b1;
+  *__seh_chain = &local_10;
   local_14 = 0;
   local_18 = 0;
   local_28 = 0;
   local_2c = 0;
-  local_8 = (local_8 & ~0xFF) | ((unsigned char)(1));
-  local_8 = (local_8 & ~(0xFFFFFF << 8)) | (((unsigned int)(0) & 0xFFFFFF) << 8);
+  local_8 = (local_8 & ~0xFF) | 1;
+  local_8 = (local_8 & 0xFF) | (0 << 8);
   local_1c = this;
   FUN_0041cdc0(this,&local_2c);
   if (param_2 == '\0') {
     FUN_00403030(&local_18,&local_24,param_1);
-    local_8 = (local_8 & ~0xFF) | ((unsigned char)(1));
+    local_8 = (local_8 & ~0xFF) | 1;
     FUN_0041d1a1();
   }
   else {
@@ -5958,11 +5958,11 @@ void __thiscall FUN_0041d0a0(void *this,int *param_1,char param_2)
     iVar1 = local_2c - local_18 / 2;
     FUN_0041cca0(local_1c,local_20,iVar1,local_20 + local_14,local_18 + iVar1,'\0','\0');
   }
-  local_8 = (uint)(((local_8) >> 8) & 0xFFFFFF) << 8;
+  local_8 &= ~0xFF;
   FUN_0041d1a9();
   local_8 = 0xffffffff;
   FUN_0041d1bb();
-  *unaff_FS_OFFSET = local_10;
+  *__seh_chain = local_10;
   return;
 }
 
@@ -6005,18 +6005,18 @@ void __thiscall FUN_0041d1d0(void *this,int param_1,int param_2,char param_3)
 {
   int iVar1;
   int iVar2;
-  int *unaff_FS_OFFSET;
+  int *__seh_chain;
   int local_20;
   int local_1c;
   int local_18;
   int local_14;
   int local_10;
-  char *puStack_c;
+  char *__seh_handler;
   uint local_8;
   
-  local_10 = *unaff_FS_OFFSET;
-  puStack_c = &LAB_0041d2ba;
-  *unaff_FS_OFFSET = &local_10;
+  local_10 = *__seh_chain;
+  __seh_handler = &__label_0041d2ba;
+  *__seh_chain = &local_10;
   local_14 = 0;
   local_18 = 0;
   local_1c = 0;
@@ -6038,7 +6038,7 @@ void __thiscall FUN_0041d1d0(void *this,int param_1,int param_2,char param_3)
   FUN_0041d2b2();
   local_8 = 0xffffffff;
   FUN_0041d2c4();
-  *unaff_FS_OFFSET = local_10;
+  *__seh_chain = local_10;
   return;
 }
 
@@ -6069,32 +6069,32 @@ void FUN_0041d2c4(void)
 void __thiscall FUN_0041d2d0(void *this,int *param_1,char param_2)
 
 {
-  int *unaff_FS_OFFSET;
+  int *__seh_chain;
   int local_24;
   int local_20;
   void *local_1c;
   int local_18;
   int local_14;
   int local_10;
-  char *puStack_c;
+  char *__seh_handler;
   int local_8;
   
-  local_10 = *unaff_FS_OFFSET;
-  puStack_c = &LAB_0041d38d;
-  *unaff_FS_OFFSET = &local_10;
+  local_10 = *__seh_chain;
+  __seh_handler = &__label_0041d38d;
+  *__seh_chain = &local_10;
   local_18 = *param_1;
   local_14 = param_1[1];
   local_8 = 0;
   local_1c = this;
   if (param_2 == '\0') {
     local_20 = 0;
-    local_8 = (local_8 & ~0xFF) | ((unsigned char)(1));
-    local_8 = (local_8 & ~(0xFFFFFF << 8)) | (((unsigned int)(0) & 0xFFFFFF) << 8);
+    local_8 = (local_8 & ~0xFF) | 1;
+    local_8 = (local_8 & 0xFF) | (0 << 8);
     local_24 = 0;
     FUN_0041cde0(this,&local_24);
     local_14 = local_14 - local_20;
     local_18 = local_18 - local_24;
-    local_8 = (uint)(((local_8) >> 8) & 0xFFFFFF) << 8;
+    local_8 &= ~0xFF;
     FUN_0041d385();
   }
   FUN_0041cca0(local_1c,local_14,local_18,local_14,local_18,'\x01','\x01');
@@ -6104,7 +6104,7 @@ void __thiscall FUN_0041d2d0(void *this,int *param_1,char param_2)
   }
   local_8 = 0xffffffff;
   FUN_0041d397();
-  *unaff_FS_OFFSET = local_10;
+  *__seh_chain = local_10;
   return;
 }
 
@@ -6135,23 +6135,23 @@ void FUN_0041d397(void)
 void __thiscall FUN_0041d3a0(void *this,int param_1,int param_2,char param_3)
 
 {
-  int *unaff_FS_OFFSET;
+  int *__seh_chain;
   int local_18;
   int local_14;
   int local_10;
-  char *puStack_c;
+  char *__seh_handler;
   int local_8;
   
-  local_10 = *unaff_FS_OFFSET;
-  puStack_c = &LAB_0041d3f6;
-  *unaff_FS_OFFSET = &local_10;
+  local_10 = *__seh_chain;
+  __seh_handler = &__label_0041d3f6;
+  *__seh_chain = &local_10;
   local_14 = param_1;
   local_18 = param_2;
   local_8 = 0;
   FUN_0041d2d0(this,&local_18,param_3);
   local_8 = 0xffffffff;
   FUN_0041d400();
-  *unaff_FS_OFFSET = local_10;
+  *__seh_chain = local_10;
   return;
 }
 
@@ -6174,7 +6174,7 @@ void FUN_0041d400(void)
 void * __fastcall FUN_0041d410(int param_1)
 
 {
-    /* TODO: 15 lines - has decompilation artifacts */
+    /* TODO: 15 lines - has decompiler artifacts */
     return 0;
 }
 
@@ -6213,15 +6213,15 @@ void __fastcall FUN_0041d4f0(UIElement *this)
   short sVar1;
   short sVar2;
   short *psVar3;
-  int *unaff_FS_OFFSET;
+  int *__seh_chain;
   int local_10;
-  char *puStack_c;
+  char *__seh_handler;
   int local_8;
 
-  local_10 = *unaff_FS_OFFSET;
+  local_10 = *__seh_chain;
   local_8 = 0xffffffff;
-  puStack_c = &LAB_0041d57b;
-  *unaff_FS_OFFSET = &local_10;
+  __seh_handler = &__label_0041d57b;
+  *__seh_chain = &local_10;
   psVar3 = (short *)FUN_0041d410((int)this);
   sVar1 = psVar3[1];
   sVar2 = *psVar3;
@@ -6231,7 +6231,7 @@ void __fastcall FUN_0041d4f0(UIElement *this)
   this->pos_h = ((int)this->rect_right - (int)sVar1) * 0x100;
   this->pos_w = ((int)this->rect_bottom - (int)sVar2) * 0x100;
   FUN_0041d585();
-  *unaff_FS_OFFSET = local_10;
+  *__seh_chain = local_10;
   return;
 }
 
@@ -6252,7 +6252,7 @@ void FUN_0041d585(void)
 short * __thiscall FUN_0041d590(void *this,short *param_1)
 
 {
-    /* TODO: 51 lines - has decompilation artifacts */
+    /* TODO: 51 lines - has decompiler artifacts */
     return 0;
 }
 
@@ -6365,7 +6365,7 @@ void __fastcall FUN_0041d710(UIWidget *param_1)
 void __thiscall FUN_0041d780(void *this,void *param_1)
 
 {
-    /* TODO: 144 lines - has decompilation artifacts */
+    /* TODO: 144 lines - has decompiler artifacts */
     return;
 }
 
@@ -6493,7 +6493,7 @@ void __thiscall FUN_0041db50(UIWidget *this,char param_1)
 void __fastcall FUN_0041dbb0(void *param_1)
 
 {
-    /* TODO: 96 lines - has decompilation artifacts */
+    /* TODO: 96 lines - has decompiler artifacts */
     return;
 }
 
@@ -6504,7 +6504,7 @@ void __fastcall FUN_0041dbb0(void *param_1)
 void __fastcall FUN_0041dd40(void *param_1)
 
 {
-    /* TODO: 90 lines - has decompilation artifacts */
+    /* TODO: 90 lines - has decompiler artifacts */
     return;
 }
 
@@ -6515,18 +6515,18 @@ void __fastcall FUN_0041dd40(void *param_1)
 void __thiscall FUN_0041dec0(GameWidget *this,short *param_1)
 
 {
-  int *unaff_FS_OFFSET;
+  int *__seh_chain;
   short local_18;
   short local_16;
   short local_14;
   short local_12;
   int local_10;
-  char *puStack_c;
+  char *__seh_handler;
   int local_8;
   
-  local_10 = *unaff_FS_OFFSET;
-  puStack_c = &LAB_0041dfff;
-  *unaff_FS_OFFSET = &local_10;
+  local_10 = *__seh_chain;
+  __seh_handler = &__label_0041dfff;
+  *__seh_chain = &local_10;
   param_1[1] = this->rect_left;
   param_1[3] = this->rect_right;
   *param_1 = this->rect_top;
@@ -6571,7 +6571,7 @@ void __thiscall FUN_0041dec0(GameWidget *this,short *param_1)
     local_8 = 0xffffffff;
     FUN_0041e009();
   }
-  *unaff_FS_OFFSET = local_10;
+  *__seh_chain = local_10;
   return;
 }
 
@@ -6674,7 +6674,7 @@ void __thiscall FUN_0041e0d0(UIElement *this,int *param_1)
 void __fastcall FUN_0041e0e0(int param_1)
 
 {
-    /* TODO: 71 lines - has decompilation artifacts */
+    /* TODO: 71 lines - has decompiler artifacts */
     return;
 }
 
@@ -6709,7 +6709,7 @@ void __fastcall FUN_0041e250(UIElement *this)
 void __fastcall FUN_0041e260(int *param_1)
 
 {
-    /* TODO: 71 lines - has decompilation artifacts */
+    /* TODO: 71 lines - has decompiler artifacts */
     return;
 }
 
@@ -6720,7 +6720,7 @@ void __fastcall FUN_0041e260(int *param_1)
 int __thiscall FUN_0041e3b0(void *this,int param_1,char param_2)
 
 {
-    /* TODO: 36 lines - has decompilation artifacts */
+    /* TODO: 36 lines - has decompiler artifacts */
     return 0;
 }
 
@@ -6732,12 +6732,12 @@ void FUN_0041e4b0(void)
 
 {
   int uVar1;
-  int in_stack_fffffff4;
+  int __param_fffffff4;
   
   uVar1 = 0;
-  FUN_00401050(&ghidra_stack_fffffff4,0);
-  FUN_00401050(&ghidra_stack_fffffff0,0);
-  FUN_00401060(&DAT_00486180,uVar1,in_stack_fffffff4);
+  FUN_00401050(&__stk_44,0);
+  FUN_00401050(&__stk_43,0);
+  FUN_00401060(&DAT_00486180,uVar1,__param_fffffff4);
   return;
 }
 
@@ -6758,18 +6758,18 @@ void FUN_0041e500(void)
 int * __fastcall FUN_0041e560(int *param_1)
 
 {
-  int *unaff_FS_OFFSET;
+  int *__seh_chain;
   int local_10;
-  char *puStack_c;
+  char *__seh_handler;
   int local_8;
   
-  local_10 = *unaff_FS_OFFSET;
+  local_10 = *__seh_chain;
   local_8 = 0xffffffff;
-  puStack_c = &LAB_0041e5ab;
-  *unaff_FS_OFFSET = &local_10;
+  __seh_handler = &__label_0041e5ab;
+  *__seh_chain = &local_10;
   FUN_0044bc50(param_1);
   *param_1 = &PTR_FUN_00473240;
-  *unaff_FS_OFFSET = local_10;
+  *__seh_chain = local_10;
   return param_1;
 }
 
@@ -6884,7 +6884,7 @@ void FUN_0041e730(void)
 int __fastcall FUN_0041e740(void *param_1)
 
 {
-    /* TODO: 1965 lines - has decompilation artifacts */
+    /* TODO: 1965 lines - has decompiler artifacts */
     return 0;
 }
 
